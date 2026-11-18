@@ -2,7 +2,7 @@
 
 canal:
   nombre: "Curiosidario"                  # nombre que aparece en la tarjeta final
-  handle: ""                               # tu @ de YouTube (vacío = no se muestra)
+  handle: "@curiosdiario"                  # tu @ de YouTube (vacío = no se muestra)
   idioma: "es"
   tarjeta_final:
     titulo: "Sígueme"
