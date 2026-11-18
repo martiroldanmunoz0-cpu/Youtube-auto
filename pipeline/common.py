@@ -26,6 +26,17 @@ def week_id(date: dt.date | None = None) -> str:
     return f"{y}-S{w:02d}"
 
 
+def run_id() -> str:
+    """Identificador de la tanda: RUN_ID (pedidos especiales) o la semana actual."""
+    return os.environ.get("RUN_ID") or week_id()
+
+
+def pedido() -> str | None:
+    """Texto del pedido especial, si esta tanda es un pedido."""
+    p = (os.environ.get("PEDIDO") or "").strip()
+    return p or None
+
+
 def week_dir(wid: str) -> Path:
     p = OUT / wid
     p.mkdir(parents=True, exist_ok=True)

@@ -13,7 +13,7 @@ import tempfile
 import zlib
 from pathlib import Path
 
-from common import RENDERER, load_config, read_json, week_dir, week_id, write_json
+from common import RENDERER, load_config, read_json, run_id, week_dir, write_json
 from soundtrack import make_soundtrack
 from voice import synth
 
@@ -98,10 +98,10 @@ def main():
         out_dir = Path(args.out or Path(args.story).parent)
         build_story(story, out_dir, cfg)
         return
-    wd = week_dir(week_id())
+    wd = week_dir(run_id())
     stories = read_json(wd / "stories.json")
     if not stories:
-        sys.exit("No hay stories.json esta semana")
+        sys.exit("No hay stories.json en esta tanda")
     ok = []
     for st in stories:
         try:
@@ -111,6 +111,8 @@ def main():
             print(f"  error montando {st['id']}: {e}", file=sys.stderr)
     write_json(wd / "stories.json", stories)
     print(f"\nVídeos montados: {len(ok)}/{len(stories)}")
+    if not ok:
+        sys.exit("No se montó ningún vídeo")
 
 
 if __name__ == "__main__":

@@ -70,6 +70,15 @@ YouTube deja **en privado** los vídeos subidos por la API desde proyectos nuevo
 
 ¿No te convence ninguno o quieres otra tanda? *Actions → Generar vídeos de la semana → Run workflow* y sale una nueva.
 
+# Pedido especial (vídeos sobre lo que tú quieras)
+
+1. **Actions → «Pedido especial» → Run workflow**.
+2. En el cuadro de texto escribe lo que quieres, como se lo dirías a una persona. Por ejemplo:
+   *«Qué pasaría si ganaras un millón de euros cada día y tuvieras que gastarlo o lo pierdes todo»*.
+3. Elige cuántas versiones quieres (3 por defecto) → **Run workflow**.
+4. En 10–15 minutos te llega un issue **«Pedido especial: …»** con las versiones: mismo tema, pero con otro gancho, otros diálogos y otras escenas.
+5. Se aprueba igual: marcas las casillas y cierras el issue. Se programan detrás de los que ya tengas en cola.
+
 # Ajustes (`config.yaml`)
 
 - `canal.handle` / `canal.nombre`: tu @ y nombre para la tarjeta final.

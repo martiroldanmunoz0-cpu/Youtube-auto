@@ -161,6 +161,43 @@ const screens = {
       ctx.globalAlpha = 1;
     });
   },
+  // params: { balance: '1.000.000 €', label?, transactions: [{text, amount}] , status?: 'ok'|'alert' }
+  bank(ctx, x, y, w, h, s, t, params) {
+    const g = ctx.createLinearGradient(x, y, x, y + h);
+    g.addColorStop(0, '#16233f'); g.addColorStop(1, '#0a0d16');
+    ctx.fillStyle = g; ctx.fillRect(x, y, w, h);
+    ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = F(400, 24 * s);
+    ctx.fillText(params.label || 'Saldo disponible', x + 40 * s, y + 150 * s);
+    let bal = String(params.balance || '0 €');
+    const m = bal.match(/^(-?)([\d.,]+)(.*)$/);
+    if (m) {
+      const target = Number(m[2].replace(/\./g, '').replace(',', '.'));
+      const k = ease.out(seg(t, 0.1, 1.2));
+      if (Number.isFinite(target) && target > 1 && k < 1) bal = m[1] + Math.round(target * k).toLocaleString('es-ES') + m[3];
+    }
+    const alert = params.status === 'alert' || bal.startsWith('-');
+    ctx.fillStyle = alert ? '#ff6b6b' : P.white;
+    let size = 64; do { ctx.font = F(700, size * s); size -= 4; } while (ctx.measureText(bal).width > w - 80 * s && size > 20);
+    ctx.fillText(bal, x + 40 * s, y + 230 * s);
+    ctx.fillStyle = 'rgba(255,255,255,0.08)'; ctx.fillRect(x + 30 * s, y + 280 * s, w - 60 * s, 2);
+    (params.transactions || []).slice(0, 5).forEach((tr, i) => {
+      const k = ease.out(seg(t, 0.5 + i * 0.35, 0.3));
+      if (k <= 0) return;
+      const ty = y + 330 * s + i * 100 * s;
+      ctx.globalAlpha = k;
+      ctx.fillStyle = '#232a44'; ctx.beginPath(); ctx.arc(x + 70 * s, ty + 20 * s, 28 * s, 0, 7); ctx.fill();
+      ctx.fillStyle = P.white; ctx.font = F(500, 24 * s);
+      ctx.font = F(600, 24 * s);
+      let label = String(tr.text || '');
+      while (label.length > 3 && ctx.measureText(label).width > w - 160 * s - ctx.measureText(String(tr.amount || "")).width - 30 * s) label = label.slice(0, -2);
+      if (label !== String(tr.text || '')) label = label.trim() + '…';
+      ctx.fillText(label, x + 115 * s, ty + 28 * s);
+      const amt = String(tr.amount || '');
+      ctx.fillStyle = amt.startsWith('-') ? '#ff8a8a' : '#6fe39b'; ctx.font = F(600, 24 * s);
+      ctx.textAlign = 'right'; ctx.fillText(amt, x + w - 40 * s, ty + 28 * s); ctx.textAlign = 'left';
+      ctx.globalAlpha = 1;
+    });
+  },
   // params: { name, label }
   profile(ctx, x, y, w, h, s, t, params) {
     const g = ctx.createLinearGradient(x, y, x, y + h);
@@ -185,7 +222,7 @@ export const phone = {
     ctx.fillRect(0, 0, W, H);
     drawBokeh(ctx, s.bokeh, t);
     const fn = screens[params.screen] || screens.chat;
-    const alert = params.status === 'alert' || (params.messages || []).some((m) => m.alert);
+    const alert = params.status === 'alert' || (params.messages || []).some((m) => m.alert) || String(params.balance || '').startsWith('-');
     drawPhoneInHands(ctx, W / 2 + 10, 1200 + Math.sin(t * 1.3) * 6, {
       scale: 1.22, tilt: -0.04 + Math.sin(t * 0.7) * 0.01,
       screenGlow: alert ? P.red : P.ui,

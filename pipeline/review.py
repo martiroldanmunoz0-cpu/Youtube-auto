@@ -16,7 +16,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from common import DATA, ROOT, load_config, read_json, week_dir, week_id, write_json
+from common import DATA, ROOT, load_config, pedido, read_json, run_id, week_dir, write_json
 
 
 def gh(*args: str, input_text: str | None = None) -> str:
@@ -32,7 +32,7 @@ def pages_url() -> str | None:
 
 
 def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dict) -> Path:
-    site = ROOT / "site"
+    site = ROOT / "site" / wid
     if site.exists():
         shutil.rmtree(site)
     (site / "v").mkdir(parents=True)
@@ -56,11 +56,12 @@ def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dic
     <details><summary>Guion</summary><ol>{guion}</ol></details>
   </div>
 </article>""")
+    heading = f"Pedido: {pedido()}" if pedido() else f"Vídeos de la semana {wid}"
     pats = "".join(f"<li>{html.escape(p)}</li>" for p in analysis.get("patrones_gancho", []))
     temas = "".join(f"<li>{html.escape(p)}</li>" for p in analysis.get("temas_calientes", []))
     page = f"""<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Revisión {wid}</title>
+<title>Revisión {html.escape(heading)}</title>
 <style>
 :root{{color-scheme:dark}} body{{margin:0;background:#0b0c12;color:#eee;font:16px/1.5 system-ui,sans-serif}}
 main{{max-width:1100px;margin:auto;padding:16px}} h1{{font-size:24px}}
@@ -71,7 +72,7 @@ video{{width:100%;aspect-ratio:9/16;background:#000;display:block}}
 .num{{position:absolute;top:10px;left:10px;background:#ffb35c;color:#000;font-weight:700;border-radius:8px;padding:2px 10px;z-index:2}}
 details{{margin-top:8px;color:#ccc}} .box{{background:#151722;border-radius:16px;padding:12px 18px;margin-bottom:20px}}
 </style></head><body><main>
-<h1>Vídeos de la semana {wid}</h1>
+<h1>{html.escape(heading)}</h1>
 <div class="box"><p>{html.escape(analysis.get('resumen', ''))}</p>
 <details><summary>Ganchos que funcionan</summary><ul>{pats}</ul></details>
 <details><summary>Temas calientes</summary><ul>{temas}</ul></details>
@@ -84,34 +85,37 @@ details{{margin-top:8px;color:#ccc}} .box{{background:#151722;border-radius:16px
 
 def main():
     cfg = load_config()
-    wid = week_id()
+    wid = run_id()
     wd = week_dir(wid)
+    req = pedido()
     stories = [s for s in (read_json(wd / "stories.json") or []) if s.get("video")]
     analysis = read_json(wd / "analysis.json", {})
     if not stories:
         sys.exit("No hay vídeos montados esta semana")
 
     # 1) Release con los vídeos
-    tag = f"semana-{wid}"
+    tag = wid if wid.startswith("pedido") else f"semana-{wid}"
     files = [str(wd / s["video"]) for s in stories]
     try:
         gh("release", "view", tag)
         gh("release", "upload", tag, *files, "--clobber")
     except subprocess.CalledProcessError:
-        gh("release", "create", tag, *files, "--title", f"Vídeos {wid}", "--notes", "Vídeos generados para revisión. No borrar hasta que estén publicados.", "--prerelease")
+        gh("release", "create", tag, *files, "--title", f"Vídeos {wid}", "--notes", (f"Pedido: {req}\n\n" if req else "") + "Vídeos generados para revisión. No borrar hasta que estén publicados.", "--prerelease")
     repo = os.environ.get("GITHUB_REPOSITORY", "")
 
     # 2) Página de revisión
     build_site(wid, stories, analysis, wd, cfg)
     base = pages_url()
+    if base:
+        base = f"{base}{wid}/"
 
     # 3) Issue con casillas
     lines = [
-        f"## 🎬 Vídeos de la semana {wid}",
+        f"## 🎬 Pedido especial: {req}" if req else f"## 🎬 Vídeos de la semana {wid}",
         "",
         f"**1.** Mira los vídeos: {base or '(activa GitHub Pages para ver la página de revisión)'}",
         "**2.** Marca las casillas de los que quieras publicar.",
-        "**3.** Cierra este issue → se programan solos en YouTube (1 al día; 2 al día si apruebas más de 7).",
+        "**3.** Cierra este issue → se programan solos en YouTube detrás de los que ya estén programados (1 al día; 2 al día si apruebas más de 7).",
         "",
         f"> {analysis.get('resumen', '')}",
         "",
@@ -125,12 +129,13 @@ def main():
         gh("label", "create", "revision", "--color", "FFB35C", "--description", "Revisión semanal de Shorts", "--force")
     except subprocess.CalledProcessError:
         pass
-    url = gh("issue", "create", "--title", f"Revisión de vídeos {wid}", "--label", "revision", "--body-file", "-", input_text="\n".join(lines))
+    title = f"Pedido especial: {req[:70]}" if req else f"Revisión de vídeos {wid}"
+    url = gh("issue", "create", "--title", title, "--label", "revision", "--body-file", "-", input_text="\n".join(lines))
     print("Issue de revisión:", url)
 
     # 4) Estado para el paso de publicación + historial
     meta = [{k: s[k] for k in ("id", "title", "description", "tags", "video")} for s in stories]
-    write_json(DATA / "weeks" / f"{wid}.json", {"semana": wid, "tag": tag, "issue": url, "videos": meta})
+    write_json(DATA / "weeks" / f"{wid}.json", {"semana": wid, "pedido": req, "tag": tag, "issue": url, "videos": meta})
     history = read_json(DATA / "history.json", [])
     history += [{"id": s["id"], "titulo": s["title"], "tipo": s.get("idea", {}).get("tipo")} for s in stories]
     write_json(DATA / "history.json", history[-400:])

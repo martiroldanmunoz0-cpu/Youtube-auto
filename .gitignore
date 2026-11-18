@@ -9,3 +9,4 @@ client_secret*.json
 .env
 examples/*.mp4
 *.zip
+pages/

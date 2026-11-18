@@ -1,0 +1,95 @@
+name: Pedido especial
+
+# Escribe lo que quieras y genera varias versiones distintas de ese mismo vídeo.
+on:
+  workflow_dispatch:
+    inputs:
+      pedido:
+        description: "¿Qué vídeo quieres? (escríbelo como se lo dirías a una persona)"
+        required: true
+        type: string
+      cantidad:
+        description: "¿Cuántas versiones?"
+        required: true
+        default: "3"
+        type: choice
+        options: ["1", "2", "3", "4", "5"]
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: generar
+  cancel-in-progress: false
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      RUN_ID: pedido-${{ github.run_number }}
+      PEDIDO: ${{ inputs.pedido }}
+      PEDIDO_N: ${{ inputs.cantidad }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: renderer/package-lock.json
+
+      - name: Instalar herramientas
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg espeak-ng
+          pip install -r requirements.txt
+          npm ci --prefix renderer
+
+      - name: 1. Escribir las versiones con IA
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python pipeline/scripts.py
+
+      - name: 2. Montar los vídeos
+        run: python pipeline/build.py
+
+      - name: 3. Preparar revisión (release + página + issue)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/review.py
+
+      - name: Guardar historial
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data
+          git commit -m "Pedido especial generado" || echo "sin cambios"
+          git pull --rebase
+          git push
+
+      - name: Actualizar página de revisión
+        run: python pipeline/pages.py
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages
+
+  pagina:
+    needs: generar
+    runs-on: ubuntu-latest
+    continue-on-error: true   # si el repo no tiene Pages, la revisión sigue funcionando con los enlaces de descarga
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

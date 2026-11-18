@@ -12,7 +12,9 @@ import sys
 
 import anthropic
 
-from common import CATALOG, DATA, load_config, read_json, week_dir, week_id, write_json
+import os
+
+from common import CATALOG, DATA, load_config, pedido, read_json, run_id, week_dir, write_json
 
 client = anthropic.Anthropic()
 
@@ -28,14 +30,15 @@ ANALYSIS_SCHEMA = {
             "items": {
                 "type": "object",
                 "properties": {
-                    "tipo": {"type": "string", "enum": ["historia_ficcion", "dato_curioso", "caso_real", "misterio", "explicacion"]},
+                    "tipo": {"type": "string", "enum": ["historia_ficcion", "dato_curioso", "caso_real", "misterio", "explicacion", "que_pasaria_si", "pedido"]},
                     "premisa": {"type": "string"},
                     "gancho": {"type": "string"},
                     "giro_final": {"type": "string"},
+                    "estilo_visual": {"type": "string"},
                     "por_que_funcionara": {"type": "string"},
                     "inspirado_en": {"type": "array", "items": {"type": "string"}},
                 },
-                "required": ["tipo", "premisa", "gancho", "giro_final", "por_que_funcionara", "inspirado_en"],
+                "required": ["tipo", "premisa", "gancho", "giro_final", "estilo_visual", "por_que_funcionara", "inspirado_en"],
                 "additionalProperties": False,
             },
         },
@@ -159,12 +162,39 @@ def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
     return call_json(SYSTEM_ANALYST, user, ANALYSIS_SCHEMA, cfg["generacion"]["modelo"])
 
 
+SYSTEM_PEDIDO = """Eres el estratega de un canal de YouTube Shorts en español de vídeos animados narrados \
+(ilustración vectorial, narrador en off y subtítulos palabra a palabra). El dueño del canal te pide un vídeo \
+concreto. Tu trabajo: proponer VARIAS versiones distintas de ESE MISMO pedido, para quedarse con la mejor.
+
+Reglas:
+- Todas las versiones tratan exactamente sobre lo que se pide. No cambies el tema.
+- Cada versión debe ser claramente diferente: otro gancho, otra estructura (p. ej. narración en segunda persona, \
+historia de un personaje, cuenta atrás día a día, lista de datos, giro final inesperado), otro remate y otro \
+estilo visual (escenas distintas del catálogo).
+- Cada gancho debe enganchar en los 2 primeros segundos.
+- En 'estilo_visual' indica qué escenas del catálogo dominarán esa versión y cómo.
+- En 'inspirado_en' deja la lista vacía.
+- Si el pedido incluye hechos reales, usa solo datos bien documentados."""
+
+
+def ideas_for_request(request: str, n: int, history: list[dict], cfg: dict) -> dict:
+    catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    user = (
+        f"Pedido del dueño del canal:\n\"{request}\"\n\n"
+        f"Escenas disponibles para animar:\n{json.dumps({k: v['desc'] for k, v in catalog['scenes'].items()}, ensure_ascii=False)}\n\n"
+        f"Dame exactamente {n} versiones distintas en 'ideas'. En 'resumen' explica en 2 frases cómo se diferencian. "
+        "En 'patrones_gancho' pon los tipos de gancho que usas; 'temas_calientes' y 'formatos' pueden ir vacíos."
+    )
+    return call_json(SYSTEM_PEDIDO, user, ANALYSIS_SCHEMA, cfg["generacion"]["modelo"])
+
+
 def write_story(idea: dict, analysis: dict, cfg: dict) -> dict:
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     user = (
         f"Catálogo de escenas, cámaras y transiciones:\n{json.dumps(catalog, ensure_ascii=False)}\n\n"
-        f"Patrones de gancho que funcionan esta semana:\n{json.dumps(analysis['patrones_gancho'], ensure_ascii=False)}\n\n"
-        f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
+        + f"Patrones de gancho que funcionan esta semana:\n{json.dumps(analysis['patrones_gancho'], ensure_ascii=False)}\n\n"
+        + (f"Pedido original del dueño del canal (respétalo): \"{pedido()}\"\n\n" if pedido() else "")
+        + f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
         f"Duración objetivo: {cfg['generacion']['duracion_objetivo_seg'][0]}-{cfg['generacion']['duracion_objetivo_seg'][1]} segundos. "
         "Escribe el guion completo."
     )
@@ -209,28 +239,34 @@ def validate_story(story: dict) -> dict:
 
 def main():
     cfg = load_config()
-    wid = week_id()
-    wd = week_dir(wid)
-    trends = read_json(wd / "trends.json")
-    if not trends:
-        sys.exit("Falta trends.json: ejecuta antes trends.py")
+    rid = run_id()
+    wd = week_dir(rid)
     history = read_json(DATA / "history.json", [])
-    n = cfg["generacion"]["videos_por_semana"]
-
-    analysis = analyze(trends, history, cfg, n)
+    request = pedido()
+    if request:
+        n = int(os.environ.get("PEDIDO_N") or 3)
+        analysis = ideas_for_request(request, n, history, cfg)
+    else:
+        trends = read_json(wd / "trends.json")
+        if not trends:
+            sys.exit("Falta trends.json: ejecuta antes trends.py")
+        n = cfg["generacion"]["videos_por_semana"]
+        analysis = analyze(trends, history, cfg, n)
     write_json(wd / "analysis.json", analysis)
-    print(f"Análisis listo: {len(analysis['ideas'])} ideas")
+    print(f"Ideas listas: {len(analysis['ideas'])}")
 
     stories = []
     for i, idea in enumerate(analysis["ideas"][:n]):
         try:
             raw = write_story(idea, analysis, cfg)
             st = validate_story(raw)
-            st.update({"id": f"{wid}-{i + 1:02d}", "idea": idea})
+            st.update({"id": f"{rid}-{i + 1:02d}", "idea": idea})
             stories.append(st)
             print(f"  [{i + 1}/{n}] {st['title']} ({len(st['beats'])} planos)")
         except Exception as e:
             print(f"  [{i + 1}/{n}] error escribiendo guion: {e}", file=sys.stderr)
+    if not stories:
+        sys.exit("No se pudo escribir ningún guion")
     write_json(wd / "stories.json", stories)
 
 

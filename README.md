@@ -12,6 +12,8 @@ Lunes (automático)                                Tú (5 min)             Autom
 
 👉 **Primera vez:** sigue [CONFIGURACION.md](CONFIGURACION.md).
 
+🎯 **Vídeo a la carta:** *Actions → Pedido especial → Run workflow*, escribe lo que quieres y te genera 3 versiones distintas.
+
 ## Estructura
 
 | Carpeta | Qué hace |
@@ -23,7 +25,8 @@ Lunes (automático)                                Tú (5 min)             Autom
 | `pipeline/build.py` | Monta cada vídeo |
 | `pipeline/review.py` | Release con los vídeos, página de revisión e issue con casillas |
 | `pipeline/publish.py` | Sube y programa los aprobados |
-| `renderer/` | Motor de animación (Node + Canvas): 18 escenas, cámaras, transiciones, subtítulos |
+| `pipeline/pages.py` | Web de revisión con las últimas tandas (semanales y pedidos) |
+| `renderer/` | Motor de animación (Node + Canvas): 21 escenas, cámaras, transiciones, subtítulos |
 | `renderer/scenes/catalog.json` | Catálogo de escenas que puede usar la IA |
 | `config.yaml` | Ajustes del canal |
 
