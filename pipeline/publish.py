@@ -101,7 +101,13 @@ def process_queue(cfg: dict) -> list[str]:
         try:
             vid = upload(yt, q, path, cfg)
             q.update(estado="programado", youtube_id=vid)
-            report.append(f"✅ `{q['id']}` → https://youtu.be/{vid} — se publica {q['publish_at']}")
+            local = dt.datetime.fromisoformat(q["publish_at"].replace("Z", "+00:00")).astimezone(ZoneInfo(cfg["publicacion"]["zona_horaria"]))
+            dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
+            cuando = f"{dias[local.weekday()]} {local:%d/%m} a las {local:%H:%M}"
+            report.append(
+                f"✅ **{q['title']}**\n   📅 Se publica el **{cuando}** · [ver](https://youtu.be/{vid}) · "
+                f"[abrir en YouTube Studio](https://studio.youtube.com/video/{vid}/edit)"
+            )
             print(report[-1])
         except HttpError as e:
             if "quotaExceeded" in str(e) or "uploadLimitExceeded" in str(e):
@@ -143,7 +149,9 @@ def main():
     if report:
         issue = args.issue or issue
         if issue:
-            gh("issue", "comment", str(issue), "--body", "### Programación en YouTube\n\n" + "\n".join(report))
+            note = ("\n\n> ℹ️ Si aún no tienes la auditoría de la API de YouTube, los vídeos se quedan en *Privado*. "
+                    "Pulsa **abrir en YouTube Studio** en cada uno → *Visibilidad* → *Programar* y pon la fecha indicada.")
+            gh("issue", "comment", str(issue), "--body", "### Programación en YouTube\n\n" + "\n".join(report) + note)
 
 
 if __name__ == "__main__":
