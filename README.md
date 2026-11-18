@@ -1,4 +1,8 @@
-# Shorts Factory
+# Historias Nocturnas (Shorts Factory)
+
+> 🔒 [**Política de privacidad**](PRIVACIDAD.md) · 📄 [**Términos del servicio**](TERMINOS.md) · ▶️ Usa los **Servicios de API de YouTube** · Canal: [Curiosidario (@curiosdiario)](https://www.youtube.com/@curiosdiario)
+>
+> Al usar esta herramienta aceptas los [Términos de servicio de YouTube](https://www.youtube.com/t/terms) y la [Política de privacidad de Google](https://policies.google.com/privacy).
 
 Fábrica automática de YouTube Shorts animados, todos con la misma estética (ilustración vectorial nocturna, narrador en off y subtítulos palabra a palabra).
 
