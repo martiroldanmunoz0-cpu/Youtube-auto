@@ -1,12 +1,12 @@
 # Configuración del canal. Cambia lo que quieras y haz commit: el sistema lo lee en cada ejecución.
 
 canal:
-  nombre: "Historias de Medianoche"       # nombre que aparece en la tarjeta final
-  handle: "@tucanal"                       # tu @ de YouTube
+  nombre: "Curiosidario"                  # nombre que aparece en la tarjeta final
+  handle: ""                               # tu @ de YouTube (vacío = no se muestra)
   idioma: "es"
   tarjeta_final:
     titulo: "Sígueme"
-    subtitulo: "para más historias"
+    subtitulo: "para más curiosidades"
 
 analisis:
   regiones: ["ES", "MX", "AR", "CO", "US"]   # países cuyo "Tendencias" se mira
