@@ -43,6 +43,10 @@ def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dic
         if (wd / thumb).exists():
             shutil.copy(wd / thumb, site / "v" / thumb)
         guion = "".join(f"<li>{html.escape(b['text'])}</li>" for b in st["beats"])
+        ganchos = "".join(
+            f"<li><b>{g.get('puntuacion', '?')}/10</b> {html.escape(g.get('texto', ''))} <i>({html.escape(g.get('motivo', ''))})</i></li>"
+            for g in sorted(st.get("ganchos", []), key=lambda g: -int(g.get("puntuacion", 0) or 0))
+        )
         idea = st.get("idea", {})
         cards.append(f"""
 <article id="{st['id']}">
@@ -54,6 +58,7 @@ def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dic
     <p>{html.escape(st['description']).replace(chr(10), '<br>')}</p>
     <details><summary>Por qué esta idea</summary><p>{html.escape(idea.get('por_que_funcionara', ''))}</p></details>
     <details><summary>Guion</summary><ol>{guion}</ol></details>
+    <details><summary>Ganchos considerados</summary><ul>{ganchos}</ul></details>
   </div>
 </article>""")
     heading = f"Pedido: {pedido()}" if pedido() else f"Vídeos de la semana {wid}"
