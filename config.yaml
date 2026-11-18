@@ -1,0 +1,53 @@
+# Configuración del canal. Cambia lo que quieras y haz commit: el sistema lo lee en cada ejecución.
+
+canal:
+  nombre: "Historias de Medianoche"       # nombre que aparece en la tarjeta final
+  handle: "@tucanal"                       # tu @ de YouTube
+  idioma: "es"
+  tarjeta_final:
+    titulo: "Sígueme"
+    subtitulo: "para más historias"
+
+analisis:
+  regiones: ["ES", "MX", "AR", "CO", "US"]   # países cuyo "Tendencias" se mira
+  dias: 7                                    # ventana de análisis
+  duracion_max_seg: 180                      # solo Shorts
+  # Búsquedas amplias para encontrar lo que más funciona. Se combinan con lo más visto de cada país.
+  busquedas:
+    - "historia de terror corta"
+    - "historia real"
+    - "datos curiosos"
+    - "sabías que"
+    - "misterio sin resolver"
+    - "caso real"
+    - "curiosidades"
+    - "historia animada"
+    - "creepypasta"
+    - "experiencia paranormal"
+    - "plot twist"
+    - "storytime"
+  top_videos: 60                             # cuántos vídeos se pasan a la IA
+
+generacion:
+  videos_por_semana: 10          # se generan más de 7 para que puedas descartar algunos
+  modelo: "claude-opus-5-5"
+  duracion_objetivo_seg: [45, 75]
+  mezcla: "auto"                 # auto = la IA decide según tendencias (historias, datos, casos reales...)
+
+voz:
+  motor: "edge"                  # edge (gratis, Microsoft Edge TTS) | espeak (respaldo, robótica)
+  voz: "es-ES-AlvaroNeural"      # otras: es-MX-JorgeNeural, es-ES-ElviraNeural, es-MX-DaliaNeural
+  velocidad: "+6%"
+  tono: "-2Hz"
+
+musica:
+  volumen_ambiente: 0.16         # pad oscuro generado + efectos de transición
+  efectos: true
+
+publicacion:
+  zona_horaria: "Europe/Madrid"
+  # Horas de subida. Con 1 vídeo/día se usa la primera; si apruebas más de 7, se usa también la segunda.
+  horas: ["19:30", "13:30"]
+  max_por_dia: 2
+  categoria_id: "24"             # 24 = Entretenimiento
+  privacidad_si_no_auditado: "private"

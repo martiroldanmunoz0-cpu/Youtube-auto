@@ -1,0 +1,44 @@
+# Shorts Factory
+
+Fábrica automática de YouTube Shorts animados, todos con la misma estética (ilustración vectorial nocturna, narrador en off y subtítulos palabra a palabra).
+
+```
+Lunes (automático)                                Tú (5 min)             Automático
+┌──────────────┐  ┌─────────────┐  ┌───────────┐  ┌──────────────┐      ┌──────────────────┐
+│ 1. Tendencias│→ │ 2. Guiones  │→ │ 3. Vídeos │→ │ 4. Revisión  │ ───→ │ 5. Programación  │
+│ API YouTube  │  │ Claude      │  │ voz+anim. │  │ issue + web  │  OK  │ 1-2/día YouTube  │
+└──────────────┘  └─────────────┘  └───────────┘  └──────────────┘      └──────────────────┘
+```
+
+👉 **Primera vez:** sigue [CONFIGURACION.md](CONFIGURACION.md).
+
+## Estructura
+
+| Carpeta | Qué hace |
+|---|---|
+| `pipeline/trends.py` | Busca los Shorts con más vistas/día de la semana (búsquedas + tendencias por país) |
+| `pipeline/scripts.py` | Claude analiza patrones de gancho y escribe guiones divididos en planos |
+| `pipeline/voice.py` | Voz gratuita (Edge TTS) con tiempos por palabra |
+| `pipeline/soundtrack.py` | Música ambiente y efectos generados por código (sin copyright) |
+| `pipeline/build.py` | Monta cada vídeo |
+| `pipeline/review.py` | Release con los vídeos, página de revisión e issue con casillas |
+| `pipeline/publish.py` | Sube y programa los aprobados |
+| `renderer/` | Motor de animación (Node + Canvas): 18 escenas, cámaras, transiciones, subtítulos |
+| `renderer/scenes/catalog.json` | Catálogo de escenas que puede usar la IA |
+| `config.yaml` | Ajustes del canal |
+
+## Probar en local
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+npm ci --prefix renderer
+.venv/bin/python pipeline/build.py --story examples/demo_story.json --out out/prueba
+```
+
+Previsualizar escenas sin audio: `node renderer/render.mjs timeline.json hoja.png --stills 8`.
+
+## Añadir escenas nuevas
+
+1. Dibuja la escena en `renderer/scenes/*.mjs` (`setup` + `draw`).
+2. Regístrala en `renderer/scenes/index.mjs`.
+3. Descríbela en `renderer/scenes/catalog.json` para que la IA sepa usarla.

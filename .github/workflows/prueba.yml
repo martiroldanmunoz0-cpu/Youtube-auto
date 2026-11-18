@@ -1,0 +1,32 @@
+name: Prueba (vídeo de ejemplo)
+
+# Monta el vídeo de ejemplo con la voz real, sin tocar YouTube ni gastar IA.
+# Útil para comprobar que todo funciona. El vídeo queda en "Artifacts" de la ejecución.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: renderer/package-lock.json
+      - run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg espeak-ng
+          pip install -r requirements.txt
+          npm ci --prefix renderer
+      - run: python pipeline/build.py --story examples/demo_story.json --out out/prueba
+      - uses: actions/upload-artifact@v4
+        with:
+          name: video-prueba
+          path: out/prueba/*.mp4

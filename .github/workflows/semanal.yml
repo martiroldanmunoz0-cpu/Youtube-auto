@@ -1,0 +1,84 @@
+name: Generar vídeos de la semana
+
+on:
+  schedule:
+    - cron: "17 5 * * 1"   # lunes 05:17 UTC (07:17 en Madrid en invierno)
+  workflow_dispatch: {}     # botón "Run workflow" para lanzarlo a mano
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: semanal
+  cancel-in-progress: false
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: renderer/package-lock.json
+
+      - name: Instalar herramientas
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg espeak-ng
+          pip install -r requirements.txt
+          npm ci --prefix renderer
+
+      - name: 1. Analizar tendencias de YouTube
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python pipeline/trends.py
+
+      - name: 2. Escribir guiones con IA
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python pipeline/scripts.py
+
+      - name: 3. Montar los vídeos
+        run: python pipeline/build.py
+
+      - name: 4. Preparar revisión (release + página + issue)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/review.py
+
+      - name: Guardar historial
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data
+          git commit -m "Semana generada: análisis, guiones e historial" || echo "sin cambios"
+          git push
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  pagina:
+    needs: generar
+    runs-on: ubuntu-latest
+    continue-on-error: true   # si el repo no tiene Pages, la revisión sigue funcionando con los enlaces de descarga
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

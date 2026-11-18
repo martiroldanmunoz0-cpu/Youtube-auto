@@ -1,0 +1,20 @@
+{
+  "id": "demo-01",
+  "title": "Tu madre te escribe a las 3 de la mañana #shorts",
+  "description": "¿Tú habrías abierto la puerta? Te leo en comentarios.\n#historias #terror #suspense",
+  "tags": ["historias", "terror", "suspense", "historia animada"],
+  "beats": [
+    {"text": "Son las tres de la mañana y tu madre te escribe.", "scene": "phone", "params": {"screen": "notification", "time": "03:00", "notifications": [{"app": "Mensajes", "title": "Mamá", "text": "¿Estás despierto?"}]}, "camera": "push_in", "transition": "fade"},
+    {"text": "Te dice que no hagas ruido y que no enciendas la luz.", "scene": "phone", "params": {"screen": "chat", "contact": "Mamá", "messages": [{"from": "them", "text": "No hagas ruido"}, {"from": "them", "text": "Y no enciendas la luz"}]}, "camera": "push_in", "transition": "cut"},
+    {"text": "Miras hacia la puerta de tu habitación. Está entreabierta.", "scene": "bedroom", "params": {"door_open": 0.25, "phone_glow": true}, "camera": "pan_right", "transition": "fade"},
+    {"text": "Y tú siempre la cierras antes de dormir.", "scene": "bedroom", "params": {"door_open": 0.35}, "camera": "push_in", "transition": "cut"},
+    {"text": "Le preguntas qué pasa. Tarda un minuto en contestar.", "scene": "clock", "params": {"time": "03:01"}, "camera": "static", "transition": "fade"},
+    {"text": "Hay alguien en el pasillo. Lo he visto entrar.", "scene": "phone", "params": {"screen": "chat", "contact": "Mamá", "typing": true, "messages": [{"from": "me", "text": "¿Qué pasa?"}, {"from": "them", "text": "Hay alguien en el pasillo", "alert": true}]}, "camera": "push_in", "transition": "red"},
+    {"text": "Escuchas pasos. Lentos. Acercándose.", "scene": "hallway", "params": {"flicker": 0.7, "color": "warm"}, "camera": "push_in", "transition": "black"},
+    {"text": "Bajo la puerta aparece la sombra de dos pies.", "scene": "front_door", "params": {"shadow": true}, "camera": "tilt_down", "transition": "fade"},
+    {"text": "Entonces el móvil vibra otra vez.", "scene": "phone", "params": {"screen": "call", "caller": "Mamá", "label": "Llamada entrante"}, "camera": "shake", "transition": "cut"},
+    {"text": "Es tu madre. Te llama desde el pueblo. Lleva allí toda la semana.", "scene": "map_pin", "params": {"place": "Casa de mamá", "detail": "a 300 km"}, "camera": "pull_out", "transition": "flash"},
+    {"text": "Y te dice que ella no te ha escrito nada.", "scene": "silhouette", "params": {"eyes": true, "color": "#ff3b3b"}, "camera": "slam", "transition": "red"},
+    {"text": "La puerta se abre un poco más.", "scene": "bedroom", "params": {"door_open": 0.6, "figure": true}, "camera": "push_in", "transition": "black"}
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "cameras": {
+    "push_in": "zoom lento hacia dentro (tensión, por defecto)",
+    "pull_out": "zoom hacia fuera (revelación, contexto)",
+    "pan_left": "barrido a la izquierda",
+    "pan_right": "barrido a la derecha",
+    "tilt_up": "sube la cámara",
+    "tilt_down": "baja la cámara",
+    "static": "casi quieta (calma)",
+    "shake": "cámara temblorosa (pánico, persecución)",
+    "slam": "zoom de golpe (sustos, giro final)"
+  },
+  "transitions": {
+    "fade": "fundido cruzado (por defecto)",
+    "cut": "corte seco (ritmo rápido)",
+    "black": "fundido a negro (salto de tiempo)",
+    "flash": "destello blanco (revelación, flashback)",
+    "red": "destello rojo (peligro, giro de terror)"
+  },
+  "scenes": {
+    "car_window": {
+      "desc": "Interior de coche de noche: ventanilla con luces de ciudad pasando, tirador de la puerta y botón de seguro.",
+      "params": {"locked_at": "número (s) en que el seguro se pone rojo, opcional", "hand": "bool, una mano pulsa el seguro"}
+    },
+    "rearview_eyes": {
+      "desc": "Ojos de una persona reflejados en el retrovisor (conductor que te mira).",
+      "params": {"mood": "calm|suspicious|wide|angry|sad", "glance": "bool, mira de lado", "glow": "bool, brillo rojo inquietante en las pupilas"}
+    },
+    "city_street": {
+      "desc": "Calle de ciudad de noche en perspectiva con edificios y farolas.",
+      "params": {"car": "bool, un coche se acerca con los faros", "figure": "bool, silueta de pie en la acera", "hood": "bool, la silueta lleva capucha", "rain": "bool", "fog": "bool"}
+    },
+    "phone": {
+      "desc": "Manos sujetando un móvil. Pantalla configurable. Muy versátil: mensajes, notificaciones, llamadas, búsquedas, apps.",
+      "params": {
+        "screen": "chat|notification|call|map|search|profile",
+        "chat": "contact (texto), status (texto), typing (bool), messages: [{from: them|me, text, alert?: bool}] (máx 4 mensajes cortos)",
+        "notification": "time 'HH:MM', date (texto), notifications: [{app, title, text, alert?}] (máx 3)",
+        "call": "caller (texto), label (texto)",
+        "map": "title (texto corto), subtitle (texto corto), status: ok|alert, route (bool)",
+        "search": "query (texto), results: [texto, ...] (máx 3)",
+        "profile": "name, label, detail"
+      }
+    },
+    "bedroom": {
+      "desc": "Dormitorio a oscuras con ventana y luna, cama y una puerta entreabierta con luz del pasillo.",
+      "params": {"door_open": "0..1", "figure": "bool, silueta en la puerta", "phone_glow": "bool, luz de móvil en la cama", "moon": "bool"}
+    },
+    "front_door": {
+      "desc": "Puerta de entrada vista desde dentro, mirilla y luz por debajo de la puerta.",
+      "params": {"shadow": "bool, sombras de pies al otro lado", "knock_at": "lista de segundos en que golpean (la puerta tiembla)", "peephole_glow": "bool"}
+    },
+    "hallway": {
+      "desc": "Pasillo largo (hotel, hospital, edificio) con fluorescentes.",
+      "params": {"figure": "bool, silueta al fondo", "flicker": "0..1 parpadeo de luces", "color": "cold|warm", "doors": "bool"}
+    },
+    "house_exterior": {
+      "desc": "Casa aislada en una colina de noche, luna, árboles y niebla.",
+      "params": {"lit_window": "bool", "figure": "bool, silueta en la ventana de arriba", "fog": "bool"}
+    },
+    "clock": {
+      "desc": "Reloj de pared en la oscuridad marcando una hora.",
+      "params": {"time": "'HH:MM'"}
+    },
+    "tv": {
+      "desc": "Televisor antiguo en una habitación oscura.",
+      "params": {"static": "bool, ruido de estática", "text": "texto en pantalla (si se da, no hay estática); usa \\n para saltos"}
+    },
+    "forest": {
+      "desc": "Bosque de noche con niebla.",
+      "params": {"flashlight": "bool, haz de linterna", "eyes": "bool, ojos brillando entre los árboles", "figure": "bool, silueta entre árboles"}
+    },
+    "ocean": {
+      "desc": "Mar de noche.",
+      "params": {"ship": "bool, barco a lo lejos", "storm": "bool, tormenta con lluvia y relámpagos"}
+    },
+    "space": {
+      "desc": "Espacio con estrellas y un astro.",
+      "params": {"object": "planet|blackhole|sun", "color": "#hex del planeta", "ring": "bool, anillos"}
+    },
+    "eyes_dark": {
+      "desc": "Oscuridad total en la que aparecen ojos brillantes.",
+      "params": {"count": "1..6", "color": "#hex"}
+    },
+    "silhouette": {
+      "desc": "Busto de una persona a contraluz, anónima (protagonista misterioso, sospechoso, testigo).",
+      "params": {"hood": "bool", "eyes": "bool, ojos brillantes", "color": "#hex de la luz de fondo"}
+    },
+    "big_text": {
+      "desc": "Cifra o palabra gigante con brillo (para datos curiosos). Los números hacen cuenta ascendente.",
+      "params": {"text": "texto MUY corto (máx 14 caracteres), p.ej. '3.000 años'", "label": "texto corto debajo", "color": "#hex"}
+    },
+    "newspaper": {
+      "desc": "Recorte de periódico antiguo bajo un foco (casos reales, sucesos históricos).",
+      "params": {"headline": "titular", "date": "fecha", "kicker": "nombre del periódico (inventado)"}
+    },
+    "map_pin": {
+      "desc": "Mapa estilizado con una chincheta que cae sobre un lugar.",
+      "params": {"place": "nombre del lugar", "detail": "dato corto"}
+    }
+  }
+}

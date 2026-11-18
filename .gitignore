@@ -1,0 +1,10 @@
+.venv/
+node_modules/
+out/
+site/
+tmp/
+__pycache__/
+*.pyc
+client_secret*.json
+.env
+examples/*.mp4
