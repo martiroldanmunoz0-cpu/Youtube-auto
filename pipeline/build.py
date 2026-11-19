@@ -16,6 +16,7 @@ from pathlib import Path
 from common import RENDERER, load_config, read_json, run_id, week_dir, write_json
 from soundtrack import make_soundtrack
 from voice import synth
+import qa
 
 GAP = 0.12      # silencio entre planos (s): las frases van seguidas
 LEAD_IN = 0.2   # silencio inicial
@@ -92,6 +93,9 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
     subprocess.run(["node", str(RENDERER / "render.mjs"), str(tl_path), str(mp4), "--audio", str(audio)], check=True)
     # Miniatura para la página de revisión (fotograma del gancho)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.5", "-i", str(mp4), "-frames:v", "1", "-vf", "scale=360:-1", str(out_dir / f"{sid}.jpg")], check=True)
+    # Revisor automático del vídeo final
+    story["qa"] = qa.check(mp4, timeline, " ".join(b["text"] for b in story["beats"]), END_CARD)
+    print("  revisión: " + ("✅ todo correcto" if not story["qa"] else "⚠️ " + " | ".join(story["qa"])), flush=True)
     return mp4
 
 
@@ -114,6 +118,12 @@ def main():
     for st in stories:
         try:
             st["video"] = build_story(st, wd, cfg).name
+            if st.get("qa"):  # el revisor encontró algo: se monta otra vez y se queda el mejor
+                first = st["qa"]
+                print("  vuelvo a montarlo para intentar corregirlo...", flush=True)
+                build_story(st, wd, cfg)
+                if len(st["qa"]) > len(first):
+                    st["qa"] = first
             ok.append(st)
         except Exception as e:
             print(f"  error montando {st['id']}: {e}", file=sys.stderr)

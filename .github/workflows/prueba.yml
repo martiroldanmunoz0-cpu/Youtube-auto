@@ -1,6 +1,6 @@
 name: Prueba (vídeo de ejemplo)
 
-# Monta los vídeos de ejemplo (historia + sketch) con las voces reales, sin tocar YouTube ni gastar IA.
+# Monta un vídeo de curiosidades de ejemplo con la voz del narrador, sin tocar YouTube ni gastar IA.
 # Útil para comprobar que todo funciona. El vídeo queda en "Artifacts" de la ejecución.
 on:
   workflow_dispatch: {}
@@ -41,8 +41,7 @@ jobs:
           path: ~/.cache/huggingface
           key: modelos-voz-voxcpm2-whisper-small-v1
 
-      - run: python pipeline/build.py --story examples/demo_story.json --out out/prueba
-      - run: python pipeline/build.py --story examples/demo_comedia.json --out out/prueba
+      - run: python pipeline/build.py --story examples/demo_curiosidad.json --out out/prueba
       - uses: actions/upload-artifact@v4
         with:
           name: video-prueba

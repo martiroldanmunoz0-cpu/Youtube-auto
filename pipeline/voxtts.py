@@ -27,8 +27,18 @@ def available(name: str) -> bool:
     return (VOICES_DIR / f"{name}.wav").exists() and (VOICES_DIR / f"{name}.txt").exists()
 
 
+def _load_asr():
+    """Whisper solo (para el revisor de vídeos)."""
+    global _asr
+    if _asr is None:
+        from faster_whisper import WhisperModel  # noqa: PLC0415
+
+        _asr = WhisperModel("small", device="cpu", compute_type="int8")
+    return None, _asr
+
+
 def _load():
-    global _model, _asr
+    global _model
     if _model is None:
         import warnings
 
@@ -37,11 +47,7 @@ def _load():
 
         print("  cargando VoxCPM2 (voces clonadas)...", flush=True)
         _model = VoxCPM.from_pretrained("openbmb/VoxCPM2", load_denoiser=False, optimize=False, device="cpu")
-    if _asr is None:
-        from faster_whisper import WhisperModel  # noqa: PLC0415
-
-        _asr = WhisperModel("small", device="cpu", compute_type="int8")
-    return _model, _asr
+    return _model, _load_asr()[1]
 
 
 _NUM = {"uno": "1", "una": "1", "dos": "2", "tres": "3", "cuatro": "4", "cinco": "5", "seis": "6", "siete": "7",

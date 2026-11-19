@@ -1,0 +1,133 @@
+{
+  "id": "curiosidad-demo",
+  "title": "¿Qué pasaría si la Tierra dejara de girar? #shorts",
+  "description": "¿Tú dónde te esconderías? Te leo en comentarios 👇\n#curiosidades #ciencia #sabiasque #quepasariasi",
+  "tags": [
+    "curiosidades",
+    "ciencia",
+    "qué pasaría si",
+    "la tierra",
+    "datos curiosos"
+  ],
+  "beats": [
+    {
+      "text": "¿Qué pasaría si la Tierra dejara de girar de golpe?",
+      "scene": "space",
+      "params": {
+        "object": "planet",
+        "color": "#3a7bd5"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Ahora mismo, sin notarlo, te estás moviendo a más de mil kilómetros por hora.",
+      "scene": "big_text",
+      "params": {
+        "text": "1.670 km/h",
+        "label": "velocidad en el ecuador"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Si el planeta frenara en seco, tú no frenarías.",
+      "scene": "character",
+      "params": {
+        "mood": "shocked",
+        "bg": "cold"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Todo lo que no esté sujeto al suelo saldría disparado hacia el este.",
+      "scene": "city_street",
+      "params": {
+        "fog": true
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Personas, coches, árboles… y también el aire.",
+      "scene": "city_street",
+      "params": {
+        "rain": true,
+        "car": true
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Habría vientos más fuertes que cualquier huracán de la historia.",
+      "scene": "ocean",
+      "params": {
+        "storm": true
+      },
+      "camera": "shake",
+      "transition": "fade"
+    },
+    {
+      "text": "Y los océanos se saldrían de su sitio y arrasarían las costas.",
+      "scene": "ocean",
+      "params": {
+        "storm": true,
+        "ship": true
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "Pero hay un lugar donde casi no notarías nada: los polos.",
+      "scene": "map_pin",
+      "params": {
+        "place": "Polo Norte",
+        "detail": "casi sin velocidad"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Y luego vendría lo más raro.",
+      "scene": "clock",
+      "params": {
+        "time": "12:00"
+      },
+      "camera": "push_in",
+      "transition": "black"
+    },
+    {
+      "text": "Un día duraría un año entero: seis meses de sol y seis meses de noche.",
+      "scene": "calendar",
+      "params": {
+        "day": 182,
+        "from": 1,
+        "month": "Día",
+        "label": "sin noche"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Tranquilo: la Tierra no puede frenar así. Pero sí gira cada vez un poquito más despacio.",
+      "scene": "space",
+      "params": {
+        "object": "planet",
+        "color": "#3a7bd5"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Por eso, cuando vivían los dinosaurios, un día duraba menos de veinticuatro horas.",
+      "scene": "big_text",
+      "params": {
+        "text": "23,5 h",
+        "label": "un día en la época de los dinosaurios"
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    }
+  ]
+}

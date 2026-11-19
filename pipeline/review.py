@@ -61,6 +61,7 @@ def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dic
   <div class="meta">
     <h2>{html.escape(st['title'])}</h2>
     <p class="id">{st['id']} · {html.escape(idea.get('tipo', ''))}</p>
+    {"<p class='qa ok'>✅ Revisión automática: todo correcto</p>" if not st.get("qa") else "<p class='qa warn'>⚠️ " + "<br>⚠️ ".join(html.escape(q) for q in st["qa"]) + "</p>"}
     <p>{html.escape(st['description']).replace(chr(10), '<br>')}</p>
     <details><summary>Por qué esta idea</summary><p>{html.escape(idea.get('por_que_funcionara', ''))}</p></details>
     <details><summary>Guion</summary><ol>{guion}</ol></details>
@@ -80,6 +81,7 @@ main{{max-width:1100px;margin:auto;padding:16px}} h1{{font-size:24px}}
 article{{background:#151722;border-radius:16px;overflow:hidden;position:relative}}
 video{{width:100%;aspect-ratio:9/16;background:#000;display:block}}
 .meta{{padding:12px 16px}} .meta h2{{font-size:17px;margin:0 0 4px}} .id{{color:#9aa4ff;font-size:13px;margin:0}}
+.qa{{font-size:13px;margin:6px 0}} .qa.ok{{color:#5fd38a}} .qa.warn{{color:#ffb35c}}
 .num{{position:absolute;top:10px;left:10px;background:#ffb35c;color:#000;font-weight:700;border-radius:8px;padding:2px 10px;z-index:2}}
 details{{margin-top:8px;color:#ccc}} .box{{background:#151722;border-radius:16px;padding:12px 18px;margin-bottom:20px}}
 </style></head><body><main>
@@ -134,7 +136,8 @@ def main():
     for i, st in enumerate(stories, 1):
         video_link = f"{base}#{st['id']}" if base else f"https://github.com/{repo}/releases/download/{tag}/{st['video']}"
         dl = f"https://github.com/{repo}/releases/download/{tag}/{st['video']}"
-        lines.append(f"- [ ] `{st['id']}` **#{i} {st['title']}** — [ver]({video_link}) · [descargar]({dl})")
+        aviso = "" if not st.get("qa") else " · ⚠️ " + "; ".join(st["qa"])
+        lines.append(f"- [ ] `{st['id']}` **#{i} {st['title']}** — [ver]({video_link}) · [descargar]({dl}){aviso}")
     lines += ["", "<!-- semana:" + wid + " -->"]
     try:
         gh("label", "create", "revision", "--color", "FFB35C", "--description", "Revisión semanal de Shorts", "--force")

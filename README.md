@@ -4,7 +4,7 @@
 >
 > Al usar esta herramienta aceptas los [Términos de servicio de YouTube](https://www.youtube.com/t/terms) y la [Política de privacidad de Google](https://policies.google.com/privacy).
 
-Fábrica automática de YouTube Shorts animados, todos con la misma estética (ilustración vectorial nocturna, narrador en off y subtítulos palabra a palabra).
+Fábrica automática de YouTube Shorts animados de **curiosidades, datos y «¿qué pasaría si…?»**, todos con la misma estética (ilustración vectorial nocturna, narrador en off y subtítulos palabra a palabra).
 
 ```
 Lunes (automático)                                Tú (5 min)             Automático
@@ -30,6 +30,7 @@ Lunes (automático)                                Tú (5 min)             Autom
 | `pipeline/voxtts.py` | Voces clonadas de `assets/voices/` + comprobación de cada frase con Whisper |
 | `pipeline/soundtrack.py` | Música ambiente y efectos generados por código (sin copyright) |
 | `pipeline/build.py` | Monta cada vídeo |
+| `pipeline/qa.py` | Revisor automático: cortes, silencios, negros, imagen congelada y narración completa |
 | `pipeline/review.py` | Release con los vídeos, página de revisión e issue con casillas |
 | `pipeline/publish.py` | Sube y programa los aprobados |
 | `pipeline/pages.py` | Web de revisión con las últimas tandas (semanales y pedidos) |

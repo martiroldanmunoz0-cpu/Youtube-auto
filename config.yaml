@@ -12,20 +12,20 @@ analisis:
   regiones: ["ES", "MX", "AR", "CO", "US"]   # países cuyo "Tendencias" se mira
   dias: 7                                    # ventana de análisis
   duracion_max_seg: 180                      # solo Shorts
-  # Búsquedas amplias para encontrar lo que más funciona. Se combinan con lo más visto de cada país.
+  # Búsquedas para encontrar las curiosidades que más funcionan. Se combinan con lo más visto de cada país.
   busquedas:
-    - "historia de terror corta"
-    - "historia real"
     - "datos curiosos"
     - "sabías que"
-    - "misterio sin resolver"
-    - "caso real"
+    - "qué pasaría si"
     - "curiosidades"
-    - "historia animada"
-    - "creepypasta"
-    - "experiencia paranormal"
-    - "plot twist"
-    - "storytime"
+    - "cosas que no sabías"
+    - "datos increíbles"
+    - "ciencia curiosa"
+    - "curiosidades del espacio"
+    - "curiosidades del cuerpo humano"
+    - "historia curiosa"
+    - "explicado en 1 minuto"
+    - "datos que te volarán la cabeza"
   top_videos: 60                             # cuántos vídeos se pasan a la IA
 
 generacion:
