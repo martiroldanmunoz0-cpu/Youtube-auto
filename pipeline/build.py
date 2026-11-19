@@ -134,10 +134,29 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     return mp4
 
 
+def build_one(st: dict, wd: Path, cfg: dict) -> bool:
+    try:
+        st["video"] = build_story(st, wd, cfg).name
+        if st.get("qa"):  # el revisor encontró algo: se monta otra vez y se queda el mejor
+            first = st["qa"]
+            voice_problem = any(k in q for q in first for k in VOICE_ISSUES)
+            print("  vuelvo a montarlo " + ("regenerando las voces..." if voice_problem else "reutilizando las voces ya revisadas..."), flush=True)
+            build_story(st, wd, cfg, reuse_voice=not voice_problem)
+            if len(st["qa"]) > len(first):
+                st["qa"] = first
+        return True
+    except Exception as e:
+        print(f"  error montando {st['id']}: {e}", file=sys.stderr)
+        return False
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--story", help="JSON con un guion (formato interno) para probar")
     ap.add_argument("--out", help="carpeta de salida")
+    ap.add_argument("--parte", type=int, help="montar solo una parte de los vídeos (para ir en paralelo)")
+    ap.add_argument("--partes", type=int, default=1, help="en cuántas partes se reparte la tanda")
+    ap.add_argument("--unir", action="store_true", help="juntar los resultados de todas las partes")
     args = ap.parse_args()
     cfg = load_config()
     if args.story:
@@ -149,20 +168,30 @@ def main():
     stories = read_json(wd / "stories.json")
     if not stories:
         sys.exit("No hay stories.json en esta tanda")
-    ok = []
-    for st in stories:
-        try:
-            st["video"] = build_story(st, wd, cfg).name
-            if st.get("qa"):  # el revisor encontró algo: se monta otra vez y se queda el mejor
-                first = st["qa"]
-                voice_problem = any(k in q for q in first for k in VOICE_ISSUES)
-                print("  vuelvo a montarlo " + ("regenerando las voces..." if voice_problem else "reutilizando las voces ya revisadas..."), flush=True)
-                build_story(st, wd, cfg, reuse_voice=not voice_problem)
-                if len(st["qa"]) > len(first):
-                    st["qa"] = first
-            ok.append(st)
-        except Exception as e:
-            print(f"  error montando {st['id']}: {e}", file=sys.stderr)
+
+    if args.unir:  # junta lo que ha montado cada máquina
+        done = {}
+        for f in sorted(wd.glob("parte-*.json")):
+            for r in read_json(f, []):
+                done[r["id"]] = r
+        for st in stories:
+            if st["id"] in done and (wd / done[st["id"]]["video"]).exists():
+                st["video"], st["qa"] = done[st["id"]]["video"], done[st["id"]].get("qa", [])
+        write_json(wd / "stories.json", stories)
+        n = sum(1 for st in stories if st.get("video"))
+        print(f"Vídeos montados entre todas las partes: {n}/{len(stories)}")
+        if not n:
+            sys.exit("No se montó ningún vídeo")
+        return
+
+    if args.parte is not None:  # solo los vídeos que tocan a esta máquina
+        mine = [st for i, st in enumerate(stories) if i % args.partes == args.parte]
+        print(f"Parte {args.parte + 1}/{args.partes}: {len(mine)} vídeos")
+        results = [{"id": st["id"], "video": st["video"], "qa": st.get("qa", [])} for st in mine if build_one(st, wd, cfg)]
+        write_json(wd / f"parte-{args.parte}.json", results)
+        return
+
+    ok = [st for st in stories if build_one(st, wd, cfg)]
     write_json(wd / "stories.json", stories)
     print(f"\nVídeos montados: {len(ok)}/{len(stories)}")
     if not ok:
