@@ -61,7 +61,7 @@ comedia:
   tema: "situaciones graciosas que pasan jugando a GTA 6 con tus amigos"
   ambiente: "ciudad tropical de neones al atardecer, playas, palmeras, coches deportivos y policía (estilo GTA 6, diseño propio)"
   variante: "España"              # cómo hablan los personajes
-  palabrotas: "moderadas"         # ninguna | moderadas | muchas
+  palabrotas: "muchas"            # ninguna | moderadas | muchas
   videos: 3
   busquedas: ["GTA 6", "GTA VI", "GTA 6 memes", "GTA 6 amigos", "GTA online con amigos", "momentos graciosos GTA"]
   narrador: "narrador"

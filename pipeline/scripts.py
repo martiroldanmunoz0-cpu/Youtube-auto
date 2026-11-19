@@ -471,7 +471,19 @@ def comedy_ideas_params(trends: dict | None, n: int, history: list[dict], cfg: d
 
 def comedy_story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
     cc = cfg.get("comedia", {})
-    system = SYSTEM_COMEDY_WRITER.replace("{variante}", cc.get("variante", "España")).replace("{palabrotas}", cc.get("palabrotas", "moderadas"))
+    nivel = cc.get("palabrotas", "moderadas")
+    palabrotas = {
+        "ninguna": "ninguna; el humor va sin tacos",
+        "moderadas": "moderadas, solo en los momentos clave del chiste",
+        "muchas": (
+            "MUCHAS. Los amigos hablan como colegas de verdad cuando juegan: tacos españoles en casi todas sus "
+            "intervenciones (joder, hostia, coño, me cago en la leche, me cago en todo, gilipollas, cabrón, mierda, "
+            "la madre que te parió, qué cojones, vete a la mierda, imbécil, capullo, tontolaba). Variados, bien colocados "
+            "para el golpe cómico y sin que se repita siempre el mismo. El narrador puede soltar alguno en el remate. "
+            "Nunca insultos que se metan con discapacidades, orientación sexual, origen o género"
+        ),
+    }.get(nivel, nivel)
+    system = SYSTEM_COMEDY_WRITER.replace("{variante}", cc.get("variante", "España")).replace("{palabrotas}", palabrotas)
     context = f"Catálogo de escenas, cámaras y transiciones:\n{json.dumps(catalog_for('comedia'), ensure_ascii=False, sort_keys=True)}"
     user = (
         f"Ambiente visual: {cc.get('ambiente', '')}\n\n"
