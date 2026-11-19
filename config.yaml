@@ -30,7 +30,7 @@ analisis:
   top_videos: 60                             # cuántos vídeos se pasan a la IA
 
 generacion:
-  videos_por_semana: 10          # se generan más de 7 para que puedas descartar algunos
+  videos_por_semana: 8           # se generan más de 7 para que puedas descartar alguno
   no_repetir_ultimos: 150        # no repite ningún tema de los últimos 150 vídeos generados
   # Análisis de tendencias e ideas (1 petición/semana): el modelo más listo, decide la estrategia y los ganchos.
   modelo_analisis: "claude-opus-5-5"
