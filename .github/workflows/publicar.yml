@@ -51,3 +51,15 @@ jobs:
           git add -A data || true
           git commit -m "Cola de publicación actualizada" || echo "sin cambios"
           git push
+
+      - name: Avisar al móvil si algo ha fallado
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          WF: ${{ github.workflow }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          gh label create aviso --color D73A4A --description "Algo ha fallado" --force || true
+          printf '🔔 @%s ha fallado **%s**.\n\n👉 [Ver qué ha pasado](%s)\n\nMándale una captura del paso en rojo a Claude para arreglarlo. Cuando esté resuelto, cierra este issue.\n' "$OWNER" "$WF" "$RUN_URL" > aviso.md
+          gh issue create --title "⚠️ Ha fallado: $WF" --label aviso --body-file aviso.md

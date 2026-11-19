@@ -123,8 +123,11 @@ def main():
         base = f"{base}{wid}/"
 
     # 3) Issue con casillas
+    owner = os.environ.get("GITHUB_REPOSITORY_OWNER", "")
     lines = [
         f"## 🎬 {tanda_titulo(wid, cfg)}",
+        "",
+        f"🔔 @{owner} ¡tienes **{len(stories)} vídeos** listos para revisar!" if owner else "",
         "",
         f"**1.** Mira los vídeos: {base or '(activa GitHub Pages para ver la página de revisión)'}",
         "**2.** Marca las casillas de los que quieras publicar.",

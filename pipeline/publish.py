@@ -151,7 +151,9 @@ def main():
         if issue:
             note = ("\n\n> ℹ️ Si aún no tienes la auditoría de la API de YouTube, los vídeos se quedan en *Privado*. "
                     "Pulsa **abrir en YouTube Studio** en cada uno → *Visibilidad* → *Programar* y pon la fecha indicada.")
-            gh("issue", "comment", str(issue), "--body", "### Programación en YouTube\n\n" + "\n".join(report) + note)
+            owner = os.environ.get("GITHUB_REPOSITORY_OWNER", "")
+            head = f"🔔 @{owner} " if owner else ""
+            gh("issue", "comment", str(issue), "--body", f"### {head}Programación en YouTube\n\n" + "\n".join(report) + note)
 
 
 if __name__ == "__main__":
