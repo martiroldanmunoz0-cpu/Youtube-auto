@@ -78,9 +78,18 @@ def check(mp4: Path, timeline: dict, script_text: str, end_card: float = 2.4) ->
 
     # 4) Imagen: negros y congelados (ignorando el fundido inicial y la tarjeta final)
     body_end = total - end_card - 0.3
+    def dark_scene_at(sec: float) -> bool:
+        """Escenas oscuras a propósito (ojos en la oscuridad, agujero negro): no cuentan como pantallazo negro."""
+        for b in timeline.get("beats", []):
+            if b["start"] - 0.4 <= sec < b["end"] + 0.4:
+                p = b.get("params") or {}
+                if b.get("scene") == "eyes_dark" or (b.get("scene") == "space" and p.get("object") == "blackhole"):
+                    return True
+        return False
+
     for m in re.finditer(r"black_start:([\d.]+) black_end:([\d.]+)", _ffmpeg_log(mp4, vf="blackdetect=d=0.4:pix_th=0.06")):
         s, e = float(m.group(1)), float(m.group(2))
-        if s > 0.5 and s < body_end:
+        if s > 0.5 and s < body_end and not (dark_scene_at(s) and dark_scene_at(e)):
             problems.append(f"Pantalla en negro del segundo {s:.1f} al {e:.1f}")
     for m in re.finditer(r"freeze_start: ([\d.]+)", _ffmpeg_log(mp4, vf="freezedetect=n=0.0005:d=1.5")):
         s = float(m.group(1))
