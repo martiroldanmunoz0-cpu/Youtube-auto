@@ -5,6 +5,10 @@ on:
     - cron: "17 5 * * 1"   # lunes 05:17 UTC (07:17 en Madrid en invierno)
   workflow_dispatch: {}     # botón "Run workflow" para lanzarlo a mano
 
+env:
+  TQDM_DISABLE: "1"
+  HF_HUB_DISABLE_PROGRESS_BARS: "1"
+
 permissions:
   contents: write
   issues: write
@@ -18,7 +22,7 @@ concurrency:
 jobs:
   generar:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
 
@@ -39,6 +43,17 @@ jobs:
           sudo apt-get install -y -q ffmpeg espeak-ng
           pip install -r requirements.txt
           npm ci --prefix renderer
+
+      - name: Instalar voces clonadas (VoxCPM2 + Whisper, CPU)
+        run: |
+          pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-voz.txt
+
+      - name: Caché de modelos de voz (5 GB, solo se descarga la primera vez)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: modelos-voz-voxcpm2-whisper-small-v1
 
       - name: 1. Analizar tendencias de YouTube
         env:

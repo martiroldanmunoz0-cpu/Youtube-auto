@@ -26,7 +26,8 @@ Lunes (automático)                                Tú (5 min)             Autom
 |---|---|
 | `pipeline/trends.py` | Busca los Shorts con más vistas/día de la semana (búsquedas + tendencias por país) |
 | `pipeline/scripts.py` | Claude analiza patrones de gancho y escribe guiones divididos en planos |
-| `pipeline/voice.py` | Voz gratuita (Edge TTS) con tiempos por palabra |
+| `pipeline/voice.py` | Voz: clonada (VoxCPM2) con respaldo gratuito de Edge TTS |
+| `pipeline/voxtts.py` | Voces clonadas de `assets/voices/` + comprobación de cada frase con Whisper |
 | `pipeline/soundtrack.py` | Música ambiente y efectos generados por código (sin copyright) |
 | `pipeline/build.py` | Monta cada vídeo |
 | `pipeline/review.py` | Release con los vídeos, página de revisión e issue con casillas |

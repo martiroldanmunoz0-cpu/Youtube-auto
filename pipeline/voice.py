@@ -100,7 +100,20 @@ def synth(text: str, out_mp3: Path, cfg: dict, voice: dict | None = None) -> tup
     """Genera la voz de un plano. `voice` permite otra voz/tono (personajes de los sketches).
     Devuelve (duración_s, palabras con tiempos relativos)."""
     v = {**cfg["voz"], **(voice or {})}
-    if os.environ.get("VOZ_MOTOR", v.get("motor", "edge")) == "edge":
+    motor = os.environ.get("VOZ_MOTOR", v.get("motor", "edge"))
+    # 1) Voz clonada (VoxCPM2) si la voz tiene "clon" y el motor no está forzado a otro
+    if v.get("clon") and motor in ("clon", "auto", "edge") and os.environ.get("VOZ_MOTOR") not in ("edge", "espeak"):
+        try:
+            import voxtts  # noqa: PLC0415
+
+            if voxtts.available(v["clon"]):
+                dur, words = voxtts.synth(text, out_mp3, v["clon"])
+                dur, words = trim_silence(out_mp3, words or None)
+                return dur, (words or _estimate_words(text, dur))
+            print(f"  aviso: no existe la voz clonada '{v['clon']}', uso Edge")
+        except Exception as e:  # sin modelo, sin memoria... -> Edge
+            print(f"  aviso: voz clonada no disponible ({e}); uso Edge")
+    if motor != "espeak":
         last_err = None
         for _ in range(3):
             try:

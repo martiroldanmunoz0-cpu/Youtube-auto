@@ -1,0 +1,5 @@
+# Voces clonadas (opcional, pesado: ~5 GB de modelo). Sin esto el sistema usa Edge TTS.
+voxcpm>=2.0.3
+faster-whisper>=1.1
+librosa>=0.10
+soundfile>=0.12

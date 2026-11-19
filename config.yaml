@@ -39,8 +39,9 @@ generacion:
   mezcla: "auto"                 # auto = la IA decide según tendencias (historias, datos, casos reales...)
 
 voz:
-  motor: "edge"                  # edge (gratis, Microsoft Edge TTS) | espeak (respaldo, robótica)
-  voz: "es-ES-AlvaroNeural"      # otras: es-MX-JorgeNeural, es-ES-ElviraNeural, es-MX-DaliaNeural
+  motor: "auto"                  # auto = voz clonada si existe, si no Edge | edge | espeak
+  clon: "narrador"               # voz clonada de assets/voices/ (VoxCPM2). Vacío = solo Edge
+  voz: "es-ES-AlvaroNeural"      # voz de Edge de respaldo si la clonada falla
   velocidad: "+6%"
   tono: "-2Hz"
 
@@ -65,12 +66,12 @@ comedia:
   videos: 3
   busquedas: ["GTA 6", "GTA VI", "GTA 6 memes", "GTA 6 amigos", "GTA online con amigos", "momentos graciosos GTA"]
   narrador: "narrador"
-  voces:                          # voces gratuitas de Edge con distinto tono para cada personaje
-    narrador:     { voz: "es-ES-AlvaroNeural",  velocidad: "+8%",  tono: "-2Hz" }
-    chico_1:      { voz: "es-ES-AlvaroNeural",  velocidad: "+14%", tono: "+10Hz" }
-    chico_2:      { voz: "es-GQ-JavierNeural",  velocidad: "+10%", tono: "+0Hz" }
-    chico_grave:  { voz: "es-ES-AlvaroNeural",  velocidad: "+2%",  tono: "-14Hz" }
+  voces:                          # clon = voz de assets/voices/; voz/velocidad/tono = respaldo de Edge
+    narrador:     { clon: "narrador",       voz: "es-ES-AlvaroNeural",  velocidad: "+8%",  tono: "-2Hz" }
+    chico_1:      { clon: "chico_chulito",  voz: "es-ES-AlvaroNeural",  velocidad: "+14%", tono: "+10Hz" }
+    chico_2:      { clon: "chico_nervioso", voz: "es-GQ-JavierNeural",  velocidad: "+10%", tono: "+0Hz" }
+    chico_grave:  { clon: "chico_grave",    voz: "es-ES-AlvaroNeural",  velocidad: "+2%",  tono: "-14Hz" }
     chico_latino: { voz: "es-MX-JorgeNeural",   velocidad: "+10%", tono: "+0Hz" }
-    chica_1:      { voz: "es-ES-ElviraNeural",  velocidad: "+10%", tono: "+0Hz" }
+    chica_1:      { clon: "chica",          voz: "es-ES-ElviraNeural",  velocidad: "+10%", tono: "+0Hz" }
     chica_2:      { voz: "es-ES-ElviraNeural",  velocidad: "+14%", tono: "+12Hz" }
     chica_latina: { voz: "es-MX-DaliaNeural",   velocidad: "+10%", tono: "+0Hz" }
