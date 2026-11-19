@@ -20,6 +20,28 @@ for (const f of fs.readdirSync(fontDir).filter((f) => f.endsWith('.ttf'))) Globa
 
 const TRANSITION = 0.35;
 
+// Blindaje: la IA a veces pasa números (p. ej. día 1) donde el lienzo espera texto. Se convierten siempre.
+{
+  const proto = Object.getPrototypeOf(createCanvas(1, 1).getContext('2d'));
+  for (const fn of ['fillText', 'strokeText', 'measureText']) {
+    const orig = proto[fn];
+    proto[fn] = function (text, ...rest) { return orig.call(this, String(text ?? ''), ...rest); };
+  }
+}
+const sceneErrors = new Set();
+
+// Campos que las escenas usan como TEXTO: si la IA manda un número, se convierte a texto.
+const TEXT_KEYS = new Set(['text', 'label', 'place', 'detail', 'title', 'subtitle', 'caller', 'name', 'contact', 'status_text',
+  'time', 'date', 'app', 'headline', 'kicker', 'query', 'amount', 'balance', 'month', 'kicker', 'who', 'left', 'right',
+  'driver', 'passenger']);
+function sanitize(v, key) {
+  if (Array.isArray(v)) return v.map((x) => sanitize(x, key));
+  if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, sanitize(x, k)]));
+  if (TEXT_KEYS.has(key) && (typeof v === 'number' || typeof v === 'boolean')) return String(v);
+  if (key === 'results' && typeof v !== 'string' && v != null) return String(v);
+  return v;
+}
+
 function parseArgs(argv) {
   const a = { _: [] };
   for (let i = 0; i < argv.length; i++) {
@@ -53,7 +75,7 @@ export class Renderer {
     this.beats = timeline.beats.map((b, i) => {
       const scene = SCENES[b.scene] || SCENES.big_text;
       if (!SCENES[b.scene]) console.warn(`Escena desconocida "${b.scene}", uso big_text`);
-      const params = b.params || {};
+      const params = sanitize(b.params || {});
       if (!SCENES[b.scene] && !params.text) params.text = '';
       const r = rng(`${timeline.seed || 'x'}-${i}-${b.scene}`);
       return { ...b, params, scene, state: scene.setup(params, r) };
@@ -79,7 +101,14 @@ export class Renderer {
     ctx.translate(W / 2 + cam.x, H / 2 + cam.y);
     ctx.scale(cam.s, cam.s);
     ctx.translate(-W / 2, -H / 2);
-    b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
+    try {
+      b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
+    } catch (e) {
+      // Una escena rota no debe tumbar el vídeo entero: fondo neutro y aviso (el revisor lo verá)
+      if (!sceneErrors.has(b.scene)) { sceneErrors.add(b.scene); console.error(`AVISO escena con error (${b.start}s): ${e.message}`); }
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
+    }
     ctx.restore();
   }
 

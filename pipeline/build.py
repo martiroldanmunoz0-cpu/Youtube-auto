@@ -125,11 +125,16 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     tl_path = out_dir / f"{sid}.timeline.json"
     write_json(tl_path, timeline)
     mp4 = out_dir / f"{sid}.mp4"
-    subprocess.run(["node", str(RENDERER / "render.mjs"), str(tl_path), str(mp4), "--audio", str(audio)], check=True)
+    r = subprocess.run(["node", str(RENDERER / "render.mjs"), str(tl_path), str(mp4), "--audio", str(audio)], capture_output=True, text=True)
+    print(r.stdout[-2000:], end="")
+    if r.returncode != 0:
+        raise RuntimeError(f"el motor de animación falló: {r.stderr[-800:]}")
+    scene_errors = [l for l in r.stderr.splitlines() if "AVISO escena con error" in l]
     # Miniatura para la página de revisión (fotograma del gancho)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.5", "-i", str(mp4), "-frames:v", "1", "-vf", "scale=360:-1", str(out_dir / f"{sid}.jpg")], check=True)
     # Revisor automático del vídeo final
     story["qa"] = qa.check(mp4, timeline, " ".join([b["text"] for b in story["beats"]] + ([outro] if outro else [])), end_dur)
+    story["qa"] += [f"Una escena no se pudo dibujar y salió en blanco ({e.split('AVISO escena con error')[-1].strip()[:120]})" for e in scene_errors]
     print("  revisión: " + ("✅ todo correcto" if not story["qa"] else "⚠️ " + " | ".join(story["qa"])), flush=True)
     return mp4
 

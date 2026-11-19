@@ -144,7 +144,7 @@ export const calendar = {
     const cx = W / 2, cy = 1100, cw = 620, ch = 700;
     const target = Number(params.day);
     const from = Number.isFinite(Number(params.from)) ? Number(params.from) : (Number.isFinite(target) ? Math.max(1, target - 5) : null);
-    let shown = params.day ?? '1';
+    let shown = String(params.day ?? '1');
     let flipK = 0;
     if (Number.isFinite(target) && from !== null && target !== from) {
       const span = Math.max(0.6, Math.min(dur * 0.6, 2.2));
