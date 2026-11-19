@@ -65,7 +65,9 @@ publicacion:
   max_por_dia: 3                 # nunca más de 3 vídeos el mismo día
   dias_horizonte: 7              # se intenta repartir lo pendiente en los próximos 7 días
   categoria_id: "24"             # 24 = Entretenimiento
-  privacidad_si_no_auditado: "private"
+  # true = el sistema sube y programa los vídeos. false = no los sube y te deja en el issue todo listo para subirlos a mano
+  # (úsalo solo si YouTube bloqueara como privados los vídeos subidos por la API).
+  subir_por_api: true
 
 # Sketches de comedia (botón "Comedia GTA")
 comedia:

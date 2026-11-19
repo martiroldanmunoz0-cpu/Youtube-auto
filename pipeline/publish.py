@@ -58,7 +58,7 @@ def plan_slots(n: int, cfg: dict, queue: list[dict]) -> list[dt.datetime]:
 
     taken: dict[dt.date, set[tuple[int, int]]] = {}
     for q in queue:
-        if q.get("estado") in ("programado", "pendiente") and q.get("publish_at"):
+        if q.get("estado") in ("programado", "pendiente", "manual") and q.get("publish_at"):
             d = _parse(q["publish_at"]).astimezone(tz)
             if d.date() >= first_day:
                 taken.setdefault(d.date(), set()).add((d.hour, d.minute))
@@ -108,6 +108,27 @@ def upload(yt, item: dict, video_path: Path, cfg: dict) -> str:
     return resp["id"]
 
 
+def manual_report(queue: list[dict], pending: list[dict], cfg: dict) -> list[str]:
+    """Modo manual (sin auditoría de la API): no sube nada, deja todo listo para subirlo a mano en 2 minutos."""
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    tz = ZoneInfo(cfg["publicacion"]["zona_horaria"])
+    dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
+    report = ["Mientras YouTube no apruebe la auditoría de la API, súbelos a mano (2 min cada uno): "
+              "**YouTube Studio → Crear → Subir vídeos** → pega título y descripción → *No es para niños* → "
+              "**Visibilidad → Programar** con la fecha indicada.\n"]
+    for q in pending:
+        local = _parse(q["publish_at"]).astimezone(tz)
+        dl = f"https://github.com/{repo}/releases/download/{q['tag']}/{q['video']}"
+        report.append(
+            f"---\n**📅 {dias[local.weekday()]} {local:%d/%m} a las {local:%H:%M}** · [⬇️ descargar vídeo]({dl})\n\n"
+            f"**Título:**\n```\n{q['title']}\n```\n**Descripción:**\n```\n{q['description']}\n```\n"
+            f"**Etiquetas:** {', '.join(q.get('tags', []))}\n"
+        )
+        q["estado"] = "manual"
+    write_json(QUEUE, queue)
+    return report
+
+
 def process_queue(cfg: dict) -> list[str]:
     from googleapiclient.errors import HttpError
 
@@ -116,6 +137,8 @@ def process_queue(cfg: dict) -> list[str]:
     if not pending:
         print("No hay subidas pendientes")
         return [], None
+    if not cfg["publicacion"].get("subir_por_api", True):
+        return manual_report(queue, pending, cfg), pending[0].get("issue")
     yt = youtube_client()
     tmp = ROOT / "out" / "descargas"
     tmp.mkdir(parents=True, exist_ok=True)
@@ -184,7 +207,7 @@ def main():
     if report:
         issue = args.issue or issue
         if issue:
-            note = ("\n\n> ℹ️ Si aún no tienes la auditoría de la API de YouTube, los vídeos se quedan en *Privado*. "
+            note = "" if not cfg["publicacion"].get("subir_por_api", True) else ("\n\n> ℹ️ Si aún no tienes la auditoría de la API de YouTube, los vídeos se quedan en *Privado*. "
                     "Pulsa **abrir en YouTube Studio** en cada uno → *Visibilidad* → *Programar* y pon la fecha indicada.")
             owner = os.environ.get("GITHUB_REPOSITORY_OWNER", "")
             head = f"🔔 @{owner} " if owner else ""
