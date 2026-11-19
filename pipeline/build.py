@@ -157,6 +157,7 @@ def main():
     ap.add_argument("--parte", type=int, help="montar solo una parte de los vídeos (para ir en paralelo)")
     ap.add_argument("--partes", type=int, default=1, help="en cuántas partes se reparte la tanda")
     ap.add_argument("--unir", action="store_true", help="juntar los resultados de todas las partes")
+    ap.add_argument("--revisar", action="store_true", help="publicar cada vídeo para revisión nada más montarlo")
     args = ap.parse_args()
     cfg = load_config()
     if args.story:
@@ -187,8 +188,22 @@ def main():
     if args.parte is not None:  # solo los vídeos que tocan a esta máquina
         mine = [st for i, st in enumerate(stories) if i % args.partes == args.parte]
         print(f"Parte {args.parte + 1}/{args.partes}: {len(mine)} vídeos")
-        results = [{"id": st["id"], "video": st["video"], "qa": st.get("qa", [])} for st in mine if build_one(st, wd, cfg)]
-        write_json(wd / f"parte-{args.parte}.json", results)
+        results = []
+        analysis = read_json(wd / "analysis.json", {}) or {}
+        for st in mine:
+            if not build_one(st, wd, cfg):
+                continue
+            results.append({"id": st["id"], "video": st["video"], "qa": st.get("qa", [])})
+            write_json(wd / f"parte-{args.parte}.json", results)
+            if args.revisar:  # en cuanto está listo: issue propio + aviso al móvil
+                import review  # noqa: PLC0415
+
+                try:
+                    review.review_one(st, run_id(), wd, cfg, analysis)
+                except Exception as e:
+                    print(f"  error publicando {st['id']} para revisión: {e}", file=sys.stderr)
+        if mine and not results:
+            sys.exit("No se montó ningún vídeo de esta parte")
         return
 
     ok = [st for st in stories if build_one(st, wd, cfg)]

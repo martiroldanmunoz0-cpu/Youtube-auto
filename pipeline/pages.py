@@ -18,7 +18,7 @@ from common import ROOT, formato, pedido, run_id
 
 PAGES = ROOT / "pages"
 MAX_BYTES = 800 * 1024 * 1024  # GitHub Pages admite hasta 1 GB
-MAX_TANDAS = 6
+MAX_TANDAS = 40  # ahora cada vídeo es una entrada
 
 
 def git(*args: str, env: dict | None = None) -> str:
@@ -29,8 +29,8 @@ def size_of(p: Path) -> int:
     return sum(f.stat().st_size for f in p.rglob("*") if f.is_file())
 
 
-def build_and_push() -> int:
-    rid = run_id()
+def build_and_push(rid: str | None = None, titulo: str | None = None) -> int:
+    rid = rid or run_id()
     if PAGES.exists():
         shutil.rmtree(PAGES)
     PAGES.mkdir()
@@ -56,7 +56,7 @@ def build_and_push() -> int:
     tandas = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else []
     tandas = [t for t in tandas if t["id"] != rid and (PAGES / t["id"]).exists()]
     if src.exists():
-        titulo = f"Comedia: {pedido() or 'GTA'}" if formato() == "comedia" else (f"Pedido: {pedido()}" if pedido() else f"Semana {rid}")
+        titulo = titulo or (f"Comedia: {pedido() or 'GTA'}" if formato() == "comedia" else (f"Pedido: {pedido()}" if pedido() else f"Semana {rid}"))
         tandas.append({"id": rid, "titulo": titulo, "fecha": dt.date.today().isoformat()})
 
     # 3) Quitar tandas antiguas (por número y por tamaño)
@@ -93,11 +93,11 @@ li{{margin:10px 0}}</style></head><body><main><h1>Tandas de vídeos</h1><ul>{ite
     return len(tandas)
 
 
-def main():
+def main(rid: str | None = None, titulo: str | None = None):
     import time
     for attempt in range(6):  # si otra tanda actualizó la página a la vez, se vuelve a juntar y se reintenta
         try:
-            build_and_push()
+            build_and_push(rid, titulo)
             return
         except subprocess.CalledProcessError as e:
             print(f"  reintento {attempt + 1}: otra tanda estaba actualizando la página ({(e.stderr or '').strip()[:120]})")

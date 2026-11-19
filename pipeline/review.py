@@ -98,7 +98,125 @@ details{{margin-top:8px;color:#ccc}} .box{{background:#151722;border-radius:16px
     return site
 
 
+def _retry(fn, tries=6, wait=6):
+    import time
+    for i in range(tries):
+        try:
+            return fn()
+        except subprocess.CalledProcessError as e:
+            if i == tries - 1:
+                raise
+            print(f"  reintento {i + 1}: {(e.stderr or '').strip()[:120]}")
+            time.sleep(wait * (i + 1))
+
+
+def upload_to_release(tag: str, files: list[str], wid: str, req: str | None):
+    """Sube vídeos a la release de la tanda (varias máquinas a la vez: crea si no existe y reintenta)."""
+    def go():
+        try:
+            gh("release", "upload", tag, *files, "--clobber")
+        except subprocess.CalledProcessError:
+            try:
+                gh("release", "create", tag, *files, "--title", f"Vídeos {wid}", "--prerelease",
+                   "--notes", (f"Pedido: {req}\n\n" if req else "") + "Vídeos generados para revisión. No borrar hasta que estén publicados.")
+            except subprocess.CalledProcessError:
+                gh("release", "upload", tag, *files, "--clobber")  # otra máquina la acaba de crear
+    _retry(go)
+
+
+def git_save(msg: str):
+    def go():
+        subprocess.run(["git", "add", "-A", "data"], check=True)
+        if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode != 0:
+            subprocess.run(["git", "commit", "-q", "-m", msg], check=True)
+        subprocess.run(["git", "pull", "-q", "--rebase"], check=True, capture_output=True, text=True)
+        subprocess.run(["git", "push", "-q"], check=True, capture_output=True, text=True)
+    _retry(go)
+
+
+def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
+    """Publica UN vídeo para revisión: release + página + issue propio con su casilla."""
+    import pages  # noqa: PLC0415
+
+    req = pedido()
+    vid = st["id"]
+    tag = wid if wid.startswith(("pedido", "comedia")) else f"semana-{wid}"
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    upload_to_release(tag, [str(wd / st["video"])], wid, req)
+
+    build_site(vid, [st], analysis, wd, cfg)
+    try:
+        pages.main(vid, st["title"].replace(" #shorts", ""))
+        subprocess.run(["gh", "workflow", "run", "pagina.yml"], check=False)
+    except SystemExit as e:
+        print(f"  aviso: página de revisión no actualizada ({e})")
+    base = pages_url()
+    page = f"{base}{vid}/" if base else None
+    dl = f"https://github.com/{repo}/releases/download/{tag}/{st['video']}"
+
+    owner = os.environ.get("GITHUB_REPOSITORY_OWNER", "")
+    origen = tanda_titulo(wid, cfg)
+    qa = "✅ Revisión automática: todo correcto" if not st.get("qa") else "⚠️ Revisión automática: " + "; ".join(st["qa"])
+    lines = [
+        f"🔔 @{owner} ¡vídeo listo para revisar!" if owner else "",
+        "",
+        f"### {st['title']}",
+        f"_{origen}_",
+        "",
+        f"▶️ **Verlo:** {page or dl}",
+        f"⬇️ [Descargar]({dl})",
+        "",
+        qa,
+        "",
+        "**Para publicarlo:** marca la casilla y cierra el issue. **Para descartarlo:** ciérralo sin marcar.",
+        "",
+        f"- [ ] `{vid}` **Publicar este vídeo**",
+        "",
+        "<details><summary>Descripción y guion</summary>\n\n" + st["description"] + "\n\n"
+        + "\n".join(f"{i}. {b['text']}" for i, b in enumerate(st["beats"], 1)) + "\n</details>",
+        "",
+        f"<!-- semana:{vid} -->",
+    ]
+    try:
+        gh("label", "create", "revision", "--color", "FFB35C", "--description", "Vídeo pendiente de revisión", "--force")
+    except subprocess.CalledProcessError:
+        pass
+    url = _retry(lambda: gh("issue", "create", "--title", f"🎬 Revisar: {st['title'].replace(' #shorts', '')}"[:120],
+                            "--label", "revision", "--body-file", "-", input_text="\n".join(lines)))
+    print("Issue de revisión:", url)
+
+    meta = {k: st[k] for k in ("id", "title", "description", "tags", "video")}
+    write_json(DATA / "weeks" / f"{vid}.json", {"semana": vid, "tanda": wid, "pedido": req, "tag": tag, "issue": url, "videos": [meta]})
+    write_json(history_file(vid), [{"id": vid, "titulo": st["title"], "tipo": st.get("idea", {}).get("tipo"),
+                                    "ts": dt.datetime.now(dt.timezone.utc).isoformat(),
+                                    "premisa": st.get("idea", {}).get("premisa", ""), "gancho": st.get("idea", {}).get("gancho", "")}])
+    git_save(f"Vídeo listo para revisar: {vid}")
+
+
 def main():
+    import argparse  # noqa: PLC0415
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--parte", type=int, help="publicar para revisión solo los vídeos de esta parte (cada uno con su issue)")
+    ap.add_argument("--partes", type=int, default=1)
+    args = ap.parse_args()
+    if args.parte is not None:
+        cfg = load_config()
+        wid = run_id()
+        wd = week_dir(wid)
+        analysis = read_json(wd / "analysis.json", {})
+        done = {r["id"]: r for r in (read_json(wd / f"parte-{args.parte}.json", []) or [])}
+        stories = [s for i, s in enumerate(read_json(wd / "stories.json") or []) if i % args.partes == args.parte and s["id"] in done]
+        for st in stories:
+            st["video"], st["qa"] = done[st["id"]]["video"], done[st["id"]].get("qa", [])
+            review_one(st, wid, wd, cfg, analysis)
+        if not stories:
+            print("Esta parte no tiene vídeos que revisar")
+        return
+    main_tanda()
+
+
+def main_tanda():
     cfg = load_config()
     wid = run_id()
     wd = week_dir(wid)

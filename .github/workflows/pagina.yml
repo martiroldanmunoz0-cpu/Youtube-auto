@@ -1,0 +1,30 @@
+name: Actualizar página de revisión
+
+# La lanzan las máquinas de montaje cada vez que terminan un vídeo. Publica la rama gh-pages en GitHub Pages.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pagina
+  cancel-in-progress: true   # basta con publicar la versión más reciente (incluye todos los vídeos)
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -200,7 +200,7 @@ def main():
                     h["aprobado"] = h["id"] in ids
             write_json(path, hist)
         if not chosen:
-            gh("issue", "comment", str(args.issue), "--body", "No había ninguna casilla marcada (o ya estaban programados). Reabre el issue, marca los vídeos y vuelve a cerrarlo.")
+            gh("issue", "comment", str(args.issue), "--body", "🗑️ Descartado (o ya estaba programado). Si querías publicarlo, pulsa **Reopen issue**, marca la casilla y vuelve a cerrarlo.")
             return
         for v, slot in zip(chosen, plan_slots(len(chosen), cfg, queue)):
             queue.append({**v, "tag": week["tag"], "issue": args.issue, "estado": "pendiente", "publish_at": _iso(slot)})
