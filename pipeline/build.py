@@ -17,8 +17,8 @@ from common import RENDERER, load_config, read_json, run_id, week_dir, write_jso
 from soundtrack import make_soundtrack
 from voice import synth
 
-GAP = 0.28      # silencio entre planos (s)
-LEAD_IN = 0.35  # silencio inicial
+GAP = 0.12      # silencio entre planos (s): las frases van seguidas
+LEAD_IN = 0.2   # silencio inicial
 END_CARD = 2.4  # tarjeta final (s)
 
 

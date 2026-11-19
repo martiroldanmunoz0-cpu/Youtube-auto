@@ -38,6 +38,32 @@ async def _edge(text: str, out: Path, voice: str, rate: str, pitch: str) -> list
     return words
 
 
+def trim_silence(path: Path, words: list[dict] | None = None, pad: float = 0.03) -> tuple[float, list[dict] | None]:
+    """Quita el silencio del principio y del final de un audio de voz para que las frases se encadenen.
+    Ajusta los tiempos de las palabras. Devuelve (duración nueva, palabras)."""
+    dur = _probe_duration(path)
+    log = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-i", str(path), "-af", "silencedetect=noise=-42dB:d=0.04", "-f", "null", "-"],
+        capture_output=True, text=True,
+    ).stderr
+    starts = [float(x) for x in re.findall(r"silence_start: (-?[\d.]+)", log)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", log)]
+    lead = ends[0] if starts and starts[0] <= 0.02 and ends else 0.0
+    tail = starts[-1] if starts and (len(ends) < len(starts) or ends[-1] >= dur - 0.02) else dur
+    if words:  # nunca cortar una palabra marcada por el TTS
+        lead = min(lead, max(0.0, words[0]["start"] - 0.01))
+        tail = max(tail, words[-1]["end"])
+    a, b = max(0.0, lead - pad), min(dur, tail + pad)
+    if a <= 0.01 and b >= dur - 0.01:
+        return dur, words
+    tmp = path.with_name(path.stem + "_trim" + path.suffix)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(path), "-ss", f"{a:.3f}", "-to", f"{b:.3f}", str(tmp)], check=True)
+    tmp.replace(path)
+    if words:
+        words = [{**w, "start": max(0.0, w["start"] - a), "end": max(0.0, w["end"] - a)} for w in words]
+    return _probe_duration(path), words
+
+
 def _attach_punctuation(text: str, words: list[dict]) -> list[dict]:
     """Edge devuelve palabras sin signos; recuperamos los del texto original para los subtítulos."""
     tokens = text.split()
@@ -79,9 +105,10 @@ def synth(text: str, out_mp3: Path, cfg: dict, voice: dict | None = None) -> tup
         for _ in range(3):
             try:
                 words = asyncio.run(_edge(text, out_mp3, v["voz"], v.get("velocidad", "+0%"), v.get("tono", "+0Hz")))
-                dur = _probe_duration(out_mp3)
-                words = _attach_punctuation(text, words) if words else _estimate_words(text, dur)
-                return dur, words
+                if words:
+                    words = _attach_punctuation(text, words)
+                dur, words = trim_silence(out_mp3, words or None)
+                return dur, (words or _estimate_words(text, dur))
             except Exception as e:  # red caída, servicio ocupado...
                 last_err = e
         print(f"  aviso: Edge TTS falló ({last_err}); uso espeak-ng de respaldo")
@@ -90,5 +117,5 @@ def synth(text: str, out_mp3: Path, cfg: dict, voice: dict | None = None) -> tup
     wav = out_mp3.with_suffix(".wav")
     subprocess.run(["espeak-ng", "-v", "es", "-s", "165", "-w", str(wav), text], check=True)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), str(out_mp3)], check=True)
-    dur = _probe_duration(out_mp3)
+    dur, _ = trim_silence(out_mp3)
     return dur, _estimate_words(text, dur)

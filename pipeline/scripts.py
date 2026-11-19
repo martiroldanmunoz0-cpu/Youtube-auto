@@ -551,7 +551,7 @@ def validate_comedy(raw: dict) -> dict:
     return {
         "title": title[:100], "description": raw["descripcion"].strip(),
         "tags": [t.strip("# ") for t in raw["tags"]][:15], "beats": beats,
-        "cast": cast, "subtitle_style": "word", "gap": 0.12, "music": "synth",
+        "cast": cast, "subtitle_style": "word", "gap": 0.04, "music": "synth",
     }
 
 

@@ -251,7 +251,7 @@
     }
   },
   "subtitle_style": "word",
-  "gap": 0.12,
+  "gap": 0.04,
   "music": "synth",
   "id": "comedia-demo"
 }
