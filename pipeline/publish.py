@@ -166,6 +166,13 @@ def main():
             sys.exit(f"No encuentro los datos de la semana {wid}")
         already = {q["id"] for q in queue}
         chosen = [v for v in week["videos"] if v["id"] in ids and v["id"] not in already]
+        # Aprende de la revisión: marca en el historial qué vídeos aprobaste y cuáles no
+        hist = read_json(DATA / "history.json", [])
+        week_ids = {v["id"] for v in week["videos"]}
+        for h in hist:
+            if h.get("id") in week_ids:
+                h["aprobado"] = h["id"] in ids
+        write_json(DATA / "history.json", hist)
         if not chosen:
             gh("issue", "comment", str(args.issue), "--body", "No había ninguna casilla marcada (o ya estaban programados). Reabre el issue, marca los vídeos y vuelve a cerrarlo.")
             return

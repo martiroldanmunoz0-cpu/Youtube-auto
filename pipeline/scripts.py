@@ -305,6 +305,21 @@ def models(cfg: dict) -> tuple[str, str, bool]:
     return g.get("modelo_analisis", fallback), g.get("modelo_guiones", fallback), bool(g.get("usar_lotes", True))
 
 
+def taste_block(history: list[dict], cfg: dict) -> str:
+    """Estilo preferido del dueño + ejemplos de lo que aprobó y descartó (aprende de cada revisión)."""
+    style = (cfg["generacion"].get("estilo_preferido") or "").strip()
+    liked = [h["titulo"] for h in history if h.get("aprobado") is True][-15:]
+    disliked = [h["titulo"] for h in history if h.get("aprobado") is False][-15:]
+    out = ""
+    if style:
+        out += f"ESTILO QUE PREFIERE EL DUEÑO DEL CANAL (prioridad alta):\n{style}\n\n"
+    if liked:
+        out += f"Vídeos que APROBÓ (haz más como estos):\n{json.dumps(liked, ensure_ascii=False)}\n\n"
+    if disliked:
+        out += f"Vídeos que DESCARTÓ (evita ese enfoque):\n{json.dumps(disliked, ensure_ascii=False)}\n\n"
+    return out
+
+
 def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
     catalog = catalog_for("historias")
     compact = [
@@ -318,7 +333,8 @@ def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
         f"{json.dumps(compact, ensure_ascii=False)}\n\n"
         f"Escenas disponibles para animar:\n{json.dumps({k: v['desc'] for k, v in catalog['scenes'].items()}, ensure_ascii=False)}\n\n"
         f"Títulos ya publicados o generados antes (no repetir premisas):\n{json.dumps(past, ensure_ascii=False)}\n\n"
-        f"Dame el análisis y exactamente {n_ideas} ideas ordenadas de mejor a peor potencial. "
+        + taste_block(history, cfg)
+        + f"Dame el análisis y exactamente {n_ideas} ideas ordenadas de mejor a peor potencial. "
         f"En 'inspirado_en' pon los id de los vídeos cuyo mecanismo aprovechas."
     )
     return make_params(SYSTEM_ANALYST, None, user, ANALYSIS_SCHEMA, models(cfg)[0])
@@ -343,7 +359,8 @@ def ideas_for_request(request: str, n: int, history: list[dict], cfg: dict) -> d
     catalog = catalog_for("historias")
     user = (
         f"Pedido del dueño del canal:\n\"{request}\"\n\n"
-        f"Escenas disponibles para animar:\n{json.dumps({k: v['desc'] for k, v in catalog['scenes'].items()}, ensure_ascii=False)}\n\n"
+        + taste_block(history, cfg)
+        + f"Escenas disponibles para animar:\n{json.dumps({k: v['desc'] for k, v in catalog['scenes'].items()}, ensure_ascii=False)}\n\n"
         f"Dame exactamente {n} versiones distintas en 'ideas'. En 'resumen' explica en 2 frases cómo se diferencian. "
         "En 'patrones_gancho' pon los tipos de gancho que usas; 'temas_calientes' y 'formatos' pueden ir vacíos."
     )
@@ -352,12 +369,14 @@ def ideas_for_request(request: str, n: int, history: list[dict], cfg: dict) -> d
 
 def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
     catalog = catalog_for("historias")
+    style = (cfg["generacion"].get("estilo_preferido") or "").strip()
     # Contexto fijo (igual en todos los guiones) -> se cachea.
     context = f"Catálogo de escenas, cámaras y transiciones:\n{json.dumps(catalog, ensure_ascii=False, sort_keys=True)}"
     lo, hi = cfg["generacion"]["duracion_objetivo_seg"]
     user = (
         f"Patrones de gancho que funcionan ahora:\n{json.dumps(analysis['patrones_gancho'], ensure_ascii=False)}\n\n"
         + (f"Pedido original del dueño del canal (respétalo): \"{pedido()}\"\n\n" if pedido() else "")
+        + (f"Estilo que prefiere el dueño del canal:\n{style}\n\n" if style else "")
         + f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
         + f"Duración objetivo: {lo}-{hi} segundos. Escribe los ganchos candidatos y después el guion completo."
     )
