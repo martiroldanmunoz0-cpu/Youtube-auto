@@ -171,6 +171,57 @@ def catalog_for(fmt: str) -> dict:
     return c
 
 
+# ======================= ANTI-REPETICIÓN =======================
+EXTRA_IDEAS = 4  # se piden ideas de sobra para poder descartar las repetidas
+_STOP = set("""a al algo como con cual de del donde el ella ellos en es esta este esto fue ha hay la las le lo los
+mas me mi mucho muy nadie ni no nos o para pero por que quien se si sin sobre son su sus te tiene tu tus un una unos
+y ya yo pasaria pasa seria seria si como cuando dato datos curioso curiosos curiosidad curiosidades sabias shorts
+nunca todo todos cada vez mundo esta estos estas eso existe hace hacer puede vuelve otra otro""".split())
+
+
+def _keywords(text: str) -> set[str]:
+    t = text.lower()
+    for a, b in zip("áéíóúüñ", "aeiouun"):
+        t = t.replace(a, b)
+    words = re.sub(r"[^a-z0-9 ]", " ", t).split()
+    # raíz sencilla: quita plurales para que "agujeros negros" == "agujero negro"
+    return {w[:-1] if w.endswith("s") and len(w) > 4 else w for w in words if len(w) > 2 and w not in _STOP}
+
+
+def _idea_text(item: dict) -> str:
+    return " ".join(str(item.get(k, "")) for k in ("titulo", "premisa", "gancho"))
+
+
+def is_repeated(idea: dict, previous: list[dict], threshold: float = 0.4) -> str | None:
+    """Devuelve el título anterior con el que se repite (o None). Compara temas por palabras clave."""
+    kw = _keywords(_idea_text(idea))
+    if not kw:
+        return None
+    for old in previous:
+        okw = _keywords(_idea_text(old))
+        if not okw:
+            continue
+        overlap = len(kw & okw) / min(len(kw), len(okw))
+        if overlap >= threshold and len(kw & okw) >= 2:
+            return old.get("titulo") or old.get("premisa") or "?"
+    return None
+
+
+def pick_new_ideas(ideas: list[dict], history: list[dict], n: int, keep_last: int) -> list[dict]:
+    """Elige n ideas que no repitan ninguno de los últimos `keep_last` vídeos ni se repitan entre sí."""
+    recent = history[-keep_last:] if keep_last else []
+    chosen: list[dict] = []
+    for idea in ideas:
+        clash = is_repeated(idea, recent) or is_repeated(idea, chosen)
+        if clash:
+            print(f"  descartada por repetida: «{idea.get('premisa', '')[:60]}» ≈ «{str(clash)[:60]}»")
+            continue
+        chosen.append(idea)
+        if len(chosen) == n:
+            break
+    return chosen
+
+
 def make_params(system: str, context: str | None, user: str, schema: dict, model: str, effort: str = "high") -> dict:
     """Petición con la parte fija (instrucciones + catálogo) cacheada: se paga casi una sola vez."""
     blocks = [{"type": "text", "text": system}]
@@ -260,7 +311,8 @@ def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
         {k: v[k] for k in ("id", "titulo", "canal", "vistas", "vistas_por_dia", "likes_pct", "comentarios_pct", "duracion_s", "descripcion", "origen")}
         for v in trends["top"]
     ]
-    past = [h["titulo"] for h in history[-80:]]
+    keep = cfg["generacion"].get("no_repetir_ultimos", 150)
+    past = [h.get("premisa") or h["titulo"] for h in history[-keep:]]
     user = (
         f"Shorts con más rendimiento de los últimos {cfg['analisis']['dias']} días (ordenados por vistas/día):\n"
         f"{json.dumps(compact, ensure_ascii=False)}\n\n"
@@ -459,7 +511,8 @@ def comedy_ideas_params(trends: dict | None, n: int, history: list[dict], cfg: d
     cc = cfg.get("comedia", {})
     catalog = catalog_for("comedia")
     top = [{k: v[k] for k in ("titulo", "canal", "vistas", "vistas_por_dia", "comentarios_pct")} for v in (trends or {}).get("top", [])]
-    past = [h["titulo"] for h in history[-80:]]
+    keep = cfg["generacion"].get("no_repetir_ultimos", 150)
+    past = [h.get("premisa") or h["titulo"] for h in history[-keep:]]
     tema = pedido() or cc.get("tema", "")
     user = (
         f"Tema de los sketches: {tema}\nAmbiente visual: {cc.get('ambiente', '')}\n\n"
@@ -568,7 +621,7 @@ def main():
     fmt = formato()
     if fmt == "comedia":
         n = int(os.environ.get("PEDIDO_N") or cfg.get("comedia", {}).get("videos", 3))
-        params = comedy_ideas_params(read_json(wd / "trends.json"), n, history, cfg)
+        params = comedy_ideas_params(read_json(wd / "trends.json"), n + EXTRA_IDEAS, history, cfg)
     elif request:
         n = int(os.environ.get("PEDIDO_N") or 3)
         params = ideas_for_request(request, n, history, cfg)
@@ -577,13 +630,17 @@ def main():
         if not trends:
             sys.exit("Falta trends.json: ejecuta antes trends.py")
         n = cfg["generacion"]["videos_por_semana"]
-        params = analyze(trends, history, cfg, n)
+        params = analyze(trends, history, cfg, n + EXTRA_IDEAS)
     print("Analizando e ideando...")
     analysis = run_many({"analisis": params}, use_batch)["analisis"]
     if isinstance(analysis, Exception):
         raise analysis
     write_json(wd / "analysis.json", analysis)
-    ideas = analysis["ideas"][:n]
+    if request and fmt != "comedia":
+        ideas = analysis["ideas"][:n]  # pedido especial: varias versiones del MISMO tema a propósito
+    else:
+        keep = cfg["generacion"].get("no_repetir_ultimos", 150)
+        ideas = pick_new_ideas(analysis["ideas"], history, n, keep)
     print(f"Ideas listas: {len(ideas)}. Escribiendo guiones...")
 
     make = comedy_story_params if fmt == "comedia" else story_params

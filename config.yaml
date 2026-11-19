@@ -31,6 +31,7 @@ analisis:
 
 generacion:
   videos_por_semana: 10          # se generan más de 7 para que puedas descartar algunos
+  no_repetir_ultimos: 150        # no repite ningún tema de los últimos 150 vídeos generados
   # Análisis de tendencias e ideas (1 petición/semana): el modelo más listo, decide la estrategia y los ganchos.
   modelo_analisis: "claude-opus-5-5"
   # Escritura de cada guion: más barato. Si quieres guiones aún más trabajados, pon "claude-opus-5-5" (cuesta el doble).

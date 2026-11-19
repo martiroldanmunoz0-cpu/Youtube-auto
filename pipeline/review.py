@@ -154,8 +154,9 @@ def main():
     meta = [{k: s[k] for k in ("id", "title", "description", "tags", "video")} for s in stories]
     write_json(DATA / "weeks" / f"{wid}.json", {"semana": wid, "pedido": req, "tag": tag, "issue": url, "videos": meta})
     history = read_json(DATA / "history.json", [])
-    history += [{"id": s["id"], "titulo": s["title"], "tipo": s.get("idea", {}).get("tipo")} for s in stories]
-    write_json(DATA / "history.json", history[-400:])
+    history += [{"id": s["id"], "titulo": s["title"], "tipo": s.get("idea", {}).get("tipo"),
+                 "premisa": s.get("idea", {}).get("premisa", ""), "gancho": s.get("idea", {}).get("gancho", "")} for s in stories]
+    write_json(DATA / "history.json", history[-1000:])
 
 
 if __name__ == "__main__":
