@@ -131,7 +131,7 @@ def main():
         "",
         f"**1.** Mira los vídeos: {base or '(activa GitHub Pages para ver la página de revisión)'}",
         "**2.** Marca las casillas de los que quieras publicar.",
-        "**3.** Cierra este issue → se programan solos en YouTube detrás de los que ya estén programados (1 al día; 2 al día si apruebas más de 7).",
+        "**3.** Cierra este issue → se programan solos en YouTube detrás de los que ya estén programados (1 al día; si se acumulan muchos, hasta 3 al día como máximo).",
         "",
         f"> {analysis.get('resumen', '')}",
         "",

@@ -34,22 +34,52 @@ def approved_from_issue(body: str) -> tuple[str | None, list[str]]:
     return (wid.group(1) if wid else None), ids
 
 
-def plan_slots(n: int, cfg: dict, after: dt.datetime | None) -> list[dt.datetime]:
+def _iso(d: dt.datetime) -> str:
+    return d.astimezone(dt.timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def _parse(s: str) -> dt.datetime:
+    return dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+
+def plan_slots(n: int, cfg: dict, queue: list[dict]) -> list[dt.datetime]:
+    """Reparte n vídeos nuevos entre los días, respetando los que ya están programados.
+
+    - Busca el MENOR número de vídeos por día (1, 2 o 3) con el que todo lo pendiente cabe en el
+      horizonte (por defecto 7 días). Si ni con 3 cabe, usa 3 y sigue por los días siguientes.
+    - Rellena primero los huecos de los días más cercanos. Nunca más de `max_por_dia` (3) en un día.
+    """
     p = cfg["publicacion"]
     tz = ZoneInfo(p["zona_horaria"])
-    hours = [tuple(map(int, h.split(":"))) for h in p["horas"]][: p.get("max_por_dia", 2)]
-    now = dt.datetime.now(tz)
-    day = (max(now, after.astimezone(tz)) if after else now).date() + dt.timedelta(days=1)
-    days = max(7, -(-n // len(hours)))  # al menos una semana
-    extra = max(0, n - days)            # días que llevan 2 vídeos
-    slots = []
-    for d in range(days):
-        per_day = 2 if d < extra and len(hours) > 1 else 1
-        for k in range(per_day):
-            h, m = hours[k]
-            slots.append(dt.datetime.combine(day + dt.timedelta(days=d), dt.time(h, m), tz))
-    slots.sort()
-    return slots[:n]
+    max_day = min(3, int(p.get("max_por_dia", 3)))
+    hours = [tuple(map(int, h.split(":"))) for h in p["horas"]][:max_day]
+    horizon = int(p.get("dias_horizonte", 7))
+    first_day = dt.datetime.now(tz).date() + dt.timedelta(days=1)
+
+    taken: dict[dt.date, set[tuple[int, int]]] = {}
+    for q in queue:
+        if q.get("estado") in ("programado", "pendiente") and q.get("publish_at"):
+            d = _parse(q["publish_at"]).astimezone(tz)
+            if d.date() >= first_day:
+                taken.setdefault(d.date(), set()).add((d.hour, d.minute))
+
+    future_in_horizon = sum(len(v) for k, v in taken.items() if (k - first_day).days < horizon)
+    per_day = next((k for k in range(1, max_day + 1) if future_in_horizon + n <= k * horizon), max_day)
+
+    slots: list[dt.datetime] = []
+    day = first_day
+    while len(slots) < n:
+        used = taken.setdefault(day, set())
+        # Fuera del horizonte se va a 1 vídeo/día salvo que haga falta más para no alargarlo sin fin
+        cap = per_day if (day - first_day).days < horizon else min(max_day, per_day)
+        for h in hours[:cap]:
+            if len(used) >= cap or len(slots) == n:
+                break
+            if h not in used:
+                used.add(h)
+                slots.append(dt.datetime.combine(day, dt.time(*h), tz))
+        day += dt.timedelta(days=1)
+    return sorted(slots)
 
 
 def upload(yt, item: dict, video_path: Path, cfg: dict) -> str:
@@ -93,8 +123,8 @@ def process_queue(cfg: dict) -> list[str]:
     for q in pending:
         # Si la hora ya pasó (p. ej. por cuota agotada varios días), se mueve al primer hueco libre.
         if dt.datetime.fromisoformat(q["publish_at"].replace("Z", "+00:00")) < dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=1):
-            last = max((dt.datetime.fromisoformat(x["publish_at"].replace("Z", "+00:00")) for x in queue if x["estado"] == "programado"), default=None)
-            q["publish_at"] = plan_slots(1, cfg, last)[0].astimezone(dt.timezone.utc).isoformat().replace("+00:00", "Z")
+            others = [x for x in queue if x is not q]
+            q["publish_at"] = _iso(plan_slots(1, cfg, others)[0])
         path = tmp / q["video"]
         if not path.exists():
             gh("release", "download", q["tag"], "--pattern", q["video"], "--dir", str(tmp), "--clobber")
@@ -139,10 +169,8 @@ def main():
         if not chosen:
             gh("issue", "comment", str(args.issue), "--body", "No había ninguna casilla marcada (o ya estaban programados). Reabre el issue, marca los vídeos y vuelve a cerrarlo.")
             return
-        last = max((dt.datetime.fromisoformat(q["publish_at"].replace("Z", "+00:00")) for q in queue if q["estado"] in ("programado", "pendiente")), default=None)
-        for v, slot in zip(chosen, plan_slots(len(chosen), cfg, last)):
-            queue.append({**v, "tag": week["tag"], "issue": args.issue, "estado": "pendiente",
-                          "publish_at": slot.astimezone(dt.timezone.utc).isoformat().replace("+00:00", "Z")})
+        for v, slot in zip(chosen, plan_slots(len(chosen), cfg, queue)):
+            queue.append({**v, "tag": week["tag"], "issue": args.issue, "estado": "pendiente", "publish_at": _iso(slot)})
         write_json(QUEUE, queue)
 
     report, issue = process_queue(cfg)
