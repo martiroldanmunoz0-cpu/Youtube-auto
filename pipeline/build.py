@@ -75,7 +75,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     outro = (cfg["canal"].get("tarjeta_final") or {}).get("locucion", "").strip()
     if outro:
         try:
-            mp3, odur, _ = cached_synth(cache, outro, cfg, narrator)
+            mp3, odur, _ = cached_synth(cache, outro, cfg, {**(narrator or {}), "tolerante": True})
             parts.append((mp3, t + 0.35))
             end_dur = max(END_CARD, odur + 0.9)
         except Exception as e:

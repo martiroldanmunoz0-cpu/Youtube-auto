@@ -107,7 +107,9 @@ def synth(text: str, out_mp3: Path, cfg: dict, voice: dict | None = None) -> tup
             import voxtts  # noqa: PLC0415
 
             if voxtts.available(v["clon"]):
-                dur, words = voxtts.synth(text, out_mp3, v["clon"])
+                relaxed = bool(v.get("tolerante"))  # p. ej. la despedida con el nombre del canal
+                dur, words = voxtts.synth(text, out_mp3, v["clon"], attempts=2 if relaxed else 4,
+                                          min_ok=0.75 if relaxed else 0.92, floor=0.6 if relaxed else 0.8)
                 dur, words = trim_silence(out_mp3, words or None)
                 return dur, (words or _estimate_words(text, dur))
             print(f"  aviso: no existe la voz clonada '{v['clon']}', uso Edge")

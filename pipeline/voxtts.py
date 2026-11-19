@@ -50,19 +50,56 @@ def _load():
     return _model, _load_asr()[1]
 
 
-_NUM = {"uno": "1", "una": "1", "dos": "2", "tres": "3", "cuatro": "4", "cinco": "5", "seis": "6", "siete": "7",
-        "ocho": "8", "nueve": "9", "diez": "10", "once": "11", "doce": "12", "veinte": "20", "cien": "100", "mil": "1000"}
-_ROMAN = {"i": "1", "ii": "2", "iii": "3", "iv": "4", "v": "5", "vi": "6", "vii": "7", "viii": "8", "ix": "9", "x": "10"}
+_UNITS = {"cero": 0, "un": 1, "uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7,
+          "ocho": 8, "nueve": 9, "diez": 10, "once": 11, "doce": 12, "trece": 13, "catorce": 14, "quince": 15,
+          "dieciseis": 16, "diecisiete": 17, "dieciocho": 18, "diecinueve": 19, "veinte": 20, "veintiuno": 21,
+          "veintiun": 21, "veintiuna": 21, "veintidos": 22, "veintitres": 23, "veinticuatro": 24, "veinticinco": 25,
+          "veintiseis": 26, "veintisiete": 27, "veintiocho": 28, "veintinueve": 29, "treinta": 30, "cuarenta": 40,
+          "cincuenta": 50, "sesenta": 60, "setenta": 70, "ochenta": 80, "noventa": 90, "cien": 100, "ciento": 100,
+          "doscientos": 200, "doscientas": 200, "trescientos": 300, "trescientas": 300, "cuatrocientos": 400,
+          "cuatrocientas": 400, "quinientos": 500, "quinientas": 500, "seiscientos": 600, "seiscientas": 600,
+          "setecientos": 700, "setecientas": 700, "ochocientos": 800, "ochocientas": 800, "novecientos": 900,
+          "novecientas": 900}
+_SCALES = {"mil": 1000, "millon": 1_000_000, "millones": 1_000_000}
+_ROMAN = {"ii": "2", "iii": "3", "iv": "4", "vi": "6", "vii": "7", "viii": "8", "ix": "9"}
+
+
+def _merge_numbers(words: list[str]) -> list[str]:
+    """«ocho mil trescientos» -> «8300», «cuarenta» -> «40» (para comparar con lo que escribe Whisper)."""
+    out, i = [], 0
+    while i < len(words):
+        w = words[i]
+        if w in _UNITS or (w in _SCALES and w != "millon"):
+            total, cur, j = 0, 0, i
+            while j < len(words) and (words[j] in _UNITS or words[j] in _SCALES or (words[j] == "y" and j + 1 < len(words) and words[j + 1] in _UNITS)):
+                t = words[j]
+                if t == "y":
+                    j += 1
+                    continue
+                if t in _UNITS:
+                    cur += _UNITS[t]
+                else:
+                    cur = max(cur, 1) * _SCALES[t]
+                    if _SCALES[t] >= 1000:
+                        total += cur
+                        cur = 0
+                j += 1
+            out.append(str(total + cur))
+            i = j
+        else:
+            out.append(w)
+            i += 1
+    return out
 
 
 def _words(s: str) -> list[str]:
     s = s.lower()
     for a, b in zip("áéíóúü", "aeiouu"):
         s = s.replace(a, b)
-    out = []
-    for w in re.sub(r"[^a-zñ0-9 ]", " ", s).split():
-        out.append(_NUM.get(w) or _ROMAN.get(w) or w)
-    return out
+    s = re.sub(r"(?<=\d)[.,](?=\d{3}\b)", "", s)  # 8.300 -> 8300
+    s = re.sub(r"[.,;:!?¿¡…]", " | ", s)              # la puntuación corta los números ("dos. cuarenta" ≠ 42)
+    out = [_ROMAN.get(w, w) for w in re.sub(r"[^a-zñ0-9| ]", " ", s).split()]
+    return [w for w in _merge_numbers(out) if w != "|"]
 
 
 def _similarity(target: str, heard: str) -> float:
@@ -123,7 +160,7 @@ def _align(text: str, heard) -> list[dict]:
     return [{"w": tok, "start": round(s, 3), "end": round(e, 3)} for tok, (s, e) in zip(tokens, times)]
 
 
-def synth(text: str, out_audio: Path, voice_name: str, attempts: int = 4, min_ok: float = 0.92) -> tuple[float, list[dict]]:
+def synth(text: str, out_audio: Path, voice_name: str, attempts: int = 4, min_ok: float = 0.92, floor: float = 0.8) -> tuple[float, list[dict]]:
     """Genera `text` con la voz clonada `voice_name`. Devuelve (duración, palabras con tiempos)."""
     import soundfile as sf  # noqa: PLC0415
 
@@ -145,7 +182,7 @@ def synth(text: str, out_audio: Path, voice_name: str, attempts: int = 4, min_ok
             break
         print(f"    reintento ({score:.0%} parecido): «{text[:50]}»", flush=True)
     score, wav, heard = best
-    if score < 0.8:
+    if score < floor:
         raise RuntimeError(f"la voz clonada no dice bien el texto ({score:.0%})")
     wav_path = out_audio.with_suffix(".wav")
     sf.write(str(wav_path), np.asarray(wav, dtype=np.float32), sr)
