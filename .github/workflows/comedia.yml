@@ -29,11 +29,32 @@ permissions:
   issues: write
   pages: write
   id-token: write
+  actions: read
 
-# Sin cola: puedes lanzar varias tandas a la vez y se montan todas en paralelo.
+# Cola propia: cada tanda espera a que terminen las lanzadas antes (sin límite de tandas en espera).
 
 jobs:
+  turno:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - name: Esperar mi turno en la cola
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          MY_RUN: ${{ github.run_id }}
+        run: |
+          while true; do
+            ANTES=$(gh api "repos/$GH_REPO/actions/runs?per_page=100" --jq '[.workflow_runs[]
+              | select(.name == "Generar vídeos de la semana" or .name == "Pedido especial" or .name == "Comedia GTA")
+              | select(.status != "completed" and .id < ('"$MY_RUN"'))] | length')
+            if [ "$ANTES" = "0" ]; then echo "¡Es mi turno!"; break; fi
+            echo "Hay $ANTES tanda(s) antes que yo en la cola. Espero 1 minuto..."
+            sleep 60
+          done
+
   guiones:
+    needs: turno
     runs-on: ubuntu-latest
     timeout-minutes: 40
     outputs:
@@ -189,7 +210,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   aviso:
-    needs: [guiones, montar, revision]
+    needs: [turno, guiones, montar, revision]
     if: failure()
     runs-on: ubuntu-latest
     steps:
