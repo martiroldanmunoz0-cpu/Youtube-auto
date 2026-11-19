@@ -10,10 +10,10 @@ on:
 permissions:
   contents: write
   issues: write
+  actions: read
 
-concurrency:
-  group: publicar
-  cancel-in-progress: false
+# Sin "concurrency": GitHub solo deja una ejecución en espera y cancelaría las demás aprobaciones.
+# En su lugar, cada ejecución espera su turno (abajo) y se procesan todas, en orden.
 
 jobs:
   publicar:
@@ -21,6 +21,21 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
+      - name: Esperar mi turno (si cierras varios issues seguidos se procesan todos, en orden)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          MY_RUN: ${{ github.run_id }}
+        run: |
+          while true; do
+            ANTES=$(gh api "repos/$GH_REPO/actions/runs?per_page=100" --jq '[.workflow_runs[]
+              | select(.name == "Programar vídeos aprobados")
+              | select(.status != "completed" and .id < ('"$MY_RUN"'))] | length')
+            if [ "$ANTES" = "0" ]; then echo "¡Es mi turno!"; break; fi
+            echo "Hay $ANTES programación(es) antes que yo. Espero 20 segundos..."
+            sleep 20
+          done
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
@@ -47,10 +62,9 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "shorts-bot@users.noreply.github.com"
-          git pull --rebase
           git add -A data || true
           git commit -m "Cola de publicación actualizada" || echo "sin cambios"
-          git push
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; echo "reintento $i"; sleep $((i * 7)); done
 
       - name: Avisar al móvil si algo ha fallado
         if: failure()

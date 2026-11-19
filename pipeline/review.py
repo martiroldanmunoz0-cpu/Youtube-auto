@@ -177,6 +177,13 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
         "",
         f"<!-- semana:{vid} -->",
     ]
+    meta = {k: st[k] for k in ("id", "title", "description", "tags", "video")}
+    write_json(DATA / "weeks" / f"{vid}.json", {"semana": vid, "tanda": wid, "pedido": req, "tag": tag, "videos": [meta]})
+    write_json(history_file(vid), [{"id": vid, "titulo": st["title"], "tipo": st.get("idea", {}).get("tipo"),
+                                    "ts": dt.datetime.now(dt.timezone.utc).isoformat(),
+                                    "premisa": st.get("idea", {}).get("premisa", ""), "gancho": st.get("idea", {}).get("gancho", "")}])
+    git_save(f"Vídeo listo para revisar: {vid}")  # primero los datos: así cerrar el issue al momento siempre funciona
+
     try:
         gh("label", "create", "revision", "--color", "FFB35C", "--description", "Vídeo pendiente de revisión", "--force")
     except subprocess.CalledProcessError:
@@ -185,12 +192,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
                             "--label", "revision", "--body-file", "-", input_text="\n".join(lines)))
     print("Issue de revisión:", url)
 
-    meta = {k: st[k] for k in ("id", "title", "description", "tags", "video")}
-    write_json(DATA / "weeks" / f"{vid}.json", {"semana": vid, "tanda": wid, "pedido": req, "tag": tag, "issue": url, "videos": [meta]})
-    write_json(history_file(vid), [{"id": vid, "titulo": st["title"], "tipo": st.get("idea", {}).get("tipo"),
-                                    "ts": dt.datetime.now(dt.timezone.utc).isoformat(),
-                                    "premisa": st.get("idea", {}).get("premisa", ""), "gancho": st.get("idea", {}).get("gancho", "")}])
-    git_save(f"Vídeo listo para revisar: {vid}")
+
 
 
 def main():
