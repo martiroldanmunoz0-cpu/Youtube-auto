@@ -16,7 +16,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from common import DATA, ROOT, load_config, pedido, read_json, run_id, week_dir, write_json
+from common import DATA, ROOT, formato, load_config, pedido, read_json, run_id, week_dir, write_json
 
 
 def gh(*args: str, input_text: str | None = None) -> str:
@@ -29,6 +29,12 @@ def pages_url() -> str | None:
         return None
     owner, name = repo.split("/", 1)
     return f"https://{owner.lower()}.github.io/{name}/"
+
+
+def tanda_titulo(wid: str, cfg: dict) -> str:
+    if formato() == "comedia":
+        return f"Comedia: {pedido() or cfg.get('comedia', {}).get('tema', '')}"
+    return f"Pedido: {pedido()}" if pedido() else f"Vídeos de la semana {wid}"
 
 
 def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dict) -> Path:
@@ -61,7 +67,7 @@ def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dic
     <details><summary>Ganchos considerados</summary><ul>{ganchos}</ul></details>
   </div>
 </article>""")
-    heading = f"Pedido: {pedido()}" if pedido() else f"Vídeos de la semana {wid}"
+    heading = tanda_titulo(wid, cfg)
     pats = "".join(f"<li>{html.escape(p)}</li>" for p in analysis.get("patrones_gancho", []))
     temas = "".join(f"<li>{html.escape(p)}</li>" for p in analysis.get("temas_calientes", []))
     page = f"""<!doctype html>
@@ -99,7 +105,7 @@ def main():
         sys.exit("No hay vídeos montados esta semana")
 
     # 1) Release con los vídeos
-    tag = wid if wid.startswith("pedido") else f"semana-{wid}"
+    tag = wid if wid.startswith(("pedido", "comedia")) else f"semana-{wid}"
     files = [str(wd / s["video"]) for s in stories]
     try:
         gh("release", "view", tag)
@@ -116,7 +122,7 @@ def main():
 
     # 3) Issue con casillas
     lines = [
-        f"## 🎬 Pedido especial: {req}" if req else f"## 🎬 Vídeos de la semana {wid}",
+        f"## 🎬 {tanda_titulo(wid, cfg)}",
         "",
         f"**1.** Mira los vídeos: {base or '(activa GitHub Pages para ver la página de revisión)'}",
         "**2.** Marca las casillas de los que quieras publicar.",
@@ -134,7 +140,7 @@ def main():
         gh("label", "create", "revision", "--color", "FFB35C", "--description", "Revisión semanal de Shorts", "--force")
     except subprocess.CalledProcessError:
         pass
-    title = f"Pedido especial: {req[:70]}" if req else f"Revisión de vídeos {wid}"
+    title = tanda_titulo(wid, cfg)[:80] if (req or formato() == "comedia") else f"Revisión de vídeos {wid}"
     url = gh("issue", "create", "--title", title, "--label", "revision", "--body-file", "-", input_text="\n".join(lines))
     print("Issue de revisión:", url)
 

@@ -97,3 +97,39 @@ export function drawSubtitles(ctx, pages, t) {
   });
   ctx.restore();
 }
+
+// Estilo "una palabra gigante" (sketches de comedia): la palabra que se dice, en mayúsculas,
+// centrada, con borde negro grueso y un pequeño "pop" al aparecer.
+// Las palabras del personaje que habla llevan un toque del color de su ropa.
+export function drawWordSubtitles(ctx, words, t, cast = {}) {
+  let cur = null;
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i], next = words[i + 1];
+    const end = next ? Math.min(next.start, w.end + 0.35) : w.end + 0.35;
+    if (t >= w.start - 0.02 && t < end) { cur = w; break; }
+  }
+  if (!cur) return;
+  const text = cur.w.replace(/[«»"“”¿?¡!.,;:…]/g, '').toUpperCase();
+  if (!text) return;
+  const k = Math.min(1, (t - cur.start + 0.02) / 0.09);
+  const scale = 0.8 + 0.25 * k - 0.05 * Math.max(0, k - 0.6);
+  let size = 128;
+  ctx.save();
+  do { ctx.font = `700 ${size}px Poppins`; size -= 6; } while (ctx.measureText(text).width > 900 && size > 50);
+  ctx.translate(W / 2, 1330);
+  ctx.scale(scale, scale);
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.lineJoin = 'round';
+  ctx.lineWidth = 22; ctx.strokeStyle = '#000';
+  ctx.strokeText(text, 0, 0);
+  const tint = cast[cur.sp]?.look?.outfit;
+  ctx.fillStyle = tint && cur.sp !== 'narrador' ? mixWhite(tint) : '#fff';
+  ctx.fillText(text, 0, 0);
+  ctx.restore();
+}
+
+function mixWhite(hex) {
+  const n = parseInt(hex.slice(1), 16);
+  const m = (v) => Math.round(v * 0.45 + 255 * 0.55);
+  return `rgb(${m((n >> 16) & 255)},${m((n >> 8) & 255)},${m(n & 255)})`;
+}

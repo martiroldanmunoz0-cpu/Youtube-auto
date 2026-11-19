@@ -11,7 +11,9 @@ import datetime as dt
 import re
 import sys
 
-from common import load_config, week_dir, week_id, write_json, youtube_client
+import os
+
+from common import formato, load_config, run_id, week_dir, write_json, youtube_client
 
 
 def iso_duration_to_s(d: str) -> int:
@@ -27,7 +29,11 @@ def collect(yt, cfg) -> list[dict]:
     since = (dt.datetime.utcnow() - dt.timedelta(days=a["dias"])).replace(microsecond=0).isoformat() + "Z"
     ids: dict[str, str] = {}
 
-    for q in a["busquedas"]:
+    comedy = formato() == "comedia"
+    queries = [q for q in (os.environ.get("TRENDS_QUERIES") or "").split("|") if q.strip()] \
+        or (cfg.get("comedia", {}).get("busquedas") if comedy else None) or a["busquedas"]
+    regions = [] if (comedy or os.environ.get("TRENDS_SIN_REGIONES")) else a["regiones"]
+    for q in queries:
         try:
             res = yt.search().list(
                 part="id", q=q, type="video", videoDuration="short", order="viewCount",
@@ -39,7 +45,7 @@ def collect(yt, cfg) -> list[dict]:
             print(f"  aviso: búsqueda '{q}' falló: {e}", file=sys.stderr)
 
     trending: list[dict] = []
-    for region in a["regiones"]:
+    for region in regions:
         try:
             res = yt.videos().list(part="id", chart="mostPopular", regionCode=region, maxResults=50).execute()
             for it in res.get("items", []):
@@ -83,7 +89,7 @@ def collect(yt, cfg) -> list[dict]:
 
 def main():
     cfg = load_config()
-    wid = week_id()
+    wid = run_id()
     yt = youtube_client()
     videos = collect(yt, cfg)
     top = videos[: cfg["analisis"]["top_videos"]]

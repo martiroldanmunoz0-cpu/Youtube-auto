@@ -37,6 +37,11 @@ def pedido() -> str | None:
     return p or None
 
 
+def formato() -> str:
+    """historias (por defecto) | comedia"""
+    return (os.environ.get("FORMATO") or "historias").strip()
+
+
 def week_dir(wid: str) -> Path:
     p = OUT / wid
     p.mkdir(parents=True, exist_ok=True)

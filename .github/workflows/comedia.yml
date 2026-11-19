@@ -1,0 +1,103 @@
+name: Comedia GTA
+
+# Sketches de humor de dibujos ambientados en una ciudad tipo GTA 6. Analiza lo que funciona de GTA 6 en YouTube.
+on:
+  workflow_dispatch:
+    inputs:
+      tema:
+        description: "Tema concreto (opcional). Vacío = la IA elige según lo que funciona de GTA 6"
+        required: false
+        type: string
+      cantidad:
+        description: "¿Cuántos sketches?"
+        required: true
+        default: "3"
+        type: choice
+        options: ["1", "2", "3", "4", "5"]
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: generar
+  cancel-in-progress: false
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      RUN_ID: comedia-${{ github.run_number }}
+      FORMATO: comedia
+      PEDIDO: ${{ inputs.tema }}
+      PEDIDO_N: ${{ inputs.cantidad }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: renderer/package-lock.json
+
+      - name: Instalar herramientas
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg espeak-ng
+          pip install -r requirements.txt
+          npm ci --prefix renderer
+
+      - name: 1. Analizar vídeos de GTA 6 en YouTube
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python pipeline/trends.py || echo "Sin analisis de tendencias, sigo con el tema configurado"
+
+      - name: 2. Escribir los sketches con IA
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python pipeline/scripts.py
+
+      - name: 3. Montar los vídeos
+        run: python pipeline/build.py
+
+      - name: 4. Preparar revisión (release + página + issue)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python pipeline/review.py
+
+      - name: Guardar historial
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data
+          git commit -m "Comedia generada" || echo "sin cambios"
+          git pull --rebase
+          git push
+
+      - name: Actualizar página de revisión
+        run: python pipeline/pages.py
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages
+
+  pagina:
+    needs: generar
+    runs-on: ubuntu-latest
+    continue-on-error: true   # si el repo no tiene Pages, la revisión sigue funcionando con los enlaces de descarga
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

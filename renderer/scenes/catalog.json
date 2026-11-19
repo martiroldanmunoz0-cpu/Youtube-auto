@@ -190,6 +190,59 @@
         "month": "texto en la cabecera, p.ej. 'Enero' o 'Día'",
         "label": "texto corto abajo"
       }
+    },
+    "duo": {
+      "formato": "comedia",
+      "desc": "Dos personajes del reparto juntos, de medio cuerpo, hablando. El que habla mueve la boca automáticamente. Úsalo para diálogos.",
+      "params": {
+        "bg": "room|street|night|beach|store|police (room = el salón donde juegan a la consola; el resto = dentro del juego)",
+        "left": "personaje del reparto (id)",
+        "right": "personaje del reparto (id)",
+        "left_mood": "neutral|happy|angry|shocked|sad|smug|scared",
+        "right_mood": "igual"
+      }
+    },
+    "closeup": {
+      "formato": "comedia",
+      "desc": "Primer plano de un personaje: reacciones, frases clave, el remate del chiste.",
+      "params": {
+        "bg": "room|street|night|beach|store|police",
+        "who": "personaje del reparto (id)",
+        "mood": "neutral|happy|angry|shocked|sad|smug|scared"
+      }
+    },
+    "vice_street": {
+      "formato": "comedia",
+      "desc": "Plano general de la ciudad tropical de neones (dentro del juego). Para situar la acción.",
+      "params": {
+        "night": "bool",
+        "car": "bool, pasa un deportivo"
+      }
+    },
+    "vice_beach": {
+      "formato": "comedia",
+      "desc": "Playa al atardecer con palmeras (dentro del juego).",
+      "params": {}
+    },
+    "car_ride": {
+      "formato": "comedia",
+      "desc": "Dos personajes en un descapotable conduciendo por la ciudad (dentro del juego).",
+      "params": {
+        "driver": "personaje del reparto (id)",
+        "passenger": "personaje del reparto (id)",
+        "driver_mood": "mood",
+        "passenger_mood": "mood",
+        "night": "bool",
+        "color": "#hex del coche"
+      }
+    },
+    "police_chase": {
+      "formato": "comedia",
+      "desc": "Persecución policial de noche con sirenas (dentro del juego).",
+      "params": {
+        "who": "personaje del reparto (id)",
+        "mood": "mood"
+      }
     }
   }
 }

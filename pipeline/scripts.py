@@ -15,7 +15,7 @@ import anthropic
 
 import os
 
-from common import CATALOG, DATA, load_config, pedido, read_json, run_id, week_dir, write_json
+from common import CATALOG, DATA, formato, load_config, pedido, read_json, run_id, week_dir, write_json
 
 client = anthropic.Anthropic()
 
@@ -31,7 +31,7 @@ ANALYSIS_SCHEMA = {
             "items": {
                 "type": "object",
                 "properties": {
-                    "tipo": {"type": "string", "enum": ["historia_ficcion", "dato_curioso", "caso_real", "misterio", "explicacion", "que_pasaria_si", "pedido"]},
+                    "tipo": {"type": "string", "enum": ["historia_ficcion", "dato_curioso", "caso_real", "misterio", "explicacion", "que_pasaria_si", "pedido", "comedia"]},
                     "premisa": {"type": "string"},
                     "gancho": {"type": "string"},
                     "giro_final": {"type": "string"},
@@ -155,6 +155,19 @@ TÍTULO Y DESCRIPCIÓN
 - tags: 8-12 etiquetas en español."""
 
 
+COMEDY_EXTRA_SCENES = ["phone", "money", "big_text", "calendar", "clock", "map_pin", "tv"]
+
+
+def catalog_for(fmt: str) -> dict:
+    """Catálogo de escenas que puede usar cada formato."""
+    c = json.loads(CATALOG.read_text(encoding="utf-8"))
+    if fmt == "comedia":
+        c["scenes"] = {k: v for k, v in c["scenes"].items() if v.get("formato") == "comedia" or k in COMEDY_EXTRA_SCENES}
+    else:
+        c["scenes"] = {k: v for k, v in c["scenes"].items() if v.get("formato") != "comedia"}
+    return c
+
+
 def make_params(system: str, context: str | None, user: str, schema: dict, model: str, effort: str = "high") -> dict:
     """Petición con la parte fija (instrucciones + catálogo) cacheada: se paga casi una sola vez."""
     blocks = [{"type": "text", "text": system}]
@@ -239,7 +252,7 @@ def models(cfg: dict) -> tuple[str, str, bool]:
 
 
 def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
-    catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    catalog = catalog_for("historias")
     compact = [
         {k: v[k] for k in ("id", "titulo", "canal", "vistas", "vistas_por_dia", "likes_pct", "comentarios_pct", "duracion_s", "descripcion", "origen")}
         for v in trends["top"]
@@ -272,7 +285,7 @@ estilo visual (escenas distintas del catálogo).
 
 
 def ideas_for_request(request: str, n: int, history: list[dict], cfg: dict) -> dict:
-    catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    catalog = catalog_for("historias")
     user = (
         f"Pedido del dueño del canal:\n\"{request}\"\n\n"
         f"Escenas disponibles para animar:\n{json.dumps({k: v['desc'] for k, v in catalog['scenes'].items()}, ensure_ascii=False)}\n\n"
@@ -283,7 +296,7 @@ def ideas_for_request(request: str, n: int, history: list[dict], cfg: dict) -> d
 
 
 def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
-    catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    catalog = catalog_for("historias")
     # Contexto fijo (igual en todos los guiones) -> se cachea.
     context = f"Catálogo de escenas, cámaras y transiciones:\n{json.dumps(catalog, ensure_ascii=False, sort_keys=True)}"
     lo, hi = cfg["generacion"]["duracion_objetivo_seg"]
@@ -298,7 +311,7 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
 
 def validate_story(story: dict) -> dict:
     """Limpia el guion: escenas/cámaras válidas, params parseados. Devuelve el formato interno."""
-    catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+    catalog = catalog_for("historias")
     scenes, cams, trans = catalog["scenes"], catalog["cameras"], catalog["transitions"]
     beats = []
     for p in story["planos"]:
@@ -332,6 +345,204 @@ def validate_story(story: dict) -> dict:
     }
 
 
+
+# ======================= COMEDIA (sketches) =======================
+VOICE_PRESETS = ["chico_1", "chico_2", "chico_grave", "chico_latino", "chica_1", "chica_2", "chica_latina"]
+
+COMEDY_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "ganchos_candidatos": STORY_SCHEMA["properties"]["ganchos_candidatos"],
+        "gancho_elegido": {"type": "string"},
+        "titulo": {"type": "string"},
+        "descripcion": {"type": "string"},
+        "tags": {"type": "array", "items": {"type": "string"}},
+        "reparto": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {"type": "string"},
+                    "nombre": {"type": "string"},
+                    "voz": {"type": "string", "enum": VOICE_PRESETS},
+                    "piel": {"type": "string", "enum": ["clara", "media", "morena", "oscura"]},
+                    "pelo": {"type": "string", "enum": ["short", "bald", "long", "buzz", "curly", "mohawk"]},
+                    "color_pelo": {"type": "string"},
+                    "gorra": {"type": "string"},
+                    "gafas_sol": {"type": "boolean"},
+                    "ropa": {"type": "string"},
+                    "estampado": {"type": "string", "enum": ["none", "hawaii", "stripes", "tank"]},
+                    "cadena": {"type": "boolean"},
+                    "barba": {"type": "boolean"},
+                },
+                "required": ["id", "nombre", "voz", "piel", "pelo", "color_pelo", "gorra", "gafas_sol", "ropa", "estampado", "cadena", "barba"],
+                "additionalProperties": False,
+            },
+        },
+        "planos": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "habla": {"type": "string"},
+                    "texto": {"type": "string"},
+                    "escena": {"type": "string"},
+                    "params_json": {"type": "string"},
+                    "camara": {"type": "string"},
+                    "transicion": {"type": "string"},
+                },
+                "required": ["habla", "texto", "escena", "params_json", "camara", "transicion"],
+                "additionalProperties": False,
+            },
+        },
+    },
+    "required": ["ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "reparto", "planos"],
+    "additionalProperties": False,
+}
+
+SYSTEM_COMEDY_IDEAS = """Eres el jefe de guionistas de humor de un canal de YouTube Shorts en español con sketches animados \
+de dibujos (personajes propios, colores vivos, ciudad tropical de neones). Te paso los vídeos de la temática que más \
+están funcionando esta semana. Tu trabajo: detectar de qué se habla y qué hace gracia, y convertirlo en ideas de \
+sketches ORIGINALES con nuestros propios personajes.
+
+Reglas:
+- Céntrate en situaciones con las que el público se sienta identificado ("esto me ha pasado"), con escalada y remate.
+- Usa lo que esté de actualidad (rumores, retrasos, precio, novedades, memes) como gancho, pero nunca copies \\
+chistes, personajes o guiones de otros creadores.
+- Nuestros personajes y escenarios son propios: no uses personajes, logotipos ni nombres comerciales de terceros \\
+como si fueran nuestros; se puede hablar del juego por su nombre.
+- Cada idea: gancho de 2 segundos, escalada y un remate final inesperado. tipo = "comedia".
+- En 'estilo_visual' indica qué escenas usará (sofá jugando vs. dentro del juego)."""
+
+SYSTEM_COMEDY_WRITER = """Eres guionista de sketches cómicos para YouTube Shorts animados (30-55 segundos). Escribes \
+diálogos rápidos entre 2 o 3 amigos, con un narrador opcional que cuenta la historia en primera persona.
+
+FORMATO
+- Cada plano es UNA intervención corta (2-14 palabras) de UN hablante: "narrador" o el id de un personaje del reparto.
+- Los subtítulos salen palabra a palabra en grande: frases cortas, mucho ritmo, nada de párrafos.
+- 12-26 planos. Alterna: el salón donde juegan a la consola (escena con bg "room") y lo que pasa dentro del juego \\
+(street, night, beach, store, police, car_ride, police_chase...). El contraste entre lo que dicen en el sofá y lo \\
+que pasa en el juego es parte del chiste.
+
+GANCHO
+Escribe 5 ganchos candidatos de tipos distintos (situación absurda, frase de un personaje, pregunta, "cuando tu \\
+amigo...", dato de actualidad), puntúalos 1-10 (se entiende en 2 segundos, da ganas de ver qué pasa, es concreto) \\
+y usa el mejor LITERALMENTE como primer plano.
+
+HUMOR
+- Situaciones reconocibles de jugar con amigos: el que la lía siempre, el que no sabe conducir, el que traiciona, \\
+el que llama a la policía sin querer, el que dice "confía en mí"...
+- Escalada: cada 2-3 planos la situación empeora. Remate final inesperado; mejor si enlaza con el principio.
+- Registro coloquial de {variante}. Palabrotas: {palabrotas}. Úsalas como golpe cómico, NUNCA en el título ni en \\
+los dos primeros planos (para no perder anuncios). Nada de insultos racistas, homófobos o machistas, ni contenido \\
+sexual, ni burlas a personas reales.
+- Personajes y escenarios propios. Se puede hablar del juego por su nombre, pero no copiar personajes ni chistes ajenos.
+
+REPARTO
+- 2-3 personajes con id corto en minúsculas (p. ej. "dani", "rober"), aspecto muy distinto entre ellos y voz \\
+coherente (chico_* / chica_*). Colores en #hex. "gorra" es un #hex o "" si no lleva.
+
+VISUAL
+- "escena" debe ser una clave EXACTA del catálogo y "params_json" un objeto JSON en texto.
+- En "duo" pon "left"/"right" con ids del reparto y sus moods; en "closeup" pon "who"; el que habla mueve la boca solo.
+- Cambia de plano a menudo. El remate usa cámara "slam" o transición "flash".
+
+TÍTULO Y DESCRIPCIÓN
+- titulo: máx 70 caracteres, sin palabrotas, gracioso, termina con " #shorts".
+- descripcion: 1-2 líneas que inviten a etiquetar a un amigo + 3-5 hashtags. tags: 8-12."""
+
+
+def comedy_ideas_params(trends: dict | None, n: int, history: list[dict], cfg: dict) -> dict:
+    cc = cfg.get("comedia", {})
+    catalog = catalog_for("comedia")
+    top = [{k: v[k] for k in ("titulo", "canal", "vistas", "vistas_por_dia", "comentarios_pct")} for v in (trends or {}).get("top", [])]
+    past = [h["titulo"] for h in history[-80:]]
+    tema = pedido() or cc.get("tema", "")
+    user = (
+        f"Tema de los sketches: {tema}\nAmbiente visual: {cc.get('ambiente', '')}\n\n"
+        + (f"Vídeos de esta temática con más vistas/día ahora mismo:\n{json.dumps(top, ensure_ascii=False)}\n\n" if top else "")
+        + f"Escenas disponibles:\n{json.dumps({k: v['desc'] for k, v in catalog['scenes'].items()}, ensure_ascii=False)}\n\n"
+        + f"Títulos ya hechos (no repetir):\n{json.dumps(past, ensure_ascii=False)}\n\n"
+        + f"Dame exactamente {n} ideas de sketch distintas, ordenadas de más a menos potencial viral. "
+        "En 'inspirado_en' deja la lista vacía."
+    )
+    return make_params(SYSTEM_COMEDY_IDEAS, None, user, ANALYSIS_SCHEMA, models(cfg)[0])
+
+
+def comedy_story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
+    cc = cfg.get("comedia", {})
+    system = SYSTEM_COMEDY_WRITER.replace("{variante}", cc.get("variante", "España")).replace("{palabrotas}", cc.get("palabrotas", "moderadas"))
+    context = f"Catálogo de escenas, cámaras y transiciones:\n{json.dumps(catalog_for('comedia'), ensure_ascii=False, sort_keys=True)}"
+    user = (
+        f"Ambiente visual: {cc.get('ambiente', '')}\n\n"
+        f"Lo que funciona ahora:\n{json.dumps(analysis.get('patrones_gancho', []), ensure_ascii=False)}\n\n"
+        f"Idea del sketch:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
+        "Escribe el reparto, los ganchos candidatos y el sketch completo."
+    )
+    return make_params(system, context, user, COMEDY_SCHEMA, models(cfg)[1])
+
+
+def _hex(v: str, default: str) -> str:
+    return v if isinstance(v, str) and re.fullmatch(r"#[0-9a-fA-F]{6}", v) else default
+
+
+def validate_comedy(raw: dict) -> dict:
+    catalog = catalog_for("comedia")
+    scenes, cams, trans = catalog["scenes"], catalog["cameras"], catalog["transitions"]
+    cast = {}
+    for c in raw["reparto"][:3]:
+        cid = re.sub(r"[^a-z0-9_]", "", c["id"].lower()) or f"p{len(cast) + 1}"
+        cast[cid] = {
+            "name": c["nombre"],
+            "voice": c["voz"] if c["voz"] in VOICE_PRESETS else "chico_1",
+            "look": {
+                "skin": c["piel"], "hair": c["pelo"], "hair_color": _hex(c["color_pelo"], "#1d1410"),
+                "cap": _hex(c["gorra"], ""), "glasses": c["gafas_sol"], "outfit": _hex(c["ropa"], "#2f7cf6"),
+                "pattern": c["estampado"], "chain": c["cadena"], "beard": c["barba"],
+            },
+        }
+    ids = list(cast)
+    norm = lambda x: re.sub(r"[^a-z0-9_]", "", str(x or "").lower())
+    beats = []
+    for p in raw["planos"]:
+        text = re.sub(r"\s+", " ", p["texto"]).strip()
+        if not text:
+            continue
+        sp = norm(p["habla"])
+        sp = sp if sp in cast else "narrador"
+        scene = p["escena"] if p["escena"] in scenes else "closeup"
+        try:
+            params = json.loads(p["params_json"] or "{}")
+            params = params if isinstance(params, dict) else {}
+        except json.JSONDecodeError:
+            params = {}
+        for key in ("left", "right", "who", "driver", "passenger"):
+            if key in params and norm(params[key]) not in cast:
+                params.pop(key)
+            elif key in params:
+                params[key] = norm(params[key])
+        if scene == "duo" and ids:
+            params.setdefault("left", ids[0])
+            params.setdefault("right", ids[1] if len(ids) > 1 else ids[0])
+            if sp in cast and sp not in (params["left"], params["right"]):
+                params["right"] = sp
+        if scene == "closeup" and "who" not in params:
+            params["who"] = sp if sp in cast else (ids[0] if ids else None)
+        beats.append({
+            "text": text, "speaker": sp, "scene": scene, "params": params,
+            "camera": p["camara"] if p["camara"] in cams else "static",
+            "transition": p["transicion"] if p["transicion"] in trans else "cut",
+        })
+    title = raw["titulo"].strip()
+    if "#shorts" not in title.lower():
+        title = (title[:88] + " #shorts").strip()
+    return {
+        "title": title[:100], "description": raw["descripcion"].strip(),
+        "tags": [t.strip("# ") for t in raw["tags"]][:15], "beats": beats,
+        "cast": cast, "subtitle_style": "word", "gap": 0.12, "music": "synth",
+    }
+
+
 def main():
     cfg = load_config()
     rid = run_id()
@@ -339,7 +550,11 @@ def main():
     history = read_json(DATA / "history.json", [])
     use_batch = models(cfg)[2]
     request = pedido()
-    if request:
+    fmt = formato()
+    if fmt == "comedia":
+        n = int(os.environ.get("PEDIDO_N") or cfg.get("comedia", {}).get("videos", 3))
+        params = comedy_ideas_params(read_json(wd / "trends.json"), n, history, cfg)
+    elif request:
         n = int(os.environ.get("PEDIDO_N") or 3)
         params = ideas_for_request(request, n, history, cfg)
     else:
@@ -356,14 +571,15 @@ def main():
     ideas = analysis["ideas"][:n]
     print(f"Ideas listas: {len(ideas)}. Escribiendo guiones...")
 
-    results = run_many({f"guion-{i + 1:02d}": story_params(idea, analysis, cfg) for i, idea in enumerate(ideas)}, use_batch)
+    make = comedy_story_params if fmt == "comedia" else story_params
+    results = run_many({f"guion-{i + 1:02d}": make(idea, analysis, cfg) for i, idea in enumerate(ideas)}, use_batch)
     stories = []
     for i, idea in enumerate(ideas):
         raw = results[f"guion-{i + 1:02d}"]
         if isinstance(raw, Exception):
             print(f"  [{i + 1}/{n}] error escribiendo guion: {raw}", file=sys.stderr)
             continue
-        st = validate_story(raw)
+        st = validate_comedy(raw) if fmt == "comedia" else validate_story(raw)
         st.update({"id": f"{rid}-{i + 1:02d}", "idea": idea, "ganchos": raw.get("ganchos_candidatos", [])})
         stories.append(st)
         print(f"  [{i + 1}/{n}] {st['title']} ({len(st['beats'])} planos) · gancho: {raw.get('gancho_elegido', '')}")

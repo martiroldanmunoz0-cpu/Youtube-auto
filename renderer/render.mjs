@@ -11,7 +11,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { W, H, rng, clamp, ease, lerp, seg, noise1 } from './lib/util.mjs';
 import { grain, vignette, topShade } from './lib/fx.mjs';
-import { paginate, drawSubtitles } from './lib/subtitles.mjs';
+import { paginate, drawSubtitles, drawWordSubtitles } from './lib/subtitles.mjs';
 import { SCENES } from './scenes/index.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -79,7 +79,7 @@ export class Renderer {
     ctx.translate(W / 2 + cam.x, H / 2 + cam.y);
     ctx.scale(cam.s, cam.s);
     ctx.translate(-W / 2, -H / 2);
-    b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t });
+    b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
     ctx.restore();
   }
 
@@ -109,10 +109,11 @@ export class Renderer {
       this.drawBeat(ctx, b, t, frame);
     }
     // Acabado común del canal
-    topShade(ctx);
+    if (this.tl.subtitle_style !== 'word') topShade(ctx);
     vignette(ctx, 0.7);
     grain(ctx, frame, 0.05);
-    drawSubtitles(ctx, this.pages, t);
+    if (this.tl.subtitle_style === 'word') drawWordSubtitles(ctx, this.tl.words || [], t, this.tl.cast || {});
+    else drawSubtitles(ctx, this.pages, t);
     if (t >= endStart) this.drawEndcard(ctx, t - endStart, end);
     // Fundido de entrada
     if (t < 0.25) { ctx.fillStyle = `rgba(0,0,0,${1 - t / 0.25})`; ctx.fillRect(0, 0, W, H); }

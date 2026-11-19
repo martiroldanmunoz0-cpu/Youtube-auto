@@ -27,18 +27,25 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
     work = Path(tempfile.mkdtemp(prefix=f"{sid}-"))
     print(f"\n== {sid}: {story['title']}")
 
-    # 1) Voz por plano -> tiempos
+    # 1) Voz por plano -> tiempos (en los sketches, cada personaje tiene su voz)
+    cast = story.get("cast") or {}
+    presets = (cfg.get("comedia") or {}).get("voces", {})
+    narrator = presets.get((cfg.get("comedia") or {}).get("narrador", "")) if cast else None
+    gap = story.get("gap", GAP)
     t = LEAD_IN
     beats, words, parts = [], [], []
     for i, b in enumerate(story["beats"]):
         mp3 = work / f"b{i:02d}.mp3"
-        dur, ws = synth(b["text"], mp3, cfg)
+        sp = b.get("speaker") or "narrador"
+        voice = presets.get(cast[sp]["voice"]) if sp in cast else narrator
+        dur, ws = synth(b["text"], mp3, cfg, voice)
         start = t
         for w in ws:
-            words.append({"w": w["w"], "b": i, "start": round(start + w["start"], 3), "end": round(start + w["end"], 3)})
-        end = start + dur + GAP
+            words.append({"w": w["w"], "b": i, "sp": sp, "start": round(start + w["start"], 3), "end": round(start + w["end"], 3)})
+        end = start + dur + gap
         # El primer plano empieza en 0 para que no haya negro.
-        beats.append({**b, "start": 0.0 if i == 0 else round(start - GAP / 2, 3), "end": round(end - GAP / 2, 3)})
+        bstart = 0.0 if i == 0 else round(start - gap / 2, 3)
+        beats.append({**b, "speaker": sp, "start": bstart, "end": round(end - gap / 2, 3), "voice_dur": round(start + dur - bstart, 3)})
         parts.append((mp3, start))
         t = end
     total = t + END_CARD
@@ -60,7 +67,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
     hits = [0.05] + [b["start"] for b in beats if b.get("camera") == "slam" or b.get("transition") in ("red", "flash")]
     music = work / "music.wav"
     m = cfg.get("musica", {})
-    make_soundtrack(total, cuts, hits, music, seed=zlib.crc32(sid.encode()) % 10_000, volume=m.get("volumen_ambiente", 0.16), sfx=m.get("efectos", True))
+    make_soundtrack(total, cuts, hits, music, seed=zlib.crc32(sid.encode()) % 10_000, volume=m.get("volumen_ambiente", 0.16), sfx=m.get("efectos", True), style=story.get("music", "dark"))
 
     # 4) Mezcla final (la música baja cuando habla la voz)
     audio = work / "audio.m4a"
@@ -76,6 +83,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
     timeline = {
         "seed": sid, "fps": 30, "total": round(total, 3),
         "beats": beats, "words": words,
+        "cast": cast, "subtitle_style": story.get("subtitle_style", "page"),
         "endcard": {"duration": END_CARD, "title": c["tarjeta_final"]["titulo"], "subtitle": c["tarjeta_final"]["subtitulo"], "handle": c["handle"]},
     }
     tl_path = out_dir / f"{sid}.timeline.json"

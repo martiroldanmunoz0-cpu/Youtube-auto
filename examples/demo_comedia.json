@@ -1,0 +1,257 @@
+{
+  "title": "Nunca dejes conducir a tu amigo en GTA 6 #shorts",
+  "description": "Etiqueta al Rober de tu grupo 😂\n#gta6 #humor #amigos",
+  "tags": [
+    "gta 6",
+    "humor"
+  ],
+  "beats": [
+    {
+      "text": "Nunca dejes conducir a Rober en GTA 6.",
+      "speaker": "narrador",
+      "scene": "duo",
+      "params": {
+        "bg": "room",
+        "left_mood": "neutral",
+        "right_mood": "smug",
+        "left": "dani",
+        "right": "rober"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Rober, tú no conduces. Que te conozco.",
+      "speaker": "dani",
+      "scene": "duo",
+      "params": {
+        "bg": "room",
+        "left_mood": "neutral",
+        "right_mood": "smug",
+        "left": "dani",
+        "right": "rober"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Tío, confía en mí. Soy un profesional.",
+      "speaker": "rober",
+      "scene": "closeup",
+      "params": {
+        "bg": "room",
+        "mood": "smug",
+        "who": "rober"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Primer minuto de partida.",
+      "speaker": "narrador",
+      "scene": "vice_street",
+      "params": {
+        "car": true
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "¡Mira qué derrape, tío!",
+      "speaker": "rober",
+      "scene": "car_ride",
+      "params": {
+        "driver": "rober",
+        "passenger": "dani",
+        "driver_mood": "happy",
+        "passenger_mood": "scared"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "¡Que eso es la comisaría, Rober!",
+      "speaker": "dani",
+      "scene": "car_ride",
+      "params": {
+        "driver": "rober",
+        "passenger": "dani",
+        "driver_mood": "happy",
+        "passenger_mood": "shocked"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Tres coches de policía. Dos helicópteros.",
+      "speaker": "narrador",
+      "scene": "police_chase",
+      "params": {
+        "who": "rober",
+        "mood": "scared"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Vale, vale. Tengo un plan.",
+      "speaker": "rober",
+      "scene": "closeup",
+      "params": {
+        "bg": "room",
+        "mood": "scared",
+        "who": "rober"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "¿Qué plan, joder?",
+      "speaker": "dani",
+      "scene": "closeup",
+      "params": {
+        "bg": "room",
+        "mood": "angry",
+        "who": "dani"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Nos escondemos en la tienda.",
+      "speaker": "rober",
+      "scene": "duo",
+      "params": {
+        "bg": "store",
+        "left_mood": "scared",
+        "right_mood": "smug",
+        "left": "dani",
+        "right": "rober"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Buenas. ¿Tiene patatas?",
+      "speaker": "rober",
+      "scene": "duo",
+      "params": {
+        "bg": "store",
+        "left_mood": "shocked",
+        "right_mood": "happy",
+        "left": "dani",
+        "right": "rober"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "¡¿Qué patatas?! ¡Que nos persigue toda la policía!",
+      "speaker": "dani",
+      "scene": "duo",
+      "params": {
+        "bg": "store",
+        "left_mood": "angry",
+        "right_mood": "happy",
+        "left": "dani",
+        "right": "rober"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Y entonces Rober hizo lo más inteligente de su vida.",
+      "speaker": "narrador",
+      "scene": "closeup",
+      "params": {
+        "bg": "store",
+        "who": "rober",
+        "mood": "smug"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Pagó las patatas.",
+      "speaker": "rober",
+      "scene": "closeup",
+      "params": {
+        "bg": "store",
+        "mood": "happy",
+        "who": "rober"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Y la policía se fue.",
+      "speaker": "narrador",
+      "scene": "vice_street",
+      "params": {
+        "night": true
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "¿Pero cómo coño...?",
+      "speaker": "dani",
+      "scene": "closeup",
+      "params": {
+        "bg": "room",
+        "mood": "shocked",
+        "who": "dani"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Te dije que confiaras en mí.",
+      "speaker": "rober",
+      "scene": "closeup",
+      "params": {
+        "bg": "room",
+        "mood": "smug",
+        "who": "rober"
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    }
+  ],
+  "cast": {
+    "dani": {
+      "name": "Dani",
+      "voice": "chico_1",
+      "look": {
+        "skin": "media",
+        "hair": "short",
+        "hair_color": "#1d1410",
+        "cap": "#ff3f6c",
+        "glasses": true,
+        "outfit": "#2fc0b0",
+        "pattern": "hawaii",
+        "chain": true,
+        "beard": false
+      }
+    },
+    "rober": {
+      "name": "Rober",
+      "voice": "chico_grave",
+      "look": {
+        "skin": "clara",
+        "hair": "curly",
+        "hair_color": "#6b3a1a",
+        "cap": "",
+        "glasses": false,
+        "outfit": "#ffb000",
+        "pattern": "stripes",
+        "chain": false,
+        "beard": true
+      }
+    }
+  },
+  "subtitle_style": "word",
+  "gap": 0.12,
+  "music": "synth",
+  "id": "comedia-demo"
+}

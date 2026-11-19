@@ -16,6 +16,8 @@ Lunes (automático)                                Tú (5 min)             Autom
 
 👉 **Primera vez:** sigue [CONFIGURACION.md](CONFIGURACION.md).
 
+😂 **Comedia GTA:** *Actions → Comedia GTA → Run workflow*: sketches de humor de amigos jugando, en una ciudad de neones (diseño propio).
+
 🎯 **Vídeo a la carta:** *Actions → Pedido especial → Run workflow*, escribe lo que quieres y te genera 3 versiones distintas.
 
 ## Estructura

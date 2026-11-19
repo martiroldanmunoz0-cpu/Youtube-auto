@@ -14,7 +14,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from common import ROOT, pedido, run_id
+from common import ROOT, formato, pedido, run_id
 
 PAGES = ROOT / "pages"
 MAX_BYTES = 800 * 1024 * 1024  # GitHub Pages admite hasta 1 GB
@@ -53,7 +53,8 @@ def main():
     tandas = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else []
     tandas = [t for t in tandas if t["id"] != rid and (PAGES / t["id"]).exists()]
     if src.exists():
-        tandas.append({"id": rid, "titulo": f"Pedido: {pedido()}" if pedido() else f"Semana {rid}", "fecha": dt.date.today().isoformat()})
+        titulo = f"Comedia: {pedido() or 'GTA'}" if formato() == "comedia" else (f"Pedido: {pedido()}" if pedido() else f"Semana {rid}")
+        tandas.append({"id": rid, "titulo": titulo, "fecha": dt.date.today().isoformat()})
 
     # 3) Quitar tandas antiguas (por número y por tamaño)
     while len(tandas) > MAX_TANDAS or (len(tandas) > 1 and size_of(PAGES) > MAX_BYTES):

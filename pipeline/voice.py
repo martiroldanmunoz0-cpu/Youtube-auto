@@ -70,9 +70,10 @@ def _estimate_words(text: str, duration: float) -> list[dict]:
     return out
 
 
-def synth(text: str, out_mp3: Path, cfg: dict) -> tuple[float, list[dict]]:
-    """Genera la voz de un plano. Devuelve (duración_s, palabras con tiempos relativos)."""
-    v = cfg["voz"]
+def synth(text: str, out_mp3: Path, cfg: dict, voice: dict | None = None) -> tuple[float, list[dict]]:
+    """Genera la voz de un plano. `voice` permite otra voz/tono (personajes de los sketches).
+    Devuelve (duración_s, palabras con tiempos relativos)."""
+    v = {**cfg["voz"], **(voice or {})}
     if os.environ.get("VOZ_MOTOR", v.get("motor", "edge")) == "edge":
         last_err = None
         for _ in range(3):

@@ -55,3 +55,22 @@ publicacion:
   max_por_dia: 2
   categoria_id: "24"             # 24 = Entretenimiento
   privacidad_si_no_auditado: "private"
+
+# Sketches de comedia (botón "Comedia GTA")
+comedia:
+  tema: "situaciones graciosas que pasan jugando a GTA 6 con tus amigos"
+  ambiente: "ciudad tropical de neones al atardecer, playas, palmeras, coches deportivos y policía (estilo GTA 6, diseño propio)"
+  variante: "España"              # cómo hablan los personajes
+  palabrotas: "moderadas"         # ninguna | moderadas | muchas
+  videos: 3
+  busquedas: ["GTA 6", "GTA VI", "GTA 6 memes", "GTA 6 amigos", "GTA online con amigos", "momentos graciosos GTA"]
+  narrador: "narrador"
+  voces:                          # voces gratuitas de Edge con distinto tono para cada personaje
+    narrador:     { voz: "es-ES-AlvaroNeural",  velocidad: "+8%",  tono: "-2Hz" }
+    chico_1:      { voz: "es-ES-AlvaroNeural",  velocidad: "+14%", tono: "+10Hz" }
+    chico_2:      { voz: "es-GQ-JavierNeural",  velocidad: "+10%", tono: "+0Hz" }
+    chico_grave:  { voz: "es-ES-AlvaroNeural",  velocidad: "+2%",  tono: "-14Hz" }
+    chico_latino: { voz: "es-MX-JorgeNeural",   velocidad: "+10%", tono: "+0Hz" }
+    chica_1:      { voz: "es-ES-ElviraNeural",  velocidad: "+10%", tono: "+0Hz" }
+    chica_2:      { voz: "es-ES-ElviraNeural",  velocidad: "+14%", tono: "+12Hz" }
+    chica_latina: { voz: "es-MX-DaliaNeural",   velocidad: "+10%", tono: "+0Hz" }

@@ -19,7 +19,34 @@ def _fast_lowpass(x: np.ndarray, k: int) -> np.ndarray:
     return np.convolve(x, kernel, mode="same")
 
 
-def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: Path, seed: int = 1, volume: float = 0.16, sfx: bool = True):
+def _synth_loop(n: int, rng) -> np.ndarray:
+    """Base synthwave animada (para comedia): bombo, bajo arpegiado y charles a ~105 BPM."""
+    t = np.arange(n) / SR
+    bpm = rng.choice([100, 105, 110])
+    beat = 60 / bpm
+    root = rng.choice([55.0, 58.27, 61.74, 65.41])
+    prog = [1.0, 1.0, 0.749, 0.841]  # i - i - VI - VII (aprox.)
+    out = np.zeros(n)
+    eighth = beat / 2
+    k = 0
+    while k * eighth < n / SR:
+        i0 = int(k * eighth * SR)
+        L = min(int(eighth * SR), n - i0)
+        tt = np.arange(L) / SR
+        bar = int(k // 8) % 4
+        f = root * prog[bar] * (2 if k % 4 == 3 else 1)
+        saw = 2 * ((tt * f) % 1) - 1
+        out[i0:i0 + L] += 0.35 * saw * np.exp(-tt * 6)
+        if k % 2 == 0:  # bombo en negras
+            out[i0:i0 + L] += 0.9 * np.sin(2 * np.pi * (50 + 90 * np.exp(-tt * 30)) * tt) * np.exp(-tt * 9)
+        hat = rng.standard_normal(L) * np.exp(-tt * 60) * 0.12
+        out[i0:i0 + L] += np.diff(np.concatenate([[0], hat]))
+        k += 1
+    pad = 0.12 * np.sin(2 * np.pi * root * 2 * t) * (0.5 + 0.5 * np.sin(2 * np.pi * 0.1 * t))
+    return out + pad
+
+
+def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: Path, seed: int = 1, volume: float = 0.16, sfx: bool = True, style: str = "dark"):
     rng = np.random.default_rng(seed)
     n = int(duration * SR) + SR
     t = np.arange(n) / SR
@@ -35,6 +62,8 @@ def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: 
     ) * lfo
     air = _fast_lowpass(rng.standard_normal(n), 60) * 2.5
     track = 0.75 * pad + 0.25 * air
+    if style == "synth":
+        track = _synth_loop(n, rng)
 
     if sfx:
         for c in cuts:
