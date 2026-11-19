@@ -77,6 +77,10 @@ def _similarity(target: str, heard: str) -> float:
         if tag == "equal":
             ok += i2 - i1
         elif tag == "replace":
+            # Palabra partida o unida por Whisper ("curiosi diario" / "curiosidario"): comparar el bloque junto
+            if difflib.SequenceMatcher(None, "".join(tw[i1:i2]), "".join(hw[j1:j2])).ratio() >= 0.9:
+                ok += i2 - i1
+                continue
             for x, y in zip(tw[i1:i2], hw[j1:j2]):
                 if difflib.SequenceMatcher(None, x, y).ratio() >= 0.85:
                     ok += 1

@@ -7,6 +7,7 @@ canal:
   tarjeta_final:
     titulo: "Sígueme"
     subtitulo: "para más curiosidades"
+    locucion: "Sígueme para más curiosidades. Curiosidario."   # lo dice el narrador al final ("" = sin voz)
 
 analisis:
   regiones: ["ES", "MX", "AR", "CO", "US"]   # países cuyo "Tendencias" se mira

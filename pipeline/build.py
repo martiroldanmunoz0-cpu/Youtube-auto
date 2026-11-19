@@ -49,7 +49,19 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
         beats.append({**b, "speaker": sp, "start": bstart, "end": round(end - gap / 2, 3), "voice_dur": round(start + dur - bstart, 3)})
         parts.append((mp3, start))
         t = end
-    total = t + END_CARD
+    # Despedida hablada en la tarjeta final ("Sígueme para más curiosidades...") con la voz del narrador
+    end_dur = END_CARD
+    outro = (cfg["canal"].get("tarjeta_final") or {}).get("locucion", "").strip()
+    if outro:
+        try:
+            mp3 = work / "outro.mp3"
+            odur, _ = synth(outro, mp3, cfg, narrator)
+            parts.append((mp3, t + 0.35))
+            end_dur = max(END_CARD, odur + 0.9)
+        except Exception as e:
+            print(f"  aviso: no se pudo generar la despedida hablada ({e})")
+            outro = ""
+    total = t + end_dur
     beats[-1]["end"] = round(total, 3)
 
     # 2) Pista de voz: cada plano colocado en su instante
@@ -70,13 +82,16 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
     m = cfg.get("musica", {})
     make_soundtrack(total, cuts, hits, music, seed=zlib.crc32(sid.encode()) % 10_000, volume=m.get("volumen_ambiente", 0.16), sfx=m.get("efectos", True), style=story.get("music", "dark"))
 
-    # 4) Mezcla final (la música baja cuando habla la voz)
+    # 4) Mezcla final (la música baja cuando habla la voz).
+    # En dos pasos: normalizar la voz y luego mezclar con duración fija (en un solo paso ffmpeg recortaba el final).
+    voice_norm = work / "voice_norm.wav"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(voice), "-af", "loudnorm=I=-15:TP=-1.5:LRA=7", "-ar", "44100", str(voice_norm)], check=True)
     audio = work / "audio.m4a"
     subprocess.run([
-        "ffmpeg", "-y", "-loglevel", "error", "-i", str(voice), "-i", str(music), "-filter_complex",
-        "[0:a]loudnorm=I=-15:TP=-1.5:LRA=7,asplit=2[vo][sc];[1:a][sc]sidechaincompress=threshold=0.04:ratio=6:attack=20:release=400[bg];"
-        "[vo][bg]amix=inputs=2:normalize=0,alimiter=limit=0.95[out]",
-        "-map", "[out]", "-c:a", "aac", "-b:a", "192k", str(audio),
+        "ffmpeg", "-y", "-loglevel", "error", "-i", str(voice_norm), "-i", str(music), "-filter_complex",
+        "[0:a]asplit=2[vo][sc];[1:a][sc]sidechaincompress=threshold=0.04:ratio=6:attack=20:release=400[bg];"
+        "[vo][bg]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95,apad[out]",
+        "-map", "[out]", "-t", f"{total:.3f}", "-c:a", "aac", "-b:a", "192k", str(audio),
     ], check=True)
 
     # 5) Timeline -> render
@@ -85,7 +100,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
         "seed": sid, "fps": 30, "total": round(total, 3),
         "beats": beats, "words": words,
         "cast": cast, "subtitle_style": story.get("subtitle_style", "page"),
-        "endcard": {"duration": END_CARD, "title": c["tarjeta_final"]["titulo"], "subtitle": c["tarjeta_final"]["subtitulo"], "handle": c["handle"]},
+        "endcard": {"duration": round(end_dur, 3), "title": c["tarjeta_final"]["titulo"], "subtitle": c["tarjeta_final"]["subtitulo"], "handle": c["handle"]},
     }
     tl_path = out_dir / f"{sid}.timeline.json"
     write_json(tl_path, timeline)
@@ -94,7 +109,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
     # Miniatura para la página de revisión (fotograma del gancho)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.5", "-i", str(mp4), "-frames:v", "1", "-vf", "scale=360:-1", str(out_dir / f"{sid}.jpg")], check=True)
     # Revisor automático del vídeo final
-    story["qa"] = qa.check(mp4, timeline, " ".join(b["text"] for b in story["beats"]), END_CARD)
+    story["qa"] = qa.check(mp4, timeline, " ".join([b["text"] for b in story["beats"]] + ([outro] if outro else [])), end_dur)
     print("  revisión: " + ("✅ todo correcto" if not story["qa"] else "⚠️ " + " | ".join(story["qa"])), flush=True)
     return mp4
 

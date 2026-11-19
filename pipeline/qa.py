@@ -70,6 +70,12 @@ def check(mp4: Path, timeline: dict, script_text: str, end_card: float = 2.4) ->
     if words and words[-1]["end"] > fmt_dur - end_card + 0.2:
         problems.append("La narración termina encima de la tarjeta final (se corta la última frase)")
 
+    # 3b) Silencio total (sin voz NI música): señal de audio cortado
+    for m in re.finditer(r"silence_start: ([\d.]+)", _ffmpeg_log(mp4, af="silencedetect=noise=-55dB:d=0.4")):
+        st = float(m.group(1))
+        if st < total - 0.5:
+            problems.append(f"El sonido desaparece por completo en el segundo {st:.1f} (audio cortado)")
+
     # 4) Imagen: negros y congelados (ignorando el fundido inicial y la tarjeta final)
     body_end = total - end_card - 0.3
     for m in re.finditer(r"black_start:([\d.]+) black_end:([\d.]+)", _ffmpeg_log(mp4, vf="blackdetect=d=0.4:pix_th=0.06")):
