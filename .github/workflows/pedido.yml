@@ -29,9 +29,7 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: generar
-  cancel-in-progress: false
+# Sin cola: puedes lanzar varias tandas a la vez y se montan todas en paralelo.
 
 jobs:
   guiones:
@@ -163,8 +161,7 @@ jobs:
           git config user.email "shorts-bot@users.noreply.github.com"
           git add -A data || true
           git commit -m "Pedido especial generado" || echo "sin cambios"
-          git pull --rebase
-          git push
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; echo "reintento $i"; sleep $((i * 7)); done
 
       - name: Actualizar página de revisión
         run: python pipeline/pages.py

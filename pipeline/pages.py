@@ -29,14 +29,17 @@ def size_of(p: Path) -> int:
     return sum(f.stat().st_size for f in p.rglob("*") if f.is_file())
 
 
-def main():
+def build_and_push() -> int:
     rid = run_id()
     if PAGES.exists():
         shutil.rmtree(PAGES)
     PAGES.mkdir()
 
     # 1) Recuperar lo publicado antes
-    if git("ls-remote", "--heads", "origin", "gh-pages"):
+    base_sha = ""
+    head = git("ls-remote", "--heads", "origin", "gh-pages")
+    if head:
+        base_sha = head.split()[0]
         git("fetch", "--depth", "1", "origin", "gh-pages")
         archive = subprocess.run(["git", "archive", "FETCH_HEAD"], cwd=ROOT, check=True, capture_output=True).stdout
         subprocess.run(["tar", "-x", "-C", str(PAGES)], input=archive, check=True)
@@ -84,8 +87,25 @@ li{{margin:10px 0}}</style></head><body><main><h1>Tandas de vídeos</h1><ul>{ite
     g("add", "-A", ".")
     tree = g("write-tree")
     commit = g("commit-tree", tree, "-m", f"Revisión {rid}")
-    git("push", "-f", "origin", f"{commit}:refs/heads/gh-pages")
+    lease = f"--force-with-lease=gh-pages:{base_sha}" if base_sha else "--force-with-lease=gh-pages:"
+    git("push", lease, "origin", f"{commit}:refs/heads/gh-pages")
     print(f"Página actualizada con {len(tandas)} tandas")
+    return len(tandas)
+
+
+def main():
+    import time
+    for attempt in range(6):  # si otra tanda actualizó la página a la vez, se vuelve a juntar y se reintenta
+        try:
+            build_and_push()
+            return
+        except subprocess.CalledProcessError as e:
+            print(f"  reintento {attempt + 1}: otra tanda estaba actualizando la página ({(e.stderr or '').strip()[:120]})")
+            time.sleep(10 + attempt * 10)
+    raise SystemExit("No se pudo actualizar la página de revisión")
+
+
+
 
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ import anthropic
 
 import os
 
-from common import CATALOG, DATA, formato, load_config, pedido, read_json, run_id, week_dir, write_json
+from common import CATALOG, DATA, formato, load_config, load_history, pedido, read_json, run_id, week_dir, write_json
 
 client = anthropic.Anthropic()
 
@@ -634,7 +634,7 @@ def main():
     cfg = load_config()
     rid = run_id()
     wd = week_dir(rid)
-    history = read_json(DATA / "history.json", [])
+    history = load_history()
     use_batch = models(cfg)[2]
     request = pedido()
     fmt = formato()

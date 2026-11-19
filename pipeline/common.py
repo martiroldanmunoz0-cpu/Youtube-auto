@@ -48,6 +48,19 @@ def week_dir(wid: str) -> Path:
     return p
 
 
+def load_history() -> list[dict]:
+    """Historial de todas las tandas: data/history/<tanda>.json (+ el antiguo data/history.json), en orden."""
+    items = list(read_json(DATA / "history.json", []) or [])
+    for f in sorted((DATA / "history").glob("*.json")):
+        items += read_json(f, []) or []
+    items.sort(key=lambda h: h.get("ts", ""))
+    return items
+
+
+def history_file(rid: str) -> Path:
+    return DATA / "history" / f"{rid}.json"
+
+
 def read_json(path: Path, default=None):
     if not Path(path).exists():
         return default

@@ -4,7 +4,7 @@
 - Genera la página de revisión (site/) con los vídeos para verlos desde el móvil.
 - Abre un issue con una casilla por vídeo. Tú marcas los que te gustan y cierras el issue:
   eso dispara la programación en YouTube.
-- Guarda los metadatos en data/weeks/<semana>.json y actualiza data/history.json.
+- Guarda los metadatos en data/weeks/<semana>.json y el historial en data/history/<tanda>.json.
 """
 from __future__ import annotations
 
@@ -16,7 +16,9 @@ import subprocess
 import sys
 from pathlib import Path
 
-from common import DATA, ROOT, formato, load_config, pedido, read_json, run_id, week_dir, write_json
+import datetime as dt
+
+from common import DATA, ROOT, formato, history_file, load_config, pedido, read_json, run_id, week_dir, write_json
 
 
 def gh(*args: str, input_text: str | None = None) -> str:
@@ -153,10 +155,10 @@ def main():
     # 4) Estado para el paso de publicación + historial
     meta = [{k: s[k] for k in ("id", "title", "description", "tags", "video")} for s in stories]
     write_json(DATA / "weeks" / f"{wid}.json", {"semana": wid, "pedido": req, "tag": tag, "issue": url, "videos": meta})
-    history = read_json(DATA / "history.json", [])
-    history += [{"id": s["id"], "titulo": s["title"], "tipo": s.get("idea", {}).get("tipo"),
-                 "premisa": s.get("idea", {}).get("premisa", ""), "gancho": s.get("idea", {}).get("gancho", "")} for s in stories]
-    write_json(DATA / "history.json", history[-1000:])
+    ts = dt.datetime.now(dt.timezone.utc).isoformat()
+    write_json(history_file(wid), [{"id": s["id"], "titulo": s["title"], "tipo": s.get("idea", {}).get("tipo"), "ts": ts,
+                                    "premisa": s.get("idea", {}).get("premisa", ""), "gancho": s.get("idea", {}).get("gancho", "")}
+                                   for s in stories])
 
 
 if __name__ == "__main__":
