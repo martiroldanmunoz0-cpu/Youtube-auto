@@ -7,6 +7,9 @@ Uso:
 from __future__ import annotations
 
 import argparse
+import shutil
+import json
+import hashlib
 import subprocess
 import sys
 import tempfile
@@ -23,10 +26,29 @@ LEAD_IN = 0.2   # silencio inicial
 END_CARD = 2.4  # tarjeta final (s)
 
 
-def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
+VOICE_ISSUES = ("narración", "La voz", "Silencio", "pisadas")
+
+
+def cached_synth(cache: Path, text: str, cfg: dict, voice: dict | None) -> tuple[Path, float, list[dict]]:
+    """Voz de una frase con caché: si ya se generó (y pasó la revisión de Whisper) se reutiliza tal cual."""
+    key = hashlib.sha1(json.dumps([text, voice or cfg["voz"]], ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:16]
+    mp3, meta = cache / f"{key}.mp3", cache / f"{key}.json"
+    if mp3.exists() and meta.exists():
+        m = json.loads(meta.read_text(encoding="utf-8"))
+        return mp3, m["dur"], m["words"]
+    cache.mkdir(parents=True, exist_ok=True)
+    dur, ws = synth(text, mp3, cfg, voice)  # aquí dentro Whisper revisa la frase y la repite si falla
+    meta.write_text(json.dumps({"text": text, "dur": dur, "words": ws}, ensure_ascii=False), encoding="utf-8")
+    return mp3, dur, ws
+
+
+def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True) -> Path:
     sid = story["id"]
     work = Path(tempfile.mkdtemp(prefix=f"{sid}-"))
-    print(f"\n== {sid}: {story['title']}")
+    cache = out_dir / f"{sid}_voces"
+    if not reuse_voice and cache.exists():
+        shutil.rmtree(cache)  # el revisor encontró un fallo de voz: se generan de nuevo (y se revisan otra vez)
+    print(f"\n== {sid}: {story['title']}" + ("" if reuse_voice else " (regenerando voces)"))
 
     # 1) Voz por plano -> tiempos (en los sketches, cada personaje tiene su voz)
     cast = story.get("cast") or {}
@@ -36,10 +58,9 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
     t = LEAD_IN
     beats, words, parts = [], [], []
     for i, b in enumerate(story["beats"]):
-        mp3 = work / f"b{i:02d}.mp3"
         sp = b.get("speaker") or "narrador"
         voice = presets.get(cast[sp]["voice"]) if sp in cast else narrator
-        dur, ws = synth(b["text"], mp3, cfg, voice)
+        mp3, dur, ws = cached_synth(cache, b["text"], cfg, voice)
         start = t
         for w in ws:
             words.append({"w": w["w"], "b": i, "sp": sp, "start": round(start + w["start"], 3), "end": round(start + w["end"], 3)})
@@ -54,8 +75,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict) -> Path:
     outro = (cfg["canal"].get("tarjeta_final") or {}).get("locucion", "").strip()
     if outro:
         try:
-            mp3 = work / "outro.mp3"
-            odur, _ = synth(outro, mp3, cfg, narrator)
+            mp3, odur, _ = cached_synth(cache, outro, cfg, narrator)
             parts.append((mp3, t + 0.35))
             end_dur = max(END_CARD, odur + 0.9)
         except Exception as e:
@@ -135,8 +155,9 @@ def main():
             st["video"] = build_story(st, wd, cfg).name
             if st.get("qa"):  # el revisor encontró algo: se monta otra vez y se queda el mejor
                 first = st["qa"]
-                print("  vuelvo a montarlo para intentar corregirlo...", flush=True)
-                build_story(st, wd, cfg)
+                voice_problem = any(k in q for q in first for k in VOICE_ISSUES)
+                print("  vuelvo a montarlo " + ("regenerando las voces..." if voice_problem else "reutilizando las voces ya revisadas..."), flush=True)
+                build_story(st, wd, cfg, reuse_voice=not voice_problem)
                 if len(st["qa"]) > len(first):
                     st["qa"] = first
             ok.append(st)
