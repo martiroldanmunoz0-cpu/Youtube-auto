@@ -10,6 +10,7 @@ import sys
 from google_auth_oauthlib.flow import InstalledAppFlow
 
 SCOPES = [
+    "https://www.googleapis.com/auth/youtube",           # gestionar vídeos (cambiar la fecha de publicación)
     "https://www.googleapis.com/auth/youtube.upload",
     "https://www.googleapis.com/auth/youtube.readonly",
 ]

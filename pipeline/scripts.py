@@ -375,7 +375,11 @@ def taste_block(history: list[dict], cfg: dict) -> str:
     """Estilo preferido del dueño + ejemplos de lo que aprobó y descartó (aprende de cada revisión)."""
     style = (cfg["generacion"].get("estilo_preferido") or "").strip()
     liked = [h["titulo"] for h in history if h.get("aprobado") is True][-15:]
-    disliked = [h["titulo"] for h in history if h.get("aprobado") is False][-15:]
+    disliked = [h["titulo"] + (f" (motivo: {h['motivo']})" if h.get("motivo") else "") for h in history if h.get("aprobado") is False][-15:]
+    from collections import Counter  # noqa: PLC0415
+
+    razones = Counter(r.strip().lower() for h in history[-60:] if h.get("motivo")
+                      for r in h["motivo"].split("—")[0].split(",") if r.strip())
     out = ""
     if style:
         out += f"ESTILO QUE PREFIERE EL DUEÑO DEL CANAL (prioridad alta):\n{style}\n\n"
@@ -383,6 +387,9 @@ def taste_block(history: list[dict], cfg: dict) -> str:
         out += f"Vídeos que APROBÓ (haz más como estos):\n{json.dumps(liked, ensure_ascii=False)}\n\n"
     if disliked:
         out += f"Vídeos que DESCARTÓ (evita ese enfoque):\n{json.dumps(disliked, ensure_ascii=False)}\n\n"
+    if razones:
+        out += ("Motivos por los que más descarta vídeos (CORRÍGELOS, son su feedback directo): "
+                + ", ".join(f"{k} ({v})" for k, v in razones.most_common(6)) + "\n\n")
     return out
 
 

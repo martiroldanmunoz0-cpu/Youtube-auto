@@ -28,6 +28,19 @@ def gh(*args: str) -> str:
     return subprocess.run(["gh", *args], check=True, capture_output=True, text=True).stdout.strip()
 
 
+def motivos_descarte(issue: int) -> dict[str, str]:
+    """Motivos que el dueño marcó en el panel al descartar ("🗑️ Motivo de descarte · `id`: ...")."""
+    try:
+        data = json.loads(gh("issue", "view", str(issue), "--json", "comments"))
+    except Exception:  # noqa: BLE001
+        return {}
+    out = {}
+    for c in data.get("comments", []):
+        for m in re.finditer(r"Motivo de descarte · `([^`]+)`: (.+)", c.get("body", "")):
+            out[m.group(1)] = m.group(2).strip()[:300]
+    return out
+
+
 def approved_from_issue(body: str) -> tuple[str | None, list[str]]:
     wid = re.search(r"<!-- semana:(\S+) -->", body)
     ids = re.findall(r"^\s*[-*] \[[xX]\] `([^`]+)`", body, flags=re.M)
@@ -247,6 +260,7 @@ def main():
         week = read_json(DATA / "weeks" / f"{wid}.json") if wid else None
         if not week:
             sys.exit(f"No encuentro los datos de la semana {wid}")
+        motivos = motivos_descarte(args.issue)
         already = {q["id"] for q in queue}
         chosen = [v for v in week["videos"] if v["id"] in ids and v["id"] not in already]
         # Aprende de la revisión: marca en el historial qué vídeos aprobaste y cuáles no
@@ -258,6 +272,8 @@ def main():
             for h in hist:
                 if h.get("id") in week_ids:
                     h["aprobado"] = h["id"] in ids
+                    if h["id"] in motivos and not h["aprobado"]:
+                        h["motivo"] = motivos[h["id"]]
             write_json(path, hist)
         if not chosen:
             gh("issue", "comment", str(args.issue), "--body", "🗑️ Descartado (o ya estaba programado). Si querías publicarlo, pulsa **Reopen issue**, marca la casilla y vuelve a cerrarlo.")

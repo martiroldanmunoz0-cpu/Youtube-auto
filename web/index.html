@@ -98,6 +98,26 @@ nav .n.bad{background:var(--bad);color:#fff}
 .cal .d.today .num{color:var(--accent);font-weight:700}
 .chip{font-size:11px;border-radius:6px;padding:1px 4px;background:rgba(143,162,255,.18);color:#c9d2ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chip.past{background:rgba(95,211,138,.15);color:var(--ok)}
+.seg{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px;margin-bottom:10px}
+.seg button{background:none;border:0;border-radius:999px;padding:6px 14px;color:var(--muted);cursor:pointer}
+.seg button.on{background:var(--card2);color:var(--text)}
+.week{display:flex;flex-direction:column;gap:6px}
+.wday{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 10px;display:flex;gap:10px;align-items:flex-start}
+.wday.today{border-color:var(--accent)}
+.wday .dn{min-width:52px;text-align:center;color:var(--muted);font-size:12px;line-height:1.2;padding-top:4px}
+.wday .dn b{display:block;font-size:20px;color:var(--text)}
+.wday.today .dn b{color:var(--accent)}
+.wday .its{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.wday .none{color:var(--muted);font-size:13px;padding-top:8px}
+.vchip{display:flex;gap:8px;align-items:center;width:100%;text-align:left;border:0;border-radius:9px;padding:7px 10px;background:rgba(143,162,255,.16);color:#d7ddff;font-size:14px;cursor:pointer}
+.vchip b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.vchip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.vchip.past{background:rgba(95,211,138,.12);color:var(--ok);cursor:default}
+.vchip.busy{opacity:.55}
+.cal .vchip{font-size:11px;padding:2px 5px;gap:4px;border-radius:6px}
+.reasons{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.reasons label{display:flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer}
+.reasons input{accent-color:var(--accent)}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin:10px 0}
 .legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;background:rgba(143,162,255,.5)}
 .legend span.p::before{background:rgba(95,211,138,.5)}
@@ -141,8 +161,9 @@ nav .n.bad{background:var(--bad);color:#fff}
 
   <section id="calendario">
     <div class="cal-head"><button class="iconbtn" id="cal-prev">‹</button><h3 id="cal-title"></h3><button class="iconbtn" id="cal-next">›</button><button class="iconbtn" id="cal-today">Hoy</button></div>
-    <div class="cal" id="cal"></div>
-    <div class="legend"><span>Programado</span><span class="p">Publicado</span></div>
+    <div class="seg"><button data-v="semana">Semana</button><button data-v="mes">Mes</button></div>
+    <div id="cal-body"></div>
+    <div class="legend"><span>Programado (tócalo para cambiar día y hora)</span><span class="p">Publicado</span></div>
     <div id="cal-day"></div>
   </section>
 
@@ -215,6 +236,25 @@ nav .n.bad{background:var(--bad);color:#fff}
   <p style="font-size:13px;color:var(--muted)">El panel te avisará arriba 14 días antes de que caduque (GitHub también te manda un correo). Cuando caduque, repite estos pasos y pega la nueva.</p>
   <div class="actions"><button class="btn no" id="tok-del" type="button">Quitar</button><button class="btn main" id="tok-save" type="button">Guardar</button></div>
   <div class="actions"><button class="btn no" id="dlg-close" type="button">Cerrar</button></div>
+</dialog>
+
+<dialog id="dlg-move">
+  <h3 style="margin-top:0">Cambiar día y hora</h3>
+  <p id="mv-title" style="font-weight:700;margin:0 0 4px"></p>
+  <p id="mv-now" class="hint" style="margin:0 0 12px"></p>
+  <div class="inline"><input type="date" id="mv-date" style="flex:1"><input type="time" id="mv-time" step="300" style="width:130px"></div>
+  <p class="hint" style="margin-top:10px">Hora de España. Se cambia también en YouTube (tarda 1–2 minutos).</p>
+  <p id="mv-warn" style="color:var(--accent);font-size:14px;margin:6px 0"></p>
+  <div class="actions"><button class="btn no" id="mv-cancel" type="button">Cancelar</button><button class="btn main" id="mv-save" type="button">Guardar</button></div>
+</dialog>
+
+<dialog id="dlg-discard">
+  <h3 style="margin-top:0">¿Por qué lo descartas?</h3>
+  <p id="dc-title" style="font-weight:700;margin:0"></p>
+  <p class="hint" style="margin:6px 0 0">Marca lo que no te ha gustado: el guionista lo tendrá en cuenta en los próximos vídeos.</p>
+  <div class="reasons" id="dc-reasons"></div>
+  <textarea id="dc-text" placeholder="Algo más (opcional)" style="min-height:70px"></textarea>
+  <div class="actions"><button class="btn no" id="dc-cancel" type="button">Cancelar</button><button class="btn main" id="dc-ok" type="button" style="background:var(--bad);color:#fff">Descartar</button></div>
 </dialog>
 
 <div class="toast" id="toast"></div>
@@ -332,6 +372,24 @@ nav .n.bad{background:var(--bad);color:#fff}
 
   // ---------- Revisar ----------
   const decisions = {}; // issue -> {vid: true/false} (para issues antiguos con varios vídeos)
+  const motivos = {};   // issue -> {vid: "motivo"}
+  const REASONS = ["Gancho flojo", "Tema aburrido", "Voz rara", "Escenas feas o repetidas", "Demasiado largo", "Datos dudosos", "No encaja en el canal", "Portada fea"];
+  function askDiscard(title) {
+    return new Promise(resolve => {
+      $("#dc-title").textContent = title;
+      $("#dc-reasons").innerHTML = REASONS.map(r => `<label><input type="checkbox" value="${esc(r)}">${esc(r)}</label>`).join("");
+      $("#dc-text").value = "";
+      const dlg = $("#dlg-discard");
+      const done = v => { dlg.close(); $("#dc-ok").onclick = $("#dc-cancel").onclick = null; resolve(v); };
+      $("#dc-ok").onclick = () => {
+        const rs = [...dlg.querySelectorAll("input:checked")].map(i => i.value.toLowerCase());
+        const txt = $("#dc-text").value.trim().replace(/\s+/g, " ");
+        done((rs.join(", ") || "sin motivo") + (txt ? " — " + txt : ""));
+      };
+      $("#dc-cancel").onclick = () => done(null);
+      dlg.showModal();
+    });
+  }
   let pending = [];
   async function loadReview() {
     const el = $("#revisar-list");
@@ -377,7 +435,12 @@ nav .n.bad{background:var(--bad);color:#fff}
     if (needToken()) return;
     const num = +b.dataset.i, vid = b.dataset.v, yes = b.dataset.act === "yes";
     const p = pending.find(x => x.issue.number === num); if (!p) return;
-    if (!yes && !confirm("¿Descartar este vídeo? No se publicará.")) return;
+    if (!yes) {
+      const v = p.vids.find(x => x.id === vid);
+      const m = await askDiscard(v ? v.title : vid);
+      if (m === null) return;
+      (motivos[num] ||= {})[vid] = m;
+    }
     (decisions[num] ||= {})[vid] = yes;
     const done = p.vids.every(v => decisions[num][v.id] !== undefined);
     if (!done) { loadReviewFromCache(); return; }
@@ -388,8 +451,14 @@ nav .n.bad{background:var(--bad);color:#fff}
         const mark = decisions[num][v.id] ? "x" : " ";
         body = body.replace(new RegExp("^(\\s*[-*] )\\[[ xX]\\]( `" + v.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "`)", "m"), `$1[${mark}]$2`);
       }
+      const ms = Object.entries(motivos[num] || {}).filter(([v]) => decisions[num][v] === false);
+      if (ms.length) {
+        await gh(`/issues/${num}/comments`, {method: "POST", headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({body: ms.map(([v, m]) => `🗑️ Motivo de descarte · \`${v}\`: ${m}`).join("\n")})});
+      }
       await gh(`/issues/${num}`, {method: "PATCH", headers: {"Content-Type": "application/json"},
         body: JSON.stringify({body, state: "closed", state_reason: "completed"})});
+      delete motivos[num];
       const nYes = Object.values(decisions[num]).filter(Boolean).length;
       toast(nYes ? "✓ Hecho. Se programará en YouTube en 1–2 minutos (mira “Programados”)." : "Descartado.");
       delete decisions[num];
@@ -461,38 +530,145 @@ nav .n.bad{background:var(--bad);color:#fff}
   tickCountdown(); setInterval(tickCountdown, 1000);
 
   // ---------- Calendario ----------
-  let calMonth = null, calSel = null;
-  function renderCalendar() {
-    const now = new Date();
-    const todayK = dayKey(now);
-    if (!calMonth) { const [y, m] = todayK.split("-").map(Number); calMonth = {y, m}; }
-    const {y, m} = calMonth;
-    $("#cal-title").textContent = new Intl.DateTimeFormat("es-ES", {month: "long", year: "numeric", timeZone: "UTC"}).format(Date.UTC(y, m - 1, 15));
+  let calMonth = null, calSel = null, calWeek = null;
+  let calView = store.get("calView") || (matchMedia("(max-width: 700px)").matches ? "semana" : "mes");
+  const busyIds = new Set();
+  const chipHtml = (q, now) => {
+    const past = q.t <= now, busy = busyIds.has(q.id);
+    return `<button class="vchip${past ? " past" : ""}${busy ? " busy" : ""}" ${past ? "" : `data-move="${esc(q.id)}"`} title="${esc(cleanTitle(q.title))}"><b>${esc(fmtTime(q.t))}</b><span>${busy ? "cambiando… " : ""}${esc(cleanTitle(q.title))}</span></button>`;
+  };
+  function itemsByDay() {
     const byDay = {};
     for (const q of queue) if (q.publish_at) { const t = new Date(q.publish_at); (byDay[dayKey(t)] ||= []).push({...q, t}); }
     Object.values(byDay).forEach(a => a.sort((p, q) => p.t - q.t));
+    return byDay;
+  }
+  function mondayOf(k) { const d = new Date(k + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - (d.getUTCDay() + 6) % 7); return d; }
+  function renderCalendar() {
+    const now = new Date(), todayK = dayKey(now), byDay = itemsByDay();
+    document.querySelectorAll(".seg button").forEach(b => b.classList.toggle("on", b.dataset.v === calView));
+    if (calView === "semana") {
+      if (!calWeek) calWeek = mondayOf(todayK);
+      const end = new Date(calWeek); end.setUTCDate(end.getUTCDate() + 6);
+      const f = new Intl.DateTimeFormat("es-ES", {day: "numeric", month: "short", timeZone: "UTC"});
+      $("#cal-title").textContent = `${f.format(calWeek)} – ${f.format(end)}`;
+      let html = `<div class="week">`;
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(calWeek); d.setUTCDate(d.getUTCDate() + i);
+        const k = d.toISOString().slice(0, 10), items = byDay[k] || [];
+        const wd = new Intl.DateTimeFormat("es-ES", {weekday: "short", timeZone: "UTC"}).format(d);
+        html += `<div class="wday${k === todayK ? " today" : ""}"><div class="dn">${esc(wd)}<b>${d.getUTCDate()}</b></div><div class="its">${
+          items.length ? items.map(q => chipHtml(q, now)).join("") : `<div class="none">—</div>`}</div></div>`;
+      }
+      $("#cal-body").innerHTML = html + `</div>`;
+      $("#cal-day").innerHTML = "";
+      return;
+    }
+    if (!calMonth) { const [y, m] = todayK.split("-").map(Number); calMonth = {y, m}; }
+    const {y, m} = calMonth;
+    $("#cal-title").textContent = new Intl.DateTimeFormat("es-ES", {month: "long", year: "numeric", timeZone: "UTC"}).format(Date.UTC(y, m - 1, 15));
     const first = new Date(Date.UTC(y, m - 1, 1));
-    const offset = (first.getUTCDay() + 6) % 7; // lunes primero
+    const offset = (first.getUTCDay() + 6) % 7;
     let html = ["L", "M", "X", "J", "V", "S", "D"].map(d => `<div class="dow">${d}</div>`).join("");
     for (let i = 0; i < 42; i++) {
       const d = new Date(Date.UTC(y, m - 1, 1 - offset + i));
       if (i >= 35 && d.getUTCMonth() !== m - 1) break;
-      const k = d.toISOString().slice(0, 10);
-      const items = byDay[k] || [];
+      const k = d.toISOString().slice(0, 10), items = byDay[k] || [];
       const cls = ["d", d.getUTCMonth() !== m - 1 ? "out" : "", k === todayK ? "today" : "", k === calSel ? "sel" : ""].join(" ");
-      html += `<div class="${cls}" data-k="${k}"><span class="num">${d.getUTCDate()}</span>${items.map(q =>
-        `<span class="chip${q.t <= now ? " past" : ""}" title="${esc(cleanTitle(q.title))}">${esc(fmtTime(q.t))}</span>`).join("")}</div>`;
+      html += `<div class="${cls}" data-k="${k}"><span class="num">${d.getUTCDate()}</span>${items.map(q => chipHtml(q, now)).join("")}</div>`;
     }
-    $("#cal").innerHTML = html;
+    $("#cal-body").innerHTML = `<div class="cal">${html}</div>`;
     const sel = calSel && byDay[calSel];
-    $("#cal-day").innerHTML = calSel ? `<h3>${esc(fmtDay(new Date(calSel + "T12:00:00Z")))}</h3>` + (sel ? `<div class="list">${sel.map(q =>
-      `<div class="row"><div class="when">${esc(fmtTime(q.t))}</div><div class="what"><b>${esc(cleanTitle(q.title))}</b><div class="meta">${q.t <= now ? "publicado" : "programado"}</div></div></div>`).join("")}</div>`
-      : `<div class="empty">Nada este día.</div>`) : `<p class="hint">Toca un día para ver sus vídeos.</p>`;
+    $("#cal-day").innerHTML = calSel ? `<h3>${esc(fmtDay(new Date(calSel + "T12:00:00Z")))}</h3>` + (sel ? `<div class="its" style="display:flex;flex-direction:column;gap:6px">${sel.map(q => chipHtml(q, now)).join("")}</div>`
+      : `<div class="empty">Nada este día.</div>`) : "";
   }
-  $("#cal").addEventListener("click", e => { const d = e.target.closest("[data-k]"); if (d) { calSel = d.dataset.k; renderCalendar(); } });
-  $("#cal-prev").onclick = () => { calMonth.m--; if (calMonth.m < 1) { calMonth.m = 12; calMonth.y--; } renderCalendar(); };
-  $("#cal-next").onclick = () => { calMonth.m++; if (calMonth.m > 12) { calMonth.m = 1; calMonth.y++; } renderCalendar(); };
-  $("#cal-today").onclick = () => { calMonth = null; calSel = dayKey(new Date()); renderCalendar(); };
+  document.querySelector(".seg").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; calView = b.dataset.v; store.set("calView", calView); renderCalendar(); });
+  $("#calendario").addEventListener("click", e => {
+    const mv = e.target.closest("[data-move]");
+    if (mv) { e.stopPropagation(); openMove(mv.dataset.move); return; }
+    const d = e.target.closest("[data-k]"); if (d) { calSel = d.dataset.k; renderCalendar(); }
+  });
+  $("#cal-prev").onclick = () => {
+    if (calView === "semana") { calWeek.setUTCDate(calWeek.getUTCDate() - 7); }
+    else { calMonth.m--; if (calMonth.m < 1) { calMonth.m = 12; calMonth.y--; } }
+    renderCalendar();
+  };
+  $("#cal-next").onclick = () => {
+    if (calView === "semana") { calWeek.setUTCDate(calWeek.getUTCDate() + 7); }
+    else { calMonth.m++; if (calMonth.m > 12) { calMonth.m = 1; calMonth.y++; } }
+    renderCalendar();
+  };
+  $("#cal-today").onclick = () => { calMonth = null; calWeek = null; calSel = dayKey(new Date()); renderCalendar(); };
+
+  // Cambiar día y hora (también en YouTube)
+  let moving = null;
+  function madridParts(d) {
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23"}).formatToParts(d).map(x => [x.type, x.value]));
+    return {date: `${p.year}-${p.month}-${p.day}`, time: `${p.hour}:${p.minute}`};
+  }
+  function madridToDate(date, time) { // hora de España -> instante real
+    const guess = new Date(`${date}T${time}:00Z`);
+    for (let i = 0; i < 3; i++) { const p = madridParts(guess); const diff = (new Date(`${p.date}T${p.time}:00Z`) - new Date(`${date}T${time}:00Z`)); guess.setTime(guess.getTime() - diff); }
+    return guess;
+  }
+  function openMove(id) {
+    if (needToken()) return;
+    const q = queue.find(x => x.id === id); if (!q) return;
+    moving = q;
+    const cur = madridParts(new Date(q.publish_at));
+    $("#mv-title").textContent = cleanTitle(q.title);
+    $("#mv-now").textContent = "Ahora: " + fmtDay(new Date(q.publish_at)) + " a las " + fmtTime(new Date(q.publish_at));
+    $("#mv-date").value = cur.date; $("#mv-time").value = cur.time; $("#mv-warn").textContent = "";
+    $("#mv-date").min = madridParts(new Date()).date;
+    $("#dlg-move").showModal();
+  }
+  function checkMove() {
+    const date = $("#mv-date").value, time = $("#mv-time").value;
+    if (!date || !time) return "Elige día y hora.";
+    const when = madridToDate(date, time);
+    if (when < new Date(Date.now() + 20 * 60000)) return "Tiene que ser al menos 20 minutos en el futuro.";
+    const same = queue.filter(x => x.id !== moving.id && x.publish_at && madridParts(new Date(x.publish_at)).date === date);
+    const near = same.find(x => Math.abs(new Date(x.publish_at) - when) < 2 * 3600000);
+    let warn = "";
+    if (same.length >= 3) warn = `Ese día ya hay ${same.length} vídeos. `;
+    if (near) warn += `Queda a menos de 2 horas de «${cleanTitle(near.title).slice(0, 40)}».`;
+    $("#mv-warn").textContent = warn;
+    return null;
+  }
+  $("#mv-date").onchange = $("#mv-time").onchange = () => { const e = checkMove(); if (e) $("#mv-warn").textContent = e; };
+  $("#mv-cancel").onclick = () => $("#dlg-move").close();
+  $("#mv-save").onclick = async () => {
+    const err = checkMove(); if (err) { $("#mv-warn").textContent = err; return; }
+    const date = $("#mv-date").value, time = $("#mv-time").value, q = moving;
+    $("#dlg-move").close();
+    const before = q.publish_at;
+    try {
+      const t0 = Date.now();
+      await gh(`/actions/workflows/reprogramar.yml/dispatches`, {method: "POST", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ref: "main", inputs: {id: q.id, fecha: date, hora: time}})});
+      q.publish_at = madridToDate(date, time).toISOString(); busyIds.add(q.id);
+      renderCalendar(); renderProgramados();
+      toast("Cambiando la fecha en YouTube… (1–2 min)");
+      watchMove(q, before, t0);
+    } catch (e) { toast("No se pudo: " + e.message, true); }
+  };
+  async function watchMove(q, before, t0) {
+    for (let i = 0; i < 30; i++) {
+      await new Promise(r => setTimeout(r, 10000));
+      try {
+        const runs = (await gh(`/actions/workflows/reprogramar.yml/runs?per_page=5`)).workflow_runs
+          .filter(r => new Date(r.created_at) >= new Date(t0 - 60000) && (r.display_title || "").includes(q.id));
+        const r = runs[0];
+        if (!r || r.status !== "completed") continue;
+        busyIds.delete(q.id);
+        if (r.conclusion === "success") { toast("✓ Fecha cambiada también en YouTube"); await loadQueue(); }
+        else { q.publish_at = before; toast("✕ No se pudo cambiar en YouTube. Mira «detalles» o díselo a Claude.", true); window.open(r.html_url, "_blank"); }
+        renderCalendar(); renderProgramados();
+        return;
+      } catch {}
+    }
+    busyIds.delete(q.id); renderCalendar();
+  }
 
   // ---------- Problemas ----------
   async function loadProblems() {

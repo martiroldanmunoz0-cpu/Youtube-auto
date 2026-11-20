@@ -85,9 +85,6 @@ def youtube_client():
         client_id=os.environ["YT_CLIENT_ID"],
         client_secret=os.environ["YT_CLIENT_SECRET"],
         token_uri="https://oauth2.googleapis.com/token",
-        scopes=[
-            "https://www.googleapis.com/auth/youtube.upload",
-            "https://www.googleapis.com/auth/youtube.readonly",
-        ],
+        scopes=None,  # los permisos los decide el refresh token (subir; y cambiar fechas si se autorizó "youtube")
     )
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
