@@ -66,6 +66,7 @@ STORY_SCHEMA = {
                 "additionalProperties": False,
             },
         },
+        "pregunta_central": {"type": "string"},
         "gancho_elegido": {"type": "string"},
         "titulo": {"type": "string"},
         "descripcion": {"type": "string"},
@@ -86,7 +87,7 @@ STORY_SCHEMA = {
             },
         },
     },
-    "required": ["ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "planos"],
+    "required": ["pregunta_central", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "planos"],
     "additionalProperties": False,
 }
 
@@ -101,7 +102,7 @@ Reglas:
 sucesos reales y documentados). Nada de historias de terror ni ficción.
 - Fíjate en el MECANISMO que hace funcionar cada vídeo (curiosidad, "no sabía esto", sorpresa, comparación \
 exagerada, pregunta imposible), no en copiar su contenido. Nunca reutilices el guion de otro creador.
-- Cada idea: gancho que funcione en los 2 primeros segundos y un remate final que sorprenda o invite a comentar.
+- Cada idea: gancho que funcione en los 2 primeros segundos y DEJE CLARO EL TEMA con una pregunta (la gente no ve título ni descripción), y un remate final que sorprenda o invite a comentar.
 - Mezcla tipos: al menos 3 "que_pasaria_si" y 3 "dato_curioso" por tanda; no repitas temas del historial.
 - RIGOR: solo datos bien documentados de los que estés muy seguro. Los "¿qué pasaría si?" se basan en ciencia \
 real (lo que dicen los expertos), sin inventar cifras. Si un dato es dudoso, descarta la idea.
@@ -110,16 +111,17 @@ real (lo que dicen los expertos), sin inventar cifras. Si un dato es dudoso, des
 SYSTEM_WRITER = """Eres guionista de YouTube Shorts narrados en español neutro (comprensible en España y Latinoamérica). \
 Escribes guiones de 45-75 segundos que se convierten automáticamente en un vídeo animado.
 
-PRIMERO, EL GANCHO (lo más importante: decide si la gente se queda o desliza)
-Escribe 5 ganchos candidatos MUY distintos en "ganchos_candidatos", cada uno de un tipo:
-  a) segunda persona in media res ("Vas en un taxi y el conductor bloquea las puertas.")
-  b) afirmación chocante o imposible ("Este pueblo desapareció en una sola noche.")
-  c) cifra o dato concreto que sorprende ("Cada día te dan un millón de euros. Hay una trampa.")
-  d) pregunta que el espectador necesita responder ("¿Qué harías si tu madre te escribe a las tres de la mañana?")
-  e) contradicción / "lo que nadie te cuenta" ("Todos creen que es un accidente. No lo fue.")
-Puntúa cada uno de 1 a 10 con estos criterios: se entiende en menos de 2 segundos; abre una pregunta que solo se \
-resuelve viendo el vídeo; es concreto (nada genérico); no destripa el final; máximo 12 palabras. Copia el mejor \
-en "gancho_elegido" y úsalo LITERALMENTE como texto del plano 1.
+PRIMERO, LA PREGUNTA CENTRAL Y EL GANCHO (lo más importante: decide si la gente se queda o desliza)
+La gente ve el vídeo SIN título ni descripción: solo oye la voz. Si en los 3 primeros segundos no sabe de qué va, desliza.
+1) "pregunta_central": la pregunta que responde el vídeo, en una frase clara que entienda cualquiera sin contexto ("¿Qué pasaría si cada día bajaras más hondo en el océano?", "¿Cuánto aguanta tu cuerpo sin dormir?").
+2) "ganchos_candidatos": 5 ganchos MUY distintos. TODOS deben dejar claro el tema del vídeo (la pregunta central) y a la vez enganchar. Tipos:
+  a) pregunta "¿qué pasaría si…?" directa y concreta ("¿Qué pasaría si cada día bajaras diez veces más hondo en el mar?")
+  b) pregunta con reto o amenaza ("¿Hasta dónde podrías bajar en el océano antes de que te aplaste el agua?")
+  c) dato que choca + la pregunta ("En el fondo del mar el agua pesa como un camión encima de tu dedo. ¿Llegarías?")
+  d) segunda persona CON el tema dicho ("Vas a bajar al fondo del océano. Un día, un nivel más.")
+  e) contradicción / "lo que nadie te cuenta" sobre el tema ("Todos creen que el fondo del mar está vacío. No lo está.")
+Puntúa cada uno de 1 a 10. PRUEBA DEL DESCONOCIDO (si no la pasa, máximo 3 puntos): alguien que solo oye esa frase, sin ver nada más, ¿sabe de qué va el vídeo y quiere saber la respuesta? Además: se entiende en menos de 2 segundos; es concreto; no destripa el final; máximo 15 palabras. Copia el mejor en "gancho_elegido" y úsalo LITERALMENTE como texto del plano 1.
+PROHIBIDO empezar a mitad de la historia sin presentar el tema (MAL: "Día uno: bajas diez metros." BIEN: "¿Qué pasaría si cada día bajaras más hondo en el océano? Día uno: diez metros.").
 
 TÉCNICAS DE RETENCIÓN (úsalas todas)
 - Bucles abiertos: plantea una duda pronto y no la resuelvas hasta el final.
@@ -128,9 +130,11 @@ TÉCNICAS DE RETENCIÓN (úsalas todas)
 - Lo mejor va al final, y la última frase enlaza con la primera para que se vuelva a ver (bucle).
 
 ESTRUCTURA OBLIGATORIA
-1. GANCHO (plano 1, máx 12 palabras): una pregunta imposible, un dato que choca o una situación en segunda \
-persona. Nada de saludos, "hoy os cuento" ni introducciones. Ejemplos de tono: "¿Qué pasaría si la Tierra \
-dejara de girar?" / "Ahora mismo te estás moviendo a mil kilómetros por hora."
+1. GANCHO (plano 1, máx 15 palabras): el gancho elegido, que deja claro el tema con una pregunta (o un dato + la \
+pregunta). Nada de saludos, "hoy os cuento" ni introducciones. Ejemplos de tono: "¿Qué pasaría si la Tierra \
+dejara de girar?" / "¿Cuánto aguantarías sin dormir? Tu cuerpo empieza a fallar el día dos."
+   Plano 2: lo que está en juego o la regla del reto, para que quieran quedarse ("Cada día, diez veces más \
+hondo. Y al final hay algo que nadie esperaba.").
 2. DESARROLLO: frases cortas, ritmo rápido, un detalle concreto por plano. Cada 2-3 planos, una micro-pregunta o \
 tensión nueva para que nadie deslice.
 3. GIRO / REMATE: el último o penúltimo plano revela algo que cambia todo o deja una pregunta. Mejor si la última \
@@ -349,7 +353,7 @@ Reglas:
 - Cada versión debe ser claramente diferente: otro gancho, otra estructura (p. ej. narración en segunda persona, \
 historia de un personaje, cuenta atrás día a día, lista de datos, giro final inesperado), otro remate y otro \
 estilo visual (escenas distintas del catálogo).
-- Cada gancho debe enganchar en los 2 primeros segundos.
+- Cada gancho debe enganchar en los 2 primeros segundos y DEJAR CLARO EL TEMA con una pregunta (la gente no ve título ni descripción).
 - En 'estilo_visual' indica qué escenas del catálogo dominarán esa versión y cómo.
 - En 'inspirado_en' deja la lista vacía.
 - Si el pedido incluye hechos reales, usa solo datos bien documentados."""
@@ -408,6 +412,12 @@ def validate_story(story: dict) -> dict:
             "camera": p["camara"] if p["camara"] in cams else "push_in",
             "transition": p["transicion"] if p["transicion"] in trans else "fade",
         })
+    # Red de seguridad: el vídeo tiene que presentar su tema con una pregunta al principio
+    # (la gente lo ve sin título ni descripción). Si el guion no la tiene, se añade la pregunta central delante.
+    pregunta = re.sub(r"\s+", " ", story.get("pregunta_central") or "").strip()
+    if beats and pregunta.endswith("?") and not any("?" in b["text"] for b in beats[:2]):
+        beats.insert(0, {**beats[0], "text": pregunta, "camera": "push_in", "transition": "cut"})
+        print(f"  (añadida la pregunta inicial: «{pregunta}»)")
     title = story["titulo"].strip()
     if "#shorts" not in title.lower():
         title = (title[:88] + " #shorts").strip()
