@@ -42,17 +42,42 @@ def _parse(s: str) -> dt.datetime:
     return dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
 
 
+def _hours_for(p: dict, day: dt.date, k: int) -> list[tuple[int, int]]:
+    """Horas para un día con k vídeos. Admite el formato antiguo (lista) y el nuevo (por tipo de día)."""
+    h = p["horas"]
+    if isinstance(h, list):
+        lst = h[:k]
+    else:
+        tipo = h.get("fin_de_semana" if day.weekday() >= 5 else "laborable") or {}
+        lst = tipo.get(k) or tipo.get(str(k)) or []
+    return [tuple(map(int, x.split(":"))) for x in lst]
+
+
+def _all_hours(p: dict, day: dt.date, max_day: int) -> list[tuple[int, int]]:
+    seen: list[tuple[int, int]] = []
+    for k in range(1, max_day + 1):
+        for x in _hours_for(p, day, k):
+            if x not in seen:
+                seen.append(x)
+    return seen
+
+
+def _far(h: tuple[int, int], used: set[tuple[int, int]], gap_min: int = 120) -> bool:
+    m = h[0] * 60 + h[1]
+    return all(abs(m - (u[0] * 60 + u[1])) >= gap_min for u in used)
+
+
 def plan_slots(n: int, cfg: dict, queue: list[dict]) -> list[dt.datetime]:
     """Reparte n vídeos nuevos entre los días, respetando los que ya están programados.
 
     - Busca el MENOR número de vídeos por día (1, 2 o 3) con el que todo lo pendiente cabe en el
       horizonte (por defecto 7 días). Si ni con 3 cabe, usa 3 y sigue por los días siguientes.
-    - Rellena primero los huecos de los días más cercanos. Nunca más de `max_por_dia` (3) en un día.
+    - Las horas dependen del día (laborable / fin de semana) y de cuántos vídeos salen ese día.
+    - Nunca más de `max_por_dia` (3) en un día, y separados al menos 2 horas entre sí.
     """
     p = cfg["publicacion"]
     tz = ZoneInfo(p["zona_horaria"])
     max_day = min(3, int(p.get("max_por_dia", 3)))
-    hours = [tuple(map(int, h.split(":"))) for h in p["horas"]][:max_day]
     horizon = int(p.get("dias_horizonte", 7))
     first_day = dt.datetime.now(tz).date() + dt.timedelta(days=1)
 
@@ -63,21 +88,29 @@ def plan_slots(n: int, cfg: dict, queue: list[dict]) -> list[dt.datetime]:
             if d.date() >= first_day:
                 taken.setdefault(d.date(), set()).add((d.hour, d.minute))
 
-    future_in_horizon = sum(len(v) for k, v in taken.items() if (k - first_day).days < horizon)
-    per_day = next((k for k in range(1, max_day + 1) if future_in_horizon + n <= k * horizon), max_day)
-
     slots: list[dt.datetime] = []
-    day = first_day
-    while len(slots) < n:
+
+    def fill(day: dt.date, cap: int) -> None:
         used = taken.setdefault(day, set())
-        # Fuera del horizonte se va a 1 vídeo/día salvo que haga falta más para no alargarlo sin fin
-        cap = per_day if (day - first_day).days < horizon else min(max_day, per_day)
-        for h in hours[:cap]:
+        # Primero las horas ideales para "cap" vídeos ese día; si chocan con uno ya programado, otras horas buenas
+        for h in _hours_for(p, day, cap) + _all_hours(p, day, max_day):
             if len(used) >= cap or len(slots) == n:
-                break
-            if h not in used:
+                return
+            if h not in used and _far(h, used):
                 used.add(h)
                 slots.append(dt.datetime.combine(day, dt.time(*h), tz))
+
+    # Reparto por igual: primero 1 vídeo en cada día del horizonte, luego un 2.º en cada día, luego un 3.º
+    days = [first_day + dt.timedelta(days=i) for i in range(horizon)]
+    for level in range(1, max_day + 1):
+        for day in days:
+            if len(slots) == n:
+                break
+            fill(day, level)
+    # Si ni con 3 al día cabe todo, se sigue por los días siguientes (máximo 3 al día)
+    day = first_day + dt.timedelta(days=horizon)
+    while len(slots) < n:
+        fill(day, max_day)
         day += dt.timedelta(days=1)
     return sorted(slots)
 

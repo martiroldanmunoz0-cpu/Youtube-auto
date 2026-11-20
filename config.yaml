@@ -60,8 +60,20 @@ musica:
 
 publicacion:
   zona_horaria: "Europe/Madrid"
-  # Horas de subida, por orden de preferencia: con 1 vídeo/día se usa la primera, con 2 las dos primeras...
-  horas: ["19:30", "13:30", "21:30"]
+  # Horas de publicación (hora de España) según cuántos vídeos salen ese día.
+  # Pensadas para España + Latinoamérica: se publica 1-2 h ANTES de los picos de audiencia para que YouTube
+  # tenga tiempo de empezar a mostrarlo. Entre semana: comida (14-15 h) y tarde-noche (19-23 h, en Latinoamérica
+  # es mediodía-tarde). Fin de semana: media mañana y tarde. Si un día ya tiene un vídeo, los nuevos se separan
+  # al menos 2 horas de él.
+  horas:
+    laborable:                     # lunes a viernes
+      1: ["19:00"]
+      2: ["14:00", "20:30"]
+      3: ["13:30", "18:00", "21:30"]
+    fin_de_semana:                 # sábado y domingo
+      1: ["12:00"]
+      2: ["12:00", "19:30"]
+      3: ["11:00", "16:30", "20:30"]
   max_por_dia: 3                 # nunca más de 3 vídeos el mismo día
   dias_horizonte: 7              # se intenta repartir lo pendiente en los próximos 7 días
   categoria_id: "24"             # 24 = Entretenimiento
