@@ -97,5 +97,31 @@
     "publish_at": "2026-11-23T18:00:00Z",
     "youtube_id": "CLjRSqxg6jM",
     "portada_ok": true
+  },
+  {
+    "id": "historia-2-01",
+    "title": "El médico que se operó a sí mismo en la Antártida #shorts",
+    "description": "En 1961, Leonid Rogózov hizo lo que parecía imposible, y con dos ayudantes que nunca habían visto una operación. ¿Tú te habrías atrevido a operarte a ti mismo? Cuéntamelo en los comentarios.\n#curiosidades #historiasreales #antartida #medicina",
+    "tags": [
+      "curiosidades",
+      "historias reales",
+      "Leonid Rogózov",
+      "Antártida",
+      "medicina",
+      "apendicitis",
+      "autooperación",
+      "historia de la medicina",
+      "supervivencia",
+      "Unión Soviética",
+      "datos curiosos"
+    ],
+    "video": "historia-2-01.mp4",
+    "portada": "historia-2-01_portada.jpg",
+    "tag": "historia-2",
+    "issue": 11,
+    "estado": "programado",
+    "publish_at": "2026-11-21T11:00:00Z",
+    "youtube_id": "RiryFNe3xRQ",
+    "portada_ok": true
   }
 ]
