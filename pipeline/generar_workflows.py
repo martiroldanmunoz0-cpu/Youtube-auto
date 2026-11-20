@@ -35,9 +35,46 @@ YT = """        env:
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
 """
 
-def workflow(name, comment, on, top_env, rid_step, trends_step, partes, commit_msg, run_name=""):
+def workflow(name, comment, on, top_env, rid_step, trends_step, partes, commit_msg, run_name="", hora_madrid=None):
     matrix = ", ".join(str(i) for i in range(partes))
     rn = f"\nrun-name: {run_name}" if run_name else ""
+    hora_job, turno_cond = "", ""
+    if hora_madrid is not None:
+        # GitHub solo usa UTC: se programa a las dos horas posibles (invierno/verano) y solo sigue la que es la hora de Madrid.
+        hora_job = f"""  hora:
+    runs-on: ubuntu-latest
+    outputs:
+      seguir: ${{{{ steps.h.outputs.seguir }}}}
+    steps:
+      - id: h
+        name: ¿Son las {hora_madrid}:00 en España? (si no, esta ejecución no hace nada)
+        env:
+          GH_TOKEN: ${{{{ github.token }}}}
+          GH_REPO: ${{{{ github.repository }}}}
+          MY_RUN: ${{{{ github.run_id }}}}
+          EVENTO: ${{{{ github.event_name }}}}
+        run: |
+          H=$(TZ=Europe/Madrid date +%-H)
+          SEGUIR=true
+          if [ "$EVENTO" = "schedule" ]; then
+            if [ "$H" != "{hora_madrid}" ]; then
+              SEGUIR=false; echo "En Madrid son las $H h: la tanda arranca en la otra ejecución programada"
+            else
+              # Por si GitHub retrasó mucho la otra ejecución: nunca dos tandas automáticas el mismo día
+              DESDE=$(date -u -d '-6 hours' +%Y-%m-%dT%H:%M:%SZ)
+              for R in $(gh api "repos/$GH_REPO/actions/workflows/semanal.yml/runs?event=schedule&created=>=$DESDE" --jq ".workflow_runs[] | select(.id != $MY_RUN) | .id"); do
+                if gh api "repos/$GH_REPO/actions/runs/$R/jobs" --jq '.jobs[] | select(.name == "turno") | .conclusion' | grep -qv skipped; then
+                  SEGUIR=false; echo "Ya hay otra tanda automática de hoy ($R)"
+                fi
+              done
+            fi
+          fi
+          echo "seguir=$SEGUIR" >> "$GITHUB_OUTPUT"
+
+"""
+        turno_cond = """    needs: hora
+    if: needs.hora.outputs.seguir == 'true'
+"""
     return f"""name: {name}{rn}
 
 # {comment}
@@ -58,8 +95,8 @@ permissions:
 # Cola propia: cada tanda espera a que terminen las lanzadas antes (sin límite de tandas en espera).
 
 jobs:
-  turno:
-    runs-on: ubuntu-latest
+{hora_job}  turno:
+{turno_cond}    runs-on: ubuntu-latest
     timeout-minutes: 355
     steps:
       - name: Esperar mi turno en la cola
@@ -172,9 +209,9 @@ open(f"{out}/semanal.yml", "w").write(workflow(
     "Generar vídeos de la semana", "Cada lunes: analiza YouTube, escribe ~10 guiones de curiosidades y los monta.",
     """on:
   schedule:
-    - cron: "17 5 * * 1"   # lunes 05:17 UTC (06:17 en Madrid en invierno)
+    - cron: "1 3,4 * * 1"   # lunes 03:01 y 04:01 UTC: solo arranca la que son las 05:01 en Madrid (invierno/verano)
   workflow_dispatch: {}     # botón "Run workflow" para lanzarlo a mano
-""", "", RID_WEEK, TRENDS, 5, "Semana generada: análisis, guiones e historial"))
+""", "", RID_WEEK, TRENDS, 5, "Semana generada: análisis, guiones e historial", hora_madrid=5))
 
 open(f"{out}/pedido.yml", "w").write(workflow(
     "Pedido especial", "Escribe lo que quieras y genera varias versiones distintas de ese mismo vídeo.",

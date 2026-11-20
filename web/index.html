@@ -229,7 +229,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   const TZ = "Europe/Madrid";
   const WF = {pedido: "pedido.yml", semanal: "semanal.yml", comedia: "comedia.yml"};
   const GEN_PATHS = ["semanal.yml", "pedido.yml", "comedia.yml"].map(f => ".github/workflows/" + f);
-  const WEEKLY = {dow: 1, h: 5, m: 17}; // lunes 05:17 UTC (igual que el cron de semanal.yml)
+  const WEEKLY = {dow: 1, h: 5, m: 1}; // lunes 05:01 hora de Madrid (igual que semanal.yml)
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const store = {
@@ -437,10 +437,15 @@ nav .n.bad{background:var(--bad);color:#fff}
 
   // ---------- Cuenta atrás de la tanda semanal ----------
   function nextWeekly(now = new Date()) {
-    const t = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), WEEKLY.h, WEEKLY.m));
-    t.setUTCDate(t.getUTCDate() + ((WEEKLY.dow - t.getUTCDay() + 7) % 7));
-    if (t <= now) t.setUTCDate(t.getUTCDate() + 7);
-    return t;
+    // Próximo lunes a las 05:01 en Madrid (vale en invierno y en verano)
+    const parts = d => Object.fromEntries(new Intl.DateTimeFormat("en-GB", {timeZone: TZ, weekday: "short", hour: "numeric", hourCycle: "h23"}).formatToParts(d).map(p => [p.type, p.value]));
+    const base = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+    for (let day = -1; day < 9; day++) for (const uh of [3, 4]) {
+      const t = new Date(base + day * 864e5 + uh * 36e5 + WEEKLY.m * 6e4);
+      const p = parts(t);
+      if (t > now && p.weekday === "Mon" && +p.hour === WEEKLY.h) return t;
+    }
+    return new Date(now.getTime() + 7 * 864e5);
   }
   function tickCountdown() {
     const now = new Date(), t = nextWeekly(now);
