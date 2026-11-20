@@ -78,8 +78,11 @@ function outlinedText(ctx, text, x, y, size, fill, stroke, lw) {
   const cx = Wd / 2, cy = Hd / 2;
   const band = ctx.createLinearGradient(0, cy - 230, 0, cy + 230); band.addColorStop(0, 'rgba(5,6,14,0)'); band.addColorStop(0.2, 'rgba(5,6,14,0.75)'); band.addColorStop(0.8, 'rgba(5,6,14,0.75)'); band.addColorStop(1, 'rgba(5,6,14,0)');
   ctx.fillStyle = band; ctx.fillRect(0, cy - 230, Wd, 460);
-  ctx.font = '150px Anton'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
   const a = 'LO QUE NUNCA ', b = 'TE CONTARON.';
+  // Que quepa en la zona segura (1546 px de ancho en 2560) con margen
+  let hs = 150; ctx.font = `${hs}px Anton`;
+  while (ctx.measureText(a + b).width > 1546 - 140 && hs > 90) { hs -= 2; ctx.font = `${hs}px Anton`; }
   const wa = ctx.measureText(a).width, wb = ctx.measureText(b).width, x0 = cx - (wa + wb) / 2;
   ctx.lineJoin = 'round'; ctx.lineWidth = 12; ctx.strokeStyle = '#000';
   ctx.strokeText(a, x0, cy - 30); ctx.fillStyle = CREAM; ctx.fillText(a, x0, cy - 30);
@@ -90,5 +93,13 @@ function outlinedText(ctx, text, x, y, size, fill, stroke, lw) {
   bulb(ctx, cx - 870, cy - 10, 0.55);
   bulb(ctx, cx + 870, cy - 10, 0.55);
   fs.writeFileSync(path.join(here, 'banner.png'), c.encodeSync('png'));
+  // Versión 2048x1152 (tamaño mínimo recomendado por YouTube; zona segura 1235x338 en el centro)
+  const c2 = createCanvas(2048, 1152), x2 = c2.getContext('2d');
+  x2.imageSmoothingQuality = 'high'; x2.drawImage(c, 0, 0, 2048, 1152);
+  fs.writeFileSync(path.join(here, 'banner_2048x1152.png'), c2.encodeSync('png'));
+  // Vista previa con la zona segura marcada (solo para comprobar)
+  x2.strokeStyle = '#00ff88'; x2.lineWidth = 4; x2.setLineDash([18, 12]);
+  x2.strokeRect((2048 - 1235) / 2, (1152 - 338) / 2, 1235, 338);
+  fs.writeFileSync(path.join(here, '..', '..', 'out', 'banner_zona_segura.png'), c2.encodeSync('png'));
 }
 console.log('ok');
