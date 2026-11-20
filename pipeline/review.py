@@ -145,12 +145,14 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     upload_to_release(tag, [str(wd / st["video"])], wid, req)
 
     build_site(vid, [st], analysis, wd, cfg)
+    page_ok = True
     try:
         pages.main(vid, st["title"].replace(" #shorts", ""))
         subprocess.run(["gh", "workflow", "run", "pagina.yml"], check=False)
-    except SystemExit as e:
+    except Exception as e:  # sin página: el enlace del issue va directo al vídeo (nunca a otra tanda)
+        page_ok = False
         print(f"  aviso: página de revisión no actualizada ({e})")
-    base = pages_url()
+    base = pages_url() if page_ok else None
     page = f"{base}{vid}/" if base else None
     dl = f"https://github.com/{repo}/releases/download/{tag}/{st['video']}"
 
