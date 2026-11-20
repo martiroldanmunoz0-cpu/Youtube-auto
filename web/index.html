@@ -161,7 +161,8 @@ nav .n.bad{background:var(--bad);color:#fff}
 
   <section id="calendario">
     <div class="cal-head"><button class="iconbtn" id="cal-prev">‹</button><h3 id="cal-title"></h3><button class="iconbtn" id="cal-next">›</button><button class="iconbtn" id="cal-today">Hoy</button></div>
-    <div class="seg"><button data-v="semana">Semana</button><button data-v="mes">Mes</button></div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><div class="seg"><button data-v="semana">Semana</button><button data-v="mes">Mes</button></div>
+    <button class="iconbtn" id="cal-sync" style="margin-bottom:10px">↻ Comprobar YouTube</button></div>
     <div id="cal-body"></div>
     <div class="legend"><span>Programado (tócalo para cambiar día y hora)</span><span class="p">Publicado</span></div>
     <div id="cal-day"></div>
@@ -597,6 +598,25 @@ nav .n.bad{background:var(--bad);color:#fff}
     if (calView === "semana") { calWeek.setUTCDate(calWeek.getUTCDate() + 7); }
     else { calMonth.m++; if (calMonth.m > 12) { calMonth.m = 1; calMonth.y++; } }
     renderCalendar();
+  };
+  $("#cal-sync").onclick = async () => {
+    if (needToken()) return;
+    const b = $("#cal-sync"); b.disabled = true; b.textContent = "Comprobando…";
+    try {
+      const t0 = Date.now();
+      await gh(`/actions/workflows/publicar.yml/dispatches`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({ref: "main"})});
+      toast("Comprobando en YouTube qué vídeos ya están publicados… (1–2 min)");
+      for (let i = 0; i < 24; i++) {
+        await new Promise(r => setTimeout(r, 10000));
+        const r = (await gh(`/actions/workflows/publicar.yml/runs?per_page=3&event=workflow_dispatch`)).workflow_runs.find(x => new Date(x.created_at) >= new Date(t0 - 60000));
+        if (r && r.status === "completed") {
+          await loadQueue(); renderCalendar(); renderProgramados();
+          toast(r.conclusion === "success" ? "✓ Calendario actualizado con lo que hay en YouTube" : "✕ No se pudo comprobar. Mira «En marcha» o díselo a Claude.", r.conclusion !== "success");
+          break;
+        }
+      }
+    } catch (e) { toast("No se pudo: " + e.message, true); }
+    b.disabled = false; b.textContent = "↻ Comprobar YouTube";
   };
   $("#cal-today").onclick = () => { calMonth = null; calWeek = null; calSel = dayKey(new Date()); renderCalendar(); };
 
