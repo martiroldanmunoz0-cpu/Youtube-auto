@@ -46,5 +46,31 @@
     "estado": "programado",
     "publish_at": "2026-11-21T18:30:00Z",
     "youtube_id": "KxWrJFbTU7g"
+  },
+  {
+    "id": "historia-1-01",
+    "title": "Cayó 3.000 metros atada a su asiento y caminó 11 días #shorts",
+    "description": "Juliane Koepcke fue la única superviviente del vuelo 508 y se salvó gracias a una regla de su padre. ¿Tú habrías sido capaz de volver a esa selva? Cuéntamelo en los comentarios.\n#shorts #historiasreales #curiosidades #supervivencia #Amazonas",
+    "tags": [
+      "Juliane Koepcke",
+      "vuelo 508",
+      "LANSA",
+      "única superviviente",
+      "accidente aéreo",
+      "selva amazónica",
+      "historias reales",
+      "supervivencia",
+      "Werner Herzog",
+      "curiosidades",
+      "Alas de esperanza"
+    ],
+    "video": "historia-1-01.mp4",
+    "portada": "historia-1-01_portada.jpg",
+    "tag": "historia-1",
+    "issue": 9,
+    "estado": "programado",
+    "publish_at": "2026-11-22T11:00:00Z",
+    "youtube_id": "oaSovNWbc_k",
+    "portada_ok": true
   }
 ]
