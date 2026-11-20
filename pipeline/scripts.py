@@ -68,6 +68,26 @@ STORY_SCHEMA = {
         },
         "pregunta_central": {"type": "string"},
         "texto_portada": {"type": "string"},
+        "personajes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "who": {"type": "string"},
+                    "nombre_real": {"type": "string"},
+                    "genero": {"type": "string", "enum": ["hombre", "mujer"]},
+                    "edad": {"type": "string", "enum": ["niño", "joven", "adulto", "mayor"]},
+                    "piel": {"type": "string", "enum": ["muy_clara", "clara", "media", "morena", "oscura"]},
+                    "pelo": {"type": "string", "enum": ["corto", "largo", "rizado", "rapado", "calvo", "coleta", "afro", "raya", "moño"]},
+                    "color_pelo": {"type": "string", "enum": ["negro", "castaño_oscuro", "castaño", "castaño_claro", "rubio_oscuro", "rubio", "pelirrojo", "canoso", "blanco"]},
+                    "barba": {"type": "string", "enum": ["no", "corta", "larga", "bigote"]},
+                    "gafas": {"type": "boolean"},
+                    "ropa": {"type": "string", "enum": ["azul", "rojo", "verde", "morado", "naranja", "negro", "gris", "blanco", "marrón", "amarillo", "granate", "celeste"]},
+                },
+                "required": ["who", "nombre_real", "genero", "edad", "piel", "pelo", "color_pelo", "barba", "gafas", "ropa"],
+                "additionalProperties": False,
+            },
+        },
         "gancho_elegido": {"type": "string"},
         "titulo": {"type": "string"},
         "descripcion": {"type": "string"},
@@ -88,7 +108,7 @@ STORY_SCHEMA = {
             },
         },
     },
-    "required": ["pregunta_central", "texto_portada", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "planos"],
+    "required": ["pregunta_central", "texto_portada", "personajes", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "planos"],
     "additionalProperties": False,
 }
 
@@ -162,6 +182,11 @@ HISTORIAS REALES (tipo "caso_real")
 - Una estructura que funciona (no es obligatoria): hecho increíble + promesa (gancho) → quién era y su vida \
 normal → lo que pasó → la lucha y los obstáculos (con mini-giros) → el giro → el final que pocos conocen.
 - Si citas frases, solo citas reales y documentadas (escena "quote"). Saltos de tiempo con "year_jump".
+- "personajes": una ficha por persona que salga (who "protagonista" para el principal y el mismo "who" que uses en \
+las escenas para los demás). Descríbela COMO ERA EN LA ÉPOCA DE LA HISTORIA según sus fotos públicas: sexo, edad, \
+tono de piel, peinado, color de pelo, barba/bigote, gafas y el color de ropa más típico (uniforme, bata...). \
+Así el dibujo se parece a la persona real. Si no sabes cómo era algún rasgo, elige lo más probable y neutro.
+- En vídeos que no son historias reales, "personajes" puede ir vacío (o describir al "tú" si quieres un aspecto concreto).
 - Respeto: nada de sangre, heridas explícitas ni detalles morbosos; cuéntalo como lo contaría un buen documental.
 - Si no estás muy seguro de un dato concreto (fecha, cifra, nombre), no lo pongas o redondéalo.
 
@@ -374,6 +399,52 @@ def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
     return make_params(SYSTEM_ANALYST, None, user, ANALYSIS_SCHEMA, models(cfg)[0])
 
 
+SYSTEM_HISTORIAS = """Eres el investigador y estratega de Curiosidario, un canal de YouTube Shorts en español con vídeos \
+animados narrados. Tu trabajo: encontrar las HISTORIAS REALES con más potencial de visualizaciones para contarlas \
+en 60-100 segundos.
+
+Qué hace que una historia real arrase en Shorts (puntúa cada candidata con esto):
+- Premisa increíble que se entiende en una frase ("Le pusieron los brazos de otra persona", "Sobrevivió 438 días \
+perdido en el mar", "Un error de una letra le costó millones").
+- Protagonista concreto con nombre, del que te importa qué le pasa (supervivencia, superación, injusticia, suerte, \
+ingenio, error absurdo, récord imposible, misterio resuelto).
+- Un giro o un final que poca gente conoce (lo que pasó después, el detalle que lo cambia todo).
+- Emoción fuerte (asombro, tensión, ternura, indignación) y que invite a comentar ("¿tú qué habrías hecho?").
+- Poco contada en español o con un ángulo nuevo, pero MUY documentada (prensa seria, artículos científicos o \
+médicos, libros, documentales). Si dudas de que sea cierta, descártala.
+- Se puede animar con nuestras escenas (personas, hospital, quirófano, médico, documentos, mar, espacio, ciudad, \
+calendario, años que pasan, familia...).
+
+Reglas:
+- Todas las ideas son tipo "caso_real" y de personas, sucesos o casos públicos.
+- Variedad de épocas, países y temas (medicina, supervivencia, ciencia, historia, deporte, dinero, inventos, \
+animales con personas...). Nada de crímenes violentos explicados con detalle ni morbo; con respeto a las víctimas.
+- NUNCA repitas una historia o un protagonista que ya esté en la lista de vídeos anteriores.
+- En "premisa" pon el nombre del protagonista y el hecho clave; en "gancho", la frase inicial que pasa la prueba \
+del desconocido; en "giro_final", lo que poca gente sabe.
+- En "por_que_funcionara" explica por qué tendrá muchas visualizaciones (y qué fuentes lo documentan)."""
+
+
+def real_story_ideas(trends: dict | None, n_ideas: int, history: list[dict], cfg: dict, tema: str | None) -> dict:
+    catalog = catalog_for("historias")
+    keep = cfg["generacion"].get("no_repetir_ultimos", 150)
+    past = [h.get("premisa") or h["titulo"] for h in history[-max(keep, 400):]]
+    top = [{k: v.get(k) for k in ("id", "titulo", "canal", "vistas", "vistas_por_dia", "descripcion")} for v in (trends or {}).get("top", [])[:40]]
+    user = (
+        (f"Historias reales que están funcionando en Shorts estos días (para ver qué mecanismos enganchan; NO las "
+         f"copies ni repitas sus protagonistas):\n{json.dumps(top, ensure_ascii=False)}\n\n" if top else "")
+        + (f"El dueño del canal quiere historias sobre: \"{tema}\"\n\n" if tema else
+           "El dueño del canal no ha puesto tema: busca tú las mejores historias reales que existan.\n\n")
+        + f"Escenas disponibles para animar:\n{json.dumps({k: v['desc'] for k, v in catalog['scenes'].items()}, ensure_ascii=False)}\n\n"
+        + f"Vídeos anteriores del canal (NO repetir historias ni protagonistas):\n{json.dumps(past, ensure_ascii=False)}\n\n"
+        + taste_block(history, cfg)
+        + f"Dame exactamente {n_ideas} historias reales distintas, ordenadas de MÁS a menos potencial de visualizaciones. "
+        "En 'patrones_gancho' pon qué tipos de gancho usarás; 'temas_calientes' y 'formatos' pueden ir vacíos; "
+        "en 'inspirado_en' pon los id de vídeos de la lista cuyo mecanismo aprovechas (o vacío)."
+    )
+    return make_params(SYSTEM_HISTORIAS, None, user, ANALYSIS_SCHEMA, models(cfg)[0])
+
+
 SYSTEM_PEDIDO = """Eres el estratega de un canal de YouTube Shorts en español de vídeos animados narrados \
 (ilustración vectorial, narrador en off y subtítulos palabra a palabra). El dueño del canal te pide un vídeo \
 concreto. Tu trabajo: proponer VARIAS versiones distintas de ESE MISMO pedido, para quedarse con la mejor.
@@ -458,6 +529,8 @@ def validate_story(story: dict) -> dict:
         "description": story["descripcion"].strip(),
         "tags": [t.strip("# ") for t in story["tags"]][:15],
         "beats": beats,
+        "looks": {str(p.get("who") or "protagonista").lower(): {k: v for k, v in p.items() if k not in ("who", "nombre_real")}
+                  for p in (story.get("personajes") or [])},
         "cover_text": re.sub(r"\s+", " ", story.get("texto_portada") or "").strip()[:60],
         "question": pregunta,
     }
@@ -685,6 +758,9 @@ def main():
     if fmt == "comedia":
         n = int(os.environ.get("PEDIDO_N") or cfg.get("comedia", {}).get("videos", 3))
         params = comedy_ideas_params(read_json(wd / "trends.json"), n + EXTRA_IDEAS, history, cfg)
+    elif fmt == "historia_real":
+        n = int(os.environ.get("PEDIDO_N") or 1)
+        params = real_story_ideas(read_json(wd / "trends.json"), n + EXTRA_IDEAS, history, cfg, request)
     elif request:
         n = int(os.environ.get("PEDIDO_N") or 3)
         params = ideas_for_request(request, n, history, cfg)
@@ -699,11 +775,16 @@ def main():
     if isinstance(analysis, Exception):
         raise analysis
     write_json(wd / "analysis.json", analysis)
-    if request and fmt != "comedia":
+    if request and fmt == "historias":
         ideas = analysis["ideas"][:n]  # pedido especial: varias versiones del MISMO tema a propósito
     else:
         keep = cfg["generacion"].get("no_repetir_ultimos", 150)
+        if fmt == "historia_real":
+            keep = len(history) or 1  # una historia real nunca se repite, aunque sea de hace mucho
         ideas = pick_new_ideas(analysis["ideas"], history, n, keep)
+    if fmt == "historia_real":
+        for idea in ideas:
+            idea["tipo"] = "caso_real"
     print(f"Ideas listas: {len(ideas)}. Escribiendo guiones...")
 
     make = comedy_story_params if fmt == "comedia" else story_params

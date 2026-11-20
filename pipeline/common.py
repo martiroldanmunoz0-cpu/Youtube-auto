@@ -38,7 +38,7 @@ def pedido() -> str | None:
 
 
 def formato() -> str:
-    """historias (por defecto) | comedia"""
+    """historias (por defecto) | comedia | historia_real"""
     return (os.environ.get("FORMATO") or "historias").strip()
 
 

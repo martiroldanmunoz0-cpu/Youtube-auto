@@ -313,7 +313,8 @@
     "kids": "true si los acompañantes son niños",
     "mood": "happy|neutral|sad|worried",
     "label": "texto corto",
-    "bg": "warm|night|cold|room"
+    "bg": "warm|night|cold|room",
+    "people": "lista con el 'who' de los acompañantes (p. ej. ['esposa','hija']) para que usen su ficha de personaje"
    }
   }
  }

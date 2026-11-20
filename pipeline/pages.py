@@ -56,7 +56,7 @@ def build_and_push(rid: str | None = None, titulo: str | None = None) -> int:
     tandas = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else []
     tandas = [t for t in tandas if t["id"] != rid and (PAGES / t["id"]).exists()]
     if src.exists():
-        titulo = titulo or (f"Comedia: {pedido() or 'GTA'}" if formato() == "comedia" else (f"Pedido: {pedido()}" if pedido() else f"Semana {rid}"))
+        titulo = titulo or ("Historia real" if formato() == "historia_real" else None) or (f"Comedia: {pedido() or 'GTA'}" if formato() == "comedia" else (f"Pedido: {pedido()}" if pedido() else f"Semana {rid}"))
         tandas.append({"id": rid, "titulo": titulo, "fecha": dt.date.today().isoformat()})
 
     # 3) Quitar tandas antiguas (por número y por tamaño)

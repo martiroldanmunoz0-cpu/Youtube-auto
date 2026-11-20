@@ -13,6 +13,7 @@ import { W, H, rng, clamp, ease, lerp, seg, noise1 } from './lib/util.mjs';
 import { grain, vignette, topShade } from './lib/fx.mjs';
 import { paginate, drawSubtitles, drawWordSubtitles } from './lib/subtitles.mjs';
 import { SCENES } from './scenes/index.mjs';
+import { setLooks } from './lib/persona.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fontDir = path.join(here, '..', 'assets', 'fonts');
@@ -69,6 +70,7 @@ const CAMERAS = {
 export class Renderer {
   constructor(timeline) {
     this.tl = timeline;
+    setLooks(timeline.looks || {});
     this.fps = timeline.fps || 30;
     this.canvas = createCanvas(W, H);
     this.ctx = this.canvas.getContext('2d');

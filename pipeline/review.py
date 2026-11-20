@@ -36,6 +36,8 @@ def pages_url() -> str | None:
 def tanda_titulo(wid: str, cfg: dict) -> str:
     if formato() == "comedia":
         return f"Comedia: {pedido() or cfg.get('comedia', {}).get('tema', '')}"
+    if formato() == "historia_real":
+        return "Historia real" + (f": {pedido()}" if pedido() else "")
     return f"Pedido: {pedido()}" if pedido() else f"Vídeos de la semana {wid}"
 
 
@@ -140,7 +142,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
 
     req = pedido()
     vid = st["id"]
-    tag = wid if wid.startswith(("pedido", "comedia")) else f"semana-{wid}"
+    tag = wid if wid.startswith(("pedido", "comedia", "historia")) else f"semana-{wid}"
     repo = os.environ.get("GITHUB_REPOSITORY", "")
     files = [str(wd / st["video"])] + ([str(wd / st["portada"])] if st.get("portada") and (wd / st["portada"]).exists() else [])
     upload_to_release(tag, files, wid, req)
@@ -236,7 +238,7 @@ def main_tanda():
         sys.exit("No hay vídeos montados esta semana")
 
     # 1) Release con los vídeos
-    tag = wid if wid.startswith(("pedido", "comedia")) else f"semana-{wid}"
+    tag = wid if wid.startswith(("pedido", "comedia", "historia")) else f"semana-{wid}"
     files = [str(wd / s["video"]) for s in stories]
     try:
         gh("release", "view", tag)

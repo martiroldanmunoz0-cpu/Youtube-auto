@@ -31,6 +31,33 @@ export function personaFor(seed, override = {}) {
   return p;
 }
 
+// ---- Parecido con personas reales: el guion describe a cada persona ("looks") y aquí se traduce ----
+let LOOKS = {};
+export function setLooks(looks) { LOOKS = {}; for (const [k, v] of Object.entries(looks || {})) LOOKS[String(k).toLowerCase()] = v || {}; }
+const SKIN_BY = { muy_clara: 0, clara: 1, media: 2, morena: 3, oscura: 4 };
+const HAIR_BY = { corto: 'short', largo: 'long', rizado: 'curly', rapado: 'buzz', calvo: 'bald', coleta: 'ponytail', afro: 'afro', raya: 'side', 'moño': 'bun', mono: 'bun', media_melena: 'long' };
+const COLOR_BY = { negro: '#1a100a', castano_oscuro: '#2b1a10', 'castaño_oscuro': '#2b1a10', castano: '#4a2c17', 'castaño': '#4a2c17',
+  castano_claro: '#7a4a22', 'castaño_claro': '#7a4a22', rubio: '#d8b46a', rubio_oscuro: '#b07a3a', pelirrojo: '#8c2e16', canoso: '#9a9a9a', blanco: '#e4e4e4' };
+const OUTFIT_BY = { azul: '#2b3a66', rojo: '#7a2333', verde: '#1f5c4a', morado: '#5b3a7a', naranja: '#a8571d', negro: '#2f2f36',
+  gris: '#5a5f6a', blanco: '#d9dde3', marron: '#5a3a24', 'marrón': '#5a3a24', amarillo: '#b8972a', granate: '#5e1a26', celeste: '#4a7fb0' };
+function applyLook(p, L) {
+  if (!L) return p;
+  const q = { ...p };
+  if (L.piel in SKIN_BY) q.skin = SKINS[SKIN_BY[L.piel]];
+  if (HAIR_BY[L.pelo]) q.hair = HAIR_BY[L.pelo];
+  if (COLOR_BY[L.color_pelo]) q.hairColor = COLOR_BY[L.color_pelo];
+  else if (L.edad === 'mayor') q.hairColor = '#b5b5b5';
+  if (L.ropa) q.outfit = OUTFIT_BY[String(L.ropa).toLowerCase()] || (/^#[0-9a-f]{6}$/i.test(L.ropa) ? L.ropa : q.outfit);
+  if (typeof L.gafas === 'boolean') q.glasses = L.gafas;
+  if (L.barba) { q.beard = ['corta', 'larga', 'si', 'sí'].includes(L.barba); q.mustache = L.barba === 'bigote'; }
+  q.female = L.genero === 'mujer';
+  if (q.female) { q.beard = false; q.mustache = false; if (L.pendientes !== false && !('pendientes' in L)) q.earrings = q.earrings || q.hair !== 'buzz'; }
+  else if (L.genero === 'hombre' && !('pendientes' in L)) q.earrings = false;
+  if (typeof L.pendientes === 'boolean') q.earrings = L.pendientes;
+  q.old = L.edad === 'mayor';
+  return q;
+}
+
 // Pelo de detrás (antes de dibujar la cabeza)
 export function drawHairBack(ctx, cx, cy, p) {
   ctx.fillStyle = p.hairColor;
@@ -114,6 +141,26 @@ export function drawBeard(ctx, cx, cy, p) {
   }
 }
 
+export function drawFaceDetails(ctx, cx, cy, p) {
+  if (p.mustache) {
+    ctx.fillStyle = p.hairColor;
+    ctx.beginPath(); ctx.moveTo(cx - 95, cy + 150); ctx.quadraticCurveTo(cx, cy + 105, cx + 95, cy + 150);
+    ctx.quadraticCurveTo(cx, cy + 140, cx - 95, cy + 150); ctx.fill();
+  }
+  if (p.female) { // pestañas y labios
+    ctx.strokeStyle = '#120a06'; ctx.lineWidth = 6; ctx.lineCap = 'round';
+    for (const sx of [-1, 1]) for (let i = 0; i < 3; i++) {
+      const x0 = cx + sx * (115 + i * 16), y0 = cy - 52 + i * 4;
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + sx * 18, y0 - 16); ctx.stroke();
+    }
+  }
+  if (p.old) {
+    ctx.strokeStyle = 'rgba(60,30,15,0.35)'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+    for (const y of [-150, -125]) { ctx.beginPath(); ctx.moveTo(cx - 90, cy + y); ctx.quadraticCurveTo(cx, cy + y - 10, cx + 90, cy + y); ctx.stroke(); }
+    for (const sx of [-1, 1]) { ctx.beginPath(); ctx.moveTo(cx + sx * 75, cy + 110); ctx.quadraticCurveTo(cx + sx * 100, cy + 150, cx + sx * 85, cy + 185); ctx.stroke(); }
+  }
+}
+
 export function drawExtras(ctx, cx, cy, p) {
   if (p.earrings) {
     ctx.fillStyle = '#ffd36b';
@@ -154,13 +201,14 @@ export function drawHead(ctx, cx, cy, who, { mood = 'neutral', t = 0, blinkSeed 
     ctx.strokeStyle = 'rgba(40,20,10,0.5)'; ctx.lineWidth = 6; ctx.lineCap = 'round';
     ctx.beginPath(); ctx.moveTo(cx + 5, cy + 30); ctx.quadraticCurveTo(cx + 25, cy + 90, cx - 10, cy + 100); ctx.stroke();
     // Boca
-    ctx.strokeStyle = '#2a120a'; ctx.lineWidth = 9;
+    ctx.strokeStyle = who.female ? '#8a2a2a' : '#2a120a'; ctx.lineWidth = who.female ? 12 : 9;
     ctx.beginPath();
     if (mood === 'happy') { ctx.moveTo(cx - 80, cy + 160); ctx.quadraticCurveTo(cx, cy + 230, cx + 80, cy + 160); ctx.stroke(); }
     else if (mood === 'shocked') { ctx.fillStyle = '#2a0e08'; ctx.ellipse(cx, cy + 180, 36, 48 + Math.sin(t * 6) * 4, 0, 0, 7); ctx.fill(); }
     else if (mood === 'sad' || mood === 'worried') { ctx.moveTo(cx - 70, cy + 195); ctx.quadraticCurveTo(cx, cy + 150, cx + 70, cy + 195); ctx.stroke(); }
     else if (mood === 'angry') { ctx.moveTo(cx - 70, cy + 185); ctx.lineTo(cx + 70, cy + 175); ctx.stroke(); }
     else { ctx.moveTo(cx - 60, cy + 175); ctx.quadraticCurveTo(cx, cy + 190, cx + 60, cy + 175); ctx.stroke(); }
+    drawFaceDetails(ctx, cx, cy, who);
     drawExtras(ctx, cx, cy, who);
     // Gota de sudor (preocupado)
     if (mood === 'worried' || mood === 'shocked') {
@@ -174,7 +222,9 @@ export function drawHead(ctx, cx, cy, who, { mood = 'neutral', t = 0, blinkSeed 
 // ("madre", "medico", "hija") = otra persona fija dentro del vídeo.
 export function personaWho(seed, params = {}) {
   const who = String(params.who || 'protagonista').toLowerCase();
-  return personaFor(who === 'protagonista' || who === 'tu' || who === 'tú' ? seed : `${seed}-${who}`, params);
+  const main = who === 'protagonista' || who === 'tu' || who === 'tú';
+  const base = personaFor(main ? seed : `${seed}-${who}`, params);
+  return applyLook(base, LOOKS[who] || (main ? LOOKS.protagonista : null));
 }
 
 const PANTS = ['#2a3a5c', '#1f2430', '#3b3b44', '#4a3a2a', '#28414a'];

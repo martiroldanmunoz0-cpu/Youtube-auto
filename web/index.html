@@ -169,6 +169,14 @@ nav .n.bad{background:var(--bad);color:#fff}
         <select name="cantidad" id="pc"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
         <button class="btn main" type="submit">Generar</button></div>
     </form>
+    <form class="form" id="f-historia">
+      <h3>Historia real</h3>
+      <p>La IA busca la historia real con más potencial de visualizaciones que aún no se haya contado en el canal, y la cuenta con personajes parecidos a las personas reales. No hace falta escribir nada.</p>
+      <input type="text" name="tema" placeholder="Tema (opcional): medicina, supervivencia, deporte…">
+      <div class="inline"><label for="hc">Historias</label>
+        <select name="cantidad" id="hc"><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+        <button class="btn main" type="submit">Buscar y crear</button></div>
+    </form>
     <form class="form" id="f-semanal">
       <h3>Tanda semanal</h3>
       <div class="countdown"><span>Próxima automática</span><b class="cd-left">—</b><small class="cd-when"></small></div>
@@ -227,8 +235,8 @@ nav .n.bad{background:var(--bad);color:#fff}
   const REPO = host.endsWith(".github.io") ? (location.pathname.split("/")[1] || "Youtube-auto") : "Youtube-auto";
   const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
   const TZ = "Europe/Madrid";
-  const WF = {pedido: "pedido.yml", semanal: "semanal.yml", comedia: "comedia.yml"};
-  const GEN_PATHS = ["semanal.yml", "pedido.yml", "comedia.yml"].map(f => ".github/workflows/" + f);
+  const WF = {pedido: "pedido.yml", semanal: "semanal.yml", comedia: "comedia.yml", historia: "historia.yml"};
+  const GEN_PATHS = ["semanal.yml", "pedido.yml", "comedia.yml", "historia.yml"].map(f => ".github/workflows/" + f);
   const WEEKLY = {dow: 1, h: 5, m: 1}; // lunes 05:01 hora de Madrid (igual que semanal.yml)
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -598,6 +606,10 @@ nav .n.bad{background:var(--bad);color:#fff}
     e.preventDefault(); const f = e.target;
     const text = f.pedido.value.trim(); if (!text) return;
     if (await dispatch(WF.pedido, {pedido: text, cantidad: f.cantidad.value}, f.querySelector("button"))) f.reset();
+  });
+  $("#f-historia").addEventListener("submit", async e => {
+    e.preventDefault(); const f = e.target;
+    if (await dispatch(WF.historia, {tema: f.tema.value.trim(), cantidad: f.cantidad.value}, f.querySelector("button"))) f.reset();
   });
   $("#f-semanal").addEventListener("submit", e => {
     e.preventDefault();

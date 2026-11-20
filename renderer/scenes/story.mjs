@@ -233,7 +233,9 @@ export const group = {
     for (const { sp: [x, sc], i } of order) {
       const isMain = i === Math.floor(n / 2);
       const small = kids && !isMain;
-      const who = personaWho(seed, { who: isMain ? 'protagonista' : `familiar${i}` });
+      const others = Array.isArray(params.people) ? params.people : [];
+      const k = i < Math.floor(n / 2) ? i : i - 1;
+      const who = personaWho(seed, { who: isMain ? 'protagonista' : (others[k] || `familiar${i}`) });
       const scale = small ? sc * 0.66 : sc;
       drawFullBody(ctx, x, 1680 - 2290 * scale, scale, who, { mood: params.mood || 'happy', t: t + i, blinkSeed: i });
     }

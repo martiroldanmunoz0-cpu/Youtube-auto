@@ -107,7 +107,7 @@ jobs:
         run: |
           while true; do
             ANTES=$(gh api "repos/$GH_REPO/actions/runs?per_page=100" --jq '[.workflow_runs[]
-              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/pedido.yml" or .path == ".github/workflows/comedia.yml")
+              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/pedido.yml" or .path == ".github/workflows/comedia.yml" or .path == ".github/workflows/historia.yml")
               | select(.status != "completed" and .id < ('"$MY_RUN"'))] | length')
             if [ "$ANTES" = "0" ]; then echo "¡Es mi turno!"; break; fi
             echo "Hay $ANTES tanda(s) antes que yo en la cola. Espero 1 minuto..."
@@ -200,6 +200,11 @@ RID_STATIC = """      - name: Identificador de la tanda
 TRENDS = """      - name: Analizar tendencias de YouTube
 """ + YT + """        run: python pipeline/trends.py
 """
+TRENDS_HIST = """      - name: Ver qué historias reales están funcionando en YouTube
+""" + YT + """          TRENDS_QUERIES: "historia real|la increíble historia de|caso real increíble|historia real impactante|no sabías esta historia|la historia de este hombre|la historia de esta mujer|true story"
+          TRENDS_SIN_REGIONES: "1"
+        run: python pipeline/trends.py || echo "Sin análisis de tendencias, la IA elige igualmente"
+"""
 TRENDS_OPT = """      - name: Analizar vídeos de GTA 6 en YouTube
 """ + YT + """        run: python pipeline/trends.py || echo "Sin analisis de tendencias, sigo con el tema configurado"
 """
@@ -253,3 +258,24 @@ open(f"{out}/comedia.yml", "w").write(workflow(
   PEDIDO: ${{ inputs.tema }}
   PEDIDO_N: ${{ inputs.cantidad }}
 """, RID_STATIC, TRENDS_OPT, 5, "Comedia generada", "\"Comedia: ${{ inputs.tema || 'tema libre' }}\""))
+
+open(f"{out}/historia.yml", "w").write(workflow(
+    "Historia real", "Busca la historia real con más potencial de visualizaciones (que no se haya contado antes) y la cuenta.",
+    """on:
+  workflow_dispatch:
+    inputs:
+      tema:
+        description: "Tema (opcional). Vacío = la IA busca la mejor historia que encuentre"
+        required: false
+        type: string
+      cantidad:
+        description: "¿Cuántas historias distintas?"
+        required: true
+        default: "1"
+        type: choice
+        options: ["1", "2", "3", "4", "5"]
+""", """  RUN_ID: historia-${{ github.run_number }}
+  FORMATO: historia_real
+  PEDIDO: ${{ inputs.tema }}
+  PEDIDO_N: ${{ inputs.cantidad }}
+""", RID_STATIC, TRENDS_HIST, 5, "Historia real generada", "\"Historia real: ${{ inputs.tema || 'la mejor que encuentre' }}\""))
