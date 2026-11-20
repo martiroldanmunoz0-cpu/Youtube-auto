@@ -140,6 +140,7 @@ jobs:
     if: failure()
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Avisar al móvil si algo ha fallado
         env:
           GH_TOKEN: ${{ github.token }}
@@ -149,5 +150,6 @@ jobs:
           OWNER: ${{ github.repository_owner }}
         run: |
           gh label create aviso --color D73A4A --description "Algo ha fallado" --force || true
-          printf '🔔 @%s ha fallado **%s** (o alguna de sus partes).\n\n👉 [Ver qué ha pasado](%s)\n\nLos vídeos de las partes que sí terminaron ya tienen su issue de revisión. Avisa a Claude para arreglarlo y cierra este issue cuando esté resuelto.\n' "$OWNER" "$WF" "$RUN_URL" > aviso.md
-          gh issue create --title "⚠️ Ha fallado: $WF" --label aviso --body-file aviso.md
+          printf '🔔 @%s ha fallado **%s** (o alguna de sus partes).\n\n👉 [Ver qué ha pasado](%s)\n\nLos vídeos de las partes que sí terminaron ya tienen su issue de revisión. Queda en la pestaña **Problemas** del panel con el registro del error: dile a Claude «revisa los problemas».\n' "$OWNER" "$WF" "$RUN_URL" > aviso.md
+          URL=$(gh issue create --title "⚠️ Ha fallado: $WF" --label aviso --body-file aviso.md)
+          python3 pipeline/problemas.py run "${{ github.run_id }}" "${URL##*/}"

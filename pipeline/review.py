@@ -193,6 +193,10 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     url = _retry(lambda: gh("issue", "create", "--title", f"🎬 Revisar: {st['title'].replace(' #shorts', '')}"[:120],
                             "--label", "revision", "--body-file", "-", input_text="\n".join(lines)))
     print("Issue de revisión:", url)
+    if st.get("qa"):  # bandeja de problemas para que Claude lo revise
+        import problemas  # noqa: PLC0415
+
+        problemas.video(st, url.strip().splitlines()[-1] if url else "")
 
 
 

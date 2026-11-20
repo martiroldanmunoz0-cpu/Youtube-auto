@@ -60,7 +60,7 @@ details ol{padding-left:20px;margin:6px 0}
 .row .when small{display:block;color:var(--muted);font-weight:400;font-size:11px}
 .row .what{flex:1;min-width:0}
 .row .what b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.row .links{display:flex;gap:10px;font-size:13px;flex-wrap:wrap}
+.links{display:flex;gap:12px;font-size:13px;flex-wrap:wrap}
 .pill{display:inline-block;font-size:12px;border-radius:999px;padding:1px 9px;background:var(--card2);color:var(--muted);margin-right:6px}
 .pill.ok{color:var(--ok)}.pill.bad{color:var(--bad)}.pill.run{color:var(--info)}.pill.wait{color:var(--accent)}
 .bar{height:6px;border-radius:999px;background:var(--card2);overflow:hidden;margin-top:6px}
@@ -80,6 +80,29 @@ dialog ol{padding-left:20px;font-size:14px;color:#cfd3e2}
 .banner{background:rgba(255,179,92,.1);border:1px solid rgba(255,179,92,.3);border-radius:12px;padding:10px 14px;font-size:14px;margin-bottom:14px}
 .banner button{background:none;border:0;color:var(--accent);text-decoration:underline;cursor:pointer;padding:0}
 .loading{color:var(--muted);font-size:14px}
+nav .n.bad{background:var(--bad);color:#fff}
+.cal-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.cal-head h3{flex:1;margin:0;font-size:17px;color:var(--text)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal .dow{font-size:11px;color:var(--muted);text-align:center;padding:2px 0}
+.cal .d{min-height:74px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px;display:flex;flex-direction:column;gap:3px;cursor:pointer;overflow:hidden}
+.cal .d.out{opacity:.35}
+.cal .d.today{border-color:var(--accent)}
+.cal .d.sel{outline:2px solid var(--info)}
+.cal .d .num{font-size:12px;color:var(--muted)}
+.cal .d.today .num{color:var(--accent);font-weight:700}
+.chip{font-size:11px;border-radius:6px;padding:1px 4px;background:rgba(143,162,255,.18);color:#c9d2ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip.past{background:rgba(95,211,138,.15);color:var(--ok)}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin:10px 0}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;background:rgba(143,162,255,.5)}
+.legend span.p::before{background:rgba(95,211,138,.5)}
+@media(min-width:700px){.cal .d{min-height:96px}.chip{font-size:12px}}
+.prob{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.prob.open{border-left:4px solid var(--bad)}
+.prob.closed{border-left:4px solid var(--ok)}
+.prob b{display:block}
+.prob ul{margin:6px 0;padding-left:18px;font-size:13px;color:#cfd3e2}
+.prob .fix{font-size:13px;background:rgba(95,211,138,.08);border-radius:10px;padding:8px 10px;margin-top:6px;white-space:pre-line}
 </style>
 </head>
 <body>
@@ -92,10 +115,12 @@ dialog ol{padding-left:20px;font-size:14px;color:#cfd3e2}
   </div>
   <nav id="tabs">
     <button data-t="revisar" class="on">Revisar<span class="n" id="n-revisar" hidden></span></button>
+    <button data-t="calendario">Calendario</button>
     <button data-t="programados">Programados</button>
     <button data-t="marcha">En marcha<span class="n" id="n-marcha" hidden></span></button>
     <button data-t="crear">Crear</button>
     <button data-t="historial">Historial</button>
+    <button data-t="problemas">Problemas<span class="n bad" id="n-problemas" hidden></span></button>
   </nav>
 </header>
 
@@ -106,6 +131,13 @@ dialog ol{padding-left:20px;font-size:14px;color:#cfd3e2}
     <h2>Vídeos para revisar</h2>
     <p class="hint">Mira cada vídeo y decide. Los que publiques se programan solos (1 al día, máx. 3) detrás de los que ya hay.</p>
     <div id="revisar-list"><p class="loading">Cargando…</p></div>
+  </section>
+
+  <section id="calendario">
+    <div class="cal-head"><button class="iconbtn" id="cal-prev">‹</button><h3 id="cal-title"></h3><button class="iconbtn" id="cal-next">›</button><button class="iconbtn" id="cal-today">Hoy</button></div>
+    <div class="cal" id="cal"></div>
+    <div class="legend"><span>Programado</span><span class="p">Publicado</span></div>
+    <div id="cal-day"></div>
   </section>
 
   <section id="programados">
@@ -143,6 +175,12 @@ dialog ol{padding-left:20px;font-size:14px;color:#cfd3e2}
         <select name="cantidad" id="cc"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
         <button class="btn main" type="submit">Generar</button></div>
     </form>
+  </section>
+
+  <section id="problemas">
+    <h2>Problemas</h2>
+    <p class="hint">Aquí van solos los vídeos con avisos y las tandas que fallan, con todo el detalle técnico. Cuando haya alguno pendiente, dile a Claude: <b>«revisa los problemas»</b>. Claude lo arregla y lo cierra explicando qué ha cambiado.</p>
+    <div id="prob-list"><p class="loading">Cargando…</p></div>
   </section>
 
   <section id="historial">
@@ -334,7 +372,7 @@ dialog ol{padding-left:20px;font-size:14px;color:#cfd3e2}
       toast(nYes ? "✓ Hecho. Se programará en YouTube en 1–2 minutos (mira “Programados”)." : "Descartado.");
       delete decisions[num];
       await loadReview();
-      setTimeout(() => { loadQueue().then(renderProgramados); loadHistory(); }, 90000);
+      setTimeout(() => { loadQueue().then(() => { renderProgramados(); renderCalendar(); }); loadHistory(); }, 90000);
     } catch (err) {
       delete decisions[num][vid];
       toast("No se pudo guardar: " + err.message + (String(err.message).startsWith("40") ? " (revisa la llave en ⚙︎)" : ""), true);
@@ -374,6 +412,68 @@ dialog ol{padding-left:20px;font-size:14px;color:#cfd3e2}
     if (past.length) html += `<h3>Ya publicados</h3><div class="list">${past.slice(0, 30).map(row).join("")}</div>`;
     el.innerHTML = html;
   }
+
+  // ---------- Calendario ----------
+  let calMonth = null, calSel = null;
+  function renderCalendar() {
+    const now = new Date();
+    const todayK = dayKey(now);
+    if (!calMonth) { const [y, m] = todayK.split("-").map(Number); calMonth = {y, m}; }
+    const {y, m} = calMonth;
+    $("#cal-title").textContent = new Intl.DateTimeFormat("es-ES", {month: "long", year: "numeric", timeZone: "UTC"}).format(Date.UTC(y, m - 1, 15));
+    const byDay = {};
+    for (const q of queue) if (q.publish_at) { const t = new Date(q.publish_at); (byDay[dayKey(t)] ||= []).push({...q, t}); }
+    Object.values(byDay).forEach(a => a.sort((p, q) => p.t - q.t));
+    const first = new Date(Date.UTC(y, m - 1, 1));
+    const offset = (first.getUTCDay() + 6) % 7; // lunes primero
+    let html = ["L", "M", "X", "J", "V", "S", "D"].map(d => `<div class="dow">${d}</div>`).join("");
+    for (let i = 0; i < 42; i++) {
+      const d = new Date(Date.UTC(y, m - 1, 1 - offset + i));
+      if (i >= 35 && d.getUTCMonth() !== m - 1) break;
+      const k = d.toISOString().slice(0, 10);
+      const items = byDay[k] || [];
+      const cls = ["d", d.getUTCMonth() !== m - 1 ? "out" : "", k === todayK ? "today" : "", k === calSel ? "sel" : ""].join(" ");
+      html += `<div class="${cls}" data-k="${k}"><span class="num">${d.getUTCDate()}</span>${items.map(q =>
+        `<span class="chip${q.t <= now ? " past" : ""}" title="${esc(cleanTitle(q.title))}">${esc(fmtTime(q.t))}</span>`).join("")}</div>`;
+    }
+    $("#cal").innerHTML = html;
+    const sel = calSel && byDay[calSel];
+    $("#cal-day").innerHTML = calSel ? `<h3>${esc(fmtDay(new Date(calSel + "T12:00:00Z")))}</h3>` + (sel ? `<div class="list">${sel.map(q =>
+      `<div class="row"><div class="when">${esc(fmtTime(q.t))}</div><div class="what"><b>${esc(cleanTitle(q.title))}</b><div class="meta">${q.t <= now ? "publicado" : "programado"}</div></div></div>`).join("")}</div>`
+      : `<div class="empty">Nada este día.</div>`) : `<p class="hint">Toca un día para ver sus vídeos.</p>`;
+  }
+  $("#cal").addEventListener("click", e => { const d = e.target.closest("[data-k]"); if (d) { calSel = d.dataset.k; renderCalendar(); } });
+  $("#cal-prev").onclick = () => { calMonth.m--; if (calMonth.m < 1) { calMonth.m = 12; calMonth.y--; } renderCalendar(); };
+  $("#cal-next").onclick = () => { calMonth.m++; if (calMonth.m > 12) { calMonth.m = 1; calMonth.y++; } renderCalendar(); };
+  $("#cal-today").onclick = () => { calMonth = null; calSel = dayKey(new Date()); renderCalendar(); };
+
+  // ---------- Problemas ----------
+  async function loadProblems() {
+    const el = $("#prob-list");
+    try {
+      const issues = (await gh("/issues?labels=problema&state=all&per_page=40&sort=created")).filter(i => !i.pull_request);
+      const open = issues.filter(i => i.state === "open"), closed = issues.filter(i => i.state === "closed").slice(0, 12);
+      const n = $("#n-problemas"); n.textContent = open.length; n.hidden = !open.length;
+      const fixes = await Promise.all(closed.map(i => i.comments ? gh(`/issues/${i.number}/comments?per_page=100`).then(c => c.at(-1)).catch(() => null) : null));
+      const avisos = body => (body || "").split("\n").filter(l => /^- /.test(l) && !/^- \[/.test(l)).slice(0, 6).map(l => `<li>${esc(l.slice(2))}</li>`).join("");
+      const card = (i, fix) => `<div class="prob ${i.state}"><b>${esc(i.title.replace(/^🛠 /, ""))}</b>
+        <div class="meta"><span class="pill ${i.state === "open" ? "bad" : "ok"}">${i.state === "open" ? "pendiente de Claude" : (i.state_reason === "not_planned" ? "ignorado" : "resuelto")}</span>${esc(fmtShort(new Date(i.created_at)))}</div>
+        ${avisos(i.body) ? `<ul>${avisos(i.body)}</ul>` : ""}
+        ${fix && fix.body ? `<div class="fix">🔧 ${esc(fix.body.replace(/<!--[\s\S]*?-->/g, "").trim().slice(0, 600))}</div>` : ""}
+        <div class="links" style="margin-top:6px"><a href="${esc(i.html_url)}" target="_blank" rel="noopener">detalle</a>${i.state === "open" ? `<a href="#" data-ignore="${i.number}">ignorar</a>` : ""}</div></div>`;
+      let html = open.length ? `<div class="banner">Hay <b>${open.length}</b> problema${open.length > 1 ? "s" : ""} pendiente${open.length > 1 ? "s" : ""}. Dile a Claude: «revisa los problemas».</div><div class="list">${open.map(i => card(i)).join("")}</div>`
+        : `<div class="empty">Sin problemas pendientes ✅</div>`;
+      if (closed.length) html += `<h3>Resueltos</h3><div class="list">${closed.map((i, k) => card(i, fixes[k])).join("")}</div>`;
+      el.innerHTML = html;
+    } catch (e) { el.innerHTML = `<div class="empty">No se pudo cargar (${esc(e.message)}).</div>`; }
+  }
+  $("#prob-list").addEventListener("click", async e => {
+    const a = e.target.closest("[data-ignore]"); if (!a) return;
+    e.preventDefault();
+    if (needToken() || !confirm("¿Ignorar este problema? Claude ya no lo revisará.")) return;
+    try { await gh(`/issues/${a.dataset.ignore}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify({state: "closed", state_reason: "not_planned"})}); loadProblems(); }
+    catch (err) { toast("No se pudo: " + err.message, true); }
+  });
 
   // ---------- En marcha ----------
   async function loadRunning() {
@@ -508,8 +608,8 @@ dialog ol{padding-left:20px;font-size:14px;color:#cfd3e2}
   async function refreshAll() {
     $("#sub").textContent = "Actualizando…";
     await Promise.all([loadFiles(), loadQueue()]);
-    await Promise.all([loadReview(), loadRunning(), loadHistory()]);
-    renderProgramados();
+    await Promise.all([loadReview(), loadRunning(), loadHistory(), loadProblems()]);
+    renderProgramados(); renderCalendar();
     $("#sub").textContent = "Actualizado " + fmtTime(new Date());
   }
   $("#refresh").onclick = refreshAll;
