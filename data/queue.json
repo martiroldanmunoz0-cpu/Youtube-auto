@@ -44,8 +44,9 @@
     "tag": "pedido-8",
     "issue": 5,
     "estado": "programado",
-    "publish_at": "2026-11-21T18:30:00Z",
-    "youtube_id": "KxWrJFbTU7g"
+    "publish_at": "2026-11-21T17:30:00Z",
+    "youtube_id": "KxWrJFbTU7g",
+    "reprogramado": true
   },
   {
     "id": "historia-1-01",
