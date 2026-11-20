@@ -70,7 +70,7 @@ jobs:
         run: |
           while true; do
             ANTES=$(gh api "repos/$GH_REPO/actions/runs?per_page=100" --jq '[.workflow_runs[]
-              | select(.name == "Generar vídeos de la semana" or .name == "Pedido especial" or .name == "Comedia GTA")
+              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/pedido.yml" or .path == ".github/workflows/comedia.yml")
               | select(.status != "completed" and .id < ('"$MY_RUN"'))] | length')
             if [ "$ANTES" = "0" ]; then echo "¡Es mi turno!"; break; fi
             echo "Hay $ANTES tanda(s) antes que yo en la cola. Espero 1 minuto..."

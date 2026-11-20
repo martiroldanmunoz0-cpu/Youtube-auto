@@ -80,6 +80,10 @@ dialog ol{padding-left:20px;font-size:14px;color:#cfd3e2}
 .banner{background:rgba(255,179,92,.1);border:1px solid rgba(255,179,92,.3);border-radius:12px;padding:10px 14px;font-size:14px;margin-bottom:14px}
 .banner button{background:none;border:0;color:var(--accent);text-decoration:underline;cursor:pointer;padding:0}
 .loading{color:var(--muted);font-size:14px}
+.countdown{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-bottom:14px}
+.countdown span{color:var(--muted);font-size:13px;flex-basis:100%}
+.countdown b{font-size:22px;font-variant-numeric:tabular-nums;color:var(--accent)}
+.countdown small{color:var(--muted);font-size:13px}
 nav .n.bad{background:var(--bad);color:#fff}
 .cal-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .cal-head h3{flex:1;margin:0;font-size:17px;color:var(--text)}
@@ -149,6 +153,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   <section id="marcha">
     <h2>Generándose ahora</h2>
     <p class="hint">Las tandas van en cola, una detrás de otra. Cada vídeo aparece en "Revisar" en cuanto está listo.</p>
+    <div class="countdown"><span>Próxima tanda semanal automática</span><b class="cd-left">—</b><small class="cd-when"></small></div>
     <div id="marcha-list"><p class="loading">Cargando…</p></div>
   </section>
 
@@ -163,7 +168,8 @@ nav .n.bad{background:var(--bad);color:#fff}
         <button class="btn main" type="submit">Generar</button></div>
     </form>
     <form class="form" id="f-semanal">
-      <h3>Tanda semanal ahora</h3>
+      <h3>Tanda semanal</h3>
+      <div class="countdown"><span>Próxima automática</span><b class="cd-left">—</b><small class="cd-when"></small></div>
       <p>Analiza lo que funciona en YouTube y genera la tanda de curiosidades (se lanza sola cada lunes).</p>
       <button class="btn main" type="submit">Lanzar tanda semanal</button>
     </form>
@@ -217,7 +223,8 @@ nav .n.bad{background:var(--bad);color:#fff}
   const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
   const TZ = "Europe/Madrid";
   const WF = {pedido: "pedido.yml", semanal: "semanal.yml", comedia: "comedia.yml"};
-  const GEN_NAMES = ["Pedido especial", "Generar vídeos de la semana", "Comedia GTA"];
+  const GEN_PATHS = ["semanal.yml", "pedido.yml", "comedia.yml"].map(f => ".github/workflows/" + f);
+  const WEEKLY = {dow: 1, h: 5, m: 17}; // lunes 05:17 UTC (igual que el cron de semanal.yml)
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const store = {
@@ -413,6 +420,26 @@ nav .n.bad{background:var(--bad);color:#fff}
     el.innerHTML = html;
   }
 
+  // ---------- Cuenta atrás de la tanda semanal ----------
+  function nextWeekly(now = new Date()) {
+    const t = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), WEEKLY.h, WEEKLY.m));
+    t.setUTCDate(t.getUTCDate() + ((WEEKLY.dow - t.getUTCDay() + 7) % 7));
+    if (t <= now) t.setUTCDate(t.getUTCDate() + 7);
+    return t;
+  }
+  function tickCountdown() {
+    const now = new Date(), t = nextWeekly(now);
+    let s = Math.floor((t - now) / 1000);
+    const d = Math.floor(s / 86400); s %= 86400;
+    const h = Math.floor(s / 3600); s %= 3600;
+    const m = Math.floor(s / 60); s %= 60;
+    const left = (d ? `${d} d ` : "") + `${String(h).padStart(2, "0")} h ${String(m).padStart(2, "0")} min ${String(s).padStart(2, "0")} s`;
+    const when = new Intl.DateTimeFormat("es-ES", {timeZone: TZ, weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"}).format(t);
+    document.querySelectorAll(".cd-left").forEach(e => e.textContent = left);
+    document.querySelectorAll(".cd-when").forEach(e => e.textContent = when + " (GitHub puede retrasarlo unos minutos)");
+  }
+  tickCountdown(); setInterval(tickCountdown, 1000);
+
   // ---------- Calendario ----------
   let calMonth = null, calSel = null;
   function renderCalendar() {
@@ -480,7 +507,7 @@ nav .n.bad{background:var(--bad);color:#fff}
     const el = $("#marcha-list");
     try {
       const data = await gh("/actions/runs?per_page=40");
-      const runs = data.workflow_runs.filter(r => GEN_NAMES.includes(r.name));
+      const runs = data.workflow_runs.filter(r => GEN_PATHS.includes(r.path));
       const active = runs.filter(r => r.status !== "completed").sort((a, b) => a.id - b.id);
       const dayAgo = Date.now() - 2 * 864e5;
       const recent = runs.filter(r => r.status === "completed" && new Date(r.updated_at) > dayAgo).slice(0, 8);
@@ -504,9 +531,8 @@ nav .n.bad{background:var(--bad);color:#fff}
     }
   }
   function runTitle(r) {
-    if (r.name === "Generar vídeos de la semana") return "Tanda semanal";
-    if (r.display_title && r.display_title !== r.name) return r.display_title;
-    return r.name;
+    if (r.path && r.path.endsWith("semanal.yml")) return r.event === "schedule" ? "Tanda semanal (automática)" : "Tanda semanal";
+    return r.display_title || r.name;
   }
   function runRow(r, jobs, idx) {
     const list = (jobs && jobs.jobs) || [];
