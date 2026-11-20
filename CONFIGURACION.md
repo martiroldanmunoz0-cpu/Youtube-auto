@@ -79,14 +79,11 @@ YouTube deja **en privado** los vídeos subidos por la API desde proyectos nuevo
 4. En 10–15 minutos te llega un issue **«Pedido especial: …»** con las versiones: mismo tema, pero con otro gancho, otros diálogos y otras escenas.
 5. Se aprueba igual: marcas las casillas y cierras el issue. Se programan detrás de los que ya tengas en cola.
 
-# Comedia GTA (sketches de humor)
+# Historia real
 
-1. **Actions → «Comedia GTA» → Run workflow**.
-2. **Tema** (opcional): déjalo vacío y la IA elige según lo que más funciona de GTA 6 en YouTube, o escribe uno, p. ej. *«el amigo que siempre llama a la policía sin querer»*.
-3. Elige cuántos sketches (3 por defecto) → **Run workflow**.
-4. En 15–20 minutos te llega un issue **«Comedia: …»**. Se aprueba igual que los demás.
-
-Personajes, escenarios, voces y nivel de palabrotas se ajustan en `config.yaml`, sección `comedia`.
+1. En el panel: **Crear → Historia real → Buscar y crear** (o *Actions → «Historia real» → Run workflow*).
+2. **Tema** (opcional): vacío = la IA busca la historia real con más potencial que aún no se haya contado en el canal.
+3. Cada vídeo llega a **Revisar** en cuanto está listo. Se aprueba igual que los demás.
 
 # Ajustes (`config.yaml`)
 

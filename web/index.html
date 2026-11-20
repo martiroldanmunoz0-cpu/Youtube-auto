@@ -183,14 +183,6 @@ nav .n.bad{background:var(--bad);color:#fff}
       <p>Analiza lo que funciona en YouTube y genera la tanda de curiosidades (se lanza sola cada lunes).</p>
       <button class="btn main" type="submit">Lanzar tanda semanal</button>
     </form>
-    <form class="form" id="f-comedia">
-      <h3>Comedia GTA</h3>
-      <p>Sketches de dibujos en una ciudad tipo GTA, con palabrotas y voces de personajes.</p>
-      <input type="text" name="tema" placeholder="Tema (opcional)">
-      <div class="inline"><label for="cc">Sketches</label>
-        <select name="cantidad" id="cc"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
-        <button class="btn main" type="submit">Generar</button></div>
-    </form>
   </section>
 
   <section id="problemas">
@@ -235,8 +227,8 @@ nav .n.bad{background:var(--bad);color:#fff}
   const REPO = host.endsWith(".github.io") ? (location.pathname.split("/")[1] || "Youtube-auto") : "Youtube-auto";
   const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
   const TZ = "Europe/Madrid";
-  const WF = {pedido: "pedido.yml", semanal: "semanal.yml", comedia: "comedia.yml", historia: "historia.yml"};
-  const GEN_PATHS = ["semanal.yml", "pedido.yml", "comedia.yml", "historia.yml"].map(f => ".github/workflows/" + f);
+  const WF = {pedido: "pedido.yml", semanal: "semanal.yml", historia: "historia.yml"};
+  const GEN_PATHS = ["semanal.yml", "pedido.yml", "historia.yml"].map(f => ".github/workflows/" + f);
   const WEEKLY = {dow: 1, h: 5, m: 1}; // lunes 05:01 hora de Madrid (igual que semanal.yml)
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -614,10 +606,6 @@ nav .n.bad{background:var(--bad);color:#fff}
   $("#f-semanal").addEventListener("submit", e => {
     e.preventDefault();
     if (confirm("¿Lanzar ahora la tanda semanal? (cuesta lo mismo que la del lunes)")) dispatch(WF.semanal, {}, e.target.querySelector("button"));
-  });
-  $("#f-comedia").addEventListener("submit", async e => {
-    e.preventDefault(); const f = e.target;
-    if (await dispatch(WF.comedia, {tema: f.tema.value.trim(), cantidad: f.cantidad.value}, f.querySelector("button"))) f.reset();
   });
 
   // ---------- Historial ----------

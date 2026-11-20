@@ -1,4 +1,4 @@
-# Genera .github/workflows/{semanal,pedido,comedia}.yml. Uso: python pipeline/generar_workflows.py .github/workflows
+# Genera .github/workflows/{semanal,pedido,historia}.yml. Uso: python pipeline/generar_workflows.py .github/workflows
 import sys
 SETUP_PY = """      - uses: actions/setup-python@v5
         with:
@@ -107,7 +107,7 @@ jobs:
         run: |
           while true; do
             ANTES=$(gh api "repos/$GH_REPO/actions/runs?per_page=100" --jq '[.workflow_runs[]
-              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/pedido.yml" or .path == ".github/workflows/comedia.yml" or .path == ".github/workflows/historia.yml")
+              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/pedido.yml" or .path == ".github/workflows/historia.yml")
               | select(.status != "completed" and .id < ('"$MY_RUN"'))] | length')
             if [ "$ANTES" = "0" ]; then echo "¡Es mi turno!"; break; fi
             echo "Hay $ANTES tanda(s) antes que yo en la cola. Espero 1 minuto..."
@@ -238,26 +238,6 @@ open(f"{out}/pedido.yml", "w").write(workflow(
   PEDIDO_N: ${{ inputs.cantidad }}
 """, RID_STATIC, "", 5, "Pedido especial generado", "\"Pedido: ${{ inputs.pedido }}\""))
 
-open(f"{out}/comedia.yml", "w").write(workflow(
-    "Comedia GTA", "Sketches de humor de dibujos ambientados en una ciudad tipo GTA 6. Analiza lo que funciona de GTA 6 en YouTube.",
-    """on:
-  workflow_dispatch:
-    inputs:
-      tema:
-        description: "Tema concreto (opcional). Vacío = la IA elige según lo que funciona de GTA 6"
-        required: false
-        type: string
-      cantidad:
-        description: "¿Cuántos sketches?"
-        required: true
-        default: "3"
-        type: choice
-        options: ["1", "2", "3", "4", "5"]
-""", """  RUN_ID: comedia-${{ github.run_number }}
-  FORMATO: comedia
-  PEDIDO: ${{ inputs.tema }}
-  PEDIDO_N: ${{ inputs.cantidad }}
-""", RID_STATIC, TRENDS_OPT, 5, "Comedia generada", "\"Comedia: ${{ inputs.tema || 'tema libre' }}\""))
 
 open(f"{out}/historia.yml", "w").write(workflow(
     "Historia real", "Busca la historia real con más potencial de visualizaciones (que no se haya contado antes) y la cuenta.",
