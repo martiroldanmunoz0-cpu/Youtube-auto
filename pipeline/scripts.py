@@ -235,7 +235,9 @@ EXTRA_IDEAS = 4  # se piden ideas de sobra para poder descartar las repetidas
 _STOP = set("""a al algo como con cual de del donde el ella ellos en es esta este esto fue ha hay la las le lo los
 mas me mi mucho muy nadie ni no nos o para pero por que quien se si sin sobre son su sus te tiene tu tus un una unos
 y ya yo pasaria pasa seria seria si como cuando dato datos curioso curiosos curiosidad curiosidades sabias shorts
-nunca todo todos cada vez mundo esta estos estas eso existe hace hacer puede vuelve otra otro""".split())
+nunca todo todos cada vez mundo esta estos estas eso existe hace hacer puede vuelve otra otro
+dia dias ano anos vez veces solo sola tuvo tenia era fue han hombre mujer persona gente vida tiempo historia real
+primer primera despues antes ahora asi tan tanto entre hasta desde durante dos tres mil""".split())
 
 
 def _keywords(text: str) -> set[str]:
@@ -261,7 +263,8 @@ def is_repeated(idea: dict, previous: list[dict], threshold: float = 0.4) -> str
         if not okw:
             continue
         overlap = len(kw & okw) / min(len(kw), len(okw))
-        if overlap >= threshold and len(kw & okw) >= 2:
+        shared = len(kw & okw)
+        if overlap >= threshold and shared >= max(2, min(3, len(kw), len(okw))):
             return old.get("titulo") or old.get("premisa") or "?"
     return None
 
