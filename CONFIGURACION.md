@@ -66,7 +66,7 @@ YouTube deja **en privado** los vídeos subidos por la API desde proyectos nuevo
 1. **El lunes por la mañana** te llega un aviso de GitHub con el issue de revisión (activa las notificaciones de la app de GitHub).
 2. Abre la página de vídeos (enlace en el issue) y mira cada uno.
 3. Marca las casillas de los que te gusten y **cierra el issue**.
-4. Se programan solos en YouTube, **repartidos por igual en la semana** (1 al día; si se acumulan muchos, 2 o 3 como máximo, separados al menos 2 horas) y sin mover los ya programados. Horas (España): entre semana 19:00 (con 2: 14:00 y 20:30; con 3: 13:30, 18:00 y 21:30); fin de semana 12:00 (con 2: 12:00 y 19:30; con 3: 11:00, 16:30 y 20:30). Se cambian en `config.yaml` → `publicacion.horas`. El sistema te comenta en el issue el enlace de cada vídeo y su fecha.
+4. Se programan solos en YouTube: **cada día se llena con 2 vídeos antes de pasar al siguiente**; cuando los 7 días de la semana tienen 2, se añade un **3.º** a cada día (separados al menos 2 horas) y sin mover los ya programados. Horas (España): entre semana 19:00 (con 2: 14:00 y 20:30; con 3: 13:30, 18:00 y 21:30); fin de semana 12:00 (con 2: 12:00 y 19:30; con 3: 11:00, 16:30 y 20:30). Se cambian en `config.yaml` → `publicacion.horas`. El sistema te comenta en el issue el enlace de cada vídeo y su fecha.
 
 ¿No te convence ninguno o quieres otra tanda? *Actions → Generar vídeos de la semana → Run workflow* y sale una nueva.
 

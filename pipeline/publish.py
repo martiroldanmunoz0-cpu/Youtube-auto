@@ -70,8 +70,8 @@ def _far(h: tuple[int, int], used: set[tuple[int, int]], gap_min: int = 120) -> 
 def plan_slots(n: int, cfg: dict, queue: list[dict]) -> list[dt.datetime]:
     """Reparte n vídeos nuevos entre los días, respetando los que ya están programados.
 
-    - Busca el MENOR número de vídeos por día (1, 2 o 3) con el que todo lo pendiente cabe en el
-      horizonte (por defecto 7 días). Si ni con 3 cabe, usa 3 y sigue por los días siguientes.
+    - Llena cada día hasta 2 vídeos antes de pasar al siguiente. Cuando los días del horizonte (7) tienen 2,
+      añade un 3.º a cada uno. Si aún sobran, sigue por los días siguientes con 2 al día.
     - Las horas dependen del día (laborable / fin de semana) y de cuántos vídeos salen ese día.
     - Nunca más de `max_por_dia` (3) en un día, y separados al menos 2 horas entre sí.
     """
@@ -100,17 +100,21 @@ def plan_slots(n: int, cfg: dict, queue: list[dict]) -> list[dt.datetime]:
                 used.add(h)
                 slots.append(dt.datetime.combine(day, dt.time(*h), tz))
 
-    # Reparto por igual: primero 1 vídeo en cada día del horizonte, luego un 2.º en cada día, luego un 3.º
+    # Orden de llenado: cada día hasta 2 vídeos antes de pasar al siguiente; cuando TODOS los días de la
+    # semana tienen 2, se añade un 3.º a cada día (empezando por el más cercano). Si aún sobran, días siguientes a 2.
     days = [first_day + dt.timedelta(days=i) for i in range(horizon)]
-    for level in range(1, max_day + 1):
+    for day in days:
+        if len(slots) == n:
+            break
+        fill(day, min(2, max_day))
+    if max_day >= 3:
         for day in days:
             if len(slots) == n:
                 break
-            fill(day, level)
-    # Si ni con 3 al día cabe todo, se sigue por los días siguientes (máximo 3 al día)
+            fill(day, 3)
     day = first_day + dt.timedelta(days=horizon)
     while len(slots) < n:
-        fill(day, max_day)
+        fill(day, min(2, max_day))
         day += dt.timedelta(days=1)
     return sorted(slots)
 

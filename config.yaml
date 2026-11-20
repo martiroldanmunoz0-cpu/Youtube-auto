@@ -77,7 +77,7 @@ publicacion:
       1: ["12:00"]
       2: ["12:00", "19:30"]
       3: ["11:00", "16:30", "20:30"]
-  max_por_dia: 3                 # nunca más de 3 vídeos el mismo día
+  max_por_dia: 3                 # cada día se llena con 2 antes de pasar al siguiente; el 3.º solo cuando toda la semana tiene 2
   dias_horizonte: 7              # se intenta repartir lo pendiente en los próximos 7 días
   categoria_id: "24"             # 24 = Entretenimiento
   # true = el sistema sube y programa los vídeos. false = no los sube y te deja en el issue todo listo para subirlos a mano
