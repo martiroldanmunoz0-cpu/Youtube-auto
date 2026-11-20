@@ -45,11 +45,23 @@ def main() -> None:
         from googleapiclient.errors import HttpError  # noqa: PLC0415
 
         yt = youtube_client()
+        # Si ya está publicado (público) en YouTube, no se cambia nada: se marca como publicado y listo.
+        info = yt.videos().list(part="status", id=item["youtube_id"]).execute().get("items", [])
+        status = info[0]["status"] if info else {}
+        if not info or status.get("privacyStatus") in ("public", "unlisted"):
+            item["estado"] = "publicado" if info else "no_encontrado"
+            if dt.datetime.fromisoformat(item["publish_at"].replace("Z", "+00:00")) > dt.datetime.now(dt.timezone.utc):
+                item["publish_at"] = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            write_json(QUEUE, queue)
+            print(f"{a.id}: ya está {'publicado' if info else 'fuera de YouTube'} ({status.get('privacyStatus', '?')}); no se cambia nada")
+            return
         try:
             yt.videos().update(part="status", body={"id": item["youtube_id"], "status": {
                 "privacyStatus": "private", "publishAt": iso, "selfDeclaredMadeForKids": False}}).execute()
         except HttpError as e:
             msg = str(e)
+            if "invalidPublishAt" in msg:
+                sys.exit("YouTube no acepta esa fecha para este vídeo (¿ya no está programado como privado?). " + msg[:200])
             if "insufficient" in msg.lower() or "403" in msg:
                 sys.exit("YouTube no dejó cambiar la fecha: hace falta volver a conectar el canal con el permiso "
                          "«Gestionar tu cuenta de YouTube» (pídeselo a Claude). " + msg[:200])

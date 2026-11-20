@@ -661,7 +661,11 @@ nav .n.bad{background:var(--bad);color:#fff}
         const r = runs[0];
         if (!r || r.status !== "completed") continue;
         busyIds.delete(q.id);
-        if (r.conclusion === "success") { toast("✓ Fecha cambiada también en YouTube"); await loadQueue(); }
+        if (r.conclusion === "success") {
+          await loadQueue();
+          const nq = queue.find(x => x.id === q.id);
+          toast(nq && nq.estado === "publicado" ? "Ese vídeo ya está publicado en YouTube: no se ha cambiado nada." : "✓ Fecha cambiada también en YouTube");
+        }
         else { q.publish_at = before; toast("✕ No se pudo cambiar en YouTube. Mira «detalles» o díselo a Claude.", true); window.open(r.html_url, "_blank"); }
         renderCalendar(); renderProgramados();
         return;
