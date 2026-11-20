@@ -1,248 +1,320 @@
 {
-  "cameras": {
-    "push_in": "zoom lento hacia dentro (tensión, por defecto)",
-    "pull_out": "zoom hacia fuera (revelación, contexto)",
-    "pan_left": "barrido a la izquierda",
-    "pan_right": "barrido a la derecha",
-    "tilt_up": "sube la cámara",
-    "tilt_down": "baja la cámara",
-    "static": "casi quieta (calma)",
-    "shake": "cámara temblorosa (pánico, persecución)",
-    "slam": "zoom de golpe (sustos, giro final)"
+ "cameras": {
+  "push_in": "zoom lento hacia dentro (tensión, por defecto)",
+  "pull_out": "zoom hacia fuera (revelación, contexto)",
+  "pan_left": "barrido a la izquierda",
+  "pan_right": "barrido a la derecha",
+  "tilt_up": "sube la cámara",
+  "tilt_down": "baja la cámara",
+  "static": "casi quieta (calma)",
+  "shake": "cámara temblorosa (pánico, persecución)",
+  "slam": "zoom de golpe (sustos, giro final)"
+ },
+ "transitions": {
+  "fade": "fundido cruzado (por defecto)",
+  "cut": "corte seco (ritmo rápido)",
+  "black": "fundido a negro (salto de tiempo)",
+  "flash": "destello blanco (revelación, flashback)",
+  "red": "destello rojo (peligro, giro de terror)"
+ },
+ "scenes": {
+  "car_window": {
+   "desc": "Interior de coche de noche: ventanilla con luces de ciudad pasando, tirador de la puerta y botón de seguro.",
+   "params": {
+    "locked_at": "número (s) en que el seguro se pone rojo, opcional",
+    "hand": "bool, una mano pulsa el seguro"
+   }
   },
-  "transitions": {
-    "fade": "fundido cruzado (por defecto)",
-    "cut": "corte seco (ritmo rápido)",
-    "black": "fundido a negro (salto de tiempo)",
-    "flash": "destello blanco (revelación, flashback)",
-    "red": "destello rojo (peligro, giro de terror)"
+  "rearview_eyes": {
+   "desc": "Ojos de una persona reflejados en el retrovisor (conductor que te mira).",
+   "params": {
+    "mood": "calm|suspicious|wide|angry|sad",
+    "glance": "bool, mira de lado",
+    "glow": "bool, brillo rojo inquietante en las pupilas"
+   }
   },
-  "scenes": {
-    "car_window": {
-      "desc": "Interior de coche de noche: ventanilla con luces de ciudad pasando, tirador de la puerta y botón de seguro.",
-      "params": {
-        "locked_at": "número (s) en que el seguro se pone rojo, opcional",
-        "hand": "bool, una mano pulsa el seguro"
-      }
-    },
-    "rearview_eyes": {
-      "desc": "Ojos de una persona reflejados en el retrovisor (conductor que te mira).",
-      "params": {
-        "mood": "calm|suspicious|wide|angry|sad",
-        "glance": "bool, mira de lado",
-        "glow": "bool, brillo rojo inquietante en las pupilas"
-      }
-    },
-    "city_street": {
-      "desc": "Calle de ciudad de noche en perspectiva con edificios y farolas.",
-      "params": {
-        "car": "bool, un coche se acerca con los faros",
-        "figure": "bool, silueta de pie en la acera",
-        "hood": "bool, la silueta lleva capucha",
-        "rain": "bool",
-        "fog": "bool"
-      }
-    },
-    "phone": {
-      "desc": "Manos sujetando un móvil. Pantalla configurable. Muy versátil: mensajes, notificaciones, llamadas, búsquedas, banco, apps.",
-      "params": {
-        "screen": "chat|notification|call|map|search|profile|bank",
-        "chat": "contact (texto), status (texto), typing (bool), messages: [{from: them|me, text, alert?: bool}] (máx 4 mensajes cortos)",
-        "notification": "time 'HH:MM', date (texto), notifications: [{app, title, text, alert?}] (máx 3)",
-        "call": "caller (texto), label (texto)",
-        "map": "title (texto corto), subtitle (texto corto), status: ok|alert, route (bool)",
-        "search": "query (texto), results: [texto, ...] (máx 3)",
-        "profile": "name, label, detail",
-        "bank": "balance (texto, p.ej. '1.000.000 €' o '-200 €'), label (texto), status: ok|alert, transactions: [{text, amount}] (máx 5, amount con signo, p.ej. '-320.000 €')"
-      }
-    },
-    "bedroom": {
-      "desc": "Dormitorio a oscuras con ventana y luna, cama y una puerta entreabierta con luz del pasillo.",
-      "params": {
-        "door_open": "0..1",
-        "figure": "bool, silueta en la puerta",
-        "phone_glow": "bool, luz de móvil en la cama",
-        "moon": "bool"
-      }
-    },
-    "front_door": {
-      "desc": "Puerta de entrada vista desde dentro, mirilla y luz por debajo de la puerta.",
-      "params": {
-        "shadow": "bool, sombras de pies al otro lado",
-        "knock_at": "lista de segundos en que golpean (la puerta tiembla)",
-        "peephole_glow": "bool"
-      }
-    },
-    "hallway": {
-      "desc": "Pasillo largo (hotel, hospital, edificio) con fluorescentes.",
-      "params": {
-        "figure": "bool, silueta al fondo",
-        "flicker": "0..1 parpadeo de luces",
-        "color": "cold|warm",
-        "doors": "bool"
-      }
-    },
-    "house_exterior": {
-      "desc": "Casa aislada en una colina de noche, luna, árboles y niebla.",
-      "params": {
-        "lit_window": "bool",
-        "figure": "bool, silueta en la ventana de arriba",
-        "fog": "bool"
-      }
-    },
-    "clock": {
-      "desc": "Reloj de pared en la oscuridad marcando una hora.",
-      "params": {
-        "time": "'HH:MM'"
-      }
-    },
-    "tv": {
-      "desc": "Televisor antiguo en una habitación oscura.",
-      "params": {
-        "static": "bool, ruido de estática",
-        "text": "texto en pantalla (si se da, no hay estática); usa \\n para saltos"
-      }
-    },
-    "forest": {
-      "desc": "Bosque de noche con niebla.",
-      "params": {
-        "flashlight": "bool, haz de linterna",
-        "eyes": "bool, ojos brillando entre los árboles",
-        "figure": "bool, silueta entre árboles"
-      }
-    },
-    "ocean": {
-      "desc": "Mar de noche.",
-      "params": {
-        "ship": "bool, barco a lo lejos",
-        "storm": "bool, tormenta con lluvia y relámpagos"
-      }
-    },
-    "space": {
-      "desc": "Espacio con estrellas y un astro.",
-      "params": {
-        "object": "planet|blackhole|sun",
-        "color": "#hex del planeta",
-        "ring": "bool, anillos"
-      }
-    },
-    "eyes_dark": {
-      "desc": "Oscuridad total en la que aparecen ojos brillantes.",
-      "params": {
-        "count": "1..6",
-        "color": "#hex"
-      }
-    },
-    "silhouette": {
-      "desc": "Busto de una persona a contraluz, anónima (protagonista misterioso, sospechoso, testigo).",
-      "params": {
-        "hood": "bool",
-        "eyes": "bool, ojos brillantes",
-        "color": "#hex de la luz de fondo"
-      }
-    },
-    "big_text": {
-      "desc": "Cifra o palabra gigante con brillo (para datos curiosos). Los números hacen cuenta ascendente.",
-      "params": {
-        "text": "texto MUY corto (máx 14 caracteres), p.ej. '3.000 años'",
-        "label": "texto corto debajo",
-        "color": "#hex"
-      }
-    },
-    "newspaper": {
-      "desc": "Recorte de periódico antiguo bajo un foco (casos reales, sucesos históricos).",
-      "params": {
-        "headline": "titular",
-        "date": "fecha",
-        "kicker": "nombre del periódico (inventado)"
-      }
-    },
-    "map_pin": {
-      "desc": "Mapa estilizado con una chincheta que cae sobre un lugar.",
-      "params": {
-        "place": "nombre del lugar",
-        "detail": "dato corto"
-      }
-    },
-    "character": {
-      "desc": "Personaje protagonista (busto frontal, estilo plano) con expresión. Úsalo para 'tú', 'una persona', reacciones y emociones.",
-      "params": {
-        "mood": "neutral|happy|worried|shocked|angry|sad",
-        "prop": "none|money|phone",
-        "bg": "night|warm|cold|red",
-        "outfit": "#hex color de la ropa (mantén el mismo en todo el vídeo para que sea el mismo personaje)"
-      }
-    },
-    "money": {
-      "desc": "Billetes cayendo y fajos de dinero con una cifra grande que cuenta hacia arriba (dinero, premios, sueldos, deudas, precios).",
-      "params": {
-        "amount": "texto corto, p.ej. '1.000.000 €'",
-        "label": "texto corto debajo",
-        "rain": "bool (por defecto true)",
-        "stack": "bool, fajos abajo (por defecto true)"
-      }
-    },
-    "calendar": {
-      "desc": "Calendario de taco que pasa hojas hasta un día (paso del tiempo, 'día 1', 'al día 30', fechas).",
-      "params": {
-        "day": "número (o texto corto)",
-        "from": "número desde el que cuenta (opcional)",
-        "month": "texto en la cabecera, p.ej. 'Enero' o 'Día'",
-        "label": "texto corto abajo"
-      }
-    },
-    "duo": {
-      "formato": "comedia",
-      "desc": "Dos personajes del reparto juntos, de medio cuerpo, hablando. El que habla mueve la boca automáticamente. Úsalo para diálogos.",
-      "params": {
-        "bg": "room|street|night|beach|store|police (room = el salón donde juegan a la consola; el resto = dentro del juego)",
-        "left": "personaje del reparto (id)",
-        "right": "personaje del reparto (id)",
-        "left_mood": "neutral|happy|angry|shocked|sad|smug|scared",
-        "right_mood": "igual"
-      }
-    },
-    "closeup": {
-      "formato": "comedia",
-      "desc": "Primer plano de un personaje: reacciones, frases clave, el remate del chiste.",
-      "params": {
-        "bg": "room|street|night|beach|store|police",
-        "who": "personaje del reparto (id)",
-        "mood": "neutral|happy|angry|shocked|sad|smug|scared"
-      }
-    },
-    "vice_street": {
-      "formato": "comedia",
-      "desc": "Plano general de la ciudad tropical de neones (dentro del juego). Para situar la acción.",
-      "params": {
-        "night": "bool",
-        "car": "bool, pasa un deportivo"
-      }
-    },
-    "vice_beach": {
-      "formato": "comedia",
-      "desc": "Playa al atardecer con palmeras (dentro del juego).",
-      "params": {}
-    },
-    "car_ride": {
-      "formato": "comedia",
-      "desc": "Dos personajes en un descapotable conduciendo por la ciudad (dentro del juego).",
-      "params": {
-        "driver": "personaje del reparto (id)",
-        "passenger": "personaje del reparto (id)",
-        "driver_mood": "mood",
-        "passenger_mood": "mood",
-        "night": "bool",
-        "color": "#hex del coche"
-      }
-    },
-    "police_chase": {
-      "formato": "comedia",
-      "desc": "Persecución policial de noche con sirenas (dentro del juego).",
-      "params": {
-        "who": "personaje del reparto (id)",
-        "mood": "mood"
-      }
-    }
+  "city_street": {
+   "desc": "Calle de ciudad de noche en perspectiva con edificios y farolas.",
+   "params": {
+    "car": "bool, un coche se acerca con los faros",
+    "figure": "bool, silueta de pie en la acera",
+    "hood": "bool, la silueta lleva capucha",
+    "rain": "bool",
+    "fog": "bool"
+   }
+  },
+  "phone": {
+   "desc": "Manos sujetando un móvil. Pantalla configurable. Muy versátil: mensajes, notificaciones, llamadas, búsquedas, banco, apps.",
+   "params": {
+    "screen": "chat|notification|call|map|search|profile|bank",
+    "chat": "contact (texto), status (texto), typing (bool), messages: [{from: them|me, text, alert?: bool}] (máx 4 mensajes cortos)",
+    "notification": "time 'HH:MM', date (texto), notifications: [{app, title, text, alert?}] (máx 3)",
+    "call": "caller (texto), label (texto)",
+    "map": "title (texto corto), subtitle (texto corto), status: ok|alert, route (bool)",
+    "search": "query (texto), results: [texto, ...] (máx 3)",
+    "profile": "name, label, detail",
+    "bank": "balance (texto, p.ej. '1.000.000 €' o '-200 €'), label (texto), status: ok|alert, transactions: [{text, amount}] (máx 5, amount con signo, p.ej. '-320.000 €')"
+   }
+  },
+  "bedroom": {
+   "desc": "Dormitorio a oscuras con ventana y luna, cama y una puerta entreabierta con luz del pasillo.",
+   "params": {
+    "door_open": "0..1",
+    "figure": "bool, silueta en la puerta",
+    "phone_glow": "bool, luz de móvil en la cama",
+    "moon": "bool"
+   }
+  },
+  "front_door": {
+   "desc": "Puerta de entrada vista desde dentro, mirilla y luz por debajo de la puerta.",
+   "params": {
+    "shadow": "bool, sombras de pies al otro lado",
+    "knock_at": "lista de segundos en que golpean (la puerta tiembla)",
+    "peephole_glow": "bool"
+   }
+  },
+  "hallway": {
+   "desc": "Pasillo largo (hotel, hospital, edificio) con fluorescentes.",
+   "params": {
+    "figure": "bool, silueta al fondo",
+    "flicker": "0..1 parpadeo de luces",
+    "color": "cold|warm",
+    "doors": "bool"
+   }
+  },
+  "house_exterior": {
+   "desc": "Casa aislada en una colina de noche, luna, árboles y niebla.",
+   "params": {
+    "lit_window": "bool",
+    "figure": "bool, silueta en la ventana de arriba",
+    "fog": "bool"
+   }
+  },
+  "clock": {
+   "desc": "Reloj de pared en la oscuridad marcando una hora.",
+   "params": {
+    "time": "'HH:MM'"
+   }
+  },
+  "tv": {
+   "desc": "Televisor antiguo en una habitación oscura.",
+   "params": {
+    "static": "bool, ruido de estática",
+    "text": "texto en pantalla (si se da, no hay estática); usa \\n para saltos"
+   }
+  },
+  "forest": {
+   "desc": "Bosque de noche con niebla.",
+   "params": {
+    "flashlight": "bool, haz de linterna",
+    "eyes": "bool, ojos brillando entre los árboles",
+    "figure": "bool, silueta entre árboles"
+   }
+  },
+  "ocean": {
+   "desc": "Mar de noche.",
+   "params": {
+    "ship": "bool, barco a lo lejos",
+    "storm": "bool, tormenta con lluvia y relámpagos"
+   }
+  },
+  "space": {
+   "desc": "Espacio con estrellas y un astro.",
+   "params": {
+    "object": "planet|blackhole|sun",
+    "color": "#hex del planeta",
+    "ring": "bool, anillos"
+   }
+  },
+  "eyes_dark": {
+   "desc": "Oscuridad total en la que aparecen ojos brillantes.",
+   "params": {
+    "count": "1..6",
+    "color": "#hex"
+   }
+  },
+  "silhouette": {
+   "desc": "Busto de una persona a contraluz, anónima (protagonista misterioso, sospechoso, testigo).",
+   "params": {
+    "hood": "bool",
+    "eyes": "bool, ojos brillantes",
+    "color": "#hex de la luz de fondo"
+   }
+  },
+  "big_text": {
+   "desc": "Cifra o palabra gigante con brillo (para datos curiosos). Los números hacen cuenta ascendente.",
+   "params": {
+    "text": "texto MUY corto (máx 14 caracteres), p.ej. '3.000 años'",
+    "label": "texto corto debajo",
+    "color": "#hex"
+   }
+  },
+  "newspaper": {
+   "desc": "Recorte de periódico antiguo bajo un foco (casos reales, sucesos históricos).",
+   "params": {
+    "headline": "titular",
+    "date": "fecha",
+    "kicker": "nombre del periódico (inventado)"
+   }
+  },
+  "map_pin": {
+   "desc": "Mapa estilizado con una chincheta que cae sobre un lugar.",
+   "params": {
+    "place": "nombre del lugar",
+    "detail": "dato corto"
+   }
+  },
+  "character": {
+   "desc": "Busto de la persona protagonista (siempre la misma cara en el vídeo) con expresión. Úsalo para 'tú', el protagonista de una historia real, reacciones y emociones.",
+   "params": {
+    "mood": "neutral|happy|worried|shocked|angry|sad",
+    "prop": "none|money|phone",
+    "bg": "night|warm|cold|red",
+    "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)"
+   }
+  },
+  "money": {
+   "desc": "Billetes cayendo y fajos de dinero con una cifra grande que cuenta hacia arriba (dinero, premios, sueldos, deudas, precios).",
+   "params": {
+    "amount": "texto corto, p.ej. '1.000.000 €'",
+    "label": "texto corto debajo",
+    "rain": "bool (por defecto true)",
+    "stack": "bool, fajos abajo (por defecto true)"
+   }
+  },
+  "calendar": {
+   "desc": "Calendario de taco que pasa hojas hasta un día (paso del tiempo, 'día 1', 'al día 30', fechas).",
+   "params": {
+    "day": "número (o texto corto)",
+    "from": "número desde el que cuenta (opcional)",
+    "month": "texto en la cabecera, p.ej. 'Enero' o 'Día'",
+    "label": "texto corto abajo"
+   }
+  },
+  "duo": {
+   "formato": "comedia",
+   "desc": "Dos personajes del reparto juntos, de medio cuerpo, hablando. El que habla mueve la boca automáticamente. Úsalo para diálogos.",
+   "params": {
+    "bg": "room|street|night|beach|store|police (room = el salón donde juegan a la consola; el resto = dentro del juego)",
+    "left": "personaje del reparto (id)",
+    "right": "personaje del reparto (id)",
+    "left_mood": "neutral|happy|angry|shocked|sad|smug|scared",
+    "right_mood": "igual"
+   }
+  },
+  "closeup": {
+   "formato": "comedia",
+   "desc": "Primer plano de un personaje: reacciones, frases clave, el remate del chiste.",
+   "params": {
+    "bg": "room|street|night|beach|store|police",
+    "who": "personaje del reparto (id)",
+    "mood": "neutral|happy|angry|shocked|sad|smug|scared"
+   }
+  },
+  "vice_street": {
+   "formato": "comedia",
+   "desc": "Plano general de la ciudad tropical de neones (dentro del juego). Para situar la acción.",
+   "params": {
+    "night": "bool",
+    "car": "bool, pasa un deportivo"
+   }
+  },
+  "vice_beach": {
+   "formato": "comedia",
+   "desc": "Playa al atardecer con palmeras (dentro del juego).",
+   "params": {}
+  },
+  "car_ride": {
+   "formato": "comedia",
+   "desc": "Dos personajes en un descapotable conduciendo por la ciudad (dentro del juego).",
+   "params": {
+    "driver": "personaje del reparto (id)",
+    "passenger": "personaje del reparto (id)",
+    "driver_mood": "mood",
+    "passenger_mood": "mood",
+    "night": "bool",
+    "color": "#hex del coche"
+   }
+  },
+  "police_chase": {
+   "formato": "comedia",
+   "desc": "Persecución policial de noche con sirenas (dentro del juego).",
+   "params": {
+    "who": "personaje del reparto (id)",
+    "mood": "mood"
+   }
+  },
+  "person": {
+   "desc": "Persona de CUERPO ENTERO (la protagonista por defecto). Para presentar a alguien, mostrar qué le pasa a su cuerpo (zona resaltada en rojo) o cómo queda después (sin brazos, brazos en alto de alegría).",
+   "params": {
+    "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
+    "mood": "neutral|happy|worried|shocked|angry|sad",
+    "arms": "normal|none|up|cross",
+    "highlight": "none|arms|legs|chest|heart|head|stomach",
+    "label": "texto corto en una etiqueta (p. ej. 'Electricista · 26 años')",
+    "bg": "night|warm|cold|red|room|hospital"
+   }
+  },
+  "hospital": {
+   "desc": "Persona en la cama de un hospital con monitor de pulso y gotero. Coma, recuperación, ingreso, despertar.",
+   "params": {
+    "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
+    "state": "sleeping|awake",
+    "mood": "neutral|worried|sad|happy",
+    "monitor": "normal|alarm",
+    "label": "texto corto"
+   }
+  },
+  "surgery": {
+   "desc": "Quirófano con equipo de cirujanos bajo la lámpara. Operaciones, trasplantes, intervenciones largas.",
+   "params": {
+    "team": "2-4 cirujanos",
+    "intensity": "calm|tense",
+    "label": "texto corto (p. ej. '15 horas de operación')"
+   }
+  },
+  "doctor": {
+   "desc": "Médico/a con bata hablando, con bocadillo opcional. Diagnósticos, lo que dicen los expertos, frases de médicos.",
+   "params": {
+    "who": "por defecto 'medico'; otro nombre = otro médico",
+    "mood": "neutral|worried|happy|sad",
+    "say": "frase corta del bocadillo (máx 8 palabras)",
+    "label": "texto corto"
+   }
+  },
+  "document": {
+   "desc": "Documento/informe/carta en papel con título, hasta 5 líneas, una resaltada y un sello opcional. Listas de espera, leyes, cartas, récords oficiales, expedientes.",
+   "params": {
+    "title": "título corto",
+    "lines": "lista de hasta 5 textos cortos (máx 30 caracteres)",
+    "highlight": "índice 0-4 de la línea a resaltar",
+    "stamp": "sello corto (APROBADO, RECHAZADO, URGENTE...)"
+   }
+  },
+  "quote": {
+   "desc": "Cita textual en una nota amarilla. Para frases reales y memorables de los protagonistas (solo si están documentadas).",
+   "params": {
+    "text": "la cita (máx 12 palabras)",
+    "author": "quién lo dijo"
+   }
+  },
+  "year_jump": {
+   "desc": "Contador de años que avanza (1998 → 2021) con barra de tiempo. Saltos temporales en historias reales.",
+   "params": {
+    "from": "año inicial",
+    "to": "año final",
+    "label": "texto corto (p. ej. '23 años después')"
+   }
+  },
+  "group": {
+   "desc": "La persona protagonista con su familia, amigos o equipo (2-4 personas de cuerpo entero).",
+   "params": {
+    "count": "2-4",
+    "kids": "true si los acompañantes son niños",
+    "mood": "happy|neutral|sad|worried",
+    "label": "texto corto",
+    "bg": "warm|night|cold|room"
+   }
   }
+ }
 }

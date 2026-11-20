@@ -38,6 +38,7 @@ generacion:
   modelo_guiones: "claude-sonnet-5-5"
   usar_lotes: true               # lote de Claude (Batch API): -50% de coste, tarda unos minutos más
   duracion_objetivo_seg: [45, 75]
+  duracion_caso_real_seg: [60, 100]   # historias reales: algo más largas (los Shorts admiten hasta 3 min)
   mezcla: "auto"                 # auto = la IA decide según tendencias (historias, datos, casos reales...)
   # Lo que más te gusta (se tiene en cuenta en ideas y guiones). Edítalo cuando quieras.
   estilo_preferido: >-
@@ -45,7 +46,9 @@ generacion:
     en tu cama..."). Progresión paso a paso o día a día (día 1, día 2, día 3... o cada vez más grande), con
     escalada de tensión y un giro final que sorprenda. Formatos que funcionan: "cada noche/cada día pasa algo
     más", falso telediario o diario que avanza, "imagina que...". Los rankings o listas de cifras solo como
-    recurso puntual dentro de una historia, no como vídeo entero.
+    recurso puntual dentro de una historia, no como vídeo entero. También le gustan las HISTORIAS REALES
+    contadas como un buen documental (protagonista con nombre, qué le pasó, giros y un final que pocos conocen).
+    Variedad: no todos los vídeos con el mismo formato.
 
 voz:
   motor: "auto"                  # auto = voz clonada si existe, si no Edge | edge | espeak

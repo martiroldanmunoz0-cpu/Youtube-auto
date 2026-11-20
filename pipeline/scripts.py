@@ -104,7 +104,13 @@ sucesos reales y documentados). Nada de historias de terror ni ficción.
 - Fíjate en el MECANISMO que hace funcionar cada vídeo (curiosidad, "no sabía esto", sorpresa, comparación \
 exagerada, pregunta imposible), no en copiar su contenido. Nunca reutilices el guion de otro creador.
 - Cada idea: gancho que funcione en los 2 primeros segundos y DEJE CLARO EL TEMA con una pregunta (la gente no ve título ni descripción), y un remate final que sorprenda o invite a comentar.
-- Mezcla tipos: al menos 3 "que_pasaria_si" y 3 "dato_curioso" por tanda; no repitas temas del historial.
+- Mezcla tipos en cada tanda: 2-3 "que_pasaria_si", 2-3 "dato_curioso"/"explicacion" y 2-3 "caso_real"; no repitas \
+temas del historial.
+- "caso_real" = HISTORIAS REALES con protagonista: personas que vivieron algo increíble (medicina, accidentes y \
+supervivencia, récords, inventos, errores históricos, golpes de suerte). Solo casos públicos y muy documentados \
+(prensa seria, artículos médicos, libros). Con respeto: nada morboso ni detalles desagradables.
+- Varía los formatos: no propongas todas las ideas con la misma estructura (día a día, cuenta atrás, telediario, \
+segunda persona, historia en tercera persona, antes/después, pregunta-respuesta, lista con giro...).
 - RIGOR: solo datos bien documentados de los que estés muy seguro. Los "¿qué pasaría si?" se basan en ciencia \
 real (lo que dicen los expertos), sin inventar cifras. Si un dato es dudoso, descarta la idea.
 - Las ideas tienen que poder contarse con las escenas disponibles del catálogo."""
@@ -124,13 +130,22 @@ La gente ve el vídeo SIN título ni descripción: solo oye la voz. Si en los 3 
 Puntúa cada uno de 1 a 10. PRUEBA DEL DESCONOCIDO (si no la pasa, máximo 3 puntos): alguien que solo oye esa frase, sin ver nada más, ¿sabe de qué va el vídeo y quiere saber la respuesta? Además: se entiende en menos de 2 segundos; es concreto; no destripa el final; máximo 15 palabras. Copia el mejor en "gancho_elegido" y úsalo LITERALMENTE como texto del plano 1.
 PROHIBIDO empezar a mitad de la historia sin presentar el tema (MAL: "Día uno: bajas diez metros." BIEN: "¿Qué pasaría si cada día bajaras más hondo en el océano? Día uno: diez metros.").
 
-TÉCNICAS DE RETENCIÓN (úsalas todas)
-- Bucles abiertos: plantea una duda pronto y no la resuelvas hasta el final.
+TÉCNICAS DE RETENCIÓN (caja de herramientas: elige las que mejor encajen con ESTE vídeo y combínalas)
+- Bucle abierto desde el principio: una promesa o duda que solo se resuelve al final ("Pero lo que le pasó \
+después es aún más raro.", "Y la respuesta no es la que piensas.").
+- Anticipación: siembra un detalle y avisa de que importará ("Acuérdate de este número, porque al final lo \
+cambia todo."). Luego CÚMPLELO: todo lo que anuncies se resuelve.
+- Mini-giros cada 10-15 segundos: "Pero entonces...", "Y aquí empieza el problema.", un dato que cambia lo que \
+creías o una amenaza nueva.
+- Concreción: nombres, edades, fechas, cifras y detalles sensoriales hacen que te lo creas y te importe.
+- Emoción: que al espectador le importe lo que pasa (miedo, asombro, ternura, injusticia, alivio).
+- Varía las frases: no uses siempre las mismas coletillas ("casi nadie lo sabe", "nadie esperaba") en todos los \
+vídeos; busca la forma propia de cada historia.
 - Cada 2-3 planos, algo nuevo: un dato, un giro pequeño, una amenaza o una pregunta ("Pero había un problema.").
 - Nada de relleno ni frases de transición vacías; si un plano se puede quitar sin perder nada, quítalo.
 - Lo mejor va al final, y la última frase enlaza con la primera para que se vuelva a ver (bucle).
 
-ESTRUCTURA OBLIGATORIA
+ESTRUCTURA BASE (adáptala: el formato concreto lo decide cada idea; no todos los vídeos son iguales)
 1. GANCHO (plano 1, máx 15 palabras): el gancho elegido, que deja claro el tema con una pregunta (o un dato + la \
 pregunta). Nada de saludos, "hoy os cuento" ni introducciones. Ejemplos de tono: "¿Qué pasaría si la Tierra \
 dejara de girar?" / "¿Cuánto aguantarías sin dormir? Tu cuerpo empieza a fallar el día dos."
@@ -141,10 +156,22 @@ tensión nueva para que nadie deslice.
 3. GIRO / REMATE: el último o penúltimo plano revela algo que cambia todo o deja una pregunta. Mejor si la última \
 frase conecta con la primera (bucle) para que se vuelva a ver.
 
+HISTORIAS REALES (tipo "caso_real")
+- Se cuentan en TERCERA PERSONA con un protagonista (escenas character/person/hospital/group con who \
+"protagonista": siempre la misma cara). Otras personas: otro "who" ("madre", "medico"...).
+- Una estructura que funciona (no es obligatoria): hecho increíble + promesa (gancho) → quién era y su vida \
+normal → lo que pasó → la lucha y los obstáculos (con mini-giros) → el giro → el final que pocos conocen.
+- Si citas frases, solo citas reales y documentadas (escena "quote"). Saltos de tiempo con "year_jump".
+- Respeto: nada de sangre, heridas explícitas ni detalles morbosos; cuéntalo como lo contaría un buen documental.
+- Si no estás muy seguro de un dato concreto (fecha, cifra, nombre), no lo pongas o redondéalo.
+
 REGLAS DE TEXTO
-- 120-180 palabras en total. Entre 9 y 16 planos. Cada plano: 1-2 frases, 6-22 palabras.
+- 120-180 palabras en total y entre 9 y 16 planos (historias reales: 170-250 palabras y 13-22 planos). \
+Cada plano: 1-2 frases, 6-22 palabras.
 - Escribe para el oído: sin emojis, sin abreviaturas, números escritos como se dicen si son cortos.
 - Es un canal de CURIOSIDADES: tono divulgativo, cercano y con ritmo, como un amigo que te cuenta algo alucinante.
+- El estilo preferido del dueño (segunda persona, día a día) es para "qué pasaría si" e "imagina que"; las \
+historias reales van en tercera persona.
 - RIGOR ABSOLUTO: cada dato y cada cifra tiene que ser correcto y estar bien documentado. Si no estás seguro de \
 una cifra, no la pongas o redondea con "más de", "casi". En los "¿qué pasaría si?" explica lo que dice la ciencia.
 - Haz comparaciones que se entiendan ("más rápido que un avión", "como llenar diez estadios").
@@ -380,6 +407,8 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
     # Contexto fijo (igual en todos los guiones) -> se cachea.
     context = f"Catálogo de escenas, cámaras y transiciones:\n{json.dumps(catalog, ensure_ascii=False, sort_keys=True)}"
     lo, hi = cfg["generacion"]["duracion_objetivo_seg"]
+    if idea.get("tipo") == "caso_real":
+        lo, hi = cfg["generacion"].get("duracion_caso_real_seg", [60, 100])
     user = (
         f"Patrones de gancho que funcionan ahora:\n{json.dumps(analysis['patrones_gancho'], ensure_ascii=False)}\n\n"
         + (f"Pedido original del dueño del canal (respétalo): \"{pedido()}\"\n\n" if pedido() else "")

@@ -1,6 +1,7 @@
 // Persona del narrador / protagonista: distinta en cada vídeo (según su id) y la misma dentro del vídeo.
 // Así las portadas y los vídeos del canal no tienen siempre la misma cara.
-import { rng } from './util.mjs';
+import { rng, rr } from './util.mjs';
+import { drawEyes, blinkAt } from './parts.mjs';
 
 const SKINS = [
   { light: '#f6d3b3', dark: '#d29a72', ear: '#d9a07a', neck: '#c98e66' },
@@ -126,3 +127,121 @@ export function drawExtras(ctx, cx, cy, p) {
     for (const sx of [-1, 1]) { ctx.beginPath(); ctx.ellipse(cx + sx * 88, cy - 18, 72, 56, 0, 0, 7); ctx.fill(); }
   }
 }
+
+// Cabeza completa (pelo, cuello, cara, expresión). Centro de la cabeza en (cx, cy); cabeza de ~460x560 px.
+// opts: { mood: neutral|happy|worried|shocked|angry|sad, t, blinkSeed, closed (ojos cerrados), neck (true) }
+export function drawHead(ctx, cx, cy, who, { mood = 'neutral', t = 0, blinkSeed = 0, closed = false, neck = true } = {}) {
+    drawHairBack(ctx, cx, cy, who);
+    // Cuello
+    if (neck) { ctx.fillStyle = who.skin.neck; rr(ctx, cx - 70, cy + 170, 140, 150, 40); ctx.fill(); }
+    // Cabeza
+    const hg = ctx.createRadialGradient(cx - 60, cy - 80, 40, cx, cy, 300);
+    hg.addColorStop(0, who.skin.light); hg.addColorStop(1, who.skin.dark);
+    ctx.fillStyle = hg;
+    ctx.beginPath(); ctx.ellipse(cx, cy, 230, 280, 0, 0, Math.PI * 2); ctx.fill();
+    // Orejas
+    ctx.fillStyle = who.skin.ear;
+    for (const sx of [-1, 1]) { ctx.beginPath(); ctx.ellipse(cx + sx * 228, cy + 10, 34, 60, 0, 0, 7); ctx.fill(); }
+    // Pelo
+    drawHairFront(ctx, cx, cy, who);
+    drawBeard(ctx, cx, cy, who);
+    // Ojos (reutiliza los del retrovisor, más pequeños)
+    const eyeMood = { neutral: 'calm', happy: 'calm', worried: 'sad', shocked: 'wide', angry: 'angry', sad: 'sad' }[mood] || 'calm';
+    ctx.save(); ctx.translate(cx, cy - 20); ctx.scale(0.62, 0.62);
+    drawEyes(ctx, 0, 0, 110, { mood: eyeMood, skin: who.skin.light, look: Math.sin(t * 0.7) * 0.25, blink: closed ? 1 : mood === 'shocked' ? 0 : blinkAt(t, blinkSeed) });
+    ctx.restore();
+    // Nariz
+    ctx.strokeStyle = 'rgba(40,20,10,0.5)'; ctx.lineWidth = 6; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(cx + 5, cy + 30); ctx.quadraticCurveTo(cx + 25, cy + 90, cx - 10, cy + 100); ctx.stroke();
+    // Boca
+    ctx.strokeStyle = '#2a120a'; ctx.lineWidth = 9;
+    ctx.beginPath();
+    if (mood === 'happy') { ctx.moveTo(cx - 80, cy + 160); ctx.quadraticCurveTo(cx, cy + 230, cx + 80, cy + 160); ctx.stroke(); }
+    else if (mood === 'shocked') { ctx.fillStyle = '#2a0e08'; ctx.ellipse(cx, cy + 180, 36, 48 + Math.sin(t * 6) * 4, 0, 0, 7); ctx.fill(); }
+    else if (mood === 'sad' || mood === 'worried') { ctx.moveTo(cx - 70, cy + 195); ctx.quadraticCurveTo(cx, cy + 150, cx + 70, cy + 195); ctx.stroke(); }
+    else if (mood === 'angry') { ctx.moveTo(cx - 70, cy + 185); ctx.lineTo(cx + 70, cy + 175); ctx.stroke(); }
+    else { ctx.moveTo(cx - 60, cy + 175); ctx.quadraticCurveTo(cx, cy + 190, cx + 60, cy + 175); ctx.stroke(); }
+    drawExtras(ctx, cx, cy, who);
+    // Gota de sudor (preocupado)
+    if (mood === 'worried' || mood === 'shocked') {
+      const k = (t * 0.6) % 1;
+      ctx.fillStyle = 'rgba(160,210,255,0.85)';
+      ctx.beginPath(); ctx.ellipse(cx + 190, cy - 120 + k * 120, 14, 22, 0, 0, 7); ctx.fill();
+    }
+}
+
+// Persona según "who": "protagonista" (o vacío) = la misma del vídeo en todas las escenas; cualquier otro nombre
+// ("madre", "medico", "hija") = otra persona fija dentro del vídeo.
+export function personaWho(seed, params = {}) {
+  const who = String(params.who || 'protagonista').toLowerCase();
+  return personaFor(who === 'protagonista' || who === 'tu' || who === 'tú' ? seed : `${seed}-${who}`, params);
+}
+
+const PANTS = ['#2a3a5c', '#1f2430', '#3b3b44', '#4a3a2a', '#28414a'];
+
+// Cuerpo entero. (x, y) = centro de la cabeza; s = escala (1 = cabeza de 460 px). Mide ~2550*s de alto.
+// opts: { mood, t, blinkSeed, arms: normal|none|up|cross, highlight: none|arms|legs|chest|heart|head|stomach, closed }
+export function drawFullBody(ctx, x, y, s, who, opts = {}) {
+  const { arms = 'normal', highlight = 'none', t = 0 } = opts;
+  const pants = PANTS[Math.abs(hashCode(who.outfit + who.hair)) % PANTS.length];
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  // Piernas y zapatos
+  ctx.fillStyle = pants;
+  rr(ctx, -200, 1250, 180, 1000, 60); ctx.fill();
+  rr(ctx, 20, 1250, 180, 1000, 60); ctx.fill();
+  ctx.fillStyle = '#15161c';
+  rr(ctx, -230, 2200, 230, 90, 40); ctx.fill(); rr(ctx, 0, 2200, 230, 90, 40); ctx.fill();
+  // Brazos (detrás del torso cuando cuelgan)
+  const skin = who.skin.light, sleeve = who.outfit;
+  const arm = (side, ang) => {
+    ctx.save(); ctx.translate(side * 255, 380); ctx.rotate(ang);
+    ctx.fillStyle = sleeve; rr(ctx, -70, -20, 140, 300, 60); ctx.fill();
+    ctx.fillStyle = skin; rr(ctx, -58, 240, 116, 620, 55); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(0, 880, 72, 88, 0, 0, 7); ctx.fill();
+    ctx.restore();
+  };
+  if (arms === 'normal') { arm(-1, 0.12 + Math.sin(t * 1.3) * 0.02); arm(1, -0.12 - Math.sin(t * 1.3) * 0.02); }
+  // Torso
+  ctx.fillStyle = who.outfit;
+  ctx.beginPath();
+  ctx.moveTo(-290, 420); ctx.quadraticCurveTo(-290, 300, -150, 290); ctx.lineTo(150, 290);
+  ctx.quadraticCurveTo(290, 300, 290, 420); ctx.lineTo(240, 1300); ctx.lineTo(-240, 1300); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = 'rgba(0,0,0,0.22)';
+  ctx.beginPath(); ctx.moveTo(-90, 290); ctx.lineTo(0, 400); ctx.lineTo(90, 290); ctx.fill();
+  ctx.fillStyle = '#2a1d14'; ctx.fillRect(-240, 1240, 480, 50);
+  ctx.fillStyle = '#c9a24a'; rr(ctx, -35, 1240, 70, 50, 8); ctx.fill();
+  if (arms === 'up') {
+    for (const side of [-1, 1]) {
+      ctx.save(); ctx.translate(side * 255, 380); ctx.rotate(side * 2.7 + Math.sin(t * 3) * 0.05 * side);
+      ctx.fillStyle = sleeve; rr(ctx, -70, -20, 140, 300, 60); ctx.fill();
+      ctx.fillStyle = skin; rr(ctx, -58, 240, 116, 620, 55); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(0, 880, 72, 88, 0, 0, 7); ctx.fill();
+      ctx.restore();
+    }
+  } else if (arms === 'cross') {
+    ctx.fillStyle = skin;
+    rr(ctx, -260, 700, 520, 120, 60); ctx.fill();
+    ctx.fillStyle = sleeve; rr(ctx, -300, 360, 130, 420, 60); ctx.fill(); rr(ctx, 170, 360, 130, 420, 60); ctx.fill();
+  } else if (arms === 'none') {
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    for (const side of [-1, 1]) { ctx.beginPath(); ctx.ellipse(side * 270, 420, 40, 90, 0, 0, 7); ctx.fill(); }
+  }
+  // Zona resaltada (lo que le pasa al cuerpo)
+  if (highlight && highlight !== 'none') {
+    const zones = { arms: [[-300, 800, 260], [300, 800, 260]], legs: [[-110, 1750, 300], [110, 1750, 300]], chest: [[0, 600, 300]],
+      heart: [[-80, 560, 170]], head: [[0, 0, 360]], stomach: [[0, 1000, 260]] };
+    const pulse = 0.55 + Math.sin(t * 5) * 0.25;
+    for (const [zx, zy, zr] of zones[highlight] || []) {
+      const g = ctx.createRadialGradient(zx, zy, 0, zx, zy, zr);
+      g.addColorStop(0, `rgba(255,70,50,${0.75 * pulse})`); g.addColorStop(1, 'rgba(255,70,50,0)');
+      ctx.fillStyle = g; ctx.fillRect(zx - zr, zy - zr, zr * 2, zr * 2);
+    }
+  }
+  ctx.restore();
+  // Cabeza (encima del cuello del torso)
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  drawHead(ctx, 0, 0, who, { mood: opts.mood, t, blinkSeed: opts.blinkSeed || 0, closed: opts.closed });
+  ctx.restore();
+}
+
+function hashCode(str) { let h = 0; for (const c of str) h = (h * 31 + c.charCodeAt(0)) | 0; return h; }
