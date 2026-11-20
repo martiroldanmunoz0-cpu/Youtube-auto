@@ -130,6 +130,7 @@ nav .n.bad{background:var(--bad);color:#fff}
 </header>
 
 <main>
+  <div class="banner" id="tokwarn" hidden></div>
   <div class="banner" id="notoken" hidden>Para aprobar vídeos o lanzar pedidos desde aquí, conecta tu cuenta una vez: <button id="notoken-btn">configurar</button>.</div>
 
   <section id="revisar" class="on">
@@ -208,7 +209,10 @@ nav .n.bad{background:var(--bad);color:#fff}
     <li>Pulsa <b>Generate token</b>, cópialo y pégalo aquí.</li>
   </ol>
   <input type="password" id="tok" placeholder="github_pat_…" autocomplete="off">
+  <label style="font-size:13px;color:var(--muted);display:block;margin-top:10px">Fecha de caducidad (la que elegiste en <i>Expiration</i>)
+    <input type="date" id="tok-exp" style="width:100%;margin-top:4px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 12px"></label>
   <p id="tok-status" style="font-size:13px;color:var(--muted)"></p>
+  <p style="font-size:13px;color:var(--muted)">El panel te avisará arriba 14 días antes de que caduque (GitHub también te manda un correo). Cuando caduque, repite estos pasos y pega la nueva.</p>
   <div class="actions"><button class="btn no" id="tok-del" type="button">Quitar</button><button class="btn main" id="tok-save" type="button">Guardar</button></div>
   <div class="actions"><button class="btn no" id="dlg-close" type="button">Cerrar</button></div>
 </dialog>
@@ -233,6 +237,7 @@ nav .n.bad{background:var(--bad);color:#fff}
     set(k, v) { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch {} },
   };
   let token = store.get("gh_token");
+  let tokenBad = false;
   $("#repo-name").textContent = `${OWNER}/${REPO}`;
 
   // ---------- Utilidades ----------
@@ -243,7 +248,16 @@ nav .n.bad{background:var(--bad);color:#fff}
   async function gh(path, opts = {}) {
     const headers = {"Accept": "application/vnd.github+json", ...(opts.headers || {})};
     if (token) headers.Authorization = `Bearer ${token}`;
-    const r = await fetch(path.startsWith("http") ? path : API + path, {...opts, headers, cache: "no-store"});
+    const url = path.startsWith("http") ? path : API + path;
+    let r = await fetch(url, {...opts, headers, cache: "no-store"});
+    if (token) {
+      const exp = r.headers.get("github-authentication-token-expiration");
+      if (exp) { const d = new Date(exp.replace(" UTC", "Z").replace(" ", "T")); if (!isNaN(d)) { store.set("gh_token_exp", d.toISOString()); updateBanner(); } }
+      if (r.status === 401) {
+        tokenBad = true; updateBanner();
+        if (!opts.method || opts.method === "GET") { delete headers.Authorization; r = await fetch(url, {...opts, headers, cache: "no-store"}); }
+      }
+    }
     if (!r.ok) {
       let msg = `${r.status}`;
       try { msg += " " + ((await r.json()).message || ""); } catch {}
@@ -611,25 +625,44 @@ nav .n.bad{background:var(--bad);color:#fff}
 
   // ---------- Ajustes ----------
   function openSettings() {
-    $("#tok").value = token; $("#tok-status").textContent = token ? "Hay una llave guardada en este navegador." : "";
+    $("#tok").value = token;
+    const exp = tokenExpiry();
+    $("#tok-exp").value = exp ? exp.toISOString().slice(0, 10) : "";
+    $("#tok-status").textContent = token ? (tokenBad ? "✕ La llave guardada ya no funciona: crea otra." : "Hay una llave guardada en este navegador." + (exp ? ` Caduca el ${fmtDayShort(exp)} (faltan ${Math.ceil((exp - Date.now()) / 864e5)} días).` : "")) : "";
     $("#dlg").showModal();
   }
   $("#settings").onclick = openSettings;
   $("#notoken-btn").onclick = openSettings;
   $("#dlg-close").onclick = () => $("#dlg").close();
-  $("#tok-del").onclick = () => { token = ""; store.set("gh_token", ""); $("#tok").value = ""; $("#tok-status").textContent = "Llave quitada."; updateBanner(); };
+  $("#tok-del").onclick = () => { token = ""; tokenBad = false; store.set("gh_token", ""); store.set("gh_token_exp", ""); $("#tok").value = ""; $("#tok-status").textContent = "Llave quitada."; updateBanner(); };
   $("#tok-save").onclick = async () => {
     const t = $("#tok").value.trim(); if (!t) return;
-    const old = token; token = t;
+    const old = token, oldBad = tokenBad; token = t; tokenBad = false;
+    const manual = $("#tok-exp").value;
+    if (manual) store.set("gh_token_exp", new Date(manual + "T12:00:00Z").toISOString());
+    else if (t !== old) store.set("gh_token_exp", "");
     try {
       await gh(`/actions/workflows?per_page=1`);
       const me = await gh("https://api.github.com/user").catch(() => null);
       store.set("gh_token", t);
       $("#tok-status").textContent = "✓ Conectado" + (me && me.login ? " como " + me.login : "") + ".";
       updateBanner(); setTimeout(() => $("#dlg").close(), 900);
-    } catch (e) { token = old; $("#tok-status").textContent = "✕ Esa llave no funciona (" + e.message + ")."; }
+    } catch (e) { token = old; tokenBad = oldBad; $("#tok-status").textContent = "✕ Esa llave no funciona (" + e.message + ")."; }
   };
-  function updateBanner() { $("#notoken").hidden = !!token; }
+  function tokenExpiry() { const v = store.get("gh_token_exp"); const d = v ? new Date(v) : null; return d && !isNaN(d) ? d : null; }
+  function updateBanner() {
+    $("#notoken").hidden = !!token;
+    const w = $("#tokwarn"), exp = tokenExpiry();
+    const days = exp ? Math.ceil((exp - Date.now()) / 864e5) : null;
+    let msg = "";
+    if (token && (tokenBad || (days !== null && days <= 0))) msg = "🔑 <b>Tu llave de GitHub ha caducado</b> (o ya no vale). Los botones no funcionarán hasta que crees otra: ";
+    else if (token && days === null) msg = "🔑 Apunta la <b>fecha de caducidad</b> de tu llave para que el panel te avise antes de que caduque: ";
+    else if (token && days !== null && days <= 14) msg = `🔑 Tu llave de GitHub caduca en <b>${days} día${days === 1 ? "" : "s"}</b> (${esc(fmtDayShort(exp))}). Crea otra antes: `;
+    w.innerHTML = msg ? msg + `<button class="tokfix">${days === null && !tokenBad ? "ponerla" : "cómo hacerlo"}</button>` : "";
+    w.hidden = !msg;
+    const b = w.querySelector(".tokfix"); if (b) b.onclick = openSettings;
+  }
+  const fmtDayShort = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ, day: "numeric", month: "long", year: "numeric"}).format(d);
 
   // ---------- Arranque ----------
   async function refreshAll() {
