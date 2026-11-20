@@ -247,12 +247,45 @@ def process_queue(cfg: dict) -> list[str]:
     return report, pending[0].get("issue")
 
 
+def sync_youtube(queue: list[dict], cfg: dict) -> int:
+    """Mira en YouTube qué vídeos "programados" ya están públicos (publicados antes de tiempo, a mano) o se han
+    borrado, y libera su hueco en el calendario. Devuelve cuántos ha cambiado. Nunca bloquea la programación."""
+    if not cfg["publicacion"].get("subir_por_api", True):
+        return 0
+    now = dt.datetime.now(dt.timezone.utc)
+    future = [q for q in queue if q.get("estado") == "programado" and q.get("youtube_id") and q.get("publish_at")
+              and _parse(q["publish_at"]) > now]
+    if not future:
+        return 0
+    try:
+        yt = youtube_client()
+        status = {}
+        for i in range(0, len(future), 50):
+            res = yt.videos().list(part="status", id=",".join(q["youtube_id"] for q in future[i:i + 50])).execute()
+            status.update({it["id"]: it["status"].get("privacyStatus") for it in res.get("items", [])})
+    except Exception as e:  # noqa: BLE001
+        print(f"  aviso: no se pudo revisar el estado en YouTube ({str(e)[:150]})")
+        return 0
+    changed = 0
+    for q in future:
+        st = status.get(q["youtube_id"])
+        if st in ("public", "unlisted") or st is None:
+            q["fecha_prevista"] = q["publish_at"]
+            q["publish_at"] = _iso(now)
+            q["estado"] = "publicado" if st else "no_encontrado"
+            changed += 1
+            print(f"  {q['id']}: {'ya está publicado' if st else 'ya no está en YouTube'} -> se libera su hueco del {q['fecha_prevista'][:10]}")
+    return changed
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--issue", type=int, help="número del issue de revisión cerrado")
     args = ap.parse_args()
     cfg = load_config()
     queue = read_json(QUEUE, [])
+    if sync_youtube(queue, cfg):  # huecos liberados por vídeos publicados antes de tiempo
+        write_json(QUEUE, queue)
 
     if args.issue:
         body = json.loads(gh("issue", "view", str(args.issue), "--json", "body"))["body"]
