@@ -152,18 +152,20 @@
    }
   },
   "newspaper": {
-   "desc": "Recorte de periódico antiguo bajo un foco (casos reales, sucesos históricos).",
+   "desc": "Noticia de un suceso real. Estilos: recorte de periódico antiguo, noticia web en una tablet (actualidad) o portada de periódico con foto.",
    "params": {
     "headline": "titular",
     "date": "fecha",
-    "kicker": "nombre del periódico (inventado)"
+    "kicker": "nombre del periódico (inventado)",
+    "style": "papel|web|portada (opcional; papel = recorte antiguo, web = noticia en tablet con 'última hora', portada = primera página grande)"
    }
   },
   "map_pin": {
-   "desc": "Mapa estilizado con una chincheta que cae sobre un lugar.",
+   "desc": "Mapa con una chincheta que cae sobre un lugar. Estilos: mapa de islas, globo terráqueo, plano de calles con ruta o mapa de relieve.",
    "params": {
     "place": "nombre del lugar",
-    "detail": "dato corto"
+    "detail": "dato corto",
+    "style": "islas|globo|calles|relieve (opcional; si no lo pones se elige uno distinto cada vez)"
    }
   },
   "character": {
@@ -186,12 +188,13 @@
    }
   },
   "calendar": {
-   "desc": "Calendario de taco que pasa hojas hasta un día (paso del tiempo, 'día 1', 'al día 30', fechas).",
+   "desc": "Paso del tiempo / 'día 1', 'al día 30', fechas. Estilos: calendario de taco, calendario de pared que tacha días o marcas de recuento en una pared (supervivencia, encierros).",
    "params": {
     "day": "número (o texto corto)",
     "from": "número desde el que cuenta (opcional)",
     "month": "texto en la cabecera, p.ej. 'Enero' o 'Día'",
-    "label": "texto corto abajo"
+    "label": "texto corto abajo",
+    "style": "taco|pared|marcas (opcional; taco = hojas que pasan, pared = calendario mensual tachando días, marcas = rayas de recuento en una pared)"
    }
   },
   "duo": {

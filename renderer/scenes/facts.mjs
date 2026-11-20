@@ -1,3 +1,4 @@
+import { MAP_VARIANTS, NEWS_VARIANTS, mapSetup, pickVariant } from './variants.mjs';
 // Escenas para datos curiosos: cifra grande, recorte de periódico, mapa con chincheta.
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp } from '../lib/util.mjs';
 import { makeDust, drawDust, makeBokeh, drawBokeh } from '../lib/fx.mjs';
@@ -51,8 +52,10 @@ export const big_text = {
 
 // Recorte de periódico bajo un foco. params: { headline, date?, kicker? }
 export const newspaper = {
-  setup() { return {}; },
-  draw(ctx, s, { t, params }) {
+  setup(p, r) { return { variant: pickVariant(r, p, ['papel', 'web', 'portada']) }; },
+  draw(ctx, s, args) {
+    if (NEWS_VARIANTS[s.variant]) return NEWS_VARIANTS[s.variant](ctx, s, args);
+    const { t, params } = args;
     ctx.fillStyle = '#050405'; ctx.fillRect(0, 0, W, H);
     radial(ctx, W / 2, 1050, 800, '#ffe2b0', 0.22);
     ctx.save();
@@ -95,9 +98,11 @@ export const map_pin = {
       }
       return pts;
     });
-    return { lands };
+    return { lands, ...mapSetup(r), variant: pickVariant(r, p, ['islas', 'globo', 'calles', 'relieve']) };
   },
-  draw(ctx, s, { t, params }) {
+  draw(ctx, s, args) {
+    if (MAP_VARIANTS[s.variant]) return MAP_VARIANTS[s.variant](ctx, s, args);
+    const { t, params } = args;
     ctx.fillStyle = '#0a1024'; ctx.fillRect(0, 0, W, H);
     ctx.strokeStyle = 'rgba(120,140,220,0.12)'; ctx.lineWidth = 2;
     for (let x = 0; x < W; x += 90) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }

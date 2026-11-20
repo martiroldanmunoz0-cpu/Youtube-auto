@@ -1,3 +1,4 @@
+import { CAL_VARIANTS, pickVariant } from './variants.mjs';
 // Escenas generales para temas cotidianos / "qué pasaría si": personaje, dinero, calendario.
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp } from '../lib/util.mjs';
 import { makeBokeh, drawBokeh, makeDust, drawDust } from '../lib/fx.mjs';
@@ -98,8 +99,10 @@ export const money = {
 
 // Calendario de taco que pasa hojas. params: { day: número o texto, month?: texto, label?: texto, from?: número }
 export const calendar = {
-  setup() { return {}; },
-  draw(ctx, s, { t, params, dur }) {
+  setup(p, r) { return { variant: pickVariant(r, p, ['taco', 'pared', 'marcas']) }; },
+  draw(ctx, s, args) {
+    if (CAL_VARIANTS[s.variant]) return CAL_VARIANTS[s.variant](ctx, s, args);
+    const { t, params, dur } = args;
     ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#07070b', '#151019', '#07070a']);
     ctx.fillRect(0, 0, W, H);
     radial(ctx, W / 2, 1050, 700, P.amber, 0.16);
