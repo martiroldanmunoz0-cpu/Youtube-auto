@@ -22,5 +22,29 @@
     "estado": "programado",
     "publish_at": "2026-11-20T18:30:00Z",
     "youtube_id": "6jtwrP71fF0"
+  },
+  {
+    "id": "pedido-8-03",
+    "title": "Bajas once kilómetros y arriba te hacen una pregunta #shorts",
+    "description": "Un chat, una cápsula y un crujido a nueve mil metros. ¿Habrías seguido bajando o habrías dado la vuelta? Cuéntanoslo en los comentarios.\n#curiosidades #oceano #fosadelasmarianas #historia #shorts",
+    "tags": [
+      "curiosidades",
+      "océano",
+      "fosa de las Marianas",
+      "Trieste",
+      "Jacques Piccard",
+      "Don Walsh",
+      "exploración",
+      "historia real",
+      "mar profundo",
+      "datos curiosos",
+      "caso real"
+    ],
+    "video": "pedido-8-03.mp4",
+    "tag": "pedido-8",
+    "issue": 5,
+    "estado": "programado",
+    "publish_at": "2026-11-21T18:30:00Z",
+    "youtube_id": "KxWrJFbTU7g"
   }
 ]
