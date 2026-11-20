@@ -35,9 +35,10 @@ YT = """        env:
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
 """
 
-def workflow(name, comment, on, top_env, rid_step, trends_step, partes, commit_msg):
+def workflow(name, comment, on, top_env, rid_step, trends_step, partes, commit_msg, run_name=""):
     matrix = ", ".join(str(i) for i in range(partes))
-    return f"""name: {name}
+    rn = f"\nrun-name: {run_name}" if run_name else ""
+    return f"""name: {name}{rn}
 
 # {comment}
 # Fases: turno en la cola -> guiones (1 máquina) -> montaje en paralelo ({partes} máquinas).
@@ -191,7 +192,7 @@ open(f"{out}/pedido.yml", "w").write(workflow(
 """, """  RUN_ID: pedido-${{ github.run_number }}
   PEDIDO: ${{ inputs.pedido }}
   PEDIDO_N: ${{ inputs.cantidad }}
-""", RID_STATIC, "", 5, "Pedido especial generado"))
+""", RID_STATIC, "", 5, "Pedido especial generado", "\"Pedido: ${{ inputs.pedido }}\""))
 
 open(f"{out}/comedia.yml", "w").write(workflow(
     "Comedia GTA", "Sketches de humor de dibujos ambientados en una ciudad tipo GTA 6. Analiza lo que funciona de GTA 6 en YouTube.",
@@ -212,4 +213,4 @@ open(f"{out}/comedia.yml", "w").write(workflow(
   FORMATO: comedia
   PEDIDO: ${{ inputs.tema }}
   PEDIDO_N: ${{ inputs.cantidad }}
-""", RID_STATIC, TRENDS_OPT, 5, "Comedia generada"))
+""", RID_STATIC, TRENDS_OPT, 5, "Comedia generada", "\"Comedia: ${{ inputs.tema || 'tema libre' }}\""))

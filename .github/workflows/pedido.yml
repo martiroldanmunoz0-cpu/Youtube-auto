@@ -1,4 +1,5 @@
 name: Pedido especial
+run-name: "Pedido: ${{ inputs.pedido }}"
 
 # Escribe lo que quieras y genera varias versiones distintas de ese mismo vídeo.
 # Fases: turno en la cola -> guiones (1 máquina) -> montaje en paralelo (5 máquinas).

@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0c12">
+<title>Curiosidario · Panel</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0b0c12;--card:#151722;--card2:#1c1f2d;--line:#262a3b;--text:#eceef5;--muted:#9097ad;
+  --accent:#ffb35c;--accent-ink:#1a1206;--ok:#5fd38a;--bad:#ff6b6b;--info:#8fa2ff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+button,input,textarea,select{font:inherit;color:inherit}
+header{position:sticky;top:0;z-index:5;background:rgba(11,12,18,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top{max-width:1100px;margin:auto;display:flex;align-items:center;gap:10px;padding:10px 16px}
+.logo{width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:800}
+.top h1{font-size:17px;margin:0;flex:1;line-height:1.2}
+.top h1 small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.iconbtn{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 10px;cursor:pointer}
+nav{max-width:1100px;margin:auto;display:flex;gap:4px;padding:0 12px 8px;overflow-x:auto;scrollbar-width:none}
+nav button{flex:0 0 auto;background:none;border:0;border-radius:999px;padding:7px 14px;color:var(--muted);cursor:pointer;white-space:nowrap}
+nav button.on{background:var(--card2);color:var(--text)}
+nav .n{display:inline-block;min-width:20px;margin-left:6px;padding:0 6px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:700;text-align:center}
+main{max-width:1100px;margin:auto;padding:16px 16px 80px}
+section{display:none}section.on{display:block}
+h2{font-size:18px;margin:4px 0 12px}
+h3{font-size:14px;color:var(--muted);font-weight:600;margin:22px 0 8px}
+h3::first-letter{text-transform:uppercase}
+.hint{color:var(--muted);font-size:14px;margin:0 0 14px}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.vcard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.vcard.focus{outline:2px solid var(--accent)}
+.vcard video{width:100%;aspect-ratio:9/16;max-height:62vh;background:#000;display:block;object-fit:contain}
+.vbody{padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.vbody h4{margin:0;font-size:16px;line-height:1.3}
+.meta{color:var(--muted);font-size:13px}
+.qa{font-size:13px;border-radius:10px;padding:6px 10px}
+.qa.ok{background:rgba(95,211,138,.1);color:var(--ok)}
+.qa.warn{background:rgba(255,179,92,.1);color:var(--accent)}
+details{font-size:14px;color:#cfd3e2}
+details summary{cursor:pointer;color:var(--muted)}
+details ol{padding-left:20px;margin:6px 0}
+.actions{display:flex;gap:8px;margin-top:auto;padding-top:4px}
+.btn{flex:1;border:0;border-radius:12px;padding:11px 12px;font-weight:700;cursor:pointer}
+.btn.yes{background:var(--ok);color:#06210f}
+.btn.no{background:var(--card2);color:var(--text);border:1px solid var(--line)}
+.btn.main{background:var(--accent);color:var(--accent-ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.decided{font-size:13px;font-weight:700;padding:8px 10px;border-radius:10px;text-align:center}
+.decided.yes{background:rgba(95,211,138,.12);color:var(--ok)}
+.decided.no{background:rgba(255,107,107,.1);color:var(--bad)}
+.list{display:flex;flex-direction:column;gap:8px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center}
+.row .when{min-width:58px;text-align:center;font-weight:700;font-size:16px}
+.row .when small{display:block;color:var(--muted);font-weight:400;font-size:11px}
+.row .what{flex:1;min-width:0}
+.row .what b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .links{display:flex;gap:10px;font-size:13px;flex-wrap:wrap}
+.pill{display:inline-block;font-size:12px;border-radius:999px;padding:1px 9px;background:var(--card2);color:var(--muted);margin-right:6px}
+.pill.ok{color:var(--ok)}.pill.bad{color:var(--bad)}.pill.run{color:var(--info)}.pill.wait{color:var(--accent)}
+.bar{height:6px;border-radius:999px;background:var(--card2);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--info);border-radius:999px}
+.form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:16px;display:flex;flex-direction:column;gap:10px}
+.form h3{margin:0;color:var(--text);font-size:16px;text-transform:none}
+.form p{margin:0;color:var(--muted);font-size:14px}
+textarea,input[type=text],input[type=password],select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:90px;resize:vertical}
+.inline{display:flex;gap:10px;align-items:center}
+.inline select{width:auto}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--card2);border:1px solid var(--line);padding:10px 16px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:20;max-width:90vw;display:none}
+.toast.bad{border-color:var(--bad)}
+dialog{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:520px;width:calc(100vw - 32px)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+dialog ol{padding-left:20px;font-size:14px;color:#cfd3e2}
+.banner{background:rgba(255,179,92,.1);border:1px solid rgba(255,179,92,.3);border-radius:12px;padding:10px 14px;font-size:14px;margin-bottom:14px}
+.banner button{background:none;border:0;color:var(--accent);text-decoration:underline;cursor:pointer;padding:0}
+.loading{color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="logo">C</div>
+    <h1>Curiosidario<small id="sub">Panel de vídeos</small></h1>
+    <button class="iconbtn" id="refresh" title="Actualizar">↻</button>
+    <button class="iconbtn" id="settings" title="Ajustes">⚙︎</button>
+  </div>
+  <nav id="tabs">
+    <button data-t="revisar" class="on">Revisar<span class="n" id="n-revisar" hidden></span></button>
+    <button data-t="programados">Programados</button>
+    <button data-t="marcha">En marcha<span class="n" id="n-marcha" hidden></span></button>
+    <button data-t="crear">Crear</button>
+    <button data-t="historial">Historial</button>
+  </nav>
+</header>
+
+<main>
+  <div class="banner" id="notoken" hidden>Para aprobar vídeos o lanzar pedidos desde aquí, conecta tu cuenta una vez: <button id="notoken-btn">configurar</button>.</div>
+
+  <section id="revisar" class="on">
+    <h2>Vídeos para revisar</h2>
+    <p class="hint">Mira cada vídeo y decide. Los que publiques se programan solos (1 al día, máx. 3) detrás de los que ya hay.</p>
+    <div id="revisar-list"><p class="loading">Cargando…</p></div>
+  </section>
+
+  <section id="programados">
+    <h2>Calendario de publicación</h2>
+    <p class="hint">Horas de España. Se publican solos a esa hora.</p>
+    <div id="prog-list"><p class="loading">Cargando…</p></div>
+  </section>
+
+  <section id="marcha">
+    <h2>Generándose ahora</h2>
+    <p class="hint">Las tandas van en cola, una detrás de otra. Cada vídeo aparece en "Revisar" en cuanto está listo.</p>
+    <div id="marcha-list"><p class="loading">Cargando…</p></div>
+  </section>
+
+  <section id="crear">
+    <h2>Crear vídeos</h2>
+    <form class="form" id="f-pedido">
+      <h3>Pedido especial</h3>
+      <p>Escribe el vídeo que quieres como se lo dirías a una persona. Se hacen varias versiones distintas, con la voz del narrador.</p>
+      <textarea name="pedido" required placeholder="Ej.: Qué pasaría si la Luna desapareciera, día a día, con un giro al final"></textarea>
+      <div class="inline"><label for="pc">Versiones</label>
+        <select name="cantidad" id="pc"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
+        <button class="btn main" type="submit">Generar</button></div>
+    </form>
+    <form class="form" id="f-semanal">
+      <h3>Tanda semanal ahora</h3>
+      <p>Analiza lo que funciona en YouTube y genera la tanda de curiosidades (se lanza sola cada lunes).</p>
+      <button class="btn main" type="submit">Lanzar tanda semanal</button>
+    </form>
+    <form class="form" id="f-comedia">
+      <h3>Comedia GTA</h3>
+      <p>Sketches de dibujos en una ciudad tipo GTA, con palabrotas y voces de personajes.</p>
+      <input type="text" name="tema" placeholder="Tema (opcional)">
+      <div class="inline"><label for="cc">Sketches</label>
+        <select name="cantidad" id="cc"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
+        <button class="btn main" type="submit">Generar</button></div>
+    </form>
+  </section>
+
+  <section id="historial">
+    <h2>Historial</h2>
+    <p class="hint">Decisiones de las últimas revisiones.</p>
+    <div id="hist-list"><p class="loading">Cargando…</p></div>
+  </section>
+</main>
+
+<dialog id="dlg">
+  <h3 style="margin-top:0">Conectar con GitHub</h3>
+  <p style="font-size:14px;color:var(--muted)">Ver vídeos no necesita nada. Para aprobar y lanzar pedidos desde aquí, crea una llave de acceso (solo una vez por dispositivo; se guarda únicamente en este navegador):</p>
+  <ol>
+    <li>Abre <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">esta página de GitHub</a>.</li>
+    <li><b>Token name</b>: panel-curiosidario. <b>Expiration</b>: 1 año (o la que quieras).</li>
+    <li><b>Repository access</b>: <i>Only select repositories</i> → <span id="repo-name"></span>.</li>
+    <li><b>Permissions → Repository permissions</b>: <i>Actions</i> = Read and write, <i>Issues</i> = Read and write.</li>
+    <li>Pulsa <b>Generate token</b>, cópialo y pégalo aquí.</li>
+  </ol>
+  <input type="password" id="tok" placeholder="github_pat_…" autocomplete="off">
+  <p id="tok-status" style="font-size:13px;color:var(--muted)"></p>
+  <div class="actions"><button class="btn no" id="tok-del" type="button">Quitar</button><button class="btn main" id="tok-save" type="button">Guardar</button></div>
+  <div class="actions"><button class="btn no" id="dlg-close" type="button">Cerrar</button></div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  // ---------- Config ----------
+  const host = location.hostname;
+  const OWNER = host.endsWith(".github.io") ? host.split(".")[0] : "martiroldanmunoz0-cpu";
+  const REPO = host.endsWith(".github.io") ? (location.pathname.split("/")[1] || "Youtube-auto") : "Youtube-auto";
+  const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
+  const TZ = "Europe/Madrid";
+  const WF = {pedido: "pedido.yml", semanal: "semanal.yml", comedia: "comedia.yml"};
+  const GEN_NAMES = ["Pedido especial", "Generar vídeos de la semana", "Comedia GTA"];
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const store = {
+    get(k) { try { return localStorage.getItem(k) || ""; } catch { return ""; } },
+    set(k, v) { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch {} },
+  };
+  let token = store.get("gh_token");
+  $("#repo-name").textContent = `${OWNER}/${REPO}`;
+
+  // ---------- Utilidades ----------
+  function toast(msg, bad = false) {
+    const t = $("#toast"); t.textContent = msg; t.className = "toast" + (bad ? " bad" : ""); t.style.display = "block";
+    clearTimeout(toast._t); toast._t = setTimeout(() => t.style.display = "none", 4500);
+  }
+  async function gh(path, opts = {}) {
+    const headers = {"Accept": "application/vnd.github+json", ...(opts.headers || {})};
+    if (token) headers.Authorization = `Bearer ${token}`;
+    const r = await fetch(path.startsWith("http") ? path : API + path, {...opts, headers, cache: "no-store"});
+    if (!r.ok) {
+      let msg = `${r.status}`;
+      try { msg += " " + ((await r.json()).message || ""); } catch {}
+      throw new Error(msg);
+    }
+    return r.status === 204 ? null : r.json();
+  }
+  async function ghFile(path) {
+    try { return await gh(`/contents/${path}`, {headers: {Accept: "application/vnd.github.raw+json"}}); }
+    catch { return null; }
+  }
+  const fmtDay = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ, weekday: "long", day: "numeric", month: "long"}).format(d);
+  const fmtTime = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ, hour: "2-digit", minute: "2-digit"}).format(d);
+  const fmtShort = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ, day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"}).format(d);
+  const dayKey = d => new Intl.DateTimeFormat("en-CA", {timeZone: TZ}).format(d);
+  const mins = ms => { const m = Math.round(ms / 60000); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${m % 60} min`; };
+  const cleanTitle = t => String(t || "").replace(/\s*#shorts/gi, "").replace(/^🎬 Revisar:\s*/, "").replace(/^#\d+\s+/, "");
+  function needToken() { if (!token) { openSettings(); return true; } return false; }
+
+  // ---------- Pestañas ----------
+  function show(t) {
+    document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.t === t));
+    document.querySelectorAll("main section").forEach(s => s.classList.toggle("on", s.id === t));
+    store.set("tab", t);
+  }
+  $("#tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(b.dataset.t); });
+
+  // ---------- Datos ----------
+  let files = {};
+  let queue = [];
+  async function loadFiles() {
+    try { const r = await fetch("archivos.json", {cache: "no-store"}); files = r.ok ? await r.json() : {}; } catch { files = {}; }
+  }
+  async function loadQueue() {
+    const q = await ghFile("data/queue.json");
+    queue = Array.isArray(q) ? q : [];
+  }
+
+  // Un issue de revisión -> lista de vídeos con su casilla
+  function parseIssue(issue) {
+    const body = issue.body || "";
+    const m = body.match(/<!-- semana:(\S+) -->/);
+    if (!m) return null;
+    const lines = body.split("\n");
+    const vids = [];
+    lines.forEach((ln, i) => {
+      const c = ln.match(/^\s*[-*] \[([ xX])\] `([^`]+)`(.*)$/);
+      if (!c) return;
+      const id = c[2], rest = c[3];
+      const legacyTitle = (rest.match(/\*\*(.+?)\*\*/) || [])[1];
+      const title = legacyTitle && !/Publicar este vídeo/.test(legacyTitle) ? cleanTitle(legacyTitle) : cleanTitle(issue.title);
+      const dl = (body.match(new RegExp(`https://github\\.com/[^)\\s]+/releases/download/[^)\\s]+/${id}\\.mp4`)) || [])[0];
+      let qa = null;
+      const w = rest.match(/⚠️\s*(.+)$/); if (w) qa = {ok: false, text: w[1]};
+      vids.push({id, checked: c[1] !== " ", title, dl, qa});
+    });
+    // Formato nuevo (un vídeo por issue): revisión automática y guion en el cuerpo
+    if (vids.length === 1) {
+      const qaLine = lines.find(l => /^(✅|⚠️) Revisión automática/.test(l));
+      if (qaLine) vids[0].qa = {ok: qaLine.startsWith("✅"), text: qaLine.replace(/^(✅|⚠️)\s*Revisión automática:?\s*/, "")};
+      const det = body.match(/<details><summary>Descripción y guion<\/summary>([\s\S]*?)<\/details>/);
+      if (det) {
+        const beats = det[1].split("\n").filter(l => /^\d+\.\s/.test(l)).map(l => l.replace(/^\d+\.\s/, ""));
+        const desc = det[1].split("\n").filter(l => l.trim() && !/^\d+\.\s/.test(l)).join("\n");
+        vids[0].beats = beats; vids[0].desc = desc;
+      }
+      const origin = (body.match(/^_(.+)_$/m) || [])[1];
+      if (origin) vids[0].origin = origin;
+    }
+    return {issue, tanda: m[1], vids};
+  }
+
+  // ---------- Revisar ----------
+  const decisions = {}; // issue -> {vid: true/false} (para issues antiguos con varios vídeos)
+  let pending = [];
+  async function loadReview() {
+    const el = $("#revisar-list");
+    try {
+      const issues = await gh("/issues?state=open&per_page=100");
+      pending = issues.filter(i => !i.pull_request).map(parseIssue).filter(Boolean);
+      const total = pending.reduce((a, p) => a + p.vids.length, 0);
+      const n = $("#n-revisar"); n.textContent = total; n.hidden = !total;
+      if (!total) { el.innerHTML = `<div class="empty">No hay vídeos pendientes 🎉<br>Cuando termine uno, aparecerá aquí (y te llegará el aviso al móvil).</div>`; return; }
+      const cards = [];
+      for (const p of pending) for (const v of p.vids) cards.push(videoCard(p, v));
+      el.innerHTML = `<div class="grid">${cards.join("")}</div>`;
+      const focus = new URLSearchParams(location.search).get("v");
+      if (focus) { const c = document.getElementById("c-" + focus); if (c) { c.classList.add("focus"); c.scrollIntoView({block: "center"}); } }
+    } catch (e) {
+      el.innerHTML = `<div class="empty">No se pudo cargar (${esc(e.message)}).<br>Si sale “rate limit”, conecta tu cuenta en ⚙︎.</div>`;
+    }
+  }
+  function videoCard(p, v) {
+    const f = files[v.id];
+    const src = f ? f.v : v.dl;
+    const poster = f && f.p ? ` poster="${esc(f.p)}"` : "";
+    const qa = v.qa ? `<div class="qa ${v.qa.ok ? "ok" : "warn"}">${v.qa.ok ? "✅ Revisión automática: todo correcto" : "⚠️ " + esc(v.qa.text)}</div>` : "";
+    const guion = v.beats && v.beats.length ? `<details><summary>Guion</summary><ol>${v.beats.map(b => `<li>${esc(b)}</li>`).join("")}</ol></details>` : "";
+    const desc = v.desc ? `<details><summary>Descripción</summary><p style="white-space:pre-line;margin:6px 0">${esc(v.desc)}</p></details>` : "";
+    const multi = p.vids.length > 1;
+    const dec = (decisions[p.issue.number] || {})[v.id];
+    const actions = dec === undefined
+      ? `<div class="actions"><button class="btn no" data-act="no" data-i="${p.issue.number}" data-v="${esc(v.id)}">Descartar</button><button class="btn yes" data-act="yes" data-i="${p.issue.number}" data-v="${esc(v.id)}">Publicar</button></div>`
+      : `<div class="decided ${dec ? "yes" : "no"}">${dec ? "✓ Se publicará" : "✕ Descartado"}${multi ? " · decide los demás de esta tanda" : ""}</div>`;
+    return `<article class="vcard" id="c-${esc(v.id)}">
+      ${src ? `<video controls playsinline preload="${f && f.p ? "none" : "metadata"}"${poster} src="${esc(src)}"></video>` : ""}
+      <div class="vbody">
+        <h4>${esc(v.title)}</h4>
+        <div class="meta">${esc(v.origin || (multi ? "Tanda " + p.tanda : ""))} · ${esc(fmtShort(new Date(p.issue.created_at)))}</div>
+        ${qa}${desc}${guion}
+        <div class="links" style="font-size:13px;display:flex;gap:12px">${v.dl ? `<a href="${esc(v.dl)}">Descargar</a>` : ""}<a href="${esc(p.issue.html_url)}" target="_blank" rel="noopener">Ver en GitHub</a></div>
+        ${actions}
+      </div></article>`;
+  }
+  $("#revisar-list").addEventListener("click", async e => {
+    const b = e.target.closest("button[data-act]"); if (!b) return;
+    if (needToken()) return;
+    const num = +b.dataset.i, vid = b.dataset.v, yes = b.dataset.act === "yes";
+    const p = pending.find(x => x.issue.number === num); if (!p) return;
+    if (!yes && !confirm("¿Descartar este vídeo? No se publicará.")) return;
+    (decisions[num] ||= {})[vid] = yes;
+    const done = p.vids.every(v => decisions[num][v.id] !== undefined);
+    if (!done) { loadReviewFromCache(); return; }
+    b.disabled = true;
+    try {
+      let body = p.issue.body;
+      for (const v of p.vids) {
+        const mark = decisions[num][v.id] ? "x" : " ";
+        body = body.replace(new RegExp("^(\\s*[-*] )\\[[ xX]\\]( `" + v.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "`)", "m"), `$1[${mark}]$2`);
+      }
+      await gh(`/issues/${num}`, {method: "PATCH", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({body, state: "closed", state_reason: "completed"})});
+      const nYes = Object.values(decisions[num]).filter(Boolean).length;
+      toast(nYes ? "✓ Hecho. Se programará en YouTube en 1–2 minutos (mira “Programados”)." : "Descartado.");
+      delete decisions[num];
+      await loadReview();
+      setTimeout(() => { loadQueue().then(renderProgramados); loadHistory(); }, 90000);
+    } catch (err) {
+      delete decisions[num][vid];
+      toast("No se pudo guardar: " + err.message + (String(err.message).startsWith("40") ? " (revisa la llave en ⚙︎)" : ""), true);
+      loadReviewFromCache();
+    }
+  });
+  function loadReviewFromCache() {
+    const cards = [];
+    for (const p of pending) for (const v of p.vids) cards.push(videoCard(p, v));
+    $("#revisar-list").innerHTML = cards.length ? `<div class="grid">${cards.join("")}</div>` : "";
+  }
+
+  // ---------- Programados ----------
+  function renderProgramados() {
+    const el = $("#prog-list");
+    const items = queue.filter(q => q.publish_at || q.estado).map(q => ({...q, t: q.publish_at ? new Date(q.publish_at) : null}));
+    if (!items.length) { el.innerHTML = `<div class="empty">Todavía no hay vídeos programados. Aprueba alguno en “Revisar”.</div>`; return; }
+    const now = new Date();
+    const future = items.filter(q => !q.t || q.t > now).sort((a, b) => (a.t || 0) - (b.t || 0));
+    const past = items.filter(q => q.t && q.t <= now).sort((a, b) => b.t - a.t);
+    const row = q => {
+      const yt = q.youtube_id;
+      const links = yt ? `<a href="https://studio.youtube.com/video/${esc(yt)}/edit" target="_blank" rel="noopener">Studio</a><a href="https://youtube.com/shorts/${esc(yt)}" target="_blank" rel="noopener">YouTube</a>` : "";
+      const st = !yt ? `<span class="pill wait">${esc(q.estado === "programado" ? "subiendo" : (q.estado || "pendiente de subir"))}</span>` : "";
+      return `<div class="row"><div class="when">${q.t ? esc(fmtTime(q.t)) : "—"}</div>
+        <div class="what"><b>${esc(cleanTitle(q.title))}</b><div class="meta">${st}${esc(q.id)}</div><div class="links">${links}</div></div></div>`;
+    };
+    let html = "";
+    if (future.length) {
+      let day = "";
+      for (const q of future) {
+        const k = q.t ? dayKey(q.t) : "sin fecha";
+        if (k !== day) { day = k; html += `<h3>${q.t ? esc(fmtDay(q.t)) : "Sin fecha"}</h3>`; }
+        html += row(q);
+      }
+    } else html += `<div class="empty">No hay nada pendiente de publicar. Aprueba vídeos en “Revisar”.</div>`;
+    if (past.length) html += `<h3>Ya publicados</h3><div class="list">${past.slice(0, 30).map(row).join("")}</div>`;
+    el.innerHTML = html;
+  }
+
+  // ---------- En marcha ----------
+  async function loadRunning() {
+    const el = $("#marcha-list");
+    try {
+      const data = await gh("/actions/runs?per_page=40");
+      const runs = data.workflow_runs.filter(r => GEN_NAMES.includes(r.name));
+      const active = runs.filter(r => r.status !== "completed").sort((a, b) => a.id - b.id);
+      const dayAgo = Date.now() - 2 * 864e5;
+      const recent = runs.filter(r => r.status === "completed" && new Date(r.updated_at) > dayAgo).slice(0, 8);
+      const n = $("#n-marcha"); n.textContent = active.length; n.hidden = !active.length;
+      let html = "";
+      if (!active.length) html += `<div class="empty">No se está generando nada ahora mismo.</div>`;
+      else {
+        const details = await Promise.all(active.map(r => gh(`/actions/runs/${r.id}/jobs?per_page=30`).catch(() => null)));
+        html += `<div class="list">` + active.map((r, i) => runRow(r, details[i], i)).join("") + `</div>`;
+      }
+      if (recent.length) {
+        html += `<h3>Terminadas (últimas 48 h)</h3><div class="list">` + recent.map(r => {
+          const ok = r.conclusion === "success", canc = r.conclusion === "cancelled";
+          return `<div class="row"><div class="what"><b>${esc(runTitle(r))}</b>
+            <div class="meta"><span class="pill ${ok ? "ok" : canc ? "" : "bad"}">${ok ? "terminada" : canc ? "cancelada" : "ha fallado"}</span>${esc(fmtShort(new Date(r.updated_at)))} · <a href="${esc(r.html_url)}" target="_blank" rel="noopener">detalles</a></div></div></div>`;
+        }).join("") + `</div>`;
+      }
+      el.innerHTML = html;
+    } catch (e) {
+      el.innerHTML = `<div class="empty">No se pudo cargar (${esc(e.message)}).</div>`;
+    }
+  }
+  function runTitle(r) {
+    if (r.name === "Generar vídeos de la semana") return "Tanda semanal";
+    if (r.display_title && r.display_title !== r.name) return r.display_title;
+    return r.name;
+  }
+  function runRow(r, jobs, idx) {
+    const list = (jobs && jobs.jobs) || [];
+    const started = new Date(r.run_started_at || r.created_at);
+    const parts = list.filter(j => /^montar/i.test(j.name));
+    const turno = list.find(j => /^turno/i.test(j.name));
+    const guiones = list.find(j => /^guiones/i.test(j.name));
+    let phase = "En cola", pct = 3, cls = "wait";
+    if (turno && turno.status !== "completed") { phase = idx === 0 ? "Empezando" : "Esperando turno (va otra tanda delante)"; }
+    else if (guiones && guiones.status !== "completed") { phase = "Escribiendo guiones"; pct = 15; cls = "run"; }
+    else if (parts.length) {
+      const done = parts.filter(j => j.status === "completed").length;
+      phase = `Montando vídeos · ${done}/${parts.length} máquinas terminadas`; pct = 25 + Math.round(70 * done / parts.length); cls = "run";
+    }
+    const failed = list.some(j => j.conclusion === "failure");
+    return `<div class="row"><div class="what"><b>${esc(runTitle(r))}</b>
+      <div class="meta"><span class="pill ${failed ? "bad" : cls}">${failed ? "con errores" : esc(phase)}</span>lleva ${esc(mins(Date.now() - started))}</div>
+      <div class="bar"><i style="width:${pct}%"></i></div>
+      <div class="links" style="margin-top:6px"><a href="${esc(r.html_url)}" target="_blank" rel="noopener">detalles</a><a href="#" data-cancel="${r.id}">cancelar</a></div></div></div>`;
+  }
+  $("#marcha-list").addEventListener("click", async e => {
+    const a = e.target.closest("[data-cancel]"); if (!a) return;
+    e.preventDefault();
+    if (needToken() || !confirm("¿Cancelar esta tanda? Los vídeos que ya estén listos se quedan.")) return;
+    try { await gh(`/actions/runs/${a.dataset.cancel}/cancel`, {method: "POST"}); toast("Cancelando…"); setTimeout(loadRunning, 4000); }
+    catch (err) { toast("No se pudo cancelar: " + err.message, true); }
+  });
+
+  // ---------- Crear ----------
+  async function dispatch(wf, inputs, btn) {
+    if (needToken()) return false;
+    btn.disabled = true;
+    try {
+      await gh(`/actions/workflows/${wf}/dispatches`, {method: "POST", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ref: "main", inputs})});
+      toast("✓ En la cola. Lo verás en “En marcha”.");
+      setTimeout(loadRunning, 5000);
+      return true;
+    } catch (err) { toast("No se pudo lanzar: " + err.message, true); return false; }
+    finally { btn.disabled = false; }
+  }
+  $("#f-pedido").addEventListener("submit", async e => {
+    e.preventDefault(); const f = e.target;
+    const text = f.pedido.value.trim(); if (!text) return;
+    if (await dispatch(WF.pedido, {pedido: text, cantidad: f.cantidad.value}, f.querySelector("button"))) f.reset();
+  });
+  $("#f-semanal").addEventListener("submit", e => {
+    e.preventDefault();
+    if (confirm("¿Lanzar ahora la tanda semanal? (cuesta lo mismo que la del lunes)")) dispatch(WF.semanal, {}, e.target.querySelector("button"));
+  });
+  $("#f-comedia").addEventListener("submit", async e => {
+    e.preventDefault(); const f = e.target;
+    if (await dispatch(WF.comedia, {tema: f.tema.value.trim(), cantidad: f.cantidad.value}, f.querySelector("button"))) f.reset();
+  });
+
+  // ---------- Historial ----------
+  async function loadHistory() {
+    const el = $("#hist-list");
+    try {
+      const issues = await gh("/issues?state=closed&per_page=60&sort=updated");
+      const sched = new Map(queue.map(q => [q.id, q]));
+      const rows = [];
+      for (const p of issues.filter(i => !i.pull_request).map(parseIssue).filter(Boolean)) {
+        for (const v of p.vids) {
+          const q = sched.get(v.id);
+          const st = q ? `<span class="pill ok">publicado / programado</span>` : v.checked ? `<span class="pill ok">aprobado</span>` : `<span class="pill bad">descartado</span>`;
+          rows.push(`<div class="row"><div class="what"><b>${esc(v.title)}</b>
+            <div class="meta">${st}${esc(fmtShort(new Date(p.issue.closed_at)))}</div>
+            <div class="links">${v.dl ? `<a href="${esc(v.dl)}">vídeo</a>` : ""}<a href="${esc(p.issue.html_url)}" target="_blank" rel="noopener">issue</a></div></div></div>`);
+        }
+      }
+      el.innerHTML = rows.length ? `<div class="list">${rows.join("")}</div>` : `<div class="empty">Aún no hay historial.</div>`;
+    } catch (e) { el.innerHTML = `<div class="empty">No se pudo cargar (${esc(e.message)}).</div>`; }
+  }
+
+  // ---------- Ajustes ----------
+  function openSettings() {
+    $("#tok").value = token; $("#tok-status").textContent = token ? "Hay una llave guardada en este navegador." : "";
+    $("#dlg").showModal();
+  }
+  $("#settings").onclick = openSettings;
+  $("#notoken-btn").onclick = openSettings;
+  $("#dlg-close").onclick = () => $("#dlg").close();
+  $("#tok-del").onclick = () => { token = ""; store.set("gh_token", ""); $("#tok").value = ""; $("#tok-status").textContent = "Llave quitada."; updateBanner(); };
+  $("#tok-save").onclick = async () => {
+    const t = $("#tok").value.trim(); if (!t) return;
+    const old = token; token = t;
+    try {
+      await gh(`/actions/workflows?per_page=1`);
+      const me = await gh("https://api.github.com/user").catch(() => null);
+      store.set("gh_token", t);
+      $("#tok-status").textContent = "✓ Conectado" + (me && me.login ? " como " + me.login : "") + ".";
+      updateBanner(); setTimeout(() => $("#dlg").close(), 900);
+    } catch (e) { token = old; $("#tok-status").textContent = "✕ Esa llave no funciona (" + e.message + ")."; }
+  };
+  function updateBanner() { $("#notoken").hidden = !!token; }
+
+  // ---------- Arranque ----------
+  async function refreshAll() {
+    $("#sub").textContent = "Actualizando…";
+    await Promise.all([loadFiles(), loadQueue()]);
+    await Promise.all([loadReview(), loadRunning(), loadHistory()]);
+    renderProgramados();
+    $("#sub").textContent = "Actualizado " + fmtTime(new Date());
+  }
+  $("#refresh").onclick = refreshAll;
+  updateBanner();
+  const saved = new URLSearchParams(location.search).get("v") ? "revisar" : store.get("tab");
+  if (saved && document.getElementById(saved)) show(saved);
+  refreshAll();
+  setInterval(() => { if (!document.hidden) loadRunning(); }, 60000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshAll(); });
+})();
+</script>
+</body>
+</html>

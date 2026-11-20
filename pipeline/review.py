@@ -153,7 +153,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
         page_ok = False
         print(f"  aviso: página de revisión no actualizada ({e})")
     base = pages_url() if page_ok else None
-    page = f"{base}{vid}/" if base else None
+    page = f"{base}?v={vid}" if base else None  # el panel web, con este vídeo resaltado
     dl = f"https://github.com/{repo}/releases/download/{tag}/{st['video']}"
 
     owner = os.environ.get("GITHUB_REPOSITORY_OWNER", "")

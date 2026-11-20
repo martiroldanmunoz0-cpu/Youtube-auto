@@ -1,8 +1,12 @@
 name: Actualizar página de revisión
 
-# La lanzan las máquinas de montaje cada vez que terminan un vídeo. Publica la rama gh-pages en GitHub Pages.
+# La lanzan las máquinas de montaje cada vez que terminan un vídeo (y cada cambio del panel en web/).
+# Publica en GitHub Pages: los vídeos de la rama gh-pages + el panel web/index.html de main.
 on:
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["web/**"]
 
 permissions:
   contents: read
@@ -23,8 +27,28 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: gh-pages
+          path: sitio
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: codigo
+          sparse-checkout: web
+      - name: Panel + índice de vídeos
+        run: |
+          cp -r codigo/web/. sitio/
+          cd sitio
+          python3 - <<'EOF'
+          import json, pathlib
+          out = {}
+          for mp4 in sorted(pathlib.Path(".").rglob("*.mp4")):
+              jpg = mp4.with_suffix(".jpg")
+              out[mp4.stem] = {"v": mp4.as_posix(), "p": jpg.as_posix() if jpg.exists() else None}
+          pathlib.Path("archivos.json").write_text(json.dumps(out))
+          print(len(out), "vídeos")
+          EOF
+          rm -rf .git
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: sitio
       - id: deploy
         uses: actions/deploy-pages@v4

@@ -1,4 +1,5 @@
 name: Comedia GTA
+run-name: "Comedia: ${{ inputs.tema || 'tema libre' }}"
 
 # Sketches de humor de dibujos ambientados en una ciudad tipo GTA 6. Analiza lo que funciona de GTA 6 en YouTube.
 # Fases: turno en la cola -> guiones (1 máquina) -> montaje en paralelo (5 máquinas).
