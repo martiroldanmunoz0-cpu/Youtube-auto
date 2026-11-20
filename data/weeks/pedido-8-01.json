@@ -1,0 +1,28 @@
+{
+  "semana": "pedido-8-01",
+  "tanda": "pedido-8",
+  "pedido": "Cada día bajas más profundo en el océano: 10 metros, 100, 1.000… hasta el fondo de la fosa de las Marianas",
+  "tag": "pedido-8",
+  "videos": [
+    {
+      "id": "pedido-8-01",
+      "title": "Cada día bajas más en el océano: ¿qué hay al fondo? #shorts",
+      "description": "Seis días, una cápsula y un destino a casi once kilómetros de profundidad. ¿Habrías aguantado hasta el final? ¿Qué esperabas encontrar allí abajo? Cuéntalo en los comentarios.\n#oceano #fosadelasMarianas #curiosidades #Titanic #shorts",
+      "tags": [
+        "océano",
+        "fosa de las Marianas",
+        "Challenger",
+        "curiosidades",
+        "ciencia",
+        "Titanic",
+        "profundidad",
+        "presión",
+        "mar profundo",
+        "pez caracol",
+        "datos curiosos",
+        "plástico en el mar"
+      ],
+      "video": "pedido-8-01.mp4"
+    }
+  ]
+}
