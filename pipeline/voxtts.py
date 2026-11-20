@@ -160,8 +160,42 @@ def _align(text: str, heard) -> list[dict]:
     return [{"w": tok, "start": round(s, 3), "end": round(e, 3)} for tok, (s, e) in zip(tokens, times)]
 
 
-def synth(text: str, out_audio: Path, voice_name: str, attempts: int = 4, min_ok: float = 0.92, floor: float = 0.8) -> tuple[float, list[dict]]:
-    """Genera `text` con la voz clonada `voice_name`. Devuelve (duración, palabras con tiempos)."""
+_ref_pitch: dict[str, float] = {}
+WARNINGS: list[str] = []  # avisos de la última tanda de frases (los recoge build.py para el issue)
+DEADLINE = [0.0]  # límite de tiempo de voz por vídeo: pasado este momento ya no se repiten frases
+
+
+def _median_pitch(wav, sr) -> float | None:
+    import librosa  # noqa: PLC0415
+
+    y = librosa.resample(np.asarray(wav, dtype=np.float32), orig_sr=sr, target_sr=16000)
+    f0, _, _ = librosa.pyin(y, fmin=60, fmax=400, sr=16000)
+    f0 = f0[~np.isnan(f0)]
+    return float(np.median(f0)) if len(f0) > 10 else None
+
+
+def _pitch_ok(voice_name: str, wav, sr) -> bool:
+    """El clon a veces se desvía de voz: si el tono medio se aleja >40 % del original, la toma no vale.
+    (Las preguntas y exclamaciones suben el tono de forma natural hasta ~30 %, eso sí vale.)"""
+    if voice_name not in _ref_pitch:
+        import soundfile as sf  # noqa: PLC0415
+
+        ref, rsr = sf.read(str(VOICES_DIR / f"{voice_name}.wav"), dtype="float32")
+        _ref_pitch[voice_name] = _median_pitch(ref if ref.ndim == 1 else ref.mean(1), rsr) or 0
+    ref_p, p = _ref_pitch[voice_name], _median_pitch(wav, sr)
+    if not ref_p or not p:
+        return True
+    return abs(p - ref_p) / ref_p <= 0.40
+
+
+def ensure_loaded() -> None:
+    """Carga el modelo (lanza excepción si no se puede: entonces el vídeo ENTERO usa Edge, nunca mezclado)."""
+    _load()
+
+
+def synth(text: str, out_audio: Path, voice_name: str, attempts: int = 3, min_ok: float = 0.92, floor: float = 0.8) -> tuple[float, list[dict]]:
+    """Genera `text` con la voz clonada `voice_name`. Devuelve (duración, palabras con tiempos).
+    Nunca cambia de voz: si ninguna toma es perfecta se usa la mejor (con la voz del clon) y se avisa."""
     import soundfile as sf  # noqa: PLC0415
 
     model, asr = _load()
@@ -169,21 +203,29 @@ def synth(text: str, out_audio: Path, voice_name: str, attempts: int = 4, min_ok
     ref_text = (VOICES_DIR / f"{voice_name}.txt").read_text(encoding="utf-8").strip()
     sr = model.tts_model.sample_rate
     best = None
+    import time  # noqa: PLC0415
+
     for i in range(attempts):
+        if i > 0 and DEADLINE[0] and time.time() > DEADLINE[0]:
+            print("    sin más reintentos: se ha llegado al tiempo máximo de voz de este vídeo", flush=True)
+            break
         wav = model.generate(
             text=text, cfg_value=2.0, inference_timesteps=10, max_len=1200, retry_badcase=False,
             reference_wav_path=str(ref), prompt_wav_path=str(ref), prompt_text=ref_text,
         )
         heard = _transcribe(asr, wav, sr)
         score = _similarity(text, " ".join(w.word for w in heard))
-        if best is None or score > best[0]:
-            best = (score, wav, heard)
-        if score >= min_ok:
+        same_voice = _pitch_ok(voice_name, wav, sr)
+        rank = score if same_voice else score - 1  # una toma con otra "voz" nunca gana a una con la voz correcta
+        if best is None or rank > best[0]:
+            best = (rank, score, same_voice, wav, heard)
+        if score >= min_ok and same_voice:
             break
-        print(f"    reintento ({score:.0%} parecido): «{text[:50]}»", flush=True)
-    score, wav, heard = best
-    if score < floor:
-        raise RuntimeError(f"la voz clonada no dice bien el texto ({score:.0%})")
+        motivo = f"{score:.0%} parecido" + ("" if same_voice else ", tono distinto a la voz original")
+        print(f"    reintento ({motivo}): «{text[:50]}»", flush=True)
+    _, score, same_voice, wav, heard = best
+    if score < floor or not same_voice:
+        WARNINGS.append(f"Frase revisable ({score:.0%}{'' if same_voice else ', tono algo distinto'}): «{text[:70]}»")
     wav_path = out_audio.with_suffix(".wav")
     sf.write(str(wav_path), np.asarray(wav, dtype=np.float32), sr)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav_path), "-b:a", "192k", str(out_audio)], check=True)

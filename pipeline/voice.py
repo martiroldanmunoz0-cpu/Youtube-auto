@@ -96,25 +96,41 @@ def _estimate_words(text: str, duration: float) -> list[dict]:
     return out
 
 
+_CLONE_STATE: dict[str, bool] = {}
+
+
+def clone_ready(name: str) -> bool:
+    """¿Se puede usar la voz clonada? Se decide una sola vez por ejecución (así no se mezclan voces)."""
+    if name not in _CLONE_STATE:
+        try:
+            import voxtts  # noqa: PLC0415
+
+            if not voxtts.available(name):
+                raise RuntimeError(f"no existe assets/voices/{name}.wav")
+            voxtts.ensure_loaded()
+            _CLONE_STATE[name] = True
+        except Exception as e:
+            print(f"  aviso: voz clonada '{name}' no disponible ({e}); TODO el vídeo usará la voz de Edge")
+            _CLONE_STATE[name] = False
+    return _CLONE_STATE[name]
+
+
 def synth(text: str, out_mp3: Path, cfg: dict, voice: dict | None = None) -> tuple[float, list[dict]]:
     """Genera la voz de un plano. `voice` permite otra voz/tono (personajes de los sketches).
     Devuelve (duración_s, palabras con tiempos relativos)."""
     v = {**cfg["voz"], **(voice or {})}
     motor = os.environ.get("VOZ_MOTOR", v.get("motor", "edge"))
-    # 1) Voz clonada (VoxCPM2) si la voz tiene "clon" y el motor no está forzado a otro
-    if v.get("clon") and motor in ("clon", "auto", "edge") and os.environ.get("VOZ_MOTOR") not in ("edge", "espeak"):
-        try:
-            import voxtts  # noqa: PLC0415
+    # 1) Voz clonada (VoxCPM2). Regla: NUNCA se mezclan voces dentro de un vídeo.
+    #    - Si el modelo no se puede cargar -> todo el vídeo con Edge (decidido una vez, antes de la primera frase).
+    #    - Si una frase concreta no sale perfecta -> se usa la mejor toma con la voz clonada y se avisa en el issue.
+    if v.get("clon") and motor in ("clon", "auto", "edge") and os.environ.get("VOZ_MOTOR") not in ("edge", "espeak") and clone_ready(v["clon"]):
+        import voxtts  # noqa: PLC0415
 
-            if voxtts.available(v["clon"]):
-                relaxed = bool(v.get("tolerante"))  # p. ej. la despedida con el nombre del canal
-                dur, words = voxtts.synth(text, out_mp3, v["clon"], attempts=2 if relaxed else 4,
-                                          min_ok=0.75 if relaxed else 0.92, floor=0.6 if relaxed else 0.8)
-                dur, words = trim_silence(out_mp3, words or None)
-                return dur, (words or _estimate_words(text, dur))
-            print(f"  aviso: no existe la voz clonada '{v['clon']}', uso Edge")
-        except Exception as e:  # sin modelo, sin memoria... -> Edge
-            print(f"  aviso: voz clonada no disponible ({e}); uso Edge")
+        relaxed = bool(v.get("tolerante"))  # p. ej. la despedida con el nombre del canal
+        dur, words = voxtts.synth(text, out_mp3, v["clon"], attempts=2 if relaxed else 3,
+                                  min_ok=0.75 if relaxed else 0.92, floor=0.6 if relaxed else 0.8)
+        dur, words = trim_silence(out_mp3, words or None)
+        return dur, (words or _estimate_words(text, dur))
     if motor != "espeak":
         last_err = None
         for _ in range(3):

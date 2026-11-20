@@ -7,6 +7,7 @@ Uso:
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
 import json
 import hashlib
@@ -26,19 +27,29 @@ LEAD_IN = 0.2   # silencio inicial
 END_CARD = 2.4  # tarjeta final (s)
 
 
+VOICE_MINUTES = 12  # pasado este tiempo generando voz, no se repite ninguna frase más (prioridad: velocidad)
 VOICE_ISSUES = ("narración", "La voz", "Silencio", "pisadas")
 
 
 def cached_synth(cache: Path, text: str, cfg: dict, voice: dict | None) -> tuple[Path, float, list[dict]]:
     """Voz de una frase con caché: si ya se generó (y pasó la revisión de Whisper) se reutiliza tal cual."""
-    key = hashlib.sha1(json.dumps([text, voice or cfg["voz"]], ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:16]
+    # La clave incluye el motor forzado (VOZ_MOTOR) para no reutilizar nunca una voz de otro motor
+    key = hashlib.sha1(json.dumps([text, voice or cfg["voz"], os.environ.get("VOZ_MOTOR", "")], ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:16]
     mp3, meta = cache / f"{key}.mp3", cache / f"{key}.json"
+    try:
+        import voxtts  # noqa: PLC0415
+    except Exception:
+        voxtts = None
     if mp3.exists() and meta.exists():
         m = json.loads(meta.read_text(encoding="utf-8"))
+        if voxtts is not None:
+            voxtts.WARNINGS.extend(m.get("avisos", []))  # los avisos de la frase siguen apareciendo al reutilizarla
         return mp3, m["dur"], m["words"]
     cache.mkdir(parents=True, exist_ok=True)
+    before = len(voxtts.WARNINGS) if voxtts is not None else 0
     dur, ws = synth(text, mp3, cfg, voice)  # aquí dentro Whisper revisa la frase y la repite si falla
-    meta.write_text(json.dumps({"text": text, "dur": dur, "words": ws}, ensure_ascii=False), encoding="utf-8")
+    avisos = voxtts.WARNINGS[before:] if voxtts is not None else []
+    meta.write_text(json.dumps({"text": text, "dur": dur, "words": ws, "avisos": avisos}, ensure_ascii=False), encoding="utf-8")
     return mp3, dur, ws
 
 
@@ -55,6 +66,13 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     presets = (cfg.get("comedia") or {}).get("voces", {})
     narrator = presets.get((cfg.get("comedia") or {}).get("narrador", "")) if cast else None
     gap = story.get("gap", GAP)
+    try:
+        import voxtts  # noqa: PLC0415
+
+        voxtts.WARNINGS.clear()
+        voxtts.DEADLINE[0] = __import__("time").time() + VOICE_MINUTES * 60  # tiempo máximo de reintentos de voz
+    except Exception:
+        voxtts = None
     t = LEAD_IN
     beats, words, parts = [], [], []
     for i, b in enumerate(story["beats"]):
@@ -134,6 +152,8 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.5", "-i", str(mp4), "-frames:v", "1", "-vf", "scale=360:-1", str(out_dir / f"{sid}.jpg")], check=True)
     # Revisor automático del vídeo final
     story["qa"] = qa.check(mp4, timeline, " ".join([b["text"] for b in story["beats"]] + ([outro] if outro else [])), end_dur)
+    if voxtts is not None:
+        story["qa"] += list(dict.fromkeys(voxtts.WARNINGS))  # frases que no salieron perfectas (misma voz)
     story["qa"] += [f"Una escena no se pudo dibujar y salió en blanco ({e.split('AVISO escena con error')[-1].strip()[:120]})" for e in scene_errors]
     print("  revisión: " + ("✅ todo correcto" if not story["qa"] else "⚠️ " + " | ".join(story["qa"])), flush=True)
     return mp4
@@ -142,11 +162,13 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
 def build_one(st: dict, wd: Path, cfg: dict) -> bool:
     try:
         st["video"] = build_story(st, wd, cfg).name
-        if st.get("qa"):  # el revisor encontró algo: se monta otra vez y se queda el mejor
+        # Si el revisor encontró un fallo de IMAGEN/MONTAJE, se vuelve a montar reutilizando las voces (1-2 min).
+        # Los avisos de VOZ no se regeneran (sería muy lento): se quedan en el issue para que decidas tú.
+        image_problems = [q for q in st.get("qa", []) if not q.startswith("Frase revisable") and not any(k in q for k in VOICE_ISSUES)]
+        if image_problems:
             first = st["qa"]
-            voice_problem = any(k in q for q in first for k in VOICE_ISSUES)
-            print("  vuelvo a montarlo " + ("regenerando las voces..." if voice_problem else "reutilizando las voces ya revisadas..."), flush=True)
-            build_story(st, wd, cfg, reuse_voice=not voice_problem)
+            print("  vuelvo a montar la imagen reutilizando las voces ya revisadas...", flush=True)
+            build_story(st, wd, cfg, reuse_voice=True)
             if len(st["qa"]) > len(first):
                 st["qa"] = first
         return True
