@@ -224,7 +224,11 @@ export function personaWho(seed, params = {}) {
   const who = String(params.who || 'protagonista').toLowerCase();
   const main = who === 'protagonista' || who === 'tu' || who === 'tú';
   const base = personaFor(main ? seed : `${seed}-${who}`, params);
-  return applyLook(base, LOOKS[who] || (main ? LOOKS.protagonista : null));
+  const p = applyLook(base, LOOKS[who] || (main ? LOOKS.protagonista : null));
+  // Cambios dentro de la historia (p. ej. pierde las gafas): params de la escena mandan
+  if (params.gafas === true || params.gafas === 'true') p.glasses = true;
+  if (params.gafas === false || params.gafas === 'false') p.glasses = false;
+  return p;
 }
 
 const PANTS = ['#2a3a5c', '#1f2430', '#3b3b44', '#4a3a2a', '#28414a'];
@@ -262,7 +266,7 @@ export function drawFullBody(ctx, x, y, s, who, opts = {}) {
   ctx.fillStyle = '#c9a24a'; rr(ctx, -35, 1240, 70, 50, 8); ctx.fill();
   if (arms === 'up') {
     for (const side of [-1, 1]) {
-      ctx.save(); ctx.translate(side * 255, 380); ctx.rotate(side * 2.7 + Math.sin(t * 3) * 0.05 * side);
+      ctx.save(); ctx.translate(side * 255, 380); ctx.rotate(-side * 2.45 - Math.sin(t * 3) * 0.05 * side);
       ctx.fillStyle = sleeve; rr(ctx, -70, -20, 140, 300, 60); ctx.fill();
       ctx.fillStyle = skin; rr(ctx, -58, 240, 116, 620, 55); ctx.fill();
       ctx.beginPath(); ctx.ellipse(0, 880, 72, 88, 0, 0, 7); ctx.fill();

@@ -104,11 +104,13 @@
    }
   },
   "forest": {
-   "desc": "Bosque de noche con niebla.",
+   "desc": "Bosque de noche con niebla. Con kind 'jungle' es una selva/bosque DE DÍA, verde y con rayos de sol (para historias reales de supervivencia, naturaleza, expediciones).",
    "params": {
     "flashlight": "bool, haz de linterna",
     "eyes": "bool, ojos brillando entre los árboles",
-    "figure": "bool, silueta entre árboles"
+    "figure": "bool, silueta entre árboles",
+    "kind": "dark (bosque nocturno, por defecto) | jungle (selva de día)",
+    "river": "true para que haya un río (solo con kind jungle)"
    }
   },
   "ocean": {
@@ -170,7 +172,8 @@
     "mood": "neutral|happy|worried|shocked|angry|sad",
     "prop": "none|money|phone",
     "bg": "night|warm|cold|red",
-    "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)"
+    "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
+    "gafas": "true|false (opcional: solo si en ESTE momento de la historia lleva o no gafas distinto de su ficha)"
    }
   },
   "money": {
@@ -252,7 +255,8 @@
     "arms": "normal|none|up|cross",
     "highlight": "none|arms|legs|chest|heart|head|stomach",
     "label": "texto corto en una etiqueta (p. ej. 'Electricista · 26 años')",
-    "bg": "night|warm|cold|red|room|hospital"
+    "bg": "night|warm|cold|red|room|hospital",
+    "gafas": "true|false (opcional: solo si en ESTE momento de la historia lleva o no gafas distinto de su ficha)"
    }
   },
   "hospital": {
@@ -262,7 +266,8 @@
     "state": "sleeping|awake",
     "mood": "neutral|worried|sad|happy",
     "monitor": "normal|alarm",
-    "label": "texto corto"
+    "label": "texto corto",
+    "gafas": "true|false (opcional: solo si en ESTE momento de la historia lleva o no gafas distinto de su ficha)"
    }
   },
   "surgery": {
@@ -279,7 +284,8 @@
     "who": "por defecto 'medico'; otro nombre = otro médico",
     "mood": "neutral|worried|happy|sad",
     "say": "frase corta del bocadillo (máx 8 palabras)",
-    "label": "texto corto"
+    "label": "texto corto",
+    "gafas": "true|false (opcional: solo si en ESTE momento de la historia lleva o no gafas distinto de su ficha)"
    }
   },
   "document": {

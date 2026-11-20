@@ -11,6 +11,7 @@ export const forest = {
     return { layers, dust: makeDust(r, 40) };
   },
   draw(ctx, s, { t, params }) {
+    if (params.kind === 'jungle' || params.kind === 'selva' || params.kind === 'day') return drawJungle(ctx, s, t, params);
     ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#020306', '#0a1018', '#0d141a', '#040507']);
     ctx.fillRect(0, 0, W, H);
     radial(ctx, W / 2, 500, 600, '#6f86a8', 0.18);
@@ -45,6 +46,50 @@ export const forest = {
     drawDust(ctx, s.dust, t, '#cfd8e8', 0.3);
   },
 };
+
+// Selva / bosque de día: verde, rayos de luz, hojas y río opcional.
+function drawJungle(ctx, s, t, params) {
+  ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#0e2a1a', '#1d4a2a', '#163a22', '#0a1f12']);
+  ctx.fillRect(0, 0, W, H);
+  // rayos de sol entre los árboles
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  for (let i = 0; i < 4; i++) {
+    const x = 160 + i * 260 + Math.sin(t * 0.3 + i) * 20;
+    const g = ctx.createLinearGradient(x, 0, x + 300, 1500);
+    g.addColorStop(0, 'rgba(255,240,170,0.22)'); g.addColorStop(1, 'rgba(255,240,170,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x - 30, 0); ctx.lineTo(x + 50, 0); ctx.lineTo(x + 420, 1500); ctx.lineTo(x + 180, 1500); ctx.fill();
+  }
+  ctx.restore();
+  s.layers.forEach((layer, li) => {
+    const col = ['#2e5a34', '#22472a', '#16321d'][li];
+    for (const tr of layer) {
+      const x = tr.x + Math.sin(t * 0.2 + li) * (li + 1) * 6;
+      ctx.fillStyle = ['#3b3020', '#2e2618', '#211a10'][li];
+      ctx.save(); ctx.translate(x, 0); ctx.rotate(tr.lean); ctx.fillRect(-tr.w / 2, -50, tr.w, H + 100); ctx.restore();
+      ctx.fillStyle = col;
+      for (let k = 0; k < 5; k++) {
+        const ly = 120 + k * 330 + (tr.w * 7) % 120, lx = x + Math.sin(k * 2 + tr.w) * 90;
+        ctx.beginPath(); ctx.ellipse(lx, ly + Math.sin(t + k) * 6, 150 + li * 30, 70 + li * 10, Math.sin(k + tr.w) * 0.5, 0, 7); ctx.fill();
+      }
+    }
+  });
+  // lianas
+  ctx.strokeStyle = '#2f5a2a'; ctx.lineWidth = 8;
+  for (let i = 0; i < 5; i++) {
+    const x = 100 + i * 220; ctx.beginPath(); ctx.moveTo(x, 0);
+    ctx.quadraticCurveTo(x + 60 + Math.sin(t + i) * 20, 400, x + 10, 700 + i * 60); ctx.stroke();
+  }
+  if (params.river) {
+    const g = ctx.createLinearGradient(0, 1350, 0, H); g.addColorStop(0, '#3d6f7a'); g.addColorStop(1, '#1f4650');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, 1450); ctx.quadraticCurveTo(W / 2, 1330, W, 1420); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.fill();
+    ctx.strokeStyle = 'rgba(220,240,255,0.35)'; ctx.lineWidth = 4;
+    for (let i = 0; i < 8; i++) { const y = 1500 + i * 50, off = (t * 80 + i * 90) % W; ctx.beginPath(); ctx.moveTo(off - 120, y); ctx.lineTo(off, y); ctx.stroke(); }
+  } else {
+    ctx.fillStyle = '#132a17'; ctx.beginPath(); ctx.moveTo(0, 1600); ctx.quadraticCurveTo(W / 2, 1520, W, 1600); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.fill();
+  }
+  if (params.figure) drawFigure(ctx, W / 2 + 140, 1400, 380, { color: '#0a140c' });
+  drawDust(ctx, s.dust, t, '#fff3c0', 0.35);
+}
 
 // Mar de noche con luna. params: { ship?: bool, storm?: bool }
 export const ocean = {

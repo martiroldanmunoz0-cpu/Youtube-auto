@@ -223,11 +223,20 @@ export function renderCover(tl, out) {
   const pickIdx = tl.cover?.beat ?? (cands.find(({ b }) => b.camera === 'slam') || cands[Math.floor(cands.length * 0.4)] || { i: Math.floor(r.beats.length / 2) }).i;
   const b = r.beats[pickIdx];
   const ctx = r.ctx;
-  r.drawBeat(ctx, { ...b, camera: 'static' }, b.start + Math.min(1.2, (b.end - b.start) * 0.6), 0);
+  const faces = new Set(['person', 'group', 'doctor', 'hospital', 'surgery']);
+  const textLow = faces.has(b.scene_name);
+  r.drawBeat(ctx, { ...b, camera: 'static', params: { ...b.params, label: '' } }, b.start + Math.min(1.2, (b.end - b.start) * 0.6), 0);
   // Oscurecer arriba para que el texto se lea
-  let g = ctx.createLinearGradient(0, 0, 0, H * 0.62);
-  g.addColorStop(0, 'rgba(0,0,0,0.88)'); g.addColorStop(0.7, 'rgba(0,0,0,0.45)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H * 0.62);
+  let g;
+  if (textLow) { // texto abajo para no tapar la cara
+    g = ctx.createLinearGradient(0, H * 0.45, 0, H);
+    g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(0.35, 'rgba(0,0,0,0.6)'); g.addColorStop(1, 'rgba(0,0,0,0.92)');
+    ctx.fillStyle = g; ctx.fillRect(0, H * 0.45, W, H * 0.55);
+  } else {
+    g = ctx.createLinearGradient(0, 0, 0, H * 0.62);
+    g.addColorStop(0, 'rgba(0,0,0,0.88)'); g.addColorStop(0.7, 'rgba(0,0,0,0.45)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H * 0.62);
+  }
   g = ctx.createLinearGradient(0, H * 0.82, 0, H);
   g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,0.7)');
   ctx.fillStyle = g; ctx.fillRect(0, H * 0.82, W, H * 0.18);
@@ -247,7 +256,7 @@ export function renderCover(tl, out) {
     if (lines.length <= 4 && lines.every((l) => ctx.measureText(l).width <= W - 120)) break;
   }
   const lh = size * 1.08;
-  let y = 250 + size * 0.85;
+  let y = textLow ? H - 250 - lines.length * lh + size * 0.85 : 250 + size * 0.85;
   const hot = (w) => /[0-9?¿!¡]/.test(w);
   ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
   for (const line of lines) {
