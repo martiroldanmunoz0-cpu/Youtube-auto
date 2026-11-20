@@ -139,6 +139,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
         "beats": beats, "words": words,
         "cast": cast, "subtitle_style": story.get("subtitle_style", "page"),
         "endcard": {"duration": round(end_dur, 3), "title": c["tarjeta_final"]["titulo"], "subtitle": c["tarjeta_final"]["subtitulo"], "handle": c["handle"]},
+        "cover": {"text": story.get("cover_text") or story.get("question") or story["title"].replace(" #shorts", ""), "channel": c.get("nombre", "")},
     }
     tl_path = out_dir / f"{sid}.timeline.json"
     write_json(tl_path, timeline)
@@ -148,8 +149,15 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     if r.returncode != 0:
         raise RuntimeError(f"el motor de animación falló: {r.stderr[-800:]}")
     scene_errors = [l for l in r.stderr.splitlines() if "AVISO escena con error" in l]
-    # Miniatura para la página de revisión (fotograma del gancho)
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.5", "-i", str(mp4), "-frames:v", "1", "-vf", "scale=360:-1", str(out_dir / f"{sid}.jpg")], check=True)
+    # Portada propia (se sube a YouTube como miniatura) y versión pequeña para la página de revisión
+    portada = out_dir / f"{sid}_portada.jpg"
+    rc = subprocess.run(["node", str(RENDERER / "render.mjs"), str(tl_path), str(portada), "--cover"], capture_output=True, text=True)
+    if rc.returncode == 0 and portada.exists():
+        story["portada"] = portada.name
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(portada), "-vf", "scale=540:-1", str(out_dir / f"{sid}.jpg")], check=True)
+    else:
+        print(f"  aviso: no se pudo hacer la portada ({rc.stderr[-300:]})")
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "1.5", "-i", str(mp4), "-frames:v", "1", "-vf", "scale=360:-1", str(out_dir / f"{sid}.jpg")], check=True)
     # Revisor automático del vídeo final
     story["qa"] = qa.check(mp4, timeline, " ".join([b["text"] for b in story["beats"]] + ([outro] if outro else [])), end_dur)
     if voxtts is not None:

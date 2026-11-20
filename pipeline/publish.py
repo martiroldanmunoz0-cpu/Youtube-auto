@@ -108,6 +108,28 @@ def upload(yt, item: dict, video_path: Path, cfg: dict) -> str:
     return resp["id"]
 
 
+def set_thumbnail(yt, vid: str, q: dict, tmp: Path) -> str:
+    """Sube la portada propia del vídeo como miniatura. Nunca bloquea la publicación si falla."""
+    if not q.get("portada"):
+        return ""
+    try:
+        from googleapiclient.http import MediaFileUpload  # noqa: PLC0415
+
+        img = tmp / q["portada"]
+        if not img.exists():
+            gh("release", "download", q["tag"], "--pattern", q["portada"], "--dir", str(tmp), "--clobber")
+        yt.thumbnails().set(videoId=vid, media_body=MediaFileUpload(str(img), mimetype="image/jpeg")).execute()
+        q["portada_ok"] = True
+        return "\n   🖼️ Portada propia puesta"
+    except Exception as e:  # noqa: BLE001
+        msg = str(e)
+        q["portada_ok"] = False
+        if "forbidden" in msg.lower() or "403" in msg:
+            return ("\n   ⚠️ YouTube no dejó poner la portada propia: para miniaturas personalizadas el canal tiene que estar "
+                    "**verificado por teléfono** (youtube.com/verify). Mientras, YouTube usa un fotograma del vídeo.")
+        return f"\n   ⚠️ No se pudo poner la portada ({msg[:150]})"
+
+
 def manual_report(queue: list[dict], pending: list[dict], cfg: dict) -> list[str]:
     """Modo manual (sin auditoría de la API): no sube nada, deja todo listo para subirlo a mano en 2 minutos."""
     repo = os.environ.get("GITHUB_REPOSITORY", "")
@@ -154,12 +176,13 @@ def process_queue(cfg: dict) -> list[str]:
         try:
             vid = upload(yt, q, path, cfg)
             q.update(estado="programado", youtube_id=vid)
+            portada_msg = set_thumbnail(yt, vid, q, tmp)
             local = dt.datetime.fromisoformat(q["publish_at"].replace("Z", "+00:00")).astimezone(ZoneInfo(cfg["publicacion"]["zona_horaria"]))
             dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
             cuando = f"{dias[local.weekday()]} {local:%d/%m} a las {local:%H:%M}"
             report.append(
                 f"✅ **{q['title']}**\n   📅 Se publica el **{cuando}** · [ver](https://youtu.be/{vid}) · "
-                f"[abrir en YouTube Studio](https://studio.youtube.com/video/{vid}/edit)"
+                f"[abrir en YouTube Studio](https://studio.youtube.com/video/{vid}/edit)" + portada_msg
             )
             print(report[-1])
         except HttpError as e:

@@ -3,12 +3,14 @@ import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp } from '..
 import { makeBokeh, drawBokeh, makeDust, drawDust } from '../lib/fx.mjs';
 import { drawEyes, blinkAt } from '../lib/parts.mjs';
 import { linearBg } from './vehicle.mjs';
+import { personaFor, drawHairBack, drawHairFront, drawBeard, drawExtras } from '../lib/persona.mjs';
 
 // Personaje (busto frontal, estilo plano). params: { mood: neutral|happy|worried|shocked|angry|sad,
 //   prop?: 'money'|'phone'|'none', bg?: 'night'|'warm'|'cold'|'red', outfit?: #hex }
 export const character = {
   setup(p, r) { return { bokeh: makeBokeh(r, 14, { rMin: 60, rMax: 160 }), seed: r.int(0, 99) }; },
-  draw(ctx, s, { t, params }) {
+  draw(ctx, s, { t, params, seed }) {
+    const who = personaFor(seed, params);
     const bgs = { night: ['#07080f', '#141a30', '#08080d'], warm: ['#0d0806', '#2a160c', '#0b0605'], cold: ['#05080c', '#0e1c2a', '#05070a'], red: ['#0a0405', '#2a0a0e', '#080304'] };
     ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, bgs[params.bg] || bgs.night);
     ctx.fillRect(0, 0, W, H);
@@ -16,7 +18,7 @@ export const character = {
     const mood = params.mood || 'neutral';
     const cx = W / 2, cy = 1080 + Math.sin(t * 1.6) * 6 + (mood === 'shocked' ? -Math.abs(Math.sin(t * 9)) * 6 : 0);
     radial(ctx, cx, cy - 100, 700, mood === 'angry' || params.bg === 'red' ? P.red : P.amber, 0.18);
-    const outfit = params.outfit || '#2b3a66';
+    const outfit = who.outfit;
     // Cuerpo
     ctx.fillStyle = outfit;
     ctx.beginPath();
@@ -24,29 +26,24 @@ export const character = {
     ctx.lineTo(cx + 150, cy + 290); ctx.quadraticCurveTo(cx + 400, cy + 330, cx + 420, H + 40); ctx.fill();
     ctx.fillStyle = 'rgba(0,0,0,0.25)';
     ctx.beginPath(); ctx.moveTo(cx - 90, cy + 290); ctx.lineTo(cx, cy + 420); ctx.lineTo(cx + 90, cy + 290); ctx.fill();
+    drawHairBack(ctx, cx, cy, who);
     // Cuello
-    ctx.fillStyle = P.skinDark; rr(ctx, cx - 70, cy + 170, 140, 150, 40); ctx.fill();
+    ctx.fillStyle = who.skin.neck; rr(ctx, cx - 70, cy + 170, 140, 150, 40); ctx.fill();
     // Cabeza
     const hg = ctx.createRadialGradient(cx - 60, cy - 80, 40, cx, cy, 300);
-    hg.addColorStop(0, '#b47a52'); hg.addColorStop(1, '#6e4229');
+    hg.addColorStop(0, who.skin.light); hg.addColorStop(1, who.skin.dark);
     ctx.fillStyle = hg;
     ctx.beginPath(); ctx.ellipse(cx, cy, 230, 280, 0, 0, Math.PI * 2); ctx.fill();
     // Orejas
-    ctx.fillStyle = '#7e4c30';
+    ctx.fillStyle = who.skin.ear;
     for (const sx of [-1, 1]) { ctx.beginPath(); ctx.ellipse(cx + sx * 228, cy + 10, 34, 60, 0, 0, 7); ctx.fill(); }
     // Pelo
-    ctx.fillStyle = '#1a100a';
-    ctx.beginPath();
-    ctx.moveTo(cx - 240, cy - 20);
-    ctx.quadraticCurveTo(cx - 260, cy - 320, cx, cy - 300);
-    ctx.quadraticCurveTo(cx + 260, cy - 320, cx + 240, cy - 20);
-    ctx.quadraticCurveTo(cx + 200, cy - 180, cx + 40, cy - 190);
-    ctx.quadraticCurveTo(cx - 120, cy - 200, cx - 240, cy - 20);
-    ctx.fill();
+    drawHairFront(ctx, cx, cy, who);
+    drawBeard(ctx, cx, cy, who);
     // Ojos (reutiliza los del retrovisor, más pequeños)
     const eyeMood = { neutral: 'calm', happy: 'calm', worried: 'sad', shocked: 'wide', angry: 'angry', sad: 'sad' }[mood] || 'calm';
     ctx.save(); ctx.translate(cx, cy - 20); ctx.scale(0.62, 0.62);
-    drawEyes(ctx, 0, 0, 110, { mood: eyeMood, look: Math.sin(t * 0.7) * 0.25, blink: mood === 'shocked' ? 0 : blinkAt(t, s.seed) });
+    drawEyes(ctx, 0, 0, 110, { mood: eyeMood, skin: who.skin.light, look: Math.sin(t * 0.7) * 0.25, blink: mood === 'shocked' ? 0 : blinkAt(t, s.seed) });
     ctx.restore();
     // Nariz
     ctx.strokeStyle = 'rgba(40,20,10,0.5)'; ctx.lineWidth = 6; ctx.lineCap = 'round';
@@ -59,6 +56,7 @@ export const character = {
     else if (mood === 'sad' || mood === 'worried') { ctx.moveTo(cx - 70, cy + 195); ctx.quadraticCurveTo(cx, cy + 150, cx + 70, cy + 195); ctx.stroke(); }
     else if (mood === 'angry') { ctx.moveTo(cx - 70, cy + 185); ctx.lineTo(cx + 70, cy + 175); ctx.stroke(); }
     else { ctx.moveTo(cx - 60, cy + 175); ctx.quadraticCurveTo(cx, cy + 190, cx + 60, cy + 175); ctx.stroke(); }
+    drawExtras(ctx, cx, cy, who);
     // Gota de sudor (preocupado)
     if (mood === 'worried' || mood === 'shocked') {
       const k = (t * 0.6) % 1;

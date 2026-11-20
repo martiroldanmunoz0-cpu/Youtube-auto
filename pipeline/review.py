@@ -142,7 +142,8 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     vid = st["id"]
     tag = wid if wid.startswith(("pedido", "comedia")) else f"semana-{wid}"
     repo = os.environ.get("GITHUB_REPOSITORY", "")
-    upload_to_release(tag, [str(wd / st["video"])], wid, req)
+    files = [str(wd / st["video"])] + ([str(wd / st["portada"])] if st.get("portada") and (wd / st["portada"]).exists() else [])
+    upload_to_release(tag, files, wid, req)
 
     build_site(vid, [st], analysis, wd, cfg)
     page_ok = True
@@ -179,7 +180,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
         "",
         f"<!-- semana:{vid} -->",
     ]
-    meta = {k: st[k] for k in ("id", "title", "description", "tags", "video")}
+    meta = {k: st[k] for k in ("id", "title", "description", "tags", "video", "portada") if k in st}
     write_json(DATA / "weeks" / f"{vid}.json", {"semana": vid, "tanda": wid, "pedido": req, "tag": tag, "videos": [meta]})
     write_json(history_file(vid), [{"id": vid, "titulo": st["title"], "tipo": st.get("idea", {}).get("tipo"),
                                     "ts": dt.datetime.now(dt.timezone.utc).isoformat(),

@@ -67,6 +67,7 @@ STORY_SCHEMA = {
             },
         },
         "pregunta_central": {"type": "string"},
+        "texto_portada": {"type": "string"},
         "gancho_elegido": {"type": "string"},
         "titulo": {"type": "string"},
         "descripcion": {"type": "string"},
@@ -87,7 +88,7 @@ STORY_SCHEMA = {
             },
         },
     },
-    "required": ["pregunta_central", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "planos"],
+    "required": ["pregunta_central", "texto_portada", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "planos"],
     "additionalProperties": False,
 }
 
@@ -156,7 +157,9 @@ esa escena (usa "{}" si no hace falta). Los textos dentro de pantallas o periód
 - El plano del giro usa cámara "slam" o transición "red"/"flash".
 - "camara" y "transicion" deben ser claves exactas del catálogo.
 
-TÍTULO Y DESCRIPCIÓN
+TÍTULO, PORTADA Y DESCRIPCIÓN
+- texto_portada: 2-6 palabras en MAYÚSCULAS para la miniatura, que se lean de un vistazo y den ganas de pulsar \
+(p. ej. "¿11 KM BAJO EL MAR?", "SIN DORMIR 11 DÍAS", "¿Y SI LA LUNA CAE?"). Distinto del título, sin destripar el giro.
 - titulo: máx 70 caracteres, genera curiosidad sin destripar el giro, termina con " #shorts".
 - descripcion: 2-3 líneas que inviten a comentar (pregunta al espectador) + 3-5 hashtags.
 - tags: 8-12 etiquetas en español."""
@@ -426,6 +429,8 @@ def validate_story(story: dict) -> dict:
         "description": story["descripcion"].strip(),
         "tags": [t.strip("# ") for t in story["tags"]][:15],
         "beats": beats,
+        "cover_text": re.sub(r"\s+", " ", story.get("texto_portada") or "").strip()[:60],
+        "question": pregunta,
     }
 
 

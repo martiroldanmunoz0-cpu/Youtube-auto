@@ -17,6 +17,8 @@ import { SCENES } from './scenes/index.mjs';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fontDir = path.join(here, '..', 'assets', 'fonts');
 for (const f of fs.readdirSync(fontDir).filter((f) => f.endsWith('.ttf'))) GlobalFonts.registerFromPath(path.join(fontDir, f), 'Poppins');
+const antonPath = path.join(here, '..', 'assets', 'branding', 'fonts', 'Anton-Regular.ttf');
+if (fs.existsSync(antonPath)) GlobalFonts.registerFromPath(antonPath, 'Anton');
 
 const TRANSITION = 0.35;
 
@@ -78,7 +80,7 @@ export class Renderer {
       const params = sanitize(b.params || {});
       if (!SCENES[b.scene] && !params.text) params.text = '';
       const r = rng(`${timeline.seed || 'x'}-${i}-${b.scene}`);
-      return { ...b, params, scene, state: scene.setup(params, r) };
+      return { ...b, params, scene, scene_name: SCENES[b.scene] ? b.scene : 'big_text', state: scene.setup(params, r) };
     });
     const words = timeline.words || [];
     this.pages = words.length ? paginate(this.ctx, words) : [];
@@ -102,7 +104,7 @@ export class Renderer {
     ctx.scale(cam.s, cam.s);
     ctx.translate(-W / 2, -H / 2);
     try {
-      b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
+      b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, seed: this.tl.persona || this.tl.seed, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
     } catch (e) {
       // Una escena rota no debe tumbar el vídeo entero: fondo neutro y aviso (el revisor lo verá)
       if (!sceneErrors.has(b.scene)) { sceneErrors.add(b.scene); console.error(`AVISO escena con error (${b.start}s): ${e.message}`); }
@@ -211,6 +213,67 @@ async function renderStills(tl, out, n) {
   console.log('Previsualización:', out);
 }
 
+// Portada (miniatura) del vídeo: la escena más representativa + el texto de portada en grande.
+export function renderCover(tl, out) {
+  const r = new Renderer(tl);
+  const avoid = new Set(['big_text', 'character', 'calendar', 'clock']);
+  const cands = r.beats.map((b, i) => ({ b, i })).filter(({ b }) => !avoid.has(b.scene_name));
+  const pickIdx = tl.cover?.beat ?? (cands.find(({ b }) => b.camera === 'slam') || cands[Math.floor(cands.length * 0.4)] || { i: Math.floor(r.beats.length / 2) }).i;
+  const b = r.beats[pickIdx];
+  const ctx = r.ctx;
+  r.drawBeat(ctx, { ...b, camera: 'static' }, b.start + Math.min(1.2, (b.end - b.start) * 0.6), 0);
+  // Oscurecer arriba para que el texto se lea
+  let g = ctx.createLinearGradient(0, 0, 0, H * 0.62);
+  g.addColorStop(0, 'rgba(0,0,0,0.88)'); g.addColorStop(0.7, 'rgba(0,0,0,0.45)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H * 0.62);
+  g = ctx.createLinearGradient(0, H * 0.82, 0, H);
+  g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,0.7)');
+  ctx.fillStyle = g; ctx.fillRect(0, H * 0.82, W, H * 0.18);
+  // Texto grande, ajustado a 4 líneas como mucho
+  const text = String(tl.cover?.text || '').toUpperCase().trim();
+  const words = text.split(/\s+/).filter(Boolean);
+  const font = GlobalFonts.has?.('Anton') === false ? 'Poppins' : 'Anton';
+  let size = 230, lines = [];
+  for (; size >= 90; size -= 10) {
+    ctx.font = `${font === 'Poppins' ? '800 ' : ''}${size}px ${font}`;
+    lines = []; let cur = '';
+    for (const w of words) {
+      const t = cur ? cur + ' ' + w : w;
+      if (ctx.measureText(t).width > W - 120 && cur) { lines.push(cur); cur = w; } else cur = t;
+    }
+    if (cur) lines.push(cur);
+    if (lines.length <= 4 && lines.every((l) => ctx.measureText(l).width <= W - 120)) break;
+  }
+  const lh = size * 1.08;
+  let y = 250 + size * 0.85;
+  const hot = (w) => /[0-9?¿!¡]/.test(w);
+  ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
+  for (const line of lines) {
+    const ws = line.split(' ');
+    let x = (W - ctx.measureText(line).width) / 2;
+    for (const w of ws) {
+      ctx.lineWidth = size * 0.12; ctx.strokeStyle = '#000'; ctx.strokeText(w, x, y);
+      ctx.fillStyle = hot(w) ? '#ffb35c' : '#ffffff'; ctx.fillText(w, x, y);
+      x += ctx.measureText(w + ' ').width;
+    }
+    y += lh;
+  }
+  // Sello del canal
+  const label = String(tl.cover?.channel || '').toUpperCase();
+  if (label) {
+    ctx.font = '700 46px Poppins';
+    const w = ctx.measureText(label).width + 60;
+    ctx.fillStyle = '#ffb35c'; rrPath(ctx, (W - w) / 2, H - 190, w, 84, 42); ctx.fill();
+    ctx.fillStyle = '#1a1206'; ctx.fillText(label, (W - w) / 2 + 30, H - 133);
+  }
+  fs.writeFileSync(out, r.canvas.encodeSync(out.endsWith('.png') ? 'png' : 'jpeg', 90));
+  console.log('Portada:', out, `(plano ${pickIdx + 1}: ${b.scene_name})`);
+}
+function rrPath(ctx, x, y, w, h, rad) {
+  ctx.beginPath(); ctx.moveTo(x + rad, y); ctx.arcTo(x + w, y, x + w, y + h, rad); ctx.arcTo(x + w, y + h, x, y + h, rad);
+  ctx.arcTo(x, y + h, x, y, rad); ctx.arcTo(x, y, x + w, y, rad); ctx.closePath();
+}
+
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isMain) {
   const a = parseArgs(process.argv.slice(2));
@@ -218,6 +281,7 @@ if (isMain) {
   if (!tlPath || !out) { console.error('Uso: node render.mjs timeline.json salida.mp4 [--audio a.m4a] | salida.png --stills N'); process.exit(1); }
   const tl = JSON.parse(fs.readFileSync(tlPath, 'utf8'));
   if (a.fps) tl.fps = Number(a.fps);
-  if (a.stills) await renderStills(tl, out, Number(a.stills));
+  if (a.cover) renderCover(tl, out);
+  else if (a.stills) await renderStills(tl, out, Number(a.stills));
   else await renderVideo(tl, out, { audio: a.audio, preset: a.preset });
 }
