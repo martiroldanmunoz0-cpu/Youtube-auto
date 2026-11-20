@@ -72,5 +72,30 @@
     "publish_at": "2026-11-22T11:00:00Z",
     "youtube_id": "oaSovNWbc_k",
     "portada_ok": true
+  },
+  {
+    "id": "historia-1-02",
+    "title": "Le trasplantaron dos brazos ajenos y empezaron a cambiar #shorts",
+    "description": "Shreya recibió los brazos de otra persona y, con los años, esos brazos cambiaron. ¿Tú habrías aceptado un trasplante así? Cuéntamelo en los comentarios.\n#curiosidades #medicina #trasplante #historiasreales",
+    "tags": [
+      "curiosidades",
+      "medicina",
+      "trasplante de brazos",
+      "historias reales",
+      "Shreya Siddanagowder",
+      "Amrita Institute",
+      "ciencia",
+      "India",
+      "donación de órganos",
+      "casos médicos"
+    ],
+    "video": "historia-1-02.mp4",
+    "portada": "historia-1-02_portada.jpg",
+    "tag": "historia-1",
+    "issue": 10,
+    "estado": "programado",
+    "publish_at": "2026-11-23T18:00:00Z",
+    "youtube_id": "CLjRSqxg6jM",
+    "portada_ok": true
   }
 ]
