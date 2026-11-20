@@ -1,0 +1,56 @@
+{
+  "semana": "pedido-6",
+  "pedido": "Falso telediario: día 1, día 2, día 3 sin internet en todo el mundo",
+  "tag": "pedido-6",
+  "issue": "https://github.com/martiroldanmunoz0-cpu/Youtube-auto/issues/3",
+  "videos": [
+    {
+      "id": "pedido-6-01",
+      "title": "Día 3 sin internet en todo el planeta: lo que anunciaron #shorts",
+      "description": "Tercer día sin internet en todo el mundo... y lo que anunciaron en el telediario lo cambió todo. ¿Tú cuántos días aguantarías? Cuéntamelo en los comentarios 👇\n#curiosidades #quepasariasi #internet #telediario #datoscuriosos",
+      "tags": [
+        "curiosidades",
+        "qué pasaría si",
+        "internet",
+        "sin internet",
+        "telediario",
+        "datos curiosos",
+        "tecnología",
+        "mundo sin internet"
+      ],
+      "video": "pedido-6-01.mp4"
+    },
+    {
+      "id": "pedido-6-02",
+      "title": "El día que solo tu móvil tuvo internet #shorts",
+      "description": "Todo el planeta se queda sin internet... menos tu móvil. ¿Qué harías tú? Te leo en los comentarios 👇\n#curiosidades #quepasariasi #internet #sininternet #datoscuriosos",
+      "tags": [
+        "curiosidades",
+        "qué pasaría si",
+        "internet",
+        "sin internet",
+        "telediario",
+        "datos curiosos",
+        "tecnología",
+        "mundo sin internet"
+      ],
+      "video": "pedido-6-02.mp4"
+    },
+    {
+      "id": "pedido-6-03",
+      "title": "Telediario: 3 días sin internet en todo el mundo #shorts",
+      "description": "Día 1, día 2, día 3: así sería el mundo entero sin internet, contado como un telediario. ¿Qué es lo primero que echarías de menos? 👇\n#curiosidades #quepasariasi #internet #telediario #datoscuriosos",
+      "tags": [
+        "curiosidades",
+        "qué pasaría si",
+        "internet",
+        "sin internet",
+        "telediario",
+        "datos curiosos",
+        "tecnología",
+        "mundo sin internet"
+      ],
+      "video": "pedido-6-03.mp4"
+    }
+  ]
+}
