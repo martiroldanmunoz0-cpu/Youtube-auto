@@ -94,10 +94,11 @@
     "portada": "historia-1-02_portada.jpg",
     "tag": "historia-1",
     "issue": 10,
-    "estado": "programado",
-    "publish_at": "2026-11-23T18:00:00Z",
+    "estado": "publicado",
+    "publish_at": "2026-11-20T23:19:23.144949Z",
     "youtube_id": "CLjRSqxg6jM",
-    "portada_ok": true
+    "portada_ok": true,
+    "fecha_prevista": "2026-11-23T18:00:00Z"
   },
   {
     "id": "historia-2-01",
