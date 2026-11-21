@@ -1,0 +1,356 @@
+{
+  "title": "¿Y si la Tierra frenara en seco de golpe? #shorts",
+  "description": "Vas a 1.670 km/h ahora mismo y no lo notas. ¿Qué te daría más miedo: el viento, las olas o los seis meses de noche? Cuéntalo en los comentarios.\n#curiosidades #ciencia #tierra #quepasariasi #shorts",
+  "tags": [
+    "curiosidades",
+    "ciencia",
+    "qué pasaría si",
+    "la Tierra",
+    "rotación terrestre",
+    "astronomía",
+    "datos curiosos",
+    "planeta Tierra",
+    "física",
+    "divulgación"
+  ],
+  "beats": [
+    {
+      "text": "¿Y si la Tierra frenara en seco?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "girar"
+          }
+        ],
+        "persona": "no",
+        "label": "11:59:59",
+        "_faltan": [
+          "reloj_digital"
+        ]
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "En Quito vas a mil seiscientos setenta por hora, sin notarlo.",
+      "scene": "big_text",
+      "params": {
+        "text": "1.670 km/h",
+        "label": "Ecuador, sin notarlo",
+        "lugar": "calle",
+        "color": "#ffcc00"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Segundo uno: la Tierra para, pero tú no.",
+      "scene": "escena",
+      "params": {
+        "lugar": "calle",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "shocked",
+        "arms": "up"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Tú y el coche rojo salís disparados hacia el este.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "calle",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "edificio",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ],
+        "efecto": "velocidad"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Un frenazo de unos cuarenta y siete g. Nadie sobrevive.",
+      "scene": "accion",
+      "params": {
+        "tipo": "choque",
+        "lugar": "calle",
+        "hora": "dia"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "Los edificios están anclados. El aire, no.",
+      "scene": "escena",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "plano": "sin_persona"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Segundo dos: el aire sigue, más rápido que el sonido.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "viento",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ],
+        "efecto": "velocidad"
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "Cuatro veces más que el huracán más fuerte medido.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "viento",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ],
+        "label": "400 km/h",
+        "_faltan": [
+          "escombros"
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Un avión en vuelo ni lo notaría al principio.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "avion",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "nube",
+            "pos": "arriba_izquierda",
+            "tamano": "mediano",
+            "anim": "entrar_izq"
+          }
+        ]
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Minutos después, los océanos barren las costas con olas gigantes.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "ola_gigante",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "edificio",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "tilt_up",
+      "transition": "flash"
+    },
+    {
+      "text": "Semanas después, el agua tiende a irse hacia los polos.",
+      "scene": "map_pin",
+      "params": {
+        "place": "Polos",
+        "detail": "El agua migra",
+        "style": "globo"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Pero el giro es otro: un día dura un año.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "sol",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "latir"
+          }
+        ],
+        "label": "Mitad luz, mitad noche"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Medio planeta, seis meses de sol; el otro, noche y hielo.",
+      "scene": "big_text",
+      "params": {
+        "text": "6 MESES",
+        "label": "de sol o de hielo",
+        "lugar": "espacio",
+        "color": "#ff9900"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Vuelve el reloj: las doce. Ese mediodía duraría seis meses.",
+      "scene": "clock",
+      "params": {
+        "time": "12:00"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Todo cambió en el último segundo de la mañana.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "worried",
+        "objeto": "none"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Y por eso, la pregunta sigue en pie:…",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "girar"
+          }
+        ],
+        "persona": "no",
+        "label": "11:59:59",
+        "_faltan": [
+          "reloj_digital"
+        ]
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {},
+  "cover_text": "¿LA TIERRA SE PARA?",
+  "question": "¿Qué pasaría si la Tierra frenara en seco de golpe?",
+  "id": "pedido-12-01",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "¿Qué pasaría si la Tierra frenara en seco en un solo segundo? Lo vives tú, en segunda persona, con un contador de tiempo que salta cada vez más lejos. 11:59:59: estás en Quito, sobre el ecuador, y como todo el planeta giras hacia el este a unos 1.670 km/h sin notarlo (en Madrid irías a unos 1.270). SEGUNDO 1: la Tierra se para, pero tú no. Tú, el coche rojo de la esquina y todo lo que no está anclado seguís a 1.670 km/h hacia el este. Es un frenazo de unos 47 g, y nadie lo sobrevive. Los edificios están anclados al suelo, pero el aire no. SEGUNDO 2: toda la atmósfera sigue en marcha. Es un viento de unos 465 metros por segundo, más rápido que el sonido. La racha de huracán más fuerte jamás medida rondó los 400 km/h, y esto es cuatro veces más. Dato raro: un avión en pleno vuelo no notaría el frenazo al principio, porque viaja dentro de ese aire que sigue moviéndose. MINUTOS DESPUÉS: los océanos tampoco frenan. El agua sale disparada hacia el este y barre las costas con olas gigantes. Ese viento arranca lo que encuentra y levanta polvo y escombros. SEMANAS DESPUÉS: sin giro, la Tierra pierde parte de su abultamiento del ecuador. Con el tiempo, el agua tendería a irse hacia los polos y dejaría un enorme continente seco en el ecuador. EL GIRO: un día ya no dura 24 horas, sino un año entero. Medio planeta tiene sol durante unos 6 meses seguidos y la otra mitad, 6 meses de noche y hielo.",
+    "gancho": "¿Y si la Tierra frenara en seco durante un solo segundo? Ahora mismo, mientras ves esto, vas a 1.670 km/h… y no lo notas.",
+    "giro_final": "Vuelve el reloj del principio. Ya marca las 12:00, el sol está justo encima y no se mueve. Ese mediodía en el que todo empezó duraría unos seis meses. El narrador remata: 'y el segundo que lo cambió todo… fue el último segundo de la mañana'. Así se cierra el bucle con el primer plano del vídeo.",
+    "estilo_visual": "Portada y primer plano: 'composicion' en 'space' con la pieza tierra grande y brillante y un reloj a las 11:59:59 superpuesto, limpia y de colores vivos. Contador: 'clock' solo dos veces, al inicio (11:59:59) y en el cierre (12:00) para el bucle. 'big_text' solo dos veces: '1.670 km/h' sobre la calle de Quito con la persona reaccionando, y '6 MESES' en el giro final. Segundo 1: 'escena' luminosa de calle ecuatoriana a mediodía con la persona de cuerpo entero, y justo después 'composicion' con coche_rojo y persona saliendo disparados hacia la derecha (el este) frente a un edificio que se queda quieto. Segundo 2: 'composicion' con la pieza viento arrasando árboles y la pieza avion en el cielo, intacto y estable, para el dato curioso. Minutos: 'composicion' con ola_gigante elevándose sobre edificio en la costa, a plena luz. Semanas: 'map_pin' estilo globo terráqueo con el agua migrando a los polos. Giro: 'composicion' de la tierra en 'space' partida en una mitad iluminada y otra oscura, y 'calendar' de pared tachando meses. Sin estilo oscuro, todo luminoso, y ninguna escena se repite salvo el reloj del bucle.",
+    "por_que_funcionara": "Copia la fórmula de los vídeos aprobados: segundo persona inmersiva ('Bajas once kilómetros…', 'Tienes 17 años…') y una progresión que escala ('30 días con dinosaurios'). Aquí la progresión salta de segundos a minutos, semanas y meses, así que la tensión crece sin repetir estructura. Usa datos reales y verificables: 1.670 km/h, 465 m/s más rápido que el sonido, la racha récord de unos 400 km/h y un día de un año. El dato contraintuitivo del avión y el giro de los 6 meses dan dos sorpresas. Además, el final en bucle con el reloj invita a volver a verlo. Corrige los descartes con escenas variadas y luminosas, una portada limpia con la Tierra y el reloj, y un gancho con cifra en el primer segundo.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "sol",
+      "reloj_digital",
+      "escombros"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Y si la Tierra frenara en seco?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Pregunta directa y concreta, 7 palabras. Cualquiera sabe el tema sin ver nada y quiere la respuesta."
+    },
+    {
+      "texto": "¿Sobrevivirías si la Tierra se parara un segundo?",
+      "tipo": "b",
+      "puntuacion": 8,
+      "motivo": "Reto personal con el tema claro, pero tiene 8 palabras y es menos directo."
+    },
+    {
+      "texto": "Vas a 1.670 kilómetros por hora. ¿Y si frenas?",
+      "tipo": "c",
+      "puntuacion": 7,
+      "motivo": "Dato que choca y pregunta, pero el tema tarda un poco más en entenderse."
+    },
+    {
+      "texto": "Vas a ver cómo se para la Tierra.",
+      "tipo": "d",
+      "puntuacion": 6,
+      "motivo": "Segunda persona con el tema dicho, pero no plantea una pregunta clara."
+    },
+    {
+      "texto": "Todos creen que la Tierra nunca se detiene.",
+      "tipo": "e",
+      "puntuacion": 5,
+      "motivo": "Contradicción con el tema, pero es menos urgente y no promete una respuesta concreta."
+    }
+  ]
+}

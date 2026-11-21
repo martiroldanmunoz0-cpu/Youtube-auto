@@ -1,0 +1,27 @@
+{
+  "semana": "pedido-12-01",
+  "tanda": "pedido-12",
+  "pedido": "¿Qué pasaría si la Tierra dejara de girar de golpe durante un segundo? Formato '¿qué pasaría si…?', contado en segunda persona y segundo a segundo: tú y todo lo que no está anclado sale disparado hacia el este a unos 1.670 km/h en el ecuador, los océanos se desbordan en olas gigantes, vientos peores que cualquier huracán, y luego medio planeta con día durante 6 meses. Datos reales y sin exagerar. Usa piezas como tierra, ola_gigante, viento, edificio, coche_rojo, avion. Gancho fuerte desde el primer segundo y final que enlace con el principio.",
+  "tag": "pedido-12",
+  "videos": [
+    {
+      "id": "pedido-12-01",
+      "title": "¿Y si la Tierra frenara en seco de golpe? #shorts",
+      "description": "Vas a 1.670 km/h ahora mismo y no lo notas. ¿Qué te daría más miedo: el viento, las olas o los seis meses de noche? Cuéntalo en los comentarios.\n#curiosidades #ciencia #tierra #quepasariasi #shorts",
+      "tags": [
+        "curiosidades",
+        "ciencia",
+        "qué pasaría si",
+        "la Tierra",
+        "rotación terrestre",
+        "astronomía",
+        "datos curiosos",
+        "planeta Tierra",
+        "física",
+        "divulgación"
+      ],
+      "video": "pedido-12-01.mp4",
+      "portada": "pedido-12-01_portada.jpg"
+    }
+  ]
+}
