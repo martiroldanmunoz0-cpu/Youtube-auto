@@ -1,0 +1,371 @@
+{
+  "title": "Tienes 17 años y no vas a dormir en 11 días #shorts",
+  "description": "¿Tú cuántos días crees que aguantarías sin dormir? Cuéntamelo en los comentarios y dime si te atreverías a intentarlo.\n#curiosidades #sueño #historiasreales #shorts #ciencia",
+  "tags": [
+    "sueño",
+    "sin dormir",
+    "Randy Gardner",
+    "privación de sueño",
+    "curiosidades",
+    "historias reales",
+    "cerebro humano",
+    "insomnio",
+    "récord Guinness",
+    "William Dement",
+    "ciencia",
+    "datos curiosos"
+  ],
+  "beats": [
+    {
+      "text": "¿Cuántos días aguantarías sin dormir?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "label": "11 DÍAS",
+        "efecto": "impacto",
+        "piezas": [
+          {
+            "pieza": "ojo",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Tú vas a intentar once. Diciembre, 1963.",
+      "scene": "calendar",
+      "params": {
+        "style": "pared",
+        "month": "Diciembre 1963",
+        "day": 1,
+        "label": "Once días"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Tienes diecisiete años y buscas un récord escolar.",
+      "scene": "escena",
+      "params": {
+        "lugar": "aula",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "happy",
+        "objeto": "papel",
+        "label": "Feria de ciencias 1963"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Día uno: tus amigos te vigilan por turnos.",
+      "scene": "group",
+      "params": {
+        "count": 2,
+        "lugar": "salon",
+        "hora": "noche",
+        "mood": "worried",
+        "people": [
+          "amigo"
+        ],
+        "label": "Día 1"
+      },
+      "camera": "pan_right",
+      "transition": "cut"
+    },
+    {
+      "text": "Día dos: la vista se nubla y no reconoces nada al tacto.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "worried",
+        "objeto": "libro",
+        "label": "Día 2",
+        "piezas": [
+          {
+            "pieza": "ojo",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Día cuatro: confundes una señal de tráfico con una persona.",
+      "scene": "big_text",
+      "params": {
+        "text": "SEÑAL DE TRÁFI",
+        "label": ""
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Y te crees futbolista profesional.",
+      "scene": "escena",
+      "params": {
+        "lugar": "campo",
+        "hora": "atardecer",
+        "plano": "entero",
+        "mood": "happy",
+        "arms": "up",
+        "label": "¡Eres un campeón!",
+        "efecto": "brillo"
+      },
+      "camera": "tilt_up",
+      "transition": "cut"
+    },
+    {
+      "text": "Llega William Dement, científico de Stanford, a vigilarte.",
+      "scene": "doctor",
+      "params": {
+        "who": "dement",
+        "hora": "dia",
+        "mood": "worried",
+        "label": "William Dement · Stanford",
+        "say": "Lo están vigilando"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Un médico de la Marina vigila tu corazón.",
+      "scene": "hospital",
+      "params": {
+        "state": "awake",
+        "monitor": "normal",
+        "mood": "worried",
+        "hora": "dia",
+        "label": "Médico de la Marina"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Días cinco a siete: la memoria se deshace.",
+      "scene": "calendar",
+      "params": {
+        "style": "marcas",
+        "from": 5,
+        "day": 7,
+        "label": "Memoria en ruinas"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "Una noche, hasta le ganas al pinball al científico.",
+      "scene": "big_text",
+      "params": {
+        "text": "MÁQUINA DE PIN",
+        "label": ""
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Día once: rueda de prensa y hablas con total claridad.",
+      "scene": "tv",
+      "params": {
+        "hora": "dia",
+        "text": "Rueda de prensa\nRandy habla claro"
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    },
+    {
+      "text": "Doscientas sesenta y cuatro horas. Por fin duermes.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dormir",
+        "lugar": "dormitorio",
+        "hora": "noche",
+        "label": "264 horas"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Catorce horas y cuarenta minutos después, despiertas bien.",
+      "scene": "big_text",
+      "params": {
+        "text": "14 h 40 min",
+        "label": "durmiendo",
+        "color": "#4FC3F7"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Te llamas Randy Gardner. Todo esto pasó de verdad.",
+      "scene": "newspaper",
+      "params": {
+        "style": "portada",
+        "kicker": "El Diario Local",
+        "headline": "Randy Gardner, 11 días sin dormir",
+        "date": "Enero de 1964"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Guinness dejó de aceptar récords así por la salud.",
+      "scene": "document",
+      "params": {
+        "title": "Récords Guinness",
+        "lines": [
+          "Randy Gardner",
+          "264 horas sin dormir",
+          "Riesgo para la salud"
+        ],
+        "highlight": 1,
+        "stamp": "RETIRADO"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Y de mayor, Randy sufrió insomnio durante años.",
+      "scene": "year_jump",
+      "params": {
+        "from": 1964,
+        "to": 2007,
+        "label": "Décadas después"
+      },
+      "camera": "static",
+      "transition": "black"
+    },
+    {
+      "text": "El chico que no quería dormir acabó sin poder hacerlo.",
+      "scene": "person",
+      "params": {
+        "edad": "mayor",
+        "lugar": "dormitorio",
+        "hora": "noche",
+        "mood": "sad",
+        "label": "Randy, de mayor"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Y ahora que sabes lo que le costó, dime:…",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "label": "11 DÍAS",
+        "efecto": "impacto",
+        "piezas": [
+          {
+            "pieza": "ojo",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    },
+    "dement": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "blanco"
+    },
+    "amigo": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "verde"
+    }
+  },
+  "cover_text": "11 DÍAS SIN DORMIR",
+  "question": "¿Qué le pasa a tu cuerpo y a tu cerebro cuando pasas días sin dormir?",
+  "id": "pedido-11-02",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Segunda persona con identidad oculta. 'Tienes 17 años, es diciembre de 1963 en San Diego y quieres batir un récord para la feria de ciencias de tu instituto: no dormir.' El relato avanza día a día en un diario retro, y cada día suma un síntoma real documentado en el experimento: día 1, tus amigos te vigilan por turnos; día 2, te cuesta enfocar la vista y no aguantas que te toquen; día 3, te vuelves irritable y torpe; día 4, confundes una señal de la calle con una persona y te crees un famoso jugador de fútbol americano; días 5 a 7, la memoria se te deshace y no terminas las frases. Llega un científico de Stanford, William Dement, para vigilarte; un médico de la Marina te controla el corazón. Día 11: das una rueda de prensa y hablas con sorprendente claridad. El espectador va descubriendo qué pasa en su propio cuerpo, pero contado a través de alguien que lo vivió.",
+    "gancho": "¿Cuántos días aguantarías sin dormir? Tú vas a intentar once... y lo que te pasa en el cerebro el día 4 nadie lo esperaba.",
+    "giro_final": "'Te llamas Randy Gardner, y todo esto pasó de verdad.' Tras 264 horas despierto te duermes unas 14 horas y 40 minutos y te levantas aparentemente bien. Lo que pocos saben llega después: Guinness dejó de aceptar este tipo de récords por el riesgo para la salud, así que tu marca sigue siendo de las más famosas de la historia. Y décadas más tarde, de mayor, Randy contó que sufrió insomnio durante años: el chico que no quería dormir acabó sin poder hacerlo.",
+    "estilo_visual": "Estética luminosa y retro de los años 60, sin estilo oscuro. 'calendar' de pared que tacha días como hilo conductor, con un día nuevo en cada bloque. 'escena' ambientada en 1963 en una casa de San Diego con los amigos y una feria de ciencias de instituto, en distintas horas del día para que ningún plano se repita. 'group' para los amigos que le vigilan por turnos. 'composicion' para los síntomas: una señal de tráfico que se transforma en persona en una calle soleada con el chico asustado (alucinación); una máquina de pinball en un bar con luces (la noche en que gana al científico); un ojo con la vista borrosa delante de un libro. 'doctor' para William Dement con un bocadillo ('Lo están vigilando'). 'hospital' con el monitor de pulso para el control médico. 'accion' 'dormir' en el momento final, con Zzz largos y 'clock' girando rápido para las 14 horas. Cierre: 'newspaper' con una portada de 1964 y foto, 'document' con el récord y el sello de Guinness tachado, y 'year_jump' de 1964 a décadas después para el insomnio.",
+    "por_que_funcionara": "Une los dos estilos favoritos del dueño: inmersión en segunda persona e historia real con protagonista con nombre y final que pocos conocen, como en sus aprobados 'El médico que se operó a sí mismo en la Antártida' o 'Cayó 3.000 metros...'. El giro de identidad ('tú eras Randy') sorprende de verdad. El diario retro y las escenas de época dan una paleta visual muy distinta a la versión 1, y evita el formato de telediario que descartó.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "máquina de pinball de los años 60",
+      "señal de tráfico antigua que se transforma en persona",
+      "stand de feria de ciencias de instituto",
+      "casco de jugador de fútbol americano",
+      "ojo con visión borrosa",
+      "electrodos o monitor de los años 60"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Cuántos días aguantarías sin dormir?",
+      "tipo": "b",
+      "puntuacion": 9,
+      "motivo": "Deja claro el tema en 2 segundos, plantea un reto personal y no destripa nada. Tiene 5 palabras."
+    },
+    {
+      "texto": "¿Qué le pasa a tu cuerpo si no duermes?",
+      "tipo": "a",
+      "puntuacion": 8,
+      "motivo": "Tema clarísimo y directo, pero es una fórmula muy vista."
+    },
+    {
+      "texto": "Tienes diecisiete años y no vas a dormir.",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Segunda persona con el tema dicho, aunque tarda un poco en generar la duda."
+    },
+    {
+      "texto": "Tu cerebro empieza a alucinar al cuarto día.",
+      "tipo": "c",
+      "puntuacion": 7,
+      "motivo": "Dato que choca y el tema se entiende. No hay pregunta explícita."
+    },
+    {
+      "texto": "Dormir no es opcional. Un chico lo comprobó.",
+      "tipo": "e",
+      "puntuacion": 6,
+      "motivo": "Contradicción con bucle abierto, pero es más vaga sobre el tema."
+    }
+  ]
+}
