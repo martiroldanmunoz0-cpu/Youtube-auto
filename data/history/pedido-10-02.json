@@ -5,6 +5,8 @@
     "tipo": "caso_real",
     "ts": "2026-11-21T10:15:08.166426+00:00",
     "premisa": "Historia real contada como documental. Abre con tu corte: tu piel se repara sola y parece que podría hacerlo para siempre. Eso mismo creyó Alexis Carrel, cirujano y premio Nobel de Medicina en 1912. Ese año empezó a mantener vivas en un laboratorio de Nueva York células de corazón de embrión de pollo, alimentándolas con un extracto. Según su laboratorio sobrevivieron unos 34 años, más que cualquier pollo, y el mundo científico aceptó que las células, bien cuidadas, eran inmortales y que envejecer era culpa del cuerpo, no de ellas. En 1961 un joven investigador, Leonard Hayflick, intentó repetirlo con células humanas y siempre pasaba lo mismo: tras unas 50 divisiones dejaban de dividirse. Casi nadie le creyó. Décadas después se descubrió el porqué: los telómeros se acortan en cada división y el daño se acumula. Por ese hallazgo, Blackburn, Greider y Szostak ganaron el Nobel en 2009.",
-    "gancho": "¿Por qué envejeces si tu cuerpo cierra una herida solo? Un premio Nobel creyó haber demostrado que tus células podían vivir para siempre... y durante 30 años todos le creyeron."
+    "gancho": "¿Por qué envejeces si tu cuerpo cierra una herida solo? Un premio Nobel creyó haber demostrado que tus células podían vivir para siempre... y durante 30 años todos le creyeron.",
+    "aprobado": false,
+    "motivo": "escenas feas o repetidas"
   }
 ]
