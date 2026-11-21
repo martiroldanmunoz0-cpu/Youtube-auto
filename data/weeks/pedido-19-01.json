@@ -1,0 +1,27 @@
+{
+  "semana": "pedido-19-01",
+  "tanda": "pedido-19",
+  "pedido": null,
+  "tag": "pedido-19",
+  "videos": [
+    {
+      "id": "pedido-19-01",
+      "title": "¿Qué te pasa si te cae un rayo? Milésima a milésima #shorts",
+      "description": "Vive en cámara superlenta lo que pasa en tu cuerpo si te cae un rayo, y conoce al hombre al que le cayeron siete. ¿Qué crees que haría falta para sobrevivir a tantos? Cuéntamelo en los comentarios. #curiosidades #rayos #ciencia #shorts",
+      "tags": [
+        "rayo",
+        "qué pasa si te cae un rayo",
+        "Roy Sullivan",
+        "récord Guinness",
+        "curiosidades",
+        "ciencia",
+        "tormenta",
+        "figuras de Lichtenberg",
+        "datos curiosos",
+        "supervivencia"
+      ],
+      "video": "pedido-19-01.mp4",
+      "portada": "pedido-19-01_portada.jpg"
+    }
+  ]
+}
