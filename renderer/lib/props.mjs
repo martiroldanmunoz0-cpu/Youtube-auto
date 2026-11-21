@@ -246,9 +246,19 @@ export const PROPS = {
   montana_pieza(ctx) { P(ctx, [[-360, 0], [-60, -440], [240, 0]], '#8ea6c8'); P(ctx, [[-60, -440], [-150, -310], [-90, -330], [-40, -300], [30, -340]], '#ffffff', 6); },
 };
 export const PROP_NAMES = Object.keys(PROPS);
-const ALIAS = { dino: 'dinosaurio', corte: 'herida', cicatriz: 'herida', 'tirita': 'tirita', curita: 'tirita', 'división celular': 'celula_dividiendose', telomero: 'cromosoma', 'telómero': 'cromosoma', 'telómeros': 'cromosoma', mitocondrias: 'mitocondria', 'radicales libres': 'radical_libre', oxidacion: 'radical_libre', 'oxidación': 'radical_libre', cumpleanos: 'tarta_cumpleanos', 'cumpleaños': 'tarta_cumpleanos', tarta: 'tarta_cumpleanos', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
+const ALIAS = { dino: 'dinosaurio', nobel: 'medalla', premio_nobel: 'medalla', 'premio nobel': 'medalla', premio: 'trofeo', galardon: 'trofeo', laboratorio: 'microscopio', cientifico: 'microscopio', 'científico': 'microscopio', investigacion: 'lupa', 'investigación': 'lupa', descubrimiento: 'bombilla', vejez: 'reloj_arena', tiempo: 'reloj_arena', envejecimiento: 'reloj_arena', sangre: 'gota', dna: 'adn', gen: 'adn', genes: 'adn', corte: 'herida', cicatriz: 'herida', 'tirita': 'tirita', curita: 'tirita', 'división celular': 'celula_dividiendose', telomero: 'cromosoma', 'telómero': 'cromosoma', 'telómeros': 'cromosoma', mitocondrias: 'mitocondria', 'radicales libres': 'radical_libre', oxidacion: 'radical_libre', 'oxidación': 'radical_libre', cumpleanos: 'tarta_cumpleanos', 'cumpleaños': 'tarta_cumpleanos', tarta: 'tarta_cumpleanos', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
   'corazón': 'corazon', 'célula': 'celula', 'adn': 'adn', bacteria: 'virus', microbio: 'virus', germen: 'virus', 'volcán': 'volcan', 'árbol': 'arbol', coche: 'coche_rojo', auto: 'coche_rojo', 'avión': 'avion',
   'helicóptero': 'helicoptero', agua: 'vaso_agua', vaso: 'vaso_agua', 'café': 'cafe', 'pirámide': 'piramide', tesoro: 'cofre', oro: 'lingote', dinero: 'bolsa_dinero', billete: 'dinero_billete',
   idea: 'bombilla', 'reloj de arena': 'reloj_arena', reloj_de_arena: 'reloj_arena', medicina: 'pastilla', vacuna: 'jeringa', llave: 'llave_antigua', 'teléfono': 'telefono_antiguo', 'montaña': 'montana_pieza', montana: 'montana_pieza',
   asteroide: 'meteorito', cometa: 'meteorito', 'ovni': 'ovni', marte: 'planeta', saturno: 'planeta', 'júpiter': 'planeta', planeta_tierra: 'tierra', mundo: 'tierra' };
-export function propName(n) { const k = String(n || '').toLowerCase().trim(); return PROPS[k] ? k : (ALIAS[k] || null); }
+const plain = (x) => String(x || '').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '_');
+export function propName(n) {
+  const raw = String(n || '').toLowerCase().trim();
+  for (const k of [raw, plain(raw)]) {
+    if (PROPS[k]) return k;
+    if (ALIAS[k]) return ALIAS[k];
+    for (const cut of [k.replace(/es$/, ''), k.replace(/s$/, '')]) if (PROPS[cut]) return cut; else if (ALIAS[cut]) return ALIAS[cut];
+  }
+  return null;
+}
+export const PROP_ALIASES = ALIAS;

@@ -9,11 +9,12 @@ import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..');
 for (const f of fs.readdirSync(path.join(root, 'assets', 'fonts')).filter((f) => f.endsWith('.ttf'))) GlobalFonts.registerFromPath(path.join(root, 'assets', 'fonts', f), 'Poppins');
-const { PROPS, PROP_NAMES } = await import('../lib/props.mjs');
+const { PROPS, PROP_NAMES, PROP_ALIASES } = await import('../lib/props.mjs');
 const { SCENES } = await import('../scenes/index.mjs');
 const { rng } = await import('../lib/util.mjs');
 const [cmd, out, ...names] = process.argv.slice(2);
 if (cmd === 'lista') { console.log(JSON.stringify(PROP_NAMES)); process.exit(0); }
+if (cmd === 'alias') { console.log(JSON.stringify(PROP_ALIASES)); process.exit(0); }
 if (cmd === 'hoja') {
   const list = names.length ? names : PROP_NAMES;
   const cell = 260, cols = Math.min(6, list.length), rows = Math.ceil(list.length / cols);

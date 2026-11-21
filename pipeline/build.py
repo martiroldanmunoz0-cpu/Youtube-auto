@@ -153,6 +153,8 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     if r.returncode != 0:
         raise RuntimeError(f"el motor de animación falló: {r.stderr[-800:]}")
     scene_errors = [l for l in r.stderr.splitlines() if "AVISO escena con error" in l]
+    unknown_pieces = sorted({l.split("AVISO pieza desconocida:")[-1].strip() for l in r.stderr.splitlines() if "AVISO pieza desconocida" in l})
+    unknown_pieces += [p for b in story["beats"] for p in (b.get("params") or {}).get("_faltan", []) if p not in unknown_pieces]
     # Portada propia (se sube a YouTube como miniatura) y versión pequeña para la página de revisión
     portada = out_dir / f"{sid}_portada.jpg"
     rc = subprocess.run(["node", str(RENDERER / "render.mjs"), str(tl_path), str(portada), "--cover"], capture_output=True, text=True)
@@ -167,6 +169,8 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     if voxtts is not None:
         story["qa"] += list(dict.fromkeys(voxtts.WARNINGS))  # frases que no salieron perfectas (misma voz)
     story["qa"] += [f"Una escena no se pudo dibujar y salió en blanco ({e.split('AVISO escena con error')[-1].strip()[:120]})" for e in scene_errors]
+    if unknown_pieces:
+        story["qa"].append(f"Piezas que no existen en la biblioteca (se usó otra o un texto): {', '.join(dict.fromkeys(unknown_pieces))}")
     print("  revisión: " + ("✅ todo correcto" if not story["qa"] else "⚠️ " + " | ".join(story["qa"])), flush=True)
     return mp4
 

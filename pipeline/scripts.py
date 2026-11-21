@@ -252,6 +252,7 @@ COMEDY_EXTRA_SCENES = ["phone", "money", "big_text", "calendar", "clock", "map_p
 def catalog_for(fmt: str) -> dict:
     """Catálogo de escenas que puede usar cada formato."""
     c = json.loads(CATALOG.read_text(encoding="utf-8"))
+    c.pop("piezas_alias", None)
     if fmt == "comedia":
         c["scenes"] = {k: v for k, v in c["scenes"].items() if v.get("formato") == "comedia" or k in COMEDY_EXTRA_SCENES}
     else:
@@ -531,6 +532,52 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
     return make_params(SYSTEM_WRITER, context, user, STORY_SCHEMA, models(cfg)[1])
 
 
+def _fix_pieces(params: dict, text: str) -> tuple[dict, str | None]:
+    """Corrige los nombres de piezas de una composición (plurales, tildes, parecidos). Devuelve (params, escena_alternativa)."""
+    import difflib  # noqa: PLC0415
+    import unicodedata  # noqa: PLC0415
+
+    cat = json.loads(CATALOG.read_text(encoding="utf-8"))
+    names = [n.strip() for n in cat["scenes"]["composicion"]["params"]["piezas_disponibles"].split(",") if n.strip()]
+    alias = cat.get("piezas_alias", {})
+    plain = lambda x: unicodedata.normalize("NFD", str(x).lower().strip()).encode("ascii", "ignore").decode().replace(" ", "_")
+    def resolve(n):
+        for k in (str(n).lower().strip(), plain(n)):
+            for c in (k, k[:-2] if k.endswith("es") else k, k[:-1] if k.endswith("s") else k):
+                if c in names: return c
+                if c in alias: return alias[c]
+        m = difflib.get_close_matches(plain(n), names + list(alias), n=1, cutoff=0.75)
+        return (alias.get(m[0], m[0])) if m else None
+    items = params.get("piezas") or params.get("objetos") or []
+    if isinstance(items, str):
+        try:
+            items = json.loads(items)
+        except json.JSONDecodeError:
+            items = [x for x in re.split(r"[,;]", items) if x.strip()]
+    if not isinstance(items, list):
+        items = [items]
+    fixed, unknown = [], []
+    for it in items:
+        it = {"pieza": it} if isinstance(it, str) else dict(it or {})
+        name = it.get("pieza") or it.get("nombre") or it.get("name")
+        r = resolve(name) if name else None
+        if r:
+            it["pieza"] = r
+            fixed.append(it)
+        elif name:
+            unknown.append(str(name))
+    params = {**params, "piezas": fixed}
+    params.pop("objetos", None)
+    if unknown:
+        print(f"  aviso: piezas que no existen en la biblioteca: {unknown}")
+        params["_faltan"] = unknown
+    if fixed:
+        return params, None
+    # Ninguna pieza válida: plano con contenido seguro en vez de un fondo vacío
+    label = params.get("label") or (unknown[0] if unknown else "")
+    return {"text": str(label or text.split(".")[0])[:14].upper(), "label": ""}, "big_text"
+
+
 def validate_story(story: dict) -> dict:
     """Limpia el guion: escenas/cámaras válidas, params parseados. Devuelve el formato interno."""
     catalog = catalog_for("historias")
@@ -547,6 +594,11 @@ def validate_story(story: dict) -> dict:
                 params = {}
         except json.JSONDecodeError:
             params = {}
+        if scene == "composicion":
+            params, alt = _fix_pieces(params, text)
+            if alt:
+                print(f"  aviso: composición sin piezas válidas -> {alt}: «{text[:50]}»")
+                scene = alt
         if scene == "big_text" and "text" not in params:
             params["text"] = ""
         beats.append({

@@ -47,8 +47,15 @@ export const composicion = {
     const lugar = placeName(params.lugar || 'fondo');
     drawPlace(ctx, lugar, hora, t);
     let items = params.piezas || params.objetos || [];
+    if (typeof items === 'string') { try { items = JSON.parse(items); } catch { items = items.split(/[,;]/); } }
     if (!Array.isArray(items)) items = [items];
-    items = items.slice(0, 4).map((it) => (typeof it === 'string' ? { pieza: it } : it || {}));
+    items = items.slice(0, 4).map((it) => (typeof it === 'string' ? { pieza: it.trim() } : it || {}))
+      .filter((it) => { const ok = !!propName(it.pieza || it.nombre || it.name); if (!ok && !s.warned) console.error(`AVISO pieza desconocida: ${it.pieza || it.nombre || JSON.stringify(it)}`); return ok; });
+    if (!items.length) { // nunca un fondo vacío: algo con sentido en su lugar
+      if (!s.warned) { console.error('AVISO escena con error: composición sin piezas válidas'); s.warned = true; }
+      items = [{ pieza: 'bombilla', tamano: 'grande', anim: 'flotar' }];
+    }
+    s.warned = true;
     const persona = params.persona || 'no';
     // Reparto automático de las piezas sin posición (para que no se amontonen)
     const conPersona = persona === 'medio' || persona === 'entero';
@@ -65,7 +72,7 @@ export const composicion = {
       }
       while (li < libres.length - 1 && usadas.has(libres[li])) li++;
       const pos = libres[li++] || 'centro'; usadas.add(pos);
-      return { ...it, pos, _defSize: nSuelo === 1 && !conPersona ? 1.35 : nSuelo >= 3 ? 0.7 : 0.85 };
+      return { ...it, pos, _defSize: nSuelo === 1 && !conPersona ? 1.35 : nSuelo >= 3 ? 0.85 : 0.95 };
     });
     const behind = items.filter((it) => (it.pos || it.posicion) === 'fondo' || (it.tamano || it.tamaño) === 'gigante' || String(it.pos || '').startsWith('arriba'));
     const front = items.filter((it) => !behind.includes(it));
