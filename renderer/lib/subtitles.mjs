@@ -89,8 +89,11 @@ export function drawSubtitles(ctx, pages, t) {
     const y = TOP + li * LINE_H + (1 - appear) * 20;
     for (const p of parts) {
       ctx.font = fontFor(p.active);
-      ctx.fillStyle = p.current ? 'rgba(255,255,255,1)' : p.active ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.45)';
       ctx.globalAlpha = appear;
+      // contorno oscuro: se lee sobre fondos claros y oscuros
+      ctx.save(); ctx.shadowBlur = 0; ctx.lineJoin = 'round'; ctx.lineWidth = 10;
+      ctx.strokeStyle = p.active ? 'rgba(10,10,20,0.9)' : 'rgba(10,10,20,0.55)'; ctx.strokeText(p.w.w, x, y); ctx.restore();
+      ctx.fillStyle = p.current ? 'rgba(255,255,255,1)' : p.active ? 'rgba(255,255,255,0.95)' : 'rgba(225,228,240,0.85)';
       ctx.fillText(p.w.w, x, y);
       x += p.width + space;
     }

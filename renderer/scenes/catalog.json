@@ -18,15 +18,30 @@
   "red": "destello rojo (peligro, giro de terror)"
  },
  "scenes": {
+  "escena": {
+   "desc": "ESCENA PRINCIPAL DEL CANAL (estilo luminoso con mucho detalle y contornos de dibujo animado). Un lugar ambientado según la historia y la hora del día, con la persona en plano medio haciendo algo (con un objeto en la mano), de cuerpo entero o sin persona. Úsala para casi todos los planos con personas o lugares.",
+   "params": {
+    "lugar": "salon|dormitorio|cocina|oficina|aula|hospital|calle|ciudad|campo|desierto|playa|montana|selva|coche",
+    "hora": "dia|atardecer|noche (ambienta según cuándo pasa la historia)",
+    "plano": "medio (por defecto: persona grande con objeto) | entero (cuerpo entero) | sin_persona (solo el lugar)",
+    "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
+    "mood": "neutral|happy|worried|shocked|angry|sad",
+    "objeto": "none|movil|dinero|taza|libro|papel|llaves|linterna",
+    "arms": "solo con plano entero: normal|none|up|cross",
+    "highlight": "solo con plano entero: none|arms|legs|chest|heart|head|stomach",
+    "label": "texto corto en una etiqueta amarilla abajo (opcional)",
+    "gafas": "true|false (opcional)"
+   }
+  },
   "car_window": {
-   "desc": "Interior de coche de noche: ventanilla con luces de ciudad pasando, tirador de la puerta y botón de seguro.",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Interior de coche de noche: ventanilla con luces de ciudad pasando, tirador de la puerta y botón de seguro.",
    "params": {
     "locked_at": "número (s) en que el seguro se pone rojo, opcional",
     "hand": "bool, una mano pulsa el seguro"
    }
   },
   "rearview_eyes": {
-   "desc": "Ojos de una persona reflejados en el retrovisor (conductor que te mira).",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Ojos de una persona reflejados en el retrovisor (conductor que te mira).",
    "params": {
     "mood": "calm|suspicious|wide|angry|sad",
     "glance": "bool, mira de lado",
@@ -34,7 +49,7 @@
    }
   },
   "city_street": {
-   "desc": "Calle de ciudad de noche en perspectiva con edificios y farolas.",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Calle de ciudad de noche en perspectiva con edificios y farolas.",
    "params": {
     "car": "bool, un coche se acerca con los faros",
     "figure": "bool, silueta de pie en la acera",
@@ -57,7 +72,7 @@
    }
   },
   "bedroom": {
-   "desc": "Dormitorio a oscuras con ventana y luna, cama y una puerta entreabierta con luz del pasillo.",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Dormitorio a oscuras con ventana y luna, cama y una puerta entreabierta con luz del pasillo.",
    "params": {
     "door_open": "0..1",
     "figure": "bool, silueta en la puerta",
@@ -66,7 +81,7 @@
    }
   },
   "front_door": {
-   "desc": "Puerta de entrada vista desde dentro, mirilla y luz por debajo de la puerta.",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Puerta de entrada vista desde dentro, mirilla y luz por debajo de la puerta.",
    "params": {
     "shadow": "bool, sombras de pies al otro lado",
     "knock_at": "lista de segundos en que golpean (la puerta tiembla)",
@@ -74,7 +89,7 @@
    }
   },
   "hallway": {
-   "desc": "Pasillo largo (hotel, hospital, edificio) con fluorescentes.",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Pasillo largo (hotel, hospital, edificio) con fluorescentes.",
    "params": {
     "figure": "bool, silueta al fondo",
     "flicker": "0..1 parpadeo de luces",
@@ -83,7 +98,7 @@
    }
   },
   "house_exterior": {
-   "desc": "Casa aislada en una colina de noche, luna, árboles y niebla.",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Casa aislada en una colina de noche, luna, árboles y niebla.",
    "params": {
     "lit_window": "bool",
     "figure": "bool, silueta en la ventana de arriba",
@@ -129,14 +144,14 @@
    }
   },
   "eyes_dark": {
-   "desc": "Oscuridad total en la que aparecen ojos brillantes.",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Oscuridad total en la que aparecen ojos brillantes.",
    "params": {
     "count": "1..6",
     "color": "#hex"
    }
   },
   "silhouette": {
-   "desc": "Busto de una persona a contraluz, anónima (protagonista misterioso, sospechoso, testigo).",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Busto de una persona a contraluz, anónima (protagonista misterioso, sospechoso, testigo).",
    "params": {
     "hood": "bool",
     "eyes": "bool, ojos brillantes",
@@ -169,7 +184,7 @@
    }
   },
   "character": {
-   "desc": "Busto de la persona protagonista (siempre la misma cara en el vídeo) con expresión. Úsalo para 'tú', el protagonista de una historia real, reacciones y emociones.",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Busto de la persona protagonista (siempre la misma cara en el vídeo) con expresión. Úsalo para 'tú', el protagonista de una historia real, reacciones y emociones.",
    "params": {
     "mood": "neutral|happy|worried|shocked|angry|sad",
     "prop": "none|money|phone",
@@ -251,7 +266,7 @@
    }
   },
   "person": {
-   "desc": "Persona de CUERPO ENTERO (la protagonista por defecto). Para presentar a alguien, mostrar qué le pasa a su cuerpo (zona resaltada en rojo) o cómo queda después (sin brazos, brazos en alto de alegría).",
+   "desc": "[ESTILO OSCURO: solo para misterio, miedo o escenas nocturnas inquietantes] Persona de CUERPO ENTERO (la protagonista por defecto). Para presentar a alguien, mostrar qué le pasa a su cuerpo (zona resaltada en rojo) o cómo queda después (sin brazos, brazos en alto de alegría).",
    "params": {
     "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
     "mood": "neutral|happy|worried|shocked|angry|sad",

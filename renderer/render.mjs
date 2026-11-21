@@ -142,9 +142,10 @@ export class Renderer {
       this.drawBeat(ctx, b, t, frame);
     }
     // Acabado común del canal
-    if (this.tl.subtitle_style !== 'word') topShade(ctx);
-    vignette(ctx, 0.7);
-    grain(ctx, frame, 0.05);
+    const bright = b.scene_name === 'escena'; // estilo luminoso: acabado suave para no apagar los colores
+    if (this.tl.subtitle_style !== 'word') topShade(ctx, bright ? 0.32 : 0.55);
+    vignette(ctx, bright ? 0.22 : 0.7);
+    grain(ctx, frame, bright ? 0.015 : 0.05);
     if (this.tl.subtitle_style === 'word') drawWordSubtitles(ctx, this.tl.words || [], t, this.tl.cast || {});
     else drawSubtitles(ctx, this.pages, t);
     if (t >= endStart) this.drawEndcard(ctx, t - endStart, end);
@@ -260,7 +261,7 @@ export function renderCover(tl, out) {
   const pickIdx = tl.cover?.beat ?? (cands.find(({ b }) => b.camera === 'slam') || cands[Math.floor(cands.length * 0.4)] || { i: Math.floor(r.beats.length / 2) }).i;
   const b = r.beats[pickIdx];
   const ctx = r.ctx;
-  const faces = new Set(['person', 'group', 'doctor', 'hospital', 'surgery']);
+  const faces = new Set(['person', 'group', 'doctor', 'hospital', 'surgery', 'escena']);
   const textLow = faces.has(b.scene_name);
   r.drawBeat(ctx, { ...b, camera: 'static', params: { ...b.params, label: '' } }, b.start + Math.min(1.2, (b.end - b.start) * 0.6), 0);
   // Oscurecer arriba para que el texto se lea

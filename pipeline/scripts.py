@@ -214,7 +214,13 @@ REGLAS VISUALES
 - "escena" debe ser una clave EXACTA del catálogo. "params_json" es un objeto JSON en texto con los parámetros de \
 esa escena (usa "{}" si no hace falta). Los textos dentro de pantallas o periódicos deben ser cortos y en español.
 - Cambia de escena con frecuencia (no más de 2 planos seguidos en la misma escena salvo "phone" con distinta pantalla).
-- VARIEDAD: no uses la misma escena más de 2 veces en todo el vídeo (la persona protagonista con character/person, \
+- ESTILO DEL CANAL: luminoso, con mucho detalle y AMBIENTADO. Usa sobre todo la escena "escena": elige el "lugar" \
+donde pasa cada momento (salón, cocina, hospital, desierto, playa, montaña, calle, coche...) y la "hora" en que pasa \
+(dia/atardecer/noche: si la historia ocurre de noche, de noche; si es en el desierto, en el desierto). Pon a la persona \
+haciendo algo ("objeto" en la mano, expresión con "mood") y cambia de lugar o de plano (medio/entero/sin_persona) con \
+frecuencia. Las escenas marcadas [ESTILO OSCURO] solo para misterio o miedo.
+- VARIEDAD: no uses la misma escena más de 2 veces en todo el vídeo (con "escena", cambia de lugar, hora, plano u objeto \
+entre planos: cuenta como distinta) (la persona protagonista con character/person, \
 máximo 4). Si necesitas repetir una idea (lugar, paso del tiempo, noticia), cambia de escena o usa otro "style" \
 (map_pin: islas/globo/calles/relieve; calendar: taco/pared/marcas; newspaper: papel/web/portada). Aprovecha todo el \
 catálogo: hay muchas escenas distintas.
@@ -540,7 +546,8 @@ def validate_story(story: dict) -> dict:
         })
     from collections import Counter  # noqa: PLC0415
 
-    reps = {k: v for k, v in Counter(b["scene"] for b in beats).items() if v > (4 if k in ("character", "person") else 2)}
+    reps = {k: v for k, v in Counter(b["scene"] if b["scene"] != "escena" else f"escena:{b['params'].get('lugar')}:{b['params'].get('plano', 'medio')}" for b in beats).items()
+            if v > (4 if k in ("character", "person") else 2)}
     if reps:
         print(f"  aviso: escenas muy repetidas en este guion: {reps}")
     # Red de seguridad: el vídeo tiene que presentar su tema con una pregunta al principio
