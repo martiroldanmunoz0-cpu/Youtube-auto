@@ -256,8 +256,9 @@
     "tag": "pedido-19",
     "issue": 37,
     "estado": "programado",
-    "publish_at": "2026-11-23T13:00:00Z",
+    "publish_at": "2026-11-22T13:00:00Z",
     "youtube_id": "oqZXoFFAAAs",
-    "portada_ok": true
+    "portada_ok": true,
+    "reprogramado": true
   }
 ]
