@@ -178,6 +178,7 @@ nav .n.bad{background:var(--bad);color:#fff}
     <h2>Generándose ahora</h2>
     <p class="hint">Las tandas van en cola, una detrás de otra. Cada vídeo aparece en "Revisar" en cuanto está listo.</p>
     <div class="countdown"><span>Próxima tanda semanal automática</span><b class="cd-left">—</b><small class="cd-when"></small></div>
+    <div id="plan-box"></div>
     <div id="marcha-list"><p class="loading">Cargando…</p></div>
   </section>
 
@@ -269,7 +270,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
   const TZ = "Europe/Madrid";
   const WF = {pedido: "pedido.yml", semanal: "semanal.yml", historia: "historia.yml"};
-  const GEN_PATHS = ["semanal.yml", "pedido.yml", "historia.yml"].map(f => ".github/workflows/" + f);
+  const GEN_PATHS = ["semanal.yml", "semanal_montar.yml", "pedido.yml", "historia.yml"].map(f => ".github/workflows/" + f);
   const WEEKLY = {dow: 1, h: 5, m: 1}; // lunes 05:01 hora de Madrid (igual que semanal.yml)
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -722,6 +723,32 @@ nav .n.bad{background:var(--bad);color:#fff}
     catch (err) { toast("No se pudo: " + err.message, true); }
   });
 
+  // ---------- Plan de la semana ----------
+  const PLAN_EST = {pendiente: ["Esperando piezas nuevas (las dibuja Claude)", "wait"], escenas_listas: ["Piezas listas: montando enseguida", "run"], montando: ["Vídeos en marcha", "ok"]};
+  async function loadPlan() {
+    const el = $("#plan-box");
+    try {
+      const files = (await gh("/contents/data/planes")).filter(f => f.name.endsWith(".json")).map(f => f.name).sort().reverse();
+      if (!files.length) { el.innerHTML = ""; return; }
+      const plan = await ghFile("data/planes/" + files[0]);
+      if (!plan) { el.innerHTML = ""; return; }
+      const [txt, cls] = PLAN_EST[plan.estado] || [plan.estado, ""];
+      const ideas = (plan.ideas || []).map(i => `<li>${esc(i.gancho || i.premisa)}${(i.piezas_nuevas || []).length ? ` <span class="pill wait">+ ${esc(i.piezas_nuevas.join(", "))}</span>` : ""}</li>`).join("");
+      const nuevas = (plan.piezas_nuevas || []).length ? `<p class="meta" style="margin:6px 0">Piezas nuevas: <b>${esc(plan.piezas_nuevas.join(", "))}</b></p>` : "";
+      const btn = plan.estado !== "montando" ? `<div class="actions"><button class="btn main" id="plan-go" data-rid="${esc(plan.rid)}">Generar vídeos ahora</button></div><p class="hint" style="margin:6px 0 0">Normalmente no hace falta: se lanza solo cuando Claude termina las piezas.</p>` : "";
+      el.innerHTML = `<div class="form"><h3>Plan de la semana · ${esc(plan.rid)}</h3>
+        <div class="meta"><span class="pill ${cls}">${esc(txt)}</span>${esc(fmtShort(new Date(plan.fecha)))}</div>${nuevas}
+        <details><summary>${(plan.ideas || []).length} vídeos previstos</summary><ol style="padding-left:20px">${ideas}</ol></details>${btn}</div>`;
+      const b = $("#plan-go");
+      if (b) b.onclick = async () => {
+        if (needToken() || !confirm("¿Montar ya los vídeos del plan? Si faltan piezas nuevas, se usarán las más parecidas.")) return;
+        b.disabled = true;
+        try { await gh(`/actions/workflows/semanal_montar.yml/dispatches`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({ref: "main", inputs: {rid: b.dataset.rid}})}); toast("✓ Montaje lanzado"); setTimeout(loadRunning, 5000); }
+        catch (e) { toast("No se pudo: " + e.message, true); b.disabled = false; }
+      };
+    } catch { el.innerHTML = ""; }
+  }
+
   // ---------- En marcha ----------
   async function loadRunning() {
     const el = $("#marcha-list");
@@ -751,7 +778,8 @@ nav .n.bad{background:var(--bad);color:#fff}
     }
   }
   function runTitle(r) {
-    if (r.path && r.path.endsWith("semanal.yml")) return r.event === "schedule" ? "Tanda semanal (automática)" : "Tanda semanal";
+    if (r.path && r.path.endsWith("semanal.yml")) return "Plan de la semana" + (r.event === "schedule" ? " (automático)" : "");
+    if (r.path && r.path.endsWith("semanal_montar.yml")) return "Montando la tanda semanal";
     return r.display_title || r.name;
   }
   function runRow(r, jobs, idx) {
@@ -873,7 +901,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   async function refreshAll() {
     $("#sub").textContent = "Actualizando…";
     await Promise.all([loadFiles(), loadQueue()]);
-    await Promise.all([loadReview(), loadRunning(), loadHistory(), loadProblems()]);
+    await Promise.all([loadReview(), loadRunning(), loadHistory(), loadProblems(), loadPlan()]);
     renderProgramados(); renderCalendar();
     $("#sub").textContent = "Actualizado " + fmtTime(new Date());
   }

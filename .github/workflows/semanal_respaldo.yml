@@ -1,0 +1,27 @@
+name: Respaldo del montaje semanal
+
+# Red de seguridad: si el lunes a media mañana el plan sigue sin montarse (la sesión de Claude no lo lanzó), lo monta.
+on:
+  schedule:
+    - cron: "41 8 * * 1"    # lunes 08:41 UTC (09:41/10:41 en España)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  respaldo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Montar los planes pendientes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for f in $(ls data/planes/*.json 2>/dev/null); do
+            EST=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['estado'])" "$f")
+            if [ "$EST" = "pendiente" ] || [ "$EST" = "escenas_listas" ]; then
+              RID=$(basename "$f" .json); echo "Plan $RID sin montar: lo lanzo"; gh workflow run semanal_montar.yml -f rid="$RID"
+            fi
+          done

@@ -35,13 +35,9 @@ YT = """        env:
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
 """
 
-def workflow(name, comment, on, top_env, rid_step, trends_step, partes, commit_msg, run_name="", hora_madrid=None):
-    matrix = ", ".join(str(i) for i in range(partes))
-    rn = f"\nrun-name: {run_name}" if run_name else ""
-    hora_job, turno_cond = "", ""
-    if hora_madrid is not None:
-        # GitHub solo usa UTC: se programa a las dos horas posibles (invierno/verano) y solo sigue la que es la hora de Madrid.
-        hora_job = f"""  hora:
+def hora_job_yaml(hora_madrid, job="turno"):
+    """Job que solo deja seguir la ejecución programada que cae a la hora de Madrid indicada (invierno/verano)."""
+    return f"""  hora:
     runs-on: ubuntu-latest
     outputs:
       seguir: ${{{{ steps.h.outputs.seguir }}}}
@@ -63,7 +59,7 @@ def workflow(name, comment, on, top_env, rid_step, trends_step, partes, commit_m
               # Por si GitHub retrasó mucho la otra ejecución: nunca dos tandas automáticas el mismo día
               DESDE=$(date -u -d '-6 hours' +%Y-%m-%dT%H:%M:%SZ)
               for R in $(gh api "repos/$GH_REPO/actions/workflows/semanal.yml/runs?event=schedule&created=>=$DESDE" --jq ".workflow_runs[] | select(.id != $MY_RUN) | .id"); do
-                if gh api "repos/$GH_REPO/actions/runs/$R/jobs" --jq '.jobs[] | select(.name == "turno") | .conclusion' | grep -qv skipped; then
+                if gh api "repos/$GH_REPO/actions/runs/$R/jobs" --jq '.jobs[] | select(.name == "{job}") | .conclusion' | grep -qv skipped; then
                   SEGUIR=false; echo "Ya hay otra tanda automática de hoy ($R)"
                 fi
               done
@@ -72,6 +68,15 @@ def workflow(name, comment, on, top_env, rid_step, trends_step, partes, commit_m
           echo "seguir=$SEGUIR" >> "$GITHUB_OUTPUT"
 
 """
+
+
+def workflow(name, comment, on, top_env, rid_step, trends_step, partes, commit_msg, run_name="", hora_madrid=None):
+    matrix = ", ".join(str(i) for i in range(partes))
+    rn = f"\nrun-name: {run_name}" if run_name else ""
+    hora_job, turno_cond = "", ""
+    if hora_madrid is not None:
+        # GitHub solo usa UTC: se programa a las dos horas posibles (invierno/verano) y solo sigue la que es la hora de Madrid.
+        hora_job = hora_job_yaml(hora_madrid)
         turno_cond = """    needs: hora
     if: needs.hora.outputs.seguir == 'true'
 """
@@ -107,7 +112,7 @@ jobs:
         run: |
           while true; do
             ANTES=$(gh api "repos/$GH_REPO/actions/runs?per_page=100" --jq '[.workflow_runs[]
-              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/pedido.yml" or .path == ".github/workflows/historia.yml")
+              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/pedido.yml" or .path == ".github/workflows/historia.yml" or .path == ".github/workflows/semanal_montar.yml")
               | select(.status != "completed" and .id < ('"$MY_RUN"'))] | length')
             if [ "$ANTES" = "0" ]; then echo "¡Es mi turno!"; break; fi
             echo "Hay $ANTES tanda(s) antes que yo en la cola. Espero 1 minuto..."
@@ -210,13 +215,98 @@ TRENDS_OPT = """      - name: Analizar vídeos de GTA 6 en YouTube
 """
 
 out = sys.argv[1]
-open(f"{out}/semanal.yml", "w").write(workflow(
-    "Generar vídeos de la semana", "Cada lunes: analiza YouTube, escribe ~10 guiones de curiosidades y los monta.",
-    """on:
+PLAN = """name: Generar vídeos de la semana
+
+# Cada lunes a las 5:00 (España): analiza YouTube y hace el PLAN de la semana (ideas + piezas nuevas que hacen falta).
+# Después, una sesión de Claude dibuja las piezas que faltan y lanza "Montar vídeos de la semana".
+# Si no falta ninguna pieza, el montaje se lanza directamente. Red de seguridad: "Respaldo del montaje semanal".
+on:
   schedule:
-    - cron: "1 3,4 * * 1"   # lunes 03:01 y 04:01 UTC: solo arranca la que son las 05:01 en Madrid (invierno/verano)
-  workflow_dispatch: {}     # botón "Run workflow" para lanzarlo a mano
-""", "", RID_WEEK, TRENDS, 5, "Semana generada: análisis, guiones e historial", hora_madrid=5))
+    - cron: "1 3,4 * * 1"   # lunes 03:01 y 04:01 UTC: solo sigue la que son las 05:01 en Madrid (invierno/verano)
+  workflow_dispatch: {}
+
+env:
+  TQDM_DISABLE: "1"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+""" + hora_job_yaml(5, "plan") + """  plan:
+    needs: hora
+    if: needs.hora.outputs.seguir == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+""" + RID_WEEK + TRENDS + """      - name: Plan de la semana (ideas y piezas nuevas)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FASE: plan
+        run: python pipeline/scripts.py
+      - name: Guardar el plan
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data/planes
+          git commit -m "Plan de la semana $RUN_ID" || echo "sin cambios"
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
+      - name: Si no falta ninguna pieza, montar ya
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          N=$(python -c "import json;print(len(json.load(open('data/planes/'+'$RUN_ID'+'.json'))['piezas_nuevas']))")
+          if [ "$N" = "0" ]; then gh workflow run semanal_montar.yml -f rid="$RUN_ID"; echo "Sin piezas nuevas: montaje lanzado"; else echo "Faltan $N piezas: las prepara Claude"; fi
+"""
+open(f"{out}/semanal.yml", "w").write(PLAN)
+
+open(f"{out}/semanal_montar.yml", "w").write(workflow(
+    "Montar vídeos de la semana", "Escribe los guiones del plan semanal (con la biblioteca ya ampliada) y monta los vídeos.",
+    """on:
+  workflow_dispatch:
+    inputs:
+      rid:
+        description: "Plan a montar (p. ej. 2026-S48-12)"
+        required: true
+        type: string
+""", """  RUN_ID: ${{ inputs.rid }}
+  FASE: guiones
+""", RID_STATIC, "", 5, "Semana generada: guiones e historial", "\"Montar semana ${{ inputs.rid }}\""))
+
+open(f"{out}/semanal_respaldo.yml", "w").write("""name: Respaldo del montaje semanal
+
+# Red de seguridad: si el lunes a media mañana el plan sigue sin montarse (la sesión de Claude no lo lanzó), lo monta.
+on:
+  schedule:
+    - cron: "41 8 * * 1"    # lunes 08:41 UTC (09:41/10:41 en España)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  respaldo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Montar los planes pendientes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for f in $(ls data/planes/*.json 2>/dev/null); do
+            EST=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['estado'])" "$f")
+            if [ "$EST" = "pendiente" ] || [ "$EST" = "escenas_listas" ]; then
+              RID=$(basename "$f" .json); echo "Plan $RID sin montar: lo lanzo"; gh workflow run semanal_montar.yml -f rid="$RID"
+            fi
+          done
+""")
 
 open(f"{out}/pedido.yml", "w").write(workflow(
     "Pedido especial", "Escribe lo que quieras y genera varias versiones distintas de ese mismo vídeo.",

@@ -6,6 +6,7 @@ Todo sale en JSON validado por esquema.
 """
 from __future__ import annotations
 
+import datetime as dt
 import json
 import re
 import sys
@@ -38,8 +39,9 @@ ANALYSIS_SCHEMA = {
                     "estilo_visual": {"type": "string"},
                     "por_que_funcionara": {"type": "string"},
                     "inspirado_en": {"type": "array", "items": {"type": "string"}},
+                    "piezas_nuevas": {"type": "array", "items": {"type": "string"}},
                 },
-                "required": ["tipo", "premisa", "gancho", "giro_final", "estilo_visual", "por_que_funcionara", "inspirado_en"],
+                "required": ["tipo", "premisa", "gancho", "giro_final", "estilo_visual", "por_que_funcionara", "inspirado_en", "piezas_nuevas"],
                 "additionalProperties": False,
             },
         },
@@ -133,7 +135,10 @@ supervivencia, récords, inventos, errores históricos, golpes de suerte). Solo 
 segunda persona, historia en tercera persona, antes/después, pregunta-respuesta, lista con giro...).
 - RIGOR: solo datos bien documentados de los que estés muy seguro. Los "¿qué pasaría si?" se basan en ciencia \
 real (lo que dicen los expertos), sin inventar cifras. Si un dato es dudoso, descarta la idea.
-- Las ideas tienen que poder contarse con las escenas disponibles del catálogo."""
+- Las ideas tienen que poder contarse con las escenas disponibles del catálogo.
+- "piezas_nuevas": cosas CONCRETAS que ese vídeo necesitaría mostrar y que NO están en la lista de piezas disponibles \
+(p. ej. "pulpo", "faro", "momia"). Máximo 3, en singular y en español. Vacío si todo se puede contar con lo que hay. \
+Un dibujante las añadirá a la biblioteca antes de montar los vídeos."""
 
 SYSTEM_WRITER = """Eres guionista de YouTube Shorts narrados en español neutro (comprensible en España y Latinoamérica). \
 Escribes guiones CORTOS (35-50 segundos; historias reales máximo 60) que se convierten automáticamente en un vídeo animado.
@@ -425,6 +430,7 @@ def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
         f"Shorts con más rendimiento de los últimos {cfg['analisis']['dias']} días (ordenados por vistas/día):\n"
         f"{json.dumps(compact, ensure_ascii=False)}\n\n"
         f"Escenas disponibles para animar:\n{json.dumps({k: v['desc'] for k, v in catalog['scenes'].items()}, ensure_ascii=False)}\n\n"
+        f"Piezas disponibles en la biblioteca: {catalog['scenes'].get('composicion', {}).get('params', {}).get('piezas_disponibles', '')}\n\n"
         f"Títulos ya publicados o generados antes (no repetir premisas):\n{json.dumps(past, ensure_ascii=False)}\n\n"
         + taste_block(history, cfg)
         + f"Dame el análisis y exactamente {n_ideas} ideas ordenadas de mejor a peor potencial. "
@@ -519,6 +525,7 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
         + (f"Pedido original del dueño del canal (respétalo): \"{pedido()}\"\n\n" if pedido() else "")
         + (f"Estilo que prefiere el dueño del canal:\n{style}\n\n" if style else "")
         + f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
+        + (f"Para este vídeo se han añadido a la biblioteca estas piezas (úsalas en 'composicion'): {', '.join(idea['piezas_nuevas'])}\n\n" if idea.get("piezas_nuevas") else "")
         + f"Duración objetivo: {lo}-{hi} segundos. Escribe los ganchos candidatos y después el guion completo."
     )
     return make_params(SYSTEM_WRITER, context, user, STORY_SCHEMA, models(cfg)[1])
@@ -802,6 +809,16 @@ def main():
     use_batch = models(cfg)[2]
     request = pedido()
     fmt = formato()
+    fase = os.environ.get("FASE", "").strip()  # "" = todo seguido | plan = solo ideas | guiones = desde un plan guardado
+    plan_path = DATA / "planes" / f"{rid}.json"
+    if fase == "guiones" and plan_path.exists():
+        plan = read_json(plan_path)
+        analysis, ideas = plan["analysis"], plan["ideas"]
+        write_json(wd / "analysis.json", analysis)
+        plan["estado"] = "montando"
+        write_json(plan_path, plan)
+        print(f"Plan {rid}: {len(ideas)} ideas. Escribiendo guiones con la biblioteca actual...")
+        return write_scripts(ideas, analysis, cfg, rid, wd, fmt, use_batch)
     if fmt == "comedia":
         n = int(os.environ.get("PEDIDO_N") or cfg.get("comedia", {}).get("videos", 3))
         params = comedy_ideas_params(read_json(wd / "trends.json"), n + EXTRA_IDEAS, history, cfg)
@@ -832,6 +849,17 @@ def main():
     if fmt == "historia_real":
         for idea in ideas:
             idea["tipo"] = "caso_real"
+    if fase == "plan":
+        nuevas = sorted({p.strip().lower() for i in ideas for p in (i.get("piezas_nuevas") or []) if p.strip()})
+        write_json(plan_path, {"rid": rid, "fecha": dt.datetime.now(dt.timezone.utc).isoformat(), "estado": "pendiente",
+                               "piezas_nuevas": nuevas, "analysis": analysis, "ideas": ideas})
+        print(f"Plan guardado: {len(ideas)} ideas; piezas nuevas necesarias: {nuevas or 'ninguna'}")
+        return
+    return write_scripts(ideas, analysis, cfg, rid, wd, fmt, use_batch)
+
+
+def write_scripts(ideas, analysis, cfg, rid, wd, fmt, use_batch):
+    n = len(ideas)
     print(f"Ideas listas: {len(ideas)}. Escribiendo guiones...")
 
     make = comedy_story_params if fmt == "comedia" else story_params
