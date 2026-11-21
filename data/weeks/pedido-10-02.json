@@ -1,0 +1,29 @@
+{
+  "semana": "pedido-10-02",
+  "tanda": "pedido-10",
+  "pedido": "¿Por qué envejecemos si el cuerpo sabe repararse solo? Empieza con lo que pasa cuando te cortas: la herida se cierra sola en días. Explica cómo se reparan las células, por qué con los años lo hacen peor (telómeros que se acortan, daño que se acumula) y termina con un giro sorprendente.",
+  "tag": "pedido-10",
+  "videos": [
+    {
+      "id": "pedido-10-02",
+      "title": "Un Nobel creyó que tus células eran inmortales #shorts",
+      "description": "Tu piel se repara sola, pero tú envejeces igual. ¿Habrías creído en el corazón inmortal de Carrel? Cuéntame en los comentarios qué te parece.\n#curiosidades #ciencia #envejecimiento #telomeros #historiadelaciencia",
+      "tags": [
+        "curiosidades",
+        "ciencia",
+        "envejecimiento",
+        "telómeros",
+        "Alexis Carrel",
+        "Leonard Hayflick",
+        "premio Nobel",
+        "células",
+        "historia de la ciencia",
+        "biología",
+        "inmortalidad",
+        "shorts"
+      ],
+      "video": "pedido-10-02.mp4",
+      "portada": "pedido-10-02_portada.jpg"
+    }
+  ]
+}
