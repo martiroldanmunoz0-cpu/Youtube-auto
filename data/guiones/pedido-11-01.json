@@ -1,0 +1,360 @@
+{
+  "title": "Hora a hora: qué le pasa a tu cuerpo sin dormir #shorts",
+  "description": "¿Cuántas horas crees que aguantarías tú sin dormir? Cuéntanos en los comentarios si te ha pasado algo parecido.\n#curiosidades #sueño #cuerpohumano #ciencia #randygardner",
+  "tags": [
+    "curiosidades",
+    "sueño",
+    "sin dormir",
+    "cuerpo humano",
+    "cerebro",
+    "microsueños",
+    "alucinaciones",
+    "Randy Gardner",
+    "récord Guinness",
+    "ciencia",
+    "insomnio"
+  ],
+  "beats": [
+    {
+      "text": "¿Qué le pasa a tu cuerpo sin dormir?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "ojo",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ],
+        "efecto": "impacto"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Son las siete. Decides no volver a dormir.",
+      "scene": "clock",
+      "params": {
+        "time": "07:00",
+        "efecto": "brillo"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Hora diecisiete: tu cerebro rinde como si hubieras bebido.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "worried",
+        "objeto": "taza",
+        "piezas": [
+          {
+            "pieza": "cerebro",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ],
+        "label": "Hora 17"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Hora veinticuatro: ojos rojos y párpados pesados.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "ojo",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ],
+        "label": "Hora 24",
+        "efecto": "ay"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Tu corazón se acelera y sube la tensión.",
+      "scene": "person",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "highlight": "heart",
+        "mood": "worried",
+        "label": "Pulso acelerado",
+        "efecto": "pum"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Hora treinta: llegan los microsueños, con los ojos abiertos.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dormir",
+        "lugar": "oficina",
+        "hora": "dia",
+        "label": "Microsueño"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Parpadeas un segundo conduciendo... y el coche se sale.",
+      "scene": "accion",
+      "params": {
+        "tipo": "choque",
+        "lugar": "calle",
+        "hora": "dia",
+        "efecto": "boom"
+      },
+      "camera": "shake",
+      "transition": "flash"
+    },
+    {
+      "text": "Hora cuarenta y ocho: tu hipocampo olvida lo que lees.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "worried",
+        "objeto": "libro",
+        "piezas": [
+          {
+            "pieza": "cerebro",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "nube",
+            "pos": "arriba_derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Hora 48"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Hora setenta y dos: ves cosas que no están.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "calle",
+        "hora": "atardecer",
+        "label": "Hora 72",
+        "efecto": "wow"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Los bordes se mueven y llega la paranoia.",
+      "scene": "bedroom",
+      "params": {
+        "door_open": 0.6,
+        "figure": true,
+        "moon": true
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "¿Crees que nadie aguanta más? Alguien lo hizo.",
+      "scene": "escena",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "shocked",
+        "objeto": "taza",
+        "efecto": "brillo"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "En mil novecientos sesenta y cuatro, Randy Gardner tenía diecisiete años.",
+      "scene": "newspaper",
+      "params": {
+        "style": "papel",
+        "date": "1964",
+        "headline": "Un estudiante lleva días sin dormir",
+        "kicker": "El Diario de San Diego"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Aguantó doscientas sesenta y cuatro horas: once días sin dormir.",
+      "scene": "big_text",
+      "params": {
+        "text": "264 horas",
+        "label": "once días sin dormir",
+        "color": "#ffd23f"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Pero la última noche ganó al pinball al investigador que lo vigilaba.",
+      "scene": "escena",
+      "params": {
+        "who": "randy",
+        "lugar": "salon",
+        "hora": "noche",
+        "plano": "medio",
+        "mood": "happy",
+        "label": "Gana al pinball"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Después durmió catorce horas y cuarenta minutos.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dormir",
+        "who": "randy",
+        "lugar": "dormitorio",
+        "hora": "dia",
+        "label": "14 h 40 min"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Guinness dejó de registrar este récord, y Randy sufrió insomnio durante años.",
+      "scene": "document",
+      "params": {
+        "title": "Récord Guinness",
+        "lines": [
+          "Sin dormir: 264 horas",
+          "Estudiante, 17 años",
+          "Categoría retirada",
+          "Motivo: riesgo para la salud"
+        ],
+        "highlight": 2,
+        "stamp": "RETIRADO"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Así que, la próxima vez que te preguntes…",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "ojo",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ],
+        "efecto": "impacto"
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "media",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    },
+    "randy": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño_claro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "verde"
+    }
+  },
+  "cover_text": "SIN DORMIR 11 DÍAS",
+  "question": "¿Qué le pasa a tu cuerpo, hora a hora y día a día, si dejas de dormir?",
+  "id": "pedido-11-01",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Narración en segunda persona y en tiempo presente: decides no volver a dormir y un reloj avanza hora a hora y luego día a día. Hora 17: tu cerebro rinde como si hubieras bebido. Hora 24: tienes los ojos rojos, los párpados te pesan, el corazón se te acelera y sube tu tensión arterial. Hora 30: te asaltan los primeros microsueños, apagones de unos segundos con los ojos abiertos (ejemplo: vas conduciendo y el coche se sale). Hora 48: tu memoria falla y lo que lees se borra, porque el hipocampo apenas guarda recuerdos nuevos; estás irritable. Hora 72: la vista se te nubla, ves cosas que no están, los bordes se mueven y aparece la paranoia. Hora 96 y más: hablas despacio, se te olvida a mitad de frase lo que decías y no puedes concentrarte. Justo cuando el espectador piensa 'nadie aguanta esto', llega el giro.",
+    "gancho": "¿Qué le pasa a tu cuerpo si dejas de dormir? Son las 7 de la mañana, te levantas... y ya no vas a volver a cerrar los ojos.",
+    "giro_final": "'¿Crees que nadie llegaría tan lejos?' En 1964, Randy Gardner, un estudiante de 17 años de San Diego, aguantó 264 horas, 11 días seguidos, para un proyecto de ciencias del instituto. Llegó a confundir una señal de tráfico con una persona, pero la última noche ganó al pinball al investigador del sueño que le vigilaba. Cuando por fin se acostó, durmió unas 14 horas y 40 minutos. Años después, Guinness dejó de registrar este récord por ser demasiado peligroso, y el propio Randy contó de mayor que sufrió insomnio durante años.",
+    "estilo_visual": "Columna vertebral: la escena 'clock' aparece al inicio de cada salto (7:00 → hora 24 → 48 → 72), siempre con distinto encuadre y una iluminación cada vez más fría, para que no se repita. Cada efecto corporal es una 'composicion' distinta en el piso moderno del protagonista: el cerebro con zonas apagándose sobre el escritorio (hora 17); un corazón latiendo rápido junto a una taza de café humeante (hora 24); un ojo gigante enrojecido con el párpado cayendo (hora 24); un cerebro con fichas de memoria que se evaporan sobre un libro (hora 48). 'accion' para los momentos clave: 'dormir' para el microsueño, interrumpido de golpe con 'choque' (el coche contra un muro); 'sorpresa' cuando aparece la alucinación. 'person' con la cabeza y el pecho resaltados en rojo para el balance del día 3. 'escena' luminosa en la cocina y la calle de día para no caer en el estilo oscuro, salvo un único plano 'bedroom' a la hora 72 con sombras que se mueven. En el giro: 'big_text' con 264 HORAS contando hacia arriba, 'newspaper' en recorte antiguo de 1964 y 'document' con el récord oficial y un sello 'RETIRADO'.",
+    "por_que_funcionara": "Sigue el formato preferido del dueño (inmersión en segunda persona con escalada 'cada hora pasa algo más') y cumple el pedido literal: cerebro, corazón, ojos, microsueños, alucinaciones y memoria. El reloj crea una tensión visible, y cada fase tiene una escena distinta y con acción, lo que corrige el motivo de descarte más frecuente (escenas repetidas). El giro real con Randy convierte un vídeo de 'explicación' en historia, como en los aprobados.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "cerebro con zonas que se apagan",
+      "ojo humano enrojecido con párpado caído",
+      "corazón anatómico latiendo",
+      "taza de café humeante",
+      "coche de frente",
+      "fichas de memoria que se desvanecen"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Qué le pasa a tu cuerpo sin dormir?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Pregunta directa y concreta que deja claro el tema en menos de 2 segundos. Cabe en 8 palabras y no destripa nada."
+    },
+    {
+      "texto": "¿Cuántos días podrías aguantar sin dormir?",
+      "tipo": "b",
+      "puntuacion": 8,
+      "motivo": "Reto personal con el tema dicho. Es muy claro, pero se centra en el límite y menos en lo que le pasa al cuerpo."
+    },
+    {
+      "texto": "A las diecisiete horas sin dormir, rindes como borracho. ¿Y después?",
+      "tipo": "c",
+      "puntuacion": 6,
+      "motivo": "El dato choca y plantea la pregunta, pero pasa de 8 palabras y tarda más en entenderse."
+    },
+    {
+      "texto": "Son las siete. Y hoy no vas a dormir.",
+      "tipo": "d",
+      "puntuacion": 5,
+      "motivo": "Segunda persona e inmersiva, pero el tema no queda tan claro sin ver nada más."
+    },
+    {
+      "texto": "Todos creen que el insomnio solo da sueño.",
+      "tipo": "e",
+      "puntuacion": 5,
+      "motivo": "Contradice una creencia, pero queda vago y no promete una respuesta concreta."
+    }
+  ]
+}

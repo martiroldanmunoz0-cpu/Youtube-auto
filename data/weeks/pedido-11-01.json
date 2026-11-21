@@ -1,0 +1,28 @@
+{
+  "semana": "pedido-11-01",
+  "tanda": "pedido-11",
+  "pedido": "¿Qué le pasa a tu cuerpo si dejas de dormir? Cuéntalo en segunda persona, hora a hora y día a día: 24 horas, 48, 72… con lo que pasa de verdad en tu cerebro, tu corazón y tus ojos (microsueños, alucinaciones, memoria). Que cada momento se vea con acción y efectos. Termina con el giro del récord real de Randy Gardner, 11 días sin dormir en 1964, y lo que pasó después.",
+  "tag": "pedido-11",
+  "videos": [
+    {
+      "id": "pedido-11-01",
+      "title": "Hora a hora: qué le pasa a tu cuerpo sin dormir #shorts",
+      "description": "¿Cuántas horas crees que aguantarías tú sin dormir? Cuéntanos en los comentarios si te ha pasado algo parecido.\n#curiosidades #sueño #cuerpohumano #ciencia #randygardner",
+      "tags": [
+        "curiosidades",
+        "sueño",
+        "sin dormir",
+        "cuerpo humano",
+        "cerebro",
+        "microsueños",
+        "alucinaciones",
+        "Randy Gardner",
+        "récord Guinness",
+        "ciencia",
+        "insomnio"
+      ],
+      "video": "pedido-11-01.mp4",
+      "portada": "pedido-11-01_portada.jpg"
+    }
+  ]
+}
