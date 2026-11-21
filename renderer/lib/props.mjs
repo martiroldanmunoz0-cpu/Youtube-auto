@@ -98,6 +98,17 @@ export const PROPS = {
     const pts = []; for (let i = 0; i <= 12; i++) pts.push([-300 + i * 50, -60 - Math.sin(i * 0.9 + t * 3) * 40 - i * 8]);
     L(ctx, pts, '#6fcf97', 50); C(ctx, 320, -190, 50, '#6fcf97'); EYE(ctx, 335, -205, 12); L(ctx, [[370, -185], [410, -180 + Math.sin(t * 20) * 8]], '#e85d5d', 4);
   },
+  pulpo(ctx, t) {
+    for (let i = 0; i < 6; i++) { // tentáculos ondulando
+      const bx = -150 + i * 60, pts = [];
+      for (let k = 0; k <= 8; k++) pts.push([bx + Math.sin(t * 3 + i + k * 0.7) * (10 + k * 4) + (bx * k) / 18, -150 + k * 18]);
+      L(ctx, pts, '#e0679a', 30);
+      for (let k = 2; k < 8; k += 2) C(ctx, pts[k][0], pts[k][1] + 4, 6, '#ffc0d8', 0);
+    }
+    E(ctx, 0, -300 + Math.sin(t * 2) * 6, 170, 190, '#e8729f');
+    E(ctx, -60, -360 + Math.sin(t * 2) * 6, 30, 18, 'rgba(255,255,255,0.45)', -0.5, 0);
+    EYE(ctx, -60, -250 + Math.sin(t * 2) * 6, 22); EYE(ctx, 60, -250 + Math.sin(t * 2) * 6, 22); MOUTH(ctx, 0, -205 + Math.sin(t * 2) * 6, 22);
+  },
   // ---------------- Cuerpo humano ----------------
   corazon(ctx, t) {
     const k = 1 + Math.max(0, Math.sin(t * 7)) * 0.08; ctx.scale(k, k);
@@ -191,7 +202,7 @@ export const PROPS = {
   montana_pieza(ctx) { P(ctx, [[-360, 0], [-60, -440], [240, 0]], '#8ea6c8'); P(ctx, [[-60, -440], [-150, -310], [-90, -330], [-40, -300], [30, -340]], '#ffffff', 6); },
 };
 export const PROP_NAMES = Object.keys(PROPS);
-const ALIAS = { dino: 'dinosaurio', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
+const ALIAS = { dino: 'dinosaurio', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
   'corazón': 'corazon', 'célula': 'celula', 'adn': 'adn', bacteria: 'virus', microbio: 'virus', germen: 'virus', 'volcán': 'volcan', 'árbol': 'arbol', coche: 'coche_rojo', auto: 'coche_rojo', 'avión': 'avion',
   'helicóptero': 'helicoptero', agua: 'vaso_agua', vaso: 'vaso_agua', 'café': 'cafe', 'pirámide': 'piramide', tesoro: 'cofre', oro: 'lingote', dinero: 'bolsa_dinero', billete: 'dinero_billete',
   idea: 'bombilla', 'reloj de arena': 'reloj_arena', reloj_de_arena: 'reloj_arena', medicina: 'pastilla', vacuna: 'jeringa', llave: 'llave_antigua', 'teléfono': 'telefono_antiguo', 'montaña': 'montana_pieza', montana: 'montana_pieza',

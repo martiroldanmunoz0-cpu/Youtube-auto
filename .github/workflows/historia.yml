@@ -88,6 +88,15 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python pipeline/scripts.py
 
+      - name: Marcar el plan semanal como en montaje (así el respaldo no lo lanza dos veces)
+        if: env.FASE == 'guiones'
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data/planes
+          git commit -m "Plan $RUN_ID: montando" || echo "sin cambios"
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
+
       - uses: actions/upload-artifact@v4
         with:
           name: guiones
