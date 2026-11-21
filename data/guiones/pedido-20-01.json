@@ -1,0 +1,398 @@
+{
+  "title": "¿Y si caes en arenas movedizas? La verdad del cine #shorts",
+  "description": "Las películas mienten: la arena no te traga. ¿Sabías que lo peligroso es otra cosa? Cuéntame en comentarios qué mito del cine creías de pequeño.\n#curiosidades #arenasmovedizas #ciencia #mitos #supervivencia",
+  "tags": [
+    "arenas movedizas",
+    "mitos del cine",
+    "curiosidades",
+    "ciencia",
+    "supervivencia",
+    "qué pasaría si",
+    "marea",
+    "datos curiosos",
+    "física",
+    "trucos de supervivencia"
+  ],
+  "beats": [
+    {
+      "text": "¿Y si caes en arenas movedizas?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "mano",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "casa",
+            "pos": "arriba_izquierda",
+            "tamano": "mediano",
+            "anim": "caer"
+          },
+          {
+            "pieza": "medalla",
+            "pos": "arriba_derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Tranquilo: no te traga. Lo peligroso es otra cosa.",
+      "scene": "escena",
+      "params": {
+        "lugar": "desierto",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "worried",
+        "objeto": "none"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Caminas descalzo por un estuario, marea baja.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "happy",
+        "arms": "normal"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "El suelo cede. Segundo uno: hundido hasta las rodillas.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "playa",
+        "hora": "dia",
+        "label": "SEGUNDO 1"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Patalear empeora todo: la arena se licúa y luego se compacta.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "label": "SEGUNDO 10",
+        "piezas": [
+          {
+            "pieza": "reloj_arena",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "reloj_digital",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Segundo diez: cintura. Y ahí paras.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "shocked",
+        "arms": "up",
+        "highlight": "legs"
+      },
+      "camera": "pull_out",
+      "transition": "cut"
+    },
+    {
+      "text": "La arena mojada es dos veces más densa que tú. Flotas.",
+      "scene": "big_text",
+      "params": {
+        "text": "2x",
+        "label": "más densa que tu cuerpo",
+        "color": "#ffcc00",
+        "lugar": "playa"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Tirar de una pierna exige la fuerza de levantar un coche.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "angry",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "arriba_derecha",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Hora tres. El sol quema, la boca se seca.",
+      "scene": "accion",
+      "params": {
+        "tipo": "quemarse",
+        "lugar": "playa",
+        "hora": "dia",
+        "label": "HORA 3"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Entonces oyes el mar. Sube la marea.",
+      "scene": "accion",
+      "params": {
+        "tipo": "latido",
+        "lugar": "playa",
+        "hora": "atardecer"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "La arena no te traga, pero el agua sí te tapa.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "ola_gigante",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "pajaro",
+            "pos": "arriba",
+            "tamano": "pequeno",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "El truco: échate atrás y mueve las piernas en círculos lentos.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "persona": "entero",
+        "mood": "neutral",
+        "piezas": [
+          {
+            "pieza": "reloj_digital",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "girar"
+          },
+          {
+            "pieza": "gota",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "caer"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Sales rodando hasta suelo firme, justo antes de la ola.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "persona": "entero",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "ola_gigante",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "acercarse"
+          }
+        ]
+      },
+      "camera": "pan_left",
+      "transition": "flash"
+    },
+    {
+      "text": "El enemigo nunca fue la arena, sino el reloj.",
+      "scene": "calendar",
+      "params": {
+        "style": "marcas",
+        "day": "3",
+        "month": "Hora",
+        "label": "El reloj corría"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Debajo de un sombrero flotando, alguien espera ese truco.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "casa",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "reloj_arena",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "La próxima vez que veas un sombrero hundirse, piensa…",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "mano",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "casa",
+            "pos": "arriba_izquierda",
+            "tamano": "mediano",
+            "anim": "caer"
+          },
+          {
+            "pieza": "medalla",
+            "pos": "arriba_derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    }
+  },
+  "cover_text": "¿ARENAS MOVEDIZAS?",
+  "question": "¿Qué pasaría de verdad si cayeras en arenas movedizas?",
+  "piezas_pendientes": [
+    "mano_saliendo_arena",
+    "sombrero_explorador",
+    "sello_mito",
+    "corte_arena_movediza",
+    "flechas_circulares",
+    "coche_grua",
+    "linea_marea"
+  ],
+  "id": "pedido-20-01",
+  "idea": {
+    "tipo": "que_pasaria_si",
+    "premisa": "Caminas descalzo por un estuario con la marea baja y de repente el suelo cede: has caído en arenas movedizas. Contado como un reloj que avanza (segundo 1, segundo 10, minuto 5, hora 3), el espectador vive en primera persona cómo se rompe el mito del cine. Primero, el pánico: patalea y se hunde más rápido, porque al moverse la arena se licúa y luego se compacta alrededor de sus piernas. Después, la sorpresa: deja de hundirse a la altura de la cintura, porque la arena con agua es unas dos veces más densa que el cuerpo humano y por eso flotas. Intenta sacar una pierna tirando de golpe y no puede: los físicos calcularon que, tirando rápido, haría falta una fuerza parecida a la de levantar un coche. Entonces llega la escalada real: pasan las horas, el sol quema, la boca se seca y, a lo lejos, se oye el mar. La marea está subiendo. La arena no te iba a tragar, pero el agua sí puede taparte. Cuando parece que no hay salida llega el truco: te echas hacia atrás para repartir el peso como si flotaras en una piscina y mueves las piernas en circulitos lentos, para que el agua se cuele y suelte la arena. Centímetro a centímetro sales, rodando hasta suelo firme justo antes de que llegue la ola.",
+    "gancho": "¿Y si pisas arenas movedizas y empiezas a hundirte como en las películas? Tranquilo: no te va a tragar. Lo que debería darte miedo es otra cosa.",
+    "giro_final": "El enemigo nunca fue la arena, fue el reloj: la marea. Y el cierre enlaza con la imagen del principio: 'Así que la próxima vez que en una película solo quede un sombrero flotando sobre la arena, ya sabes la verdad: debajo hay alguien de pie, hundido hasta la cintura, esperando a que alguien le cuente el truco'. Se ve el sombrero y, debajo, al personaje sonriendo y saludando.",
+    "estilo_visual": "Estilo luminoso de día, sin escenas oscuras, y ninguna escena repetida. 1) Gancho: 'composicion' de un desierto de película con una mano y un sombrero hundiéndose (cliché de cine) y un gran sello rojo de 'MITO' encima. 2) 'escena' de un estuario soleado con marea baja: tú caminas descalzo y el suelo se agrieta bajo tus pies. 3) 'accion' tipo 'sorpresa' (salto del susto) al hundirte hasta las rodillas, con un letrero de 'SEGUNDO 1'. 4) 'composicion' del corte lateral de la arena: los granos, el agua y tus piernas pataleando, con flechas que muestran cómo se compacta, y un 'SEGUNDO 10'. 5) 'big_text' con la cifra '2x' (la densidad de la arena frente a tu cuerpo) y el personaje parado a la altura de la cintura con cara de alivio. 6) 'composicion' de tu pierna atrapada y, al lado, un coche colgando de una grúa con la pierna 'tirando' de él, como comparación de la fuerza. 7) 'escena' con el letrero 'HORA 3' y un sol enorme, seguida de 'accion' 'quemarse' (la piel se enrojece, ondas de calor). 8) 'accion' 'latido' acelerándose cuando oyes el mar. 9) 'composicion' en plano amplio: la línea de la marea avanzando hacia ti con espuma y gaviotas. 10) 'composicion' del truco: tú tumbado hacia atrás con los brazos abiertos y flechas circulares en las piernas, mientras el agua entra en la arena. 11) 'escena' final en suelo firme, embarrado y con los brazos en alto, mientras la ola llega justo detrás. 12) Cierre: 'composicion' del sombrero flotando sobre la arena y, en corte transversal, tú debajo saludando. Duración objetivo: unos 40-45 segundos, con frases cortas y un cambio de plano por frase.",
+    "por_que_funcionara": "Sigue el formato que el dueño aprueba: inmersión en segunda persona ('Bajas once kilómetros…', 'Tienes 17 años…') con progresión temporal y escalada de tensión. Cada dato real (la densidad, el pánico, la fuerza de un coche, la marea, el truco) llega como un giro de la historia y no como una lista. Evita los motivos de descarte: la duración es corta, el gancho es fuerte y deja claro el tema con una pregunta, y las escenas son variadas y luminosas, de playa, sol, mar y cortes transversales, sin repetir plano. El final en bucle con el sombrero recompensa al que vio el principio y anima a volver a verlo.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "Sombrero de explorador flotando sobre la arena",
+      "Mano saliendo de la arena (cliché de película)",
+      "Sello rojo 'MITO'",
+      "Corte transversal de arena movediza con granos y agua",
+      "Coche colgando de una grúa",
+      "Línea de marea con espuma avanzando",
+      "Letreros de tiempo 'SEGUNDO 1', 'MINUTO 5' y 'HORA 3'",
+      "Flechas circulares de movimiento en las piernas"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Y si caes en arenas movedizas?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Pregunta directa, nombra el tema en el primer segundo y cabe en 6 palabras."
+    },
+    {
+      "texto": "¿Cuánto tardarían en tragarte las arenas movedizas?",
+      "tipo": "b",
+      "puntuacion": 7,
+      "motivo": "Reto claro, pero da por cierto el mito que el vídeo rompe."
+    },
+    {
+      "texto": "La arena movediza pesa más que tu cuerpo. ¿Y entonces?",
+      "tipo": "c",
+      "puntuacion": 6,
+      "motivo": "Dato que choca, pero es menos inmediato y supera el límite cómodo."
+    },
+    {
+      "texto": "Pisas arenas movedizas. Empiezas a hundirte.",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Segunda persona con el tema dicho, inmersiva pero sin pregunta."
+    },
+    {
+      "texto": "Las arenas movedizas no te tragan. Mienten.",
+      "tipo": "e",
+      "puntuacion": 8,
+      "motivo": "Rompe el mito de las películas y promete una explicación."
+    }
+  ],
+  "medida_estado": "esperando",
+  "tanda": "pedido-20"
+}
