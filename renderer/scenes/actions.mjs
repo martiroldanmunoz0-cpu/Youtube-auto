@@ -6,6 +6,7 @@ import { drawPlace, midShot, grade } from './bright.mjs';
 import { personaWho } from '../lib/persona.mjs';
 import { INK } from '../lib/brightbg.mjs';
 import { comicWord, speedLines, sparkles, smoke, flash, shakeAt, starBurst } from '../lib/impact.mjs';
+import { MORE_ACTIONS, MORE_ALIAS } from './actions2.mjs';
 
 const { O, E, C, R, P, L } = DRAW;
 const ph = (t, d, a, b) => clamp((t / d - a) / (b - a)); // progreso 0..1 de una fase (fracciones de la duración)
@@ -160,10 +161,11 @@ const ACTIONS = {
     comicWord(ctx, 'zas', W / 2, 600, t - d * at);
   },
 };
+Object.assign(ACTIONS, MORE_ACTIONS); // acciones detalladas (vista nublada, hincharse, desmayarse, latido...)
 export const ACTION_NAMES = Object.keys(ACTIONS);
 const ALIAS = { cortar: 'cortarse', corte: 'cortarse', herirse: 'cortarse', caer: 'caer_romper', romper: 'caer_romper', romperse: 'caer_romper', explotar: 'explosion', 'explosión': 'explosion',
   bomba: 'explosion', beber_agua: 'beber', tomar: 'beber', comida: 'comer', morder: 'comer', pensar: 'idea', descubrir: 'idea', susto: 'sorpresa', asustarse: 'sorpresa', sorprenderse: 'sorpresa',
-  crecimiento: 'crecer', planta: 'crecer', chocar: 'choque', accidente: 'choque', dormirse: 'dormir', sueno: 'dormir', 'sueño': 'dormir', tormenta: 'rayo', relampago: 'rayo', 'relámpago': 'rayo' };
+  crecimiento: 'crecer', planta: 'crecer', chocar: 'choque', accidente: 'choque', dormirse: 'dormir', sueno: 'dormir', 'sueño': 'dormir', tormenta: 'rayo', relampago: 'rayo', 'relámpago': 'rayo', ...MORE_ALIAS };
 
 export const accion = {
   setup(p, r) { return { seed: r.int(0, 99) }; },

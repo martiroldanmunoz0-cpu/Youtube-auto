@@ -237,6 +237,12 @@ haciendo algo ("objeto" en la mano, expresión con "mood") y cambia de lugar o d
 frecuencia. Las escenas marcadas [ESTILO OSCURO] solo para misterio o miedo.
 - PIEZAS: en "piezas" pon SOLO nombres EXACTOS de "piezas_disponibles" (p. ej. "plaqueta", "globulo_blanco"), nunca \
 descripciones ("plaquetas como ladrillos" está MAL). El estilo lo dan el lugar, la animación y la etiqueta.
+- MUY DETALLADO (lo más importante del canal, el dueño lo exige): cada frase se tiene que VER PASAR en pantalla, \
+literalmente, como en una animación cuidada. Si la voz dice "la vista se nubla", se ven los ojos parpadeando y todo \
+desenfocándose (accion vista_nublada); "el cuerpo se hincha" -> accion hincharse; "te desmayas" -> desmayarse; "la saliva \
+hierve" -> saliva_hierve; "el corazón se acelera" -> latido; "pasan los días" -> contar_dias; "una tormenta" -> tormenta_mar. \
+Usa "accion" en AL MENOS la mitad de los planos (todas las que encajen: mira la lista de tipos del catálogo). Nada de \
+personas quietas mirando a cámara ("person", "group", "character") salvo que no haya otra opción; nunca dos seguidas.
 - LO QUE SE DICE, SE VE (clave para la retención): cada plano tiene que MOSTRAR exactamente lo que dice la voz, con \
 algo que PASA, no un dibujo quieto. Si la frase tiene una acción ("te cortas", "explota", "cae", "se rompe", "bebes", \
 "se le ocurre", "choca", "crece", "se duerme"), usa la escena "accion" con ese tipo. Puedes añadir "efecto" a una \
@@ -691,6 +697,28 @@ def fix_loop_phrase(bucle: str, first: str, last: str) -> str:
     return bucle
 
 
+# Red de seguridad: frases que describen algo con animación propia -> esa acción (si el plano era una persona quieta)
+ACCION_POR_FRASE = [
+    (r"nubla|borros|se te cierran los ojos|parpade", "vista_nublada"), (r"hincha|infla", "hincharse"),
+    (r"desmay|pierdes el conocimiento|pierde el conocimiento|inconsciente", "desmayarse"),
+    (r"saliva|hierve|burbuje", "saliva_hierve"), (r"coraz[oó]n|latido|pulso", "latido"),
+    (r"congel|tirit|hipotermia", "congelarse"), (r"carcajada|te r[ií]es|se r[ií]e|risa", "reir"),
+    (r"llora|l[aá]grima", "llorar"), (r"cosquilla", "cosquillas"), (r"tormenta|temporal|naufrag", "tormenta_mar"),
+    (r"grita|chilla", "gritar"), (r"corre[sn]?\b|huye|escapa", "correr"), (r"se hunde|te hundes|ahoga", "hundirse"),
+    (r"mare[ao]|da vueltas", "marearse"), (r"quema|abrasa|insolaci", "quemarse"),
+    (r"pulmones|el aire sale|sueltas el aire|soltar el aire", "soltar_aire"), (r"flota|a la deriva por el espacio", "flotar_espacio"),
+    (r"te duermes|se duerme|dormid", "dormir"), (r"tachas los d[ií]as|cuenta los d[ií]as|pasan los d[ií]as|d[ií]a tras d[ií]a", "contar_dias"),
+]
+ESCENAS_QUIETAS = {"person", "group", "character", "closeup", "duo", "quote"}
+
+
+def _accion_para(text: str) -> str | None:
+    for pat, tipo in ACCION_POR_FRASE:
+        if re.search(pat, text, re.I):
+            return tipo
+    return None
+
+
 def validate_story(story: dict) -> dict:
     """Limpia el guion: escenas/cámaras válidas, params parseados. Devuelve el formato interno."""
     catalog = catalog_for("historias")
@@ -719,6 +747,15 @@ def validate_story(story: dict) -> dict:
             if alt:
                 print(f"  aviso: composición sin piezas válidas -> {alt}: «{text[:50]}»")
                 scene = alt
+        quieta = scene in ESCENAS_QUIETAS or (scene == "escena" and params.get("plano", "medio") == "medio" and params.get("objeto", "none") in ("none", "", None))
+        tipo = _accion_para(text) if quieta else None
+        if tipo:
+            n = re.search(r"\b(\d{2,4})\b", text)
+            params = {"tipo": tipo, "lugar": params.get("lugar"), "hora": params.get("hora"), "who": params.get("who") or "protagonista",
+                      **({"numero": int(n.group(1))} if n and tipo == "contar_dias" else {})}
+            params = {k: v for k, v in params.items() if v is not None}
+            print(f"  plano quieto -> acción «{tipo}»: «{text[:60]}»")
+            scene = "accion"
         if scene == "big_text" and "text" not in params:
             params["text"] = ""
         beats.append({
@@ -758,6 +795,9 @@ def validate_story(story: dict) -> dict:
             base = {**base, "scene": "escena", "params": {"lugar": base["params"].get("lugar") or "salon", "plano": "medio", "mood": "shocked", "efecto": "wow"}}
         beats.insert(pos, {**base, "text": pregunta, "camera": "push_in", "transition": "cut"})
         print(f"  (añadida la pregunta central en el plano {pos + 1}: «{pregunta}»)")
+    n_acc = sum(b["scene"] == "accion" for b in beats)
+    if beats and n_acc < len(beats) / 3:
+        print(f"  aviso: pocas acciones animadas ({n_acc} de {len(beats)} planos)")
     palabras = sum(len(b["text"].split()) for b in beats)
     if palabras > 150:
         print(f"  aviso: guion largo ({palabras} palabras ≈ {palabras / 2.45:.0f} s)")

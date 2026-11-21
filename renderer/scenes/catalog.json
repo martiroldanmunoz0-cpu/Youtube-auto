@@ -20,14 +20,15 @@
  },
  "scenes": {
   "accion": {
-   "desc": "ACCIÓN ANIMADA con principio y final (2-4 s): lo que la voz dice, PASA en pantalla. Úsala para los verbos y momentos clave: cortarse (primer plano del dedo, cuchillo, sangre, ¡AY!), caer_romper (algo cae y se hace añicos), explosion, beber, comer (mordiscos), idea (bombilla sobre la cabeza), sorpresa (salto del susto), crecer (de semilla a flor), choque (coche contra un muro), dormir (Zzz), rayo.",
+   "desc": "ACCIÓN ANIMADA con principio y final (2-4 s): lo que la voz dice, PASA en pantalla con detalle. Es la escena PRINCIPAL para todo lo que le ocurre a alguien o a su cuerpo. Tipos: cortarse (primer plano del dedo, cuchillo, sangre), caer_romper, explosion, beber, comer, idea (bombilla), sorpresa (salto del susto), crecer (semilla a flor), choque (coche contra muro), dormir (Zzz), rayo, vista_nublada (primer plano de los ojos que parpadean, todo se desenfoca y oscurece), hincharse (el cuerpo se infla como un globo dando vueltas en el espacio), flotar_espacio (dando vueltas sin control, la Tierra se aleja), desmayarse (se tambalea, estrellas, cae y se oscurece), soltar_aire (el aire sale de golpe de la boca), saliva_hierve (boca abierta en primer plano con burbujas hirviendo), quemarse (la piel se enrojece al sol, ondas de calor), latido (corazón latiendo cada vez más rápido con electrocardiograma), congelarse (escarcha que crece, tiembla, vaho), reir (carcajada, lágrimas de risa), llorar (lágrimas y nube de lluvia), cosquillas (pluma en el pie, se retuerce de risa), tormenta_mar (barca entre olas enormes, lluvia, relámpagos), contar_dias (rayitas tachadas en la madera y contador \"DÍA N\"; usa \"numero\"), gritar (primer plano, ondas de sonido), correr (a toda velocidad, polvo), hundirse (bajo el agua, burbujas, se oscurece), dudar (interrogaciones), marearse (todo da vueltas, ojos en espiral).",
    "params": {
-    "tipo": "cortarse|caer_romper|explosion|beber|comer|idea|sorpresa|crecer|choque|dormir|rayo",
+    "tipo": "cortarse|caer_romper|explosion|beber|comer|idea|sorpresa|crecer|choque|dormir|rayo|vista_nublada|hincharse|flotar_espacio|desmayarse|soltar_aire|saliva_hierve|quemarse|latido|congelarse|reir|llorar|cosquillas|tormenta_mar|contar_dias|gritar|correr|hundirse|dudar|marearse",
     "lugar": "lugar de fondo cuando tenga sentido (ver 'escena')",
     "hora": "dia|atardecer|noche",
     "objeto": "para caer_romper y comer: pieza de la biblioteca (vaso_agua, hamburguesa, pizza, manzana...)",
     "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
-    "label": "texto corto (opcional)"
+    "label": "texto corto (opcional)",
+    "numero": "solo contar_dias: el número de días final (p. ej. 438)"
    }
   },
   "composicion": {
