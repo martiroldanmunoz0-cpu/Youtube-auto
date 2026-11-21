@@ -219,6 +219,11 @@ donde pasa cada momento (salón, cocina, hospital, desierto, playa, montaña, ca
 (dia/atardecer/noche: si la historia ocurre de noche, de noche; si es en el desierto, en el desierto). Pon a la persona \
 haciendo algo ("objeto" en la mano, expresión con "mood") y cambia de lugar o de plano (medio/entero/sin_persona) con \
 frecuencia. Las escenas marcadas [ESTILO OSCURO] solo para misterio o miedo.
+- ESCENAS A MEDIDA: cuando la narración hable de algo concreto (un animal, un órgano del cuerpo, un planeta, un \
+vehículo, una comida, un objeto, un monumento...), usa "composicion" para MOSTRARLO con piezas de la biblioteca \
+("piezas_disponibles"), en el lugar y la hora que toquen, y si aporta, con la persona reaccionando al lado. Combina \
+piezas para contar la idea (p. ej. dinosaurio gigante + persona asustada en la playa; tierra + meteorito cayendo en el \
+espacio; vaso de agua + gota en fondo liso). Usa solo nombres de la lista; si algo no existe, elige lo más parecido.
 - VARIEDAD: no uses la misma escena más de 2 veces en todo el vídeo (con "escena", cambia de lugar, hora, plano u objeto \
 entre planos: cuenta como distinta) (la persona protagonista con character/person, \
 máximo 4). Si necesitas repetir una idea (lugar, paso del tiempo, noticia), cambia de escena o usa otro "style" \
@@ -546,7 +551,9 @@ def validate_story(story: dict) -> dict:
         })
     from collections import Counter  # noqa: PLC0415
 
-    reps = {k: v for k, v in Counter(b["scene"] if b["scene"] != "escena" else f"escena:{b['params'].get('lugar')}:{b['params'].get('plano', 'medio')}" for b in beats).items()
+    reps = {k: v for k, v in Counter(f"escena:{b['params'].get('lugar')}:{b['params'].get('plano', 'medio')}" if b["scene"] == "escena"
+                         else f"composicion:{json.dumps(b['params'].get('piezas'), sort_keys=True)}" if b["scene"] == "composicion"
+                         else b["scene"] for b in beats).items()
             if v > (4 if k in ("character", "person") else 2)}
     if reps:
         print(f"  aviso: escenas muy repetidas en este guion: {reps}")

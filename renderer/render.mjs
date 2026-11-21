@@ -22,6 +22,8 @@ const antonPath = path.join(here, '..', 'assets', 'branding', 'fonts', 'Anton-Re
 if (fs.existsSync(antonPath)) GlobalFonts.registerFromPath(antonPath, 'Anton');
 
 const TRANSITION = 0.35;
+// Escenas de estilo oscuro (misterio, noche, espacio): llevan el acabado oscuro del canal
+const DARK_SCENES = new Set(['eyes_dark', 'silhouette', 'hallway', 'front_door', 'bedroom', 'house_exterior', 'car_window', 'rearview_eyes', 'city_street', 'forest', 'space', 'ocean', 'character', 'duo', 'closeup', 'vice_street', 'vice_beach', 'car_ride', 'police_chase']);
 
 // Blindaje: la IA a veces pasa números (p. ej. día 1) donde el lienzo espera texto. Se convierten siempre.
 {
@@ -142,7 +144,7 @@ export class Renderer {
       this.drawBeat(ctx, b, t, frame);
     }
     // Acabado común del canal
-    const bright = b.scene_name === 'escena'; // estilo luminoso: acabado suave para no apagar los colores
+    const bright = !DARK_SCENES.has(b.scene_name); // estilo luminoso: acabado suave; el oscuro solo en escenas de misterio/noche
     if (this.tl.subtitle_style !== 'word') topShade(ctx, bright ? 0.32 : 0.55);
     vignette(ctx, bright ? 0.22 : 0.7);
     grain(ctx, frame, bright ? 0.015 : 0.05);
@@ -261,7 +263,7 @@ export function renderCover(tl, out) {
   const pickIdx = tl.cover?.beat ?? (cands.find(({ b }) => b.camera === 'slam') || cands[Math.floor(cands.length * 0.4)] || { i: Math.floor(r.beats.length / 2) }).i;
   const b = r.beats[pickIdx];
   const ctx = r.ctx;
-  const faces = new Set(['person', 'group', 'doctor', 'hospital', 'surgery', 'escena']);
+  const faces = new Set(['person', 'group', 'doctor', 'hospital', 'surgery', 'escena', 'composicion']);
   const textLow = faces.has(b.scene_name);
   r.drawBeat(ctx, { ...b, camera: 'static', params: { ...b.params, label: '' } }, b.start + Math.min(1.2, (b.end - b.start) * 0.6), 0);
   // Oscurecer arriba para que el texto se lea

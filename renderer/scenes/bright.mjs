@@ -3,6 +3,7 @@
 // Escena principal: "escena" { lugar, hora, plano, who, mood, objeto, label }.
 import { W, H, rr, radial, clamp, noise1 } from '../lib/util.mjs';
 import { personaWho, drawHead, drawFullBody } from '../lib/persona.mjs';
+import { brightBg } from '../lib/brightbg.mjs';
 
 const INK = '#1c1a2b';
 function outline(ctx, w = 10) { ctx.lineWidth = w; ctx.strokeStyle = INK; ctx.lineJoin = 'round'; ctx.stroke(); }
@@ -197,13 +198,32 @@ const PLACES = {
     for (const x of [130, 250]) { circ(ctx, x, 1105, 48, '#ffffff', 6); ctx.strokeStyle = '#ef476f'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(x, 1105); ctx.lineTo(x + 30 * Math.cos(-2 + Math.sin(t) * 0.3), 1105 + 30 * Math.sin(-2 + Math.sin(t) * 0.3)); ctx.stroke(); }
     ctx.fillStyle = '#2b2f3a'; ctx.fillRect(0, 1340, W, H - 1340);
   },
+  bajo_el_mar(ctx, t, h) {
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, h === 'noche' ? '#0b2a55' : '#3fb6e0'); g.addColorStop(1, h === 'noche' ? '#04122a' : '#0d4a7a');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    ctx.save(); ctx.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < 5; i++) { const x = 100 + i * 220 + Math.sin(t * 0.5 + i) * 30; const gr = ctx.createLinearGradient(x, 0, x + 120, 1200); gr.addColorStop(0, 'rgba(255,255,255,0.18)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); ctx.fillStyle = gr; ctx.beginPath(); ctx.moveTo(x - 30, 0); ctx.lineTo(x + 40, 0); ctx.lineTo(x + 220, 1200); ctx.lineTo(x + 80, 1200); ctx.fill(); }
+    ctx.restore();
+    for (let i = 0; i < 14; i++) { const k = (t * 0.3 + i / 14) % 1; circ(ctx, (i * 137) % W + Math.sin(t + i) * 20, H - k * H, 8 + (i % 3) * 5, 'rgba(255,255,255,0.5)', 3); }
+    ctx.beginPath(); ctx.moveTo(0, 1600); ctx.quadraticCurveTo(W / 2, 1500, W, 1600); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.fillStyle = '#e8c98a'; ctx.fill(); outline(ctx, 8);
+    for (const [x, c] of [[120, '#ff7f7f'], [300, '#ffb347'], [880, '#bb6bd9'], [980, '#ff8fab']]) for (let k = 0; k < 4; k++) { ctx.save(); ctx.translate(x, 1620); ctx.rotate(-0.6 + k * 0.4 + Math.sin(t * 1.5 + k) * 0.08); box(ctx, -14, -160, 28, 160, 14, c, 6); ctx.restore(); }
+    for (const x of [200, 760]) { ctx.strokeStyle = '#3e9c57'; ctx.lineWidth = 16; ctx.beginPath(); ctx.moveTo(x, 1620); for (let y = 1600; y > 1250; y -= 30) ctx.lineTo(x + Math.sin(y / 40 + t * 2) * 20, y); ctx.stroke(); }
+  },
+  espacio(ctx, t, h) {
+    const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#120a3a'); g.addColorStop(1, '#2a1a6a'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    for (let i = 0; i < 120; i++) { ctx.fillStyle = `rgba(255,255,255,${0.3 + 0.6 * Math.abs(Math.sin(t * 1.5 + i))})`; const r = i % 9 === 0 ? 4 : 2; ctx.fillRect((i * 137) % W, (i * 251) % H, r, r); }
+    radial(ctx, 260, 500, 420, '#ff6bd6', 0.18); radial(ctx, 860, 1300, 480, '#5ab8ff', 0.18);
+    circ(ctx, 900, 260, 70, '#ffd166', 7); circ(ctx, 140, 1650, 110, '#7bdff2', 8);
+  },
+  fondo(ctx, t, h) { brightBg(ctx, t, h === 'noche' ? 'lila' : h === 'atardecer' ? 'rosa' : 'crema'); },
 };
 export const PLACE_NAMES = Object.keys(PLACES);
-const EXTERIOR = new Set(['calle', 'ciudad', 'campo', 'desierto', 'playa', 'montana', 'selva', 'coche']);
+const EXTERIOR = new Set(['calle', 'ciudad', 'campo', 'desierto', 'playa', 'montana', 'selva', 'coche', 'bajo_el_mar', 'espacio', 'fondo']);
 const ALIAS = { casa: 'salon', 'salón': 'salon', habitacion: 'dormitorio', 'habitación': 'dormitorio', trabajo: 'oficina', colegio: 'aula', escuela: 'aula',
-  clase: 'aula', bosque: 'selva', jungla: 'selva', mar: 'playa', nieve: 'montana', 'montaña': 'montana', pueblo: 'calle', carretera: 'coche', hospital_hab: 'hospital' };
+  clase: 'aula', bosque: 'selva', mar_fondo: 'bajo_el_mar', oceano: 'bajo_el_mar', 'océano': 'bajo_el_mar', submarino: 'bajo_el_mar', agua: 'bajo_el_mar', universo: 'espacio', cielo: 'espacio', liso: 'fondo', ninguno: 'fondo', jungla: 'selva', mar: 'playa', nieve: 'montana', 'montaña': 'montana', pueblo: 'calle', carretera: 'coche', hospital_hab: 'hospital' };
 export function placeName(p) { const k = String(p || 'salon').toLowerCase().trim(); return PLACES[k] ? k : (ALIAS[k] || 'salon'); }
 export function drawPlace(ctx, lugar, hora, t) { PLACES[placeName(lugar)](ctx, t, hora); }
+export { grade, EXTERIOR };
 
 // ---------------- Persona en plano medio con un objeto ----------------
 function drawProp(ctx, prop, t) {
