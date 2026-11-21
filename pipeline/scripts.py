@@ -232,6 +232,8 @@ donde pasa cada momento (salón, cocina, hospital, desierto, playa, montaña, ca
 (dia/atardecer/noche: si la historia ocurre de noche, de noche; si es en el desierto, en el desierto). Pon a la persona \
 haciendo algo ("objeto" en la mano, expresión con "mood") y cambia de lugar o de plano (medio/entero/sin_persona) con \
 frecuencia. Las escenas marcadas [ESTILO OSCURO] solo para misterio o miedo.
+- PIEZAS: en "piezas" pon SOLO nombres EXACTOS de "piezas_disponibles" (p. ej. "plaqueta", "globulo_blanco"), nunca \
+descripciones ("plaquetas como ladrillos" está MAL). El estilo lo dan el lugar, la animación y la etiqueta.
 - ESCENAS A MEDIDA: cuando la narración hable de algo concreto (un animal, un órgano del cuerpo, un planeta, un \
 vehículo, una comida, un objeto, un monumento...), usa "composicion" para MOSTRARLO con piezas de la biblioteca \
 ("piezas_disponibles"), en el lugar y la hora que toquen, y si aporta, con la persona reaccionando al lado. Combina \
@@ -549,13 +551,27 @@ def _fix_pieces(params: dict, text: str) -> tuple[dict, str | None]:
     names = [n.strip() for n in cat["scenes"]["composicion"]["params"]["piezas_disponibles"].split(",") if n.strip()]
     alias = cat.get("piezas_alias", {})
     plain = lambda x: unicodedata.normalize("NFD", str(x).lower().strip()).encode("ascii", "ignore").decode().replace(" ", "_")
-    def resolve(n):
+    def resolve(n, fuzzy=True):
         for k in (str(n).lower().strip(), plain(n)):
             for c in (k, k[:-2] if k.endswith("es") else k, k[:-1] if k.endswith("s") else k):
                 if c in names: return c
                 if c in alias: return alias[c]
+        if not fuzzy:
+            return None
         m = difflib.get_close_matches(plain(n), names + list(alias), n=1, cutoff=0.75)
-        return (alias.get(m[0], m[0])) if m else None
+        if m:
+            return alias.get(m[0], m[0])
+        # Descripción en vez de nombre ("plaquetas como ladrillos rojos"): buscar dentro grupos de 2 palabras y luego 1
+        words = [w for w in re.split(r"[\s_,.;:]+", str(n).lower()) if len(w) > 2]
+        for size in (2, 1):
+            for i in range(len(words) - size + 1):
+                chunk = " ".join(words[i:i + size])
+                if chunk == str(n).lower().strip():
+                    continue
+                r = resolve(chunk, fuzzy=False)
+                if r:
+                    return r
+        return None
     items = params.get("piezas") or params.get("objetos") or []
     if isinstance(items, str):
         try:
