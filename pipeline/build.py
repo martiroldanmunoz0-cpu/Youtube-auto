@@ -53,6 +53,14 @@ def cached_synth(cache: Path, text: str, cfg: dict, voice: dict | None) -> tuple
     return mp3, dur, ws
 
 
+def apuntar_pendientes(nombres: list[str], vid: str) -> None:
+    """Piezas por dibujar: un archivo por vídeo (data/piezas_pendientes/<id>.json), para que las máquinas que montan
+    a la vez nunca choquen al guardar. La sesión de Claude del lunes las dibuja todas y borra los archivos."""
+    d = RENDERER.parent / "data" / "piezas_pendientes"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / f"{vid}.json").write_text(json.dumps(list(dict.fromkeys(map(str, nombres))), ensure_ascii=False), encoding="utf-8")
+
+
 def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True) -> Path:
     sid = story["id"]
     work = Path(tempfile.mkdtemp(prefix=f"{sid}-"))
@@ -170,7 +178,11 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
         story["qa"] += list(dict.fromkeys(voxtts.WARNINGS))  # frases que no salieron perfectas (misma voz)
     story["qa"] += [f"Una escena no se pudo dibujar y salió en blanco ({e.split('AVISO escena con error')[-1].strip()[:120]})" for e in scene_errors]
     if unknown_pieces:
-        story["qa"].append(f"Piezas que no existen en la biblioteca (se usó otra o un texto): {', '.join(dict.fromkeys(unknown_pieces))}")
+        # Ya no es un fallo para el dueño: se usó la pieza más parecida y queda apuntada para dibujarla el lunes
+        print(f"  piezas apuntadas para dibujar: {', '.join(dict.fromkeys(unknown_pieces))}")
+        story["piezas_pendientes"] = list(dict.fromkeys((story.get("piezas_pendientes") or []) + unknown_pieces))
+    if story.get("piezas_pendientes"):
+        apuntar_pendientes(story["piezas_pendientes"], story["id"])
     print("  revisión: " + ("✅ todo correcto" if not story["qa"] else "⚠️ " + " | ".join(story["qa"])), flush=True)
     return mp4
 

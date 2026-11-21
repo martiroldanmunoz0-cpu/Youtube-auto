@@ -183,9 +183,11 @@ vídeos; busca la forma propia de cada historia.
   frase_bucle "Por eso, si mañana" + plano 1 "cayeras tres mil metros..."; frase_bucle "Y todo empezó el día en que"
   + plano 1 "un hombre se operó a sí mismo.". Léelas seguidas: tienen que sonar como UNA sola frase. NO la repitas
   como plano: el sistema la añade al final con la misma imagen del plano 1.
-- BUCLE OBLIGATORIO: la última frase debe enlazar con la primera, de forma que al volver a empezar el vídeo tenga \
-sentido seguir viéndolo (p. ej. termina con "…y por eso, cuando cayó 3.000 metros…" para que el plano 1 continúe la frase, \
-o con una pregunta que el plano 1 responde). Así mucha gente lo ve dos veces.
+  Si el plano 1 es una PREGUNTA, la frase_bucle tiene que llevar a ella desde la propia historia, como si alguien
+  la dijera en voz alta: frase_bucle "Así que la próxima vez que notes el suelo quieto, piensa" + plano 1 "¿y si la
+  Tierra frenara en seco?". PROHIBIDO hablar del vídeo o de la pregunta en sí ("la pregunta sigue en pie", "volvamos
+  al principio", "como decíamos", "otra vez"): el espectador NO debe notar el truco. Si no sale natural, cambia el
+  plano 1 por una afirmación que se pueda continuar.
 
 ESTRUCTURA BASE (adáptala: el formato concreto lo decide cada idea; no todos los vídeos son iguales)
 1. GANCHO (plano 1, máx 8 palabras): el gancho elegido, el dato o la pregunta más fuerte. Nada de saludos, "hoy os \
@@ -613,11 +615,86 @@ def _fix_pieces(params: dict, text: str) -> tuple[dict, str | None]:
             "label": str(label)[:28], "efecto": params.get("efecto") or "", "_faltan": unknown}, "escena"
 
 
+META_BUCLE = re.compile(r"(la pregunta|este v[ií]deo|el v[ií]deo|al principio|volvamos|otra vez|de nuevo|como dec[ií]amos|sigue en pie|vuelve a empezar)", re.I)
+MODELO_BARATO = "claude-haiku-5-5"
+
+
+def _cheap_json(prompt: str, schema: dict) -> dict | None:
+    """Llamada mínima a Haiku para tareas pequeñas de limpieza (cuesta una milésima de euro). Si falla, None."""
+    try:
+        r = client.messages.create(model=MODELO_BARATO, max_tokens=2000, messages=[{"role": "user", "content": prompt}],
+                                   output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}})
+        return parse_message(r)
+    except Exception as e:  # noqa: BLE001
+        print(f"  aviso: ayuda barata no disponible ({str(e)[:120]})")
+        return None
+
+
+def _exact_piece(n, names: list[str], alias: dict) -> bool:
+    import unicodedata  # noqa: PLC0415
+    k = str(n).lower().strip()
+    plain = unicodedata.normalize("NFD", k).encode("ascii", "ignore").decode().replace(" ", "_")
+    return any(c in names or c in alias for x in (k, plain) for c in (x, x[:-2] if x.endswith("es") else x, x[:-1] if x.endswith("s") else x))
+
+
+def map_missing_pieces(planos: list[dict]) -> dict[str, str]:
+    """Las piezas que el guionista inventó se traducen a la más parecida de la biblioteca (nunca un hueco ni un texto).
+    Las originales se apuntan como pendientes para dibujarlas el lunes."""
+    cat = json.loads(CATALOG.read_text(encoding="utf-8"))
+    names = [n.strip() for n in cat["scenes"]["composicion"]["params"]["piezas_disponibles"].split(",") if n.strip()]
+    missing = []
+    for p in planos:
+        if p.get("escena") != "composicion":
+            continue
+        try:
+            params = json.loads(p.get("params_json") or "{}")
+        except json.JSONDecodeError:
+            continue
+        items = params.get("piezas") or params.get("objetos") or []
+        if isinstance(items, str):
+            items = [x for x in re.split(r"[,;]", items) if x.strip()]
+        for it in items if isinstance(items, list) else [items]:
+            n = it if isinstance(it, str) else (it or {}).get("pieza") or (it or {}).get("nombre")
+            if n and not _exact_piece(n, names, cat.get("piezas_alias", {})) and n not in missing:
+                missing.append(str(n))  # todo lo que no sea nombre exacto o alias lo decide Haiku (entiende el significado)
+    if not missing:
+        return {}
+    schema = {"type": "object", "additionalProperties": False, "required": ["mapa"], "properties": {"mapa": {"type": "array", "items": {
+        "type": "object", "additionalProperties": False, "required": ["original", "pieza"],
+        "properties": {"original": {"type": "string"}, "pieza": {"type": "string", "enum": names}}}}}}
+    out = _cheap_json("Para un vídeo animado necesito dibujar estas cosas, pero no existen en mi biblioteca de dibujos. "
+                      "Para cada una, elige la pieza de la biblioteca que mejor la REPRESENTE visualmente (la más parecida o la "
+                      f"que mejor cuente la misma idea).\nCosas: {json.dumps(missing, ensure_ascii=False)}", schema)
+    mapa = {m["original"]: m["pieza"] for m in (out or {}).get("mapa", []) if m.get("pieza") in names}
+    for k, v in mapa.items():
+        print(f"  pieza «{k}» no existe: se usa «{v}» (y queda apuntada para dibujarla)")
+    return mapa
+
+
+def fix_loop_phrase(bucle: str, first: str, last: str) -> str:
+    """Si la frase del bucle habla del propio vídeo ("la pregunta sigue en pie"), Haiku la reescribe para que enlace sola."""
+    if not bucle or not META_BUCLE.search(bucle):
+        return bucle
+    schema = {"type": "object", "additionalProperties": False, "required": ["frase_bucle"], "properties": {"frase_bucle": {"type": "string"}}}
+    out = _cheap_json("Un vídeo corto termina con una frase a medias que la PRIMERA frase del vídeo completa, para que al repetirse "
+                      "parezca que sigue. La actual suena rara porque habla del vídeo o de la pregunta. Reescríbela en español: "
+                      "máximo 14 palabras, sin punto final, que salga de la historia y que al leerla seguida de la primera frase "
+                      "suene como UNA frase natural. No menciones el vídeo, la pregunta, el principio ni 'otra vez'.\n"
+                      f"Penúltima frase del vídeo: {last}\nFrase actual: {bucle}\nPrimera frase: {first}", schema)
+    nueva = re.sub(r"\s+", " ", (out or {}).get("frase_bucle") or "").strip().rstrip(".")
+    if nueva and not META_BUCLE.search(nueva):
+        print(f"  frase de bucle reescrita: «{bucle}» -> «{nueva}»")
+        return nueva
+    return bucle
+
+
 def validate_story(story: dict) -> dict:
     """Limpia el guion: escenas/cámaras válidas, params parseados. Devuelve el formato interno."""
     catalog = catalog_for("historias")
     scenes, cams, trans = catalog["scenes"], catalog["cameras"], catalog["transitions"]
     beats = []
+    mapa_piezas = map_missing_pieces(story["planos"])
+    pendientes = list(mapa_piezas)
     for p in story["planos"]:
         text = re.sub(r"\s+", " ", p["texto"]).strip()
         if not text:
@@ -630,6 +707,11 @@ def validate_story(story: dict) -> dict:
         except json.JSONDecodeError:
             params = {}
         if scene == "composicion":
+            if mapa_piezas:  # piezas inventadas -> la más parecida que sí existe
+                items = params.get("piezas") or params.get("objetos") or []
+                if isinstance(items, list):
+                    params["piezas"] = [({**it, "pieza": mapa_piezas.get(it.get("pieza") or it.get("nombre"), it.get("pieza") or it.get("nombre"))}
+                                         if isinstance(it, dict) else mapa_piezas.get(it, it)) for it in items]
             params, alt = _fix_pieces(params, text)
             if alt:
                 print(f"  aviso: composición sin piezas válidas -> {alt}: «{text[:50]}»")
@@ -654,6 +736,8 @@ def validate_story(story: dict) -> dict:
         print(f"  aviso: escenas muy repetidas en este guion: {reps}")
     # Bucle: la frase final (que completa el plano 1) va al final con la MISMA imagen del plano 1
     bucle = re.sub(r"\s+", " ", story.get("frase_bucle") or "").strip().rstrip(".")
+    if beats:
+        bucle = fix_loop_phrase(bucle, beats[0]["text"], beats[-1]["text"])
     if beats and bucle:
         if beats[-1]["text"].strip().rstrip(".…").lower() == bucle.lower().rstrip("…"):
             beats.pop()  # el guionista la repitió como plano: se sustituye por la versión con la imagen del principio
@@ -687,6 +771,8 @@ def validate_story(story: dict) -> dict:
                   for p in (story.get("personajes") or [])},
         "cover_text": re.sub(r"\s+", " ", story.get("texto_portada") or "").strip()[:60],
         "question": pregunta,
+        # Piezas que el guion pidió y no existían (ya sustituidas por la más parecida): se dibujan el lunes
+        "piezas_pendientes": list(dict.fromkeys(pendientes + [x for b in beats for x in (b.get("params") or {}).get("_faltan", [])])),
     }
 
 
