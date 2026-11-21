@@ -1,0 +1,27 @@
+{
+  "semana": "pedido-18-01",
+  "tanda": "pedido-18",
+  "pedido": "¿Cuánto tiempo sobrevivirías en el espacio sin traje? Explicación segundo a segundo con datos reales: no explotas ni te congelas al instante; unos 10-15 segundos consciente; la saliva hierve; el cuerpo se hincha; si te rescatan en 1-2 minutos podrías vivir. Incluye el caso real de Jim LeBlanc (NASA, 1966), que perdió el conocimiento en una cámara de vacío y sobrevivió; lo último que notó fue la saliva hirviendo en su lengua. Usa piezas como astronauta, cohete, tierra, estrella, gota, reloj_arena. Gancho fuerte y final que enlace con el principio.",
+  "tag": "pedido-18",
+  "videos": [
+    {
+      "id": "pedido-18-01",
+      "title": "Se abre la escotilla y no llevas traje: tienes 15 segundos #shorts",
+      "description": "Sin traje en el espacio no explotas ni te congelas, pero el tiempo corre. ¿Te habrías imaginado que alguien lo vivió de verdad? Cuéntame en los comentarios qué dato te ha sorprendido más.\n#espacio #curiosidades #nasa #ciencia #shorts",
+      "tags": [
+        "espacio sin traje",
+        "astronauta",
+        "vacío del espacio",
+        "Jim LeBlanc",
+        "NASA 1966",
+        "curiosidades",
+        "ciencia",
+        "qué pasaría si",
+        "cuerpo humano",
+        "datos curiosos"
+      ],
+      "video": "pedido-18-01.mp4",
+      "portada": "pedido-18-01_portada.jpg"
+    }
+  ]
+}

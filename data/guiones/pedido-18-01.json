@@ -1,0 +1,443 @@
+{
+  "title": "Se abre la escotilla y no llevas traje: tienes 15 segundos #shorts",
+  "description": "Sin traje en el espacio no explotas ni te congelas, pero el tiempo corre. ¿Te habrías imaginado que alguien lo vivió de verdad? Cuéntame en los comentarios qué dato te ha sorprendido más.\n#espacio #curiosidades #nasa #ciencia #shorts",
+  "tags": [
+    "espacio sin traje",
+    "astronauta",
+    "vacío del espacio",
+    "Jim LeBlanc",
+    "NASA 1966",
+    "curiosidades",
+    "ciencia",
+    "qué pasaría si",
+    "cuerpo humano",
+    "datos curiosos"
+  ],
+  "beats": [
+    {
+      "text": "¿Cuánto durarías en el espacio sin traje?",
+      "scene": "escena",
+      "params": {
+        "lugar": "espacio",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "shocked",
+        "objeto": "none",
+        "label": "Escotilla abierta"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Se abre la escotilla y sales despedido. Y esto va segundo a segundo.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "espacio",
+        "hora": "dia"
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "Segundo cero. El aire sale de golpe de tus pulmones.",
+      "scene": "person",
+      "params": {
+        "highlight": "chest",
+        "mood": "shocked",
+        "lugar": "fondo",
+        "label": "Segundo 0"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Si lo retuvieras, se dañarían. Lo que te salva es soltarlo todo.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "pulmones",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "viento",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "entrar_der"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Segundo tres. No explotas: tu piel te mantiene de una pieza.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "astronauta",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "tierra",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "girar"
+          },
+          {
+            "pieza": "reloj_arena",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Segundo cinco. Tampoco te congelas: el vacío casi no conduce el calor.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "hielo",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "astronauta",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Pero el sol, sin filtro, empieza a quemarte la piel.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "efecto": "brillo",
+        "piezas": [
+          {
+            "pieza": "estrella",
+            "pos": "arriba_derecha",
+            "tamano": "gigante",
+            "anim": "latir"
+          },
+          {
+            "pieza": "astronauta",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "tilt_up",
+      "transition": "flash"
+    },
+    {
+      "text": "Segundo ocho. Los líquidos de tu cuerpo empiezan a evaporarse.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "label": "Saliva y lágrimas",
+        "piezas": [
+          {
+            "pieza": "gota",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "La saliva burbujea y tu cuerpo se hincha como un globo.",
+      "scene": "person",
+      "params": {
+        "highlight": "stomach",
+        "mood": "worried",
+        "lugar": "fondo",
+        "label": "Segundo 8"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Segundo diez. Tu sangre ya no lleva oxígeno al cerebro.",
+      "scene": "big_text",
+      "params": {
+        "text": "15 SEGUNDOS",
+        "label": "conscientes, más o menos",
+        "color": "#ff3b30",
+        "lugar": "espacio"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "La vista se nubla. La confusión llega. Segundo quince: te desmayas.",
+      "scene": "person",
+      "params": {
+        "highlight": "head",
+        "mood": "sad",
+        "lugar": "fondo",
+        "label": "Segundo 15"
+      },
+      "camera": "tilt_down",
+      "transition": "black"
+    },
+    {
+      "text": "Esto no es una teoría. Le pasó a un hombre.",
+      "scene": "newspaper",
+      "params": {
+        "style": "papel",
+        "date": "1966",
+        "headline": "Accidente en cámara de vacío",
+        "kicker": "Diario de Texas"
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    },
+    {
+      "text": "Houston, 1966. Jim LeBlanc, técnico de la NASA, prueba un traje espacial.",
+      "scene": "map_pin",
+      "params": {
+        "style": "globo",
+        "place": "Houston",
+        "detail": "NASA, 1966"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Está dentro de una gran cámara de vacío, con el aire ya sacado.",
+      "scene": "escena",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "neutral",
+        "objeto": "none",
+        "who": "leblanc",
+        "label": "Cámara de vacío",
+        "efecto": "",
+        "_faltan": [
+          "camara de vacio de la NASA de 1966"
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Se le suelta un tubo y el traje pierde la presión en un instante.",
+      "scene": "accion",
+      "params": {
+        "tipo": "caer_romper",
+        "objeto": "vaso_agua",
+        "lugar": "fondo",
+        "who": "leblanc"
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "Aguanta consciente unos quince segundos y cae al suelo.",
+      "scene": "escena",
+      "params": {
+        "lugar": "fondo",
+        "plano": "entero",
+        "who": "leblanc",
+        "mood": "shocked",
+        "arms": "up",
+        "highlight": "head"
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "Lo último que recordó: la saliva burbujeando en su lengua.",
+      "scene": "quote",
+      "params": {
+        "author": "Jim LeBlanc",
+        "text": "La saliva empezó a burbujear en mi lengua."
+      },
+      "camera": "static",
+      "transition": "flash"
+    },
+    {
+      "text": "Sus compañeros devolvieron el aire a la cámara de inmediato. Despertó y se recuperó.",
+      "scene": "hospital",
+      "params": {
+        "who": "leblanc",
+        "state": "awake",
+        "mood": "happy",
+        "hora": "dia",
+        "monitor": "normal"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Tu corazón seguiría latiendo un rato. Con aire en uno o dos minutos, vivirías.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "cohete",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "astronauta",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "reloj_arena",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "girar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Pasado ese margen, el daño ya no tiene vuelta atrás.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "reloj_arena",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ],
+        "_faltan": [
+          "lengua o boca en primer plano con burbujas"
+        ]
+      },
+      "camera": "slam",
+      "transition": "black"
+    },
+    {
+      "text": "Y lo primero que notarías, antes que el frío y antes que el dolor, sería que…",
+      "scene": "escena",
+      "params": {
+        "lugar": "espacio",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "shocked",
+        "objeto": "none",
+        "label": "Escotilla abierta"
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    },
+    "leblanc": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "blanco"
+    }
+  },
+  "cover_text": "¿SIN TRAJE EN EL ESPACIO?",
+  "question": "¿Cuánto tiempo sobrevivirías en el espacio sin traje?",
+  "id": "pedido-18-01",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Título propuesto: 'Se abre la escotilla y no llevas traje: tienes 15 segundos #shorts'. En segunda persona, el espectador está en una nave en órbita, se abre la escotilla y sale despedido sin traje. Un reloj de arena marca el tiempo y la narración avanza segundo a segundo. Segundo 0: el aire sale de golpe de tus pulmones. Si aguantas la respiración, se te dañan, así que lo que te salva es soltarlo todo. Segundo 3: no explotas. Tu piel es lo bastante fuerte para mantenerte de una pieza. Segundo 5: tampoco te congelas. El vacío casi no conduce el calor y tu cuerpo se enfría muy despacio, pero el sol sin filtro empieza a quemarte la piel. Segundo 8: los líquidos de tu cuerpo empiezan a evaporarse por la baja presión, la saliva y las lágrimas burbujean. Tu piel y tus tejidos se hinchan como un globo. Segundo 10: tu sangre ya no lleva oxígeno al cerebro, la vista se nubla y aparece la confusión. Segundo 15: te desmayas. Aquí la historia da un giro documental: 'Esto no es una teoría. Le pasó a un hombre.' Houston, 1966. Jim LeBlanc, técnico de la NASA, prueba un traje espacial dentro de una cámara de vacío. Se le suelta un tubo y el traje se queda sin presión en un instante. Aguanta consciente unos 12-15 segundos y cae al suelo. Sus compañeros empiezan a devolver el aire a la cámara de inmediato. LeBlanc despierta y se recupera. Vuelta a ti: si no te rescatan, no mueres al desmayarte. El corazón aún late un tiempo, y si te devuelven a una nave con aire en 1-2 minutos podrías sobrevivir. Pasado ese margen, el daño se vuelve irreversible. Cierre que enlaza con el principio.",
+    "gancho": "¿Cuánto durarías en el espacio sin traje? Se abre la escotilla, sales flotando... y lo primero que notas no es frío ni dolor. Es algo raro en la lengua.",
+    "giro_final": "Eso que notaste en la lengua en el primer segundo era tu saliva empezando a hervir. Y fue exactamente lo último que recordó Jim LeBlanc antes de desmayarse en 1966: 'la saliva empezó a burbujear en mi lengua'. Él lo contó porque alguien le devolvió el aire a tiempo. Tú tendrías unos 90 segundos para que alguien hiciera lo mismo... y el reloj de arena ya va por la mitad.",
+    "estilo_visual": "Estilo luminoso de principio a fin, sin escenas oscuras, y ningún tipo de escena repetido dos veces seguidas. 1) Apertura: 'escena' interior de nave espacial con la persona en plano medio y la escotilla abriéndose, seguida de 'accion' sorpresa cuando sale despedida. 2) 'composicion' en fondo espacio con astronauta sin casco flotando, Tierra de fondo y reloj_arena grande arriba que se va vaciando. Esta composición vuelve 2-3 veces con distinto encuadre y escala para marcar los segundos, siempre con las piezas en distinta posición para que no se vea repetida. 3) Para el cuerpo, 'person' de cuerpo entero con zonas en rojo: pulmones en el segundo 0, piel hinchada en el segundo 8 y cabeza en el segundo 15. 4) 'composicion' con gota en primer plano burbujeando sobre una lengua o boca, plano clave que se reutiliza en el final para cerrar el bucle. 5) 'composicion' con estrella (el sol) brillando fuerte y el astronauta, para la quemadura solar. 6) 'big_text' solo una vez, '15 SEGUNDOS', con la persona reaccionando debajo. 7) Bloque LeBlanc con escenas que no salen en el resto: 'newspaper' en estilo recorte antiguo '1966', 'map_pin' sobre Houston en el globo terráqueo y 'escena' de laboratorio de la NASA con una gran cámara de vacío y un técnico con traje. Después, 'accion' caer_romper para el desmayo (el tubo suelto o el visor) y 'quote' en nota amarilla con su frase sobre la saliva. 8) Rescate: 'composicion' con cohete o nave acercándose al astronauta flotante y reloj_arena casi vacío. 9) Cierre: vuelve el primer plano de la gota en la lengua, se corta en el reloj_arena a medio caer y fundido a negro. Portada: astronauta sin casco flotando con la Tierra detrás y un reloj de arena enorme, con colores vivos y el texto '15 s'.",
+    "por_que_funcionara": "Combina los dos formatos que el dueño aprueba: una situación vivida en segunda persona con escalada paso a paso (como 'Bajas once kilómetros...' o 'Tienes 17 años y no vas a dormir en 11 días') y una historia real con protagonista y nombre contada como documental (como 'El médico que se operó a sí mismo'). El gancho plantea el tema con una pregunta en 2 segundos y deja una pista intrigante, la lengua, que obliga a ver hasta el final para resolverla, lo que crea un bucle perfecto para la repetición. Romper mitos (no explotas, no te congelas) genera comentarios. Visualmente evita los fallos que más descarta: escenas variadas sin repetir el mismo plano, estilo luminoso, piezas a medida y una portada colorida y clara.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "escotilla de nave espacial abriéndose",
+      "lengua o boca en primer plano con burbujas",
+      "cámara de vacío de la NASA de 1966 (gran cilindro metálico con ventanilla)",
+      "tubo de traje espacial suelto",
+      "casco de astronauta flotando suelto"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Cuánto durarías en el espacio sin traje?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Pregunta directa, deja claro el tema en menos de 2 segundos y pide la respuesta."
+    },
+    {
+      "texto": "Sales al espacio sin traje. ¿Cuánto aguantas?",
+      "tipo": "b",
+      "puntuacion": 8,
+      "motivo": "Segunda persona con reto, tema claro y 8 palabras."
+    },
+    {
+      "texto": "No explotas ni te congelas. Pero tienes segundos.",
+      "tipo": "e",
+      "puntuacion": 8,
+      "motivo": "Rompe el mito, aunque el tema queda más implícito."
+    },
+    {
+      "texto": "Tu saliva hierve en el espacio. ¿Cuánto sobrevives?",
+      "tipo": "c",
+      "puntuacion": 7,
+      "motivo": "Dato que choca más pregunta, pero destripa un detalle del giro."
+    },
+    {
+      "texto": "Se abre la escotilla y no llevas traje.",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Situación inmersiva, pero la pregunta central queda para el plano 2."
+    }
+  ]
+}
