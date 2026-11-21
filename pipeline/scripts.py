@@ -330,7 +330,7 @@ def pick_new_ideas(ideas: list[dict], history: list[dict], n: int, keep_last: in
     return chosen
 
 
-def make_params(system: str, context: str | None, user: str, schema: dict, model: str, effort: str = "high") -> dict:
+def make_params(system: str, context: str | None, user: str, schema: dict, model: str, effort: str = "high", max_tokens: int = 32000) -> dict:
     """Petición con la parte fija (instrucciones + catálogo) cacheada: se paga casi una sola vez."""
     blocks = [{"type": "text", "text": system}]
     if context:
@@ -338,7 +338,7 @@ def make_params(system: str, context: str | None, user: str, schema: dict, model
     blocks[-1]["cache_control"] = {"type": "ephemeral", "ttl": "1h"}
     return dict(
         model=model,
-        max_tokens=16000,
+        max_tokens=max_tokens,  # límite alto: solo se paga lo que se escribe, y así no se corta (cortarse = pagar dos veces)
         system=blocks,
         output_config={"effort": effort, "format": {"type": "json_schema", "schema": schema}},
         messages=[{"role": "user", "content": user}],
@@ -545,7 +545,7 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
         + (f"Para este vídeo se han añadido a la biblioteca estas piezas (úsalas en 'composicion'): {', '.join(idea['piezas_nuevas'])}\n\n" if idea.get("piezas_nuevas") else "")
         + f"Duración objetivo: {lo}-{hi} segundos. Escribe los ganchos candidatos y después el guion completo."
     )
-    return make_params(SYSTEM_WRITER, context, user, STORY_SCHEMA, models(cfg)[1])
+    return make_params(SYSTEM_WRITER, context, user, STORY_SCHEMA, models(cfg)[1], effort=cfg["generacion"].get("esfuerzo_guiones", "medium"))
 
 
 def _fix_pieces(params: dict, text: str) -> tuple[dict, str | None]:
