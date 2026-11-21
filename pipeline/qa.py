@@ -35,6 +35,28 @@ def _ffmpeg_log(mp4: Path, vf: str | None = None, af: str | None = None) -> str:
     return subprocess.run(cmd, capture_output=True, text=True).stderr
 
 
+def empty_stretches(mp4: Path, w: int = 270, h: int = 480, limit: float = 0.008, min_run: int = 3) -> list[tuple[int, int]]:
+    """Tramos de >= min_run segundos casi sin dibujos (solo fondo): se mide la proporción de trazos oscuros
+    (contornos de los dibujos) en la zona central, sin subtítulos ni etiquetas."""
+    import numpy as np  # noqa: PLC0415
+
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(mp4), "-vf", f"fps=1,scale={w}:{h}", "-f", "rawvideo",
+                          "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
+    if not raw:
+        return []
+    fr = np.frombuffer(raw, np.uint8).reshape(-1, h, w, 3)
+    dark = (fr[:, int(h * 0.26):int(h * 0.86)].max(axis=3) < 95).mean(axis=(1, 2))
+    runs, start = [], None
+    for i, v in enumerate(list(dark) + [1.0]):
+        if v < limit and start is None:
+            start = i
+        elif v >= limit and start is not None:
+            if i - start >= min_run:
+                runs.append((start, i - 1))
+            start = None
+    return runs
+
+
 def check(mp4: Path, timeline: dict, script_text: str, end_card: float = 2.4) -> list[str]:
     problems: list[str] = []
     info = _probe(mp4)
@@ -122,4 +144,10 @@ def check(mp4: Path, timeline: dict, script_text: str, end_card: float = 2.4) ->
         pass
     except Exception as e:  # el revisor nunca debe romper la tanda
         problems.append(f"No se pudo comprobar la narración con Whisper ({e})")
+    # 5) Escenas casi vacías (solo fondo, sin dibujos)
+    try:
+        for a_, b_ in empty_stretches(mp4):
+            problems.append(f"Del segundo {a_} al {b_} casi no hay dibujos (solo el fondo)")
+    except Exception as e:  # noqa: BLE001
+        print(f"  aviso: no se pudo comprobar si hay escenas vacías ({e})")
     return problems

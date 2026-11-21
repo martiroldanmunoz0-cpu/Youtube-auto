@@ -184,6 +184,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     ]
     meta = {k: st[k] for k in ("id", "title", "description", "tags", "video", "portada") if k in st}
     write_json(DATA / "weeks" / f"{vid}.json", {"semana": vid, "tanda": wid, "pedido": req, "tag": tag, "videos": [meta]})
+    write_json(DATA / "guiones" / f"{vid}.json", {k: v for k, v in st.items() if k not in ("video", "qa", "portada")})  # para "Rehacer gratis"
     write_json(history_file(vid), [{"id": vid, "titulo": st["title"], "tipo": st.get("idea", {}).get("tipo"),
                                     "ts": dt.datetime.now(dt.timezone.utc).isoformat(),
                                     "premisa": st.get("idea", {}).get("premisa", ""), "gancho": st.get("idea", {}).get("gancho", "")}])

@@ -136,7 +136,7 @@ export const PROPS = {
     R(ctx, -260, -330, 520, 300, 60, '#e8b48a');
     for (let i = 0; i < 5; i++) C(ctx, -200 + i * 100, -80 - (i % 2) * 190, 6, '#d29a72', 0);
     const k = Math.min(1, t / 6) * 0.7; // se va cerrando poco a poco (nunca del todo en el plano)
-    ctx.beginPath(); ctx.moveTo(-160, -200); ctx.quadraticCurveTo(0, -150 - 60 * (1 - k), 160, -200); ctx.quadraticCurveTo(0, -250 + 60 * (1 - k), -160, -200);
+    ctx.beginPath(); ctx.moveTo(-170, -200); ctx.quadraticCurveTo(0, -200 - 70 * (1 - k), 170, -200); ctx.quadraticCurveTo(0, -200 + 70 * (1 - k), -170, -200);
     ctx.fillStyle = `rgba(214,60,70,${1 - k * 0.6})`; ctx.fill(); O(ctx, 6);
   },
   tirita(ctx) {
@@ -175,6 +175,31 @@ export const PROPS = {
     R(ctx, -230, -200, 460, 200, 20, '#ff8fab'); R(ctx, -180, -340, 360, 150, 20, '#ffd0de');
     ctx.beginPath(); for (let x = -230; x <= 230; x += 46) ctx.arc(x, -200, 23, 0, Math.PI); ctx.fillStyle = '#ffffff'; ctx.fill();
     for (const x of [-90, 0, 90]) { R(ctx, x - 12, -440, 24, 100, 6, ['#5ab8ff', '#6fcf97', '#ffd166'][(x / 90 + 1) | 0], 5); E(ctx, x, -470 + Math.sin(t * 12 + x) * 3, 14, 24, '#ffb347', 0, 4); }
+  },
+  globulo_rojo(ctx, t) { ctx.translate(0, -200); ctx.rotate(Math.sin(t) * 0.2); E(ctx, 0, 0, 190, 150, '#e8505b'); E(ctx, 0, 0, 100, 70, '#c43a46', 0, 6); },
+  globulo_blanco(ctx, t) {
+    ctx.translate(0, -210);
+    ctx.beginPath(); for (let i = 0; i <= 24; i++) { const a = (i / 24) * Math.PI * 2, r = 170 + Math.sin(a * 5 + t * 3) * 18; i ? ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r) : ctx.moveTo(r, 0); }
+    ctx.closePath(); ctx.fillStyle = '#f4f1ff'; ctx.fill(); O(ctx);
+    for (const [x, y] of [[-40, -20], [30, 10], [-10, 50]]) C(ctx, x, y, 45, '#bb6bd9', 6);
+    EYE(ctx, -60, -90, 16); EYE(ctx, 20, -100, 16); MOUTH(ctx, -20, -50, 22);
+  },
+  plaqueta(ctx, t) { for (const [x, y, r] of [[-90, -140, 0.2], [60, -170, -0.4], [0, -280, 0.7]]) { ctx.save(); ctx.translate(x, y + Math.sin(t * 2 + x) * 8); ctx.rotate(r); E(ctx, 0, 0, 90, 50, '#ffb347'); for (const d of [-30, 10, 40]) C(ctx, d, -5, 10, '#e0902f', 0); ctx.restore(); } },
+  macrofago(ctx, t) {
+    ctx.translate(0, -220);
+    ctx.beginPath(); for (let i = 0; i <= 30; i++) { const a = (i / 30) * Math.PI * 2, r = 200 + (i % 5 === 0 ? 60 + Math.sin(t * 2 + i) * 20 : 0); i ? ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r) : ctx.moveTo(r, 0); }
+    ctx.closePath(); ctx.fillStyle = '#9fd3e6'; ctx.fill(); O(ctx);
+    C(ctx, 40, 30, 60, '#5ab8ff', 6); EYE(ctx, -60, -50, 20); EYE(ctx, 20, -60, 20); ctx.beginPath(); ctx.arc(-20, 0, 50, 0.1, Math.PI - 0.1); ctx.fillStyle = INK; ctx.fill();
+  },
+  bacteria(ctx, t) {
+    ctx.translate(0, -200); ctx.rotate(Math.sin(t * 2) * 0.15);
+    for (let i = 0; i < 6; i++) L(ctx, [[180, -30 + i * 12], [230, -50 + i * 20 + Math.sin(t * 8 + i) * 10]], '#6fcf97', 5);
+    R(ctx, -190, -90, 380, 180, 90, '#6fcf97'); EYE(ctx, -80, -20, 18); EYE(ctx, -20, -20, 18); MOUTH(ctx, -50, 30, 24, false);
+  },
+  colageno(ctx, t) { for (let k = 0; k < 3; k++) { const pts = []; for (let i = 0; i <= 14; i++) pts.push([-300 + i * 43, -200 + Math.sin(i * 0.9 + k * 2.1 + t * 2) * 40 + (k - 1) * 30]); L(ctx, pts, ['#ffd0de', '#ff8fab', '#ffb3c7'][k], 22); } },
+  piel(ctx, t) {
+    R(ctx, -300, -360, 600, 120, 20, '#f2c79a'); R(ctx, -300, -240, 600, 120, 0, '#e8a87c'); R(ctx, -300, -120, 600, 120, 20, '#f6d3b3');
+    for (let i = 0; i < 6; i++) L(ctx, [[-250 + i * 100, -230], [-230 + i * 100, -140]], '#e8505b', 6);
   },
   // ---------------- Espacio y naturaleza ----------------
   planeta(ctx, t) { C(ctx, 0, -220, 190, '#ff9f68'); ctx.save(); ctx.beginPath(); ctx.arc(0, -220, 190, 0, 7); ctx.clip(); for (let i = 0; i < 4; i++) { ctx.fillStyle = 'rgba(200,90,50,0.35)'; ctx.fillRect(-200, -380 + i * 90, 400, 30); } ctx.restore(); ctx.beginPath(); ctx.ellipse(0, -220, 310, 70, -0.3, 0.15, Math.PI - 0.15); O(ctx, 22); ctx.strokeStyle = '#ffd166'; ctx.lineWidth = 12; ctx.stroke(); },
@@ -246,8 +271,8 @@ export const PROPS = {
   montana_pieza(ctx) { P(ctx, [[-360, 0], [-60, -440], [240, 0]], '#8ea6c8'); P(ctx, [[-60, -440], [-150, -310], [-90, -330], [-40, -300], [30, -340]], '#ffffff', 6); },
 };
 export const PROP_NAMES = Object.keys(PROPS);
-const ALIAS = { dino: 'dinosaurio', nobel: 'medalla', premio_nobel: 'medalla', 'premio nobel': 'medalla', premio: 'trofeo', galardon: 'trofeo', laboratorio: 'microscopio', cientifico: 'microscopio', 'científico': 'microscopio', investigacion: 'lupa', 'investigación': 'lupa', descubrimiento: 'bombilla', vejez: 'reloj_arena', tiempo: 'reloj_arena', envejecimiento: 'reloj_arena', sangre: 'gota', dna: 'adn', gen: 'adn', genes: 'adn', corte: 'herida', cicatriz: 'herida', 'tirita': 'tirita', curita: 'tirita', 'división celular': 'celula_dividiendose', telomero: 'cromosoma', 'telómero': 'cromosoma', 'telómeros': 'cromosoma', mitocondrias: 'mitocondria', 'radicales libres': 'radical_libre', oxidacion: 'radical_libre', 'oxidación': 'radical_libre', cumpleanos: 'tarta_cumpleanos', 'cumpleaños': 'tarta_cumpleanos', tarta: 'tarta_cumpleanos', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
-  'corazón': 'corazon', 'célula': 'celula', 'adn': 'adn', bacteria: 'virus', microbio: 'virus', germen: 'virus', 'volcán': 'volcan', 'árbol': 'arbol', coche: 'coche_rojo', auto: 'coche_rojo', 'avión': 'avion',
+const ALIAS = { dino: 'dinosaurio', globulos_rojos: 'globulo_rojo', 'glóbulo rojo': 'globulo_rojo', 'glóbulos rojos': 'globulo_rojo', eritrocito: 'globulo_rojo', 'glóbulo blanco': 'globulo_blanco', 'glóbulos blancos': 'globulo_blanco', leucocito: 'globulo_blanco', linfocito: 'globulo_blanco', defensas: 'globulo_blanco', anticuerpo: 'globulo_blanco', plaquetas: 'plaqueta', coagulo: 'plaqueta', 'coágulo': 'plaqueta', costra: 'plaqueta', 'macrófago': 'macrofago', 'macrófagos': 'macrofago', fagocito: 'macrofago', bacterias: 'bacteria', microbio: 'bacteria', germen: 'bacteria', fibroblasto: 'colageno', fibroblastos: 'colageno', 'colágeno': 'colageno', fibras: 'colageno', cicatriz_piel: 'piel', capas_piel: 'piel', dermis: 'piel', epidermis: 'piel', nobel: 'medalla', premio_nobel: 'medalla', 'premio nobel': 'medalla', premio: 'trofeo', galardon: 'trofeo', laboratorio: 'microscopio', cientifico: 'microscopio', 'científico': 'microscopio', investigacion: 'lupa', 'investigación': 'lupa', descubrimiento: 'bombilla', vejez: 'reloj_arena', tiempo: 'reloj_arena', envejecimiento: 'reloj_arena', sangre: 'gota', dna: 'adn', gen: 'adn', genes: 'adn', corte: 'herida', cicatriz: 'herida', 'tirita': 'tirita', curita: 'tirita', 'división celular': 'celula_dividiendose', telomero: 'cromosoma', 'telómero': 'cromosoma', 'telómeros': 'cromosoma', mitocondrias: 'mitocondria', 'radicales libres': 'radical_libre', oxidacion: 'radical_libre', 'oxidación': 'radical_libre', cumpleanos: 'tarta_cumpleanos', 'cumpleaños': 'tarta_cumpleanos', tarta: 'tarta_cumpleanos', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
+  'corazón': 'corazon', 'célula': 'celula', 'adn': 'adn',  'volcán': 'volcan', 'árbol': 'arbol', coche: 'coche_rojo', auto: 'coche_rojo', 'avión': 'avion',
   'helicóptero': 'helicoptero', agua: 'vaso_agua', vaso: 'vaso_agua', 'café': 'cafe', 'pirámide': 'piramide', tesoro: 'cofre', oro: 'lingote', dinero: 'bolsa_dinero', billete: 'dinero_billete',
   idea: 'bombilla', 'reloj de arena': 'reloj_arena', reloj_de_arena: 'reloj_arena', medicina: 'pastilla', vacuna: 'jeringa', llave: 'llave_antigua', 'teléfono': 'telefono_antiguo', 'montaña': 'montana_pieza', montana: 'montana_pieza',
   asteroide: 'meteorito', cometa: 'meteorito', 'ovni': 'ovni', marte: 'planeta', saturno: 'planeta', 'júpiter': 'planeta', planeta_tierra: 'tierra', mundo: 'tierra' };

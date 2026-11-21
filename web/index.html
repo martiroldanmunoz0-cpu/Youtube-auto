@@ -270,7 +270,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
   const TZ = "Europe/Madrid";
   const WF = {pedido: "pedido.yml", semanal: "semanal.yml", historia: "historia.yml"};
-  const GEN_PATHS = ["semanal.yml", "semanal_montar.yml", "pedido.yml", "historia.yml"].map(f => ".github/workflows/" + f);
+  const GEN_PATHS = ["semanal.yml", "semanal_montar.yml", "pedido.yml", "historia.yml", "rehacer.yml"].map(f => ".github/workflows/" + f);
   const WEEKLY = {dow: 1, h: 4, m: 1}; // lunes 04:01 hora de Madrid (igual que semanal.yml)
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -428,7 +428,7 @@ nav .n.bad{background:var(--bad);color:#fff}
         <h4>${esc(v.title)}</h4>
         <div class="meta">${esc(v.origin || (multi ? "Tanda " + p.tanda : ""))} · ${esc(fmtShort(new Date(p.issue.created_at)))}</div>
         ${qa}${desc}${guion}
-        <div class="links" style="font-size:13px;display:flex;gap:12px">${v.dl ? `<a href="${esc(v.dl)}">Descargar</a>` : ""}<a href="${esc(p.issue.html_url)}" target="_blank" rel="noopener">Ver en GitHub</a></div>
+        <div class="links" style="font-size:13px;display:flex;gap:12px">${v.dl ? `<a href="${esc(v.dl)}">Descargar</a>` : ""}<a href="${esc(p.issue.html_url)}" target="_blank" rel="noopener">Ver en GitHub</a><a href="#" data-rehacer="${esc(v.id)}" title="Vuelve a montarlo con el mismo guion y el sistema actual, sin gastar API">↻ Rehacer gratis</a></div>
         ${actions}
       </div></article>`;
   }
@@ -477,6 +477,19 @@ nav .n.bad{background:var(--bad);color:#fff}
     for (const p of pending) for (const v of p.vids) cards.push(videoCard(p, v));
     $("#revisar-list").innerHTML = cards.length ? `<div class="grid">${cards.join("")}</div>` : "";
   }
+
+  // ---------- Rehacer gratis (mismo guion, sin API) ----------
+  document.addEventListener("click", async e => {
+    const a = e.target.closest("[data-rehacer]"); if (!a) return;
+    e.preventDefault();
+    if (needToken()) return;
+    const id = a.dataset.rehacer, tanda = id.replace(/-\d{2}(-r\d+)?$/, "");
+    if (!confirm(`¿Rehacer «${id}» con el mismo guion y el sistema actual?\n\nNo gasta saldo de la API. El vídeo nuevo llegará a Revisar en unos 20-30 minutos; el antiguo puedes descartarlo.`)) return;
+    try {
+      await gh(`/actions/workflows/rehacer.yml/dispatches`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({ref: "main", inputs: {id, tanda}})});
+      toast("✓ Rehaciendo gratis. Lo verás en “En marcha”."); setTimeout(loadRunning, 5000);
+    } catch (err) { toast("No se pudo: " + err.message, true); }
+  });
 
   // ---------- Programados ----------
   function renderProgramados() {
@@ -849,7 +862,7 @@ nav .n.bad{background:var(--bad);color:#fff}
           const st = q ? `<span class="pill ok">publicado / programado</span>` : v.checked ? `<span class="pill ok">aprobado</span>` : `<span class="pill bad">descartado</span>`;
           rows.push(`<div class="row"><div class="what"><b>${esc(v.title)}</b>
             <div class="meta">${st}${esc(fmtShort(new Date(p.issue.closed_at)))}</div>
-            <div class="links">${v.dl ? `<a href="${esc(v.dl)}">vídeo</a>` : ""}<a href="${esc(p.issue.html_url)}" target="_blank" rel="noopener">issue</a></div></div></div>`);
+            <div class="links">${v.dl ? `<a href="${esc(v.dl)}">vídeo</a>` : ""}<a href="${esc(p.issue.html_url)}" target="_blank" rel="noopener">issue</a><a href="#" data-rehacer="${esc(v.id)}">↻ Rehacer gratis</a></div></div></div>`);
         }
       }
       el.innerHTML = rows.length ? `<div class="list">${rows.join("")}</div>` : `<div class="empty">Aún no hay historial.</div>`;

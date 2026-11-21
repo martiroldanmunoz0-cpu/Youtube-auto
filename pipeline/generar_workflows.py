@@ -112,7 +112,7 @@ jobs:
         run: |
           while true; do
             ANTES=$(gh api "repos/$GH_REPO/actions/runs?per_page=100" --jq '[.workflow_runs[]
-              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/pedido.yml" or .path == ".github/workflows/historia.yml" or .path == ".github/workflows/semanal_montar.yml")
+              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/pedido.yml" or .path == ".github/workflows/historia.yml" or .path == ".github/workflows/semanal_montar.yml" or .path == ".github/workflows/rehacer.yml")
               | select(.status != "completed" and .id < ('"$MY_RUN"'))] | length')
             if [ "$ANTES" = "0" ]; then echo "¡Es mi turno!"; break; fi
             echo "Hay $ANTES tanda(s) antes que yo en la cola. Espero 1 minuto..."
@@ -135,6 +135,7 @@ jobs:
       - name: Escribir guiones con IA
         env:
           ANTHROPIC_API_KEY: ${{{{ secrets.ANTHROPIC_API_KEY }}}}
+          GH_TOKEN: ${{{{ github.token }}}}
         run: python pipeline/scripts.py
 
       - name: Marcar el plan semanal como en montaje (así el respaldo no lo lanza dos veces)
@@ -358,3 +359,21 @@ open(f"{out}/historia.yml", "w").write(workflow(
   PEDIDO: ${{ inputs.tema }}
   PEDIDO_N: ${{ inputs.cantidad }}
 """, RID_STATIC, TRENDS_HIST, 5, "Historia real generada", "\"Historia real: ${{ inputs.tema || 'la mejor que encuentre' }}\""))
+
+open(f"{out}/rehacer.yml", "w").write(workflow(
+    "Rehacer vídeo gratis", "Vuelve a montar un vídeo con su MISMO guion (sin gastar API) usando el sistema y las piezas actuales.",
+    """on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "Vídeo a rehacer (p. ej. pedido-10-03)"
+        required: true
+        type: string
+      tanda:
+        description: "Tanda del vídeo (p. ej. pedido-10)"
+        required: true
+        type: string
+""", """  RUN_ID: ${{ inputs.tanda }}
+  FASE: rehacer
+  REHACER_ID: ${{ inputs.id }}
+""", RID_STATIC, "", 1, "Vídeo rehecho", "\"Rehacer gratis ${{ inputs.id }}\""))

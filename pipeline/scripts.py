@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+from pathlib import Path
 import re
 import sys
 import time
@@ -878,6 +879,8 @@ def main():
     request = pedido()
     fmt = formato()
     fase = os.environ.get("FASE", "").strip()  # "" = todo seguido | plan = solo ideas | guiones = desde un plan guardado
+    if fase == "rehacer":
+        return rehacer(os.environ["REHACER_ID"], rid, wd)
     plan_path = DATA / "planes" / f"{rid}.json"
     if fase == "guiones" and plan_path.exists():
         plan = read_json(plan_path)
@@ -924,6 +927,50 @@ def main():
         print(f"Plan guardado: {len(ideas)} ideas; piezas nuevas necesarias: {nuevas or 'ninguna'}")
         return
     return write_scripts(ideas, analysis, cfg, rid, wd, fmt, use_batch)
+
+
+def _find_story(vid: str) -> dict | None:
+    """Guion guardado de un vídeo: data/guiones/<id>.json o, en vídeos antiguos, la copia 'guiones' de su ejecución."""
+    import subprocess  # noqa: PLC0415
+    import tempfile  # noqa: PLC0415
+
+    saved = read_json(DATA / "guiones" / f"{vid}.json")
+    if saved:
+        return saved
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    runs = json.loads(subprocess.run(["gh", "api", f"repos/{repo}/actions/runs?per_page=80"], capture_output=True, text=True).stdout or "{}").get("workflow_runs", [])
+    for r in runs:
+        if not r.get("path", "").endswith(("pedido.yml", "historia.yml", "semanal.yml", "semanal_montar.yml", "rehacer.yml")):
+            continue
+        with tempfile.TemporaryDirectory() as tmp:
+            if subprocess.run(["gh", "run", "download", str(r["id"]), "-R", repo, "-n", "guiones", "-D", tmp], capture_output=True).returncode:
+                continue
+            for f in Path(tmp).rglob("stories.json"):
+                for st in json.loads(f.read_text(encoding="utf-8")):
+                    if st.get("id") == vid:
+                        print(f"  guion recuperado de la ejecución {r['id']}")
+                        return st
+    return None
+
+
+def rehacer(vid: str, rid: str, wd) -> None:
+    """Vuelve a montar un vídeo con su MISMO guion (sin llamar a la API: coste 0) y el sistema actual."""
+    st = _find_story(vid)
+    if not st:
+        sys.exit(f"No encuentro el guion de {vid}")
+    for b in st.get("beats", []):  # corrige nombres de piezas con la biblioteca actual
+        if b.get("scene") == "composicion":
+            params, alt = _fix_pieces(b.get("params") or {}, b.get("text", ""))
+            b["params"] = params
+            if alt:
+                b["scene"] = alt
+    base = re.sub(r"-r\d+$", "", vid)
+    n = 1 + sum(1 for p in (DATA / "guiones").glob(f"{base}-r*.json")) if (DATA / "guiones").exists() else 1
+    st["id"] = f"{base}-r{n}"
+    st.pop("video", None); st.pop("qa", None); st.pop("portada", None)
+    write_json(wd / "analysis.json", {"resumen": "", "patrones_gancho": [], "temas_calientes": [], "formatos": [], "ideas": []})
+    write_json(wd / "stories.json", [st])
+    print(f"Rehacer gratis: {vid} -> {st['id']} ({len(st.get('beats', []))} planos, sin gastar API)")
 
 
 def write_scripts(ideas, analysis, cfg, rid, wd, fmt, use_batch):
