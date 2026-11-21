@@ -8,10 +8,11 @@ import { character, money, calendar } from './life.mjs';
 import { person, hospital, surgery, doctor, document, quote, year_jump, group } from './story.mjs';
 import { escena } from './bright.mjs';
 import { composicion } from './compose.mjs';
+import { accion } from './actions.mjs';
 import { duo, closeup, vice_street, vice_beach, car_ride, police_chase } from './vice.mjs';
 
 export const SCENES = {
-  escena, composicion,
+  escena, composicion, accion,
   car_window, rearview_eyes, city_street, phone,
   bedroom, front_door, hallway, house_exterior, clock, tv,
   forest, ocean, space, eyes_dark, silhouette,

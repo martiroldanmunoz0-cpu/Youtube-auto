@@ -18,6 +18,17 @@
   "red": "destello rojo (peligro, giro de terror)"
  },
  "scenes": {
+  "accion": {
+   "desc": "ACCIÓN ANIMADA con principio y final (2-4 s): lo que la voz dice, PASA en pantalla. Úsala para los verbos y momentos clave: cortarse (primer plano del dedo, cuchillo, sangre, ¡AY!), caer_romper (algo cae y se hace añicos), explosion, beber, comer (mordiscos), idea (bombilla sobre la cabeza), sorpresa (salto del susto), crecer (de semilla a flor), choque (coche contra un muro), dormir (Zzz), rayo.",
+   "params": {
+    "tipo": "cortarse|caer_romper|explosion|beber|comer|idea|sorpresa|crecer|choque|dormir|rayo",
+    "lugar": "lugar de fondo cuando tenga sentido (ver 'escena')",
+    "hora": "dia|atardecer|noche",
+    "objeto": "para caer_romper y comer: pieza de la biblioteca (vaso_agua, hamburguesa, pizza, manzana...)",
+    "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
+    "label": "texto corto (opcional)"
+   }
+  },
   "composicion": {
    "desc": "ESCENA A MEDIDA: un lugar (o fondo liso) con hasta 4 PIEZAS de la biblioteca colocadas, escaladas y animadas, y opcionalmente la persona reaccionando. Úsala SIEMPRE que la narración hable de algo concreto (un animal, un órgano, un planeta, un vehículo, una comida, un objeto histórico...): así cada vídeo tiene sus propias escenas (p. ej. un dinosaurio gigante en la playa con la persona asustada; un corazón latiendo en la oficina; un tiburón bajo el mar).",
    "params": {
@@ -472,5 +483,8 @@
   "júpiter": "planeta",
   "planeta_tierra": "tierra",
   "mundo": "tierra"
+ },
+ "efectos": {
+  "desc": "Cualquier escena admite el parámetro \"efecto\" para dar impacto al momento: pum|boom|ay|zas|wow|crac|glup|ups|plaf (palabra de cómic con destello) | velocidad (líneas de movimiento) | brillo (destellos) | humo | impacto (flash + líneas)."
  }
 }

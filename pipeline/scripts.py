@@ -212,7 +212,8 @@ Así el dibujo se parece a la persona real. Si no sabes cómo era algún rasgo, 
 - Si no estás muy seguro de un dato concreto (fecha, cifra, nombre), no lo pongas o redondéalo.
 
 REGLAS DE TEXTO
-- 105-145 palabras en total y entre 9 y 14 planos (historias reales: 115-150 palabras y 10-15 planos). \
+- 105-145 palabras en total y entre 14 y 20 planos (historias reales: 115-150 palabras y 15-20 planos): un cambio de \
+imagen cada 2-3 segundos. Cada plano, UNA frase corta (6-12 palabras). \
 Cada plano: 1-2 frases, 6-22 palabras.
 - Escribe para el oído: sin emojis, sin abreviaturas, números escritos como se dicen si son cortos.
 - Es un canal de CURIOSIDADES: tono divulgativo, cercano y con ritmo, como un amigo que te cuenta algo alucinante.
@@ -234,6 +235,11 @@ haciendo algo ("objeto" en la mano, expresión con "mood") y cambia de lugar o d
 frecuencia. Las escenas marcadas [ESTILO OSCURO] solo para misterio o miedo.
 - PIEZAS: en "piezas" pon SOLO nombres EXACTOS de "piezas_disponibles" (p. ej. "plaqueta", "globulo_blanco"), nunca \
 descripciones ("plaquetas como ladrillos" está MAL). El estilo lo dan el lugar, la animación y la etiqueta.
+- LO QUE SE DICE, SE VE (clave para la retención): cada plano tiene que MOSTRAR exactamente lo que dice la voz, con \
+algo que PASA, no un dibujo quieto. Si la frase tiene una acción ("te cortas", "explota", "cae", "se rompe", "bebes", \
+"se le ocurre", "choca", "crece", "se duerme"), usa la escena "accion" con ese tipo. En los momentos fuertes añade \
+"efecto" (pum, boom, ay, zas, wow, crac, velocidad, brillo, humo, impacto) a cualquier escena. Varía mucho: acción, \
+composición, escena, cifra, mapa... casi nunca dos planos seguidos con el mismo tipo de escena.
 - ESCENAS A MEDIDA: cuando la narración hable de algo concreto (un animal, un órgano del cuerpo, un planeta, un \
 vehículo, una comida, un objeto, un monumento...), usa "composicion" para MOSTRARLO con piezas de la biblioteca \
 ("piezas_disponibles"), en el lugar y la hora que toquen, y si aporta, con la persona reaccionando al lado. Combina \
@@ -636,6 +642,7 @@ def validate_story(story: dict) -> dict:
 
     reps = {k: v for k, v in Counter(f"escena:{b['params'].get('lugar')}:{b['params'].get('plano', 'medio')}" if b["scene"] == "escena"
                          else f"composicion:{json.dumps(b['params'].get('piezas'), sort_keys=True)}" if b["scene"] == "composicion"
+                         else f"accion:{b['params'].get('tipo')}" if b["scene"] == "accion"
                          else b["scene"] for b in beats).items()
             if v > (4 if k in ("character", "person") else 2)}
     if reps:
@@ -654,7 +661,10 @@ def validate_story(story: dict) -> dict:
     pregunta = re.sub(r"\s+", " ", story.get("pregunta_central") or "").strip()
     if beats and pregunta.endswith("?") and not any("?" in b["text"] for b in beats[:3]):
         pos = 1 if len(beats) > 1 else 0  # el plano 1 queda corto y fuerte; la pregunta, justo después
-        beats.insert(pos, {**beats[pos - 1 if pos else 0], "text": pregunta, "camera": "push_in", "transition": "cut"})
+        base = beats[pos - 1 if pos else 0]
+        if base["scene"] == "accion":  # no repetir la acción: la persona reacciona en su sitio
+            base = {**base, "scene": "escena", "params": {"lugar": base["params"].get("lugar") or "salon", "plano": "medio", "mood": "shocked", "efecto": "wow"}}
+        beats.insert(pos, {**base, "text": pregunta, "camera": "push_in", "transition": "cut"})
         print(f"  (añadida la pregunta central en el plano {pos + 1}: «{pregunta}»)")
     if beats:
         beats[0]["camera"] = beats[0]["camera"] if beats[0]["camera"] in ("slam", "shake") else "slam"  # movimiento desde el fotograma 0

@@ -287,3 +287,6 @@ export function propName(n) {
   return null;
 }
 export const PROP_ALIASES = ALIAS;
+
+// Ayudantes de dibujo (los usan también las acciones)
+export const DRAW = { O, E, C, R, P, L, EYE, MOUTH };

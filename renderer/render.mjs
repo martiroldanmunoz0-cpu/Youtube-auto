@@ -14,6 +14,7 @@ import { grain, vignette, topShade } from './lib/fx.mjs';
 import { paginate, drawSubtitles, drawWordSubtitles } from './lib/subtitles.mjs';
 import { SCENES } from './scenes/index.mjs';
 import { setLooks } from './lib/persona.mjs';
+import { drawEffect } from './lib/impact.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fontDir = path.join(here, '..', 'assets', 'fonts');
@@ -97,7 +98,7 @@ export class Renderer {
   }
 
   drawBeat(ctx, b, t, frame) {
-    const local = t - b.start;
+    const local = b.bucle ? 0.02 : t - b.start; // el plano del bucle queda quieto en el primer instante del plano 1
     const dur = Math.max(0.5, b.end - b.start);
     const prog = clamp(local / dur);
     const cam = (CAMERAS[b.camera] || CAMERAS.push_in)(ease.inOut(prog), t);
@@ -109,6 +110,7 @@ export class Renderer {
     ctx.translate(-W / 2, -H / 2);
     try {
       b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, seed: this.tl.persona || this.tl.seed, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
+      if (b.params.efecto) drawEffect(ctx, b.params.efecto, local); // ¡PUM!, ¡ZAS!, velocidad, brillo...
     } catch (e) {
       // Una escena rota no debe tumbar el vídeo entero: fondo neutro y aviso (el revisor lo verá)
       if (!sceneErrors.has(b.scene)) { sceneErrors.add(b.scene); console.error(`AVISO escena con error (${b.start}s): ${e.message}`); }
@@ -263,7 +265,7 @@ export function renderCover(tl, out) {
   const pickIdx = tl.cover?.beat ?? (cands.find(({ b }) => b.camera === 'slam') || cands[Math.floor(cands.length * 0.4)] || { i: Math.floor(r.beats.length / 2) }).i;
   const b = r.beats[pickIdx];
   const ctx = r.ctx;
-  const faces = new Set(['person', 'group', 'doctor', 'hospital', 'surgery', 'escena', 'composicion']);
+  const faces = new Set(['person', 'group', 'doctor', 'hospital', 'surgery', 'escena', 'composicion', 'accion']);
   const textLow = faces.has(b.scene_name);
   r.drawBeat(ctx, { ...b, camera: 'static', params: { ...b.params, label: '' } }, b.start + Math.min(1.2, (b.end - b.start) * 0.6), 0);
   // Oscurecer arriba para que el texto se lea
