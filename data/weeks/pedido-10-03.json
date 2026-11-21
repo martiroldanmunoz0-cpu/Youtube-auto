@@ -1,0 +1,29 @@
+{
+  "semana": "pedido-10-03",
+  "tanda": "pedido-10",
+  "pedido": "¿Por qué envejecemos si el cuerpo sabe repararse solo? Empieza con lo que pasa cuando te cortas: la herida se cierra sola en días. Explica cómo se reparan las células, por qué con los años lo hacen peor (telómeros que se acortan, daño que se acumula) y termina con un giro sorprendente.",
+  "tag": "pedido-10",
+  "videos": [
+    {
+      "id": "pedido-10-03",
+      "title": "Si tu herida se cura sola, ¿por qué envejeces? #shorts",
+      "description": "Sigue una herida minuto a minuto por dentro de tu cuerpo, hasta el día siete y más allá. ¿Sabías que una cicatriz nunca recupera toda la resistencia de la piel original? Cuéntame en los comentarios qué parche del cuerpo te sorprendió más. #ciencia #cuerpohumano #curiosidades #envejecimiento #shorts",
+      "tags": [
+        "envejecimiento",
+        "telómeros",
+        "cicatrización",
+        "cuerpo humano",
+        "curiosidades",
+        "ciencia",
+        "células",
+        "plaquetas",
+        "colágeno",
+        "por qué envejecemos",
+        "biología",
+        "datos curiosos"
+      ],
+      "video": "pedido-10-03.mp4",
+      "portada": "pedido-10-03_portada.jpg"
+    }
+  ]
+}
