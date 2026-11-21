@@ -1,392 +1,523 @@
 {
-  "title": "¿Qué te pasa si te cae un rayo? Milésima a milésima #shorts",
-  "description": "Vive en cámara superlenta lo que pasa en tu cuerpo si te cae un rayo, y conoce al hombre al que le cayeron siete. ¿Qué crees que haría falta para sobrevivir a tantos? Cuéntamelo en los comentarios. #curiosidades #rayos #ciencia #shorts",
-  "tags": [
-    "rayo",
-    "qué pasa si te cae un rayo",
-    "Roy Sullivan",
-    "récord Guinness",
-    "curiosidades",
-    "ciencia",
-    "tormenta",
-    "figuras de Lichtenberg",
-    "datos curiosos",
-    "supervivencia"
-  ],
-  "beats": [
-    {
-      "text": "¿Qué te pasa si te cae un rayo?",
-      "scene": "accion",
-      "params": {
-        "tipo": "rayo",
-        "lugar": "campo",
-        "hora": "atardecer"
-      },
-      "camera": "slam",
-      "transition": "cut"
-    },
-    {
-      "text": "Tienes una milésima de segundo para descubrirlo.",
-      "scene": "escena",
-      "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "plano": "entero",
-        "mood": "worried",
-        "arms": "normal",
-        "label": "0,000 s"
-      },
-      "camera": "push_in",
-      "transition": "fade"
-    },
-    {
-      "text": "Cero segundos: el rayo te toca.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "rayo",
-            "pos": "arriba",
-            "tamano": "gigante",
-            "anim": "caer"
-          }
-        ],
-        "efecto": "impacto"
-      },
-      "camera": "slam",
-      "transition": "flash"
-    },
-    {
-      "text": "Una milésima: trescientos millones de voltios.",
-      "scene": "big_text",
-      "params": {
-        "text": "300.000.000 V",
-        "label": "0,001 s",
-        "color": "#FFD400",
-        "lugar": "campo"
-      },
-      "camera": "push_in",
-      "transition": "cut"
-    },
-    {
-      "text": "Dos milésimas: tu corazón se para.",
-      "scene": "accion",
-      "params": {
-        "tipo": "latido",
-        "hora": "atardecer",
-        "label": "0,002 s"
-      },
-      "camera": "push_in",
-      "transition": "cut"
-    },
-    {
-      "text": "Tres: el sudor es vapor y tu ropa sale volando.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "piezas": [
-          {
-            "pieza": "bicicleta",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "girar"
-          },
-          {
-            "pieza": "fuego",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "flotar"
-          }
-        ],
-        "efecto": "humo",
-        "label": "0,003 s"
-      },
-      "camera": "shake",
-      "transition": "whip"
-    },
-    {
-      "text": "Cuatro milésimas: ya acabó. Menos que un parpadeo.",
-      "scene": "accion",
-      "params": {
-        "tipo": "vista_nublada",
-        "label": "0,004 s"
-      },
-      "camera": "static",
-      "transition": "fade"
-    },
-    {
-      "text": "Diez segundos: en el suelo, el corazón suele arrancar solo.",
-      "scene": "accion",
-      "params": {
-        "tipo": "latido",
-        "lugar": "campo",
-        "hora": "atardecer",
-        "who": "protagonista"
-      },
-      "camera": "tilt_down",
-      "transition": "fade"
-    },
-    {
-      "text": "Treinta minutos: tu piel dibuja un helecho rojo.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "rayo",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "flotar"
-          }
-        ],
-        "label": "30 minutos"
-      },
-      "camera": "push_in",
-      "transition": "cut"
-    },
-    {
-      "text": "Unas horas después, ha desaparecido.",
-      "scene": "hospital",
-      "params": {
-        "state": "awake",
-        "mood": "happy",
-        "hora": "dia",
-        "label": "Unas horas después"
-      },
-      "camera": "static",
-      "transition": "fade"
-    },
-    {
-      "text": "Cerca del noventa por ciento sobrevive.",
-      "scene": "big_text",
-      "params": {
-        "text": "90%",
-        "label": "sobrevive",
-        "color": "#2EC4B6",
-        "lugar": "campo"
-      },
-      "camera": "pull_out",
-      "transition": "flash"
-    },
-    {
-      "text": "Pero a un hombre le cayeron siete.",
-      "scene": "accion",
-      "params": {
-        "tipo": "sorpresa",
-        "who": "roy",
-        "lugar": "campo",
-        "hora": "dia"
-      },
-      "camera": "slam",
-      "transition": "red"
-    },
-    {
-      "text": "Roy Sullivan, guardabosques de Virginia.",
-      "scene": "map_pin",
-      "params": {
-        "place": "Parque Nacional Shenandoah",
-        "detail": "Virginia, EE. UU.",
-        "style": "relieve"
-      },
-      "camera": "pull_out",
-      "transition": "whip"
-    },
-    {
-      "text": "Durante treinta y cinco años.",
-      "scene": "year_jump",
-      "params": {
-        "from": 1942,
-        "to": 1977,
-        "label": "Siete rayos"
-      },
-      "camera": "static",
-      "transition": "cut"
-    },
-    {
-      "text": "Perdió una uña, las cejas, y su pelo ardió dos veces.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "mano",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "caer"
-          },
-          {
-            "pieza": "ojo",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "fuego",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "crecer"
-          }
-        ],
-        "efecto": "humo"
-      },
-      "camera": "shake",
-      "transition": "cut"
-    },
-    {
-      "text": "El último le alcanzó pescando.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "persona": "medio",
-        "who": "roy",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "pez",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "rayo",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "caer"
-          }
-        ]
-      },
-      "camera": "push_in",
-      "transition": "flash"
-    },
-    {
-      "text": "Sobrevivió a todos y entró en el Libro Guinness.",
-      "scene": "document",
-      "params": {
-        "title": "Más rayos recibidos",
-        "lines": [
-          "Roy Sullivan",
-          "Guardabosques",
-          "1942 - 1977",
-          "7 rayos",
-          "Sobrevivió a todos"
-        ],
-        "highlight": 3,
-        "stamp": "RÉCORD"
-      },
-      "camera": "pull_out",
-      "transition": "fade"
-    },
-    {
-      "text": "Así que, cuando oigas un trueno, recuerda a Roy y piensa…",
-      "scene": "accion",
-      "params": {
-        "tipo": "rayo",
-        "lugar": "campo",
-        "hora": "atardecer"
-      },
-      "camera": "static",
-      "transition": "cut",
-      "bucle": true
+ "title": "¿Qué te pasa si te cae un rayo? Milésima a milésima #shorts",
+ "description": "Vive en cámara superlenta lo que pasa en tu cuerpo si te cae un rayo, y conoce al hombre al que le cayeron siete. ¿Qué crees que haría falta para sobrevivir a tantos? Cuéntamelo en los comentarios. #curiosidades #rayos #ciencia #shorts",
+ "tags": [
+  "rayo",
+  "qué pasa si te cae un rayo",
+  "Roy Sullivan",
+  "récord Guinness",
+  "curiosidades",
+  "ciencia",
+  "tormenta",
+  "figuras de Lichtenberg",
+  "datos curiosos",
+  "supervivencia"
+ ],
+ "beats": [
+  {
+   "text": "¿Qué te pasa si te cae un rayo?",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "rayo",
+      "lugar": "campo",
+      "hora": "atardecer"
+     }
     }
-  ],
-  "looks": {
-    "protagonista": {
-      "genero": "hombre",
-      "edad": "joven",
-      "piel": "media",
-      "pelo": "corto",
-      "color_pelo": "castaño_oscuro",
-      "barba": "no",
-      "gafas": false,
-      "ropa": "azul"
-    },
-    "roy": {
-      "genero": "hombre",
-      "edad": "adulto",
-      "piel": "clara",
-      "pelo": "corto",
-      "color_pelo": "canoso",
-      "barba": "no",
-      "gafas": false,
-      "ropa": "verde"
-    }
+   },
+   "camera": "slam",
+   "transition": "cut"
   },
-  "cover_text": "¿7 RAYOS Y VIVO?",
-  "question": "¿Qué le pasa a tu cuerpo, segundo a segundo, si te cae un rayo?",
-  "piezas_pendientes": [
-    "zapatillas_deportivas",
-    "camiseta_chamuscada",
-    "brazo_lichtenberg",
-    "helecho",
-    "una_pie",
-    "cejas_chamuscadas",
-    "cana_pesca"
-  ],
-  "id": "pedido-19-01",
-  "idea": {
-    "tipo": "pedido",
-    "premisa": "¿Qué te pasa si te cae un rayo? El espectador lo vive en cámara superlenta, con un cronómetro en pantalla que avanza a saltos (0,000 s → 0,001 s → 0,003 s → 10 s → 2 horas). Guion aproximado (unos 40 s):\n- Estás en mitad de un prado, empieza a llover y se te eriza el pelo de los brazos.\n- 0,000 s: el rayo te toca.\n- 0,001 s: te atraviesan unos 300 millones de voltios, más que miles de enchufes juntos.\n- 0,002 s: la descarga cruza tu pecho y tu corazón se para.\n- 0,003 s: el calor convierte el sudor en vapor de golpe; tus zapatillas y tu ropa salen despedidas.\n- 0,004 s: ya ha terminado. Todo ha durado menos que un parpadeo.\n- 10 segundos: estás en el suelo. Muchas veces el corazón vuelve a arrancar solo, pero puedes necesitar que alguien te reanime.\n- 30 minutos: en tu piel aparece un dibujo con forma de helecho, las figuras de Lichtenberg, la huella del rayo en tus capilares.\n- Unas horas después: el dibujo se ha borrado, como si nunca hubiera estado.\n- Y aquí viene lo increíble: cerca del 90% de las personas a las que les cae un rayo sobrevive.\n- Giro: a uno no le pasó una vez, sino siete. Roy Sullivan, guardabosques del Parque Nacional Shenandoah, en Virginia. Entre 1942 y 1977 le cayeron siete rayos:\n  - le arrancó una uña del pie;\n  - le quemó las cejas;\n  - le prendió fuego al pelo dos veces;\n  - el último le alcanzó mientras pescaba.\n- Sobrevivió a los siete y entró en el Libro Guinness de los Récords.",
-    "gancho": "(Cronómetro en 0,000 y un relámpago iluminando la pantalla) «¿Qué te pasa si te cae un rayo? Tienes una milésima de segundo para descubrirlo.»",
-    "giro_final": "Tras el 90% de supervivientes, el cronómetro se rompe y la voz dice: «Pero a un hombre no le pasó una vez… le pasó siete.» Se cuenta la historia de Roy Sullivan y la última escena vuelve al prado del inicio, ahora con Roy pescando bajo la misma tormenta. Al oír el trueno, mira al cielo y la voz cierra: «Así que, si un día te cae un rayo, lo más probable es que vivas para contarlo. Roy lo contó siete veces.» El trueno enlaza de forma natural con el relámpago del principio, y el vídeo queda en bucle.",
-    "estilo_visual": "Paleta luminosa de tormenta: azules eléctricos con destellos amarillos, sin escenas de estilo oscuro. Cada frase tiene una escena distinta, nunca la misma dos veces seguidas.\n\nPrimera parte (el impacto):\n- Apertura: «escena» de prado al atardecer con nubarrones; la persona mira al cielo con el pelo de los brazos erizado.\n- 0,000 s: «accion» tipo rayo, el impacto en pantalla con flash blanco.\n- 300 millones de voltios: «big_text» con '300.000.000 V' sobre el prado y la persona encogida debajo (una de las dos únicas cifras grandes).\n- Corazón: «accion» latido, el ECG se acelera y cae a línea plana.\n- Ropa y zapatillas: «composicion» con unas zapatillas y una camiseta humeante volando por el aire sobre el prado, con vapor saliendo.\n- Menos que un parpadeo: «accion» vista_nublada, primer plano de los ojos que parpadean.\n- 10 segundos: «person» tumbada de cuerpo entero con el pecho resaltado en rojo; luego «escena» con otra persona haciendo reanimación.\n- Lichtenberg: «composicion» en primer plano de un brazo con el dibujo de helecho rojo ramificándose, junto a un helecho real para comparar.\n- Horas después: «hospital» con la persona despertando y el dibujo desvaneciéndose del brazo.\n- 90%: «big_text» con '90%' y la persona con los brazos en alto.\n\nSegunda parte (Roy Sullivan, como documental):\n- «map_pin» en estilo mapa de relieve, con la chincheta en el Parque Nacional Shenandoah, Virginia.\n- «escena» de bosque de día con Roy de guardabosques (sombrero de ranger).\n- «year_jump» 1942 → 1977, con siete pequeños rayos que se van encendiendo en la barra, uno por golpe.\n- «composicion» rápida de los golpes: bota con la uña saltando, cejas chamuscadas, pelo en llamas.\n- «document» con el certificado Guinness: título 'Más rayos recibidos por una persona', línea resaltada '7 rayos – sobrevivió a todos' y sello.\n- Cierre: «escena» de lago con Roy pescando bajo la tormenta y un último relámpago, rimando con el plano de apertura.\n\nPortada: Roy con sombrero de guardabosques, pelo de punta humeante, sonrisa, un rayo amarillo enorme detrás y el texto '7 RAYOS'. Es limpia, colorida y legible en miniatura.",
-    "por_que_funcionara": "Repite lo que el dueño ya aprobó: la segunda persona con progresión temporal y escalada de 'Tienes 17 años y no vas a dormir en 11 días', y la historia real con un final poco conocido de 'Cayó 3.000 metros…'. La pregunta del gancho nombra el tema en el primer segundo y el plazo de una milésima crea tensión inmediata. El cronómetro da una estructura clara: el espectador quiere ver qué pasa en la siguiente marca. Corrige los motivos de descarte: ninguna escena se repite, se usan composiciones a medida (zapatillas volando, brazo con el helecho) en lugar de planos genéricos, y la portada se diseña explícitamente colorida y legible. La duración es contenida (unos 40 s) y la parte de Roy va en ráfaga de escenas cortas para no alargarse. Todos los datos están bien documentados (NOAA/NWS y Guinness): unos 300 millones de voltios, parada cardiaca posible, ropa y calzado despedidos, figuras de Lichtenberg que se borran en horas, cerca del 90% de supervivencia y los siete rayos de Roy Sullivan entre 1942 y 1977. El bucle final invita a volver a verlo.",
-    "inspirado_en": [],
-    "piezas_nuevas": [
-      "zapatillas deportivas volando humeantes",
-      "camiseta chamuscada en el aire",
-      "brazo en primer plano con figura de Lichtenberg roja ramificada",
-      "helecho verde",
-      "sombrero de guardabosques (ranger) estadounidense",
-      "caña de pescar",
-      "uña de pie saltando de una bota",
-      "cejas chamuscadas con humo",
-      "certificado Guinness con sello"
-    ]
-  },
-  "ganchos": [
-    {
-      "texto": "¿Qué te pasa si te cae un rayo?",
-      "tipo": "a",
-      "puntuacion": 9,
-      "motivo": "Nombra el tema al instante, tiene 8 palabras y se entiende en menos de 2 segundos."
-    },
-    {
-      "texto": "¿Sobrevivirías a trescientos millones de voltios?",
-      "tipo": "b",
-      "puntuacion": 8,
-      "motivo": "Plantea un reto con una cifra que choca, pero hay que oír 'voltios' para situarse."
-    },
-    {
-      "texto": "Un rayo te toca. Tienes una milésima de segundo.",
-      "tipo": "d",
-      "puntuacion": 7,
-      "motivo": "Segunda persona con plazo imposible, aunque el tema queda algo menos claro."
-    },
-    {
-      "texto": "Un rayo carga trescientos millones de voltios. ¿Y tú?",
-      "tipo": "c",
-      "puntuacion": 7,
-      "motivo": "Dato que choca más pregunta, pero se pasa de ritmo."
-    },
-    {
-      "texto": "Todos creen que un rayo mata. Casi nunca.",
-      "tipo": "e",
-      "puntuacion": 8,
-      "motivo": "Contradicción que deja claro el tema, pero destripa un poco el dato del 90%."
+  {
+   "text": "Tienes una milésima de segundo para descubrirlo.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 1,
+    "respaldo": {
+     "scene": "escena",
+     "params": {
+      "lugar": "campo",
+      "hora": "atardecer",
+      "plano": "entero",
+      "mood": "worried",
+      "arms": "normal",
+      "label": "0,000 s"
+     }
     }
-  ],
-  "medida_estado": "esperando",
-  "tanda": "pedido-19"
+   },
+   "camera": "push_in",
+   "transition": "fade"
+  },
+  {
+   "text": "Cero segundos: el rayo te toca.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 2,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "campo",
+      "hora": "atardecer",
+      "persona": "medio",
+      "mood": "shocked",
+      "piezas": [
+       {
+        "pieza": "rayo",
+        "pos": "arriba",
+        "tamano": "gigante",
+        "anim": "caer"
+       }
+      ],
+      "efecto": "impacto"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "flash"
+  },
+  {
+   "text": "Una milésima: trescientos millones de voltios.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 3,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "300.000.000 V",
+      "label": "0,001 s",
+      "color": "#FFD400",
+      "lugar": "campo"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "Dos milésimas: tu corazón se para.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 4,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "latido",
+      "hora": "atardecer",
+      "label": "0,002 s"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "Tres: el sudor es vapor y tu ropa sale volando.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 5,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "campo",
+      "hora": "atardecer",
+      "piezas": [
+       {
+        "pieza": "bicicleta",
+        "pos": "izquierda",
+        "tamano": "grande",
+        "anim": "girar"
+       },
+       {
+        "pieza": "fuego",
+        "pos": "derecha",
+        "tamano": "grande",
+        "anim": "flotar"
+       }
+      ],
+      "efecto": "humo",
+      "label": "0,003 s"
+     }
+    }
+   },
+   "camera": "shake",
+   "transition": "whip"
+  },
+  {
+   "text": "Cuatro milésimas: ya acabó. Menos que un parpadeo.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 6,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "vista_nublada",
+      "label": "0,004 s"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "fade"
+  },
+  {
+   "text": "Diez segundos: en el suelo, el corazón suele arrancar solo.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 7,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "latido",
+      "lugar": "campo",
+      "hora": "atardecer",
+      "who": "protagonista"
+     }
+    },
+    "who": "protagonista"
+   },
+   "camera": "tilt_down",
+   "transition": "fade"
+  },
+  {
+   "text": "Treinta minutos: tu piel dibuja un helecho rojo.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 8,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "fondo",
+      "piezas": [
+       {
+        "pieza": "rayo",
+        "pos": "izquierda",
+        "tamano": "grande",
+        "anim": "crecer"
+       },
+       {
+        "pieza": "arbol",
+        "pos": "derecha",
+        "tamano": "grande",
+        "anim": "flotar"
+       }
+      ],
+      "label": "30 minutos"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "Unas horas después, ha desaparecido.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 9,
+    "respaldo": {
+     "scene": "hospital",
+     "params": {
+      "state": "awake",
+      "mood": "happy",
+      "hora": "dia",
+      "label": "Unas horas después"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "fade"
+  },
+  {
+   "text": "Cerca del noventa por ciento sobrevive.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 10,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "90%",
+      "label": "sobrevive",
+      "color": "#2EC4B6",
+      "lugar": "campo"
+     }
+    }
+   },
+   "camera": "pull_out",
+   "transition": "flash"
+  },
+  {
+   "text": "Pero a un hombre le cayeron siete.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 11,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "sorpresa",
+      "who": "roy",
+      "lugar": "campo",
+      "hora": "dia"
+     }
+    },
+    "who": "roy"
+   },
+   "camera": "slam",
+   "transition": "red"
+  },
+  {
+   "text": "Roy Sullivan, guardabosques de Virginia.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 12,
+    "respaldo": {
+     "scene": "map_pin",
+     "params": {
+      "place": "Parque Nacional Shenandoah",
+      "detail": "Virginia, EE. UU.",
+      "style": "relieve"
+     }
+    },
+    "who": "roy"
+   },
+   "camera": "pull_out",
+   "transition": "whip"
+  },
+  {
+   "text": "Durante treinta y cinco años.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 13,
+    "respaldo": {
+     "scene": "year_jump",
+     "params": {
+      "from": 1942,
+      "to": 1977,
+      "label": "Siete rayos"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Perdió una uña, las cejas, y su pelo ardió dos veces.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 14,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "fondo",
+      "piezas": [
+       {
+        "pieza": "mano",
+        "pos": "izquierda",
+        "tamano": "mediano",
+        "anim": "caer"
+       },
+       {
+        "pieza": "ojo",
+        "pos": "centro",
+        "tamano": "mediano",
+        "anim": "temblar"
+       },
+       {
+        "pieza": "fuego",
+        "pos": "derecha",
+        "tamano": "mediano",
+        "anim": "crecer"
+       }
+      ],
+      "efecto": "humo"
+     }
+    },
+    "who": "roy"
+   },
+   "camera": "shake",
+   "transition": "cut"
+  },
+  {
+   "text": "El último le alcanzó pescando.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 15,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "campo",
+      "hora": "atardecer",
+      "persona": "medio",
+      "who": "roy",
+      "mood": "shocked",
+      "piezas": [
+       {
+        "pieza": "pez",
+        "pos": "derecha",
+        "tamano": "grande",
+        "anim": "temblar"
+       },
+       {
+        "pieza": "rayo",
+        "pos": "arriba",
+        "tamano": "grande",
+        "anim": "caer"
+       }
+      ]
+     }
+    },
+    "who": "roy"
+   },
+   "camera": "push_in",
+   "transition": "flash"
+  },
+  {
+   "text": "Sobrevivió a todos y entró en el Libro Guinness.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 16,
+    "respaldo": {
+     "scene": "document",
+     "params": {
+      "title": "Más rayos recibidos",
+      "lines": [
+       "Roy Sullivan",
+       "Guardabosques",
+       "1942 - 1977",
+       "7 rayos",
+       "Sobrevivió a todos"
+      ],
+      "highlight": 3,
+      "stamp": "RÉCORD"
+     }
+    }
+   },
+   "camera": "pull_out",
+   "transition": "fade"
+  },
+  {
+   "text": "Así que, cuando oigas un trueno, recuerda a Roy y piensa…",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-19-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "rayo",
+      "lugar": "campo",
+      "hora": "atardecer"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut",
+   "bucle": true
+  }
+ ],
+ "looks": {
+  "protagonista": {
+   "genero": "hombre",
+   "edad": "joven",
+   "piel": "media",
+   "pelo": "corto",
+   "color_pelo": "castaño_oscuro",
+   "barba": "no",
+   "gafas": false,
+   "ropa": "azul"
+  },
+  "roy": {
+   "genero": "hombre",
+   "edad": "adulto",
+   "piel": "clara",
+   "pelo": "corto",
+   "color_pelo": "canoso",
+   "barba": "no",
+   "gafas": false,
+   "ropa": "verde"
+  }
+ },
+ "cover_text": "¿7 RAYOS Y VIVO?",
+ "question": "¿Qué le pasa a tu cuerpo, segundo a segundo, si te cae un rayo?",
+ "piezas_pendientes": [
+  "zapatillas_deportivas",
+  "camiseta_chamuscada",
+  "brazo_lichtenberg",
+  "helecho",
+  "una_pie",
+  "cejas_chamuscadas",
+  "cana_pesca"
+ ],
+ "id": "pedido-19-01",
+ "idea": {
+  "tipo": "pedido",
+  "premisa": "¿Qué te pasa si te cae un rayo? El espectador lo vive en cámara superlenta, con un cronómetro en pantalla que avanza a saltos (0,000 s → 0,001 s → 0,003 s → 10 s → 2 horas). Guion aproximado (unos 40 s):\n- Estás en mitad de un prado, empieza a llover y se te eriza el pelo de los brazos.\n- 0,000 s: el rayo te toca.\n- 0,001 s: te atraviesan unos 300 millones de voltios, más que miles de enchufes juntos.\n- 0,002 s: la descarga cruza tu pecho y tu corazón se para.\n- 0,003 s: el calor convierte el sudor en vapor de golpe; tus zapatillas y tu ropa salen despedidas.\n- 0,004 s: ya ha terminado. Todo ha durado menos que un parpadeo.\n- 10 segundos: estás en el suelo. Muchas veces el corazón vuelve a arrancar solo, pero puedes necesitar que alguien te reanime.\n- 30 minutos: en tu piel aparece un dibujo con forma de helecho, las figuras de Lichtenberg, la huella del rayo en tus capilares.\n- Unas horas después: el dibujo se ha borrado, como si nunca hubiera estado.\n- Y aquí viene lo increíble: cerca del 90% de las personas a las que les cae un rayo sobrevive.\n- Giro: a uno no le pasó una vez, sino siete. Roy Sullivan, guardabosques del Parque Nacional Shenandoah, en Virginia. Entre 1942 y 1977 le cayeron siete rayos:\n  - le arrancó una uña del pie;\n  - le quemó las cejas;\n  - le prendió fuego al pelo dos veces;\n  - el último le alcanzó mientras pescaba.\n- Sobrevivió a los siete y entró en el Libro Guinness de los Récords.",
+  "gancho": "(Cronómetro en 0,000 y un relámpago iluminando la pantalla) «¿Qué te pasa si te cae un rayo? Tienes una milésima de segundo para descubrirlo.»",
+  "giro_final": "Tras el 90% de supervivientes, el cronómetro se rompe y la voz dice: «Pero a un hombre no le pasó una vez… le pasó siete.» Se cuenta la historia de Roy Sullivan y la última escena vuelve al prado del inicio, ahora con Roy pescando bajo la misma tormenta. Al oír el trueno, mira al cielo y la voz cierra: «Así que, si un día te cae un rayo, lo más probable es que vivas para contarlo. Roy lo contó siete veces.» El trueno enlaza de forma natural con el relámpago del principio, y el vídeo queda en bucle.",
+  "estilo_visual": "Paleta luminosa de tormenta: azules eléctricos con destellos amarillos, sin escenas de estilo oscuro. Cada frase tiene una escena distinta, nunca la misma dos veces seguidas.\n\nPrimera parte (el impacto):\n- Apertura: «escena» de prado al atardecer con nubarrones; la persona mira al cielo con el pelo de los brazos erizado.\n- 0,000 s: «accion» tipo rayo, el impacto en pantalla con flash blanco.\n- 300 millones de voltios: «big_text» con '300.000.000 V' sobre el prado y la persona encogida debajo (una de las dos únicas cifras grandes).\n- Corazón: «accion» latido, el ECG se acelera y cae a línea plana.\n- Ropa y zapatillas: «composicion» con unas zapatillas y una camiseta humeante volando por el aire sobre el prado, con vapor saliendo.\n- Menos que un parpadeo: «accion» vista_nublada, primer plano de los ojos que parpadean.\n- 10 segundos: «person» tumbada de cuerpo entero con el pecho resaltado en rojo; luego «escena» con otra persona haciendo reanimación.\n- Lichtenberg: «composicion» en primer plano de un brazo con el dibujo de helecho rojo ramificándose, junto a un helecho real para comparar.\n- Horas después: «hospital» con la persona despertando y el dibujo desvaneciéndose del brazo.\n- 90%: «big_text» con '90%' y la persona con los brazos en alto.\n\nSegunda parte (Roy Sullivan, como documental):\n- «map_pin» en estilo mapa de relieve, con la chincheta en el Parque Nacional Shenandoah, Virginia.\n- «escena» de bosque de día con Roy de guardabosques (sombrero de ranger).\n- «year_jump» 1942 → 1977, con siete pequeños rayos que se van encendiendo en la barra, uno por golpe.\n- «composicion» rápida de los golpes: bota con la uña saltando, cejas chamuscadas, pelo en llamas.\n- «document» con el certificado Guinness: título 'Más rayos recibidos por una persona', línea resaltada '7 rayos – sobrevivió a todos' y sello.\n- Cierre: «escena» de lago con Roy pescando bajo la tormenta y un último relámpago, rimando con el plano de apertura.\n\nPortada: Roy con sombrero de guardabosques, pelo de punta humeante, sonrisa, un rayo amarillo enorme detrás y el texto '7 RAYOS'. Es limpia, colorida y legible en miniatura.",
+  "por_que_funcionara": "Repite lo que el dueño ya aprobó: la segunda persona con progresión temporal y escalada de 'Tienes 17 años y no vas a dormir en 11 días', y la historia real con un final poco conocido de 'Cayó 3.000 metros…'. La pregunta del gancho nombra el tema en el primer segundo y el plazo de una milésima crea tensión inmediata. El cronómetro da una estructura clara: el espectador quiere ver qué pasa en la siguiente marca. Corrige los motivos de descarte: ninguna escena se repite, se usan composiciones a medida (zapatillas volando, brazo con el helecho) en lugar de planos genéricos, y la portada se diseña explícitamente colorida y legible. La duración es contenida (unos 40 s) y la parte de Roy va en ráfaga de escenas cortas para no alargarse. Todos los datos están bien documentados (NOAA/NWS y Guinness): unos 300 millones de voltios, parada cardiaca posible, ropa y calzado despedidos, figuras de Lichtenberg que se borran en horas, cerca del 90% de supervivencia y los siete rayos de Roy Sullivan entre 1942 y 1977. El bucle final invita a volver a verlo.",
+  "inspirado_en": [],
+  "piezas_nuevas": [
+   "zapatillas deportivas volando humeantes",
+   "camiseta chamuscada en el aire",
+   "brazo en primer plano con figura de Lichtenberg roja ramificada",
+   "helecho verde",
+   "sombrero de guardabosques (ranger) estadounidense",
+   "caña de pescar",
+   "uña de pie saltando de una bota",
+   "cejas chamuscadas con humo",
+   "certificado Guinness con sello"
+  ]
+ },
+ "ganchos": [
+  {
+   "texto": "¿Qué te pasa si te cae un rayo?",
+   "tipo": "a",
+   "puntuacion": 9,
+   "motivo": "Nombra el tema al instante, tiene 8 palabras y se entiende en menos de 2 segundos."
+  },
+  {
+   "texto": "¿Sobrevivirías a trescientos millones de voltios?",
+   "tipo": "b",
+   "puntuacion": 8,
+   "motivo": "Plantea un reto con una cifra que choca, pero hay que oír 'voltios' para situarse."
+  },
+  {
+   "texto": "Un rayo te toca. Tienes una milésima de segundo.",
+   "tipo": "d",
+   "puntuacion": 7,
+   "motivo": "Segunda persona con plazo imposible, aunque el tema queda algo menos claro."
+  },
+  {
+   "texto": "Un rayo carga trescientos millones de voltios. ¿Y tú?",
+   "tipo": "c",
+   "puntuacion": 7,
+   "motivo": "Dato que choca más pregunta, pero se pasa de ritmo."
+  },
+  {
+   "texto": "Todos creen que un rayo mata. Casi nunca.",
+   "tipo": "e",
+   "puntuacion": 8,
+   "motivo": "Contradicción que deja claro el tema, pero destripa un poco el dato del 90%."
+  }
+ ],
+ "medida_estado": "esperando",
+ "tanda": "pedido-19"
 }
