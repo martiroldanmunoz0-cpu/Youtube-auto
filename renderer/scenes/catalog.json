@@ -11,11 +11,12 @@
   "slam": "zoom de golpe (sustos, giro final)"
  },
  "transitions": {
-  "fade": "fundido cruzado (por defecto)",
-  "cut": "corte seco (ritmo rápido)",
+  "fade": "transición fluida: zoom a través hacia el siguiente plano (por defecto)",
+  "cut": "corte seco con empujón de entrada (ritmo rápido)",
   "black": "fundido a negro (salto de tiempo)",
   "flash": "destello blanco (revelación, flashback)",
-  "red": "destello rojo (peligro, giro de terror)"
+  "red": "destello rojo (peligro, giro de terror)",
+  "whip": "barrido rápido con estela (cambio de lugar o de tema, ritmo alto)"
  },
  "scenes": {
   "accion": {

@@ -22,7 +22,8 @@ for (const f of fs.readdirSync(fontDir).filter((f) => f.endsWith('.ttf'))) Globa
 const antonPath = path.join(here, '..', 'assets', 'branding', 'fonts', 'Anton-Regular.ttf');
 if (fs.existsSync(antonPath)) GlobalFonts.registerFromPath(antonPath, 'Anton');
 
-const TRANSITION = 0.35;
+const TRANSITION = 0.32;
+const SETTLE = 0.3; // tras un corte, el plano entra con un pequeño empujón que se asienta
 // Escenas de estilo oscuro (misterio, noche, espacio): llevan el acabado oscuro del canal
 const DARK_SCENES = new Set(['eyes_dark', 'silhouette', 'hallway', 'front_door', 'bedroom', 'house_exterior', 'car_window', 'rearview_eyes', 'city_street', 'forest', 'space', 'ocean', 'character', 'duo', 'closeup', 'vice_street', 'vice_beach', 'car_ride', 'police_chase']);
 
@@ -58,17 +59,22 @@ function parseArgs(argv) {
 }
 
 // Movimientos de cámara: devuelven {s (zoom), x, y, r (rotación)} según progreso 0..1.
+// Velocidad casi constante (sin arrancar ni frenar en seco) y recorridos amplios: la imagen nunca se queda quieta.
 const CAMERAS = {
-  push_in: (k) => ({ s: lerp(1.02, 1.14, k), x: 0, y: 0 }),
-  pull_out: (k) => ({ s: lerp(1.16, 1.03, k), x: 0, y: 0 }),
-  pan_left: (k) => ({ s: 1.14, x: lerp(60, -60, k), y: 0 }),
-  pan_right: (k) => ({ s: 1.14, x: lerp(-60, 60, k), y: 0 }),
-  tilt_up: (k) => ({ s: 1.14, x: 0, y: lerp(-90, 90, k) }),
-  tilt_down: (k) => ({ s: 1.14, x: 0, y: lerp(90, -90, k) }),
-  static: (k) => ({ s: lerp(1.03, 1.06, k), x: 0, y: 0 }),
-  shake: (k, t) => ({ s: 1.1, x: (noise1(t * 14, 1) - 0.5) * 22, y: (noise1(t * 14, 2) - 0.5) * 22 }),
-  slam: (k, t) => ({ s: lerp(1.45, 1.08, ease.out(clamp(k * 4))), x: (noise1(t * 20, 3) - 0.5) * 12 * (1 - clamp(k * 3)), y: 0 }),
+  push_in: (k) => ({ s: lerp(1.04, 1.24, k), x: 0, y: lerp(10, -10, k) }),
+  pull_out: (k) => ({ s: lerp(1.26, 1.05, k), x: 0, y: 0 }),
+  pan_left: (k) => ({ s: 1.2, x: lerp(110, -110, k), y: 0 }),
+  pan_right: (k) => ({ s: 1.2, x: lerp(-110, 110, k), y: 0 }),
+  tilt_up: (k) => ({ s: 1.2, x: 0, y: lerp(-150, 150, k) }),
+  tilt_down: (k) => ({ s: 1.2, x: 0, y: lerp(150, -150, k) }),
+  static: (k) => ({ s: lerp(1.05, 1.12, k), x: lerp(-15, 15, k), y: 0 }),
+  shake: (k, t) => ({ s: lerp(1.1, 1.18, k), x: (noise1(t * 14, 1) - 0.5) * 22, y: (noise1(t * 14, 2) - 0.5) * 22 }),
+  slam: (k, t) => ({ s: lerp(1.45, 1.1, ease.out(clamp(k * 4))) + k * 0.06, x: (noise1(t * 20, 3) - 0.5) * 12 * (1 - clamp(k * 3)), y: 0 }),
 };
+// Progreso "fluido": casi lineal (velocidad constante) con un toque de suavizado.
+const flowK = (p) => 0.8 * p + 0.2 * ease.inOut(p);
+// Dirección del movimiento de cada cámara (para que la transición siga el mismo sentido).
+const CAM_DIR = { pan_left: [-1, 0], pan_right: [1, 0], tilt_up: [0, 1], tilt_down: [0, -1] };
 
 export class Renderer {
   constructor(timeline) {
@@ -101,12 +107,19 @@ export class Renderer {
     const local = b.bucle ? 0.02 : t - b.start; // el plano del bucle queda quieto en el primer instante del plano 1
     const dur = Math.max(0.5, b.end - b.start);
     const prog = clamp(local / dur);
-    const cam = (CAMERAS[b.camera] || CAMERAS.push_in)(ease.inOut(prog), t);
+    const cam = (CAMERAS[b.camera] || CAMERAS.push_in)(flowK(prog), t);
+    // Respiración continua: deriva suave y un pelín de giro, para que nada esté nunca congelado
+    const drift = b.bucle ? 0 : 1;
+    const dx = (noise1(t * 0.6, 11) - 0.5) * 18 * drift, dy = (noise1(t * 0.6, 12) - 0.5) * 18 * drift;
+    const rot = (noise1(t * 0.4, 13) - 0.5) * 0.012 * drift;
+    // Entrada con energía tras un corte: arranca algo más cerca y se asienta
+    const settle = b.bucle || b.camera === 'slam' ? 0 : 0.07 * (1 - ease.out(clamp(local / SETTLE)));
     ctx.save();
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, W, H);
-    ctx.translate(W / 2 + cam.x, H / 2 + cam.y);
-    ctx.scale(cam.s, cam.s);
+    ctx.translate(W / 2 + cam.x + dx, H / 2 + cam.y + dy);
+    ctx.rotate(rot + (cam.r || 0));
+    ctx.scale(cam.s + settle, cam.s + settle);
     ctx.translate(-W / 2, -H / 2);
     try {
       b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, seed: this.tl.persona || this.tl.seed, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
@@ -133,12 +146,14 @@ export class Renderer {
       const k = ease.inOut(seg(t, b.start, TRANSITION));
       this.drawBeat(this.layerA.getContext('2d'), prev, t, frame);
       this.drawBeat(this.layerB.getContext('2d'), b, t, frame);
-      ctx.globalAlpha = 1; ctx.drawImage(this.layerA, 0, 0);
       if (b.transition === 'black') {
+        ctx.globalAlpha = 1; ctx.drawImage(this.layerA, 0, 0);
         ctx.fillStyle = `rgba(0,0,0,${Math.sin(k * Math.PI)})`; ctx.fillRect(0, 0, W, H);
         if (k > 0.5) { ctx.globalAlpha = (k - 0.5) * 2; ctx.drawImage(this.layerB, 0, 0); ctx.globalAlpha = 1; }
+      } else if (b.transition === 'whip' || (b.transition === 'fade' && CAM_DIR[prev.camera])) {
+        this.whip(ctx, k, CAM_DIR[prev.camera] || CAM_DIR[b.camera] || [-1, 0]);
       } else {
-        ctx.globalAlpha = k; ctx.drawImage(this.layerB, 0, 0); ctx.globalAlpha = 1;
+        this.zoomThrough(ctx, k); // transición fluida por defecto: se "atraviesa" el plano hacia el siguiente
       }
       if (b.transition === 'flash') { ctx.fillStyle = `rgba(255,255,255,${Math.sin(k * Math.PI) * 0.8})`; ctx.fillRect(0, 0, W, H); }
       if (b.transition === 'red') { ctx.fillStyle = `rgba(200,20,30,${Math.sin(k * Math.PI) * 0.6})`; ctx.fillRect(0, 0, W, H); }
@@ -155,6 +170,39 @@ export class Renderer {
     if (t >= endStart) this.drawEndcard(ctx, t - endStart, end);
     // Gancho a pantalla grande en los primeros segundos (sin fundido desde negro: el fotograma 0 ya engancha)
     if (this.tl.hook?.text && t < (this.tl.hook.dur || 2.3)) this.drawHook(ctx, t, this.tl.hook);
+  }
+
+  // Dibuja una capa escalada desde el centro, con estela de desenfoque (varias copias tenues).
+  blurDraw(ctx, img, scale, ox, oy, alpha, streak, dir) {
+    const n = streak > 2 ? 10 : 1;
+    for (let j = 0; j < n; j++) {
+      const f = n === 1 ? 0 : j / (n - 1) - 0.5;
+      ctx.save();
+      ctx.globalAlpha = alpha / (n === 1 ? 1 : n * 0.55);
+      ctx.translate(W / 2 + ox + dir[0] * streak * f, H / 2 + oy - dir[1] * streak * f);
+      const sc = scale * (1 + (dir[0] || dir[1] ? 0 : streak * f * 0.0006));
+      ctx.scale(sc, sc);
+      ctx.drawImage(img, -W / 2, -H / 2);
+      ctx.restore();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // Zoom a través: el plano saliente se acelera hacia dentro y el entrante llega desde cerca y se asienta.
+  zoomThrough(ctx, k) {
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+    const speed = Math.sin(k * Math.PI); // máxima velocidad a mitad de la transición
+    this.blurDraw(ctx, this.layerA, 1 + ease.in(k) * 0.9, 0, 0, 1, speed * 90, [0, 0]);
+    this.blurDraw(ctx, this.layerB, 1 + (1 - ease.out(k)) * 0.45, 0, 0, clamp(k * 1.8 - 0.2), speed * 60, [0, 0]);
+  }
+
+  // Barrido rápido: los dos planos se deslizan juntos en el sentido del movimiento de cámara, con estela.
+  whip(ctx, k, dir) {
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+    const speed = Math.sin(k * Math.PI);
+    const dx = -dir[0] * W, dy = dir[1] * H;
+    this.blurDraw(ctx, this.layerA, 1.02, dx * k, dy * k, 1, speed * 140, dir);
+    this.blurDraw(ctx, this.layerB, 1.02, -dx * (1 - k), -dy * (1 - k), 1, speed * 140, dir);
   }
 
   drawHook(ctx, t, hook) {
