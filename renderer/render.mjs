@@ -111,7 +111,8 @@ export class Renderer {
     for (const b of this.beats) {
       const e = String(b.params.efecto || '').toLowerCase();
       const hasWord = EFFECT_WORDS.has(e) || (b.scene_name === 'accion' && ACTION_WORDS.has(String(b.params.tipo || b.params.accion || '').toLowerCase()));
-      if (!hasWord || b.bucle) continue;
+      if (b.bucle) { b.sinPalabra = true; continue; } // el bucle no repite la palabra de cómic
+      if (!hasWord) continue;
       if (used < MAX_COMIC && b.start - last >= GAP) { used++; last = b.start; }
       else b.sinPalabra = true;
     }
@@ -123,12 +124,14 @@ export class Renderer {
   }
 
   drawBeat(ctx, b, t, frame) {
-    const local = b.bucle ? 0.02 : t - b.start; // el plano del bucle queda quieto en el primer instante del plano 1
+    // Plano del bucle (repite el plano 1): sigue animado (cámara, ambiente, piezas). En las acciones
+    // (cortarse, explotar...) el tiempo va a cámara lenta para quedarse en la preparación y no repetir el golpe.
+    const local = b.bucle && b.scene_name === 'accion' ? 0.02 + (t - b.start) * 0.25 : t - b.start;
     const dur = Math.max(0.5, b.end - b.start);
     const prog = clamp(local / dur);
     const cam = (CAMERAS[b.camera] || CAMERAS.push_in)(flowK(prog), t);
     // Respiración continua: deriva suave y un pelín de giro, para que nada esté nunca congelado
-    const drift = b.bucle ? 0 : 1;
+    const drift = 1;
     const dx = (noise1(t * 0.6, 11) - 0.5) * 18 * drift, dy = (noise1(t * 0.6, 12) - 0.5) * 18 * drift;
     const rot = (noise1(t * 0.4, 13) - 0.5) * 0.012 * drift;
     // Entrada con energía tras un corte: arranca algo más cerca y se asienta
