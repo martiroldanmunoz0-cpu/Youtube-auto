@@ -298,9 +298,66 @@ export const PROPS = {
     R(ctx, -330, -120, 660, 120, 16, '#8b5a2b'); R(ctx, -340, -330, 60, 330, 14, '#8b5a2b');
     R(ctx, -300, -220, 620, 110, 30, '#ffffff'); R(ctx, -270, -280, 170, 80, 30, '#e3f3ff'); R(ctx, -110, -240, 440, 130, 30, '#5ab8ff');
   },
+  // Tortuga marina nadando (aletas que se mueven)
+  tortuga(ctx, t) {
+    const f = Math.sin(t * 3) * 0.35;
+    for (const [sx, sy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) { ctx.save(); ctx.translate(sx * 150, -200 + sy * 70); ctx.rotate(sx * (sy < 0 ? -0.6 : 0.5) + f * sx * sy); E(ctx, sx * 60, 0, 90, 34, '#7bc96f'); ctx.restore(); }
+    E(ctx, 230, -200, 70, 55, '#7bc96f'); C(ctx, 255, -215, 12, INK, 0);
+    E(ctx, 0, -200, 190, 140, '#8b6b3e');
+    for (const [x, y] of [[0, -200], [-90, -240], [90, -240], [-90, -160], [90, -160]]) { ctx.beginPath(); for (let k = 0; k < 6; k++) { const a = k / 6 * Math.PI * 2; ctx.lineTo(x + Math.cos(a) * 42, y + Math.sin(a) * 34); } ctx.closePath(); ctx.fillStyle = '#b08a50'; ctx.fill(); O(ctx, 6); }
+  },
+  // Astronauta flotando con traje y casco
+  astronauta(ctx, t) {
+    ctx.translate(0, Math.sin(t * 1.2) * 15); ctx.rotate(Math.sin(t * 0.8) * 0.08);
+    R(ctx, -150, -420, 300, 260, 50, '#9aa6b2');
+    for (const s of [-1, 1]) { L(ctx, [[s * 140, -380], [s * 230, -300 + Math.sin(t * 2 + s) * 30]], '#f4f1ea', 70); L(ctx, [[s * 70, -170], [s * 90, -20]], '#f4f1ea', 80); }
+    R(ctx, -160, -440, 320, 290, 70, '#f4f1ea');
+    R(ctx, -70, -360, 140, 90, 14, '#5ab8ff'); C(ctx, -40, -330, 12, '#e8505b', 0); C(ctx, 0, -330, 12, '#ffd166', 0);
+    C(ctx, 0, -560, 140, '#f4f1ea'); E(ctx, 0, -560, 100, 85, '#1f2a5a'); E(ctx, -35, -590, 28, 16, 'rgba(255,255,255,0.7)', -0.5, 0);
+  },
+  // Pluma que se balancea
+  pluma(ctx, t) {
+    ctx.translate(0, -300); ctx.rotate(-0.5 + Math.sin(t * 2.5) * 0.25);
+    ctx.beginPath(); ctx.moveTo(0, 260); ctx.quadraticCurveTo(-140, 0, 0, -280); ctx.quadraticCurveTo(140, 0, 0, 260); ctx.fillStyle = '#ffffff'; ctx.fill(); O(ctx);
+    ctx.strokeStyle = '#c9d3de'; ctx.lineWidth = 5; for (let y = -220; y < 220; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(-70 + Math.abs(y) / 5, y - 30); ctx.moveTo(0, y); ctx.lineTo(70 - Math.abs(y) / 5, y - 30); ctx.stroke(); }
+    L(ctx, [[0, 300], [0, -260]], '#e2c08d', 6);
+  },
+  // Ola gigante rompiendo (tsunami)
+  ola_gigante(ctx, t) {
+    const w = Math.sin(t * 2) * 20;
+    ctx.beginPath(); ctx.moveTo(-420, 0); ctx.lineTo(-420, -300); ctx.bezierCurveTo(-300, -700 - w, 120, -820, 260, -620); ctx.bezierCurveTo(330, -520, 250, -420, 140, -470);
+    ctx.bezierCurveTo(60, -500, 40, -380, 140, -330); ctx.bezierCurveTo(260, -280, 360, -160, 420, 0); ctx.closePath(); ctx.fillStyle = '#2f9ec9'; ctx.fill(); O(ctx);
+    ctx.beginPath(); ctx.moveTo(-360, -330); ctx.bezierCurveTo(-260, -640 - w, 100, -760, 230, -610); ctx.lineWidth = 26; ctx.strokeStyle = '#7fd3f0'; ctx.stroke();
+    for (let i = 0; i < 7; i++) C(ctx, 150 + Math.cos(i) * 90 + Math.sin(t * 6 + i) * 10, -600 + Math.sin(i * 2) * 60, 26 + (i % 3) * 8, '#ffffff', 5);
+  },
+  // Mano con el dedo índice (señalar, hacer cosquillas)
+  mano(ctx, t) {
+    ctx.translate(0, -260); ctx.rotate(Math.sin(t * 6) * 0.08);
+    L(ctx, [[0, 260], [0, 120]], '#f2c29b', 120);
+    R(ctx, -110, -60, 220, 200, 70, '#f2c29b');
+    L(ctx, [[60, -40], [60, -260]], '#f2c29b', 56);
+    for (const x of [-70, -20, 25]) L(ctx, [[x, -40], [x, -90]], '#f2c29b', 46);
+    L(ctx, [[-110, 60], [-170, -10]], '#f2c29b', 50);
+  },
+  // Barca de pesca pequeña con motor
+  barca(ctx, t) {
+    ctx.rotate(Math.sin(t * 1.8) * 0.06);
+    P(ctx, [[-320, -170], [320, -170], [240, 0], [-260, 0]], '#f4f1ea'); R(ctx, -320, -190, 640, 40, 10, '#5ab8ff');
+    R(ctx, -380, -260, 70, 150, 12, '#3a3f4e'); L(ctx, [[-345, -110], [-345, 30]], '#9aa6b2', 14);
+    R(ctx, -40, -260, 140, 90, 10, '#e8505b');
+  },
+  // Ráfaga de viento (líneas que pasan)
+  viento(ctx, t) {
+    ctx.translate(0, -300);
+    for (let i = 0; i < 5; i++) {
+      const x = ((t * 500 + i * 160) % 900) - 450, y = -200 + i * 100;
+      ctx.beginPath(); ctx.moveTo(x - 220, y); ctx.lineTo(x + 80, y); ctx.arc(x + 80, y - 40, 40, Math.PI / 2, -Math.PI * 0.9, true);
+      ctx.lineWidth = 16; ctx.strokeStyle = INK; ctx.lineCap = 'round'; ctx.stroke(); ctx.lineWidth = 8; ctx.strokeStyle = '#e3f3ff'; ctx.stroke();
+    }
+  },
 };
 export const PROP_NAMES = Object.keys(PROPS);
-const ALIAS = { 'señal de tráfico': 'senal_trafico', 'señal de trafico': 'senal_trafico', senal: 'senal_trafico', 'señal': 'senal_trafico', 'señal_trafico': 'senal_trafico', 'señal de peligro': 'senal_trafico', stop: 'senal_trafico', 'semáforo': 'semaforo', trafico: 'semaforo', 'tráfico': 'semaforo', pinball: 'maquina_pinball', 'máquina de pinball': 'maquina_pinball', 'maquina de pinball': 'maquina_pinball', recreativa: 'maquina_pinball', 'máquina recreativa': 'maquina_pinball', camas: 'cama', dormir: 'cama', 'litera': 'cama', dino: 'dinosaurio', globulos_rojos: 'globulo_rojo', 'glóbulo rojo': 'globulo_rojo', 'glóbulos rojos': 'globulo_rojo', eritrocito: 'globulo_rojo', 'glóbulo blanco': 'globulo_blanco', 'glóbulos blancos': 'globulo_blanco', leucocito: 'globulo_blanco', linfocito: 'globulo_blanco', defensas: 'globulo_blanco', anticuerpo: 'globulo_blanco', plaquetas: 'plaqueta', coagulo: 'plaqueta', 'coágulo': 'plaqueta', costra: 'plaqueta', 'macrófago': 'macrofago', 'macrófagos': 'macrofago', fagocito: 'macrofago', bacterias: 'bacteria', microbio: 'bacteria', germen: 'bacteria', fibroblasto: 'colageno', fibroblastos: 'colageno', 'colágeno': 'colageno', fibras: 'colageno', cicatriz_piel: 'piel', capas_piel: 'piel', dermis: 'piel', epidermis: 'piel', nobel: 'medalla', premio_nobel: 'medalla', 'premio nobel': 'medalla', premio: 'trofeo', galardon: 'trofeo', laboratorio: 'microscopio', cientifico: 'microscopio', 'científico': 'microscopio', investigacion: 'lupa', 'investigación': 'lupa', descubrimiento: 'bombilla', vejez: 'reloj_arena', tiempo: 'reloj_arena', envejecimiento: 'reloj_arena', sangre: 'gota', dna: 'adn', gen: 'adn', genes: 'adn', corte: 'herida', cicatriz: 'herida', 'tirita': 'tirita', curita: 'tirita', 'división celular': 'celula_dividiendose', telomero: 'cromosoma', 'telómero': 'cromosoma', 'telómeros': 'cromosoma', mitocondrias: 'mitocondria', 'radicales libres': 'radical_libre', oxidacion: 'radical_libre', 'oxidación': 'radical_libre', cumpleanos: 'tarta_cumpleanos', 'cumpleaños': 'tarta_cumpleanos', tarta: 'tarta_cumpleanos', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
+const ALIAS = { tortugas: 'tortuga', 'tortuga marina': 'tortuga', astronautas: 'astronauta', cosmonauta: 'astronauta', 'traje espacial': 'astronauta', traje_espacial: 'astronauta', plumas: 'pluma', cosquillas: 'pluma', ola: 'ola_gigante', olas: 'ola_gigante', tsunami: 'ola_gigante', maremoto: 'ola_gigante', 'ola gigante': 'ola_gigante', manos: 'mano', dedo: 'mano', 'dedo índice': 'mano', bote: 'barca', lancha: 'barca', 'barca de pesca': 'barca', 'barco de pesca': 'barca', balsa: 'barca', vientos: 'viento', 'ráfaga': 'viento', rafaga: 'viento', huracan: 'viento', 'huracán': 'viento', 'señal de tráfico': 'senal_trafico', 'señal de trafico': 'senal_trafico', senal: 'senal_trafico', 'señal': 'senal_trafico', 'señal_trafico': 'senal_trafico', 'señal de peligro': 'senal_trafico', stop: 'senal_trafico', 'semáforo': 'semaforo', trafico: 'semaforo', 'tráfico': 'semaforo', pinball: 'maquina_pinball', 'máquina de pinball': 'maquina_pinball', 'maquina de pinball': 'maquina_pinball', recreativa: 'maquina_pinball', 'máquina recreativa': 'maquina_pinball', camas: 'cama', dormir: 'cama', 'litera': 'cama', dino: 'dinosaurio', globulos_rojos: 'globulo_rojo', 'glóbulo rojo': 'globulo_rojo', 'glóbulos rojos': 'globulo_rojo', eritrocito: 'globulo_rojo', 'glóbulo blanco': 'globulo_blanco', 'glóbulos blancos': 'globulo_blanco', leucocito: 'globulo_blanco', linfocito: 'globulo_blanco', defensas: 'globulo_blanco', anticuerpo: 'globulo_blanco', plaquetas: 'plaqueta', coagulo: 'plaqueta', 'coágulo': 'plaqueta', costra: 'plaqueta', 'macrófago': 'macrofago', 'macrófagos': 'macrofago', fagocito: 'macrofago', bacterias: 'bacteria', microbio: 'bacteria', germen: 'bacteria', fibroblasto: 'colageno', fibroblastos: 'colageno', 'colágeno': 'colageno', fibras: 'colageno', cicatriz_piel: 'piel', capas_piel: 'piel', dermis: 'piel', epidermis: 'piel', nobel: 'medalla', premio_nobel: 'medalla', 'premio nobel': 'medalla', premio: 'trofeo', galardon: 'trofeo', laboratorio: 'microscopio', cientifico: 'microscopio', 'científico': 'microscopio', investigacion: 'lupa', 'investigación': 'lupa', descubrimiento: 'bombilla', vejez: 'reloj_arena', tiempo: 'reloj_arena', envejecimiento: 'reloj_arena', sangre: 'gota', dna: 'adn', gen: 'adn', genes: 'adn', corte: 'herida', cicatriz: 'herida', 'tirita': 'tirita', curita: 'tirita', 'división celular': 'celula_dividiendose', telomero: 'cromosoma', 'telómero': 'cromosoma', 'telómeros': 'cromosoma', mitocondrias: 'mitocondria', 'radicales libres': 'radical_libre', oxidacion: 'radical_libre', 'oxidación': 'radical_libre', cumpleanos: 'tarta_cumpleanos', 'cumpleaños': 'tarta_cumpleanos', tarta: 'tarta_cumpleanos', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
   'corazón': 'corazon', 'célula': 'celula', 'adn': 'adn',  'volcán': 'volcan', 'árbol': 'arbol', coche: 'coche_rojo', auto: 'coche_rojo', 'avión': 'avion',
   'helicóptero': 'helicoptero', agua: 'vaso_agua', vaso: 'vaso_agua', 'café': 'cafe', 'pirámide': 'piramide', tesoro: 'cofre', oro: 'lingote', dinero: 'bolsa_dinero', billete: 'dinero_billete',
   idea: 'bombilla', 'reloj de arena': 'reloj_arena', reloj_de_arena: 'reloj_arena', medicina: 'pastilla', vacuna: 'jeringa', llave: 'llave_antigua', 'teléfono': 'telefono_antiguo', 'montaña': 'montana_pieza', montana: 'montana_pieza',
