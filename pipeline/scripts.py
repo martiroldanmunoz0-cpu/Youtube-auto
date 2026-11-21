@@ -894,7 +894,7 @@ def main():
         n = int(os.environ.get("PEDIDO_N") or 1)
         params = real_story_ideas(read_json(wd / "trends.json"), n + EXTRA_IDEAS, history, cfg, request)
     elif request:
-        n = int(os.environ.get("PEDIDO_N") or 3)
+        n = int(os.environ.get("PEDIDO_N") or 2)
         params = ideas_for_request(request, n, history, cfg)
     else:
         trends = read_json(wd / "trends.json")

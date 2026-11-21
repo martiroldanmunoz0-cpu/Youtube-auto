@@ -329,7 +329,7 @@ open(f"{out}/pedido.yml", "w").write(workflow(
       cantidad:
         description: "¿Cuántas versiones?"
         required: true
-        default: "3"
+        default: "2"
         type: choice
         options: ["1", "2", "3", "4", "5"]
 """, """  RUN_ID: pedido-${{ github.run_number }}

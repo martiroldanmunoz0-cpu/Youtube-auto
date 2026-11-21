@@ -14,7 +14,7 @@ on:
       cantidad:
         description: "¿Cuántas versiones?"
         required: true
-        default: "3"
+        default: "2"
         type: choice
         options: ["1", "2", "3", "4", "5"]
 
