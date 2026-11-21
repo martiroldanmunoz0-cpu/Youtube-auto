@@ -91,7 +91,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     # Despedida hablada en la tarjeta final ("Sígueme para más curiosidades...") con la voz del narrador
     tarjeta = cfg["canal"].get("tarjeta_final") or {}
     con_tarjeta = tarjeta.get("mostrar", True)
-    end_dur = END_CARD if con_tarjeta else 0.45  # sin tarjeta: solo un respiro para no cortar la última palabra
+    end_dur = END_CARD if con_tarjeta else 0.2  # sin tarjeta: el final enlaza con el principio (bucle)
     outro = tarjeta.get("locucion", "").strip() if con_tarjeta else ""
     if outro:
         try:
@@ -120,7 +120,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     hits = [0.05] + [b["start"] for b in beats if b.get("camera") == "slam" or b.get("transition") in ("red", "flash")]
     music = work / "music.wav"
     m = cfg.get("musica", {})
-    make_soundtrack(total, cuts, hits, music, seed=zlib.crc32(sid.encode()) % 10_000, volume=m.get("volumen_ambiente", 0.16), sfx=m.get("efectos", True), style=story.get("music", "dark"))
+    make_soundtrack(total, cuts, hits, music, seed=zlib.crc32(sid.encode()) % 10_000, volume=m.get("volumen_ambiente", 0.16), sfx=m.get("efectos", True), style=story.get("music", "dark"), loop=not con_tarjeta)
 
     # 4) Mezcla final (la música baja cuando habla la voz).
     # En dos pasos: normalizar la voz y luego mezclar con duración fija (en un solo paso ffmpeg recortaba el final).

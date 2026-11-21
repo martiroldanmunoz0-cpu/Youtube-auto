@@ -69,6 +69,7 @@ STORY_SCHEMA = {
             },
         },
         "pregunta_central": {"type": "string"},
+        "frase_bucle": {"type": "string"},
         "texto_portada": {"type": "string"},
         "personajes": {
             "type": "array",
@@ -110,7 +111,7 @@ STORY_SCHEMA = {
             },
         },
     },
-    "required": ["pregunta_central", "texto_portada", "personajes", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "planos"],
+    "required": ["pregunta_central", "frase_bucle", "texto_portada", "personajes", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "planos"],
     "additionalProperties": False,
 }
 
@@ -175,6 +176,12 @@ creías o una amenaza nueva.
 vídeos; busca la forma propia de cada historia.
 - Cada 2-3 planos, algo nuevo: un dato, un giro pequeño, una amenaza o una pregunta ("Pero había un problema.").
 - Nada de relleno ni frases de transición vacías; si un plano se puede quitar sin perder nada, quítalo.
+- "frase_bucle" (OBLIGATORIA): la ÚLTIMA frase del vídeo, escrita para que la PRIMERA frase (plano 1) la complete y
+  el espectador no note que el vídeo ha vuelto a empezar. Termina a medias, sin punto final, y el plano 1 es la
+  continuación natural. Ejemplos: frase_bucle "Y lo más curioso es que, cada vez que" + plano 1 "te cortas, sanas.";
+  frase_bucle "Por eso, si mañana" + plano 1 "cayeras tres mil metros..."; frase_bucle "Y todo empezó el día en que"
+  + plano 1 "un hombre se operó a sí mismo.". Léelas seguidas: tienen que sonar como UNA sola frase. NO la repitas
+  como plano: el sistema la añade al final con la misma imagen del plano 1.
 - BUCLE OBLIGATORIO: la última frase debe enlazar con la primera, de forma que al volver a empezar el vídeo tenga \
 sentido seguir viéndolo (p. ej. termina con "…y por eso, cuando cayó 3.000 metros…" para que el plano 1 continúe la frase, \
 o con una pregunta que el plano 1 responde). Así mucha gente lo ve dos veces.
@@ -616,6 +623,15 @@ def validate_story(story: dict) -> dict:
             if v > (4 if k in ("character", "person") else 2)}
     if reps:
         print(f"  aviso: escenas muy repetidas en este guion: {reps}")
+    # Bucle: la frase final (que completa el plano 1) va al final con la MISMA imagen del plano 1
+    bucle = re.sub(r"\s+", " ", story.get("frase_bucle") or "").strip().rstrip(".")
+    if beats and bucle:
+        if beats[-1]["text"].strip().rstrip(".…").lower() == bucle.lower().rstrip("…"):
+            beats.pop()  # el guionista la repitió como plano: se sustituye por la versión con la imagen del principio
+        first = beats[0]
+        beats.append({**first, "text": bucle if bucle.endswith(("…", "...")) else bucle + "…", "camera": "static", "transition": "cut", "bucle": True})
+    elif beats:
+        print("  aviso: el guion no trae frase de bucle")
     # Red de seguridad: el vídeo tiene que presentar su tema con una pregunta al principio
     # (la gente lo ve sin título ni descripción). Si el guion no la tiene, se añade la pregunta central delante.
     pregunta = re.sub(r"\s+", " ", story.get("pregunta_central") or "").strip()

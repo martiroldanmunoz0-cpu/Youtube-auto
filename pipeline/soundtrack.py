@@ -46,7 +46,7 @@ def _synth_loop(n: int, rng) -> np.ndarray:
     return out + pad
 
 
-def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: Path, seed: int = 1, volume: float = 0.16, sfx: bool = True, style: str = "dark"):
+def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: Path, seed: int = 1, volume: float = 0.16, sfx: bool = True, style: str = "dark", loop: bool = False):
     rng = np.random.default_rng(seed)
     n = int(duration * SR) + SR
     t = np.arange(n) / SR
@@ -84,7 +84,7 @@ def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: 
             track[i0:i0 + L] += boom * 2.2
 
     # Fundido de entrada/salida y normalización
-    fade = int(1.5 * SR)
+    fade = int((0.06 if loop else 1.5) * SR)  # en bucle: sin fundidos que delaten el final
     track[:fade] *= np.linspace(0, 1, fade)
     end = int(duration * SR)
     track[end - fade:end] *= np.linspace(1, 0, fade)
