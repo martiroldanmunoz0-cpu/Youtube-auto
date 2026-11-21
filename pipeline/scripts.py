@@ -547,7 +547,10 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
         + (f"Estilo que prefiere el dueño del canal:\n{style}\n\n" if style else "")
         + f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
         + (f"Para este vídeo se han añadido a la biblioteca estas piezas (úsalas en 'composicion'): {', '.join(idea['piezas_nuevas'])}\n\n" if idea.get("piezas_nuevas") else "")
-        + f"Duración objetivo: {lo}-{hi} segundos. Escribe los ganchos candidatos y después el guion completo."
+        + f"Duración objetivo: {lo}-{hi} segundos. LÍMITE DE PALABRAS (la voz lee unas 2,4 palabras por segundo): "
+        f"entre {int(lo * 2.4)} y {int(hi * 2.4)} palabras EN TOTAL sumando todos los planos y la frase_bucle. "
+        f"Cuéntalas antes de terminar; si te pasas, quita planos o acorta frases (nunca el gancho). "
+        "Escribe los ganchos candidatos y después el guion completo."
     )
     return make_params(SYSTEM_WRITER, context, user, STORY_SCHEMA, models(cfg)[1], effort=cfg["generacion"].get("esfuerzo_guiones", "medium"))
 
@@ -755,6 +758,9 @@ def validate_story(story: dict) -> dict:
             base = {**base, "scene": "escena", "params": {"lugar": base["params"].get("lugar") or "salon", "plano": "medio", "mood": "shocked", "efecto": "wow"}}
         beats.insert(pos, {**base, "text": pregunta, "camera": "push_in", "transition": "cut"})
         print(f"  (añadida la pregunta central en el plano {pos + 1}: «{pregunta}»)")
+    palabras = sum(len(b["text"].split()) for b in beats)
+    if palabras > 150:
+        print(f"  aviso: guion largo ({palabras} palabras ≈ {palabras / 2.45:.0f} s)")
     if beats:
         beats[0]["camera"] = beats[0]["camera"] if beats[0]["camera"] in ("slam", "shake") else "slam"  # movimiento desde el fotograma 0
         if len(beats[0]["text"].split()) > 12:
