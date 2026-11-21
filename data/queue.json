@@ -230,8 +230,9 @@
     "tag": "pedido-16",
     "issue": 31,
     "estado": "programado",
-    "publish_at": "2026-11-22T18:30:00Z",
+    "publish_at": "2026-11-22T10:30:00Z",
     "youtube_id": "zXTK7iknzAM",
-    "portada_ok": true
+    "portada_ok": true,
+    "reprogramado": true
   }
 ]
