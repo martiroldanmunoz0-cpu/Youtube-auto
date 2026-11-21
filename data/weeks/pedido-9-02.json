@@ -1,0 +1,27 @@
+{
+  "semana": "pedido-9-02",
+  "tanda": "pedido-9",
+  "pedido": "que pasaria si volvieran los dinosaurios",
+  "tag": "pedido-9",
+  "videos": [
+    {
+      "id": "pedido-9-02",
+      "title": "Una noche sola con dinosaurios fuera de casa #shorts",
+      "description": "Los dinosaurios han vuelto y tú estás solo en casa. ¿Habrías abierto la puerta al amanecer? Cuéntame qué habrías hecho tú.\n#dinosaurios #quepasariasi #curiosidades #terror #shorts",
+      "tags": [
+        "dinosaurios",
+        "qué pasaría si",
+        "volvieran los dinosaurios",
+        "microraptor",
+        "curiosidades",
+        "terror",
+        "suspense",
+        "ciencia",
+        "prehistoria",
+        "dinosaurios con plumas"
+      ],
+      "video": "pedido-9-02.mp4",
+      "portada": "pedido-9-02_portada.jpg"
+    }
+  ]
+}
