@@ -1,0 +1,443 @@
+{
+  "title": "Por qué no puedes hacerte cosquillas a ti mismo #shorts",
+  "description": "Tu cerebro lleva toda la vida ganándote la partida. ¿Lo has intentado alguna vez con una pluma? Cuéntanos qué pasó.\n#curiosidades #cerebro #ciencia #cosquillas",
+  "tags": [
+    "cosquillas",
+    "cerebro",
+    "cerebelo",
+    "curiosidades",
+    "ciencia",
+    "experimento",
+    "psicología",
+    "neurociencia",
+    "datos curiosos",
+    "cuerpo humano"
+  ],
+  "beats": [
+    {
+      "text": "¿Por qué no puedes hacerte cosquillas tú mismo?",
+      "scene": "escena",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "worried",
+        "objeto": "none",
+        "label": "Pie descalzo",
+        "efecto": "velocidad"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Pruébalo ahora. Pie descalzo, tus dedos... y nada.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "neutral",
+        "label": "INTENTO 1",
+        "piezas": [
+          {
+            "pieza": "mano",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "acercarse"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Antes de mover la mano, tu cerebelo ya ha copiado la orden.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "cerebro",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "latir"
+          },
+          {
+            "pieza": "mano",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "entrar_der"
+          }
+        ],
+        "label": "Cerebelo"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Así predice lo que vas a sentir, y baja el volumen de la sensación.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "cerebro",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "latir"
+          }
+        ],
+        "label": "Volumen: bajando",
+        "_faltan": [
+          "mando de volumen"
+        ]
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Intento dos: una pluma, más suave y más lenta.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "neutral",
+        "label": "INTENTO 2",
+        "piezas": [
+          {
+            "pieza": "pluma",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Tampoco. La mano sigue siendo tuya, y tu cerebelo la sigue prediciendo.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dormir",
+        "lugar": "salon",
+        "hora": "atardecer",
+        "label": "Cero cosquillas"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Intento tres: un experimento real de un laboratorio de Londres.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "worried",
+        "label": "INTENTO 3",
+        "piezas": [
+          {
+            "pieza": "robot",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "entrar_der"
+          },
+          {
+            "pieza": "barca",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Mueves una palanca y un robot te pasa una pluma por la mano.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "barca",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "robot",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "pluma",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "pan_right",
+      "transition": "cut"
+    },
+    {
+      "text": "Si copia tu movimiento al instante, apenas notas nada.",
+      "scene": "escena",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "neutral",
+        "objeto": "none",
+        "label": "Sin retraso"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Pero añade un retraso de apenas...",
+      "scene": "big_text",
+      "params": {
+        "text": "0,2 s",
+        "label": "de retraso",
+        "color": "#ff3b3b",
+        "lugar": "oficina"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "...unas décimas de segundo, y la sensación se dispara.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "oficina",
+        "hora": "dia",
+        "efecto": "zas"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "La predicción falla, y tu cerebro cree que te toca otra persona.",
+      "scene": "accion",
+      "params": {
+        "tipo": "idea",
+        "lugar": "oficina",
+        "hora": "dia",
+        "label": "Predicción fallida"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Ahora entra un amigo por sorpresa y te ataca las costillas.",
+      "scene": "group",
+      "params": {
+        "count": 2,
+        "people": [
+          "amigo"
+        ],
+        "lugar": "salon",
+        "hora": "dia",
+        "mood": "happy",
+        "label": "¡Sorpresa!"
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "Te ríes aunque lo odies, porque no puedes predecirlo.",
+      "scene": "escena",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "happy",
+        "arms": "up",
+        "highlight": "stomach"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Se activa el hipotálamo, una zona profunda de reacciones instintivas.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "medio",
+        "mood": "happy",
+        "label": "Hipotálamo",
+        "piezas": [
+          {
+            "pieza": "cerebro",
+            "pos": "izquierda",
+            "tamano": "gigante",
+            "anim": "latir"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Por eso puedes reírte y querer escapar a la vez.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "persona": "entero",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "pluma",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "acercarse"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Solo podrías engañarte con un robot que llegue tarde a tu movimiento.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "atardecer",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "robot",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "reloj_arena",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ]
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Y sin robot, hazlo otra vez: tu cerebelo ya ha visto este vídeo contigo.",
+      "scene": "escena",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "sad",
+        "objeto": "none",
+        "label": "Pie descalzo"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Y por eso, la próxima vez que quieras reírte sin que nadie te toque, recuerda que tu cerebro sabe…",
+      "scene": "escena",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "worried",
+        "objeto": "none",
+        "label": "Pie descalzo",
+        "efecto": "velocidad"
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "mujer",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "largo",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "naranja"
+    },
+    "amigo": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "media",
+      "pelo": "corto",
+      "color_pelo": "negro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "verde"
+    }
+  },
+  "cover_text": "¿CÓSQUILLAS A TI MISMO?",
+  "question": "¿Por qué no puedes hacerte cosquillas a ti mismo?",
+  "id": "pedido-16-01",
+  "idea": {
+    "tipo": "explicacion",
+    "premisa": "El espectador VIVE tres intentos cada vez más elaborados de hacerse cosquillas. Intento 1: con tus propios dedos en la planta del pie, y nada. Explicación visual: antes de moverte, tu cerebelo hace una copia de la orden, predice lo que vas a sentir y baja el volumen de la sensación, porque ya sabe cuándo y dónde llega. Intento 2: con una pluma, más suave, más lenta. Tampoco funciona: la mano sigue siendo tuya y el cerebelo la sigue prediciendo. Intento 3: el experimento real de Sarah-Jayne Blakemore en el University College London (finales de los 90). Tú mueves una palanca y un brazo robótico pasa una pluma por tu mano. Si el robot copia tu movimiento al instante, apenas sientes nada. Pero si le añaden un retraso de unas décimas de segundo, hasta 0,2 segundos, o cambian la dirección del roce, la sensación sube: la predicción falla y parece que te toca otra persona. Escalada final: entra un amigo por sorpresa y te ataca las costillas. Te ríes aunque lo odies, porque no puedes predecirlo y la risa de las cosquillas es en gran parte una reacción automática. Estudios con escáner han visto que activa una zona profunda del cerebro relacionada con reacciones instintivas, el hipotálamo. Por eso puedes reírte y querer escapar a la vez.",
+    "gancho": "¿Por qué no puedes hacerte cosquillas a ti mismo? Pruébalo ahora mismo: pie descalzo, dedos… nada.",
+    "giro_final": "La única forma de hacerte cosquillas a ti mismo es llegar tarde a tu propio movimiento: con un robot que te imita con 0,2 segundos de retraso, tu cerebro deja de reconocerte. Y ahora vuelve al principio e inténtalo otra vez sin robot. Sigue sin funcionar, porque tu cerebelo acaba de ver este vídeo contigo.",
+    "estilo_visual": "Estilo luminoso de dibujo animado durante todo el vídeo, sin escenas oscuras. Plano 1, escena: dormitorio de día, tú sentado en la cama con el pie descalzo y los dedos acercándose; se ve en primer plano lo que dice la voz. Plano 2, composicion: mano haciendo cosquillas en un pie gigante y cara de aburrimiento, con un rótulo 'INTENTO 1'. Plano 3, composicion sobre fondo liso: cerebro grande con el cerebelo resaltado; de él sale una flecha-orden hacia la mano y una copia de la orden vuelve al cerebelo; un mando de volumen de la sensación baja. Plano 4, composicion: pluma sobre la palma de la mano, 'INTENTO 2', cara de nada. Plano 5, composicion: laboratorio con robot con brazo y pluma, tu mano bajo la pluma y tu otra mano en una palanca, 'INTENTO 3'. Plano 6, big_text con '0,2 s' arriba y tú reaccionando debajo. Plano 7, accion sorpresa: el robot con retraso te roza y saltas riendo. Plano 8, accion idea: bombilla sobre tu cabeza mientras la voz dice 'la predicción falla'. Plano 9, group: un amigo te ataca por la espalda y te ríes retorciéndote. Plano 10, composicion: cerebro con el hipotálamo brillando en rojo en el centro y la persona riendo mientras intenta escapar. Plano 11, escena del plano 1 repetida a propósito, en el mismo encuadre que la apertura para cerrar el bucle: tú otra vez con el pie y los dedos, cara de derrota. Portada: composicion con el robot haciendo cosquillas con la pluma en la planta del pie de una persona que se ríe a carcajadas, y el cerebro al lado con cara de sorpresa. Colores vivos y una sola idea clara.",
+    "por_que_funcionara": "Es un reto que el espectador puede hacer en ese mismo segundo, así que lo vive en segunda persona como pide el dueño. La estructura de intentos crea escalada hasta el robot, que es el dato que poca gente conoce. Todos los planos son distintos y muestran literalmente lo que dice la voz, lo que corrige el motivo de descarte 'escenas feas o repetidas'. El bucle final invita a volver a verlo y a intentarlo otra vez.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "cerebro con cerebelo resaltado",
+      "cerebro con hipotálamo resaltado",
+      "mano",
+      "pluma",
+      "robot con brazo articulado y pluma",
+      "palanca o joystick de laboratorio",
+      "pie descalzo gigante",
+      "mando de volumen o dial",
+      "rótulo de intento numerado"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Por qué no puedes hacerte cosquillas tú mismo?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Tema clarísimo en dos segundos, cualquiera se lo ha preguntado y quiere la respuesta."
+    },
+    {
+      "texto": "Inténtalo ahora: hazte cosquillas en el pie. Nada.",
+      "tipo": "d",
+      "puntuacion": 8,
+      "motivo": "Reto inmediato en segunda persona que deja claro el tema, pero la pregunta queda implícita."
+    },
+    {
+      "texto": "Tu cerebro sabe cuándo vas a tocarte. ¿Puedes engañarlo?",
+      "tipo": "b",
+      "puntuacion": 7,
+      "motivo": "Plantea un reto, aunque es más largo y menos inmediato."
+    },
+    {
+      "texto": "Tu cerebro anula las cosquillas antes de que ocurran.",
+      "tipo": "c",
+      "puntuacion": 7,
+      "motivo": "Dato que choca, aunque destripa parte de la respuesta."
+    },
+    {
+      "texto": "Todos creen que son solo un roce. No lo son.",
+      "tipo": "e",
+      "puntuacion": 4,
+      "motivo": "Contradicción, pero no deja claro el tema a quien solo la oye."
+    }
+  ]
+}

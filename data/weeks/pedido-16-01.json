@@ -1,0 +1,27 @@
+{
+  "semana": "pedido-16-01",
+  "tanda": "pedido-16",
+  "pedido": "¿Por qué no puedes hacerte cosquillas a ti mismo? Explicación curiosa y fácil: el cerebro (el cerebelo) predice tu propio movimiento y anula la sensación; experimentos con un robot que hace cosquillas con retraso; por qué las cosquillas de otro te hacen reír aunque no te guste. Usa piezas como cerebro, mano, pluma, robot. Que se vea lo que se dice en cada plano, gancho fuerte y final que enlace con el principio.",
+  "tag": "pedido-16",
+  "videos": [
+    {
+      "id": "pedido-16-01",
+      "title": "Por qué no puedes hacerte cosquillas a ti mismo #shorts",
+      "description": "Tu cerebro lleva toda la vida ganándote la partida. ¿Lo has intentado alguna vez con una pluma? Cuéntanos qué pasó.\n#curiosidades #cerebro #ciencia #cosquillas",
+      "tags": [
+        "cosquillas",
+        "cerebro",
+        "cerebelo",
+        "curiosidades",
+        "ciencia",
+        "experimento",
+        "psicología",
+        "neurociencia",
+        "datos curiosos",
+        "cuerpo humano"
+      ],
+      "video": "pedido-16-01.mp4",
+      "portada": "pedido-16-01_portada.jpg"
+    }
+  ]
+}
