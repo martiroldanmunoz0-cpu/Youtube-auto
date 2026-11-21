@@ -15,6 +15,7 @@ import { paginate, drawSubtitles, drawWordSubtitles } from './lib/subtitles.mjs'
 import { SCENES } from './scenes/index.mjs';
 import { setLooks } from './lib/persona.mjs';
 import { drawEffect } from './lib/impact.mjs';
+import { lifeOverlay } from './lib/ambient.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fontDir = path.join(here, '..', 'assets', 'fonts');
@@ -35,6 +36,8 @@ const DARK_SCENES = new Set(['eyes_dark', 'silhouette', 'hallway', 'front_door',
     proto[fn] = function (text, ...rest) { return orig.call(this, String(text ?? ''), ...rest); };
   }
 }
+// Escenas que ya tienen mucho movimiento propio; al resto se les añade una capa de vida discreta
+const LIVELY = new Set(['escena', 'composicion', 'accion', 'money', 'police_chase', 'car_ride', 'car_window', 'ocean', 'big_text', 'surgery', 'clock', 'document']);
 const sceneErrors = new Set();
 
 // Campos que las escenas usan como TEXTO: si la IA manda un número, se convierte a texto.
@@ -123,6 +126,7 @@ export class Renderer {
     ctx.translate(-W / 2, -H / 2);
     try {
       b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, seed: this.tl.persona || this.tl.seed, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
+      if (!LIVELY.has(b.scene_name)) lifeOverlay(ctx, local, DARK_SCENES.has(b.scene_name));
       if (b.params.efecto) drawEffect(ctx, b.params.efecto, local); // ¡PUM!, ¡ZAS!, velocidad, brillo...
     } catch (e) {
       // Una escena rota no debe tumbar el vídeo entero: fondo neutro y aviso (el revisor lo verá)

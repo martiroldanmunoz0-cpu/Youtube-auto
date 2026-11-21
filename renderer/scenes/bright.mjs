@@ -4,6 +4,7 @@
 import { W, H, rr, radial, clamp, noise1 } from '../lib/util.mjs';
 import { personaWho, drawHead, drawFullBody } from '../lib/persona.mjs';
 import { brightBg } from '../lib/brightbg.mjs';
+import { ambientBack, ambientFront } from '../lib/ambient.mjs';
 
 const INK = '#1c1a2b';
 function outline(ctx, w = 10) { ctx.lineWidth = w; ctx.strokeStyle = INK; ctx.lineJoin = 'round'; ctx.stroke(); }
@@ -222,7 +223,8 @@ const EXTERIOR = new Set(['calle', 'ciudad', 'campo', 'desierto', 'playa', 'mont
 const ALIAS = { casa: 'salon', 'salón': 'salon', habitacion: 'dormitorio', 'habitación': 'dormitorio', trabajo: 'oficina', colegio: 'aula', escuela: 'aula',
   clase: 'aula', bosque: 'selva', mar_fondo: 'bajo_el_mar', oceano: 'bajo_el_mar', 'océano': 'bajo_el_mar', submarino: 'bajo_el_mar', agua: 'bajo_el_mar', universo: 'espacio', cielo: 'espacio', liso: 'fondo', ninguno: 'fondo', jungla: 'selva', mar: 'playa', nieve: 'montana', 'montaña': 'montana', pueblo: 'calle', carretera: 'coche', hospital_hab: 'hospital' };
 export function placeName(p) { const k = String(p || 'salon').toLowerCase().trim(); return PLACES[k] ? k : (ALIAS[k] || 'salon'); }
-export function drawPlace(ctx, lugar, hora, t) { PLACES[placeName(lugar)](ctx, t, hora); }
+export function drawPlace(ctx, lugar, hora, t) { const l = placeName(lugar); PLACES[l](ctx, t, hora); ambientBack(ctx, l, t, hora); }
+export { ambientFront };
 export { grade, EXTERIOR };
 
 // ---------------- Persona en plano medio con un objeto ----------------
@@ -252,11 +254,16 @@ export function midShot(ctx, who, { x = W / 2, y = 820, s = 0.95, mood = 'neutra
     ctx.save(); ctx.translate(110 + sway, 560); ctx.rotate(-0.15); drawProp(ctx, prop, t); ctx.restore();
     ctx.beginPath(); ctx.ellipse(130 + sway, 650, 66, 58, 0, 0, 7); ctx.fillStyle = skin; ctx.fill(); outline(ctx, 10);
   } else {
-    limb([[270, 420], [320, 760]], who.outfit, 120); limb([[320, 760], [300, 980]], skin, 104);
-    ctx.beginPath(); ctx.ellipse(300, 1010, 64, 72, 0, 0, 7); ctx.fillStyle = skin; ctx.fill(); outline(ctx, 10);
+    // Gesto al hablar: la mano sube y baja de vez en cuando (como quien explica algo)
+    const g = Math.pow(Math.max(0, Math.sin(t * 1.7 + seed)), 2);
+    const ex = 320 + g * 70, ey = 760 - g * 90, hx = 300 - g * 90, hy = 980 - g * 330 + Math.sin(t * 6) * 12 * g;
+    limb([[270, 420], [ex, ey]], who.outfit, 120); limb([[ex, ey], [hx, hy]], skin, 104);
+    ctx.beginPath(); ctx.ellipse(hx, hy + 30, 64, 72, 0, 0, 7); ctx.fillStyle = skin; ctx.fill(); outline(ctx, 10);
   }
+  ctx.save(); ctx.rotate(Math.sin(t * 1.3 + seed) * 0.05); // la cabeza se inclina un poco al hablar
   ctx.beginPath(); ctx.ellipse(0, 0, 242, 292, 0, 0, 7); ctx.fillStyle = INK; ctx.fill();
   drawHead(ctx, 0, 0, who, { mood, t, blinkSeed: seed });
+  ctx.restore();
   ctx.restore();
 }
 
@@ -276,7 +283,7 @@ export const escena = {
   draw(ctx, s, { t, params, seed }) {
     const hora = ['dia', 'atardecer', 'noche'].includes(params.hora) ? params.hora : 'dia';
     const lugar = placeName(params.lugar);
-    PLACES[lugar](ctx, t, hora);
+    drawPlace(ctx, lugar, hora, t);
     const plano = params.plano || 'medio';
     if (plano !== 'sin_persona' && plano !== 'ninguno') {
       const who = personaWho(seed, params);
@@ -293,6 +300,7 @@ export const escena = {
         }
       }
     }
+    ambientFront(ctx, lugar, t, hora);
     grade(ctx, hora);
     if (hora === 'noche' && !EXTERIOR.has(lugar)) radial(ctx, W / 2, 500, 700, '#ffe7a8', 0.12); // luz de interior
     if (params.label) labelPill(ctx, params.label, 1780);

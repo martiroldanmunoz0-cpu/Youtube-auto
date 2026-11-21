@@ -1,5 +1,6 @@
 // Fondo luminoso común del estilo nuevo: degradado suave + formas pastel que flotan + trama de puntos.
 import { W, H } from './util.mjs';
+import { livelyBg } from './ambient.mjs';
 
 export const INK = '#1c1a2b';
 const TONES = {
@@ -21,4 +22,5 @@ export function brightBg(ctx, t, tone = 'crema') {
     ctx.beginPath(); ctx.arc(x, y, 60 + (i % 4) * 40, 0, 7); ctx.fill();
   }
   ctx.globalAlpha = 1;
+  livelyBg(ctx, t, cols); // rayos que giran, confeti y destellos: el fondo liso nunca está quieto
 }

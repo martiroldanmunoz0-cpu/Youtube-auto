@@ -2,7 +2,7 @@
 // Así cada vídeo tiene escenas propias (un dinosaurio en la playa, un corazón gigante en la oficina, un tiburón bajo el mar...).
 import { W, H, clamp, ease } from '../lib/util.mjs';
 import { PROPS, propName } from '../lib/props.mjs';
-import { drawPlace, midShot, grade, EXTERIOR, placeName } from './bright.mjs';
+import { drawPlace, midShot, grade, EXTERIOR, placeName, ambientFront } from './bright.mjs';
 import { personaWho, drawFullBody } from '../lib/persona.mjs';
 import { brightBg, INK } from '../lib/brightbg.mjs';
 
@@ -31,6 +31,13 @@ function placeProp(ctx, item, t, dur, idx, noGround = false) {
   else if (a === 'latir') sc = s * (1 + Math.max(0, Math.sin(t * 7)) * 0.08);
   else if (a === 'acercarse') sc = s * (0.5 + 0.5 * ease.inOut(clamp(t / Math.max(1, dur))));
   if (t0 < 0) return;
+  // Vida después de aparecer: ninguna pieza se queda congelada (balanceo y respiración suaves)
+  if (a !== 'temblar' && a !== 'girar') {
+    const life = clamp((t0 - 0.5) / 0.4);
+    y += Math.sin(t * 2.2 + idx * 1.9) * 14 * life;
+    rot += Math.sin(t * 1.6 + idx) * 0.05 * life;
+    sc *= 1 + Math.sin(t * 3 + idx) * 0.025 * life;
+  }
   ctx.save(); ctx.globalAlpha = alpha; ctx.translate(x, y);
   // sombra en el suelo
   if (y0 > 1300) { ctx.fillStyle = 'rgba(0,0,0,0.18)'; ctx.beginPath(); ctx.ellipse(0, 8, 230 * sc, 30 * sc, 0, 0, 7); ctx.fill(); }
@@ -86,6 +93,7 @@ export const composicion = {
       else midShot(ctx, who, { x: W / 2 + side * 200, y: 980, s: 0.7, mood: params.mood, prop: params.objeto || 'none', t, seed: s.seed });
     }
     front.forEach((it) => placeProp(ctx, it, t, dur, items.indexOf(it), noGround));
+    ambientFront(ctx, lugar, t, hora);
     if (lugar !== 'fondo') grade(ctx, hora);
     if (params.label) {
       const text = String(params.label).toUpperCase();
