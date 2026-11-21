@@ -5,6 +5,8 @@
     "tipo": "pedido",
     "ts": "2026-11-21T10:55:23.505863+00:00",
     "premisa": "Narración en segunda persona con escalada por edades. Te cortas el mismo dedo, en el mismo sitio, tres veces en tu vida. A los 8 años la herida se cierra en pocos días: en minutos las plaquetas forman un tapón, después llegan los glóbulos blancos a limpiar y los fibroblastos fabrican colágeno nuevo. A los 30 tarda algo más. A los 80 tarda bastante más y cuesta que cierre. ¿Qué ha cambiado? Cada vez que una célula se divide para reparar, los extremos de sus cromosomas, los telómeros, se acortan un poco, como el plástico de la punta de un cordón que se desgasta. Tras unas 40-60 divisiones (el límite de Hayflick) la célula deja de dividirse y se queda como una 'célula zombi' que inflama lo que tiene alrededor. Además, el ADN de cada célula sufre miles de daños diarios; casi todos se arreglan, pero los pocos errores que quedan se van sumando durante décadas.",
-    "gancho": "¿Si tu cuerpo cierra un corte él solito en una semana, por qué no puede arreglarse para no envejecer nunca? Te cortas este dedo tres veces en tu vida. Mira qué pasa."
+    "gancho": "¿Si tu cuerpo cierra un corte él solito en una semana, por qué no puede arreglarse para no envejecer nunca? Te cortas este dedo tres veces en tu vida. Mira qué pasa.",
+    "aprobado": false,
+    "motivo": "escenas feas o repetidas"
   }
 ]
