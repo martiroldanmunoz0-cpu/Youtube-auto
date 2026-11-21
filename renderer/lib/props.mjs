@@ -269,9 +269,38 @@ export const PROPS = {
   casa(ctx) { R(ctx, -230, -300, 460, 300, 6, '#ffd166'); P(ctx, [[-280, -290], [0, -500], [280, -290]], '#e8505b'); R(ctx, -50, -170, 100, 170, 10, '#8b5a2b'); for (const x of [-170, 90]) R(ctx, x, -240, 80, 80, 8, '#bfe6ff', 7); },
   edificio(ctx, t) { R(ctx, -170, -620, 340, 620, 6, '#7aa2c8'); for (let y = -580; y < -40; y += 80) for (let x = -140; x < 140; x += 70) R(ctx, x, y, 44, 50, 4, '#e6f7ff', 4); },
   montana_pieza(ctx) { P(ctx, [[-360, 0], [-60, -440], [240, 0]], '#8ea6c8'); P(ctx, [[-60, -440], [-150, -310], [-90, -330], [-40, -300], [30, -340]], '#ffffff', 6); },
+  // Señal de tráfico triangular de peligro sobre un poste
+  senal_trafico(ctx, t) {
+    R(ctx, -16, -360, 32, 360, 8, '#9aa6b2');
+    ctx.save(); ctx.translate(0, -470); ctx.rotate(Math.sin(t * 2) * 0.03);
+    P(ctx, [[0, -170], [180, 140], [-180, 140]], '#ffffff'); P(ctx, [[0, -120], [135, 110], [-135, 110]], '#e8505b', 0); P(ctx, [[0, -80], [100, 90], [-100, 90]], '#ffffff', 0);
+    R(ctx, -12, -40, 24, 80, 10, INK, 0); C(ctx, 0, 65, 14, INK); ctx.restore();
+  },
+  // Semáforo con la luz que cambia
+  semaforo(ctx, t) {
+    R(ctx, -18, -300, 36, 300, 8, '#3a3f4e');
+    R(ctx, -90, -640, 180, 360, 30, '#2b2f3a');
+    const on = Math.floor(t / 1.2) % 3;
+    ['#e8505b', '#ffd166', '#6fcf97'].forEach((c, i) => { C(ctx, 0, -580 + i * 110, 42, on === i ? c : '#555b68'); if (on === i) { ctx.save(); ctx.globalAlpha = 0.35; C(ctx, 0, -580 + i * 110, 70, c, 0); ctx.restore(); } });
+  },
+  // Máquina de pinball con luces parpadeando y la bola rebotando
+  maquina_pinball(ctx, t) {
+    L(ctx, [[-150, 0], [-130, -330]], INK, 24); L(ctx, [[150, 0], [130, -330]], INK, 24);
+    ctx.beginPath(); ctx.moveTo(-200, -330); ctx.lineTo(200, -330); ctx.lineTo(170, -720); ctx.lineTo(-170, -720); ctx.closePath(); ctx.fillStyle = '#5b3fd1'; ctx.fill(); O(ctx);
+    ctx.beginPath(); ctx.moveTo(-160, -370); ctx.lineTo(160, -370); ctx.lineTo(140, -690); ctx.lineTo(-140, -690); ctx.closePath(); ctx.fillStyle = '#1f2a5a'; ctx.fill(); O(ctx, 6);
+    for (const [x, y, c] of [[-70, -600, '#ff5d8f'], [70, -600, '#ffd166'], [0, -520, '#7bdff2']]) { C(ctx, x, y, 34 + (Math.sin(t * 8 + x) > 0.3 ? 6 : 0), c); }
+    const bx = Math.sin(t * 3.1) * 110, by = -460 - Math.abs(Math.sin(t * 4.3)) * 200; C(ctx, bx, by, 18, '#e6ecf5');
+    for (const s of [-1, 1]) { ctx.save(); ctx.translate(s * 60, -400); ctx.rotate(s * (0.3 - Math.max(0, Math.sin(t * 5 + s)) * 0.5)); R(ctx, s > 0 ? -70 : 0, -10, 70, 20, 10, '#ffd166', 5); ctx.restore(); }
+    R(ctx, -190, -860, 380, 140, 20, '#ff5d8f'); ctx.font = '800 66px Poppins'; ctx.textAlign = 'center'; ctx.fillStyle = Math.sin(t * 6) > 0 ? '#ffd166' : '#ffffff'; ctx.fillText('PINBALL', 0, -768);
+  },
+  // Cama con almohada y manta
+  cama(ctx) {
+    R(ctx, -330, -120, 660, 120, 16, '#8b5a2b'); R(ctx, -340, -330, 60, 330, 14, '#8b5a2b');
+    R(ctx, -300, -220, 620, 110, 30, '#ffffff'); R(ctx, -270, -280, 170, 80, 30, '#e3f3ff'); R(ctx, -110, -240, 440, 130, 30, '#5ab8ff');
+  },
 };
 export const PROP_NAMES = Object.keys(PROPS);
-const ALIAS = { dino: 'dinosaurio', globulos_rojos: 'globulo_rojo', 'glóbulo rojo': 'globulo_rojo', 'glóbulos rojos': 'globulo_rojo', eritrocito: 'globulo_rojo', 'glóbulo blanco': 'globulo_blanco', 'glóbulos blancos': 'globulo_blanco', leucocito: 'globulo_blanco', linfocito: 'globulo_blanco', defensas: 'globulo_blanco', anticuerpo: 'globulo_blanco', plaquetas: 'plaqueta', coagulo: 'plaqueta', 'coágulo': 'plaqueta', costra: 'plaqueta', 'macrófago': 'macrofago', 'macrófagos': 'macrofago', fagocito: 'macrofago', bacterias: 'bacteria', microbio: 'bacteria', germen: 'bacteria', fibroblasto: 'colageno', fibroblastos: 'colageno', 'colágeno': 'colageno', fibras: 'colageno', cicatriz_piel: 'piel', capas_piel: 'piel', dermis: 'piel', epidermis: 'piel', nobel: 'medalla', premio_nobel: 'medalla', 'premio nobel': 'medalla', premio: 'trofeo', galardon: 'trofeo', laboratorio: 'microscopio', cientifico: 'microscopio', 'científico': 'microscopio', investigacion: 'lupa', 'investigación': 'lupa', descubrimiento: 'bombilla', vejez: 'reloj_arena', tiempo: 'reloj_arena', envejecimiento: 'reloj_arena', sangre: 'gota', dna: 'adn', gen: 'adn', genes: 'adn', corte: 'herida', cicatriz: 'herida', 'tirita': 'tirita', curita: 'tirita', 'división celular': 'celula_dividiendose', telomero: 'cromosoma', 'telómero': 'cromosoma', 'telómeros': 'cromosoma', mitocondrias: 'mitocondria', 'radicales libres': 'radical_libre', oxidacion: 'radical_libre', 'oxidación': 'radical_libre', cumpleanos: 'tarta_cumpleanos', 'cumpleaños': 'tarta_cumpleanos', tarta: 'tarta_cumpleanos', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
+const ALIAS = { 'señal de tráfico': 'senal_trafico', 'señal de trafico': 'senal_trafico', senal: 'senal_trafico', 'señal': 'senal_trafico', 'señal_trafico': 'senal_trafico', 'señal de peligro': 'senal_trafico', stop: 'senal_trafico', 'semáforo': 'semaforo', trafico: 'semaforo', 'tráfico': 'semaforo', pinball: 'maquina_pinball', 'máquina de pinball': 'maquina_pinball', 'maquina de pinball': 'maquina_pinball', recreativa: 'maquina_pinball', 'máquina recreativa': 'maquina_pinball', camas: 'cama', dormir: 'cama', 'litera': 'cama', dino: 'dinosaurio', globulos_rojos: 'globulo_rojo', 'glóbulo rojo': 'globulo_rojo', 'glóbulos rojos': 'globulo_rojo', eritrocito: 'globulo_rojo', 'glóbulo blanco': 'globulo_blanco', 'glóbulos blancos': 'globulo_blanco', leucocito: 'globulo_blanco', linfocito: 'globulo_blanco', defensas: 'globulo_blanco', anticuerpo: 'globulo_blanco', plaquetas: 'plaqueta', coagulo: 'plaqueta', 'coágulo': 'plaqueta', costra: 'plaqueta', 'macrófago': 'macrofago', 'macrófagos': 'macrofago', fagocito: 'macrofago', bacterias: 'bacteria', microbio: 'bacteria', germen: 'bacteria', fibroblasto: 'colageno', fibroblastos: 'colageno', 'colágeno': 'colageno', fibras: 'colageno', cicatriz_piel: 'piel', capas_piel: 'piel', dermis: 'piel', epidermis: 'piel', nobel: 'medalla', premio_nobel: 'medalla', 'premio nobel': 'medalla', premio: 'trofeo', galardon: 'trofeo', laboratorio: 'microscopio', cientifico: 'microscopio', 'científico': 'microscopio', investigacion: 'lupa', 'investigación': 'lupa', descubrimiento: 'bombilla', vejez: 'reloj_arena', tiempo: 'reloj_arena', envejecimiento: 'reloj_arena', sangre: 'gota', dna: 'adn', gen: 'adn', genes: 'adn', corte: 'herida', cicatriz: 'herida', 'tirita': 'tirita', curita: 'tirita', 'división celular': 'celula_dividiendose', telomero: 'cromosoma', 'telómero': 'cromosoma', 'telómeros': 'cromosoma', mitocondrias: 'mitocondria', 'radicales libres': 'radical_libre', oxidacion: 'radical_libre', 'oxidación': 'radical_libre', cumpleanos: 'tarta_cumpleanos', 'cumpleaños': 'tarta_cumpleanos', tarta: 'tarta_cumpleanos', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
   'corazón': 'corazon', 'célula': 'celula', 'adn': 'adn',  'volcán': 'volcan', 'árbol': 'arbol', coche: 'coche_rojo', auto: 'coche_rojo', 'avión': 'avion',
   'helicóptero': 'helicoptero', agua: 'vaso_agua', vaso: 'vaso_agua', 'café': 'cafe', 'pirámide': 'piramide', tesoro: 'cofre', oro: 'lingote', dinero: 'bolsa_dinero', billete: 'dinero_billete',
   idea: 'bombilla', 'reloj de arena': 'reloj_arena', reloj_de_arena: 'reloj_arena', medicina: 'pastilla', vacuna: 'jeringa', llave: 'llave_antigua', 'teléfono': 'telefono_antiguo', 'montaña': 'montana_pieza', montana: 'montana_pieza',

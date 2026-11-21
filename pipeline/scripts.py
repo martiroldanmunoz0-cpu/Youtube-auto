@@ -605,9 +605,12 @@ def _fix_pieces(params: dict, text: str) -> tuple[dict, str | None]:
         params["_faltan"] = unknown
     if fixed:
         return params, None
-    # Ninguna pieza válida: plano con contenido seguro en vez de un fondo vacío
+    # Ninguna pieza válida: nunca un texto suelto ni un fondo vacío. Se usa la escena animada del lugar con la
+    # persona reaccionando y el nombre de lo que falta en la etiqueta (el aviso llega al revisor para dibujarla).
     label = params.get("label") or (unknown[0] if unknown else "")
-    return {"text": str(label or text.split(".")[0])[:14].upper(), "label": ""}, "big_text"
+    return {"lugar": params.get("lugar") or "calle", "hora": params.get("hora") or "dia", "plano": "medio",
+            "mood": params.get("mood") or "shocked", "objeto": params.get("objeto") or "none", "who": params.get("who") or "protagonista",
+            "label": str(label)[:28], "efecto": params.get("efecto") or "", "_faltan": unknown}, "escena"
 
 
 def validate_story(story: dict) -> dict:

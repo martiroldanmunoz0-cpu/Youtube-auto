@@ -4,6 +4,8 @@ import { MAP_VARIANTS, NEWS_VARIANTS, mapSetup, pickVariant } from './variants.m
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp } from '../lib/util.mjs';
 import { makeDust, drawDust, makeBokeh, drawBokeh } from '../lib/fx.mjs';
 import { linearBg } from './vehicle.mjs';
+import { drawPlace, midShot, grade, placeName } from './bright.mjs';
+import { personaWho } from '../lib/persona.mjs';
 
 function fitFont(ctx, text, weight, maxSize, maxW) {
   let size = maxSize;
@@ -14,10 +16,18 @@ function fitFont(ctx, text, weight, maxSize, maxW) {
 // Cifra o palabra gigante. params: { text, label?, color?, count_up?: bool }
 export const big_text = {
   setup(p, r) { return { dust: makeDust(r, 70), bokeh: makeBokeh(r, 10, { rMin: 80, rMax: 200 }) }; },
-  draw(ctx, s, { t, params }) {
+  draw(ctx, s, { t, params, seed }) {
     const col = params.color || P.amber;
-    brightBg(ctx, t, ['crema', 'azul', 'verde', 'rosa', 'lila'][Math.abs(String(params.text || '').length) % 5]);
-    radial(ctx, W / 2, 1050, 600, col, 0.25);
+    // Nunca una cifra sola sobre un fondo vacío: el lugar del vídeo, animado, con la persona reaccionando abajo
+    const lugar = params.lugar && params.lugar !== 'fondo' ? placeName(params.lugar) : null;
+    const hora = ['dia', 'atardecer', 'noche'].includes(params.hora) ? params.hora : 'dia';
+    if (lugar) {
+      drawPlace(ctx, lugar, hora, t);
+      if (params.persona !== 'no') midShot(ctx, personaWho(seed, params), { x: W / 2 + 60, y: 1330, s: 0.62, mood: params.mood || 'shocked', t, seed: 7 });
+      grade(ctx, hora);
+      ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillRect(0, 0, W, H); // aclara un poco para que la cifra destaque
+    } else brightBg(ctx, t, ['crema', 'azul', 'verde', 'rosa', 'lila'][Math.abs(String(params.text || '').length) % 5]);
+    radial(ctx, W / 2, lugar ? 640 : 1050, 600, col, 0.25);
     let text = String(params.text ?? '');
     // Animación de contador si el texto empieza por número
     const m = text.match(/^([\d.,]+)(.*)$/);
@@ -31,9 +41,9 @@ export const big_text = {
     }
     const k = ease.outBack(seg(t, 0, 0.5));
     ctx.save();
-    ctx.translate(W / 2, 1080); ctx.scale(0.7 + 0.3 * k, 0.7 + 0.3 * k);
+    ctx.translate(W / 2, lugar ? 620 : 1080); ctx.scale(0.7 + 0.3 * k, 0.7 + 0.3 * k);
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    fitFont(ctx, text, 700, 220, 940);
+    fitFont(ctx, text, 700, 220, 760); // margen para el zoom de cámara: nunca se corta por los lados
     ctx.globalAlpha = clamp(k);
     ctx.lineJoin = 'round'; ctx.lineWidth = 28; ctx.strokeStyle = INK; ctx.strokeText(text, 10, 12);
     ctx.fillStyle = col; ctx.fillText(text, 10, 12);

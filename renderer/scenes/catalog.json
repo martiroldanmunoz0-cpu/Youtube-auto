@@ -36,7 +36,7 @@
     "lugar": "fondo (liso de color) | bajo_el_mar | espacio | salon|dormitorio|cocina|oficina|aula|hospital|calle|ciudad|campo|desierto|playa|montana|selva|coche",
     "hora": "dia|atardecer|noche",
     "piezas": "lista (máx 4) de objetos {\"pieza\": nombre, \"pos\": izquierda|centro|derecha|fondo|arriba|arriba_izquierda|arriba_derecha (opcional: si no, se reparten solas), \"tamano\": pequeno|mediano|grande|gigante, \"anim\": crecer|caer|flotar|temblar|girar|latir|entrar_izq|entrar_der|acercarse, \"espejo\": true para mirar al otro lado}",
-    "piezas_disponibles": "dinosaurio, perro, gato, tiburon, ballena, pez, pajaro, mono, leon, oso, vaca, hormiga, serpiente, pulpo, corazon, cerebro, pulmones, hueso, ojo, diente, estomago, celula, adn, virus, herida, tirita, celula_dividiendose, cromosoma, mitocondria, radical_libre, tarta_cumpleanos, globulo_rojo, globulo_blanco, plaqueta, macrofago, bacteria, colageno, piel, planeta, tierra, luna, sol, cohete, estrella, meteorito, ovni, volcan, arbol, fuego, rayo, gota, nube, hielo, coche_rojo, avion, barco, submarino, bicicleta, tren, helicoptero, hamburguesa, pizza, manzana, platano, vaso_agua, cafe, chocolate, huevo, castillo, piramide, espada, corona, cofre, diamante, lingote, bolsa_dinero, bombilla, lupa, reloj_arena, bomba, trofeo, medalla, regalo, ordenador, robot, telescopio, microscopio, jeringa, pastilla, calavera, llave_antigua, carta, telefono_antiguo, dinero_billete, casa, edificio, montana_pieza",
+    "piezas_disponibles": "dinosaurio, perro, gato, tiburon, ballena, pez, pajaro, mono, leon, oso, vaca, hormiga, serpiente, pulpo, corazon, cerebro, pulmones, hueso, ojo, diente, estomago, celula, adn, virus, herida, tirita, celula_dividiendose, cromosoma, mitocondria, radical_libre, tarta_cumpleanos, globulo_rojo, globulo_blanco, plaqueta, macrofago, bacteria, colageno, piel, planeta, tierra, luna, sol, cohete, estrella, meteorito, ovni, volcan, arbol, fuego, rayo, gota, nube, hielo, coche_rojo, avion, barco, submarino, bicicleta, tren, helicoptero, hamburguesa, pizza, manzana, platano, vaso_agua, cafe, chocolate, huevo, castillo, piramide, espada, corona, cofre, diamante, lingote, bolsa_dinero, bombilla, lupa, reloj_arena, bomba, trofeo, medalla, regalo, ordenador, robot, telescopio, microscopio, jeringa, pastilla, calavera, llave_antigua, carta, telefono_antiguo, dinero_billete, casa, edificio, montana_pieza, senal_trafico, semaforo, maquina_pinball, cama",
     "persona": "no | medio (persona grande a un lado) | entero",
     "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
     "mood": "neutral|happy|worried|shocked|angry|sad",
@@ -188,11 +188,12 @@
    }
   },
   "big_text": {
-   "desc": "Cifra o palabra gigante con brillo (para datos curiosos). Los números hacen cuenta ascendente.",
+   "desc": "SOLO para una CIFRA que impacta (264 horas, 80%, 3.000 km): aparece en grande arriba, sobre el lugar del vídeo animado y con la persona reaccionando debajo. Nunca para palabras o nombres de cosas: eso se MUESTRA con \"composicion\" o \"escena\".",
    "params": {
     "text": "texto MUY corto (máx 14 caracteres), p.ej. '3.000 años'",
     "label": "texto corto debajo",
-    "color": "#hex"
+    "color": "#hex",
+    "lugar": "opcional: lugar de fondo (si no, el del plano anterior)"
    }
   },
   "newspaper": {
@@ -378,6 +379,24 @@
   }
  },
  "piezas_alias": {
+  "señal de tráfico": "senal_trafico",
+  "señal de trafico": "senal_trafico",
+  "senal": "senal_trafico",
+  "señal": "senal_trafico",
+  "señal_trafico": "senal_trafico",
+  "señal de peligro": "senal_trafico",
+  "stop": "senal_trafico",
+  "semáforo": "semaforo",
+  "trafico": "semaforo",
+  "tráfico": "semaforo",
+  "pinball": "maquina_pinball",
+  "máquina de pinball": "maquina_pinball",
+  "maquina de pinball": "maquina_pinball",
+  "recreativa": "maquina_pinball",
+  "máquina recreativa": "maquina_pinball",
+  "camas": "cama",
+  "dormir": "cama",
+  "litera": "cama",
   "dino": "dinosaurio",
   "globulos_rojos": "globulo_rojo",
   "glóbulo rojo": "globulo_rojo",

@@ -16,6 +16,7 @@ import { SCENES } from './scenes/index.mjs';
 import { setLooks } from './lib/persona.mjs';
 import { drawEffect, comicGate } from './lib/impact.mjs';
 import { lifeOverlay } from './lib/ambient.mjs';
+import { propName } from './lib/props.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fontDir = path.join(here, '..', 'assets', 'fonts');
@@ -88,6 +89,20 @@ export class Renderer {
     this.ctx = this.canvas.getContext('2d');
     this.layerA = createCanvas(W, H);
     this.layerB = createCanvas(W, H);
+    // Guiones antiguos: un "texto en grande" que nombra un objeto de la biblioteca (SEÑAL DE TRÁFICO,
+    // MÁQUINA DE PINBALL...) se convierte en una composición con ese objeto animado y su nombre en la etiqueta.
+    let lastPlace = 'salon';
+    timeline.beats = timeline.beats.map((b) => {
+      if (b.params?.lugar && b.params.lugar !== 'fondo') lastPlace = b.params.lugar;
+      if (b.scene !== 'big_text') return b;
+      if (/^[\d.,+-]/.test(String(b.params?.text || '').trim())) return { ...b, params: { lugar: lastPlace, ...b.params } }; // cifra: sobre el lugar del vídeo
+      const txt = String(b.params?.text || '').toLowerCase().trim();
+      const ws = txt.split(/\s+/);
+      const cands = [txt, ws.slice(0, 3).join(' '), ws.slice(0, 2).join(' '), ...ws];
+      const pieza = cands.map((c) => propName(c)).find(Boolean);
+      if (!pieza) return { ...b, params: { lugar: lastPlace, ...b.params } };
+      return { ...b, scene: 'composicion', params: { lugar: lastPlace, persona: 'medio', mood: 'shocked', piezas: [{ pieza, tamano: 'grande', anim: 'crecer' }], label: b.params.text, efecto: b.params.efecto } };
+    });
     this.beats = timeline.beats.map((b, i) => {
       const scene = SCENES[b.scene] || SCENES.big_text;
       if (!SCENES[b.scene]) console.warn(`Escena desconocida "${b.scene}", uso big_text`);
