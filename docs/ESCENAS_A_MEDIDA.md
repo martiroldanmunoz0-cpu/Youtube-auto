@@ -7,6 +7,8 @@ para cada plano.
 
 ## Flujo de un pedido a medida
 
+**Regla del dueño: PREGUNTA SIEMPRE antes de lanzar un pedido y antes de lanzar el montaje (paso 6).**
+
 1. Lanzar el pedido con `a_medida: true` (solo escribe el guion; NO monta):
    `gh api -X POST repos/martiroldanmunoz0-cpu/Youtube-auto/actions/workflows/pedido.yml/dispatches -f ref=main -f 'inputs[pedido]=…' -f 'inputs[cantidad]=1' -f 'inputs[a_medida]=true'`
 2. Cuando termina (~5 min), `git pull` y `python pipeline/medida.py pendientes` → ids que esperan.
