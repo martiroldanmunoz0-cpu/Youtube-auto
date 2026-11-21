@@ -24,12 +24,13 @@
     "lugar": "fondo (liso de color) | bajo_el_mar | espacio | salon|dormitorio|cocina|oficina|aula|hospital|calle|ciudad|campo|desierto|playa|montana|selva|coche",
     "hora": "dia|atardecer|noche",
     "piezas": "lista (máx 4) de objetos {\"pieza\": nombre, \"pos\": izquierda|centro|derecha|fondo|arriba|arriba_izquierda|arriba_derecha (opcional: si no, se reparten solas), \"tamano\": pequeno|mediano|grande|gigante, \"anim\": crecer|caer|flotar|temblar|girar|latir|entrar_izq|entrar_der|acercarse, \"espejo\": true para mirar al otro lado}",
-    "piezas_disponibles": "dinosaurio, perro, gato, tiburon, ballena, pez, pajaro, mono, leon, oso, vaca, hormiga, serpiente, pulpo, corazon, cerebro, pulmones, hueso, ojo, diente, estomago, celula, adn, virus, planeta, tierra, luna, sol, cohete, estrella, meteorito, ovni, volcan, arbol, fuego, rayo, gota, nube, hielo, coche_rojo, avion, barco, submarino, bicicleta, tren, helicoptero, hamburguesa, pizza, manzana, platano, vaso_agua, cafe, chocolate, huevo, castillo, piramide, espada, corona, cofre, diamante, lingote, bolsa_dinero, bombilla, lupa, reloj_arena, bomba, trofeo, medalla, regalo, ordenador, robot, telescopio, microscopio, jeringa, pastilla, calavera, llave_antigua, carta, telefono_antiguo, dinero_billete, casa, edificio, montana_pieza",
+    "piezas_disponibles": "dinosaurio, perro, gato, tiburon, ballena, pez, pajaro, mono, leon, oso, vaca, hormiga, serpiente, pulpo, corazon, cerebro, pulmones, hueso, ojo, diente, estomago, celula, adn, virus, herida, tirita, celula_dividiendose, cromosoma, mitocondria, radical_libre, tarta_cumpleanos, planeta, tierra, luna, sol, cohete, estrella, meteorito, ovni, volcan, arbol, fuego, rayo, gota, nube, hielo, coche_rojo, avion, barco, submarino, bicicleta, tren, helicoptero, hamburguesa, pizza, manzana, platano, vaso_agua, cafe, chocolate, huevo, castillo, piramide, espada, corona, cofre, diamante, lingote, bolsa_dinero, bombilla, lupa, reloj_arena, bomba, trofeo, medalla, regalo, ordenador, robot, telescopio, microscopio, jeringa, pastilla, calavera, llave_antigua, carta, telefono_antiguo, dinero_billete, casa, edificio, montana_pieza",
     "persona": "no | medio (persona grande a un lado) | entero",
     "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
     "mood": "neutral|happy|worried|shocked|angry|sad",
     "objeto": "lo que sostiene la persona en plano medio (none|movil|dinero|taza|libro|papel|llaves|linterna)",
-    "label": "texto corto en etiqueta amarilla (opcional)"
+    "label": "texto corto en etiqueta amarilla (opcional)",
+    "edad": "joven|adulto|mayor (opcional: la misma persona más joven o más mayor en ESTE plano, p. ej. para mostrar el paso de los años)"
    }
   },
   "escena": {
@@ -44,7 +45,8 @@
     "arms": "solo con plano entero: normal|none|up|cross",
     "highlight": "solo con plano entero: none|arms|legs|chest|heart|head|stomach",
     "label": "texto corto en una etiqueta amarilla abajo (opcional)",
-    "gafas": "true|false (opcional)"
+    "gafas": "true|false (opcional)",
+    "edad": "joven|adulto|mayor (opcional: la misma persona más joven o más mayor en ESTE plano, p. ej. para mostrar el paso de los años)"
    }
   },
   "car_window": {
@@ -205,7 +207,8 @@
     "prop": "none|money|phone",
     "bg": "night|warm|cold|red",
     "who": "who: 'protagonista' (por defecto: la MISMA persona en todo el vídeo) o un nombre corto para otra persona fija ('madre', 'hija', 'donante', 'medico'...)",
-    "gafas": "true|false (opcional: solo si en ESTE momento de la historia lleva o no gafas distinto de su ficha)"
+    "gafas": "true|false (opcional: solo si en ESTE momento de la historia lleva o no gafas distinto de su ficha)",
+    "edad": "joven|adulto|mayor (opcional: la misma persona más joven o más mayor en ESTE plano, p. ej. para mostrar el paso de los años)"
    }
   },
   "money": {
@@ -290,7 +293,8 @@
     "label": "texto corto en una etiqueta (p. ej. 'Electricista · 26 años')",
     "gafas": "true|false (opcional: solo si en ESTE momento de la historia lleva o no gafas distinto de su ficha)",
     "lugar": "salon|dormitorio|cocina|oficina|aula|hospital|calle|ciudad|campo|desierto|playa|montana|selva|coche",
-    "hora": "dia|atardecer|noche"
+    "hora": "dia|atardecer|noche",
+    "edad": "joven|adulto|mayor (opcional: la misma persona más joven o más mayor en ESTE plano, p. ej. para mostrar el paso de los años)"
    }
   },
   "hospital": {

@@ -56,6 +56,10 @@ def check(mp4: Path, timeline: dict, script_text: str, end_card: float = 2.4) ->
             problems.append(f"La pista de {'imagen' if kind == 'video' else 'sonido'} se corta antes de tiempo ({d:.1f}s de {total:.1f}s)")
     if fmt_dur < 15:
         problems.append(f"Demasiado corto para un Short ({fmt_dur:.0f}s)")
+    if 15 <= fmt_dur < 38:
+        problems.append(f"Dura {fmt_dur:.0f}s: menos de los 40 s que quieres")
+    elif 63 < fmt_dur <= 180:
+        problems.append(f"Dura {fmt_dur:.0f}s: más de 1 minuto")
     if fmt_dur > 180:
         problems.append(f"Demasiado largo para un Short ({fmt_dur:.0f}s, máximo 180)")
 

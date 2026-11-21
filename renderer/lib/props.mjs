@@ -132,6 +132,50 @@ export const PROPS = {
   celula(ctx, t) { const k = 1 + Math.sin(t * 2) * 0.04; ctx.scale(k, 1 / k); E(ctx, 0, -200, 220, 190, 'rgba(255,190,220,0.85)'); C(ctx, 40, -210, 70, '#bb6bd9'); for (let i = 0; i < 6; i++) E(ctx, -120 + (i % 3) * 60, -300 + Math.floor(i / 3) * 170, 24, 12, '#ffb347', i, 4); },
   adn(ctx, t) { for (let i = 0; i < 12; i++) { const y = -20 - i * 34, a = i * 0.6 + t * 2; const x1 = Math.sin(a) * 100, x2 = -x1; L(ctx, [[x1, y], [x2, y]], '#ddd', 4); C(ctx, x1, y, 16, '#5ab8ff', 5); C(ctx, x2, y, 16, '#e8505b', 5); } },
   virus(ctx, t) { ctx.translate(0, -200); ctx.rotate(t * 0.5); for (let i = 0; i < 10; i++) { const a = (i / 10) * Math.PI * 2; L(ctx, [[Math.cos(a) * 130, Math.sin(a) * 130], [Math.cos(a) * 190, Math.sin(a) * 190]], '#6fcf97', 10); C(ctx, Math.cos(a) * 200, Math.sin(a) * 200, 22, '#ff8fab', 6); } C(ctx, 0, 0, 140, '#6fcf97'); EYE(ctx, -40, -20, 18); EYE(ctx, 40, -20, 18); MOUTH(ctx, 0, 40, 30, false); },
+  herida(ctx, t) { // trozo de piel con un corte que se va cerrando
+    R(ctx, -260, -330, 520, 300, 60, '#e8b48a');
+    for (let i = 0; i < 5; i++) C(ctx, -200 + i * 100, -80 - (i % 2) * 190, 6, '#d29a72', 0);
+    const k = Math.min(1, t / 6) * 0.7; // se va cerrando poco a poco (nunca del todo en el plano)
+    ctx.beginPath(); ctx.moveTo(-160, -200); ctx.quadraticCurveTo(0, -150 - 60 * (1 - k), 160, -200); ctx.quadraticCurveTo(0, -250 + 60 * (1 - k), -160, -200);
+    ctx.fillStyle = `rgba(214,60,70,${1 - k * 0.6})`; ctx.fill(); O(ctx, 6);
+  },
+  tirita(ctx) {
+    ctx.save(); ctx.translate(0, -200); ctx.rotate(-0.35);
+    R(ctx, -230, -70, 460, 140, 70, '#f2c79a'); R(ctx, -80, -60, 160, 120, 20, '#fbe3c8', 6);
+    for (const x of [-170, -130, 130, 170]) for (const y of [-25, 25]) C(ctx, x, y, 6, '#d9a066', 0);
+    ctx.restore();
+  },
+  celula_dividiendose(ctx, t) {
+    const k = (Math.sin(t * 1.5) + 1) / 2, d = 60 + k * 120;
+    for (const s of [-1, 1]) { E(ctx, s * d * 0.6, -220, 150 + (1 - k) * 40, 150, 'rgba(255,190,220,0.9)'); C(ctx, s * d * 0.6, -220, 45, '#bb6bd9'); }
+    if (k < 0.5) { ctx.beginPath(); ctx.moveTo(0, -330); ctx.lineTo(0, -110); O(ctx, 6); }
+  },
+  cromosoma(ctx, t) {
+    const cap = 40 * (0.6 + 0.4 * Math.cos(t * 0.8)); // los telómeros se acortan y crecen
+    for (const s of [-1, 1]) {
+      ctx.save(); ctx.translate(0, -220); ctx.rotate(s * 0.45);
+      R(ctx, -40, -170, 80, 340, 40, '#5ab8ff');
+      R(ctx, -40, -170, 80, cap, 20, '#ffd166', 6); R(ctx, -40, 170 - cap, 80, cap, 20, '#ffd166', 6);
+      ctx.restore();
+    }
+    C(ctx, 0, -220, 34, '#e8505b');
+  },
+  mitocondria(ctx) {
+    E(ctx, 0, -200, 260, 140, '#ff9f68');
+    ctx.beginPath(); ctx.moveTo(-200, -200);
+    for (let i = 0; i < 8; i++) ctx.quadraticCurveTo(-180 + i * 52, i % 2 ? -110 : -290, -160 + i * 52, -200);
+    O(ctx, 8);
+  },
+  radical_libre(ctx, t) {
+    ctx.translate(Math.sin(t * 9) * 10, -220 + Math.cos(t * 7) * 10);
+    for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2 + t * 4; P(ctx, [[Math.cos(a) * 90, Math.sin(a) * 90], [Math.cos(a + 0.2) * 170, Math.sin(a + 0.2) * 170], [Math.cos(a + 0.4) * 90, Math.sin(a + 0.4) * 90]], '#ffd166', 5); }
+    C(ctx, 0, 0, 100, '#e8505b'); EYE(ctx, -32, -15, 16); EYE(ctx, 32, -15, 16); MOUTH(ctx, 0, 40, 26, false);
+  },
+  tarta_cumpleanos(ctx, t) {
+    R(ctx, -230, -200, 460, 200, 20, '#ff8fab'); R(ctx, -180, -340, 360, 150, 20, '#ffd0de');
+    ctx.beginPath(); for (let x = -230; x <= 230; x += 46) ctx.arc(x, -200, 23, 0, Math.PI); ctx.fillStyle = '#ffffff'; ctx.fill();
+    for (const x of [-90, 0, 90]) { R(ctx, x - 12, -440, 24, 100, 6, ['#5ab8ff', '#6fcf97', '#ffd166'][(x / 90 + 1) | 0], 5); E(ctx, x, -470 + Math.sin(t * 12 + x) * 3, 14, 24, '#ffb347', 0, 4); }
+  },
   // ---------------- Espacio y naturaleza ----------------
   planeta(ctx, t) { C(ctx, 0, -220, 190, '#ff9f68'); ctx.save(); ctx.beginPath(); ctx.arc(0, -220, 190, 0, 7); ctx.clip(); for (let i = 0; i < 4; i++) { ctx.fillStyle = 'rgba(200,90,50,0.35)'; ctx.fillRect(-200, -380 + i * 90, 400, 30); } ctx.restore(); ctx.beginPath(); ctx.ellipse(0, -220, 310, 70, -0.3, 0.15, Math.PI - 0.15); O(ctx, 22); ctx.strokeStyle = '#ffd166'; ctx.lineWidth = 12; ctx.stroke(); },
   tierra(ctx, t) { C(ctx, 0, -220, 200, '#3f8fd8'); ctx.save(); ctx.beginPath(); ctx.arc(0, -220, 200, 0, 7); ctx.clip(); const o = (t * 30) % 400; for (const [x, y, rx, ry] of [[-60, -280, 90, 60], [80, -160, 70, 90], [-120, -120, 50, 40]]) for (const d of [0, 400]) E(ctx, x + o - d, y, rx, ry, '#5cb85c', 0, 5); ctx.restore(); C(ctx, 0, -220, 200, 'rgba(0,0,0,0)'); },
@@ -202,7 +246,7 @@ export const PROPS = {
   montana_pieza(ctx) { P(ctx, [[-360, 0], [-60, -440], [240, 0]], '#8ea6c8'); P(ctx, [[-60, -440], [-150, -310], [-90, -330], [-40, -300], [30, -340]], '#ffffff', 6); },
 };
 export const PROP_NAMES = Object.keys(PROPS);
-const ALIAS = { dino: 'dinosaurio', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
+const ALIAS = { dino: 'dinosaurio', corte: 'herida', cicatriz: 'herida', 'tirita': 'tirita', curita: 'tirita', 'división celular': 'celula_dividiendose', telomero: 'cromosoma', 'telómero': 'cromosoma', 'telómeros': 'cromosoma', mitocondrias: 'mitocondria', 'radicales libres': 'radical_libre', oxidacion: 'radical_libre', 'oxidación': 'radical_libre', cumpleanos: 'tarta_cumpleanos', 'cumpleaños': 'tarta_cumpleanos', tarta: 'tarta_cumpleanos', calamar: 'pulpo', 'pulpos': 'pulpo', tiranosaurio: 'dinosaurio', 't-rex': 'dinosaurio', trex: 'dinosaurio', can: 'perro', tiburón: 'tiburon', 'pájaro': 'pajaro', ave: 'pajaro', 'león': 'leon',
   'corazón': 'corazon', 'célula': 'celula', 'adn': 'adn', bacteria: 'virus', microbio: 'virus', germen: 'virus', 'volcán': 'volcan', 'árbol': 'arbol', coche: 'coche_rojo', auto: 'coche_rojo', 'avión': 'avion',
   'helicóptero': 'helicoptero', agua: 'vaso_agua', vaso: 'vaso_agua', 'café': 'cafe', 'pirámide': 'piramide', tesoro: 'cofre', oro: 'lingote', dinero: 'bolsa_dinero', billete: 'dinero_billete',
   idea: 'bombilla', 'reloj de arena': 'reloj_arena', reloj_de_arena: 'reloj_arena', medicina: 'pastilla', vacuna: 'jeringa', llave: 'llave_antigua', 'teléfono': 'telefono_antiguo', 'montaña': 'montana_pieza', montana: 'montana_pieza',

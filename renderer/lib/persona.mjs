@@ -228,6 +228,8 @@ export function personaWho(seed, params = {}) {
   // Cambios dentro de la historia (p. ej. pierde las gafas): params de la escena mandan
   if (params.gafas === true || params.gafas === 'true') p.glasses = true;
   if (params.gafas === false || params.gafas === 'false') p.glasses = false;
+  if (params.edad === 'mayor') { p.old = true; p.hairColor = p.hair === 'bald' ? p.hairColor : '#c9c9c9'; }
+  else if (params.edad === 'joven' || params.edad === 'adulto') p.old = false;
   return p;
 }
 
