@@ -271,7 +271,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   const TZ = "Europe/Madrid";
   const WF = {pedido: "pedido.yml", semanal: "semanal.yml", historia: "historia.yml"};
   const GEN_PATHS = ["semanal.yml", "semanal_montar.yml", "pedido.yml", "historia.yml"].map(f => ".github/workflows/" + f);
-  const WEEKLY = {dow: 1, h: 5, m: 1}; // lunes 05:01 hora de Madrid (igual que semanal.yml)
+  const WEEKLY = {dow: 1, h: 4, m: 1}; // lunes 04:01 hora de Madrid (igual que semanal.yml)
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const store = {
@@ -508,10 +508,10 @@ nav .n.bad{background:var(--bad);color:#fff}
 
   // ---------- Cuenta atrás de la tanda semanal ----------
   function nextWeekly(now = new Date()) {
-    // Próximo lunes a las 05:01 en Madrid (vale en invierno y en verano)
+    // Próximo lunes a las 04:01 en Madrid (vale en invierno y en verano)
     const parts = d => Object.fromEntries(new Intl.DateTimeFormat("en-GB", {timeZone: TZ, weekday: "short", hour: "numeric", hourCycle: "h23"}).formatToParts(d).map(p => [p.type, p.value]));
     const base = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-    for (let day = -1; day < 9; day++) for (const uh of [3, 4]) {
+    for (let day = -1; day < 9; day++) for (const uh of [2, 3]) {
       const t = new Date(base + day * 864e5 + uh * 36e5 + WEEKLY.m * 6e4);
       const p = parts(t);
       if (t > now && p.weekday === "Mon" && +p.hour === WEEKLY.h) return t;

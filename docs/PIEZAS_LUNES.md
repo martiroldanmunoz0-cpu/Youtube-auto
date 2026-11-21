@@ -1,6 +1,6 @@
 # Piezas nuevas del lunes (instrucciones para la sesión automática de Claude)
 
-Cada lunes a las 5:01 (España) el workflow **Generar vídeos de la semana** guarda el plan en
+Cada lunes a las 4:01 (España) el workflow **Generar vídeos de la semana** guarda el plan en
 `data/planes/<rid>.json` con `estado: "pendiente"` y la lista `piezas_nuevas` (cosas que los vídeos necesitan
 mostrar y que aún no existen en la biblioteca). Tu trabajo: dibujar esas piezas, comprobarlas y lanzar el montaje.
 

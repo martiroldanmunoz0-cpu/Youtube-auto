@@ -1,11 +1,11 @@
 name: Generar vídeos de la semana
 
-# Cada lunes a las 5:00 (España): analiza YouTube y hace el PLAN de la semana (ideas + piezas nuevas que hacen falta).
+# Cada lunes a las 4:00 (España): analiza YouTube y hace el PLAN de la semana (ideas + piezas nuevas que hacen falta).
 # Después, una sesión de Claude dibuja las piezas que faltan y lanza "Montar vídeos de la semana".
 # Si no falta ninguna pieza, el montaje se lanza directamente. Red de seguridad: "Respaldo del montaje semanal".
 on:
   schedule:
-    - cron: "1 3,4 * * 1"   # lunes 03:01 y 04:01 UTC: solo sigue la que son las 05:01 en Madrid (invierno/verano)
+    - cron: "1 2,3 * * 1"   # lunes 02:01 y 03:01 UTC: solo sigue la que son las 04:01 en Madrid (invierno/verano)
   workflow_dispatch: {}
 
 env:
@@ -22,7 +22,7 @@ jobs:
       seguir: ${{ steps.h.outputs.seguir }}
     steps:
       - id: h
-        name: ¿Son las 5:00 en España? (si no, esta ejecución no hace nada)
+        name: ¿Son las 4:00 en España? (si no, esta ejecución no hace nada)
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
@@ -32,7 +32,7 @@ jobs:
           H=$(TZ=Europe/Madrid date +%-H)
           SEGUIR=true
           if [ "$EVENTO" = "schedule" ]; then
-            if [ "$H" != "5" ]; then
+            if [ "$H" != "4" ]; then
               SEGUIR=false; echo "En Madrid son las $H h: la tanda arranca en la otra ejecución programada"
             else
               # Por si GitHub retrasó mucho la otra ejecución: nunca dos tandas automáticas el mismo día

@@ -226,12 +226,12 @@ TRENDS_OPT = """      - name: Analizar vídeos de GTA 6 en YouTube
 out = sys.argv[1]
 PLAN = """name: Generar vídeos de la semana
 
-# Cada lunes a las 5:00 (España): analiza YouTube y hace el PLAN de la semana (ideas + piezas nuevas que hacen falta).
+# Cada lunes a las 4:00 (España): analiza YouTube y hace el PLAN de la semana (ideas + piezas nuevas que hacen falta).
 # Después, una sesión de Claude dibuja las piezas que faltan y lanza "Montar vídeos de la semana".
 # Si no falta ninguna pieza, el montaje se lanza directamente. Red de seguridad: "Respaldo del montaje semanal".
 on:
   schedule:
-    - cron: "1 3,4 * * 1"   # lunes 03:01 y 04:01 UTC: solo sigue la que son las 05:01 en Madrid (invierno/verano)
+    - cron: "1 2,3 * * 1"   # lunes 02:01 y 03:01 UTC: solo sigue la que son las 04:01 en Madrid (invierno/verano)
   workflow_dispatch: {}
 
 env:
@@ -242,7 +242,7 @@ permissions:
   actions: write
 
 jobs:
-""" + hora_job_yaml(5, "plan") + """  plan:
+""" + hora_job_yaml(4, "plan") + """  plan:
     needs: hora
     if: needs.hora.outputs.seguir == 'true'
     runs-on: ubuntu-latest
