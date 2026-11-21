@@ -1,3 +1,4 @@
+import { brightBg, INK } from '../lib/brightbg.mjs';
 import { MAP_VARIANTS, NEWS_VARIANTS, mapSetup, pickVariant } from './variants.mjs';
 // Escenas para datos curiosos: cifra grande, recorte de periódico, mapa con chincheta.
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp } from '../lib/util.mjs';
@@ -15,11 +16,8 @@ export const big_text = {
   setup(p, r) { return { dust: makeDust(r, 70), bokeh: makeBokeh(r, 10, { rMin: 80, rMax: 200 }) }; },
   draw(ctx, s, { t, params }) {
     const col = params.color || P.amber;
-    ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#05050a', '#100c14', '#05050a']);
-    ctx.fillRect(0, 0, W, H);
-    drawBokeh(ctx, s.bokeh, t);
-    radial(ctx, W / 2, 1050, 700, col, 0.2);
-    drawDust(ctx, s.dust, t, col, 0.4);
+    brightBg(ctx, t, ['crema', 'azul', 'verde', 'rosa', 'lila'][Math.abs(String(params.text || '').length) % 5]);
+    radial(ctx, W / 2, 1050, 600, col, 0.25);
     let text = String(params.text ?? '');
     // Animación de contador si el texto empieza por número
     const m = text.match(/^([\d.,]+)(.*)$/);
@@ -36,14 +34,14 @@ export const big_text = {
     ctx.translate(W / 2, 1080); ctx.scale(0.7 + 0.3 * k, 0.7 + 0.3 * k);
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     fitFont(ctx, text, 700, 220, 940);
-    ctx.shadowColor = col; ctx.shadowBlur = 50;
-    ctx.fillStyle = '#ffffff';
     ctx.globalAlpha = clamp(k);
-    ctx.fillText(text, 0, 0);
-    ctx.shadowBlur = 0;
+    ctx.lineJoin = 'round'; ctx.lineWidth = 28; ctx.strokeStyle = INK; ctx.strokeText(text, 10, 12);
+    ctx.fillStyle = col; ctx.fillText(text, 10, 12);
+    ctx.lineWidth = 18; ctx.strokeStyle = INK; ctx.strokeText(text, 0, 0);
+    ctx.fillStyle = '#ffffff'; ctx.fillText(text, 0, 0);
     if (params.label) {
       fitFont(ctx, params.label, 500, 54, 900);
-      ctx.fillStyle = rgba(col, 0.95);
+      ctx.fillStyle = INK;
       ctx.fillText(params.label, 0, 170);
     }
     ctx.restore();
@@ -56,8 +54,9 @@ export const newspaper = {
   draw(ctx, s, args) {
     if (NEWS_VARIANTS[s.variant]) return NEWS_VARIANTS[s.variant](ctx, s, args);
     const { t, params } = args;
-    ctx.fillStyle = '#050405'; ctx.fillRect(0, 0, W, H);
-    radial(ctx, W / 2, 1050, 800, '#ffe2b0', 0.22);
+    ctx.fillStyle = '#d9a066'; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = 'rgba(120,70,30,0.25)'; ctx.lineWidth = 6; for (let y = 60; y < H; y += 140) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y + 30); ctx.stroke(); }
+    radial(ctx, W / 2, 1050, 800, '#fff1c8', 0.35);
     ctx.save();
     ctx.translate(W / 2, 1120); ctx.rotate(-0.05 + Math.sin(t * 0.4) * 0.005);
     const pw = 820, ph = 1000;

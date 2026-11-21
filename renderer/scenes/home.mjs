@@ -1,3 +1,5 @@
+import { brightBg, INK } from '../lib/brightbg.mjs';
+import { drawPlace } from './bright.mjs';
 // Escenas de interior / casa.
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp, noise1 } from '../lib/util.mjs';
 import { makeDust, drawDust, drawFog, makeBokeh, drawBokeh } from '../lib/fx.mjs';
@@ -183,10 +185,8 @@ export const house_exterior = {
 export const clock = {
   setup() { return {}; },
   draw(ctx, s, { t, params }) {
-    ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#07070b', '#141018', '#07070a']);
-    ctx.fillRect(0, 0, W, H);
+    brightBg(ctx, t, 'crema');
     const cx = W / 2, cy = 1100, R = 330;
-    radial(ctx, cx, cy, 700, P.amber, 0.12);
     ctx.fillStyle = '#1a1410'; ctx.beginPath(); ctx.arc(cx, cy, R + 34, 0, 7); ctx.fill();
     ctx.fillStyle = linearBg(ctx, 0, cy - R, 0, cy + R, ['#efe6d2', '#c9bca2']);
     ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.fill();
@@ -211,9 +211,9 @@ export const clock = {
 export const tv = {
   setup() { return {}; },
   draw(ctx, s, { t, params, frame }) {
-    ctx.fillStyle = '#040406'; ctx.fillRect(0, 0, W, H);
+    drawPlace(ctx, 'salon', params.hora || 'dia', t);
     const tx = 150, ty = 780, tw = 780, th = 600;
-    radial(ctx, W / 2, ty + th / 2, 900, '#7f9cff', 0.18 + 0.05 * noise1(t * 10));
+    ctx.fillStyle = '#8d5a3b'; rr(ctx, 60, ty + th + 120, W - 120, 60, 12); ctx.fill();
     ctx.fillStyle = '#1a1714'; rr(ctx, tx, ty, tw, th, 50); ctx.fill();
     ctx.fillStyle = '#0d0c0a'; rr(ctx, tx + 50, ty + 50, tw - 220, th - 100, 60); ctx.fill();
     const sx = tx + 70, sy = ty + 70, sw = tw - 260, sh = th - 140;

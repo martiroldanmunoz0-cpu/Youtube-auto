@@ -1,3 +1,4 @@
+import { brightBg, INK } from '../lib/brightbg.mjs';
 import { CAL_VARIANTS, pickVariant } from './variants.mjs';
 // Escenas generales para temas cotidianos / "qué pasaría si": personaje, dinero, calendario.
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp } from '../lib/util.mjs';
@@ -60,10 +61,7 @@ export const money = {
     };
   },
   draw(ctx, s, { t, params }) {
-    ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#070605', '#1a1209', '#070605']);
-    ctx.fillRect(0, 0, W, H);
-    radial(ctx, W / 2, 1100, 800, P.amber, 0.25);
-    drawDust(ctx, s.dust, t, P.amber, 0.5);
+    brightBg(ctx, t, 'verde');
     if (params.stack !== false) {
       for (let row = 0; row < 7; row++) for (let i = 0; i < 3; i++) {
         const x = W / 2 + (i - 1) * 240, y = 1620 - row * 34;
@@ -88,10 +86,9 @@ export const money = {
       ctx.save();
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       let size = 170; do { ctx.font = `700 ${size}px Poppins`; size -= 8; } while (ctx.measureText(text).width > 960 && size > 40);
-      ctx.shadowColor = P.amber; ctx.shadowBlur = 50; ctx.fillStyle = '#fff';
-      ctx.fillText(text, W / 2, 1000);
-      ctx.shadowBlur = 0;
-      if (params.label) { ctx.font = '500 52px Poppins'; ctx.fillStyle = rgba(P.amber, 0.95); ctx.fillText(params.label, W / 2, 1130); }
+      ctx.lineJoin = 'round'; ctx.lineWidth = 18; ctx.strokeStyle = INK; ctx.strokeText(text, W / 2, 1000);
+      ctx.fillStyle = '#fff'; ctx.fillText(text, W / 2, 1000);
+      if (params.label) { ctx.font = '600 52px Poppins'; ctx.fillStyle = INK; ctx.fillText(params.label, W / 2, 1130); }
       ctx.restore();
     }
   },
@@ -103,9 +100,7 @@ export const calendar = {
   draw(ctx, s, args) {
     if (CAL_VARIANTS[s.variant]) return CAL_VARIANTS[s.variant](ctx, s, args);
     const { t, params, dur } = args;
-    ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#07070b', '#151019', '#07070a']);
-    ctx.fillRect(0, 0, W, H);
-    radial(ctx, W / 2, 1050, 700, P.amber, 0.16);
+    brightBg(ctx, t, 'azul');
     const cx = W / 2, cy = 1100, cw = 620, ch = 700;
     const target = Number(params.day);
     const from = Number.isFinite(Number(params.from)) ? Number(params.from) : (Number.isFinite(target) ? Math.max(1, target - 5) : null);

@@ -1,3 +1,4 @@
+import { brightBg, INK } from '../lib/brightbg.mjs';
 // Móvil en mano con distintas pantallas (chat, notificación, llamada, mapa, búsqueda, perfil).
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp } from '../lib/util.mjs';
 import { makeBokeh, drawBokeh } from '../lib/fx.mjs';
@@ -218,9 +219,7 @@ const screens = {
 export const phone = {
   setup(p, r) { return { bokeh: makeBokeh(r, 18, { rMin: 40, rMax: 140, colors: [P.amber, P.warm, '#f4f1ea'] }) }; },
   draw(ctx, s, { t, params, dur, prog }) {
-    ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#07070b', '#18120f', '#0b0a0c']);
-    ctx.fillRect(0, 0, W, H);
-    drawBokeh(ctx, s.bokeh, t);
+    brightBg(ctx, t, 'lila');
     const fn = screens[params.screen] || screens.chat;
     const alert = params.status === 'alert' || (params.messages || []).some((m) => m.alert) || String(params.balance || '').startsWith('-');
     drawPhoneInHands(ctx, W / 2 + 10, 1200 + Math.sin(t * 1.3) * 6, {

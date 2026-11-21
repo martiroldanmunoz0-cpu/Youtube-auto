@@ -5,12 +5,15 @@ import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp, noise1 } 
 import { makeBokeh, drawBokeh, makeDust, drawDust } from '../lib/fx.mjs';
 import { linearBg } from './vehicle.mjs';
 import { personaWho, drawFullBody, drawHead } from '../lib/persona.mjs';
+import { brightBg, INK } from '../lib/brightbg.mjs';
+import { drawPlace } from './bright.mjs';
 
 const BGS = {
   night: ['#07080f', '#141a30', '#08080d'], warm: ['#0d0806', '#2a160c', '#0b0605'], cold: ['#05080c', '#0e1c2a', '#05070a'],
   red: ['#0a0405', '#2a0a0e', '#080304'], hospital: ['#0b1418', '#18303a', '#0a1216'], room: ['#120c08', '#3a2616', '#120c08'],
 };
-function bg(ctx, name) { ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, BGS[name] || BGS.night); ctx.fillRect(0, 0, W, H); }
+const BRIGHT = { night: 'azul', warm: 'crema', cold: 'azul', red: 'rosa', hospital: 'verde', room: 'crema' };
+function bg(ctx, name, t = 0) { brightBg(ctx, t, BRIGHT[name] || 'crema'); }
 
 export function pill(ctx, text, x, y, { color = P.amber, ink = '#1a1206', size = 44, alpha = 1 } = {}) {
   text = String(text || '').toUpperCase(); if (!text) return;
@@ -32,7 +35,7 @@ function wrap(ctx, text, maxW) {
 export const person = {
   setup(p, r) { return { bokeh: makeBokeh(r, 12, { rMin: 60, rMax: 150 }), seed: r.int(0, 99) }; },
   draw(ctx, s, { t, params, seed }) {
-    bg(ctx, params.bg || 'night'); drawBokeh(ctx, s.bokeh, t);
+    drawPlace(ctx, params.lugar || 'salon', params.hora || 'dia', t);
     const who = personaWho(seed, params);
     radial(ctx, W / 2, 900, 700, params.highlight && params.highlight !== 'none' ? P.red : P.amber, 0.14);
     // suelo
@@ -46,29 +49,11 @@ export const person = {
 export const hospital = {
   setup(p, r) { return { seed: r.int(0, 99) }; },
   draw(ctx, s, { t, params, seed }) {
-    bg(ctx, 'hospital');
-    ctx.save(); ctx.translate(0, 240);
-    // ventana
-    ctx.fillStyle = '#0a1a2a'; rr(ctx, 90, 260, 300, 420, 14); ctx.fill();
-    ctx.strokeStyle = '#2a4458'; ctx.lineWidth = 12; ctx.strokeRect(90, 260, 300, 420); ctx.beginPath(); ctx.moveTo(240, 260); ctx.lineTo(240, 680); ctx.stroke();
-    for (let i = 0; i < 18; i++) { ctx.fillStyle = `rgba(255,255,255,${0.3 + noise1(i, 3) * 0.6})`; ctx.fillRect(100 + (i * 53) % 280, 280 + (i * 97) % 380, 3, 3); }
-    // monitor
-    const alarm = params.monitor === 'alarm';
-    ctx.fillStyle = '#1b2228'; rr(ctx, 640, 250, 360, 260, 20); ctx.fill();
-    ctx.fillStyle = '#050a08'; rr(ctx, 662, 272, 316, 216, 12); ctx.fill();
-    ctx.strokeStyle = alarm ? '#ff4a4a' : '#3dff8a'; ctx.lineWidth = 5; ctx.beginPath();
-    for (let x = 0; x <= 300; x += 4) {
-      const ph = ((x / 300) * 2 + t * (alarm ? 2.2 : 1.1)) % 1;
-      const yb = ph > 0.45 && ph < 0.5 ? -70 : ph > 0.5 && ph < 0.55 ? 50 : 0;
-      ctx.lineTo(670 + x, 380 + yb);
+    drawPlace(ctx, 'hospital', params.hora || 'dia', t);
+    if (params.monitor === 'alarm') { // la habitación ya tiene monitor: en alarma se pone en rojo
+      radial(ctx, 830, 395, 300, P.red, 0.3 + Math.sin(t * 8) * 0.12);
+      ctx.fillStyle = '#ff3b3b'; ctx.font = '800 60px Poppins'; ctx.fillText('!!', 900, 360);
     }
-    ctx.stroke();
-    ctx.fillStyle = alarm ? '#ff4a4a' : '#3dff8a'; ctx.font = '700 40px Poppins'; ctx.fillText(alarm ? '!!' : String(68 + Math.round(Math.sin(t) * 3)), 900, 310);
-    if (alarm) radial(ctx, 820, 380, 360, P.red, 0.25 + Math.sin(t * 8) * 0.12);
-    // gotero
-    ctx.strokeStyle = '#9aa6b2'; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(560, 300); ctx.lineTo(560, 1100); ctx.stroke();
-    ctx.fillStyle = 'rgba(200,230,255,0.5)'; rr(ctx, 515, 330, 90, 150, 30); ctx.fill();
-    ctx.restore();
     // cama
     const who = personaWho(seed, params);
     ctx.fillStyle = '#c7d0d8'; rr(ctx, 110, 1020, 860, 70, 20); ctx.fill();
@@ -87,7 +72,7 @@ export const hospital = {
 export const surgery = {
   setup(p, r) { return { seed: r.int(0, 99) }; },
   draw(ctx, s, { t, params, seed }) {
-    bg(ctx, 'hospital');
+    bg(ctx, 'hospital', t);
     ctx.save(); ctx.translate(0, 130);
     // lámpara
     const lg = ctx.createLinearGradient(0, 160, 0, 1300); lg.addColorStop(0, 'rgba(230,250,255,0.55)'); lg.addColorStop(1, 'rgba(230,250,255,0)');
@@ -119,7 +104,7 @@ export const surgery = {
 export const doctor = {
   setup(p, r) { return { bokeh: makeBokeh(r, 10, { rMin: 60, rMax: 140 }), seed: r.int(0, 99) }; },
   draw(ctx, s, { t, params, seed }) {
-    bg(ctx, 'hospital'); drawBokeh(ctx, s.bokeh, t);
+    drawPlace(ctx, 'hospital', params.hora || 'dia', t);
     const who = personaWho(seed, { ...params, who: params.who || 'medico' });
     const cx = W / 2, cy = 1120 + Math.sin(t * 1.4) * 5;
     // bata
@@ -129,6 +114,7 @@ export const doctor = {
     ctx.fillStyle = who.outfit; ctx.beginPath(); ctx.moveTo(cx - 120, cy + 290); ctx.lineTo(cx, cy + 520); ctx.lineTo(cx + 120, cy + 290); ctx.fill();
     ctx.strokeStyle = '#2b2f36'; ctx.lineWidth = 14; ctx.beginPath(); ctx.moveTo(cx - 140, cy + 300); ctx.quadraticCurveTo(cx - 170, cy + 560, cx - 40, cy + 600); ctx.stroke();
     ctx.fillStyle = '#9aa3ad'; ctx.beginPath(); ctx.arc(cx - 40, cy + 610, 30, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(cx, cy, 242, 292, 0, 0, 7); ctx.fillStyle = INK; ctx.fill();
     drawHead(ctx, cx, cy, who, { mood: params.mood || 'neutral', t, blinkSeed: s.seed });
     if (params.say) {
       const k = ease.out(clamp(t * 3));
@@ -149,7 +135,7 @@ export const doctor = {
 export const document = {
   setup() { return {}; },
   draw(ctx, s, { t, params }) {
-    bg(ctx, 'room');
+    bg(ctx, 'room', t);
     radial(ctx, W / 2, 900, 700, P.amber, 0.16);
     const k = ease.out(clamp(t * 2.2));
     ctx.save(); ctx.translate(W / 2, 960 + (1 - k) * 200); ctx.rotate(-0.04);
@@ -185,7 +171,7 @@ export const document = {
 export const quote = {
   setup(p, r) { return { dust: makeDust(r, 40) }; },
   draw(ctx, s, { t, params }) {
-    bg(ctx, 'night'); drawDust(ctx, s.dust, t);
+    bg(ctx, 'night', t); drawDust(ctx, s.dust, t);
     const k = ease.out(clamp(t * 3));
     ctx.save(); ctx.translate(W / 2, 900); ctx.rotate(-0.035 + (1 - k) * 0.2); ctx.scale(0.8 + 0.2 * k, 0.8 + 0.2 * k);
     ctx.fillStyle = 'rgba(0,0,0,0.4)'; rr(ctx, -385, -305, 790, 640, 14); ctx.fill();
@@ -202,7 +188,7 @@ export const quote = {
 export const year_jump = {
   setup(p, r) { return { dust: makeDust(r, 50) }; },
   draw(ctx, s, { t, dur, params }) {
-    bg(ctx, 'night'); drawDust(ctx, s.dust, t, '#bcd0ff', 0.4);
+    bg(ctx, 'night', t); drawDust(ctx, s.dust, t, '#bcd0ff', 0.4);
     const a = Number(params.from) || 2000, b = Number(params.to) || a + 10;
     const k = ease.inOut(clamp(t / Math.max(0.8, dur * 0.6)));
     const y = Math.round(lerp(a, b, k));
@@ -211,9 +197,9 @@ export const year_jump = {
     ctx.lineWidth = 16; ctx.strokeStyle = '#000'; ctx.strokeText(String(y), W / 2, 860);
     ctx.fillStyle = k >= 1 ? P.amber : '#ffffff'; ctx.fillText(String(y), W / 2, 860);
     // línea de tiempo
-    ctx.fillStyle = 'rgba(255,255,255,0.15)'; rr(ctx, 140, 1080, 800, 14, 7); ctx.fill();
+    ctx.fillStyle = 'rgba(28,26,43,0.15)'; rr(ctx, 140, 1080, 800, 14, 7); ctx.fill();
     ctx.fillStyle = P.amber; rr(ctx, 140, 1080, 800 * k, 14, 7); ctx.fill();
-    ctx.font = '600 40px Poppins'; ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.font = '600 40px Poppins'; ctx.fillStyle = 'rgba(28,26,43,0.75)';
     ctx.fillText(String(a), 170, 1150); ctx.fillText(String(b), 910, 1150);
     if (params.label) pill(ctx, params.label, W / 2, 1320, { alpha: clamp((k - 0.8) * 5) });
   },
@@ -223,8 +209,7 @@ export const year_jump = {
 export const group = {
   setup(p, r) { return { bokeh: makeBokeh(r, 12, { rMin: 60, rMax: 150 }), seed: r.int(0, 99) }; },
   draw(ctx, s, { t, params, seed }) {
-    bg(ctx, params.bg || 'warm'); drawBokeh(ctx, s.bokeh, t);
-    radial(ctx, W / 2, 1000, 700, P.amber, 0.16);
+    drawPlace(ctx, params.lugar || 'salon', params.hora || 'dia', t);
     const n = clamp(Math.round(Number(params.count) || 3), 2, 4);
     const kids = params.kids === true || params.kids === 'true';
     const spots = { 2: [[380, 0.42], [720, 0.42]], 3: [[300, 0.4], [560, 0.42], [820, 0.4]], 4: [[220, 0.36], [440, 0.4], [660, 0.4], [880, 0.36]] }[n];

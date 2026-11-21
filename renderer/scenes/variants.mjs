@@ -1,3 +1,4 @@
+import { brightBg, INK } from '../lib/brightbg.mjs';
 // Variantes visuales de las escenas más usadas (mismo significado, otro dibujo) para que los vídeos no se repitan.
 // Si el guion no elige "style", cada plano elige una al azar (según su semilla): dos mapas seguidos salen distintos.
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, clamp, noise1 } from '../lib/util.mjs';
@@ -112,8 +113,7 @@ export function mapSetup(r) {
 export const CAL_VARIANTS = {
   // Calendario de pared: se van tachando los días
   pared(ctx, s, { t, params, dur }) {
-    ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#16110c', '#2a1f14', '#120d09']); ctx.fillRect(0, 0, W, H);
-    radial(ctx, W / 2, 900, 700, P.amber, 0.14);
+    brightBg(ctx, t, 'crema');
     const target = clamp(Math.round(Number(params.day) || 1), 1, 31);
     const x0 = 110, y0 = 700, cw = 860, ch = 860;
     ctx.fillStyle = '#f2ece0'; rr(ctx, x0, y0 - 160, cw, ch + 180, 24); ctx.fill();
@@ -132,7 +132,7 @@ export const CAL_VARIANTS = {
       }
       if (d === target && shown >= target) { ctx.strokeStyle = '#c0262e'; ctx.lineWidth = 7; ctx.beginPath(); ctx.arc(cx, cy, 52, 0, 7); ctx.stroke(); }
     }
-    if (params.label) { ctx.font = '600 50px Poppins'; ctx.fillStyle = '#f2ece0'; ctx.fillText(params.label, W / 2, y0 + ch + 120); }
+    if (params.label) { ctx.font = '600 50px Poppins'; ctx.fillStyle = INK; ctx.fillText(params.label, W / 2, y0 + ch + 120); }
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.lineCap = 'butt';
   },
   // Marcas de recuento en una pared (supervivencia, encierro, días contados)
@@ -171,8 +171,7 @@ function wrapText(ctx, text, maxW) {
 export const NEWS_VARIANTS = {
   // Noticia en una tablet (web de noticias con "ÚLTIMA HORA")
   web(ctx, s, { t, params }) {
-    ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#0a0c14', '#151a2a', '#08090f']); ctx.fillRect(0, 0, W, H);
-    radial(ctx, W / 2, 1000, 700, P.cyan, 0.12);
+    brightBg(ctx, t, 'azul');
     const x = 110, y = 420, w = 860, h = 1180;
     ctx.fillStyle = '#1c1f26'; rr(ctx, x - 26, y - 26, w + 52, h + 52, 50); ctx.fill();
     ctx.fillStyle = '#ffffff'; rr(ctx, x, y, w, h, 26); ctx.fill();
@@ -195,7 +194,7 @@ export const NEWS_VARIANTS = {
   },
   // Portada de periódico grande, plana, con foto en blanco y negro
   portada(ctx, s, { t, params }) {
-    ctx.fillStyle = '#0b0a09'; ctx.fillRect(0, 0, W, H);
+    brightBg(ctx, t, 'crema');
     const k = ease.out(clamp(t * 1.5));
     ctx.save(); ctx.translate(W / 2, 1000); ctx.rotate(0.03 - k * 0.03); ctx.scale(1.12 - k * 0.12, 1.12 - k * 0.12);
     const pw = 920, ph = 1300;
