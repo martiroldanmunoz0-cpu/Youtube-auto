@@ -10,7 +10,16 @@ const TONES = {
   rosa: ['#ffe9f0', '#ffd0de', ['#ff8fab', '#ffd166', '#7bdff2', '#bb6bd9']],
   lila: ['#f1eaff', '#ddd0ff', ['#bb6bd9', '#7bdff2', '#ffd166', '#ff8fab']],
 };
+// Contexto del plano: si el vídeo tiene un lugar (salón, calle, dormitorio...), las escenas de "objeto"
+// (reloj, calendario, documento, móvil...) se dibujan sobre ese lugar animado en vez de sobre un fondo liso.
+export const BG_CONTEXT = { lugar: null, hora: 'dia', busy: false, draw: null };
 export function brightBg(ctx, t, tone = 'crema') {
+  if (BG_CONTEXT.lugar && BG_CONTEXT.draw && !BG_CONTEXT.busy) {
+    BG_CONTEXT.busy = true;
+    try { BG_CONTEXT.draw(ctx, BG_CONTEXT.lugar, BG_CONTEXT.hora, t); } finally { BG_CONTEXT.busy = false; }
+    ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.fillRect(0, 0, W, H); // velo: el objeto destaca y el lugar se sigue moviendo detrás
+    return;
+  }
   const [a, b, cols] = TONES[tone] || TONES.crema;
   const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, a); g.addColorStop(1, b);
   ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);

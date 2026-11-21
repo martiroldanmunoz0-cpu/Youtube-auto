@@ -15,6 +15,7 @@ import { paginate, drawSubtitles, drawWordSubtitles } from './lib/subtitles.mjs'
 import { SCENES } from './scenes/index.mjs';
 import { setLooks } from './lib/persona.mjs';
 import { drawEffect, comicGate } from './lib/impact.mjs';
+import { BG_CONTEXT } from './lib/brightbg.mjs';
 import { lifeOverlay } from './lib/ambient.mjs';
 import { propName } from './lib/props.mjs';
 
@@ -91,9 +92,13 @@ export class Renderer {
     this.layerB = createCanvas(W, H);
     // Guiones antiguos: un "texto en grande" que nombra un objeto de la biblioteca (SEÑAL DE TRÁFICO,
     // MÁQUINA DE PINBALL...) se convierte en una composición con ese objeto animado y su nombre en la etiqueta.
-    let lastPlace = 'salon';
+    const realPlace = (b) => (b.params?.lugar && !['fondo', 'espacio'].includes(b.params.lugar) ? b.params.lugar : null);
+    let lastPlace = timeline.beats.map(realPlace).find(Boolean) || 'salon';
     timeline.beats = timeline.beats.map((b) => {
-      if (b.params?.lugar && b.params.lugar !== 'fondo') lastPlace = b.params.lugar;
+      if (realPlace(b)) lastPlace = b.params.lugar;
+      b = { ...b, ctxPlace: lastPlace, ctxHora: b.params?.hora || 'dia' };
+      // Fondo liso de color: se sustituye por el lugar del vídeo (nunca un plano "vacío" con rayos)
+      if (b.params?.lugar === 'fondo') b = { ...b, params: { ...b.params, lugar: lastPlace } };
       if (b.scene !== 'big_text') return b;
       if (/^[\d.,+-]/.test(String(b.params?.text || '').trim())) return { ...b, params: { lugar: lastPlace, ...b.params } }; // cifra: sobre el lugar del vídeo
       const txt = String(b.params?.text || '').toLowerCase().trim();
@@ -159,6 +164,7 @@ export class Renderer {
     ctx.scale(cam.s + settle, cam.s + settle);
     ctx.translate(-W / 2, -H / 2);
     comicGate.on = !b.sinPalabra;
+    BG_CONTEXT.lugar = DARK_SCENES.has(b.scene_name) ? null : b.ctxPlace; BG_CONTEXT.hora = b.ctxHora || 'dia';
     try {
       b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, seed: this.tl.persona || this.tl.seed, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
       if (!LIVELY.has(b.scene_name)) lifeOverlay(ctx, local, DARK_SCENES.has(b.scene_name));

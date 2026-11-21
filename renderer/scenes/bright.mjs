@@ -3,7 +3,7 @@
 // Escena principal: "escena" { lugar, hora, plano, who, mood, objeto, label }.
 import { W, H, rr, radial, clamp, noise1 } from '../lib/util.mjs';
 import { personaWho, drawHead, drawFullBody } from '../lib/persona.mjs';
-import { brightBg } from '../lib/brightbg.mjs';
+import { brightBg, BG_CONTEXT } from '../lib/brightbg.mjs';
 import { ambientBack, ambientFront } from '../lib/ambient.mjs';
 
 const INK = '#1c1a2b';
@@ -216,7 +216,7 @@ const PLACES = {
     radial(ctx, 260, 500, 420, '#ff6bd6', 0.18); radial(ctx, 860, 1300, 480, '#5ab8ff', 0.18);
     circ(ctx, 900, 260, 70, '#ffd166', 7); circ(ctx, 140, 1650, 110, '#7bdff2', 8);
   },
-  fondo(ctx, t, h) { brightBg(ctx, t, h === 'noche' ? 'lila' : h === 'atardecer' ? 'rosa' : 'crema'); },
+  fondo(ctx, t, h) { BG_CONTEXT.busy = true; try { brightBg(ctx, t, h === 'noche' ? 'lila' : h === 'atardecer' ? 'rosa' : 'crema'); } finally { BG_CONTEXT.busy = false; } },
 };
 export const PLACE_NAMES = Object.keys(PLACES);
 const EXTERIOR = new Set(['calle', 'ciudad', 'campo', 'desierto', 'playa', 'montana', 'selva', 'coche', 'bajo_el_mar', 'espacio', 'fondo']);
@@ -225,6 +225,7 @@ const ALIAS = { casa: 'salon', 'salón': 'salon', habitacion: 'dormitorio', 'hab
 export function placeName(p) { const k = String(p || 'salon').toLowerCase().trim(); return PLACES[k] ? k : (ALIAS[k] || 'salon'); }
 export function drawPlace(ctx, lugar, hora, t) { const l = placeName(lugar); PLACES[l](ctx, t, hora); ambientBack(ctx, l, t, hora); }
 export { ambientFront };
+BG_CONTEXT.draw = drawPlace;
 export { grade, EXTERIOR };
 
 // ---------------- Persona en plano medio con un objeto ----------------
