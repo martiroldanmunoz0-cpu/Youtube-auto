@@ -1,0 +1,29 @@
+{
+  "semana": "pedido-10-01-r1",
+  "tanda": "pedido-10",
+  "pedido": null,
+  "tag": "pedido-10",
+  "videos": [
+    {
+      "id": "pedido-10-01-r1",
+      "title": "Te cortas el mismo dedo 3 veces: ¿por qué sanas peor? #shorts",
+      "description": "Una herida que a los 8 años cierra en días, a los 80 cuesta mucho más. ¿Te imaginabas que envejecer tenía este motivo? Cuéntanos qué te ha sorprendido más.\n#curiosidades #ciencia #cuerpohumano #envejecimiento #shorts",
+      "tags": [
+        "envejecimiento",
+        "telómeros",
+        "límite de Hayflick",
+        "células",
+        "curiosidades",
+        "ciencia",
+        "cuerpo humano",
+        "Henrietta Lacks",
+        "células HeLa",
+        "cáncer",
+        "biología",
+        "por qué envejecemos"
+      ],
+      "video": "pedido-10-01-r1.mp4",
+      "portada": "pedido-10-01-r1_portada.jpg"
+    }
+  ]
+}

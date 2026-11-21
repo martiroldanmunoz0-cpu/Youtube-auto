@@ -1,0 +1,277 @@
+{
+  "title": "Te cortas el mismo dedo 3 veces: ¿por qué sanas peor? #shorts",
+  "description": "Una herida que a los 8 años cierra en días, a los 80 cuesta mucho más. ¿Te imaginabas que envejecer tenía este motivo? Cuéntanos qué te ha sorprendido más.\n#curiosidades #ciencia #cuerpohumano #envejecimiento #shorts",
+  "tags": [
+    "envejecimiento",
+    "telómeros",
+    "límite de Hayflick",
+    "células",
+    "curiosidades",
+    "ciencia",
+    "cuerpo humano",
+    "Henrietta Lacks",
+    "células HeLa",
+    "cáncer",
+    "biología",
+    "por qué envejecemos"
+  ],
+  "beats": [
+    {
+      "text": "¿Por qué envejeces si tu cuerpo se repara?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "objeto": "none",
+        "piezas": [
+          {
+            "pieza": "herida",
+            "pos": "derecha",
+            "tamano": "gigante",
+            "anim": "acercarse"
+          }
+        ]
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Te cortas el mismo dedo tres veces en tu vida.",
+      "scene": "escena",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "worried",
+        "label": "Tú"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Ocho años: las plaquetas taponan el corte en minutos y en pocos días cierra.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "medio",
+        "edad": "joven",
+        "mood": "happy",
+        "objeto": "none",
+        "label": "8 años",
+        "piezas": [
+          {
+            "pieza": "plaqueta",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Treinta años: tarda un poco más. Ochenta: bastante más, y a veces no cierra.",
+      "scene": "year_jump",
+      "params": {
+        "from": "8",
+        "to": "80",
+        "label": "Cada vez tarda más"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "¿Qué cambió? Los telómeros, las puntas de tus cromosomas, se gastan como el plástico de un cordón.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "label": "Telómeros",
+        "piezas": [
+          {
+            "pieza": "cromosoma",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Cada división para reparar acorta esa punta un poco.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "atardecer",
+        "persona": "medio",
+        "edad": "mayor",
+        "mood": "worried",
+        "objeto": "none",
+        "piezas": [
+          {
+            "pieza": "cromosoma",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "celula_dividiendose",
+            "pos": "arriba_derecha",
+            "tamano": "pequeno",
+            "anim": "latir"
+          }
+        ]
+      },
+      "camera": "pan_right",
+      "transition": "cut"
+    },
+    {
+      "text": "Tras unas cincuenta divisiones se rinde y queda como célula zombi, inflamando lo que la rodea.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "label": "Célula zombi · unas 50 divisiones",
+        "piezas": [
+          {
+            "pieza": "celula",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Además, tu ADN sufre miles de daños diarios; los errores se acumulan durante décadas.",
+      "scene": "big_text",
+      "params": {
+        "text": "Miles al día",
+        "color": "#ff6b6b",
+        "label": "daños en tu ADN"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Pero ese freno es a propósito. En 1951 tomaron células de un tumor a Henrietta Lacks.",
+      "scene": "newspaper",
+      "params": {
+        "style": "papel",
+        "headline": "Células que no dejan de dividirse",
+        "kicker": "Gaceta Médica",
+        "date": "1951"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Ignoraron el límite: siguen dividiéndose hoy, más de setenta años después. Eso es el cáncer.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "hospital",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Células HeLa",
+        "piezas": [
+          {
+            "pieza": "celula_dividiendose",
+            "pos": "arriba_izquierda",
+            "tamano": "pequeno",
+            "anim": "latir"
+          }
+        ],
+        "_faltan": [
+          "placa_petri"
+        ]
+      },
+      "camera": "push_in",
+      "transition": "red"
+    },
+    {
+      "text": "Envejecer es el precio de no ser un tumor. Ya sabes la respuesta a esto:",
+      "scene": "escena",
+      "params": {
+        "lugar": "salon",
+        "hora": "noche",
+        "plano": "medio",
+        "edad": "mayor",
+        "mood": "neutral",
+        "objeto": "none"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    }
+  },
+  "cover_text": "EL MISMO CORTE, TRES EDADES",
+  "question": "¿Por qué envejecemos si el cuerpo sabe repararse solo?",
+  "id": "pedido-10-01-r1",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Narración en segunda persona con escalada por edades. Te cortas el mismo dedo, en el mismo sitio, tres veces en tu vida. A los 8 años la herida se cierra en pocos días: en minutos las plaquetas forman un tapón, después llegan los glóbulos blancos a limpiar y los fibroblastos fabrican colágeno nuevo. A los 30 tarda algo más. A los 80 tarda bastante más y cuesta que cierre. ¿Qué ha cambiado? Cada vez que una célula se divide para reparar, los extremos de sus cromosomas, los telómeros, se acortan un poco, como el plástico de la punta de un cordón que se desgasta. Tras unas 40-60 divisiones (el límite de Hayflick) la célula deja de dividirse y se queda como una 'célula zombi' que inflama lo que tiene alrededor. Además, el ADN de cada célula sufre miles de daños diarios; casi todos se arreglan, pero los pocos errores que quedan se van sumando durante décadas.",
+    "gancho": "¿Si tu cuerpo cierra un corte él solito en una semana, por qué no puede arreglarse para no envejecer nunca? Te cortas este dedo tres veces en tu vida. Mira qué pasa.",
+    "giro_final": "El freno no es un fallo, es a propósito. Una célula que ignora el límite y se divide sin parar tiene un nombre: cáncer. En 1951 a Henrietta Lacks le tomaron células de un tumor, y esas células siguen dividiéndose hoy en laboratorios de todo el mundo, más de 70 años después de su muerte. Tu cuerpo te hace envejecer para que no te pase eso. Envejecer es el precio de no convertirte en un tumor.",
+    "estilo_visual": "Domina la 'escena' luminosa con la misma persona en tres edades: niño en el parque con tirita, adulto en la cocina cortando tomate y anciano en el salón mirándose el dedo. Cada salto de edad se marca con 'year_jump', que da ritmo visual. Las explicaciones internas van con 'composicion' sobre fondo liso: plaquetas formando un tapón, un cromosoma con telómeros como puntas de cordón que se acortan en cada división y una célula gris 'zombi'. Para el límite de Hayflick se usa un 'big_text' puntual ('50 divisiones'). El giro abre con 'newspaper' en recorte antiguo (1951) y cierra con 'composicion' de células multiplicándose sin control en una placa de laboratorio. Portada: el dedo con el corte en primer plano y tres caras del mismo personaje (niño, adulto, anciano) con colores vivos.",
+    "por_que_funcionara": "Es el formato que más le gusta al dueño: segunda persona, progresión cada vez mayor y giro final. Las tres edades evitan escenas repetidas porque cada una es un lugar distinto. El giro anticáncer da la vuelta a la pregunta del gancho y está bien documentado (Hayflick, telómeros, células HeLa).",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "dedo con corte sangrando",
+      "plaquetas formando tapón",
+      "cromosoma con telómeros como punta de cordón",
+      "célula zombi gris",
+      "placa de Petri con células multiplicándose"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Por qué envejeces si tu cuerpo se repara?",
+      "tipo": "pregunta con paradoja",
+      "puntuacion": 9,
+      "motivo": "Deja claro el tema (envejecer frente a reparación) en menos de 2 segundos, es concreta y no destripa el giro del cáncer."
+    },
+    {
+      "texto": "¿Cuántas veces puede repararte tu cuerpo?",
+      "tipo": "pregunta con reto o amenaza",
+      "puntuacion": 7,
+      "motivo": "Sugiere un límite oculto y engancha, pero no menciona el envejecimiento y el tema queda menos claro."
+    },
+    {
+      "texto": "Te cortas y sanas. ¿Por qué envejeces?",
+      "tipo": "dato que choca + pregunta",
+      "puntuacion": 8,
+      "motivo": "Plantea la paradoja en segunda persona y es muy corta, pero pierde un poco de fuerza respecto a la elegida."
+    },
+    {
+      "texto": "Vas a cortarte tres veces. Mira qué cambia.",
+      "tipo": "segunda persona con el tema",
+      "puntuacion": 5,
+      "motivo": "Engancha por el formato por edades, pero un desconocido no sabe que va de envejecer."
+    },
+    {
+      "texto": "Envejecer no es un fallo. Es a propósito.",
+      "tipo": "contradicción",
+      "puntuacion": 7,
+      "motivo": "Choca con lo que se cree, pero destripa parte del giro final."
+    }
+  ]
+}
