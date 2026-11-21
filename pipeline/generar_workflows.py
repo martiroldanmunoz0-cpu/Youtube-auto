@@ -349,7 +349,7 @@ open(f"{out}/pedido.yml", "w").write(workflow(
       cantidad:
         description: "¿Cuántas versiones?"
         required: true
-        default: "2"
+        default: "1"
         type: choice
         options: ["1", "2", "3", "4", "5"]
       a_medida:

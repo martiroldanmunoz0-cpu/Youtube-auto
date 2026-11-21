@@ -186,10 +186,10 @@ nav .n.bad{background:var(--bad);color:#fff}
     <h2>Crear vídeos</h2>
     <form class="form" id="f-pedido">
       <h3>Pedido especial</h3>
-      <p>Escribe el vídeo que quieres como se lo dirías a una persona. Se hacen varias versiones distintas, con la voz del narrador.</p>
+      <p>Escribe el vídeo que quieres como se lo dirías a una persona. Se hace 1 vídeo (puedes pedir más versiones), con la voz del narrador.</p>
       <textarea name="pedido" required placeholder="Ej.: Qué pasaría si la Luna desapareciera, día a día, con un giro al final"></textarea>
       <div class="inline"><label for="pc">Versiones</label>
-        <select name="cantidad" id="pc"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select>
+        <select name="cantidad" id="pc"><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
         <button class="btn main" type="submit">Generar</button></div>
       <label style="display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:14px"><input type="checkbox" name="a_medida" style="margin-top:3px">
         <span><b>Escenas a medida</b>: solo se escribe el guion y Claude dibuja una animación propia para cada plano. Después dile a Claude «haz las escenas del pedido». Tarda más, pero no gasta más API.</span></label>
