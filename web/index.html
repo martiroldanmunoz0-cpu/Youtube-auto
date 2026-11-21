@@ -484,6 +484,11 @@ nav .n.bad{background:var(--bad);color:#fff}
     e.preventDefault();
     if (needToken()) return;
     const id = a.dataset.rehacer, tanda = id.replace(/-\d{2}(-r\d+)?$/, "");
+    try { // ¿ya se está rehaciendo este vídeo?
+      const runs = (await gh(`/actions/workflows/rehacer.yml/runs?per_page=20`)).workflow_runs || [];
+      const dup = runs.find(r => r.status !== "completed" && (r.display_title || "").endsWith(" " + id));
+      if (dup) { toast(`«${id}» ya se está rehaciendo. Mira “En marcha”.`); return; }
+    } catch {}
     if (!confirm(`¿Rehacer «${id}» con el mismo guion y el sistema actual?\n\nNo gasta saldo de la API. El vídeo nuevo llegará a Revisar en unos 20-30 minutos; el antiguo puedes descartarlo.`)) return;
     try {
       await gh(`/actions/workflows/rehacer.yml/dispatches`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({ref: "main", inputs: {id, tanda}})});
