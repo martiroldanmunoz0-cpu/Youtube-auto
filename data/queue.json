@@ -178,5 +178,32 @@
     "youtube_id": "dCU29PhWAew",
     "portada_ok": true,
     "reprogramado": true
+  },
+  {
+    "id": "pedido-11-02",
+    "title": "Tienes 17 años y no vas a dormir en 11 días #shorts",
+    "description": "¿Tú cuántos días crees que aguantarías sin dormir? Cuéntamelo en los comentarios y dime si te atreverías a intentarlo.\n#curiosidades #sueño #historiasreales #shorts #ciencia",
+    "tags": [
+      "sueño",
+      "sin dormir",
+      "Randy Gardner",
+      "privación de sueño",
+      "curiosidades",
+      "historias reales",
+      "cerebro humano",
+      "insomnio",
+      "récord Guinness",
+      "William Dement",
+      "ciencia",
+      "datos curiosos"
+    ],
+    "video": "pedido-11-02.mp4",
+    "portada": "pedido-11-02_portada.jpg",
+    "tag": "pedido-11",
+    "issue": 25,
+    "estado": "programado",
+    "publish_at": "2026-11-23T13:00:00Z",
+    "youtube_id": "IIC1La4rY4o",
+    "portada_ok": true
   }
 ]
