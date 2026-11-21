@@ -89,8 +89,10 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
         parts.append((mp3, start))
         t = end
     # Despedida hablada en la tarjeta final ("Sígueme para más curiosidades...") con la voz del narrador
-    end_dur = END_CARD
-    outro = (cfg["canal"].get("tarjeta_final") or {}).get("locucion", "").strip()
+    tarjeta = cfg["canal"].get("tarjeta_final") or {}
+    con_tarjeta = tarjeta.get("mostrar", True)
+    end_dur = END_CARD if con_tarjeta else 0.45  # sin tarjeta: solo un respiro para no cortar la última palabra
+    outro = tarjeta.get("locucion", "").strip() if con_tarjeta else ""
     if outro:
         try:
             mp3, odur, _ = cached_synth(cache, outro, cfg, {**(narrator or {}), "tolerante": True})
@@ -138,7 +140,8 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
         "seed": sid, "fps": 30, "total": round(total, 3),
         "beats": beats, "words": words,
         "cast": cast, "looks": story.get("looks", {}), "subtitle_style": story.get("subtitle_style", "page"),
-        "endcard": {"duration": round(end_dur, 3), "title": c["tarjeta_final"]["titulo"], "subtitle": c["tarjeta_final"]["subtitulo"], "handle": c["handle"]},
+        "endcard": ({"duration": round(end_dur, 3), "title": c["tarjeta_final"]["titulo"], "subtitle": c["tarjeta_final"]["subtitulo"], "handle": c["handle"]}
+                    if con_tarjeta else None),
         "cover": {"text": story.get("cover_text") or story.get("question") or story["title"].replace(" #shorts", ""), "channel": c.get("nombre", "")},
         "hook": {"text": story.get("cover_text") or story.get("question") or "", "dur": 2.3},
     }

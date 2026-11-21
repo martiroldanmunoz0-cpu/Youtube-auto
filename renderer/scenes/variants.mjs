@@ -115,7 +115,7 @@ export const CAL_VARIANTS = {
     ctx.fillStyle = linearBg(ctx, 0, 0, 0, H, ['#16110c', '#2a1f14', '#120d09']); ctx.fillRect(0, 0, W, H);
     radial(ctx, W / 2, 900, 700, P.amber, 0.14);
     const target = clamp(Math.round(Number(params.day) || 1), 1, 31);
-    const x0 = 110, y0 = 560, cw = 860, ch = 860;
+    const x0 = 110, y0 = 700, cw = 860, ch = 860;
     ctx.fillStyle = '#f2ece0'; rr(ctx, x0, y0 - 160, cw, ch + 180, 24); ctx.fill();
     ctx.fillStyle = '#2b4a7a'; rr(ctx, x0, y0 - 160, cw, 150, 24); ctx.fill(); ctx.fillRect(x0, y0 - 40, cw, 30);
     ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '700 64px Poppins';
