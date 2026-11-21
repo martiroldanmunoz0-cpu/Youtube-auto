@@ -877,7 +877,7 @@ nav .n.bad{background:var(--bad);color:#fff}
     e.preventDefault(); const f = e.target;
     const text = f.pedido.value.trim(); if (!text) return;
     const inputs = {pedido: text, cantidad: f.cantidad.value};
-    if (f.a_medida.checked) inputs.a_medida = true;
+    if (f.a_medida.checked) inputs.a_medida = "true";
     if (await dispatch(WF.pedido, inputs, f.querySelector("button"))) { if (inputs.a_medida) toast("✓ Guion en marcha. Cuando esté, dile a Claude: «haz las escenas del pedido»."); f.reset(); }
   });
   $("#f-historia").addEventListener("submit", async e => {
