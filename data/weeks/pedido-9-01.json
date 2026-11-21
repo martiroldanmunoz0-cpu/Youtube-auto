@@ -1,0 +1,27 @@
+{
+  "semana": "pedido-9-01",
+  "tanda": "pedido-9",
+  "pedido": "que pasaria si volvieran los dinosaurios",
+  "tag": "pedido-9",
+  "videos": [
+    {
+      "id": "pedido-9-01",
+      "title": "30 días con dinosaurios en tu ciudad #shorts",
+      "description": "Si volvieran los dinosaurios, ¿cuánto aguantarías tú? Cuéntanos en los comentarios qué harías el día uno. ¿Y tú, ya habías oído lo del final?\n#dinosaurios #curiosidades #quepasariasi #ciencia #shorts",
+      "tags": [
+        "dinosaurios",
+        "qué pasaría si",
+        "curiosidades",
+        "T. rex",
+        "aves y dinosaurios",
+        "evolución",
+        "ciencia",
+        "paleontología",
+        "datos curiosos",
+        "imagina que"
+      ],
+      "video": "pedido-9-01.mp4",
+      "portada": "pedido-9-01_portada.jpg"
+    }
+  ]
+}
