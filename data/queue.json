@@ -69,10 +69,11 @@
     "portada": "historia-1-01_portada.jpg",
     "tag": "historia-1",
     "issue": 9,
-    "estado": "programado",
-    "publish_at": "2026-11-22T11:00:00Z",
+    "estado": "no_encontrado",
+    "publish_at": "2026-11-21T20:43:28.343625Z",
     "youtube_id": "oaSovNWbc_k",
-    "portada_ok": true
+    "portada_ok": true,
+    "fecha_prevista": "2026-11-22T11:00:00Z"
   },
   {
     "id": "historia-1-02",
@@ -173,11 +174,12 @@
     "portada": "pedido-9-01_portada.jpg",
     "tag": "pedido-9",
     "issue": 15,
-    "estado": "programado",
-    "publish_at": "2026-11-22T16:30:00Z",
+    "estado": "no_encontrado",
+    "publish_at": "2026-11-21T20:43:28.343625Z",
     "youtube_id": "dCU29PhWAew",
     "portada_ok": true,
-    "reprogramado": true
+    "reprogramado": true,
+    "fecha_prevista": "2026-11-22T16:30:00Z"
   },
   {
     "id": "pedido-11-02",
@@ -201,9 +203,10 @@
     "portada": "pedido-11-02_portada.jpg",
     "tag": "pedido-11",
     "issue": 25,
-    "estado": "programado",
-    "publish_at": "2026-11-23T13:00:00Z",
+    "estado": "no_encontrado",
+    "publish_at": "2026-11-21T20:43:28.343625Z",
     "youtube_id": "IIC1La4rY4o",
-    "portada_ok": true
+    "portada_ok": true,
+    "fecha_prevista": "2026-11-23T13:00:00Z"
   }
 ]
