@@ -37,8 +37,8 @@ generacion:
   # Escritura de cada guion: más barato. Si quieres guiones aún más trabajados, pon "claude-opus-5-5" (cuesta el doble).
   modelo_guiones: "claude-sonnet-5-5"
   usar_lotes: true               # lote de Claude (Batch API): -50% de coste, tarda unos minutos más
-  duracion_objetivo_seg: [45, 75]
-  duracion_caso_real_seg: [60, 100]   # historias reales: algo más largas (los Shorts admiten hasta 3 min)
+  duracion_objetivo_seg: [35, 50]   # Shorts cortos retienen más (canal nuevo)
+  duracion_caso_real_seg: [45, 60]    # historias reales: máximo 60 s
   mezcla: "auto"                 # auto = la IA decide según tendencias (historias, datos, casos reales...)
   # Lo que más te gusta (se tiene en cuenta en ideas y guiones). Edítalo cuando quieras.
   estilo_preferido: >-

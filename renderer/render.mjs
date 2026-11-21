@@ -148,8 +148,45 @@ export class Renderer {
     if (this.tl.subtitle_style === 'word') drawWordSubtitles(ctx, this.tl.words || [], t, this.tl.cast || {});
     else drawSubtitles(ctx, this.pages, t);
     if (t >= endStart) this.drawEndcard(ctx, t - endStart, end);
-    // Fundido de entrada
-    if (t < 0.25) { ctx.fillStyle = `rgba(0,0,0,${1 - t / 0.25})`; ctx.fillRect(0, 0, W, H); }
+    // Gancho a pantalla grande en los primeros segundos (sin fundido desde negro: el fotograma 0 ya engancha)
+    if (this.tl.hook?.text && t < (this.tl.hook.dur || 2.3)) this.drawHook(ctx, t, this.tl.hook);
+  }
+
+  drawHook(ctx, t, hook) {
+    const dur = hook.dur || 2.3;
+    const alpha = t < dur - 0.3 ? 1 : clamp((dur - t) / 0.3);
+    const pop = 1 + 0.14 * (1 - ease.out(clamp(t / 0.22)));
+    const text = String(hook.text).toUpperCase().trim();
+    const words = text.split(/\s+/).filter(Boolean);
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    // banda oscura detrás del texto para que se lea sobre cualquier imagen
+    const g = ctx.createLinearGradient(0, 560, 0, 1360);
+    g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(0.25, 'rgba(0,0,0,0.6)'); g.addColorStop(0.75, 'rgba(0,0,0,0.6)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 560, W, 800);
+    let size = 200, lines = [];
+    for (; size >= 90; size -= 10) {
+      ctx.font = `${size}px Anton`;
+      lines = []; let cur = '';
+      for (const w of words) { const tt = cur ? cur + ' ' + w : w; if (ctx.measureText(tt).width > W - 120 && cur) { lines.push(cur); cur = w; } else cur = tt; }
+      if (cur) lines.push(cur);
+      if (lines.length <= 3 && lines.every((l) => ctx.measureText(l).width <= W - 120)) break;
+    }
+    const lh = size * 1.06;
+    ctx.translate(W / 2, 960); ctx.scale(pop, pop); ctx.translate(-W / 2, -960);
+    let y = 960 - ((lines.length - 1) * lh) / 2 + size * 0.36;
+    ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
+    const hot = (w) => /[0-9?¿!¡]/.test(w);
+    for (const line of lines) {
+      let x = (W - ctx.measureText(line).width) / 2;
+      for (const w of line.split(' ')) {
+        ctx.lineWidth = size * 0.13; ctx.strokeStyle = '#000'; ctx.strokeText(w, x, y);
+        ctx.fillStyle = hot(w) ? '#ffb35c' : '#ffffff'; ctx.fillText(w, x, y);
+        x += ctx.measureText(w + ' ').width;
+      }
+      y += lh;
+    }
+    ctx.restore();
   }
 
   drawEndcard(ctx, t, end) {

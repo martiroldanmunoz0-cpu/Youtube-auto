@@ -23,7 +23,7 @@ from voice import synth
 import qa
 
 GAP = 0.12      # silencio entre planos (s): las frases van seguidas
-LEAD_IN = 0.2   # silencio inicial
+LEAD_IN = 0.0   # sin silencio inicial: la voz arranca en el fotograma 0
 END_CARD = 2.4  # tarjeta final (s)
 
 
@@ -140,6 +140,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
         "cast": cast, "looks": story.get("looks", {}), "subtitle_style": story.get("subtitle_style", "page"),
         "endcard": {"duration": round(end_dur, 3), "title": c["tarjeta_final"]["titulo"], "subtitle": c["tarjeta_final"]["subtitulo"], "handle": c["handle"]},
         "cover": {"text": story.get("cover_text") or story.get("question") or story["title"].replace(" #shorts", ""), "channel": c.get("nombre", "")},
+        "hook": {"text": story.get("cover_text") or story.get("question") or "", "dur": 2.3},
     }
     tl_path = out_dir / f"{sid}.timeline.json"
     write_json(tl_path, timeline)

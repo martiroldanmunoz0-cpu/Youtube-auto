@@ -136,7 +136,14 @@ real (lo que dicen los expertos), sin inventar cifras. Si un dato es dudoso, des
 - Las ideas tienen que poder contarse con las escenas disponibles del catálogo."""
 
 SYSTEM_WRITER = """Eres guionista de YouTube Shorts narrados en español neutro (comprensible en España y Latinoamérica). \
-Escribes guiones de 45-75 segundos que se convierten automáticamente en un vídeo animado.
+Escribes guiones CORTOS (35-50 segundos; historias reales máximo 60) que se convierten automáticamente en un vídeo animado.
+
+LOS 2 PRIMEROS SEGUNDOS LO SON TODO (dato del canal: casi 4 de cada 10 personas deslizaban al empezar)
+- El vídeo arranca con "texto_portada" ENORME en pantalla sobre la imagen del plano 1, y la voz dice el plano 1 sin pausa.
+- Plano 1 = MÁXIMO 8 PALABRAS, el dato o la situación más fuerte, dicho de golpe ("Cayó 3.000 metros… y sobrevivió.", \
+"Este hombre se operó a sí mismo.", "Tu cuerpo aguanta 11 días sin dormir."). Nada de frases largas ni nombres raros al principio.
+- Plano 1 usa la escena MÁS IMPACTANTE visualmente del vídeo (nunca una persona quieta neutra ni un fondo vacío), con \
+cámara "slam" o "shake". Tiene que haber movimiento desde el primer fotograma.
 
 PRIMERO, LA PREGUNTA CENTRAL Y EL GANCHO (lo más importante: decide si la gente se queda o desliza)
 La gente ve el vídeo SIN título ni descripción: solo oye la voz. Si en los 3 primeros segundos no sabe de qué va, desliza.
@@ -147,8 +154,8 @@ La gente ve el vídeo SIN título ni descripción: solo oye la voz. Si en los 3 
   c) dato que choca + la pregunta ("En el fondo del mar el agua pesa como un camión encima de tu dedo. ¿Llegarías?")
   d) segunda persona CON el tema dicho ("Vas a bajar al fondo del océano. Un día, un nivel más.")
   e) contradicción / "lo que nadie te cuenta" sobre el tema ("Todos creen que el fondo del mar está vacío. No lo está.")
-Puntúa cada uno de 1 a 10. PRUEBA DEL DESCONOCIDO (si no la pasa, máximo 3 puntos): alguien que solo oye esa frase, sin ver nada más, ¿sabe de qué va el vídeo y quiere saber la respuesta? Además: se entiende en menos de 2 segundos; es concreto; no destripa el final; máximo 15 palabras. Copia el mejor en "gancho_elegido" y úsalo LITERALMENTE como texto del plano 1.
-PROHIBIDO empezar a mitad de la historia sin presentar el tema (MAL: "Día uno: bajas diez metros." BIEN: "¿Qué pasaría si cada día bajaras más hondo en el océano? Día uno: diez metros.").
+Puntúa cada uno de 1 a 10. PRUEBA DEL DESCONOCIDO (si no la pasa, máximo 3 puntos): alguien que solo oye esa frase, sin ver nada más, ¿sabe de qué va el vídeo y quiere saber la respuesta? Además: se entiende en menos de 2 segundos; es concreto; no destripa el final; MÁXIMO 8 PALABRAS. Copia el mejor en "gancho_elegido" y úsalo LITERALMENTE como texto del plano 1.
+PROHIBIDO empezar a mitad de la historia sin presentar el tema (MAL: "Día uno: bajas diez metros." BIEN: "¿Y si cada día bajaras más hondo en el mar?"). Si el gancho es una afirmación, la pregunta central va en el plano 2.
 
 TÉCNICAS DE RETENCIÓN (caja de herramientas: elige las que mejor encajen con ESTE vídeo y combínalas)
 - Bucle abierto desde el principio: una promesa o duda que solo se resuelve al final ("Pero lo que le pasó \
@@ -163,12 +170,13 @@ creías o una amenaza nueva.
 vídeos; busca la forma propia de cada historia.
 - Cada 2-3 planos, algo nuevo: un dato, un giro pequeño, una amenaza o una pregunta ("Pero había un problema.").
 - Nada de relleno ni frases de transición vacías; si un plano se puede quitar sin perder nada, quítalo.
-- Lo mejor va al final, y la última frase enlaza con la primera para que se vuelva a ver (bucle).
+- BUCLE OBLIGATORIO: la última frase debe enlazar con la primera, de forma que al volver a empezar el vídeo tenga \
+sentido seguir viéndolo (p. ej. termina con "…y por eso, cuando cayó 3.000 metros…" para que el plano 1 continúe la frase, \
+o con una pregunta que el plano 1 responde). Así mucha gente lo ve dos veces.
 
 ESTRUCTURA BASE (adáptala: el formato concreto lo decide cada idea; no todos los vídeos son iguales)
-1. GANCHO (plano 1, máx 15 palabras): el gancho elegido, que deja claro el tema con una pregunta (o un dato + la \
-pregunta). Nada de saludos, "hoy os cuento" ni introducciones. Ejemplos de tono: "¿Qué pasaría si la Tierra \
-dejara de girar?" / "¿Cuánto aguantarías sin dormir? Tu cuerpo empieza a fallar el día dos."
+1. GANCHO (plano 1, máx 8 palabras): el gancho elegido, el dato o la pregunta más fuerte. Nada de saludos, "hoy os \
+cuento" ni introducciones. Ejemplos de tono: "¿Y si la Tierra dejara de girar?" / "Cayó 3.000 metros… y sobrevivió."
    Plano 2: lo que está en juego o la regla del reto, para que quieran quedarse ("Cada día, diez veces más \
 hondo. Y al final hay algo que nadie esperaba.").
 2. DESARROLLO: frases cortas, ritmo rápido, un detalle concreto por plano. Cada 2-3 planos, una micro-pregunta o \
@@ -191,7 +199,7 @@ Así el dibujo se parece a la persona real. Si no sabes cómo era algún rasgo, 
 - Si no estás muy seguro de un dato concreto (fecha, cifra, nombre), no lo pongas o redondéalo.
 
 REGLAS DE TEXTO
-- 120-180 palabras en total y entre 9 y 16 planos (historias reales: 170-250 palabras y 13-22 planos). \
+- 85-125 palabras en total y entre 8 y 13 planos (historias reales: 110-150 palabras y 10-15 planos). \
 Cada plano: 1-2 frases, 6-22 palabras.
 - Escribe para el oído: sin emojis, sin abreviaturas, números escritos como se dicen si son cortos.
 - Es un canal de CURIOSIDADES: tono divulgativo, cercano y con ritmo, como un amigo que te cuenta algo alucinante.
@@ -214,8 +222,9 @@ catálogo: hay muchas escenas distintas.
 - "camara" y "transicion" deben ser claves exactas del catálogo.
 
 TÍTULO, PORTADA Y DESCRIPCIÓN
-- texto_portada: 2-6 palabras en MAYÚSCULAS para la miniatura, que se lean de un vistazo y den ganas de pulsar \
-(p. ej. "¿11 KM BAJO EL MAR?", "SIN DORMIR 11 DÍAS", "¿Y SI LA LUNA CAE?"). Distinto del título, sin destripar el giro.
+- texto_portada: 2-6 palabras en MAYÚSCULAS. Sale ENORME en pantalla los 2 primeros segundos y en la miniatura: \
+tiene que dejar claro el tema de un vistazo y dar ganas de quedarse (p. ej. "¿11 KM BAJO EL MAR?", \
+"SIN DORMIR 11 DÍAS", "SE OPERÓ A SÍ MISMO"). Distinto del título, sin destripar el giro.
 - titulo: máx 70 caracteres, genera curiosidad sin destripar el giro, termina con " #shorts".
 - descripcion: 2-3 líneas que inviten a comentar (pregunta al espectador) + 3-5 hashtags.
 - tags: 8-12 etiquetas en español."""
@@ -415,7 +424,7 @@ def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
 
 SYSTEM_HISTORIAS = """Eres el investigador y estratega de Curiosidario, un canal de YouTube Shorts en español con vídeos \
 animados narrados. Tu trabajo: encontrar las HISTORIAS REALES con más potencial de visualizaciones para contarlas \
-en 60-100 segundos.
+en 45-60 segundos.
 
 Qué hace que una historia real arrase en Shorts (puntúa cada candidata con esto):
 - Premisa increíble que se entiende en una frase ("Le pusieron los brazos de otra persona", "Sobrevivió 438 días \
@@ -537,9 +546,14 @@ def validate_story(story: dict) -> dict:
     # Red de seguridad: el vídeo tiene que presentar su tema con una pregunta al principio
     # (la gente lo ve sin título ni descripción). Si el guion no la tiene, se añade la pregunta central delante.
     pregunta = re.sub(r"\s+", " ", story.get("pregunta_central") or "").strip()
-    if beats and pregunta.endswith("?") and not any("?" in b["text"] for b in beats[:2]):
-        beats.insert(0, {**beats[0], "text": pregunta, "camera": "push_in", "transition": "cut"})
-        print(f"  (añadida la pregunta inicial: «{pregunta}»)")
+    if beats and pregunta.endswith("?") and not any("?" in b["text"] for b in beats[:3]):
+        pos = 1 if len(beats) > 1 else 0  # el plano 1 queda corto y fuerte; la pregunta, justo después
+        beats.insert(pos, {**beats[pos - 1 if pos else 0], "text": pregunta, "camera": "push_in", "transition": "cut"})
+        print(f"  (añadida la pregunta central en el plano {pos + 1}: «{pregunta}»)")
+    if beats:
+        beats[0]["camera"] = beats[0]["camera"] if beats[0]["camera"] in ("slam", "shake") else "slam"  # movimiento desde el fotograma 0
+        if len(beats[0]["text"].split()) > 12:
+            print(f"  aviso: el plano 1 es largo ({len(beats[0]['text'].split())} palabras)")
     title = story["titulo"].strip()
     if "#shorts" not in title.lower():
         title = (title[:88] + " #shorts").strip()
