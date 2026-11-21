@@ -233,5 +233,30 @@
     "publish_at": "2026-11-22T11:00:00Z",
     "youtube_id": "vrTnSw2LyKY",
     "portada_ok": true
+  },
+  {
+    "id": "pedido-16-01",
+    "title": "Por qué no puedes hacerte cosquillas a ti mismo #shorts",
+    "description": "Tu cerebro lleva toda la vida ganándote la partida. ¿Lo has intentado alguna vez con una pluma? Cuéntanos qué pasó.\n#curiosidades #cerebro #ciencia #cosquillas",
+    "tags": [
+      "cosquillas",
+      "cerebro",
+      "cerebelo",
+      "curiosidades",
+      "ciencia",
+      "experimento",
+      "psicología",
+      "neurociencia",
+      "datos curiosos",
+      "cuerpo humano"
+    ],
+    "video": "pedido-16-01.mp4",
+    "portada": "pedido-16-01_portada.jpg",
+    "tag": "pedido-16",
+    "issue": 31,
+    "estado": "programado",
+    "publish_at": "2026-11-22T18:30:00Z",
+    "youtube_id": "zXTK7iknzAM",
+    "portada_ok": true
   }
 ]
