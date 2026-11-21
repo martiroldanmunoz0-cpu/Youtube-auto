@@ -248,6 +248,10 @@ nav .n.bad{background:var(--bad);color:#fff}
   <p class="hint" style="margin-top:10px">Hora de España. Se cambia también en YouTube (tarda 1–2 minutos).</p>
   <p id="mv-warn" style="color:var(--accent);font-size:14px;margin:6px 0"></p>
   <div class="actions"><button class="btn no" id="mv-cancel" type="button">Cancelar</button><button class="btn main" id="mv-save" type="button">Guardar</button></div>
+  <div id="mv-del-box" style="border-top:1px solid #333;margin-top:14px;padding-top:12px">
+    <button class="btn no" id="mv-del" type="button" style="color:var(--bad);border-color:var(--bad);width:100%">🗑 Eliminar este vídeo</button>
+    <p class="hint" style="margin:6px 0 0">Se borra de YouTube y del calendario, y su hueco queda libre. No se puede deshacer.</p>
+  </div>
 </dialog>
 
 <dialog id="dlg-discard">
@@ -659,6 +663,7 @@ nav .n.bad{background:var(--bad);color:#fff}
     $("#mv-now").textContent = "Ahora: " + fmtDay(new Date(q.publish_at)) + " a las " + fmtTime(new Date(q.publish_at));
     $("#mv-date").value = cur.date; $("#mv-time").value = cur.time; $("#mv-warn").textContent = "";
     $("#mv-date").min = madridParts(new Date()).date;
+    $("#mv-del-box").hidden = q.estado === "publicado" || (q.publish_at && new Date(q.publish_at) <= new Date());
     $("#dlg-move").showModal();
   }
   function checkMove() {
@@ -689,6 +694,32 @@ nav .n.bad{background:var(--bad);color:#fff}
       renderCalendar(); renderProgramados();
       toast("Cambiando la fecha en YouTube… (1–2 min)");
       watchMove(q, before, t0);
+    } catch (e) { toast("No se pudo: " + e.message, true); }
+  };
+  $("#mv-del").onclick = async () => {
+    const q = moving; if (!q) return;
+    if (!confirm(`¿Eliminar «${cleanTitle(q.title)}»?\n\nSe borrará de YouTube y del calendario. No se puede deshacer.`)) return;
+    $("#dlg-move").close();
+    try {
+      const t0 = Date.now();
+      await gh(`/actions/workflows/eliminar.yml/dispatches`, {method: "POST", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ref: "main", inputs: {id: q.id}})});
+      busyIds.add(q.id); renderCalendar(); renderProgramados();
+      toast("Eliminando el vídeo… (1–2 min)");
+      for (let i = 0; i < 30; i++) {
+        await new Promise(r => setTimeout(r, 10000));
+        try {
+          const r = (await gh(`/actions/workflows/eliminar.yml/runs?per_page=5`)).workflow_runs
+            .filter(r => new Date(r.created_at) >= new Date(t0 - 60000) && (r.display_title || "").includes(q.id))[0];
+          if (!r || r.status !== "completed") continue;
+          busyIds.delete(q.id);
+          if (r.conclusion === "success") { queue = queue.filter(x => x.id !== q.id); toast("✓ Vídeo eliminado. Su hueco queda libre."); setTimeout(() => loadQueue().then(() => { renderCalendar(); renderProgramados(); }), 20000); }
+          else { toast("✕ No se pudo eliminar (¿ya estaba publicado?). Mira «detalles» o díselo a Claude.", true); window.open(r.html_url, "_blank"); }
+          renderCalendar(); renderProgramados();
+          return;
+        } catch {}
+      }
+      busyIds.delete(q.id); renderCalendar();
     } catch (e) { toast("No se pudo: " + e.message, true); }
   };
   async function watchMove(q, before, t0) {

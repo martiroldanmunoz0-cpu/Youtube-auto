@@ -1,0 +1,40 @@
+name: Eliminar vídeo
+run-name: "Eliminar ${{ inputs.id }}"
+
+# Lo lanza el calendario del panel (botón «Eliminar») para un vídeo que aún no se ha publicado.
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "Vídeo (p. ej. historia-1-01)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  eliminar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Eliminar de YouTube y de la cola
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          ID: ${{ inputs.id }}
+        run: python pipeline/eliminar.py --id "$ID"
+      - name: Guardar cola
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data/queue.json data/eliminados.json
+          git commit -m "Vídeo eliminado: ${{ inputs.id }}" || echo "sin cambios"
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; echo "reintento $i"; sleep $((i * 7)); done
