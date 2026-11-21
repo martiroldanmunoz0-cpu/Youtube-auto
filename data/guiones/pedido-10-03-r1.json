@@ -1,0 +1,348 @@
+{
+  "title": "Si tu herida se cura sola, ¿por qué envejeces? #shorts",
+  "description": "Sigue una herida minuto a minuto por dentro de tu cuerpo, hasta el día siete y más allá. ¿Sabías que una cicatriz nunca recupera toda la resistencia de la piel original? Cuéntame en los comentarios qué parche del cuerpo te sorprendió más. #ciencia #cuerpohumano #curiosidades #envejecimiento #shorts",
+  "tags": [
+    "envejecimiento",
+    "telómeros",
+    "cicatrización",
+    "cuerpo humano",
+    "curiosidades",
+    "ciencia",
+    "células",
+    "plaquetas",
+    "colágeno",
+    "por qué envejecemos",
+    "biología",
+    "datos curiosos"
+  ],
+  "beats": [
+    {
+      "text": "¿Por qué envejeces si tu piel se repara?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Día 7",
+        "piezas": [
+          {
+            "pieza": "herida",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "plaqueta",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "caer"
+          }
+        ]
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Minuto cero: te cortas con un folio. Vamos dentro.",
+      "scene": "escena",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "plano": "medio",
+        "objeto": "papel",
+        "mood": "shocked",
+        "label": "Minuto 0"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Minuto uno: plaquetas apiladas como ladrillos forman un tapón.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Minuto 1",
+        "piezas": [
+          {
+            "pieza": "herida",
+            "pos": "fondo",
+            "tamano": "gigante"
+          },
+          {
+            "pieza": "plaqueta",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Hora uno: llegan los glóbulos blancos, guardias que devoran bacterias. Luego, macrófagos limpian los restos.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Hora 1",
+        "piezas": [
+          {
+            "pieza": "globulo_blanco",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "virus",
+            "pos": "derecha",
+            "tamano": "pequeno",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "pan_right",
+      "transition": "cut"
+    },
+    {
+      "text": "Día tres: fibroblastos tejen colágeno y la piel avanza desde los bordes.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Día 3",
+        "piezas": [
+          {
+            "pieza": "herida",
+            "pos": "fondo",
+            "tamano": "gigante"
+          },
+          {
+            "pieza": "colageno",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Día siete: herida cerrada. ¿Misión cumplida?",
+      "scene": "calendar",
+      "params": {
+        "style": "taco",
+        "from": 3,
+        "day": 7,
+        "month": "Día",
+        "label": "Herida cerrada"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Salto en el tiempo: ochenta años. La misma herida tarda mucho más.",
+      "scene": "year_jump",
+      "params": {
+        "from": 30,
+        "to": 80,
+        "label": "La misma herida"
+      },
+      "camera": "pull_out",
+      "transition": "flash"
+    },
+    {
+      "text": "Cada división acorta el telómero, la tapa protectora de tu ADN.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Telómero",
+        "piezas": [
+          {
+            "pieza": "cromosoma",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "girar"
+          },
+          {
+            "pieza": "reloj_arena",
+            "pos": "arriba_derecha",
+            "tamano": "pequeno",
+            "anim": "latir"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Las células agotadas se acumulan, y los errores del ADN se suman.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Células agotadas",
+        "piezas": [
+          {
+            "pieza": "celula",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "adn",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "radical_libre",
+            "pos": "arriba",
+            "tamano": "pequeno",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "pan_left",
+      "transition": "cut"
+    },
+    {
+      "text": "Y el giro: tu herida nunca se curó del todo.",
+      "scene": "escena",
+      "params": {
+        "lugar": "salon",
+        "hora": "atardecer",
+        "plano": "medio",
+        "objeto": "none",
+        "mood": "worried",
+        "edad": "mayor",
+        "label": "80 años"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Una cicatriz recupera, como mucho, cerca del ochenta por ciento de la resistencia de tu piel.",
+      "scene": "big_text",
+      "params": {
+        "text": "80%",
+        "label": "resistencia de la piel",
+        "color": "#ff4d6d"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Tu cuerpo no repara: pone parches. Y envejecer es eso: décadas de parches sobre parches.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Parches sobre parches",
+        "piezas": [
+          {
+            "pieza": "piel",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Así que cuando te cortes, hazte esta pregunta:",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "worried",
+        "objeto": "none",
+        "piezas": [
+          {
+            "pieza": "tirita",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "mujer",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "largo",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    }
+  },
+  "cover_text": "TU HERIDA, DÍA 7",
+  "question": "Si tu cuerpo repara un corte solo en una semana, ¿por qué no puede evitar que envejezcas?",
+  "id": "pedido-10-03-r1",
+  "idea": {
+    "tipo": "explicacion",
+    "premisa": "Diario en directo de tu herida, en segunda persona y con zoom dentro del cuerpo. Minuto 0: te cortas con un folio. Minuto 1: los vasos se contraen y las plaquetas se pegan como ladrillos para formar un tapón. Hora 1: llegan los glóbulos blancos, y más tarde los macrófagos, a comerse bacterias y restos. Día 3: los fibroblastos tejen colágeno nuevo y las células de la piel avanzan desde los bordes. Día 7: la herida está cerrada. Entonces la cámara salta de escala: año 30, año 60, año 80. Cada reparación gasta un poco de telómero, las células que ya no pueden dividirse se acumulan y los pequeños errores en el ADN se suman. Por eso la misma herida cada vez tarda más en cerrar.",
+    "gancho": "¿Si tu cuerpo arregla un corte solo en 7 días, por qué no arregla también que te hagas viejo? Minuto cero: acabas de cortarte. Vamos a mirar dentro.",
+    "giro_final": "Tu herida nunca se curó del todo. Una cicatriz, incluso meses después, recupera como mucho cerca del 80% de la resistencia de la piel original: tu cuerpo no repara, pone parches. Y envejecer es justo eso: décadas de parches encima de parches.",
+    "estilo_visual": "La escena dominante es 'composicion' en macro sobre fondo liso rosado de piel: el corte como un valle, las plaquetas como ladrillos rojos que se apilan, glóbulos blancos con cara de 'guardias' y fibroblastos tejiendo hilos de colágeno. Así cada paso tiene una escena distinta y vistosa. Las marcas de tiempo usan 'clock' para minutos y horas y 'calendar' de taco para días. El salto de escala usa 'year_jump' (año 30 → 80) y 'person' con la piel resaltada en rojo. El giro aparece con 'big_text' ('80%') y termina en 'composicion' con una piel cosida a parches como una colcha. Portada: el corte gigante con plaquetas-ladrillo y el texto 'DÍA 7'.",
+    "por_que_funcionara": "Usa la progresión con marcas de tiempo que le gusta, pero dentro del cuerpo, un mundo visual nuevo que evita escenas feas o repetidas. El giro reformula todo el vídeo en una frase fácil de recordar ('no repara, pone parches') y está bien documentado sobre la resistencia de las cicatrices.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "plaquetas como ladrillos rojos",
+      "glóbulos blancos con cara de guardias",
+      "fibroblasto tejiendo colágeno",
+      "corte de piel visto en macro",
+      "piel con parches cosidos"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Por qué envejeces si tu piel se repara?",
+      "tipo": "pregunta con paradoja en segunda persona",
+      "puntuacion": 9,
+      "motivo": "Pasa la prueba del desconocido: deja claro el tema (envejecer frente a reparar) y plantea una contradicción. Son 8 palabras, se entiende en menos de 2 segundos y no destripa el giro."
+    },
+    {
+      "texto": "Un corte sana en siete días. ¿Y tú?",
+      "tipo": "dato que choca + pregunta",
+      "puntuacion": 6,
+      "motivo": "El dato es concreto y engancha, pero el final ambiguo ('¿y tú?') tarda un poco más en dejar claro que el tema es el envejecimiento."
+    },
+    {
+      "texto": "Acabas de cortarte. Mira lo que pasa dentro.",
+      "tipo": "segunda persona con el tema dicho",
+      "puntuacion": 5,
+      "motivo": "Es inmersivo y visual, pero no menciona el envejecimiento, así que el espectador no sabe cuál es la pregunta central."
+    },
+    {
+      "texto": "¿Cuántos cortes aguantará tu piel antes de rendirse?",
+      "tipo": "pregunta con reto o amenaza",
+      "puntuacion": 5,
+      "motivo": "Crea tensión, pero se aleja de la pregunta real del vídeo y promete una cifra que no existe."
+    },
+    {
+      "texto": "Tu cuerpo no cura heridas: las parchea.",
+      "tipo": "contradicción",
+      "puntuacion": 4,
+      "motivo": "Es muy memorable, pero revela el giro final y deja sin gancho a quien ya lo ha oído."
+    }
+  ]
+}
