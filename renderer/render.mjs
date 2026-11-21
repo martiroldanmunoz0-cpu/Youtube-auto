@@ -14,7 +14,7 @@ import { grain, vignette, topShade } from './lib/fx.mjs';
 import { paginate, drawSubtitles, drawWordSubtitles } from './lib/subtitles.mjs';
 import { SCENES } from './scenes/index.mjs';
 import { setLooks } from './lib/persona.mjs';
-import { drawEffect } from './lib/impact.mjs';
+import { drawEffect, comicGate } from './lib/impact.mjs';
 import { lifeOverlay } from './lib/ambient.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -96,9 +96,25 @@ export class Renderer {
       const r = rng(`${timeline.seed || 'x'}-${i}-${b.scene}`);
       return { ...b, params, scene, scene_name: SCENES[b.scene] ? b.scene : 'big_text', state: scene.setup(params, r) };
     });
+    this.limitComic();
     const words = timeline.words || [];
     this.pages = words.length ? paginate(this.ctx, words) : [];
     this.total = timeline.total || this.beats.at(-1).end;
+  }
+
+  // Palabras de cómic (¡PUM!, ¡ZAS!, ¡AY!...): como mucho MAX_COMIC por vídeo y separadas; el resto se apagan.
+  limitComic() {
+    const MAX_COMIC = 2, GAP = 10;
+    const EFFECT_WORDS = new Set(['pum', 'boom', 'ay', 'zas', 'wow', 'crac', 'glup', 'ups', 'bip', 'ring', 'plaf', 'ñam']);
+    const ACTION_WORDS = new Set(['cortarse', 'cortar', 'caer_romper', 'romper', 'explosion', 'explotar', 'beber', 'comer', 'choque', 'chocar', 'rayo']);
+    let used = 0, last = -Infinity;
+    for (const b of this.beats) {
+      const e = String(b.params.efecto || '').toLowerCase();
+      const hasWord = EFFECT_WORDS.has(e) || (b.scene_name === 'accion' && ACTION_WORDS.has(String(b.params.tipo || b.params.accion || '').toLowerCase()));
+      if (!hasWord || b.bucle) continue;
+      if (used < MAX_COMIC && b.start - last >= GAP) { used++; last = b.start; }
+      else b.sinPalabra = true;
+    }
   }
 
   beatIndexAt(t) {
@@ -124,16 +140,19 @@ export class Renderer {
     ctx.rotate(rot + (cam.r || 0));
     ctx.scale(cam.s + settle, cam.s + settle);
     ctx.translate(-W / 2, -H / 2);
+    comicGate.on = !b.sinPalabra;
     try {
       b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, seed: this.tl.persona || this.tl.seed, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
       if (!LIVELY.has(b.scene_name)) lifeOverlay(ctx, local, DARK_SCENES.has(b.scene_name));
       if (b.params.efecto) drawEffect(ctx, b.params.efecto, local); // ¡PUM!, ¡ZAS!, velocidad, brillo...
+      comicGate.on = true;
     } catch (e) {
       // Una escena rota no debe tumbar el vídeo entero: fondo neutro y aviso (el revisor lo verá)
       if (!sceneErrors.has(b.scene)) { sceneErrors.add(b.scene); console.error(`AVISO escena con error (${b.start}s): ${e.message}`); }
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
     }
+    comicGate.on = true;
     ctx.restore();
   }
 

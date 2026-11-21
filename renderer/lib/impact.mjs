@@ -12,7 +12,10 @@ export function starBurst(ctx, x, y, r, color, k = 1, spikes = 14) {
 }
 
 // Palabra de cómic que aparece de golpe con estrella detrás
+// Interruptor: el motor apaga las palabras de cómic en los planos que pasan del límite por vídeo.
+export const comicGate = { on: true };
 export function comicWord(ctx, word, x, y, t, { size = 130, color } = {}) {
+  if (!comicGate.on) return;
   const text = WORDS[String(word).toLowerCase()] || String(word).toUpperCase();
   const k = ease.outBack(clamp(t / 0.25)); if (t < 0) return;
   const shake = t < 0.4 ? Math.sin(t * 90) * 8 * (1 - t / 0.4) : 0;
@@ -71,6 +74,7 @@ export function drawEffect(ctx, efecto, t, { x = W / 2, y = 560 } = {}) {
   if (e === 'brillo') return sparkles(ctx, W / 2, 1000, t);
   if (e === 'humo') return smoke(ctx, W / 2, 1500, t);
   if (e === 'impacto') { flash(ctx, t, 0.05); speedLines(ctx, W / 2, 1000, t, clamp(1 - t)); return; }
+  if (!comicGate.on) { sparkles(ctx, x, y + 300, t, 6); return; } // sin palabra: solo un brillo discreto
   flash(ctx, t, 0.02, 0.15);
   if (t < 1.2) speedLines(ctx, x, y + 100, t, 0.5 * (1 - t / 1.2));
   comicWord(ctx, e, x, y, t - 0.05);

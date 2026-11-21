@@ -237,8 +237,10 @@ frecuencia. Las escenas marcadas [ESTILO OSCURO] solo para misterio o miedo.
 descripciones ("plaquetas como ladrillos" está MAL). El estilo lo dan el lugar, la animación y la etiqueta.
 - LO QUE SE DICE, SE VE (clave para la retención): cada plano tiene que MOSTRAR exactamente lo que dice la voz, con \
 algo que PASA, no un dibujo quieto. Si la frase tiene una acción ("te cortas", "explota", "cae", "se rompe", "bebes", \
-"se le ocurre", "choca", "crece", "se duerme"), usa la escena "accion" con ese tipo. En los momentos fuertes añade \
-"efecto" (pum, boom, ay, zas, wow, crac, velocidad, brillo, humo, impacto) a cualquier escena. Varía mucho: acción, \
+"se le ocurre", "choca", "crece", "se duerme"), usa la escena "accion" con ese tipo. Puedes añadir "efecto" a una \
+escena, pero las PALABRAS DE CÓMIC (pum, boom, ay, zas, wow, crac...) cansan: como mucho 2 en todo el vídeo, solo en \
+los 2 momentos más fuertes (las acciones cortarse, explosion, choque, rayo, caer_romper, beber y comer ya traen la \
+suya y cuentan). En el resto, si hace falta, usa velocidad, brillo o humo, o nada. Varía mucho: acción, \
 composición, escena, cifra, mapa... casi nunca dos planos seguidos con el mismo tipo de escena.
 - ESCENAS A MEDIDA: cuando la narración hable de algo concreto (un animal, un órgano del cuerpo, un planeta, un \
 vehículo, una comida, un objeto, un monumento...), usa "composicion" para MOSTRARLO con piezas de la biblioteca \
