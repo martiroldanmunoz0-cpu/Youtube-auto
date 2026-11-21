@@ -1,0 +1,27 @@
+{
+  "semana": "pedido-17-01",
+  "tanda": "pedido-17",
+  "pedido": "Historia real: José Salvador Alvarenga, el pescador que sobrevivió 438 días a la deriva en el océano Pacífico (2012-2014), desde la costa de México hasta las Islas Marshall. Su compañero Ezequiel no sobrevivió; él comió tortugas, pájaros y peces crudos y bebió agua de lluvia. Cuéntalo con mucha tensión y datos verdaderos, sin inventar nada, con respeto hacia el compañero fallecido. Usa piezas como barca, tortuga, pajaro, pez, tiburon, gota, sol. El protagonista debe parecerse a él (hombre latino de unos 35 años, barba y pelo largo al final). Gancho fuerte y final que enlace con el principio.",
+  "tag": "pedido-17",
+  "videos": [
+    {
+      "id": "pedido-17-01",
+      "title": "El pescador que sobrevivió 438 días en el mar #shorts",
+      "description": "José Salvador Alvarenga salió a pescar un día y volvió 438 días después. ¿Tú habrías aguantado tanto? Cuéntanoslo en los comentarios.\n#supervivencia #historiareal #curiosidades #oceano",
+      "tags": [
+        "supervivencia",
+        "historia real",
+        "Alvarenga",
+        "438 días",
+        "océano Pacífico",
+        "naufragio",
+        "curiosidades",
+        "México",
+        "Islas Marshall",
+        "a la deriva"
+      ],
+      "video": "pedido-17-01.mp4",
+      "portada": "pedido-17-01_portada.jpg"
+    }
+  ]
+}
