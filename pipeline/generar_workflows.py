@@ -144,6 +144,18 @@ jobs:
           GH_TOKEN: ${{{{ github.token }}}}
         run: python pipeline/scripts.py
 
+      - name: Escenas a medida — guardar el guion y esperar a Claude
+        if: env.A_MEDIDA == 'true'
+        env:
+          GH_TOKEN: ${{{{ github.token }}}}
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          python pipeline/medida.py guardar
+          git add data/guiones
+          git commit -m "Guiones a la espera de escenas a medida: $RUN_ID" || echo "sin cambios"
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
+
       - name: Marcar el plan semanal como en montaje (así el respaldo no lo lanza dos veces)
         if: env.FASE == 'guiones'
         run: |
@@ -161,6 +173,7 @@ jobs:
 
   montar:
     needs: guiones
+    if: ${{{{ inputs.a_medida != true }}}}
     runs-on: ubuntu-latest
     timeout-minutes: 150
     strategy:
@@ -339,9 +352,15 @@ open(f"{out}/pedido.yml", "w").write(workflow(
         default: "2"
         type: choice
         options: ["1", "2", "3", "4", "5"]
+      a_medida:
+        description: "Escenas a medida: solo escribe el guion; Claude dibuja una animación para cada plano y luego se monta"
+        required: false
+        default: false
+        type: boolean
 """, """  RUN_ID: pedido-${{ github.run_number }}
   PEDIDO: ${{ inputs.pedido }}
   PEDIDO_N: ${{ inputs.cantidad }}
+  A_MEDIDA: ${{ inputs.a_medida }}
 """, RID_STATIC, "", 5, "Pedido especial generado", "\"Pedido: ${{ inputs.pedido }}\""))
 
 

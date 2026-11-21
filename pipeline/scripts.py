@@ -1127,9 +1127,13 @@ def rehacer(vid: str, rid: str, wd) -> None:
             b["params"] = params
             if alt:
                 b["scene"] = alt
-    base = re.sub(r"-r\d+$", "", vid)
-    n = 1 + sum(1 for p in (DATA / "guiones").glob(f"{base}-r*.json")) if (DATA / "guiones").exists() else 1
-    st["id"] = f"{base}-r{n}"
+    if st.pop("medida_estado", None) == "lista":
+        st["id"] = vid  # primera vez que se monta (escenas a medida recién dibujadas): conserva su nombre
+    else:
+        base = re.sub(r"-r\d+$", "", vid)
+        n = 1 + sum(1 for p in (DATA / "guiones").glob(f"{base}-r*.json")) if (DATA / "guiones").exists() else 1
+        st["id"] = f"{base}-r{n}"
+    st.pop("tanda", None)
     st.pop("video", None); st.pop("qa", None); st.pop("portada", None)
     write_json(wd / "analysis.json", {"resumen": "", "patrones_gancho": [], "temas_calientes": [], "formatos": [], "ideas": []})
     write_json(wd / "stories.json", [st])

@@ -27,6 +27,11 @@ mostrar y que aún no existen en la biblioteca). Tu trabajo: dibujar esas piezas
      encaje con el estilo. Corrige lo que no quede bien.
    - `node renderer/tools/piezas.mjs prueba` tiene que terminar con `fallos: 0`.
 4. `python pipeline/catalogo_piezas.py` (añade las piezas al catálogo que lee el guionista).
+4b. **Acciones para los momentos clave:** lee las ideas del plan (`gancho`, `premisa`, `giro_final`). Para cada momento
+   fuerte que no se pueda mostrar con una acción existente (`renderer/scenes/actions2.mjs` y `actions.mjs`), crea una
+   acción nueva en `MORE_ACTIONS` de `actions2.mjs` (animación con principio, desarrollo y final; mira las existentes),
+   añade alias en `MORE_ALIAS` y añade su nombre y una descripción corta al `tipo`/`desc` de `accion` en
+   `renderer/scenes/catalog.json`. Comprueba con una hoja de fotogramas que se entiende. Ver docs/ESCENAS_A_MEDIDA.md.
 5. Si había plan pendiente, pon `"estado": "escenas_listas"` en el plan. Haz commit y push a `main`
    (mensaje: `Piezas nuevas de la semana <rid>: …`). Reintenta el push con `git pull --rebase` si lo rechaza.
 6. Si había plan pendiente con piezas_nuevas, lanza el montaje: `gh api -X POST repos/martiroldanmunoz0-cpu/Youtube-auto/actions/workflows/semanal_montar.yml/dispatches -f ref=main -f 'inputs[rid]=<rid>'`.

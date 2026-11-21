@@ -13,6 +13,7 @@ import { W, H, rng, clamp, ease, lerp, seg, noise1 } from './lib/util.mjs';
 import { grain, vignette, topShade } from './lib/fx.mjs';
 import { paginate, drawSubtitles, drawWordSubtitles } from './lib/subtitles.mjs';
 import { SCENES } from './scenes/index.mjs';
+import { preloadMedida } from './scenes/medida.mjs';
 import { setLooks } from './lib/persona.mjs';
 import { drawEffect, comicGate } from './lib/impact.mjs';
 import { BG_CONTEXT } from './lib/brightbg.mjs';
@@ -39,7 +40,7 @@ const DARK_SCENES = new Set(['eyes_dark', 'silhouette', 'hallway', 'front_door',
   }
 }
 // Escenas que ya tienen mucho movimiento propio; al resto se les añade una capa de vida discreta
-const LIVELY = new Set(['escena', 'composicion', 'accion', 'money', 'police_chase', 'car_ride', 'car_window', 'ocean', 'big_text', 'surgery', 'clock', 'document']);
+const LIVELY = new Set(['escena', 'composicion', 'accion', 'medida', 'money', 'police_chase', 'car_ride', 'car_window', 'ocean', 'big_text', 'surgery', 'clock', 'document']);
 const sceneErrors = new Set();
 
 // Campos que las escenas usan como TEXTO: si la IA manda un número, se convierte a texto.
@@ -360,7 +361,7 @@ export function renderCover(tl, out) {
   const pickIdx = tl.cover?.beat ?? (cands.find(({ b }) => b.camera === 'slam') || cands[Math.floor(cands.length * 0.4)] || { i: Math.floor(r.beats.length / 2) }).i;
   const b = r.beats[pickIdx];
   const ctx = r.ctx;
-  const faces = new Set(['person', 'group', 'doctor', 'hospital', 'surgery', 'escena', 'composicion', 'accion']);
+  const faces = new Set(['person', 'group', 'doctor', 'hospital', 'surgery', 'escena', 'composicion', 'accion', 'medida']);
   const textLow = faces.has(b.scene_name);
   r.drawBeat(ctx, { ...b, camera: 'static', params: { ...b.params, label: '' } }, b.start + Math.min(1.2, (b.end - b.start) * 0.6), 0);
   // Oscurecer arriba para que el texto se lea
@@ -429,6 +430,7 @@ if (isMain) {
   if (!tlPath || !out) { console.error('Uso: node render.mjs timeline.json salida.mp4 [--audio a.m4a] | salida.png --stills N'); process.exit(1); }
   const tl = JSON.parse(fs.readFileSync(tlPath, 'utf8'));
   if (a.fps) tl.fps = Number(a.fps);
+  await preloadMedida(tl); // escenas a medida dibujadas por Claude para este vídeo
   if (a.cover) renderCover(tl, out);
   else if (a.stills) await renderStills(tl, out, Number(a.stills));
   else await renderVideo(tl, out, { audio: a.audio, preset: a.preset });
