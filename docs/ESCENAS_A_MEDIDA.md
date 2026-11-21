@@ -7,7 +7,7 @@ para cada plano.
 
 ## Flujo de un pedido a medida
 
-**Regla del dueño: PREGUNTA SIEMPRE antes de lanzar un pedido y antes de lanzar el montaje (paso 6).**
+**Regla del dueño: pide permiso UNA sola vez, ANTES de lanzar el pedido, explicando cómo será el vídeo (tema, enfoque, momentos clave). Con su sí, haz todo seguido: guion, escenas a medida y montaje automático (paso 6) sin volver a preguntar.**
 
 1. Lanzar el pedido con `a_medida: true` (solo escribe el guion; NO monta):
    `gh api -X POST repos/martiroldanmunoz0-cpu/Youtube-auto/actions/workflows/pedido.yml/dispatches -f ref=main -f 'inputs[pedido]=…' -f 'inputs[cantidad]=1' -f 'inputs[a_medida]=true'`

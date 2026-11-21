@@ -40,7 +40,7 @@ mostrar y que aún no existen en la biblioteca). Tu trabajo: dibujar esas piezas
 
 ## Pedidos personalizados
 
-**Regla del dueño: nunca lances un pedido ni un montaje de un pedido sin preguntarle antes.**
+**Regla del dueño: pide permiso una sola vez, antes de lanzar un pedido, explicando cómo será el vídeo. Con su sí, guion, escenas y montaje van seguidos sin volver a preguntar.**
 
 Cuando el dueño del canal te diga en el chat qué vídeo va a pedir, comprueba qué piezas o escenas faltan, créalas
 con este mismo procedimiento (pasos 2-4) y súbelas antes de que lance el pedido.
