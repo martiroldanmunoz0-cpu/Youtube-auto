@@ -125,5 +125,31 @@
     "publish_at": "2026-11-21T11:00:00Z",
     "youtube_id": "RiryFNe3xRQ",
     "portada_ok": true
+  },
+  {
+    "id": "pedido-9-03",
+    "title": "Cómo volverían los dinosaurios de verdad #shorts",
+    "description": "Jurassic Park no tenía razón, pero la ciencia real es aún más rara. ¿Tú traerías de vuelta a los dinosaurios? Cuéntamelo en los comentarios.\n#dinosaurios #ciencia #curiosidades #jurassicpark #shorts",
+    "tags": [
+      "dinosaurios",
+      "qué pasaría si",
+      "ADN",
+      "Jurassic Park",
+      "Jack Horner",
+      "pollo dinosaurio",
+      "curiosidades",
+      "ciencia",
+      "paleontología",
+      "genética",
+      "desextinción"
+    ],
+    "video": "pedido-9-03.mp4",
+    "portada": "pedido-9-03_portada.jpg",
+    "tag": "pedido-9",
+    "issue": 12,
+    "estado": "programado",
+    "publish_at": "2026-11-22T18:30:00Z",
+    "youtube_id": "wXGGexgEa1g",
+    "portada_ok": true
   }
 ]
