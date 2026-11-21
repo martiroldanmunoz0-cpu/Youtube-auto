@@ -66,6 +66,22 @@ function fern(ctx, x, y, ang, len, depth, grow, K) { // figura de Lichtenberg (h
   fern(ctx, x2, y2, ang + 0.45, len * 0.68, depth - 1, rest * 1.6, K);
   fern(ctx, x2, y2, ang + 0.05, len * 0.6, depth - 1, rest * 1.4, K);
 }
+function armBg(ctx, a, K) { // fondo de hospital desenfocado y el antebrazo en diagonal con su contorno
+  K.drawPlace(ctx, 'hospital', 'dia', a.t); ctx.fillStyle = 'rgba(255,255,255,0.45)'; ctx.fillRect(0, 0, 1080, 1920);
+  ctx.save(); ctx.translate(540, 1000); ctx.rotate(-0.35 + Math.sin(a.t * 0.8) * 0.02);
+  K.R(ctx, -330, -760, 660, 1700, 300, a.who.skin.light, 14);
+  ctx.fillStyle = 'rgba(0,0,0,0.08)'; ctx.fillRect(140, -700, 120, 1600); // sombra del brazo
+  ctx.strokeStyle = 'rgba(90,50,30,0.35)'; ctx.lineWidth = 4; for (let i = 0; i < 50; i++) { const x = -260 + (i * 97) % 520, y = -650 + (i * 173) % 1450; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 8, y + 22); ctx.stroke(); } // vello
+  ctx.restore();
+}
+function armFern(ctx, a, K, grow, alpha) {
+  if (alpha <= 0) return;
+  ctx.save(); ctx.translate(540, 1000); ctx.rotate(-0.35); ctx.beginPath(); ctx.roundRect(-330, -760, 660, 1700, 300); ctx.clip();
+  ctx.globalAlpha = alpha; ctx.strokeStyle = '#c8283a'; ctx.lineCap = 'round';
+  fern(ctx, 0, 800, -Math.PI / 2, 360, 6, grow, K); fern(ctx, 0, 800, -Math.PI / 2 - 0.6, 260, 5, grow - 0.5, K); fern(ctx, 0, 800, -Math.PI / 2 + 0.6, 260, 5, grow - 0.5, K);
+  ctx.restore(); ctx.globalAlpha = 1;
+}
+function clockSmall(ctx, K, t, speed) { ctx.save(); ctx.translate(880, 560); K.C(ctx, 0, 0, 120, '#ffffff', 10); for (let i = 0; i < 12; i++) { const an = i / 12 * Math.PI * 2; K.C(ctx, Math.cos(an) * 95, Math.sin(an) * 95, 7, K.INK, 0); } ctx.save(); ctx.rotate(t * speed * 12); K.L(ctx, [[0, 0], [0, -85]], K.INK, 8); ctx.restore(); ctx.save(); ctx.rotate(t * speed); K.L(ctx, [[0, 0], [0, -55]], '#e8505b', 10); ctx.restore(); ctx.restore(); }
 function rangerHat(ctx, x, y, s, K) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); K.E(ctx, 0, 0, 330, 60, '#8a6a3a'); K.P(ctx, [[-170, 0], [-120, -190], [0, -150], [120, -190], [170, 0]], '#a07c45'); K.R(ctx, -165, -40, 330, 36, 10, '#5a3e22', 0); ctx.restore(); }
 function person(ctx, a, K, x, y, s, mood, extra = {}) { K.drawFullBody(ctx, x, y, s, a.who, { mood, t: a.t, ...extra }); }
 
@@ -171,29 +187,22 @@ export default {
     K.flash(ctx, a.t, start, 0.15, '120,255,160');
     timer(ctx, K, on ? '10 s · ¡LATE!' : '10 s', 540, 1760, on ? '#3cff8f' : '#ffd166');
   },
-  // 9. Treinta minutos: tu piel dibuja un helecho rojo -> primer plano del brazo y el helecho de Lichtenberg creciendo
+  // 9. Treinta minutos: tu piel dibuja un helecho rojo -> primer plano del antebrazo y el helecho de Lichtenberg creciendo
   8: (ctx, a, K) => {
-    ctx.fillStyle = a.who.skin.light; ctx.fillRect(0, 0, 1080, 1920);
-    const g = ctx.createLinearGradient(0, 0, 1080, 0); g.addColorStop(0, 'rgba(0,0,0,0.18)'); g.addColorStop(0.5, 'rgba(255,255,255,0.08)'); g.addColorStop(1, 'rgba(0,0,0,0.2)'); ctx.fillStyle = g; ctx.fillRect(0, 0, 1080, 1920);
-    ctx.fillStyle = 'rgba(80,40,20,0.12)'; for (let i = 0; i < 60; i++) ctx.fillRect((i * 173) % 1080, (i * 331) % 1920, 4, 14); // vello y poros
+    armBg(ctx, a, K);
     const grow = K.ph(a.t, a.d, 0.05, 0.9) * 6;
-    ctx.strokeStyle = 'rgba(200,40,50,0.85)'; ctx.lineCap = 'round';
-    fern(ctx, 540, 1750, -Math.PI / 2, 360, 6, grow, K);
-    fern(ctx, 540, 1750, -Math.PI / 2 - 0.6, 260, 5, grow - 0.5, K);
-    fern(ctx, 540, 1750, -Math.PI / 2 + 0.6, 260, 5, grow - 0.5, K);
-    timer(ctx, K, '30 MIN', 540, 300);
+    armFern(ctx, a, K, grow, 1);
+    clockSmall(ctx, K, a.t, 0.3);
+    timer(ctx, K, '30 MIN', 540, 1760);
   },
   // 10. Unas horas después, ha desaparecido -> el helecho se borra mientras las agujas del reloj corren
   9: (ctx, a, K) => {
-    ctx.fillStyle = a.who.skin.light; ctx.fillRect(0, 0, 1080, 1920);
+    armBg(ctx, a, K);
     const k = K.ph(a.t, a.d, 0.1, 0.85);
-    ctx.globalAlpha = 1 - k; ctx.strokeStyle = 'rgba(200,40,50,0.85)'; ctx.lineCap = 'round';
-    fern(ctx, 540, 1750, -Math.PI / 2, 360, 6, 6, K); fern(ctx, 540, 1750, -Math.PI / 2 - 0.6, 260, 5, 6, K); fern(ctx, 540, 1750, -Math.PI / 2 + 0.6, 260, 5, 6, K);
-    ctx.globalAlpha = 1;
-    ctx.save(); ctx.translate(850, 470); K.C(ctx, 0, 0, 150, '#ffffff', 12); for (let i = 0; i < 12; i++) { const an = i / 12 * Math.PI * 2; K.C(ctx, Math.cos(an) * 120, Math.sin(an) * 120, 8, K.INK, 0); }
-    ctx.save(); ctx.rotate(a.t * 9); K.L(ctx, [[0, 0], [0, -110]], K.INK, 10); ctx.restore(); ctx.save(); ctx.rotate(a.t * 0.75); K.L(ctx, [[0, 0], [0, -70]], '#e8505b', 12); ctx.restore(); ctx.restore();
-    if (k > 0.9) K.sparkles(ctx, 540, 1300, a.t, 8, 300);
-    timer(ctx, K, `+${Math.max(1, Math.round(k * 6))} HORAS`, 540, 1760);
+    armFern(ctx, a, K, 6, 1 - k);
+    clockSmall(ctx, K, a.t, 9);
+    if (k > 0.9) K.sparkles(ctx, 540, 1000, a.t, 8, 300);
+    { const hh = Math.max(1, Math.round(k * 6)); timer(ctx, K, `+${hh} HORA${hh > 1 ? "S" : ""}`, 540, 1760); }
   },
   // 11. Cerca del noventa por ciento sobrevive -> 10 personas; caen rayos; 9 se levantan en verde
   10: (ctx, a, K) => {
