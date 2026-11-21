@@ -147,9 +147,35 @@
     "portada": "pedido-9-03_portada.jpg",
     "tag": "pedido-9",
     "issue": 12,
+    "estado": "no_encontrado",
+    "publish_at": "2026-11-21T08:48:08.443170Z",
+    "youtube_id": "wXGGexgEa1g",
+    "portada_ok": true,
+    "fecha_prevista": "2026-11-22T18:30:00Z"
+  },
+  {
+    "id": "pedido-9-01",
+    "title": "30 días con dinosaurios en tu ciudad #shorts",
+    "description": "Si volvieran los dinosaurios, ¿cuánto aguantarías tú? Cuéntanos en los comentarios qué harías el día uno. ¿Y tú, ya habías oído lo del final?\n#dinosaurios #curiosidades #quepasariasi #ciencia #shorts",
+    "tags": [
+      "dinosaurios",
+      "qué pasaría si",
+      "curiosidades",
+      "T. rex",
+      "aves y dinosaurios",
+      "evolución",
+      "ciencia",
+      "paleontología",
+      "datos curiosos",
+      "imagina que"
+    ],
+    "video": "pedido-9-01.mp4",
+    "portada": "pedido-9-01_portada.jpg",
+    "tag": "pedido-9",
+    "issue": 15,
     "estado": "programado",
     "publish_at": "2026-11-22T18:30:00Z",
-    "youtube_id": "wXGGexgEa1g",
+    "youtube_id": "dCU29PhWAew",
     "portada_ok": true
   }
 ]
