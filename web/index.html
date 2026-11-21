@@ -492,7 +492,7 @@ nav .n.bad{background:var(--bad);color:#fff}
     const id = a.dataset.rehacer, tanda = id.replace(/-\d{2}(-r\d+)?$/, "");
     try { // ¿ya se está rehaciendo este vídeo?
       const runs = (await gh(`/actions/workflows/rehacer.yml/runs?per_page=20`)).workflow_runs || [];
-      const dup = runs.find(r => r.status !== "completed" && (r.display_title || "").endsWith(" " + id));
+      const dup = runs.find(r => r.status !== "completed" && ((r.display_title || "").endsWith(" " + id) || (r.display_title || "").includes(" " + id + " ")));
       if (dup) { toast(`«${id}» ya se está rehaciendo. Mira “En marcha”.`); return; }
     } catch {}
     if (!confirm(`¿Rehacer «${id}» con el mismo guion y el sistema actual?\n\nNo gasta saldo de la API. El vídeo nuevo llegará a Revisar en unos 20-30 minutos; el antiguo puedes descartarlo.`)) return;
@@ -814,7 +814,7 @@ nav .n.bad{background:var(--bad);color:#fff}
       if (!active.length) html += `<div class="empty">No se está generando nada ahora mismo.</div>`;
       else {
         const details = await Promise.all(active.map(r => gh(`/actions/runs/${r.id}/jobs?per_page=30`).catch(() => null)));
-        html += `<div class="list">` + active.map((r, i) => runRow(r, details[i], i)).join("") + `</div>`;
+        html += `<div class="list">` + active.map((r, i) => runRow(r, details[i], i, active)).join("") + `</div>`;
       }
       if (recent.length) {
         html += `<h3>Terminadas (últimas 48 h)</h3><div class="list">` + recent.map(r => {
@@ -833,14 +833,19 @@ nav .n.bad{background:var(--bad);color:#fff}
     if (r.path && r.path.endsWith("semanal_montar.yml")) return "Montando la tanda semanal";
     return r.display_title || r.name;
   }
-  function runRow(r, jobs, idx) {
+  function runRow(r, jobs, idx, all = []) {
     const list = (jobs && jobs.jobs) || [];
     const started = new Date(r.run_started_at || r.created_at);
     const parts = list.filter(j => /^montar/i.test(j.name));
     const turno = list.find(j => /^turno/i.test(j.name));
     const guiones = list.find(j => /^guiones/i.test(j.name));
     let phase = "En cola", pct = 3, cls = "wait";
-    if (turno && turno.status !== "completed") { phase = idx === 0 ? "Empezando" : "Esperando turno (va otra tanda delante)"; }
+    if (turno && turno.status !== "completed") {
+      // La tanda semanal espera a todo lo anterior; pedidos, historias y montajes solo esperan a la tanda semanal
+      const isWeek = (x) => x.path && /semanal(_montar)?\.yml$/.test(x.path);
+      const ahead = all.filter(x => x.id < r.id && x.status !== "completed" && (isWeek(r) || isWeek(x)));
+      phase = ahead.length ? "Esperando turno (va la tanda semanal delante)" : "Empezando";
+    }
     else if (guiones && guiones.status !== "completed") { phase = "Escribiendo guiones"; pct = 15; cls = "run"; }
     else if (parts.length) {
       const done = parts.filter(j => j.status === "completed").length;

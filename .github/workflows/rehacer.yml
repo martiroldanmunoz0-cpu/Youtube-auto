@@ -1,5 +1,5 @@
 name: Rehacer vídeo gratis
-run-name: "Rehacer gratis ${{ inputs.id }}"
+run-name: "Montar ${{ inputs.id }} (sin gastar API)"
 
 # Vuelve a montar un vídeo con su MISMO guion (sin gastar API) usando el sistema y las piezas actuales.
 # Fases: turno en la cola -> guiones (1 máquina) -> montaje en paralelo (1 máquinas).

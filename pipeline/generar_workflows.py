@@ -401,4 +401,4 @@ open(f"{out}/rehacer.yml", "w").write(workflow(
 """, """  RUN_ID: ${{ inputs.tanda }}
   FASE: rehacer
   REHACER_ID: ${{ inputs.id }}
-""", RID_STATIC, "", 1, "Vídeo rehecho", "\"Rehacer gratis ${{ inputs.id }}\""))
+""", RID_STATIC, "", 1, "Vídeo rehecho", "\"Montar ${{ inputs.id }} (sin gastar API)\""))
