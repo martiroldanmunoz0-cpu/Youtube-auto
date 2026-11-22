@@ -1,0 +1,3514 @@
+[
+{
+"name": "whoosh_fast_1",
+"category": "whoosh",
+"duration": 0.282,
+"tags": [
+"fast",
+"cut",
+"transition"
+],
+"description": "Quick air pass for fast cuts"
+},
+{
+"name": "whoosh_fast_2",
+"category": "whoosh",
+"duration": 0.317,
+"tags": [
+"fast",
+"cut",
+"transition"
+],
+"description": "Quick air pass for fast cuts"
+},
+{
+"name": "whoosh_fast_3",
+"category": "whoosh",
+"duration": 0.358,
+"tags": [
+"fast",
+"cut",
+"transition"
+],
+"description": "Quick air pass for fast cuts"
+},
+{
+"name": "whoosh_fast_4",
+"category": "whoosh",
+"duration": 0.233,
+"tags": [
+"fast",
+"cut",
+"transition"
+],
+"description": "Quick air pass for fast cuts"
+},
+{
+"name": "whoosh_soft_1",
+"category": "whoosh",
+"duration": 0.66,
+"tags": [
+"soft",
+"smooth",
+"calm"
+],
+"description": "Gentle, smooth whoosh"
+},
+{
+"name": "whoosh_soft_2",
+"category": "whoosh",
+"duration": 0.798,
+"tags": [
+"soft",
+"smooth",
+"calm"
+],
+"description": "Gentle, smooth whoosh"
+},
+{
+"name": "whoosh_soft_3",
+"category": "whoosh",
+"duration": 0.558,
+"tags": [
+"soft",
+"smooth",
+"calm"
+],
+"description": "Gentle, smooth whoosh"
+},
+{
+"name": "whoosh_big_1",
+"category": "whoosh",
+"duration": 1.634,
+"tags": [
+"big",
+"heavy",
+"cinematic"
+],
+"description": "Heavy, wide whoosh with low end and tail"
+},
+{
+"name": "whoosh_big_2",
+"category": "whoosh",
+"duration": 2.021,
+"tags": [
+"big",
+"heavy",
+"cinematic"
+],
+"description": "Heavy, wide whoosh with low end and tail"
+},
+{
+"name": "whoosh_big_3",
+"category": "whoosh",
+"duration": 2.441,
+"tags": [
+"big",
+"heavy",
+"cinematic"
+],
+"description": "Heavy, wide whoosh with low end and tail"
+},
+{
+"name": "whoosh_low_1",
+"category": "whoosh",
+"duration": 1.196,
+"tags": [
+"low",
+"deep",
+"bass"
+],
+"description": "Deep rumbling pass"
+},
+{
+"name": "whoosh_low_2",
+"category": "whoosh",
+"duration": 1.354,
+"tags": [
+"low",
+"deep",
+"bass"
+],
+"description": "Deep rumbling pass"
+},
+{
+"name": "whoosh_air_1",
+"category": "whoosh",
+"duration": 0.477,
+"tags": [
+"air",
+"bright",
+"light"
+],
+"description": "Bright airy whoosh"
+},
+{
+"name": "whoosh_air_2",
+"category": "whoosh",
+"duration": 0.575,
+"tags": [
+"air",
+"bright",
+"light"
+],
+"description": "Bright airy whoosh"
+},
+{
+"name": "whoosh_flyby_1",
+"category": "whoosh",
+"duration": 1.158,
+"tags": [
+"flyby",
+"pan",
+"pass"
+],
+"description": "Fly-by that pans across the stereo field"
+},
+{
+"name": "whoosh_flyby_2",
+"category": "whoosh",
+"duration": 1.14,
+"tags": [
+"flyby",
+"pan",
+"pass"
+],
+"description": "Fly-by that pans across the stereo field"
+},
+{
+"name": "whoosh_double",
+"category": "whoosh",
+"duration": 0.454,
+"tags": [
+"double",
+"fast"
+],
+"description": "Two quick passes back to back"
+},
+{
+"name": "whoosh_reverse_1",
+"category": "whoosh",
+"duration": 0.989,
+"tags": [
+"reverse",
+"swell",
+"build"
+],
+"description": "Reverse swell that sucks into the cut"
+},
+{
+"name": "whoosh_reverse_2",
+"category": "whoosh",
+"duration": 1.539,
+"tags": [
+"reverse",
+"swell",
+"build"
+],
+"description": "Reverse swell that sucks into the cut"
+},
+{
+"name": "whoosh_sweep_up",
+"category": "whoosh",
+"duration": 1.001,
+"tags": [
+"rise",
+"up"
+],
+"description": "Whoosh that rises in pitch"
+},
+{
+"name": "swish_whip_1",
+"category": "swish",
+"duration": 0.124,
+"tags": [
+"whip",
+"fast",
+"snap"
+],
+"description": "Very fast whip swish"
+},
+{
+"name": "swish_whip_2",
+"category": "swish",
+"duration": 0.147,
+"tags": [
+"whip",
+"fast",
+"snap"
+],
+"description": "Very fast whip swish"
+},
+{
+"name": "swish_whip_3",
+"category": "swish",
+"duration": 0.124,
+"tags": [
+"whip",
+"fast",
+"snap"
+],
+"description": "Very fast whip swish"
+},
+{
+"name": "swish_cloth_1",
+"category": "swish",
+"duration": 0.345,
+"tags": [
+"cloth",
+"fabric",
+"foley"
+],
+"description": "Fabric / jacket swish"
+},
+{
+"name": "swish_cloth_2",
+"category": "swish",
+"duration": 0.493,
+"tags": [
+"cloth",
+"fabric",
+"foley"
+],
+"description": "Fabric / jacket swish"
+},
+{
+"name": "swish_sword_1",
+"category": "swish",
+"duration": 0.295,
+"tags": [
+"sword",
+"slice",
+"blade"
+],
+"description": "Sharp blade slice"
+},
+{
+"name": "swish_sword_2",
+"category": "swish",
+"duration": 1.338,
+"tags": [
+"sword",
+"slice",
+"blade"
+],
+"description": "Sharp blade slice with metal ring"
+},
+{
+"name": "swish_stick",
+"category": "swish",
+"duration": 0.289,
+"tags": [
+"stick",
+"swing",
+"whistle"
+],
+"description": "Thin stick swing with a whistle"
+},
+{
+"name": "swipe_1",
+"category": "transition",
+"duration": 0.193,
+"tags": [
+"swipe",
+"ui",
+"phone"
+],
+"description": "Phone-style screen swipe"
+},
+{
+"name": "swipe_2",
+"category": "transition",
+"duration": 0.194,
+"tags": [
+"swipe",
+"ui",
+"phone"
+],
+"description": "Phone-style screen swipe"
+},
+{
+"name": "swipe_3",
+"category": "transition",
+"duration": 0.195,
+"tags": [
+"swipe",
+"ui",
+"phone"
+],
+"description": "Phone-style screen swipe"
+},
+{
+"name": "slide_in",
+"category": "transition",
+"duration": 0.377,
+"tags": [
+"slide",
+"in",
+"ui"
+],
+"description": "Smooth slide in (rising)"
+},
+{
+"name": "slide_out",
+"category": "transition",
+"duration": 0.377,
+"tags": [
+"slide",
+"out",
+"ui"
+],
+"description": "Smooth slide out (falling)"
+},
+{
+"name": "zoom_in_1",
+"category": "transition",
+"duration": 0.947,
+"tags": [
+"zoom",
+"in",
+"rise"
+],
+"description": "Rising zoom-in sweep"
+},
+{
+"name": "zoom_in_2",
+"category": "transition",
+"duration": 0.834,
+"tags": [
+"zoom",
+"in",
+"click"
+],
+"description": "Zoom-in sweep that ends on a click"
+},
+{
+"name": "zoom_out_1",
+"category": "transition",
+"duration": 0.919,
+"tags": [
+"zoom",
+"out",
+"fall"
+],
+"description": "Falling zoom-out sweep"
+},
+{
+"name": "zoom_out_2",
+"category": "transition",
+"duration": 0.746,
+"tags": [
+"zoom",
+"out"
+],
+"description": "Short zoom-out sweep"
+},
+{
+"name": "whoosh_hit_1",
+"category": "transition",
+"duration": 1.339,
+"tags": [
+"whoosh",
+"hit",
+"impact",
+"transition"
+],
+"description": "Whoosh that lands on a hit"
+},
+{
+"name": "whoosh_hit_2",
+"category": "transition",
+"duration": 1.415,
+"tags": [
+"whoosh",
+"hit",
+"impact",
+"transition"
+],
+"description": "Whoosh that lands on a hit"
+},
+{
+"name": "whoosh_hit_3",
+"category": "transition",
+"duration": 1.226,
+"tags": [
+"whoosh",
+"hit",
+"impact",
+"transition"
+],
+"description": "Whoosh that lands on a hit"
+},
+{
+"name": "glide_up",
+"category": "transition",
+"duration": 1.148,
+"tags": [
+"glide",
+"up",
+"smooth"
+],
+"description": "Soft tonal glide up"
+},
+{
+"name": "glide_down",
+"category": "transition",
+"duration": 1.145,
+"tags": [
+"glide",
+"down",
+"smooth"
+],
+"description": "Soft tonal glide down"
+},
+{
+"name": "warp",
+"category": "transition",
+"duration": 1.348,
+"tags": [
+"warp",
+"jet",
+"flanger"
+],
+"description": "Jet / flanger warp transition"
+},
+{
+"name": "spin",
+"category": "transition",
+"duration": 0.74,
+"tags": [
+"spin",
+"rotate",
+"flutter"
+],
+"description": "Spinning whoosh with a rotating flutter"
+},
+{
+"name": "swoosh_tape",
+"category": "transition",
+"duration": 0.6,
+"tags": [
+"tape",
+"stop",
+"down"
+],
+"description": "Tape-stop style downward swoosh"
+},
+{
+"name": "swoosh_rise",
+"category": "transition",
+"duration": 0.413,
+"tags": [
+"rise",
+"swoosh",
+"up"
+],
+"description": "Short rising swoosh into the next shot"
+},
+{
+"name": "record_scratch_1",
+"category": "transition",
+"duration": 0.5,
+"tags": [
+"scratch",
+"dj",
+"record"
+],
+"description": "DJ record scratch (wikka)"
+},
+{
+"name": "riser_short_1",
+"category": "riser",
+"duration": 0.924,
+"tags": [
+"riser",
+"build",
+"short"
+],
+"description": "One-second build into a cut"
+},
+{
+"name": "riser_short_2",
+"category": "riser",
+"duration": 1.368,
+"tags": [
+"riser",
+"build",
+"pulse"
+],
+"description": "1.5 s build with pulse"
+},
+{
+"name": "riser_long_1",
+"category": "riser",
+"duration": 3.707,
+"tags": [
+"riser",
+"long",
+"tension"
+],
+"description": "Three-second tension build"
+},
+{
+"name": "riser_noise_1",
+"category": "riser",
+"duration": 2.599,
+"tags": [
+"riser",
+"noise",
+"sweep"
+],
+"description": "Pure white-noise sweep up"
+},
+{
+"name": "riser_noise_2",
+"category": "riser",
+"duration": 3.562,
+"tags": [
+"riser",
+"noise",
+"sweep"
+],
+"description": "Pure white-noise sweep up"
+},
+{
+"name": "riser_tonal_1",
+"category": "riser",
+"duration": 2.795,
+"tags": [
+"riser",
+"tonal",
+"chord"
+],
+"description": "Major chord rising an octave"
+},
+{
+"name": "riser_tonal_2",
+"category": "riser",
+"duration": 2.341,
+"tags": [
+"riser",
+"tonal",
+"bright"
+],
+"description": "Bright tonal rise"
+},
+{
+"name": "swell_reverse_1",
+"category": "riser",
+"duration": 1.717,
+"tags": [
+"reverse",
+"cymbal",
+"swell"
+],
+"description": "Reverse cymbal swell"
+},
+{
+"name": "swell_reverse_2",
+"category": "riser",
+"duration": 2.54,
+"tags": [
+"reverse",
+"cymbal",
+"swell"
+],
+"description": "Reverse cymbal swell"
+},
+{
+"name": "downlifter_1",
+"category": "riser",
+"duration": 2.048,
+"tags": [
+"downlifter",
+"fall",
+"down"
+],
+"description": "Falling sweep after a drop"
+},
+{
+"name": "downlifter_2",
+"category": "riser",
+"duration": 3.069,
+"tags": [
+"downlifter",
+"fall",
+"long"
+],
+"description": "Long falling sweep"
+},
+{
+"name": "impact_1",
+"category": "impact",
+"duration": 1.567,
+"tags": [
+"impact",
+"hit",
+"punch"
+],
+"description": "Solid impact hit"
+},
+{
+"name": "impact_2",
+"category": "impact",
+"duration": 1.433,
+"tags": [
+"impact",
+"hit",
+"punch"
+],
+"description": "Solid impact hit"
+},
+{
+"name": "impact_3",
+"category": "impact",
+"duration": 1.734,
+"tags": [
+"impact",
+"hit",
+"punch"
+],
+"description": "Solid impact hit"
+},
+{
+"name": "impact_hard_1",
+"category": "impact",
+"duration": 1.855,
+"tags": [
+"impact",
+"hard",
+"heavy"
+],
+"description": "Hard distorted impact"
+},
+{
+"name": "impact_hard_2",
+"category": "impact",
+"duration": 1.782,
+"tags": [
+"impact",
+"hard",
+"heavy"
+],
+"description": "Hard distorted impact"
+},
+{
+"name": "boom_1",
+"category": "impact",
+"duration": 2.905,
+"tags": [
+"boom",
+"bass",
+"big"
+],
+"description": "Deep boom"
+},
+{
+"name": "boom_2",
+"category": "impact",
+"duration": 3.145,
+"tags": [
+"boom",
+"bass",
+"big"
+],
+"description": "Deep boom"
+},
+{
+"name": "boom_sub_1",
+"category": "impact",
+"duration": 1.8,
+"tags": [
+"sub",
+"bass",
+"boom"
+],
+"description": "Sub-bass boom (use good speakers)"
+},
+{
+"name": "boom_sub_2",
+"category": "impact",
+"duration": 1.8,
+"tags": [
+"sub",
+"bass",
+"boom"
+],
+"description": "Sub-bass boom (use good speakers)"
+},
+{
+"name": "bass_drop_1",
+"category": "impact",
+"duration": 1.5,
+"tags": [
+"drop",
+"bass",
+"edm"
+],
+"description": "Bass drop glide"
+},
+{
+"name": "bass_drop_2",
+"category": "impact",
+"duration": 2.2,
+"tags": [
+"drop",
+"bass",
+"edm"
+],
+"description": "Bass drop glide"
+},
+{
+"name": "punch_1",
+"category": "impact",
+"duration": 0.25,
+"tags": [
+"punch",
+"fight",
+"hit"
+],
+"description": "Body punch"
+},
+{
+"name": "punch_2",
+"category": "impact",
+"duration": 0.25,
+"tags": [
+"punch",
+"fight",
+"hit"
+],
+"description": "Body punch"
+},
+{
+"name": "punch_3",
+"category": "impact",
+"duration": 0.384,
+"tags": [
+"punch",
+"fight",
+"hit"
+],
+"description": "Body punch with swing"
+},
+{
+"name": "thud_1",
+"category": "impact",
+"duration": 0.4,
+"tags": [
+"thud",
+"drop",
+"low"
+],
+"description": "Dull low thud"
+},
+{
+"name": "thud_2",
+"category": "impact",
+"duration": 0.4,
+"tags": [
+"thud",
+"drop",
+"low"
+],
+"description": "Dull low thud"
+},
+{
+"name": "hit_metal_1",
+"category": "impact",
+"duration": 1.825,
+"tags": [
+"metal",
+"clang",
+"hit"
+],
+"description": "Metal clang"
+},
+{
+"name": "hit_metal_2",
+"category": "impact",
+"duration": 1.771,
+"tags": [
+"metal",
+"clang",
+"hit"
+],
+"description": "Metal clang"
+},
+{
+"name": "hit_cinematic_1",
+"category": "impact",
+"duration": 3.787,
+"tags": [
+"cinematic",
+"trailer",
+"hit"
+],
+"description": "Big trailer-style hit"
+},
+{
+"name": "hit_cinematic_2",
+"category": "impact",
+"duration": 4.103,
+"tags": [
+"cinematic",
+"dark",
+"hit"
+],
+"description": "Darker cinematic hit"
+},
+{
+"name": "explosion_1",
+"category": "impact",
+"duration": 2.771,
+"tags": [
+"explosion",
+"blast",
+"boom"
+],
+"description": "Explosion"
+},
+{
+"name": "explosion_2",
+"category": "impact",
+"duration": 2.952,
+"tags": [
+"explosion",
+"distant"
+],
+"description": "Distant explosion"
+},
+{
+"name": "braam_1",
+"category": "cinematic",
+"duration": 4.018,
+"tags": [
+"braam",
+"trailer",
+"epic"
+],
+"description": "Big brassy BRAAM"
+},
+{
+"name": "braam_2",
+"category": "cinematic",
+"duration": 4.499,
+"tags": [
+"braam",
+"dark",
+"epic"
+],
+"description": "Dark low BRAAM"
+},
+{
+"name": "trailer_hit_1",
+"category": "cinematic",
+"duration": 4.367,
+"tags": [
+"trailer",
+"whoosh",
+"hit"
+],
+"description": "Reverse swell into a trailer hit"
+},
+{
+"name": "trailer_hit_2",
+"category": "cinematic",
+"duration": 4.349,
+"tags": [
+"trailer",
+"whoosh",
+"hit"
+],
+"description": "Reverse swell into a trailer hit"
+},
+{
+"name": "tension_drone_1",
+"category": "cinematic",
+"duration": 4.997,
+"tags": [
+"drone",
+"tension",
+"suspense"
+],
+"description": "Dark tension drone (4 s)"
+},
+{
+"name": "heartbeat",
+"category": "cinematic",
+"duration": 2.15,
+"tags": [
+"heartbeat",
+"suspense",
+"pulse"
+],
+"description": "Heartbeat (lub-dub x3)"
+},
+{
+"name": "suspense_sting",
+"category": "cinematic",
+"duration": 2.48,
+"tags": [
+"sting",
+"suspense",
+"scare"
+],
+"description": "Sudden high string-like sting"
+},
+{
+"name": "tail_reverb",
+"category": "cinematic",
+"duration": 3.278,
+"tags": [
+"tail",
+"reverb",
+"impact"
+],
+"description": "Impact with long reverb tail"
+},
+{
+"name": "rumble",
+"category": "cinematic",
+"duration": 2.988,
+"tags": [
+"rumble",
+"earthquake",
+"low"
+],
+"description": "Low rumble (3 s)"
+},
+{
+"name": "slow_motion",
+"category": "cinematic",
+"duration": 2.2,
+"tags": [
+"slowmo",
+"slow",
+"down"
+],
+"description": "Slow-motion whoosh down"
+},
+{
+"name": "jump_scare_1",
+"category": "horror",
+"duration": 2.121,
+"tags": [
+"jump scare",
+"scary",
+"horror"
+],
+"description": "Sudden jump-scare stab"
+},
+{
+"name": "jump_scare_2",
+"category": "horror",
+"duration": 2.167,
+"tags": [
+"jump scare",
+"scary",
+"horror"
+],
+"description": "Reverse swell into a scare"
+},
+{
+"name": "ghost_whoosh",
+"category": "horror",
+"duration": 3.566,
+"tags": [
+"ghost",
+"spooky",
+"whoosh"
+],
+"description": "Ghostly moaning whoosh"
+},
+{
+"name": "dun_dun_dunnn",
+"category": "horror",
+"duration": 4.0,
+"tags": [
+"dramatic",
+"reveal",
+"shock"
+],
+"description": "Dramatic \"dun dun DUNNN\""
+},
+{
+"name": "creak_long",
+"category": "horror",
+"duration": 1.785,
+"tags": [
+"creak",
+"door",
+"haunted"
+],
+"description": "Long creepy creak"
+},
+{
+"name": "pop_1",
+"category": "pop",
+"duration": 0.13,
+"tags": [
+"pop",
+"sticker",
+"text"
+],
+"description": "Clean pop for text and stickers"
+},
+{
+"name": "pop_2",
+"category": "pop",
+"duration": 0.13,
+"tags": [
+"pop",
+"sticker",
+"text"
+],
+"description": "Clean pop for text and stickers"
+},
+{
+"name": "pop_3",
+"category": "pop",
+"duration": 0.13,
+"tags": [
+"pop",
+"sticker",
+"text"
+],
+"description": "Clean pop for text and stickers"
+},
+{
+"name": "pop_4",
+"category": "pop",
+"duration": 0.13,
+"tags": [
+"pop",
+"sticker",
+"text"
+],
+"description": "Clean pop for text and stickers"
+},
+{
+"name": "pop_bubble_1",
+"category": "pop",
+"duration": 0.12,
+"tags": [
+"bubble",
+"pop",
+"cute"
+],
+"description": "Bubble pop (rising chirp)"
+},
+{
+"name": "pop_bubble_2",
+"category": "pop",
+"duration": 0.12,
+"tags": [
+"bubble",
+"pop",
+"cute"
+],
+"description": "Bubble pop (rising chirp)"
+},
+{
+"name": "pop_bubble_3",
+"category": "pop",
+"duration": 0.12,
+"tags": [
+"bubble",
+"pop",
+"cute"
+],
+"description": "Bubble pop (rising chirp)"
+},
+{
+"name": "pop_cork",
+"category": "pop",
+"duration": 0.25,
+"tags": [
+"cork",
+"bottle",
+"pop"
+],
+"description": "Cork / bottle pop"
+},
+{
+"name": "pop_soft_1",
+"category": "pop",
+"duration": 0.14,
+"tags": [
+"soft",
+"pop",
+"subtle"
+],
+"description": "Soft muted pop"
+},
+{
+"name": "pop_soft_2",
+"category": "pop",
+"duration": 0.14,
+"tags": [
+"soft",
+"pop",
+"subtle"
+],
+"description": "Soft muted pop"
+},
+{
+"name": "pop_high",
+"category": "pop",
+"duration": 0.09,
+"tags": [
+"high",
+"bright",
+"pop"
+],
+"description": "High, bright pop"
+},
+{
+"name": "bloop_1",
+"category": "pop",
+"duration": 0.2,
+"tags": [
+"bloop",
+"water",
+"cute"
+],
+"description": "Watery bloop"
+},
+{
+"name": "bloop_2",
+"category": "pop",
+"duration": 0.16,
+"tags": [
+"bloop",
+"water",
+"cute"
+],
+"description": "Watery bloop"
+},
+{
+"name": "pop_mouth",
+"category": "pop",
+"duration": 0.07,
+"tags": [
+"mouth",
+"lip",
+"pop"
+],
+"description": "Mouth / lip pop"
+},
+{
+"name": "pop_double",
+"category": "pop",
+"duration": 0.21,
+"tags": [
+"double",
+"pop"
+],
+"description": "Two quick pops"
+},
+{
+"name": "click_1",
+"category": "ui",
+"duration": 0.036,
+"tags": [
+"click",
+"ui",
+"button"
+],
+"description": "Crisp UI click"
+},
+{
+"name": "click_soft_1",
+"category": "ui",
+"duration": 0.054,
+"tags": [
+"click",
+"soft",
+"ui"
+],
+"description": "Soft muted click"
+},
+{
+"name": "tap_1",
+"category": "ui",
+"duration": 0.08,
+"tags": [
+"tap",
+"touch",
+"phone"
+],
+"description": "Finger tap on glass"
+},
+{
+"name": "blip_up",
+"category": "ui",
+"duration": 0.09,
+"tags": [
+"blip",
+"up"
+],
+"description": "Blip sliding up"
+},
+{
+"name": "blip_down",
+"category": "ui",
+"duration": 0.09,
+"tags": [
+"blip",
+"down"
+],
+"description": "Blip sliding down"
+},
+{
+"name": "ding_1",
+"category": "ding",
+"duration": 1.462,
+"tags": [
+"ding",
+"bell",
+"notification"
+],
+"description": "Clean bell ding"
+},
+{
+"name": "ding_2",
+"category": "ding",
+"duration": 1.484,
+"tags": [
+"ding",
+"bell",
+"notification"
+],
+"description": "Clean bell ding"
+},
+{
+"name": "ding_3",
+"category": "ding",
+"duration": 1.453,
+"tags": [
+"ding",
+"bell",
+"notification"
+],
+"description": "Clean bell ding"
+},
+{
+"name": "ding_success",
+"category": "ding",
+"duration": 1.538,
+"tags": [
+"success",
+"ding",
+"correct"
+],
+"description": "Two-note success ding"
+},
+{
+"name": "chime_up_1",
+"category": "ding",
+"duration": 1.951,
+"tags": [
+"chime",
+"up",
+"magic"
+],
+"description": "Rising bell arpeggio"
+},
+{
+"name": "chime_up_2",
+"category": "ding",
+"duration": 2.028,
+"tags": [
+"chime",
+"up",
+"magic"
+],
+"description": "Rising bell arpeggio"
+},
+{
+"name": "chime_down",
+"category": "ding",
+"duration": 2.078,
+"tags": [
+"chime",
+"down"
+],
+"description": "Falling bell arpeggio"
+},
+{
+"name": "bell_small_1",
+"category": "ding",
+"duration": 2.198,
+"tags": [
+"bell",
+"desk",
+"service"
+],
+"description": "Desk / service bell"
+},
+{
+"name": "bell_small_2",
+"category": "ding",
+"duration": 2.162,
+"tags": [
+"bell",
+"desk",
+"service"
+],
+"description": "Desk / service bell"
+},
+{
+"name": "notif_1",
+"category": "ding",
+"duration": 0.791,
+"tags": [
+"notification",
+"alert",
+"phone"
+],
+"description": "Phone-style notification"
+},
+{
+"name": "notif_2",
+"category": "ding",
+"duration": 0.856,
+"tags": [
+"notification",
+"alert",
+"phone"
+],
+"description": "Phone-style notification"
+},
+{
+"name": "notif_3",
+"category": "ding",
+"duration": 0.801,
+"tags": [
+"notification",
+"alert",
+"phone"
+],
+"description": "Phone-style notification"
+},
+{
+"name": "notif_message_1",
+"category": "ding",
+"duration": 0.19,
+"tags": [
+"message",
+"chat",
+"notification"
+],
+"description": "New message bubble"
+},
+{
+"name": "notif_message_2",
+"category": "ding",
+"duration": 0.19,
+"tags": [
+"message",
+"chat",
+"notification"
+],
+"description": "New message bubble"
+},
+{
+"name": "level_up_1",
+"category": "ding",
+"duration": 1.085,
+"tags": [
+"level",
+"up",
+"win",
+"game"
+],
+"description": "Fast level-up arpeggio"
+},
+{
+"name": "level_up_2",
+"category": "ding",
+"duration": 1.097,
+"tags": [
+"level",
+"up",
+"win",
+"game"
+],
+"description": "Fast level-up arpeggio"
+},
+{
+"name": "notif_4",
+"category": "ding",
+"duration": 0.873,
+"tags": [
+"notification",
+"soft",
+"phone"
+],
+"description": "Soft three-note notification"
+},
+{
+"name": "notif_5",
+"category": "ding",
+"duration": 0.988,
+"tags": [
+"notification",
+"pluck",
+"phone"
+],
+"description": "Plucky notification"
+},
+{
+"name": "message_received",
+"category": "social",
+"duration": 0.706,
+"tags": [
+"received",
+"message",
+"chat"
+],
+"description": "Message received pluck"
+},
+{
+"name": "vibrate_1",
+"category": "social",
+"duration": 0.95,
+"tags": [
+"vibrate",
+"phone",
+"buzz"
+],
+"description": "Phone vibration buzz-buzz"
+},
+{
+"name": "ringtone",
+"category": "social",
+"duration": 3.152,
+"tags": [
+"ringtone",
+"phone",
+"call"
+],
+"description": "Original marimba ringtone"
+},
+{
+"name": "applause_1",
+"category": "crowd",
+"duration": 4.277,
+"tags": [
+"applause",
+"clap",
+"audience"
+],
+"description": "Small group applause (4 s)"
+},
+{
+"name": "applause_2",
+"category": "crowd",
+"duration": 5.629,
+"tags": [
+"applause",
+"big",
+"audience"
+],
+"description": "Big audience applause (5 s)"
+},
+{
+"name": "applause_short",
+"category": "crowd",
+"duration": 2.265,
+"tags": [
+"applause",
+"short"
+],
+"description": "Short burst of applause (2 s)"
+},
+{
+"name": "crowd_ooh",
+"category": "crowd",
+"duration": 2.407,
+"tags": [
+"ooh",
+"crowd",
+"impressed"
+],
+"description": "Impressed crowd \"ooooh\""
+},
+{
+"name": "crowd_aww",
+"category": "crowd",
+"duration": 2.337,
+"tags": [
+"aww",
+"crowd",
+"cute"
+],
+"description": "Sympathetic crowd \"awww\""
+},
+{
+"name": "crowd_wow",
+"category": "crowd",
+"duration": 2.194,
+"tags": [
+"wow",
+"crowd",
+"amazed"
+],
+"description": "Crowd \"woooow\""
+},
+{
+"name": "cheer",
+"category": "crowd",
+"duration": 4.08,
+"tags": [
+"cheer",
+"crowd",
+"celebrate",
+"win"
+],
+"description": "Crowd cheer with applause and whistles"
+},
+{
+"name": "finger_whistle",
+"category": "crowd",
+"duration": 0.8,
+"tags": [
+"whistle",
+"crowd",
+"hype"
+],
+"description": "Loud finger whistle"
+},
+{
+"name": "whistle_wolf",
+"category": "crowd",
+"duration": 1.05,
+"tags": [
+"whistle",
+"wow",
+"flirt"
+],
+"description": "Two-part \"wheet-whew\" whistle"
+},
+{
+"name": "confetti_popper",
+"category": "festive",
+"duration": 1.335,
+"tags": [
+"confetti",
+"popper",
+"celebration"
+],
+"description": "Confetti popper bang + falling confetti"
+},
+{
+"name": "firecracker_string",
+"category": "festive",
+"duration": 3.233,
+"tags": [
+"firecracker",
+"paputok",
+"new year"
+],
+"description": "String of firecrackers (2.5 s)"
+},
+{
+"name": "boxing_bell",
+"category": "sports",
+"duration": 2.369,
+"tags": [
+"boxing",
+"bell",
+"round",
+"fight"
+],
+"description": "Boxing ring bell ding-ding-ding"
+},
+{
+"name": "ball_kick",
+"category": "sports",
+"duration": 0.2,
+"tags": [
+"kick",
+"ball",
+"football"
+],
+"description": "Ball kick"
+},
+{
+"name": "cash_register_1",
+"category": "money",
+"duration": 1.624,
+"tags": [
+"cash",
+"register",
+"sale",
+"money"
+],
+"description": "Cash register \"ka-ching\""
+},
+{
+"name": "cash_register_2",
+"category": "money",
+"duration": 1.664,
+"tags": [
+"cash",
+"register",
+"sale",
+"money"
+],
+"description": "Cash register with double bell"
+},
+{
+"name": "coin_1",
+"category": "money",
+"duration": 0.7,
+"tags": [
+"coin",
+"money",
+"ping"
+],
+"description": "Single coin ping"
+},
+{
+"name": "coin_2",
+"category": "money",
+"duration": 0.681,
+"tags": [
+"coin",
+"drop",
+"table"
+],
+"description": "Coin dropping on a table"
+},
+{
+"name": "coin_3",
+"category": "money",
+"duration": 0.915,
+"tags": [
+"coin",
+"collect",
+"reward"
+],
+"description": "Bright coin collect"
+},
+{
+"name": "coins_drop_1",
+"category": "money",
+"duration": 1.091,
+"tags": [
+"coins",
+"pour",
+"money"
+],
+"description": "Pile of coins pouring"
+},
+{
+"name": "coins_drop_2",
+"category": "money",
+"duration": 1.505,
+"tags": [
+"coins",
+"pour",
+"money"
+],
+"description": "Pile of coins pouring"
+},
+{
+"name": "counter_roll_1",
+"category": "money",
+"duration": 1.492,
+"tags": [
+"counter",
+"numbers",
+"count"
+],
+"description": "Number counter rolling up"
+},
+{
+"name": "counter_roll_2",
+"category": "money",
+"duration": 2.441,
+"tags": [
+"counter",
+"numbers",
+"ding"
+],
+"description": "Counter rolling then ding"
+},
+{
+"name": "cha_ching",
+"category": "money",
+"duration": 1.611,
+"tags": [
+"cha-ching",
+"money",
+"win"
+],
+"description": "Bright two-bell cha-ching"
+},
+{
+"name": "money_counter",
+"category": "money",
+"duration": 1.22,
+"tags": [
+"bills",
+"cash",
+"counting"
+],
+"description": "Bills flicking through a counter"
+},
+{
+"name": "payment_success",
+"category": "money",
+"duration": 1.779,
+"tags": [
+"payment",
+"success",
+"paid"
+],
+"description": "Payment received chime"
+},
+{
+"name": "typing_1",
+"category": "typing",
+"duration": 1.622,
+"tags": [
+"typing",
+"keyboard",
+"mechanical"
+],
+"description": "Mechanical keyboard typing"
+},
+{
+"name": "typing_2",
+"category": "typing",
+"duration": 1.644,
+"tags": [
+"typing",
+"laptop",
+"soft"
+],
+"description": "Soft laptop typing"
+},
+{
+"name": "typing_3",
+"category": "typing",
+"duration": 1.601,
+"tags": [
+"typing",
+"clicky"
+],
+"description": "Clicky keyboard typing"
+},
+{
+"name": "typing_fast",
+"category": "typing",
+"duration": 1.435,
+"tags": [
+"typing",
+"fast",
+"hacker"
+],
+"description": "Very fast typing burst"
+},
+{
+"name": "key_single_1",
+"category": "typing",
+"duration": 0.07,
+"tags": [
+"key",
+"press"
+],
+"description": "Single key press"
+},
+{
+"name": "key_single_2",
+"category": "typing",
+"duration": 0.07,
+"tags": [
+"key",
+"soft"
+],
+"description": "Soft single key press"
+},
+{
+"name": "key_enter",
+"category": "typing",
+"duration": 0.16,
+"tags": [
+"enter",
+"spacebar",
+"key"
+],
+"description": "Big enter / spacebar press"
+},
+{
+"name": "typewriter_bell",
+"category": "typing",
+"duration": 1.6,
+"tags": [
+"typewriter",
+"retro",
+"bell"
+],
+"description": "Typewriter clacks, bell and carriage return"
+},
+{
+"name": "typewriter_keys",
+"category": "typing",
+"duration": 1.218,
+"tags": [
+"typewriter",
+"typing",
+"retro"
+],
+"description": "Typewriter typing"
+},
+{
+"name": "shutter_1",
+"category": "camera",
+"duration": 0.111,
+"tags": [
+"shutter",
+"camera",
+"photo"
+],
+"description": "Camera shutter"
+},
+{
+"name": "shutter_2",
+"category": "camera",
+"duration": 0.128,
+"tags": [
+"shutter",
+"dslr",
+"photo"
+],
+"description": "DSLR shutter with mirror slap"
+},
+{
+"name": "shutter_quick",
+"category": "camera",
+"duration": 0.062,
+"tags": [
+"shutter",
+"phone",
+"snap"
+],
+"description": "Phone camera snap"
+},
+{
+"name": "shutter_burst",
+"category": "camera",
+"duration": 0.51,
+"tags": [
+"burst",
+"shutter",
+"photos"
+],
+"description": "Burst mode (5 shots)"
+},
+{
+"name": "flash_charge",
+"category": "camera",
+"duration": 1.33,
+"tags": [
+"flash",
+"charge",
+"camera"
+],
+"description": "Flash charging whine + ready beep"
+},
+{
+"name": "film_wind",
+"category": "camera",
+"duration": 0.85,
+"tags": [
+"film",
+"wind",
+"ratchet"
+],
+"description": "Film advance ratchet"
+},
+{
+"name": "focus_beep",
+"category": "camera",
+"duration": 0.13,
+"tags": [
+"focus",
+"beep",
+"camera"
+],
+"description": "Autofocus bip-bip"
+},
+{
+"name": "polaroid",
+"category": "camera",
+"duration": 1.2,
+"tags": [
+"polaroid",
+"instant",
+"print"
+],
+"description": "Instant camera shot + motor"
+},
+{
+"name": "lens_zoom",
+"category": "camera",
+"duration": 0.8,
+"tags": [
+"lens",
+"zoom",
+"motor"
+],
+"description": "Lens zoom motor"
+},
+{
+"name": "glitch_short_1",
+"category": "glitch",
+"duration": 0.146,
+"tags": [
+"glitch",
+"short",
+"cut"
+],
+"description": "Tiny glitch for quick cuts"
+},
+{
+"name": "glitch_short_2",
+"category": "glitch",
+"duration": 0.192,
+"tags": [
+"glitch",
+"short",
+"cut"
+],
+"description": "Tiny glitch for quick cuts"
+},
+{
+"name": "static_burst_1",
+"category": "glitch",
+"duration": 0.7,
+"tags": [
+"static",
+"tv",
+"noise"
+],
+"description": "TV static burst"
+},
+{
+"name": "power_up",
+"category": "glitch",
+"duration": 1.681,
+"tags": [
+"power",
+"up",
+"start"
+],
+"description": "Electric power-up"
+},
+{
+"name": "power_down",
+"category": "glitch",
+"duration": 1.2,
+"tags": [
+"power",
+"down",
+"shutdown"
+],
+"description": "Electric power-down"
+},
+{
+"name": "laser_1",
+"category": "tech",
+"duration": 0.379,
+"tags": [
+"laser",
+"pew",
+"sci-fi"
+],
+"description": "Sci-fi laser shot"
+},
+{
+"name": "scanner",
+"category": "tech",
+"duration": 1.5,
+"tags": [
+"scan",
+"scanner",
+"sci-fi"
+],
+"description": "Scanner sweeping back and forth"
+},
+{
+"name": "computer_beeps_1",
+"category": "tech",
+"duration": 0.78,
+"tags": [
+"computer",
+"beeps",
+"sci-fi"
+],
+"description": "Sci-fi computer beeps"
+},
+{
+"name": "teleport",
+"category": "tech",
+"duration": 1.658,
+"tags": [
+"teleport",
+"warp",
+"sci-fi"
+],
+"description": "Teleport phase-out"
+},
+{
+"name": "charge_up",
+"category": "tech",
+"duration": 1.214,
+"tags": [
+"charge",
+"energy",
+"power"
+],
+"description": "Energy charge-up whine"
+},
+{
+"name": "sparkle_1",
+"category": "magic",
+"duration": 1.52,
+"tags": [
+"sparkle",
+"magic",
+"shine"
+],
+"description": "Magic sparkle twinkles"
+},
+{
+"name": "sparkle_2",
+"category": "magic",
+"duration": 1.278,
+"tags": [
+"sparkle",
+"magic",
+"shine"
+],
+"description": "Magic sparkle twinkles"
+},
+{
+"name": "sparkle_3",
+"category": "magic",
+"duration": 1.707,
+"tags": [
+"sparkle",
+"magic",
+"shine"
+],
+"description": "Magic sparkle twinkles"
+},
+{
+"name": "magic_wand_1",
+"category": "magic",
+"duration": 1.758,
+"tags": [
+"wand",
+"magic",
+"spell"
+],
+"description": "Wand swish + sparkles"
+},
+{
+"name": "magic_wand_2",
+"category": "magic",
+"duration": 2.15,
+"tags": [
+"wand",
+"magic",
+"spell"
+],
+"description": "Longer wand spell"
+},
+{
+"name": "shimmer_1",
+"category": "magic",
+"duration": 2.841,
+"tags": [
+"shimmer",
+"glow",
+"soft"
+],
+"description": "Soft shimmer"
+},
+{
+"name": "shimmer_2",
+"category": "magic",
+"duration": 2.731,
+"tags": [
+"shimmer",
+"glow",
+"soft"
+],
+"description": "Soft shimmer"
+},
+{
+"name": "twinkle",
+"category": "magic",
+"duration": 1.151,
+"tags": [
+"twinkle",
+"star",
+"cute"
+],
+"description": "Quick twinkle run"
+},
+{
+"name": "fairy_rise",
+"category": "magic",
+"duration": 1.698,
+"tags": [
+"harp",
+"fairy",
+"rise",
+"dream"
+],
+"description": "Harp-like rising glissando"
+},
+{
+"name": "reveal_glow_1",
+"category": "magic",
+"duration": 2.774,
+"tags": [
+"reveal",
+"glow",
+"swell"
+],
+"description": "Glowing reveal swell"
+},
+{
+"name": "reveal_glow_2",
+"category": "magic",
+"duration": 2.881,
+"tags": [
+"reveal",
+"glow",
+"swell"
+],
+"description": "Glowing reveal swell"
+},
+{
+"name": "chime_tree",
+"category": "magic",
+"duration": 2.047,
+"tags": [
+"chimes",
+"glissando",
+"dream"
+],
+"description": "Wind-chime glissando"
+},
+{
+"name": "poof",
+"category": "magic",
+"duration": 1.237,
+"tags": [
+"poof",
+"smoke",
+"disappear"
+],
+"description": "Magic poof (disappear)"
+},
+{
+"name": "boing_1",
+"category": "cartoon",
+"duration": 0.8,
+"tags": [
+"boing",
+"bounce",
+"funny"
+],
+"description": "Cartoon boing"
+},
+{
+"name": "boing_2",
+"category": "cartoon",
+"duration": 0.8,
+"tags": [
+"boing",
+"bounce",
+"funny"
+],
+"description": "Cartoon boing"
+},
+{
+"name": "boing_3",
+"category": "cartoon",
+"duration": 0.8,
+"tags": [
+"boing",
+"bounce",
+"funny"
+],
+"description": "Cartoon boing"
+},
+{
+"name": "spring",
+"category": "cartoon",
+"duration": 0.7,
+"tags": [
+"spring",
+"sproing",
+"funny"
+],
+"description": "Springy sproing"
+},
+{
+"name": "slide_whistle_up",
+"category": "cartoon",
+"duration": 0.8,
+"tags": [
+"whistle",
+"up",
+"funny"
+],
+"description": "Slide whistle up"
+},
+{
+"name": "slide_whistle_down",
+"category": "cartoon",
+"duration": 0.8,
+"tags": [
+"whistle",
+"down",
+"fall"
+],
+"description": "Slide whistle down (falling)"
+},
+{
+"name": "bonk_1",
+"category": "cartoon",
+"duration": 0.227,
+"tags": [
+"bonk",
+"wood",
+"hit"
+],
+"description": "Wood-block bonk"
+},
+{
+"name": "bonk_2",
+"category": "cartoon",
+"duration": 0.35,
+"tags": [
+"bonk",
+"head",
+"hit",
+"funny"
+],
+"description": "Head bonk"
+},
+{
+"name": "wobble_1",
+"category": "cartoon",
+"duration": 1.0,
+"tags": [
+"wobble",
+"wah",
+"funny"
+],
+"description": "Wah-wah wobble"
+},
+{
+"name": "wobble_2",
+"category": "cartoon",
+"duration": 1.2,
+"tags": [
+"wobble",
+"wah",
+"funny"
+],
+"description": "Wah-wah wobble"
+},
+{
+"name": "zip_1",
+"category": "cartoon",
+"duration": 0.15,
+"tags": [
+"zip",
+"fast",
+"away"
+],
+"description": "Zip away (up)"
+},
+{
+"name": "zip_2",
+"category": "cartoon",
+"duration": 0.15,
+"tags": [
+"zip",
+"fast",
+"down"
+],
+"description": "Zip down"
+},
+{
+"name": "squeak_1",
+"category": "cartoon",
+"duration": 0.25,
+"tags": [
+"squeak",
+"toy",
+"cute"
+],
+"description": "Rubber toy squeak"
+},
+{
+"name": "squeak_2",
+"category": "cartoon",
+"duration": 0.35,
+"tags": [
+"squeak",
+"toy",
+"cute"
+],
+"description": "Rubber toy squeak"
+},
+{
+"name": "wah_wah_fail",
+"category": "cartoon",
+"duration": 3.197,
+"tags": [
+"fail",
+"sad",
+"trombone",
+"funny"
+],
+"description": "Sad descending \"wah wah wah wahhh\""
+},
+{
+"name": "tiptoe",
+"category": "cartoon",
+"duration": 1.8,
+"tags": [
+"tiptoe",
+"sneak",
+"pizzicato"
+],
+"description": "Sneaky pizzicato tiptoe"
+},
+{
+"name": "run_away",
+"category": "cartoon",
+"duration": 0.75,
+"tags": [
+"run",
+"escape",
+"fast"
+],
+"description": "Run-away blips + zoom"
+},
+{
+"name": "pop_eyes",
+"category": "cartoon",
+"duration": 0.48,
+"tags": [
+"surprise",
+"eyes",
+"boink"
+],
+"description": "Eyes-pop \"boink\""
+},
+{
+"name": "drum_hit_fail",
+"category": "cartoon",
+"duration": 1.55,
+"tags": [
+"rimshot",
+"joke",
+"funny"
+],
+"description": "Comedy ba-dum-tss"
+},
+{
+"name": "slip",
+"category": "cartoon",
+"duration": 0.65,
+"tags": [
+"slip",
+"fall",
+"funny"
+],
+"description": "Banana slip and fall"
+},
+{
+"name": "dizzy",
+"category": "cartoon",
+"duration": 2.091,
+"tags": [
+"dizzy",
+"stars",
+"knocked out"
+],
+"description": "Dizzy circling stars"
+},
+{
+"name": "honk_toy",
+"category": "cartoon",
+"duration": 0.62,
+"tags": [
+"honk",
+"clown",
+"horn",
+"funny"
+],
+"description": "Clown horn honk-honk"
+},
+{
+"name": "splat",
+"category": "cartoon",
+"duration": 0.443,
+"tags": [
+"splat",
+"wet",
+"gross"
+],
+"description": "Wet splat"
+},
+{
+"name": "success_jingle_1",
+"category": "stinger",
+"duration": 2.1,
+"tags": [
+"success",
+"win",
+"jingle"
+],
+"description": "Marimba success jingle"
+},
+{
+"name": "success_jingle_2",
+"category": "stinger",
+"duration": 1.914,
+"tags": [
+"success",
+"jingle",
+"happy"
+],
+"description": "Plucked success jingle"
+},
+{
+"name": "fail_jingle",
+"category": "stinger",
+"duration": 1.902,
+"tags": [
+"fail",
+"lose",
+"sad"
+],
+"description": "Sad fail jingle"
+},
+{
+"name": "tada",
+"category": "stinger",
+"duration": 2.369,
+"tags": [
+"tada",
+"fanfare",
+"reveal"
+],
+"description": "Ta-da fanfare"
+},
+{
+"name": "reveal_stinger",
+"category": "stinger",
+"duration": 3.261,
+"tags": [
+"reveal",
+"stinger",
+"drama"
+],
+"description": "Build, hit and chord"
+},
+{
+"name": "transition_stinger",
+"category": "stinger",
+"duration": 1.806,
+"tags": [
+"transition",
+"stinger",
+"stab"
+],
+"description": "Whoosh into a chord stab"
+},
+{
+"name": "suspense_hit",
+"category": "stinger",
+"duration": 2.427,
+"tags": [
+"suspense",
+"hit",
+"drama"
+],
+"description": "Low hit + dissonant stab"
+},
+{
+"name": "positive_chord",
+"category": "stinger",
+"duration": 2.977,
+"tags": [
+"positive",
+"chord",
+"warm"
+],
+"description": "Warm uplifting chord swell"
+},
+{
+"name": "mystery",
+"category": "stinger",
+"duration": 3.482,
+"tags": [
+"mystery",
+"curious",
+"bell"
+],
+"description": "Mysterious bell motif"
+},
+{
+"name": "news_sting",
+"category": "stinger",
+"duration": 2.188,
+"tags": [
+"news",
+"breaking",
+"urgent"
+],
+"description": "Breaking-news style sting"
+},
+{
+"name": "question_hmm",
+"category": "stinger",
+"duration": 1.107,
+"tags": [
+"question",
+"curious",
+"hmm"
+],
+"description": "Curious \"hmm?\" two-note"
+},
+{
+"name": "error_1",
+"category": "alert",
+"duration": 0.37,
+"tags": [
+"error",
+"wrong",
+"fail"
+],
+"description": "Two-tone error"
+},
+{
+"name": "error_2",
+"category": "alert",
+"duration": 0.33,
+"tags": [
+"error",
+"denied"
+],
+"description": "Triple low error beep"
+},
+{
+"name": "error_buzz",
+"category": "alert",
+"duration": 0.5,
+"tags": [
+"buzz",
+"error",
+"harsh"
+],
+"description": "Harsh error buzz"
+},
+{
+"name": "wrong_buzzer",
+"category": "alert",
+"duration": 0.8,
+"tags": [
+"wrong",
+"buzzer",
+"quiz"
+],
+"description": "Game-show wrong-answer buzzer"
+},
+{
+"name": "correct_1",
+"category": "alert",
+"duration": 1.239,
+"tags": [
+"correct",
+"right",
+"quiz"
+],
+"description": "Correct-answer chime"
+},
+{
+"name": "correct_2",
+"category": "alert",
+"duration": 1.178,
+"tags": [
+"correct",
+"yes",
+"quiz"
+],
+"description": "Bright two-note correct"
+},
+{
+"name": "alarm_beep_1",
+"category": "alert",
+"duration": 0.64,
+"tags": [
+"alarm",
+"beep",
+"urgent"
+],
+"description": "Four urgent beeps"
+},
+{
+"name": "alarm_beep_2",
+"category": "alert",
+"duration": 1.49,
+"tags": [
+"alarm",
+"hi-lo",
+"warning"
+],
+"description": "Hi-lo alarm"
+},
+{
+"name": "censor_beep",
+"category": "alert",
+"duration": 0.6,
+"tags": [
+"censor",
+"bleep",
+"beep"
+],
+"description": "Censor bleep (1 kHz)"
+},
+{
+"name": "warning_siren",
+"category": "alert",
+"duration": 2.0,
+"tags": [
+"siren",
+"warning",
+"emergency"
+],
+"description": "Siren sweep up and down"
+},
+{
+"name": "attention_ping",
+"category": "alert",
+"duration": 1.628,
+"tags": [
+"ping",
+"sonar",
+"attention"
+],
+"description": "Sonar-like attention ping"
+},
+{
+"name": "beep_short",
+"category": "alert",
+"duration": 0.12,
+"tags": [
+"beep",
+"short"
+],
+"description": "Short beep"
+},
+{
+"name": "tick_1",
+"category": "timer",
+"duration": 0.04,
+"tags": [
+"tick",
+"clock"
+],
+"description": "Clock tick"
+},
+{
+"name": "tick_2",
+"category": "timer",
+"duration": 0.05,
+"tags": [
+"tick",
+"wood"
+],
+"description": "Woody tick"
+},
+{
+"name": "clock_tick",
+"category": "timer",
+"duration": 2.037,
+"tags": [
+"clock",
+"tick",
+"tock",
+"waiting"
+],
+"description": "Tick-tock clock (2.5 s)"
+},
+{
+"name": "countdown_beep_1",
+"category": "timer",
+"duration": 3.6,
+"tags": [
+"countdown",
+"start",
+"race"
+],
+"description": "3-2-1-GO race beeps"
+},
+{
+"name": "countdown_beep_2",
+"category": "timer",
+"duration": 2.1,
+"tags": [
+"countdown",
+"fast"
+],
+"description": "Fast 3-2-1 beeps"
+},
+{
+"name": "timer_done",
+"category": "timer",
+"duration": 0.96,
+"tags": [
+"timer",
+"alarm",
+"done"
+],
+"description": "Digital timer alarm"
+},
+{
+"name": "stopwatch",
+"category": "timer",
+"duration": 1.595,
+"tags": [
+"stopwatch",
+"timer",
+"tick"
+],
+"description": "Stopwatch start click and ticking"
+},
+{
+"name": "metronome",
+"category": "timer",
+"duration": 1.55,
+"tags": [
+"metronome",
+"beat",
+"count"
+],
+"description": "Four metronome clicks (120 bpm)"
+},
+{
+"name": "ticking_bomb",
+"category": "timer",
+"duration": 3.302,
+"tags": [
+"bomb",
+"tick",
+"countdown",
+"tension"
+],
+"description": "Ticking bomb countdown"
+},
+{
+"name": "crash",
+"category": "drums",
+"duration": 2.532,
+"tags": [
+"crash",
+"cymbal"
+],
+"description": "Crash cymbal"
+},
+{
+"name": "drum_roll",
+"category": "drums",
+"duration": 3.539,
+"tags": [
+"roll",
+"snare",
+"build",
+"drumroll"
+],
+"description": "Snare roll building up"
+},
+{
+"name": "sizzle",
+"category": "food",
+"duration": 3.999,
+"tags": [
+"sizzle",
+"frying",
+"cooking",
+"prito"
+],
+"description": "Frying / sizzling pan (4 s)"
+},
+{
+"name": "crunch_1",
+"category": "food",
+"duration": 0.25,
+"tags": [
+"crunch",
+"chips",
+"bite",
+"snack"
+],
+"description": "Crunchy chip bite"
+},
+{
+"name": "crunch_2",
+"category": "food",
+"duration": 1.06,
+"tags": [
+"crunch",
+"chewing",
+"snack"
+],
+"description": "Crunchy chewing"
+},
+{
+"name": "can_open_fizz",
+"category": "food",
+"duration": 1.595,
+"tags": [
+"soda",
+"can",
+"fizz",
+"drink"
+],
+"description": "Soda can open + fizz"
+},
+{
+"name": "pour",
+"category": "food",
+"duration": 1.999,
+"tags": [
+"pour",
+"drink",
+"glass",
+"water"
+],
+"description": "Pouring a drink into a glass"
+},
+{
+"name": "splash",
+"category": "food",
+"duration": 1.035,
+"tags": [
+"splash",
+"water",
+"pool"
+],
+"description": "Water splash"
+},
+{
+"name": "chopping",
+"category": "food",
+"duration": 1.13,
+"tags": [
+"chopping",
+"knife",
+"kitchen"
+],
+"description": "Knife chopping on a board"
+},
+{
+"name": "paper_1",
+"category": "paper",
+"duration": 0.47,
+"tags": [
+"paper",
+"crinkle",
+"foley"
+],
+"description": "Paper crinkle"
+},
+{
+"name": "paper_2",
+"category": "paper",
+"duration": 0.793,
+"tags": [
+"paper",
+"crinkle",
+"foley"
+],
+"description": "Paper crinkle"
+},
+{
+"name": "rip_1",
+"category": "paper",
+"duration": 0.45,
+"tags": [
+"rip",
+"tear",
+"paper"
+],
+"description": "Paper rip / tear"
+},
+{
+"name": "rip_2",
+"category": "paper",
+"duration": 0.8,
+"tags": [
+"rip",
+"tear",
+"paper"
+],
+"description": "Paper rip / tear"
+},
+{
+"name": "scribble_1",
+"category": "paper",
+"duration": 0.8,
+"tags": [
+"scribble",
+"pen",
+"writing"
+],
+"description": "Pen / marker scribble"
+},
+{
+"name": "scribble_2",
+"category": "paper",
+"duration": 1.2,
+"tags": [
+"scribble",
+"pen",
+"writing"
+],
+"description": "Pen / marker scribble"
+},
+{
+"name": "page_flip_1",
+"category": "paper",
+"duration": 0.347,
+"tags": [
+"page",
+"flip",
+"book"
+],
+"description": "Page flip"
+},
+{
+"name": "page_flip_2",
+"category": "paper",
+"duration": 0.5,
+"tags": [
+"page",
+"flip",
+"book"
+],
+"description": "Page flip"
+},
+{
+"name": "stamp",
+"category": "paper",
+"duration": 0.288,
+"tags": [
+"stamp",
+"approved",
+"office"
+],
+"description": "Rubber stamp"
+},
+{
+"name": "crumple",
+"category": "paper",
+"duration": 1.198,
+"tags": [
+"crumple",
+"paper",
+"trash"
+],
+"description": "Paper crumpled into a ball"
+},
+{
+"name": "sticky_note",
+"category": "paper",
+"duration": 0.321,
+"tags": [
+"sticky",
+"note",
+"peel"
+],
+"description": "Sticky note peel and slap"
+},
+{
+"name": "zipper",
+"category": "foley",
+"duration": 0.594,
+"tags": [
+"zipper",
+"zip",
+"clothes"
+],
+"description": "Zipper pull"
+},
+{
+"name": "knock_1",
+"category": "foley",
+"duration": 0.699,
+"tags": [
+"knock",
+"door",
+"wood"
+],
+"description": "Door knock x3"
+},
+{
+"name": "knock_2",
+"category": "foley",
+"duration": 0.584,
+"tags": [
+"knock",
+"door"
+],
+"description": "Door knock x2"
+},
+{
+"name": "glass_clink",
+"category": "foley",
+"duration": 1.066,
+"tags": [
+"glass",
+"clink",
+"cheers"
+],
+"description": "Glass clink / cheers"
+},
+{
+"name": "pen_click",
+"category": "foley",
+"duration": 0.146,
+"tags": [
+"pen",
+"click",
+"office"
+],
+"description": "Ballpoint pen click"
+},
+{
+"name": "light_switch",
+"category": "foley",
+"duration": 0.06,
+"tags": [
+"switch",
+"light",
+"click"
+],
+"description": "Light switch"
+},
+{
+"name": "spray",
+"category": "foley",
+"duration": 0.9,
+"tags": [
+"spray",
+"aerosol",
+"hiss"
+],
+"description": "Spray can"
+},
+{
+"name": "fireworks",
+"category": "foley",
+"duration": 3.644,
+"tags": [
+"fireworks",
+"celebration",
+"new year"
+],
+"description": "Firework whistle, bang and crackle"
+},
+{
+"name": "footsteps",
+"category": "foley",
+"duration": 2.242,
+"tags": [
+"footsteps",
+"walk",
+"steps"
+],
+"description": "Footsteps on a hard floor"
+},
+{
+"name": "door_open",
+"category": "foley",
+"duration": 0.92,
+"tags": [
+"door",
+"creak",
+"open"
+],
+"description": "Door handle and creak"
+},
+{
+"name": "cup_set_down",
+"category": "foley",
+"duration": 0.4,
+"tags": [
+"cup",
+"table",
+"kitchen"
+],
+"description": "Cup set down on a table"
+},
+{
+"name": "doorbell",
+"category": "foley",
+"duration": 2.973,
+"tags": [
+"doorbell",
+"ding-dong",
+"visitor"
+],
+"description": "Ding-dong doorbell"
+},
+{
+"name": "school_bell",
+"category": "foley",
+"duration": 2.462,
+"tags": [
+"bell",
+"school",
+"ring"
+],
+"description": "Electric school bell (2 s)"
+},
+{
+"name": "bike_bell",
+"category": "foley",
+"duration": 0.94,
+"tags": [
+"bike",
+"bell",
+"ring"
+],
+"description": "Bicycle bell ring-ring"
+},
+{
+"name": "car_horn_1",
+"category": "foley",
+"duration": 0.932,
+"tags": [
+"car",
+"horn",
+"honk",
+"traffic"
+],
+"description": "Car horn honk"
+},
+{
+"name": "car_horn_2",
+"category": "foley",
+"duration": 0.904,
+"tags": [
+"car",
+"horn",
+"beep beep"
+],
+"description": "Double car honk"
+},
+{
+"name": "elevator_ding",
+"category": "foley",
+"duration": 2.551,
+"tags": [
+"elevator",
+"ding",
+"arrive"
+],
+"description": "Elevator arrival ding"
+},
+{
+"name": "referee_whistle",
+"category": "foley",
+"duration": 0.98,
+"tags": [
+"whistle",
+"referee",
+"stop"
+],
+"description": "Referee whistle"
+},
+{
+"name": "kiss",
+"category": "foley",
+"duration": 0.17,
+"tags": [
+"kiss",
+"smooch",
+"love"
+],
+"description": "Kiss / smooch"
+},
+{
+"name": "slap",
+"category": "foley",
+"duration": 0.359,
+"tags": [
+"slap",
+"hit",
+"funny"
+],
+"description": "Face slap"
+},
+{
+"name": "bubble_wrap",
+"category": "foley",
+"duration": 0.911,
+"tags": [
+"bubble wrap",
+"pop",
+"satisfying"
+],
+"description": "Bubble wrap popping"
+},
+{
+"name": "alarm_clock",
+"category": "foley",
+"duration": 2.558,
+"tags": [
+"alarm",
+"clock",
+"wake up"
+],
+"description": "Mechanical alarm clock ringing"
+},
+{
+"name": "glass_break",
+"category": "foley",
+"duration": 1.355,
+"tags": [
+"glass",
+"break",
+"shatter"
+],
+"description": "Glass breaking"
+},
+{
+"name": "door_slam",
+"category": "foley",
+"duration": 0.992,
+"tags": [
+"door",
+"slam",
+"angry"
+],
+"description": "Door slam"
+},
+{
+"name": "keys_jingle",
+"category": "foley",
+"duration": 0.793,
+"tags": [
+"keys",
+"jingle",
+"metal"
+],
+"description": "Keys jingling"
+},
+{
+"name": "phone_dial",
+"category": "foley",
+"duration": 1.06,
+"tags": [
+"phone",
+"dial",
+"keypad"
+],
+"description": "Phone keypad dialing tones"
+},
+{
+"name": "phone_busy",
+"category": "foley",
+"duration": 2.5,
+"tags": [
+"phone",
+"busy",
+"hang up"
+],
+"description": "Busy / hang-up tone"
+},
+{
+"name": "vinyl_crackle",
+"category": "foley",
+"duration": 3.975,
+"tags": [
+"vinyl",
+"crackle",
+"retro",
+"lofi"
+],
+"description": "Vinyl record crackle (4 s)"
+},
+{
+"name": "receipt_print",
+"category": "foley",
+"duration": 1.3,
+"tags": [
+"printer",
+"receipt",
+"pos"
+],
+"description": "Receipt printer"
+},
+{
+"name": "body_fall",
+"category": "foley",
+"duration": 0.919,
+"tags": [
+"fall",
+"thud",
+"body"
+],
+"description": "Body falling to the floor"
+},
+{
+"name": "wind_1",
+"category": "nature",
+"duration": 4.997,
+"tags": [
+"wind",
+"air",
+"ambience"
+],
+"description": "Wind (5 s)"
+},
+{
+"name": "wind_2",
+"category": "nature",
+"duration": 4.999,
+"tags": [
+"wind",
+"storm",
+"howl"
+],
+"description": "Howling high wind (5 s)"
+},
+{
+"name": "rain",
+"category": "nature",
+"duration": 4.995,
+"tags": [
+"rain",
+"weather",
+"ambience"
+],
+"description": "Rain (5 s)"
+},
+{
+"name": "thunder",
+"category": "nature",
+"duration": 5.301,
+"tags": [
+"thunder",
+"storm",
+"weather"
+],
+"description": "Thunder crack and roll"
+},
+{
+"name": "water_drop_1",
+"category": "nature",
+"duration": 0.478,
+"tags": [
+"water",
+"drop",
+"drip"
+],
+"description": "Water drop"
+},
+{
+"name": "water_drop_2",
+"category": "nature",
+"duration": 1.588,
+"tags": [
+"water",
+"drop",
+"drip"
+],
+"description": "Water drop in a cave"
+},
+{
+"name": "bubbles",
+"category": "nature",
+"duration": 1.641,
+"tags": [
+"bubbles",
+"water",
+"underwater"
+],
+"description": "Bubbles rising"
+},
+{
+"name": "fire_crackle",
+"category": "nature",
+"duration": 3.994,
+"tags": [
+"fire",
+"crackle",
+"campfire"
+],
+"description": "Campfire crackle (4 s)"
+},
+{
+"name": "wave",
+"category": "nature",
+"duration": 4.863,
+"tags": [
+"ocean",
+"wave",
+"beach"
+],
+"description": "Ocean wave (5 s)"
+},
+{
+"name": "stream",
+"category": "nature",
+"duration": 3.995,
+"tags": [
+"stream",
+"water",
+"river"
+],
+"description": "Babbling stream (4 s)"
+},
+{
+"name": "birds",
+"category": "nature",
+"duration": 2.473,
+"tags": [
+"birds",
+"morning",
+"nature"
+],
+"description": "Birds chirping (3 s)"
+},
+{
+"name": "crickets",
+"category": "nature",
+"duration": 3.889,
+"tags": [
+"crickets",
+"night",
+"ambience"
+],
+"description": "Night crickets (4 s)"
+}
+]

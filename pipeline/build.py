@@ -19,6 +19,7 @@ from pathlib import Path
 
 from common import RENDERER, load_config, read_json, run_id, week_dir, write_json
 from soundtrack import make_soundtrack
+import sonido
 from voice import synth
 import qa
 
@@ -132,24 +133,35 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     filters.append(f"{mix}amix=inputs={len(parts)}:normalize=0,apad=whole_dur={total:.2f}[v]")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(filters), "-map", "[v]", "-ac", "1", str(voice)], check=True)
 
-    # 3) Música ambiente + efectos
-    cuts = [b["start"] for b in beats[1:]]
-    hits = [0.05] + [b["start"] for b in beats if b.get("camera") == "slam" or b.get("transition") in ("red", "flash")]
-    music = work / "music.wav"
+    # 3) Efectos de sonido sincronizados con lo que pasa en pantalla + ambiente del lugar (sonido.py)
     m = cfg.get("musica", {})
-    make_soundtrack(total, cuts, hits, music, seed=zlib.crc32(sid.encode()) % 10_000, volume=m.get("volumen_ambiente", 0.16), sfx=m.get("efectos", True), style=story.get("music", "bright"), loop=not con_tarjeta)
+    sfx, bed = work / "sfx.wav", work / "bed.wav"
+    seed = zlib.crc32(sid.encode()) % 10_000
+    if m.get("efectos", True):
+        cues = sonido.make_sfx(beats, words, total, sfx, bed, seed=seed, volume_db=m.get("efectos_db", 0.0), comment=comment_window(story, beats))
+        print(f"  sonido: {len(cues)} efectos ({len({c[1] for c in cues})} distintos)")
+    else:
+        sonido.make_sfx([], [], total, sfx, bed, seed=seed)
+    capas = [sfx, bed]
+    if m.get("fondo_musical", False):  # música de fondo opcional (apagada: al dueño no le gusta)
+        music = work / "music.wav"
+        cuts = [b["start"] for b in beats[1:]]
+        make_soundtrack(total, cuts, [], music, seed=seed, volume=m.get("volumen_ambiente", 0.1), sfx=False, style=story.get("music", "bright"), loop=not con_tarjeta)
+        capas.append(music)
 
-    # 4) Mezcla final (la música baja cuando habla la voz).
+    # 4) Mezcla final: los efectos bajan un poco cuando habla la voz y el ambiente baja más.
     # En dos pasos: normalizar la voz y luego mezclar con duración fija (en un solo paso ffmpeg recortaba el final).
     voice_norm = work / "voice_norm.wav"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(voice), "-af", "loudnorm=I=-15:TP=-1.5:LRA=7", "-ar", "44100", str(voice_norm)], check=True)
     audio = work / "audio.m4a"
-    subprocess.run([
-        "ffmpeg", "-y", "-loglevel", "error", "-i", str(voice_norm), "-i", str(music), "-filter_complex",
-        "[0:a]asplit=2[vo][sc];[1:a][sc]sidechaincompress=threshold=0.04:ratio=6:attack=20:release=400[bg];"
-        "[vo][bg]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95,apad[out]",
-        "-map", "[out]", "-t", f"{total:.3f}", "-c:a", "aac", "-b:a", "192k", str(audio),
-    ], check=True)
+    ins = ["-i", str(voice_norm)] + [x for c in capas for x in ("-i", str(c))]
+    fc = f"[0:a]asplit={len(capas) + 1}[vo]" + "".join(f"[sc{k}]" for k in range(len(capas))) + ";"
+    fc += "[1:a][sc0]sidechaincompress=threshold=0.06:ratio=2.5:attack=5:release=250[c0];"
+    for k in range(1, len(capas)):
+        fc += f"[{k + 1}:a][sc{k}]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=400[c{k}];"
+    fc += "[vo]" + "".join(f"[c{k}]" for k in range(len(capas))) + f"amix=inputs={len(capas) + 1}:duration=longest:normalize=0,alimiter=limit=0.95,apad[out]"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *ins, "-filter_complex", fc,
+                    "-map", "[out]", "-t", f"{total:.3f}", "-c:a", "aac", "-b:a", "192k", str(audio)], check=True)
 
     # 5) Timeline -> render
     c = cfg["canal"]

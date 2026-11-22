@@ -3,7 +3,13 @@ name: Prueba (vídeo de ejemplo)
 # Monta un vídeo de curiosidades de ejemplo con la voz del narrador, sin tocar YouTube ni gastar IA.
 # Útil para comprobar que todo funciona. El vídeo queda en "Artifacts" de la ejecución.
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      guion:
+        description: "Guion a montar (por defecto el de ejemplo)"
+        required: false
+        default: examples/demo_curiosidad.json
+        type: string
 
 env:
   TQDM_DISABLE: "1"
@@ -45,7 +51,9 @@ jobs:
           path: ~/.cache/huggingface
           key: modelos-voz-voxcpm2-whisper-small-v1
 
-      - run: python pipeline/build.py --story examples/demo_curiosidad.json --out out/prueba
+      - env:
+          GUION: ${{ inputs.guion || 'examples/demo_curiosidad.json' }}
+        run: python pipeline/build.py --story "$GUION" --out out/prueba
       - uses: actions/upload-artifact@v4
         with:
           name: video-prueba

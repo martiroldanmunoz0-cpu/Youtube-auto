@@ -61,3 +61,14 @@ giro final) cuando no exista ya una acción que lo muestre, y las añade al cat�
   central (y ≈ 430-1610), así que pon lo importante ahí y no en los bordes de arriba y abajo.
 - Montaje (voz repartida en 8 máquinas + vídeo + Revisar, sin gastar API):
   `gh api -X POST repos/martiroldanmunoz0-cpu/Youtube-auto/actions/workflows/largo.yml/dispatches -f ref=main -f 'inputs[id]=<id>'`
+
+## Sonidos de cada plano
+
+Los efectos de sonido salen solos (pipeline/sonido.py): transición, cámara, acción, piezas y palabras del guion.
+Si en una escena a medida pasa algo que debe sonar en un instante concreto, añade al plano del guion:
+
+    "sonidos": [{"s": "thunder", "t": 0.6}, {"s": "splash", "t": 0.5, "k": true}]
+
+`t` en segundos desde el inicio del plano (o fracción de su duración si `"k": true`). Nombres válidos: las claves de CUES en sonido.py
+(whoosh, whip, hit, hit_hard, boom, explosion, thud, pop, ding, sparkle, money, tick, heartbeat, thunder, rain, wind, wave, splash,
+bubbles, fire, glass, door, steps, run, fall, rise, mystery, rumble, boing, arrow, metal, paper, camera, scare, laser...).

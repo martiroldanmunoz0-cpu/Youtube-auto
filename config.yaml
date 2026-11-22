@@ -60,8 +60,10 @@ voz:
   tono: "-2Hz"
 
 musica:
-  volumen_ambiente: 0.13         # música suave generada (distinta en cada vídeo) + algún golpe suave en el gancho
-  efectos: true
+  efectos: true                  # efectos sincronizados con lo que pasa (assets/sfx, CC0) + ambiente del lugar
+  efectos_db: 0                  # subir/bajar todos los efectos (dB)
+  fondo_musical: false           # música de fondo generada: apagada
+  volumen_ambiente: 0.1
 
 publicacion:
   zona_horaria: "Europe/Madrid"
