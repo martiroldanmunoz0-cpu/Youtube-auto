@@ -1,2216 +1,2215 @@
 {
- "title": "7 lugares donde está prohibido entrar (y el peligro eres tú)",
- "description": "¿Cuál de los siete lugares te ha sorprendido más? 👇\n\nLugares prohibidos del mundo: Área 51, Isla Sentinel del Norte, Lascaux, Svalbard, Surtsey, Ise y la isla de las serpientes, con la razón real de cada prohibición.\nDel siete al uno, descubre por qué no puedes entrar y quién protege a quién. El número uno cambia todo.\n¿Cuál de los siete lugares te ha sorprendido más?\n#lugaresprohibidos #curiosidades #area51 #islasentinel #misterios",
- "tags": [
-  "lugares prohibidos",
-  "lugares donde no se puede entrar",
-  "isla sentinel del norte",
-  "area 51",
-  "isla de las serpientes",
-  "cueva de lascaux",
-  "bóveda de semillas svalbard",
-  "santuario de ise",
-  "surtsey",
-  "curiosidades del mundo",
-  "top 7 lugares prohibidos"
- ],
- "beats": [
-  {
-   "capitulo": "Capítulo 1 · Secretos de Estado",
-   "text": "¿Dónde en la Tierra te prohíben entrar?",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "map_pin",
-     "params": {
-      "style": "globo",
-      "place": "Siete lugares",
-      "detail": "Prohibido entrar"
-     }
+  "title": "7 lugares donde está prohibido entrar (y el peligro eres tú)",
+  "description": "¿Cuál de los siete lugares te ha sorprendido más? 👇\n\nLugares prohibidos del mundo: Área 51, Isla Sentinel del Norte, Lascaux, Svalbard, Surtsey, Ise y la isla de las serpientes, con la razón real de cada prohibición.\nDel siete al uno, descubre por qué no puedes entrar y quién protege a quién. El número uno cambia todo.\n¿Cuál de los siete lugares te ha sorprendido más?\n#lugaresprohibidos #curiosidades #area51 #islasentinel #misterios",
+  "tags": [
+    "lugares prohibidos",
+    "lugares donde no se puede entrar",
+    "isla sentinel del norte",
+    "area 51",
+    "isla de las serpientes",
+    "cueva de lascaux",
+    "bóveda de semillas svalbard",
+    "santuario de ise",
+    "surtsey",
+    "curiosidades del mundo",
+    "top 7 lugares prohibidos"
+  ],
+  "beats": [
+    {
+      "capitulo": "Capítulo 1 · Secretos de Estado",
+      "text": "¿Dónde en la Tierra te prohíben entrar?",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "style": "globo",
+            "place": "Siete lugares",
+            "detail": "Prohibido entrar"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Hoy vas a intentar entrar en siete lugares prohibidos, del siete al uno.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "tamano": "grande",
+            "anim": "girar"
+          },
+          {
+            "pieza": "senal_trafico",
+            "pos": "derecha",
+            "tamano": "mediano"
+          }
+        ],
+        "persona": "medio",
+        "mood": "shocked"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Y en el número uno descubrirás que el peligro no es el lugar: eres tú.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "ERES TÚ",
+            "label": "el peligro del número 1",
+            "lugar": "calle",
+            "color": "#e63946"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Prepárate, porque en cada puerta cerrada hay una razón real, y no siempre es la que piensas.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "calle",
+        "piezas": [
+          {
+            "pieza": "senal_trafico",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "semaforo",
+            "pos": "derecha"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried",
+        "objeto": "llaves"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "Empezamos en el desierto de Nevada, en Estados Unidos.",
+      "scene": "escena",
+      "params": {
+        "lugar": "desierto",
+        "hora": "atardecer",
+        "plano": "entero",
+        "mood": "neutral",
+        "label": "Nevada, EE. UU."
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Número siete: el Área cincuenta y uno.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "Nº 7",
+            "label": "Área 51",
+            "lugar": "desierto",
+            "color": "#f4a261"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Te acercas a la valla y ves un cartel que no admite bromas.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "atardecer",
+        "piezas": [
+          {
+            "pieza": "senal_trafico",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "medio",
+        "mood": "shocked"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Avisa de que el personal de seguridad puede usar fuerza letal contra intrusos.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "desierto",
+            "hora": "atardecer",
+            "label": "Fuerza letal"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Es una base de la Fuerza Aérea, y durante décadas fue un secreto oficial.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "atardecer",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "centro",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "avion",
+            "pos": "arriba_derecha",
+            "anim": "entrar_der"
+          }
+        ],
+        "persona": "no"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "Ni siquiera se reconocía que existiera, hasta que en dos mil trece la CIA publicó documentos desclasificados.",
+      "scene": "document",
+      "params": {
+        "title": "Informe de la CIA",
+        "lines": [
+          "Base en Nevada",
+          "Pruebas de aviones",
+          "Vuelos a gran altura",
+          "Secreto oficial"
+        ],
+        "highlight": 3,
+        "stamp": "2013"
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    },
+    {
+      "text": "Y esos papeles explican de dónde salieron tantos ovnis.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "desierto",
+        "hora": "noche",
+        "label": "¿Ovnis?"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "En los años cincuenta, los aviones comerciales volaban como mucho a unos seis mil metros de altura.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "avion",
+            "pos": "centro",
+            "tamano": "mediano",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "nube",
+            "pos": "fondo"
+          }
+        ],
+        "persona": "no",
+        "label": "10.000 metros"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "Pero un avión espía llamado U-dos volaba muchísimo más alto, cerca de veinte mil metros.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "avion",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "entrar_der"
+          },
+          {
+            "pieza": "nube",
+            "pos": "fondo"
+          }
+        ],
+        "persona": "no",
+        "label": "20.000 metros"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Desde abajo, su fuselaje brillaba con el sol del atardecer como un objeto extraño.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "desierto",
+            "hora": "atardecer",
+            "efecto": "brillo",
+            "piezas": [
+              {
+                "pieza": "avion",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "entero",
+            "mood": "shocked"
+          }
+        }
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Muchos testigos vieron luces en lo alto y pensaron en extraterrestres.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "desierto",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "ovni",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "arriba_izquierda",
+                "tamano": "pequeno"
+              }
+            ],
+            "persona": "entero",
+            "mood": "shocked"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Eran pilotos probando un avión secreto contra la Unión Soviética.",
+      "scene": "newspaper",
+      "params": {
+        "style": "papel",
+        "headline": "Avión espía U-2",
+        "kicker": "Archivo histórico",
+        "date": "Años 50"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Aquí te paran para proteger un secreto.",
+      "scene": "escena",
+      "params": {
+        "lugar": "desierto",
+        "hora": "atardecer",
+        "plano": "sin_persona",
+        "label": "Un secreto"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "El del seis protege algo distinto: el seguro de vida de la humanidad.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "tamano": "grande",
+            "anim": "latir"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "derecha",
+            "tamano": "mediano"
+          }
+        ],
+        "persona": "no",
+        "label": "Seguro de vida"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Capítulo 2 · Tesoros bajo llave",
+      "text": "Número seis: la Bóveda Global de Semillas de Svalbard, en Noruega.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 18,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "montana",
+            "hora": "dia",
+            "plano": "entero",
+            "mood": "happy",
+            "label": "Svalbard, Noruega"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Viajas hasta una isla del Ártico y subes por una montaña helada.",
+      "scene": "map_pin",
+      "params": {
+        "style": "relieve",
+        "place": "Svalbard",
+        "detail": "Ártico"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Ante ti aparece una entrada de hormigón excavada en la propia roca.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "montana",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "cofre",
+            "tamano": "grande",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "hielo",
+            "pos": "izquierda"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Dentro hace unos dieciocho grados bajo cero, para que nada se estropee.",
+      "scene": "accion",
+      "params": {
+        "tipo": "congelarse",
+        "lugar": "montana",
+        "label": "-18 °C"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Y hay más de un millón de muestras de semillas, de casi todos los países.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "piramide",
+            "tamano": "gigante",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "no",
+        "label": "Más de un millón"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Es una copia de seguridad de la comida del planeta.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "pos": "centro",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "manzana",
+            "pos": "izquierda"
+          },
+          {
+            "pieza": "platano",
+            "pos": "derecha"
+          }
+        ],
+        "persona": "no",
+        "label": "Copia de seguridad"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Por eso no puedes entrar: solo se abre unas pocas veces al año para depositar cajas.",
+      "scene": "calendar",
+      "params": {
+        "style": "pared",
+        "month": "Año",
+        "day": "3",
+        "label": "Se abre pocas veces"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Cada caja sigue siendo propiedad del país que la envía.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "piramide",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "mano",
+            "pos": "derecha",
+            "anim": "entrar_der"
+          }
+        ],
+        "persona": "no",
+        "label": "Cada caja tiene dueño"
+      },
+      "camera": "pan_left",
+      "transition": "cut"
+    },
+    {
+      "text": "Durante años fue un lugar donde nunca se sacaba nada.",
+      "scene": "escena",
+      "params": {
+        "lugar": "montana",
+        "hora": "atardecer",
+        "plano": "sin_persona",
+        "label": "Nadie sacaba nada"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Hasta que en dos mil quince estalló la guerra en Siria.",
+      "scene": "newspaper",
+      "params": {
+        "style": "web",
+        "headline": "Guerra en Siria",
+        "kicker": "Última hora",
+        "date": "2015"
+      },
+      "camera": "push_in",
+      "transition": "red"
+    },
+    {
+      "text": "El banco de semillas de Alepo quedó inutilizable, y sus investigadores necesitaron copias.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 28,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "piezas": [
+              {
+                "pieza": "edificio",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "escombros",
+                "pos": "derecha"
+              }
+            ],
+            "persona": "no",
+            "label": "Alepo"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Fue la primera retirada de la historia de la bóveda.",
+      "scene": "document",
+      "params": {
+        "title": "Primera retirada",
+        "lines": [
+          "Año: 2015",
+          "Origen: Alepo",
+          "Motivo: guerra"
+        ],
+        "highlight": 0,
+        "stamp": "HISTÓRICO"
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    },
+    {
+      "text": "Esa puerta se abre pocas veces al año.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "montana",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "cofre",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "reloj_arena",
+            "pos": "derecha",
+            "anim": "girar"
+          }
+        ],
+        "persona": "no"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "La del cinco casi nadie la ha cruzado en siglos.",
+      "scene": "accion",
+      "params": {
+        "tipo": "correr",
+        "lugar": "campo",
+        "hora": "dia",
+        "label": "Número 5"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "Número cinco: el santuario interior de Ise, en Japón.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 32,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "happy",
+            "objeto": "none",
+            "label": "Ise, Japón"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Caminas entre cedros enormes y llegas ante un torii de madera.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "selva",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "castillo",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "izquierda",
+            "tamano": "gigante"
+          }
+        ],
+        "persona": "medio",
+        "mood": "happy"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Es el lugar más sagrado del sintoísmo, dedicado a la diosa del sol, Amaterasu.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "sol",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "latir"
+          },
+          {
+            "pieza": "castillo",
+            "pos": "centro"
+          }
+        ],
+        "persona": "no",
+        "label": "Amaterasu"
+      },
+      "camera": "pull_out",
+      "transition": "flash"
+    },
+    {
+      "text": "Das unos pasos más y te detiene una valla de madera.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "selva",
+        "hora": "dia",
+        "label": "Una valla"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Los visitantes solo pueden mirar de lejos; el recinto interior es para sacerdotes y miembros de la familia imperial.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "selva",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "castillo",
+            "pos": "fondo",
+            "tamano": "mediano"
+          }
+        ],
+        "persona": "entero",
+        "mood": "worried",
+        "label": "Solo sacerdotes y familia imperial"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Tras la valla hay un santuario de madera que parece antiquísimo.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "selva",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "castillo",
+            "tamano": "gigante"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "derecha"
+          }
+        ],
+        "persona": "no"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "Pero lo sorprendente es que es nuevo.",
+      "scene": "accion",
+      "params": {
+        "tipo": "idea",
+        "lugar": "selva",
+        "hora": "dia",
+        "label": "Es nuevo"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Cada veinte años lo derriban y lo construyen otra vez, idéntico.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 39,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "castillo",
+                "pos": "izquierda",
+                "anim": "caer"
+              },
+              {
+                "pieza": "castillo",
+                "pos": "derecha",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "escombros",
+                "pos": "centro",
+                "tamano": "pequeno"
+              }
+            ],
+            "persona": "no",
+            "label": "Cada 20 años"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Es una tradición de unos mil trescientos años.",
+      "scene": "big_text",
+      "params": {
+        "text": "1.300 años",
+        "label": "de tradición",
+        "lugar": "selva",
+        "color": "#2a9d8f"
+      },
+      "camera": "slam",
+      "transition": "fade"
+    },
+    {
+      "text": "La última reconstrucción terminó en dos mil trece, y la próxima toca en dos mil treinta y tres.",
+      "scene": "year_jump",
+      "params": {
+        "from": 2013,
+        "to": 2033,
+        "label": "Próxima reconstrucción"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Para ellos, el santuario no se conserva: se renueva.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "selva",
+        "hora": "atardecer",
+        "efecto": "brillo",
+        "piezas": [
+          {
+            "pieza": "castillo",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "no"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Aquí te para una valla. En el cuatro, te para la Marina de Brasil.",
+      "scene": "escena",
+      "params": {
+        "lugar": "campo",
+        "hora": "atardecer",
+        "plano": "entero",
+        "arms": "cross",
+        "mood": "worried"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Capítulo 3 · El mito de las serpientes",
+      "text": "Número cuatro: la Ilha da Queimada Grande, frente a la costa de São Paulo.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 44,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "Queimada Grande, Brasil"
+          }
+        }
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Navegas hacia una isla verde y rocosa, y una embarcación se cruza en tu camino.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "shocked",
+        "arms": "up"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Es un barco de la Marina de Brasil, y te prohíbe desembarcar.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "barco",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "senal_trafico",
+            "pos": "derecha"
+          }
+        ],
+        "persona": "no",
+        "label": "Prohibido desembarcar"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Allí vive la yarará dorada, una serpiente muy venenosa.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "selva",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "serpiente",
+            "tamano": "grande",
+            "anim": "acercarse"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried",
+        "label": "Yarará dorada"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Y solo existe en esta isla, en ningún otro lugar del planeta.",
+      "scene": "big_text",
+      "params": {
+        "text": "1 isla",
+        "label": "su único hogar",
+        "lugar": "playa",
+        "color": "#e9c46a"
+      },
+      "camera": "slam",
+      "transition": "fade"
+    },
+    {
+      "text": "Seguro has oído que hay una serpiente por cada metro cuadrado.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "selva",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "serpiente",
+            "pos": "izquierda"
+          },
+          {
+            "pieza": "serpiente",
+            "pos": "centro"
+          },
+          {
+            "pieza": "serpiente",
+            "pos": "derecha"
+          },
+          {
+            "pieza": "serpiente",
+            "pos": "fondo"
+          }
+        ],
+        "persona": "no",
+        "label": "Una por metro cuadrado"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "Eso es un mito.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 50,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "angry",
+            "label": "MITO"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Los estudios calculan unos pocos miles de serpientes en toda la isla.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "montana_pieza",
+            "pos": "fondo",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "serpiente",
+            "pos": "izquierda",
+            "tamano": "pequeno"
+          },
+          {
+            "pieza": "serpiente",
+            "pos": "derecha",
+            "tamano": "pequeno"
+          }
+        ],
+        "persona": "no",
+        "label": "Unos pocos miles"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Aun así, una mordedura sin ayuda médica cerca podría ser gravísima.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "selva",
+        "hora": "dia",
+        "label": "Veneno potente"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Solo pasan investigadores con permiso especial.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "lupa",
+            "pos": "derecha",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "barco",
+            "pos": "fondo"
+          }
+        ],
+        "persona": "medio",
+        "mood": "happy",
+        "objeto": "papel",
+        "label": "Con permiso"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Pero hay otro motivo: la serpiente está en peligro crítico de extinción.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "selva",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "serpiente",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "senal_trafico",
+            "pos": "derecha"
+          }
+        ],
+        "persona": "no",
+        "label": "Peligro crítico"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "La prohibición no solo te protege a ti. También protege a la serpiente.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "selva",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "serpiente",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "mano",
+            "pos": "derecha",
+            "tamano": "grande"
+          }
+        ],
+        "persona": "no",
+        "label": "También la protege"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Ese es el primer aviso: a veces el peligro no es el lugar.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "plano": "entero",
+        "mood": "worried",
+        "label": "Primer aviso"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "En el tres, quedará clarísimo.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "playa",
+        "hora": "atardecer"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Capítulo 4 · Tú contaminas",
+      "text": "Número tres: Surtsey, en Islandia.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 58,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "Surtsey, Islandia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "En noviembre de mil novecientos sesenta y tres, el mar empezó a hervir.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 59,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "explosion",
+            "lugar": "bajo_el_mar",
+            "hora": "dia",
+            "label": "1963"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Un volcán submarino asomó y creó una isla nueva.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "piezas": [
+          {
+            "pieza": "volcan",
+            "tamano": "grande",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "ola_gigante",
+            "pos": "derecha"
+          }
+        ],
+        "persona": "no",
+        "label": "Volcán submarino"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "La erupción duró hasta mil novecientos sesenta y siete.",
+      "scene": "year_jump",
+      "params": {
+        "from": 1963,
+        "to": 1967,
+        "label": "La isla crece"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Llegas en barco y ves una isla negra, con humo saliendo de la roca.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "volcan",
+            "tamano": "gigante"
+          },
+          {
+            "pieza": "barco",
+            "pos": "izquierda",
+            "anim": "flotar"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried",
+        "efecto": "humo"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Pero en la orilla te espera un científico con mochila, que te corta el paso.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "plano": "medio",
+        "who": "cientifico",
+        "mood": "neutral",
+        "objeto": "papel"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Solo entran investigadores con permiso.",
+      "scene": "document",
+      "params": {
+        "title": "Permiso de acceso",
+        "lines": [
+          "Isla: Surtsey",
+          "Solo investigación"
+        ],
+        "highlight": 1,
+        "stamp": "SOLO CIENTÍFICOS"
+      },
+      "camera": "static",
+      "transition": "flash"
+    },
+    {
+      "text": "Surtsey es un laboratorio natural: quieren ver cómo llega la vida a una tierra nueva.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "microscopio",
+            "pos": "izquierda",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "derecha",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "no",
+        "label": "Laboratorio natural"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Sin ayuda humana: las semillas llegan con el viento, el mar y las aves.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "viento",
+            "pos": "izquierda"
+          },
+          {
+            "pieza": "pajaro",
+            "pos": "arriba",
+            "anim": "entrar_der"
+          },
+          {
+            "pieza": "ola_gigante",
+            "pos": "derecha"
+          }
+        ],
+        "persona": "no",
+        "label": "Viento, mar y aves"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "Y un día apareció una tomatera.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 67,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "crecer",
+            "lugar": "playa",
+            "hora": "dia",
+            "label": "Una tomatera"
+          }
+        }
+      },
+      "camera": "tilt_up",
+      "transition": "cut"
+    },
+    {
+      "text": "Había brotado de una semilla en los excrementos de un investigador.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "arbol",
+            "tamano": "grande",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "lupa",
+            "pos": "derecha"
+          }
+        ],
+        "persona": "medio",
+        "who": "cientifico",
+        "mood": "worried",
+        "label": "Semilla humana"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "La arrancaron al instante.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "arbol",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "mano",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "entrar_der"
+          }
+        ],
+        "persona": "no",
+        "label": "Arrancada"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Un solo descuido humano habría falseado todo el experimento.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "playa",
+        "hora": "dia",
+        "who": "cientifico"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Aquí, si entras, contaminas la isla.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "volcan",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "bacteria",
+            "pos": "derecha",
+            "anim": "acercarse"
+          }
+        ],
+        "persona": "medio",
+        "mood": "shocked",
+        "label": "Contaminas"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "En el dos, con solo respirar, destruyes algo de diecisiete mil años.",
+      "scene": "big_text",
+      "params": {
+        "text": "17.000 años",
+        "label": "en riesgo con tu aliento",
+        "lugar": "playa",
+        "color": "#e76f51"
+      },
+      "camera": "slam",
+      "transition": "whip"
+    },
+    {
+      "text": "Número dos: la cueva de Lascaux, en Francia.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 73,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "montana",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "Lascaux, Francia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "En mil novecientos cuarenta, unos adolescentes entraron siguiendo a su perro y encontraron un tesoro.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "perro",
+            "pos": "izquierda",
+            "anim": "entrar_izq"
+          }
+        ],
+        "persona": "medio",
+        "mood": "happy",
+        "label": "1940"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Eran caballos, toros y ciervos pintados hace unos diecisiete mil años.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "pluma",
+            "tamano": "gigante",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "no",
+        "label": "Hace 17.000 años"
+      },
+      "camera": "pan_left",
+      "transition": "flash"
+    },
+    {
+      "text": "Te asomas con una linterna y los animales parecen moverse.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 76,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "fondo",
+            "hora": "noche",
+            "plano": "medio",
+            "mood": "happy",
+            "objeto": "linterna"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "En mil novecientos cuarenta y ocho abrieron la cueva al público.",
+      "scene": "newspaper",
+      "params": {
+        "style": "portada",
+        "headline": "Lascaux abre al público",
+        "kicker": "Gaceta de Francia",
+        "date": "1948"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Llegaron cientos de visitantes al día.",
+      "scene": "group",
+      "params": {
+        "count": 4,
+        "hora": "dia",
+        "lugar": "campo",
+        "mood": "happy",
+        "label": "Cientos al día"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Cada visitante respira, y cada aliento suelta dióxido de carbono, humedad y calor.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 79,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "pulmones",
+                "tamano": "grande",
+                "anim": "latir"
+              },
+              {
+                "pieza": "nube",
+                "pos": "arriba_derecha"
+              }
+            ],
+            "persona": "no",
+            "label": "CO2, humedad y calor"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Tu aliento se convierte en una amenaza para las pinturas.",
+      "scene": "accion",
+      "params": {
+        "tipo": "soltar_aire",
+        "lugar": "fondo",
+        "hora": "noche",
+        "label": "Tu aliento"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Empezaron a crecer algas y manchas sobre la roca.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "pluma",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "ola_gigante",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "no",
+        "label": "Algas"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Las pinturas que habían resistido milenios se estaban estropeando en pocos años.",
+      "scene": "year_jump",
+      "params": {
+        "from": 1948,
+        "to": 1963,
+        "label": "Pinturas dañadas"
+      },
+      "camera": "push_in",
+      "transition": "red"
+    },
+    {
+      "text": "En mil novecientos sesenta y tres, la cerraron.",
+      "scene": "document",
+      "params": {
+        "title": "Lascaux",
+        "lines": [
+          "Año: 1963",
+          "Cueva cerrada"
+        ],
+        "highlight": 1,
+        "stamp": "CERRADA"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Hoy se visitan réplicas, y hasta los científicos entran poquísimo tiempo.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "pluma",
+            "pos": "derecha",
+            "tamano": "grande"
+          }
+        ],
+        "persona": "medio",
+        "mood": "happy",
+        "label": "Réplicas"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Tu aliento puede borrar una pintura.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "pulmones",
+            "pos": "izquierda",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "ola_gigante",
+            "pos": "derecha",
+            "tamano": "grande"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "En el número uno, un simple resfriado tuyo podría borrar a un pueblo entero.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "virus",
+            "tamano": "grande",
+            "anim": "acercarse"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried",
+        "label": "Número 1"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "capitulo": "Capítulo 5 · El peligro eres tú",
+      "text": "Número uno: la Isla Sentinel del Norte, en el archipiélago de Andamán, India.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 87,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "style": "islas",
+            "place": "Sentinel del Norte",
+            "detail": "Andamán, India"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Aquí viven los sentineleses, uno de los últimos pueblos sin contacto con el exterior.",
+      "scene": "escena",
+      "params": {
+        "lugar": "selva",
+        "hora": "dia",
+        "plano": "sin_persona",
+        "label": "Pueblo aislado"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "La ley india prohíbe acercarse a la isla.",
+      "scene": "document",
+      "params": {
+        "title": "Ley de la India",
+        "lines": [
+          "Prohibido acercarse",
+          "Isla Sentinel del Norte"
+        ],
+        "highlight": 0,
+        "stamp": "PROHIBIDO"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Y tú, claro, piensas que lo harás mejor.",
+      "scene": "accion",
+      "params": {
+        "tipo": "idea",
+        "lugar": "playa",
+        "hora": "dia",
+        "label": "Yo lo haré mejor"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Te acercas en una barca, y entre la selva densa distingues figuras en la playa.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "barca",
+            "pos": "izquierda",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "fondo",
+            "tamano": "gigante"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "De repente, una flecha se clava en la arena, cerca de ti.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 92,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "efecto": "impacto",
+            "piezas": [
+              {
+                "pieza": "espada",
+                "tamano": "grande",
+                "anim": "caer"
+              }
+            ],
+            "persona": "entero",
+            "mood": "shocked"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Reciben a flechazos a quien se acerca.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "shocked",
+        "arms": "up"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Tras el tsunami de dos mil cuatro, dispararon flechas a un helicóptero que sobrevolaba la isla.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "helicoptero",
+            "pos": "arriba",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "espada",
+            "pos": "izquierda"
+          },
+          {
+            "pieza": "ola_gigante",
+            "pos": "derecha"
+          }
+        ],
+        "persona": "no",
+        "label": "Tras el tsunami de 2004"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Y en dos mil dieciocho mataron a un joven estadounidense que desembarcó ilegalmente.",
+      "scene": "newspaper",
+      "params": {
+        "style": "web",
+        "headline": "Desembarcó ilegalmente",
+        "kicker": "Última hora",
+        "date": "2018"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Piensas: entonces la prohibición es por las flechas, para protegerte.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "playa",
+        "hora": "atardecer"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Pero te equivocas.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "playa",
+        "hora": "atardecer"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "La razón principal no son las flechas.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "piezas": [
+          {
+            "pieza": "espada",
+            "pos": "izquierda",
+            "tamano": "pequeno"
+          },
+          {
+            "pieza": "lupa",
+            "pos": "centro",
+            "tamano": "grande"
+          }
+        ],
+        "persona": "no",
+        "label": "La razón real"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Llevan miles de años aislados, y sus defensas no conocen nuestros virus.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 99,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "virus",
+                "pos": "izquierda",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "globulo_blanco",
+                "pos": "derecha",
+                "tamano": "grande"
+              }
+            ],
+            "persona": "no",
+            "label": "Miles de años aislados"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Un resfriado o una gripe tuya podría acabar con ellos.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "virus",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "acercarse"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried",
+        "label": "Gripe o resfriado"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "En este lugar tú eres el arma.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 101,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "shocked",
+            "label": "El arma eres tú"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Un estornudo tuyo sería más mortal para ellos que cualquier flecha para ti.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "virus",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "espada",
+            "pos": "derecha",
+            "tamano": "pequeno"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried",
+        "label": "Estornudo contra flecha"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Y fíjate en el hilo de toda la lista.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "lupa",
+            "pos": "izquierda",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "tierra",
+            "pos": "derecha",
+            "tamano": "grande"
+          }
+        ],
+        "persona": "no",
+        "label": "El hilo de la lista"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Una tomatera en Surtsey, un aliento en Lascaux, un resfriado en Sentinel.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 104,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "El hilo",
+            "lines": [
+              "Surtsey: una tomatera",
+              "Lascaux: un aliento",
+              "Sentinel: un resfriado"
+            ],
+            "highlight": 2,
+            "stamp": "TÚ"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Es el único lugar de esta lista donde la prohibición no protege un secreto.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "plano": "sin_persona",
+        "label": "Sin secretos"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Protege a un pueblo entero.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-1-01",
+        "plano": 106,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "atardecer",
+            "efecto": "brillo",
+            "piezas": [
+              {
+                "pieza": "mano",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "casa",
+                "pos": "fondo",
+                "tamano": "pequeno"
+              }
+            ],
+            "persona": "no",
+            "label": "Protege a un pueblo"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Hoy has visto que prohibir también puede ser una forma de cuidar.",
+      "scene": "accion",
+      "params": {
+        "tipo": "idea",
+        "lugar": "salon",
+        "hora": "atardecer"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Quizá la próxima vez que veas un cartel de prohibido, pensarás quién protege a quién.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "calle",
+        "hora": "atardecer",
+        "piezas": [
+          {
+            "pieza": "senal_trafico",
+            "tamano": "grande"
+          }
+        ],
+        "persona": "medio",
+        "mood": "happy"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Cuéntame en los comentarios: ¿cuál de los siete lugares te ha sorprendido más?",
+      "scene": "escena",
+      "params": {
+        "lugar": "salon",
+        "hora": "noche",
+        "plano": "medio",
+        "mood": "happy",
+        "objeto": "movil",
+        "label": "¿Cuál te sorprendió más?"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Si te ha gustado, en el siguiente vídeo descubrirás qué hay realmente en lugares que nadie ha podido explorar.",
+      "scene": "map_pin",
+      "params": {
+        "style": "calles",
+        "place": "Próximo vídeo",
+        "detail": "Lugares inexplorados"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
     }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Hoy vas a intentar entrar en siete lugares prohibidos, del siete al uno.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "espacio",
-    "piezas": [
-     {
-      "pieza": "tierra",
-      "tamano": "grande",
-      "anim": "girar"
-     },
-     {
-      "pieza": "senal_trafico",
-      "pos": "derecha",
-      "tamano": "mediano"
-     }
-    ],
-    "persona": "medio",
-    "mood": "shocked"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Y en el número uno descubrirás que el peligro no es el lugar: eres tú.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 2,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "ERES TÚ",
-      "label": "el peligro del número 1",
-      "lugar": "calle",
-      "color": "#e63946"
-     }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "media",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    },
+    "cientifico": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "corta",
+      "gafas": true,
+      "ropa": "blanco"
     }
-   },
-   "camera": "slam",
-   "transition": "flash"
   },
-  {
-   "text": "Prepárate, porque en cada puerta cerrada hay una razón real, y no siempre es la que piensas.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "calle",
-    "piezas": [
-     {
-      "pieza": "senal_trafico",
-      "tamano": "grande",
-      "anim": "temblar"
-     },
-     {
-      "pieza": "semaforo",
-      "pos": "derecha"
-     }
-    ],
-    "persona": "medio",
-    "mood": "worried",
-    "objeto": "llaves"
-   },
-   "camera": "pan_right",
-   "transition": "whip"
+  "cover_text": "NI RESPIRAR",
+  "comment_q": "¿Cuál de los siete lugares te ha sorprendido más?",
+  "lista": "Mitos y verdades",
+  "formato": "horizontal",
+  "question": "¿Por qué hay lugares de la Tierra donde está prohibido entrar, y quién protege a quién?",
+  "piezas_pendientes": [
+    "cartel_base_militar",
+    "avion_u2",
+    "entrada_boveda_svalbard",
+    "estanteria_semillas",
+    "torii_ise",
+    "barco_marina",
+    "yarara_dorada",
+    "isla_volcanica",
+    "tomatera",
+    "pinturas_lascaux",
+    "manchas_algas",
+    "virus_estornudo",
+    "arco_flechas"
+  ],
+  "id": "largo-1-01",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Ranking en cuenta atrás de 7 lugares reales donde está prohibido entrar, narrado en segunda persona: en cada capítulo intentas entrar y descubres por qué te paran. Cada capítulo dura unos 7-8 s (qué es, por qué no puedes entrar, un dato sorprendente y un puente al siguiente), unos 60 s en total. Hilo oculto: del 7 al 4 el lugar te protege a ti o protege un secreto; del 3 al 1 se revela que lo protegen DE ti. 7) Área 51 (Nevada, EE. UU.): base de la Fuerza Aérea con carteles que avisan del uso de fuerza letal. Durante décadas fue un secreto oficial: la CIA no reconoció su existencia hasta documentos desclasificados en 2013, que explican que muchos «ovnis» de los años 50 eran en realidad aviones espía U-2 volando a una altura altísima. Puente: «Lo de aquí es secreto. Lo del 6 es otra cosa: es el seguro de vida de la humanidad». 6) Bóveda Global de Semillas de Svalbard (Noruega): excavada dentro de una montaña del Ártico, a unos -18 °C y con más de un millón de muestras de semillas de casi todos los países. Solo se abre unas pocas veces al año para depositar semillas. Dato: en 2015 se hizo la primera retirada de su historia, cuando la guerra de Siria impidió usar el banco de semillas de Alepo. Puente: «Esa puerta se abre pocas veces al año. La del 5 no la ha cruzado casi nadie en siglos». 5) Santuario interior de Ise (Japón): el lugar más sagrado del sintoísmo, dedicado a la diosa del sol Amaterasu. Los visitantes solo llegan hasta una valla; el recinto interior está reservado a sacerdotes y miembros de la familia imperial. Dato: lo derriban y lo reconstruyen idéntico cada 20 años, una tradición de unos 1.300 años. La última reconstrucción fue en 2013 y la próxima toca en 2033. Puente: «Aquí te para una valla. En el 4 te para la Marina de Brasil». 4) Ilha da Queimada Grande (Brasil): frente a la costa de São Paulo. Allí vive la yarará dorada, una serpiente muy venenosa que solo existe en esa isla y está en peligro crítico. La Marina prohíbe desembarcar; solo pasan investigadores con permiso. Mito contra realidad: no hay «una serpiente por metro cuadrado»; los estudios calculan unos pocos miles en toda la isla. Y la prohibición no es solo por ti, también protege a la serpiente. Puente: «Ese es el primer aviso: a veces el peligro no es el lugar. En el 3 queda claro». 3) Surtsey (Islandia): isla nacida de una erupción volcánica entre 1963 y 1967. Solo entran científicos con permiso, para estudiar cómo llega la vida a una tierra nueva sin ayuda humana. Dato: allí brotó una tomatera de la semilla que había en los excrementos de un investigador, y la arrancaron. Puente: «Aquí, si entras, contaminas la isla. En el 2, con solo respirar, destruyes algo de 17.000 años». 2) Cueva de Lascaux (Francia): unos adolescentes la descubrieron en 1940, con pinturas de animales de hace unos 17.000 años. Se abrió al público en 1948, pero el aliento de los visitantes (dióxido de carbono, humedad y calor) hizo crecer algas y manchas que dañaron las pinturas. En 1963 la cerraron. Hoy se visitan réplicas, y hasta los científicos entran poquísimo tiempo. Puente: «Tu aliento puede borrar una pintura. En el número 1, un simple resfriado tuyo podría borrar a un pueblo entero». 1) Isla Sentinel del Norte (Andamán, India): allí viven los sentineleses, uno de los últimos pueblos sin contacto con el mundo exterior. La ley india prohíbe acercarse a la isla. Reciben a flechazos a quien se acerca: en 2004, tras el tsunami, dispararon flechas a un helicóptero, y en 2018 mataron a un joven estadounidense que desembarcó ilegalmente. Pero la razón principal de la prohibición no son las flechas: llevan miles de años aislados y sus defensas no conocen nuestros virus, así que una gripe o un resfriado podría acabar con ellos.",
+    "gancho": "¿Sabías que hay lugares en la Tierra donde está prohibido entrar? Te llevo a siete… y en el número 1, el peligro no es el lugar: eres tú.",
+    "giro_final": "En el número 1 la amenaza da la vuelta: en Sentinel del Norte no te prohíben entrar por las flechas, sino porque tú eres el arma. Un estornudo tuyo podría ser más mortal para ellos que cualquier flecha para ti. Cierre: «Y quizá por eso es el único sitio de esta lista donde la prohibición no protege un secreto… protege a un pueblo entero». Esto conecta con el hilo que se fue preparando: tomatera de Surtsey → aliento en Lascaux → resfriado en Sentinel.",
+    "estilo_visual": "Cada capítulo tiene su propio decorado, sin repetir el mismo tipo de plano entre dos lugares seguidos. APERTURA: 'map_pin' con estilo globo terráqueo, con 7 chinchetas cayendo a la vez y la persona curiosa delante. 7 ÁREA 51: 'escena' de desierto de Nevada al atardecer, con la persona frente a una valla y un cartel de advertencia; 'document' con el informe desclasificado de la CIA, la línea resaltada y el sello «2013»; 'composicion' con un avión espía U-2 muy alto en el cielo y gente señalando un «ovni». 6 SVALBARD: 'escena' de montaña nevada del Ártico con la entrada de hormigón de la bóveda y la persona abrigada; 'accion' congelarse (escarcha creciendo, vaho) al imaginar los -18 °C; 'composicion' con estanterías de cajas de semillas y una caja saliendo con la etiqueta de Siria. 5 ISE: 'escena' luminosa de bosque de cedros con un torii y la valla de madera, con la persona detenida ante ella; 'year_jump' que avanza de 2013 a 2033 mientras se monta el santuario nuevo. 4 QUEIMADA GRANDE: 'escena' de isla verde y rocosa en el mar soleado con un barco de la Marina; 'composicion' de primer plano de la yarará dorada sobre una rama con la persona dando un salto atrás (mito contra realidad: primero el suelo lleno de serpientes, que se tacha, y luego unas pocas repartidas). 3 SURTSEY: 'accion' explosion (el volcán emerge del mar); 'composicion' con la isla negra humeante y un científico con mochila; 'accion' crecer (la semilla brota en tomatera) y una mano que la arranca. 2 LASCAUX: 'escena' de cueva iluminada con linterna y pinturas de caballos y toros; 'accion' soltar_aire (el aliento visible sale de la boca de la persona); 'composicion' con las pinturas cubriéndose de manchas verdes. 1 SENTINEL: 'map_pin' con estilo mapa de islas y la chincheta sobre Andamán; 'escena' de playa con selva densa y una barca que se aleja; 'composicion' con flechas clavándose en la arena cerca de la persona; GIRO: 'composicion' con virus de colores saliendo de un estornudo de la persona hacia la isla, en pantalla partida, y 'accion' dudar como plano final. Todo en estilo luminoso; nada del catálogo oscuro, para que no parezca terror. Portada: la yarará dorada enroscada en primer plano y, detrás, una valla con cartel de prohibido sobre una isla, con colores saturados y un solo elemento grande y nítido.",
+    "por_que_funcionara": "Respeta el formato pedido (ranking del 7 al 1) pero le añade lo que más aprueba el dueño: segunda persona, escalada de tensión y un giro final anunciado desde el gancho, que obliga a ver hasta el final. El hilo «el lugar es peligroso para ti → tú eres el peligro para el lugar» convierte una lista en una historia con progresión, y cada mini-gancho tira hacia el siguiente puesto. Todos los datos están documentados y se desmonta un mito popular (la serpiente por metro cuadrado), lo que da credibilidad. Responde a su feedback de «escenas feas o repetidas»: siete decorados distintos con piezas propias, sin repetir tipo de plano en capítulos seguidos. Al mantener cada capítulo en unos 7-8 s, evita el «demasiado largo».",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "Cartel de advertencia de base militar en una valla del desierto",
+      "Avión espía U-2 en vuelo",
+      "Entrada de hormigón de la Bóveda de Svalbard en la montaña nevada",
+      "Estantería con cajas de semillas etiquetadas",
+      "Torii y santuario sintoísta de madera de Ise",
+      "Yarará dorada (serpiente dorada en una rama)",
+      "Barco de la Marina de Brasil",
+      "Isla volcánica negra humeante emergiendo del mar",
+      "Tomatera pequeña brotando de la roca",
+      "Pinturas rupestres de caballos y toros de Lascaux",
+      "Manchas verdes de algas sobre la roca",
+      "Arco y flechas clavadas en la arena",
+      "Virus o gérmenes de dibujo animado saliendo de un estornudo"
+    ]
   },
-  {
-   "text": "Empezamos en el desierto de Nevada, en Estados Unidos.",
-   "scene": "escena",
-   "params": {
-    "lugar": "desierto",
-    "hora": "atardecer",
-    "plano": "entero",
-    "mood": "neutral",
-    "label": "Nevada, EE. UU."
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Número siete: el Área cincuenta y uno.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 5,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "Nº 7",
-      "label": "Área 51",
-      "lugar": "desierto",
-      "color": "#f4a261"
-     }
+  "ganchos": [
+    {
+      "texto": "¿Dónde en la Tierra te prohíben entrar?",
+      "tipo": "pregunta directa",
+      "puntuacion": 9,
+      "motivo": "Deja claro el tema en dos segundos, es concreta y pide respuesta."
+    },
+    {
+      "texto": "¿Te atreverías a entrar donde está prohibido?",
+      "tipo": "pregunta con reto",
+      "puntuacion": 7,
+      "motivo": "Reta al espectador, pero es menos concreta sobre el formato de ranking."
+    },
+    {
+      "texto": "Siete lugares te cierran el paso. Uno lo hace por tu culpa.",
+      "tipo": "dato que choca",
+      "puntuacion": 8,
+      "motivo": "Promete un giro y presenta el tema, aunque es algo larga."
+    },
+    {
+      "texto": "Vas a intentar entrar en siete lugares prohibidos.",
+      "tipo": "segunda persona",
+      "puntuacion": 7,
+      "motivo": "Inmersiva y clara, con menos intriga que una pregunta."
+    },
+    {
+      "texto": "Prohibido entrar no siempre significa peligro para ti.",
+      "tipo": "contradicción",
+      "puntuacion": 6,
+      "motivo": "Intriga, pero no deja claro el tema a un desconocido."
     }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Te acercas a la valla y ves un cartel que no admite bromas.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "desierto",
-    "hora": "atardecer",
-    "piezas": [
-     {
-      "pieza": "senal_trafico",
-      "tamano": "grande",
-      "anim": "crecer"
-     }
-    ],
-    "persona": "medio",
-    "mood": "shocked"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Avisa de que el personal de seguridad puede usar fuerza letal contra intrusos.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 7,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "sorpresa",
-      "lugar": "desierto",
-      "hora": "atardecer",
-      "label": "Fuerza letal"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "Es una base de la Fuerza Aérea, y durante décadas fue un secreto oficial.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "desierto",
-    "hora": "atardecer",
-    "piezas": [
-     {
-      "pieza": "edificio",
-      "pos": "centro",
-      "tamano": "mediano"
-     },
-     {
-      "pieza": "avion",
-      "pos": "arriba_derecha",
-      "anim": "entrar_der"
-     }
-    ],
-    "persona": "no"
-   },
-   "camera": "pan_left",
-   "transition": "fade"
-  },
-  {
-   "text": "Ni siquiera se reconocía que existiera, hasta que en dos mil trece la CIA publicó documentos desclasificados.",
-   "scene": "document",
-   "params": {
-    "title": "Informe de la CIA",
-    "lines": [
-     "Base en Nevada",
-     "Pruebas de aviones",
-     "Vuelos a gran altura",
-     "Secreto oficial"
-    ],
-    "highlight": 3,
-    "stamp": "2013"
-   },
-   "camera": "push_in",
-   "transition": "flash"
-  },
-  {
-   "text": "Y esos papeles explican de dónde salieron tantos ovnis.",
-   "scene": "accion",
-   "params": {
-    "tipo": "dudar",
-    "lugar": "desierto",
-    "hora": "noche",
-    "label": "¿Ovnis?"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "En los años cincuenta, los aviones comerciales volaban como mucho a unos seis mil metros de altura.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "avion",
-      "pos": "centro",
-      "tamano": "mediano",
-      "anim": "entrar_izq"
-     },
-     {
-      "pieza": "nube",
-      "pos": "fondo"
-     }
-    ],
-    "persona": "no",
-    "label": "10.000 metros"
-   },
-   "camera": "pan_right",
-   "transition": "whip"
-  },
-  {
-   "text": "Pero un avión espía llamado U-dos volaba muchísimo más alto, cerca de veinte mil metros.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "avion",
-      "pos": "arriba",
-      "tamano": "grande",
-      "anim": "entrar_der"
-     },
-     {
-      "pieza": "nube",
-      "pos": "fondo"
-     }
-    ],
-    "persona": "no",
-    "label": "20.000 metros"
-   },
-   "camera": "tilt_up",
-   "transition": "fade"
-  },
-  {
-   "text": "Desde abajo, su fuselaje brillaba con el sol del atardecer como un objeto extraño.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 13,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "desierto",
-      "hora": "atardecer",
-      "efecto": "brillo",
-      "piezas": [
-       {
-        "pieza": "avion",
-        "pos": "arriba",
-        "tamano": "mediano",
-        "anim": "flotar"
-       }
-      ],
-      "persona": "entero",
-      "mood": "shocked"
-     }
-    }
-   },
-   "camera": "tilt_up",
-   "transition": "fade"
-  },
-  {
-   "text": "Muchos testigos vieron luces en lo alto y pensaron en extraterrestres.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 14,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "desierto",
-      "hora": "noche",
-      "piezas": [
-       {
-        "pieza": "ovni",
-        "pos": "arriba",
-        "tamano": "mediano",
-        "anim": "flotar"
-       },
-       {
-        "pieza": "estrella",
-        "pos": "arriba_izquierda",
-        "tamano": "pequeno"
-       }
-      ],
-      "persona": "entero",
-      "mood": "shocked"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Eran pilotos probando un avión secreto contra la Unión Soviética.",
-   "scene": "newspaper",
-   "params": {
-    "style": "papel",
-    "headline": "Avión espía U-2",
-    "kicker": "Archivo histórico",
-    "date": "Años 50"
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Aquí te paran para proteger un secreto.",
-   "scene": "escena",
-   "params": {
-    "lugar": "desierto",
-    "hora": "atardecer",
-    "plano": "sin_persona",
-    "label": "Un secreto"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "El del seis protege algo distinto: el seguro de vida de la humanidad.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "tierra",
-      "tamano": "grande",
-      "anim": "latir"
-     },
-     {
-      "pieza": "arbol",
-      "pos": "derecha",
-      "tamano": "mediano"
-     }
-    ],
-    "persona": "no",
-    "label": "Seguro de vida"
-   },
-   "camera": "pull_out",
-   "transition": "whip"
-  },
-  {
-   "capitulo": "Capítulo 2 · Tesoros bajo llave",
-   "text": "Número seis: la Bóveda Global de Semillas de Svalbard, en Noruega.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 18,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "montana",
-      "hora": "dia",
-      "plano": "entero",
-      "mood": "happy",
-      "label": "Svalbard, Noruega"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Viajas hasta una isla del Ártico y subes por una montaña helada.",
-   "scene": "map_pin",
-   "params": {
-    "style": "relieve",
-    "place": "Svalbard",
-    "detail": "Ártico"
-   },
-   "camera": "push_in",
-   "transition": "whip"
-  },
-  {
-   "text": "Ante ti aparece una entrada de hormigón excavada en la propia roca.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "montana",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "cofre",
-      "tamano": "grande",
-      "anim": "crecer"
-     },
-     {
-      "pieza": "hielo",
-      "pos": "izquierda"
-     }
-    ],
-    "persona": "medio",
-    "mood": "worried"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Dentro hace unos dieciocho grados bajo cero, para que nada se estropee.",
-   "scene": "accion",
-   "params": {
-    "tipo": "congelarse",
-    "lugar": "montana",
-    "label": "-18 °C"
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Y hay más de un millón de muestras de semillas, de casi todos los países.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "piramide",
-      "tamano": "gigante",
-      "anim": "crecer"
-     }
-    ],
-    "persona": "no",
-    "label": "Más de un millón"
-   },
-   "camera": "pan_right",
-   "transition": "fade"
-  },
-  {
-   "text": "Es una copia de seguridad de la comida del planeta.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "tierra",
-      "pos": "centro",
-      "tamano": "grande"
-     },
-     {
-      "pieza": "manzana",
-      "pos": "izquierda"
-     },
-     {
-      "pieza": "platano",
-      "pos": "derecha"
-     }
-    ],
-    "persona": "no",
-    "label": "Copia de seguridad"
-   },
-   "camera": "pull_out",
-   "transition": "whip"
-  },
-  {
-   "text": "Por eso no puedes entrar: solo se abre unas pocas veces al año para depositar cajas.",
-   "scene": "calendar",
-   "params": {
-    "style": "pared",
-    "month": "Año",
-    "day": "3",
-    "label": "Se abre pocas veces"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Cada caja sigue siendo propiedad del país que la envía.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "piramide",
-      "tamano": "mediano"
-     },
-     {
-      "pieza": "mano",
-      "pos": "derecha",
-      "anim": "entrar_der"
-     }
-    ],
-    "persona": "no",
-    "label": "Cada caja tiene dueño"
-   },
-   "camera": "pan_left",
-   "transition": "cut"
-  },
-  {
-   "text": "Durante años fue un lugar donde nunca se sacaba nada.",
-   "scene": "escena",
-   "params": {
-    "lugar": "montana",
-    "hora": "atardecer",
-    "plano": "sin_persona",
-    "label": "Nadie sacaba nada"
-   },
-   "camera": "static",
-   "transition": "fade"
-  },
-  {
-   "text": "Hasta que en dos mil quince estalló la guerra en Siria.",
-   "scene": "newspaper",
-   "params": {
-    "style": "web",
-    "headline": "Guerra en Siria",
-    "kicker": "Última hora",
-    "date": "2015"
-   },
-   "camera": "push_in",
-   "transition": "red"
-  },
-  {
-   "text": "El banco de semillas de Alepo quedó inutilizable, y sus investigadores necesitaron copias.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 28,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "ciudad",
-      "piezas": [
-       {
-        "pieza": "edificio",
-        "tamano": "grande"
-       },
-       {
-        "pieza": "escombros",
-        "pos": "derecha"
-       }
-      ],
-      "persona": "no",
-      "label": "Alepo"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "Fue la primera retirada de la historia de la bóveda.",
-   "scene": "document",
-   "params": {
-    "title": "Primera retirada",
-    "lines": [
-     "Año: 2015",
-     "Origen: Alepo",
-     "Motivo: guerra"
-    ],
-    "highlight": 0,
-    "stamp": "HISTÓRICO"
-   },
-   "camera": "push_in",
-   "transition": "flash"
-  },
-  {
-   "text": "Esa puerta se abre pocas veces al año.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "montana",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "cofre",
-      "tamano": "grande"
-     },
-     {
-      "pieza": "reloj_arena",
-      "pos": "derecha",
-      "anim": "girar"
-     }
-    ],
-    "persona": "no"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "La del cinco casi nadie la ha cruzado en siglos.",
-   "scene": "accion",
-   "params": {
-    "tipo": "correr",
-    "lugar": "campo",
-    "hora": "dia",
-    "label": "Número 5"
-   },
-   "camera": "pan_right",
-   "transition": "whip"
-  },
-  {
-   "text": "Número cinco: el santuario interior de Ise, en Japón.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 32,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "happy",
-      "objeto": "none",
-      "label": "Ise, Japón"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Caminas entre cedros enormes y llegas ante un torii de madera.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "selva",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "castillo",
-      "tamano": "grande"
-     },
-     {
-      "pieza": "arbol",
-      "pos": "izquierda",
-      "tamano": "gigante"
-     }
-    ],
-    "persona": "medio",
-    "mood": "happy"
-   },
-   "camera": "tilt_up",
-   "transition": "fade"
-  },
-  {
-   "text": "Es el lugar más sagrado del sintoísmo, dedicado a la diosa del sol, Amaterasu.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "sol",
-      "pos": "arriba",
-      "tamano": "grande",
-      "anim": "latir"
-     },
-     {
-      "pieza": "castillo",
-      "pos": "centro"
-     }
-    ],
-    "persona": "no",
-    "label": "Amaterasu"
-   },
-   "camera": "pull_out",
-   "transition": "flash"
-  },
-  {
-   "text": "Das unos pasos más y te detiene una valla de madera.",
-   "scene": "accion",
-   "params": {
-    "tipo": "sorpresa",
-    "lugar": "selva",
-    "hora": "dia",
-    "label": "Una valla"
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Los visitantes solo pueden mirar de lejos; el recinto interior es para sacerdotes y miembros de la familia imperial.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "selva",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "castillo",
-      "pos": "fondo",
-      "tamano": "mediano"
-     }
-    ],
-    "persona": "entero",
-    "mood": "worried",
-    "label": "Solo sacerdotes y familia imperial"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Tras la valla hay un santuario de madera que parece antiquísimo.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "selva",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "castillo",
-      "tamano": "gigante"
-     },
-     {
-      "pieza": "arbol",
-      "pos": "derecha"
-     }
-    ],
-    "persona": "no"
-   },
-   "camera": "pan_left",
-   "transition": "fade"
-  },
-  {
-   "text": "Pero lo sorprendente es que es nuevo.",
-   "scene": "accion",
-   "params": {
-    "tipo": "idea",
-    "lugar": "selva",
-    "hora": "dia",
-    "label": "Es nuevo"
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Cada veinte años lo derriban y lo construyen otra vez, idéntico.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 39,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "castillo",
-        "pos": "izquierda",
-        "anim": "caer"
-       },
-       {
-        "pieza": "castillo",
-        "pos": "derecha",
-        "anim": "crecer"
-       },
-       {
-        "pieza": "escombros",
-        "pos": "centro",
-        "tamano": "pequeno"
-       }
-      ],
-      "persona": "no",
-      "label": "Cada 20 años"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Es una tradición de unos mil trescientos años.",
-   "scene": "big_text",
-   "params": {
-    "text": "1.300 años",
-    "label": "de tradición",
-    "lugar": "selva",
-    "color": "#2a9d8f"
-   },
-   "camera": "slam",
-   "transition": "fade"
-  },
-  {
-   "text": "La última reconstrucción terminó en dos mil trece, y la próxima toca en dos mil treinta y tres.",
-   "scene": "year_jump",
-   "params": {
-    "from": 2013,
-    "to": 2033,
-    "label": "Próxima reconstrucción"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Para ellos, el santuario no se conserva: se renueva.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "selva",
-    "hora": "atardecer",
-    "efecto": "brillo",
-    "piezas": [
-     {
-      "pieza": "castillo",
-      "tamano": "grande",
-      "anim": "crecer"
-     }
-    ],
-    "persona": "no"
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Aquí te para una valla. En el cuatro, te para la Marina de Brasil.",
-   "scene": "escena",
-   "params": {
-    "lugar": "campo",
-    "hora": "atardecer",
-    "plano": "entero",
-    "arms": "cross",
-    "mood": "worried"
-   },
-   "camera": "pan_right",
-   "transition": "whip"
-  },
-  {
-   "capitulo": "Capítulo 3 · El mito de las serpientes",
-   "text": "Número cuatro: la Ilha da Queimada Grande, frente a la costa de São Paulo.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 44,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "playa",
-      "hora": "dia",
-      "plano": "sin_persona",
-      "label": "Queimada Grande, Brasil"
-     }
-    }
-   },
-   "camera": "pan_right",
-   "transition": "fade"
-  },
-  {
-   "text": "Navegas hacia una isla verde y rocosa, y una embarcación se cruza en tu camino.",
-   "scene": "escena",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "plano": "entero",
-    "mood": "shocked",
-    "arms": "up"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Es un barco de la Marina de Brasil, y te prohíbe desembarcar.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "barco",
-      "tamano": "grande",
-      "anim": "entrar_izq"
-     },
-     {
-      "pieza": "senal_trafico",
-      "pos": "derecha"
-     }
-    ],
-    "persona": "no",
-    "label": "Prohibido desembarcar"
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Allí vive la yarará dorada, una serpiente muy venenosa.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "selva",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "serpiente",
-      "tamano": "grande",
-      "anim": "acercarse"
-     }
-    ],
-    "persona": "medio",
-    "mood": "worried",
-    "label": "Yarará dorada"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Y solo existe en esta isla, en ningún otro lugar del planeta.",
-   "scene": "big_text",
-   "params": {
-    "text": "1 isla",
-    "label": "su único hogar",
-    "lugar": "playa",
-    "color": "#e9c46a"
-   },
-   "camera": "slam",
-   "transition": "fade"
-  },
-  {
-   "text": "Seguro has oído que hay una serpiente por cada metro cuadrado.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "selva",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "serpiente",
-      "pos": "izquierda"
-     },
-     {
-      "pieza": "serpiente",
-      "pos": "centro"
-     },
-     {
-      "pieza": "serpiente",
-      "pos": "derecha"
-     },
-     {
-      "pieza": "serpiente",
-      "pos": "fondo"
-     }
-    ],
-    "persona": "no",
-    "label": "Una por metro cuadrado"
-   },
-   "camera": "pan_left",
-   "transition": "fade"
-  },
-  {
-   "text": "Eso es un mito.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 50,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "angry",
-      "label": "MITO"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Los estudios calculan unos pocos miles de serpientes en toda la isla.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "montana_pieza",
-      "pos": "fondo",
-      "tamano": "grande"
-     },
-     {
-      "pieza": "serpiente",
-      "pos": "izquierda",
-      "tamano": "pequeno"
-     },
-     {
-      "pieza": "serpiente",
-      "pos": "derecha",
-      "tamano": "pequeno"
-     }
-    ],
-    "persona": "no",
-    "label": "Unos pocos miles"
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Aun así, una mordedura sin ayuda médica cerca podría ser gravísima.",
-   "scene": "accion",
-   "params": {
-    "tipo": "sorpresa",
-    "lugar": "selva",
-    "hora": "dia",
-    "label": "Veneno potente"
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "Solo pasan investigadores con permiso especial.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "lupa",
-      "pos": "derecha",
-      "tamano": "mediano"
-     },
-     {
-      "pieza": "barco",
-      "pos": "fondo"
-     }
-    ],
-    "persona": "medio",
-    "mood": "happy",
-    "objeto": "papel",
-    "label": "Con permiso"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Pero hay otro motivo: la serpiente está en peligro crítico de extinción.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "selva",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "serpiente",
-      "tamano": "grande",
-      "anim": "temblar"
-     },
-     {
-      "pieza": "senal_trafico",
-      "pos": "derecha"
-     }
-    ],
-    "persona": "no",
-    "label": "Peligro crítico"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "La prohibición no solo te protege a ti. También protege a la serpiente.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "selva",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "serpiente",
-      "tamano": "mediano"
-     },
-     {
-      "pieza": "mano",
-      "pos": "derecha",
-      "tamano": "grande"
-     }
-    ],
-    "persona": "no",
-    "label": "También la protege"
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Ese es el primer aviso: a veces el peligro no es el lugar.",
-   "scene": "escena",
-   "params": {
-    "lugar": "playa",
-    "hora": "atardecer",
-    "plano": "entero",
-    "mood": "worried",
-    "label": "Primer aviso"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "En el tres, quedará clarísimo.",
-   "scene": "accion",
-   "params": {
-    "tipo": "dudar",
-    "lugar": "playa",
-    "hora": "atardecer"
-   },
-   "camera": "push_in",
-   "transition": "whip"
-  },
-  {
-   "capitulo": "Capítulo 4 · Tú contaminas",
-   "text": "Número tres: Surtsey, en Islandia.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 58,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "bajo_el_mar",
-      "hora": "dia",
-      "plano": "sin_persona",
-      "label": "Surtsey, Islandia"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "En noviembre de mil novecientos sesenta y tres, el mar empezó a hervir.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 59,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "explosion",
-      "lugar": "bajo_el_mar",
-      "hora": "dia",
-      "label": "1963"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "Un volcán submarino asomó y creó una isla nueva.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "bajo_el_mar",
-    "piezas": [
-     {
-      "pieza": "volcan",
-      "tamano": "grande",
-      "anim": "crecer"
-     },
-     {
-      "pieza": "ola_gigante",
-      "pos": "derecha"
-     }
-    ],
-    "persona": "no",
-    "label": "Volcán submarino"
-   },
-   "camera": "tilt_up",
-   "transition": "fade"
-  },
-  {
-   "text": "La erupción duró hasta mil novecientos sesenta y siete.",
-   "scene": "year_jump",
-   "params": {
-    "from": 1963,
-    "to": 1967,
-    "label": "La isla crece"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Llegas en barco y ves una isla negra, con humo saliendo de la roca.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "volcan",
-      "tamano": "gigante"
-     },
-     {
-      "pieza": "barco",
-      "pos": "izquierda",
-      "anim": "flotar"
-     }
-    ],
-    "persona": "medio",
-    "mood": "worried",
-    "efecto": "humo"
-   },
-   "camera": "pan_right",
-   "transition": "fade"
-  },
-  {
-   "text": "Pero en la orilla te espera un científico con mochila, que te corta el paso.",
-   "scene": "escena",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "plano": "medio",
-    "who": "cientifico",
-    "mood": "neutral",
-    "objeto": "papel"
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Solo entran investigadores con permiso.",
-   "scene": "document",
-   "params": {
-    "title": "Permiso de acceso",
-    "lines": [
-     "Isla: Surtsey",
-     "Solo investigación"
-    ],
-    "highlight": 1,
-    "stamp": "SOLO CIENTÍFICOS"
-   },
-   "camera": "static",
-   "transition": "flash"
-  },
-  {
-   "text": "Surtsey es un laboratorio natural: quieren ver cómo llega la vida a una tierra nueva.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "microscopio",
-      "pos": "izquierda",
-      "tamano": "grande"
-     },
-     {
-      "pieza": "arbol",
-      "pos": "derecha",
-      "anim": "crecer"
-     }
-    ],
-    "persona": "no",
-    "label": "Laboratorio natural"
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Sin ayuda humana: las semillas llegan con el viento, el mar y las aves.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "viento",
-      "pos": "izquierda"
-     },
-     {
-      "pieza": "pajaro",
-      "pos": "arriba",
-      "anim": "entrar_der"
-     },
-     {
-      "pieza": "ola_gigante",
-      "pos": "derecha"
-     }
-    ],
-    "persona": "no",
-    "label": "Viento, mar y aves"
-   },
-   "camera": "pan_left",
-   "transition": "fade"
-  },
-  {
-   "text": "Y un día apareció una tomatera.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 67,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "crecer",
-      "lugar": "playa",
-      "hora": "dia",
-      "label": "Una tomatera"
-     }
-    }
-   },
-   "camera": "tilt_up",
-   "transition": "cut"
-  },
-  {
-   "text": "Había brotado de una semilla en los excrementos de un investigador.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "arbol",
-      "tamano": "grande",
-      "anim": "crecer"
-     },
-     {
-      "pieza": "lupa",
-      "pos": "derecha"
-     }
-    ],
-    "persona": "medio",
-    "who": "cientifico",
-    "mood": "worried",
-    "label": "Semilla humana"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "La arrancaron al instante.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "arbol",
-      "tamano": "mediano"
-     },
-     {
-      "pieza": "mano",
-      "pos": "derecha",
-      "tamano": "grande",
-      "anim": "entrar_der"
-     }
-    ],
-    "persona": "no",
-    "label": "Arrancada"
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Un solo descuido humano habría falseado todo el experimento.",
-   "scene": "accion",
-   "params": {
-    "tipo": "dudar",
-    "lugar": "playa",
-    "hora": "dia",
-    "who": "cientifico"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Aquí, si entras, contaminas la isla.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "volcan",
-      "tamano": "grande"
-     },
-     {
-      "pieza": "bacteria",
-      "pos": "derecha",
-      "anim": "acercarse"
-     }
-    ],
-    "persona": "medio",
-    "mood": "shocked",
-    "label": "Contaminas"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "En el dos, con solo respirar, destruyes algo de diecisiete mil años.",
-   "scene": "big_text",
-   "params": {
-    "text": "17.000 años",
-    "label": "en riesgo con tu aliento",
-    "lugar": "playa",
-    "color": "#e76f51"
-   },
-   "camera": "slam",
-   "transition": "whip"
-  },
-  {
-   "text": "Número dos: la cueva de Lascaux, en Francia.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 73,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "montana",
-      "hora": "dia",
-      "plano": "sin_persona",
-      "label": "Lascaux, Francia"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "En mil novecientos cuarenta, unos adolescentes entraron siguiendo a su perro y encontraron un tesoro.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "campo",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "perro",
-      "pos": "izquierda",
-      "anim": "entrar_izq"
-     }
-    ],
-    "persona": "medio",
-    "mood": "happy",
-    "label": "1940"
-   },
-   "camera": "pan_right",
-   "transition": "fade"
-  },
-  {
-   "text": "Eran caballos, toros y ciervos pintados hace unos diecisiete mil años.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "pluma",
-      "tamano": "gigante",
-      "anim": "crecer"
-     }
-    ],
-    "persona": "no",
-    "label": "Hace 17.000 años"
-   },
-   "camera": "pan_left",
-   "transition": "flash"
-  },
-  {
-   "text": "Te asomas con una linterna y los animales parecen moverse.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 76,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "fondo",
-      "hora": "noche",
-      "plano": "medio",
-      "mood": "happy",
-      "objeto": "linterna"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "En mil novecientos cuarenta y ocho abrieron la cueva al público.",
-   "scene": "newspaper",
-   "params": {
-    "style": "portada",
-    "headline": "Lascaux abre al público",
-    "kicker": "Gaceta de Francia",
-    "date": "1948"
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Llegaron cientos de visitantes al día.",
-   "scene": "group",
-   "params": {
-    "count": 4,
-    "hora": "dia",
-    "lugar": "campo",
-    "mood": "happy",
-    "label": "Cientos al día"
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Cada visitante respira, y cada aliento suelta dióxido de carbono, humedad y calor.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 79,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "piezas": [
-       {
-        "pieza": "pulmones",
-        "tamano": "grande",
-        "anim": "latir"
-       },
-       {
-        "pieza": "nube",
-        "pos": "arriba_derecha"
-       }
-      ],
-      "persona": "no",
-      "label": "CO2, humedad y calor"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Tu aliento se convierte en una amenaza para las pinturas.",
-   "scene": "accion",
-   "params": {
-    "tipo": "soltar_aire",
-    "lugar": "fondo",
-    "hora": "noche",
-    "label": "Tu aliento"
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Empezaron a crecer algas y manchas sobre la roca.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "pluma",
-      "tamano": "grande"
-     },
-     {
-      "pieza": "ola_gigante",
-      "pos": "derecha",
-      "tamano": "grande",
-      "anim": "crecer"
-     }
-    ],
-    "persona": "no",
-    "label": "Algas"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Las pinturas que habían resistido milenios se estaban estropeando en pocos años.",
-   "scene": "year_jump",
-   "params": {
-    "from": 1948,
-    "to": 1963,
-    "label": "Pinturas dañadas"
-   },
-   "camera": "push_in",
-   "transition": "red"
-  },
-  {
-   "text": "En mil novecientos sesenta y tres, la cerraron.",
-   "scene": "document",
-   "params": {
-    "title": "Lascaux",
-    "lines": [
-     "Año: 1963",
-     "Cueva cerrada"
-    ],
-    "highlight": 1,
-    "stamp": "CERRADA"
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Hoy se visitan réplicas, y hasta los científicos entran poquísimo tiempo.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "pluma",
-      "pos": "derecha",
-      "tamano": "grande"
-     }
-    ],
-    "persona": "medio",
-    "mood": "happy",
-    "label": "Réplicas"
-   },
-   "camera": "pan_right",
-   "transition": "fade"
-  },
-  {
-   "text": "Tu aliento puede borrar una pintura.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "pulmones",
-      "pos": "izquierda",
-      "tamano": "mediano"
-     },
-     {
-      "pieza": "ola_gigante",
-      "pos": "derecha",
-      "tamano": "grande"
-     }
-    ],
-    "persona": "medio",
-    "mood": "worried"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "En el número uno, un simple resfriado tuyo podría borrar a un pueblo entero.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "virus",
-      "tamano": "grande",
-      "anim": "acercarse"
-     }
-    ],
-    "persona": "medio",
-    "mood": "worried",
-    "label": "Número 1"
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "capitulo": "Capítulo 5 · El peligro eres tú",
-   "text": "Número uno: la Isla Sentinel del Norte, en el archipiélago de Andamán, India.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 87,
-    "respaldo": {
-     "scene": "map_pin",
-     "params": {
-      "style": "islas",
-      "place": "Sentinel del Norte",
-      "detail": "Andamán, India"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Aquí viven los sentineleses, uno de los últimos pueblos sin contacto con el exterior.",
-   "scene": "escena",
-   "params": {
-    "lugar": "selva",
-    "hora": "dia",
-    "plano": "sin_persona",
-    "label": "Pueblo aislado"
-   },
-   "camera": "pan_left",
-   "transition": "fade"
-  },
-  {
-   "text": "La ley india prohíbe acercarse a la isla.",
-   "scene": "document",
-   "params": {
-    "title": "Ley de la India",
-    "lines": [
-     "Prohibido acercarse",
-     "Isla Sentinel del Norte"
-    ],
-    "highlight": 0,
-    "stamp": "PROHIBIDO"
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Y tú, claro, piensas que lo harás mejor.",
-   "scene": "accion",
-   "params": {
-    "tipo": "idea",
-    "lugar": "playa",
-    "hora": "dia",
-    "label": "Yo lo haré mejor"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Te acercas en una barca, y entre la selva densa distingues figuras en la playa.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "barca",
-      "pos": "izquierda",
-      "anim": "flotar"
-     },
-     {
-      "pieza": "arbol",
-      "pos": "fondo",
-      "tamano": "gigante"
-     }
-    ],
-    "persona": "medio",
-    "mood": "worried"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "De repente, una flecha se clava en la arena, cerca de ti.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 92,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "playa",
-      "hora": "dia",
-      "efecto": "impacto",
-      "piezas": [
-       {
-        "pieza": "espada",
-        "tamano": "grande",
-        "anim": "caer"
-       }
-      ],
-      "persona": "entero",
-      "mood": "shocked"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "Reciben a flechazos a quien se acerca.",
-   "scene": "escena",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "plano": "entero",
-    "mood": "shocked",
-    "arms": "up"
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "Tras el tsunami de dos mil cuatro, dispararon flechas a un helicóptero que sobrevolaba la isla.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "helicoptero",
-      "pos": "arriba",
-      "anim": "flotar"
-     },
-     {
-      "pieza": "espada",
-      "pos": "izquierda"
-     },
-     {
-      "pieza": "ola_gigante",
-      "pos": "derecha"
-     }
-    ],
-    "persona": "no",
-    "label": "Tras el tsunami de 2004"
-   },
-   "camera": "tilt_up",
-   "transition": "fade"
-  },
-  {
-   "text": "Y en dos mil dieciocho mataron a un joven estadounidense que desembarcó ilegalmente.",
-   "scene": "newspaper",
-   "params": {
-    "style": "web",
-    "headline": "Desembarcó ilegalmente",
-    "kicker": "Última hora",
-    "date": "2018"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Piensas: entonces la prohibición es por las flechas, para protegerte.",
-   "scene": "accion",
-   "params": {
-    "tipo": "dudar",
-    "lugar": "playa",
-    "hora": "atardecer"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Pero te equivocas.",
-   "scene": "accion",
-   "params": {
-    "tipo": "sorpresa",
-    "lugar": "playa",
-    "hora": "atardecer"
-   },
-   "camera": "slam",
-   "transition": "red"
-  },
-  {
-   "text": "La razón principal no son las flechas.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "atardecer",
-    "piezas": [
-     {
-      "pieza": "espada",
-      "pos": "izquierda",
-      "tamano": "pequeno"
-     },
-     {
-      "pieza": "lupa",
-      "pos": "centro",
-      "tamano": "grande"
-     }
-    ],
-    "persona": "no",
-    "label": "La razón real"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Llevan miles de años aislados, y sus defensas no conocen nuestros virus.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 99,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "virus",
-        "pos": "izquierda",
-        "anim": "flotar"
-       },
-       {
-        "pieza": "globulo_blanco",
-        "pos": "derecha",
-        "tamano": "grande"
-       }
-      ],
-      "persona": "no",
-      "label": "Miles de años aislados"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Un resfriado o una gripe tuya podría acabar con ellos.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "virus",
-      "pos": "centro",
-      "tamano": "grande",
-      "anim": "acercarse"
-     }
-    ],
-    "persona": "medio",
-    "mood": "worried",
-    "label": "Gripe o resfriado"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "En este lugar tú eres el arma.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 101,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "playa",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "shocked",
-      "label": "El arma eres tú"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Un estornudo tuyo sería más mortal para ellos que cualquier flecha para ti.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "playa",
-    "hora": "dia",
-    "piezas": [
-     {
-      "pieza": "virus",
-      "pos": "izquierda",
-      "tamano": "grande",
-      "anim": "acercarse"
-     },
-     {
-      "pieza": "espada",
-      "pos": "derecha",
-      "tamano": "pequeno"
-     }
-    ],
-    "persona": "medio",
-    "mood": "worried",
-    "label": "Estornudo contra flecha"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Y fíjate en el hilo de toda la lista.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "fondo",
-    "piezas": [
-     {
-      "pieza": "lupa",
-      "pos": "izquierda",
-      "tamano": "grande"
-     },
-     {
-      "pieza": "tierra",
-      "pos": "derecha",
-      "tamano": "grande"
-     }
-    ],
-    "persona": "no",
-    "label": "El hilo de la lista"
-   },
-   "camera": "pull_out",
-   "transition": "whip"
-  },
-  {
-   "text": "Una tomatera en Surtsey, un aliento en Lascaux, un resfriado en Sentinel.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 104,
-    "respaldo": {
-     "scene": "document",
-     "params": {
-      "title": "El hilo",
-      "lines": [
-       "Surtsey: una tomatera",
-       "Lascaux: un aliento",
-       "Sentinel: un resfriado"
-      ],
-      "highlight": 2,
-      "stamp": "TÚ"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Es el único lugar de esta lista donde la prohibición no protege un secreto.",
-   "scene": "escena",
-   "params": {
-    "lugar": "playa",
-    "hora": "atardecer",
-    "plano": "sin_persona",
-    "label": "Sin secretos"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Protege a un pueblo entero.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-1-01",
-    "plano": 106,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "playa",
-      "hora": "atardecer",
-      "efecto": "brillo",
-      "piezas": [
-       {
-        "pieza": "mano",
-        "pos": "centro",
-        "tamano": "grande"
-       },
-       {
-        "pieza": "casa",
-        "pos": "fondo",
-        "tamano": "pequeno"
-       }
-      ],
-      "persona": "no",
-      "label": "Protege a un pueblo"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Hoy has visto que prohibir también puede ser una forma de cuidar.",
-   "scene": "accion",
-   "params": {
-    "tipo": "idea",
-    "lugar": "salon",
-    "hora": "atardecer"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Quizá la próxima vez que veas un cartel de prohibido, pensarás quién protege a quién.",
-   "scene": "composicion",
-   "params": {
-    "lugar": "calle",
-    "hora": "atardecer",
-    "piezas": [
-     {
-      "pieza": "senal_trafico",
-      "tamano": "grande"
-     }
-    ],
-    "persona": "medio",
-    "mood": "happy"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Cuéntame en los comentarios: ¿cuál de los siete lugares te ha sorprendido más?",
-   "scene": "escena",
-   "params": {
-    "lugar": "salon",
-    "hora": "noche",
-    "plano": "medio",
-    "mood": "happy",
-    "objeto": "movil",
-    "label": "¿Cuál te sorprendió más?"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Si te ha gustado, en el siguiente vídeo descubrirás qué hay realmente en lugares que nadie ha podido explorar.",
-   "scene": "map_pin",
-   "params": {
-    "style": "calles",
-    "place": "Próximo vídeo",
-    "detail": "Lugares inexplorados"
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  }
- ],
- "looks": {
-  "protagonista": {
-   "genero": "hombre",
-   "edad": "joven",
-   "piel": "media",
-   "pelo": "corto",
-   "color_pelo": "castaño_oscuro",
-   "barba": "no",
-   "gafas": false,
-   "ropa": "azul"
-  },
-  "cientifico": {
-   "genero": "hombre",
-   "edad": "adulto",
-   "piel": "clara",
-   "pelo": "corto",
-   "color_pelo": "castaño",
-   "barba": "corta",
-   "gafas": true,
-   "ropa": "blanco"
-  }
- },
- "cover_text": "NI RESPIRAR",
- "comment_q": "¿Cuál de los siete lugares te ha sorprendido más?",
- "lista": "Mitos y verdades",
- "formato": "horizontal",
- "question": "¿Por qué hay lugares de la Tierra donde está prohibido entrar, y quién protege a quién?",
- "piezas_pendientes": [
-  "cartel_base_militar",
-  "avion_u2",
-  "entrada_boveda_svalbard",
-  "estanteria_semillas",
-  "torii_ise",
-  "barco_marina",
-  "yarara_dorada",
-  "isla_volcanica",
-  "tomatera",
-  "pinturas_lascaux",
-  "manchas_algas",
-  "virus_estornudo",
-  "arco_flechas"
- ],
- "id": "largo-1-01",
- "idea": {
-  "tipo": "pedido",
-  "premisa": "Ranking en cuenta atrás de 7 lugares reales donde está prohibido entrar, narrado en segunda persona: en cada capítulo intentas entrar y descubres por qué te paran. Cada capítulo dura unos 7-8 s (qué es, por qué no puedes entrar, un dato sorprendente y un puente al siguiente), unos 60 s en total. Hilo oculto: del 7 al 4 el lugar te protege a ti o protege un secreto; del 3 al 1 se revela que lo protegen DE ti. 7) Área 51 (Nevada, EE. UU.): base de la Fuerza Aérea con carteles que avisan del uso de fuerza letal. Durante décadas fue un secreto oficial: la CIA no reconoció su existencia hasta documentos desclasificados en 2013, que explican que muchos «ovnis» de los años 50 eran en realidad aviones espía U-2 volando a una altura altísima. Puente: «Lo de aquí es secreto. Lo del 6 es otra cosa: es el seguro de vida de la humanidad». 6) Bóveda Global de Semillas de Svalbard (Noruega): excavada dentro de una montaña del Ártico, a unos -18 °C y con más de un millón de muestras de semillas de casi todos los países. Solo se abre unas pocas veces al año para depositar semillas. Dato: en 2015 se hizo la primera retirada de su historia, cuando la guerra de Siria impidió usar el banco de semillas de Alepo. Puente: «Esa puerta se abre pocas veces al año. La del 5 no la ha cruzado casi nadie en siglos». 5) Santuario interior de Ise (Japón): el lugar más sagrado del sintoísmo, dedicado a la diosa del sol Amaterasu. Los visitantes solo llegan hasta una valla; el recinto interior está reservado a sacerdotes y miembros de la familia imperial. Dato: lo derriban y lo reconstruyen idéntico cada 20 años, una tradición de unos 1.300 años. La última reconstrucción fue en 2013 y la próxima toca en 2033. Puente: «Aquí te para una valla. En el 4 te para la Marina de Brasil». 4) Ilha da Queimada Grande (Brasil): frente a la costa de São Paulo. Allí vive la yarará dorada, una serpiente muy venenosa que solo existe en esa isla y está en peligro crítico. La Marina prohíbe desembarcar; solo pasan investigadores con permiso. Mito contra realidad: no hay «una serpiente por metro cuadrado»; los estudios calculan unos pocos miles en toda la isla. Y la prohibición no es solo por ti, también protege a la serpiente. Puente: «Ese es el primer aviso: a veces el peligro no es el lugar. En el 3 queda claro». 3) Surtsey (Islandia): isla nacida de una erupción volcánica entre 1963 y 1967. Solo entran científicos con permiso, para estudiar cómo llega la vida a una tierra nueva sin ayuda humana. Dato: allí brotó una tomatera de la semilla que había en los excrementos de un investigador, y la arrancaron. Puente: «Aquí, si entras, contaminas la isla. En el 2, con solo respirar, destruyes algo de 17.000 años». 2) Cueva de Lascaux (Francia): unos adolescentes la descubrieron en 1940, con pinturas de animales de hace unos 17.000 años. Se abrió al público en 1948, pero el aliento de los visitantes (dióxido de carbono, humedad y calor) hizo crecer algas y manchas que dañaron las pinturas. En 1963 la cerraron. Hoy se visitan réplicas, y hasta los científicos entran poquísimo tiempo. Puente: «Tu aliento puede borrar una pintura. En el número 1, un simple resfriado tuyo podría borrar a un pueblo entero». 1) Isla Sentinel del Norte (Andamán, India): allí viven los sentineleses, uno de los últimos pueblos sin contacto con el mundo exterior. La ley india prohíbe acercarse a la isla. Reciben a flechazos a quien se acerca: en 2004, tras el tsunami, dispararon flechas a un helicóptero, y en 2018 mataron a un joven estadounidense que desembarcó ilegalmente. Pero la razón principal de la prohibición no son las flechas: llevan miles de años aislados y sus defensas no conocen nuestros virus, así que una gripe o un resfriado podría acabar con ellos.",
-  "gancho": "¿Sabías que hay lugares en la Tierra donde está prohibido entrar? Te llevo a siete… y en el número 1, el peligro no es el lugar: eres tú.",
-  "giro_final": "En el número 1 la amenaza da la vuelta: en Sentinel del Norte no te prohíben entrar por las flechas, sino porque tú eres el arma. Un estornudo tuyo podría ser más mortal para ellos que cualquier flecha para ti. Cierre: «Y quizá por eso es el único sitio de esta lista donde la prohibición no protege un secreto… protege a un pueblo entero». Esto conecta con el hilo que se fue preparando: tomatera de Surtsey → aliento en Lascaux → resfriado en Sentinel.",
-  "estilo_visual": "Cada capítulo tiene su propio decorado, sin repetir el mismo tipo de plano entre dos lugares seguidos. APERTURA: 'map_pin' con estilo globo terráqueo, con 7 chinchetas cayendo a la vez y la persona curiosa delante. 7 ÁREA 51: 'escena' de desierto de Nevada al atardecer, con la persona frente a una valla y un cartel de advertencia; 'document' con el informe desclasificado de la CIA, la línea resaltada y el sello «2013»; 'composicion' con un avión espía U-2 muy alto en el cielo y gente señalando un «ovni». 6 SVALBARD: 'escena' de montaña nevada del Ártico con la entrada de hormigón de la bóveda y la persona abrigada; 'accion' congelarse (escarcha creciendo, vaho) al imaginar los -18 °C; 'composicion' con estanterías de cajas de semillas y una caja saliendo con la etiqueta de Siria. 5 ISE: 'escena' luminosa de bosque de cedros con un torii y la valla de madera, con la persona detenida ante ella; 'year_jump' que avanza de 2013 a 2033 mientras se monta el santuario nuevo. 4 QUEIMADA GRANDE: 'escena' de isla verde y rocosa en el mar soleado con un barco de la Marina; 'composicion' de primer plano de la yarará dorada sobre una rama con la persona dando un salto atrás (mito contra realidad: primero el suelo lleno de serpientes, que se tacha, y luego unas pocas repartidas). 3 SURTSEY: 'accion' explosion (el volcán emerge del mar); 'composicion' con la isla negra humeante y un científico con mochila; 'accion' crecer (la semilla brota en tomatera) y una mano que la arranca. 2 LASCAUX: 'escena' de cueva iluminada con linterna y pinturas de caballos y toros; 'accion' soltar_aire (el aliento visible sale de la boca de la persona); 'composicion' con las pinturas cubriéndose de manchas verdes. 1 SENTINEL: 'map_pin' con estilo mapa de islas y la chincheta sobre Andamán; 'escena' de playa con selva densa y una barca que se aleja; 'composicion' con flechas clavándose en la arena cerca de la persona; GIRO: 'composicion' con virus de colores saliendo de un estornudo de la persona hacia la isla, en pantalla partida, y 'accion' dudar como plano final. Todo en estilo luminoso; nada del catálogo oscuro, para que no parezca terror. Portada: la yarará dorada enroscada en primer plano y, detrás, una valla con cartel de prohibido sobre una isla, con colores saturados y un solo elemento grande y nítido.",
-  "por_que_funcionara": "Respeta el formato pedido (ranking del 7 al 1) pero le añade lo que más aprueba el dueño: segunda persona, escalada de tensión y un giro final anunciado desde el gancho, que obliga a ver hasta el final. El hilo «el lugar es peligroso para ti → tú eres el peligro para el lugar» convierte una lista en una historia con progresión, y cada mini-gancho tira hacia el siguiente puesto. Todos los datos están documentados y se desmonta un mito popular (la serpiente por metro cuadrado), lo que da credibilidad. Responde a su feedback de «escenas feas o repetidas»: siete decorados distintos con piezas propias, sin repetir tipo de plano en capítulos seguidos. Al mantener cada capítulo en unos 7-8 s, evita el «demasiado largo».",
-  "inspirado_en": [],
-  "piezas_nuevas": [
-   "Cartel de advertencia de base militar en una valla del desierto",
-   "Avión espía U-2 en vuelo",
-   "Entrada de hormigón de la Bóveda de Svalbard en la montaña nevada",
-   "Estantería con cajas de semillas etiquetadas",
-   "Torii y santuario sintoísta de madera de Ise",
-   "Yarará dorada (serpiente dorada en una rama)",
-   "Barco de la Marina de Brasil",
-   "Isla volcánica negra humeante emergiendo del mar",
-   "Tomatera pequeña brotando de la roca",
-   "Pinturas rupestres de caballos y toros de Lascaux",
-   "Manchas verdes de algas sobre la roca",
-   "Arco y flechas clavadas en la arena",
-   "Virus o gérmenes de dibujo animado saliendo de un estornudo"
-  ]
- },
- "ganchos": [
-  {
-   "texto": "¿Dónde en la Tierra te prohíben entrar?",
-   "tipo": "pregunta directa",
-   "puntuacion": 9,
-   "motivo": "Deja claro el tema en dos segundos, es concreta y pide respuesta."
-  },
-  {
-   "texto": "¿Te atreverías a entrar donde está prohibido?",
-   "tipo": "pregunta con reto",
-   "puntuacion": 7,
-   "motivo": "Reta al espectador, pero es menos concreta sobre el formato de ranking."
-  },
-  {
-   "texto": "Siete lugares te cierran el paso. Uno lo hace por tu culpa.",
-   "tipo": "dato que choca",
-   "puntuacion": 8,
-   "motivo": "Promete un giro y presenta el tema, aunque es algo larga."
-  },
-  {
-   "texto": "Vas a intentar entrar en siete lugares prohibidos.",
-   "tipo": "segunda persona",
-   "puntuacion": 7,
-   "motivo": "Inmersiva y clara, con menos intriga que una pregunta."
-  },
-  {
-   "texto": "Prohibido entrar no siempre significa peligro para ti.",
-   "tipo": "contradicción",
-   "puntuacion": 6,
-   "motivo": "Intriga, pero no deja claro el tema a un desconocido."
-  }
- ],
- "medida_estado": "lista",
- "tanda": "largo-1"
+  ],
+  "portada_ia": true
 }
