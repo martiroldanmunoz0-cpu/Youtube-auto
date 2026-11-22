@@ -37,18 +37,28 @@ def _model(key: str, preferred: str) -> str:
     return sorted(names, key=lambda n: ("preview" in n, n))[0]
 
 
+# Personaje propio del canal para las miniaturas (siempre el mismo: la gente reconoce el canal de un vistazo)
+MASCOTA = ("Curio, the channel's own ORIGINAL mascot: a cartoon boy with a big round head, warm light-brown skin, messy "
+           "dark-brown hair with one spiky tuft on top, huge expressive eyes and a bright orange hoodie")
+
+
 def prompt_for(story: dict) -> str:
     beats = " / ".join(b["text"] for b in story.get("beats", [])[:6])
     return (
-        "Create an eye-catching YouTube thumbnail image (16:9) for a Spanish curiosity video.\n"
+        "Create a viral YouTube thumbnail image (16:9 landscape) for a Spanish 'what if / curiosities' video.\n"
         f"Video title: {story.get('title', '')}\nMain idea: {story.get('question') or story.get('cover_text', '')}\n"
         f"Opening of the script: {beats}\n\n"
-        "Style: bright, colorful 2D cartoon illustration with thick dark outlines, very saturated colors, strong contrast, "
-        "dramatic lighting and a glow behind the main subject. One expressive cartoon character with an EXAGGERATED "
-        "emotion (shock, fear or amazement, wide eyes, open mouth) next to the key object or situation of the video, shown "
-        "big and clear. Simple background, nothing cluttered. Leave the LEFT third of the image fairly simple (text will be "
-        "added there later).\nRules: absolutely NO text, letters, numbers, logos or watermarks in the image. Do not depict "
-        "any real, recognizable person or existing cartoon character; everything must be original."
+        "STYLE (very important): glossy, high-energy cartoon illustration like the most clicked animated 'what if' "
+        "thumbnails: smooth shiny 3D-looking cartoon shading, ultra-saturated colors, purple / electric blue / hot pink "
+        "background with dramatic speed lines, radial burst and glowing light, strong rim light on the character.\n"
+        f"CHARACTER: {MASCOTA}. Show him BIG in the right half of the image with an EXTREME, exaggerated emotion that fits "
+        "the video (screaming in panic, crying with big tears, sweating, jaw dropped in shock), dynamic pose, motion "
+        "lines. Next to him, the key object or situation of the video, huge and instantly understandable (one clear "
+        "focal point). If the video has a big number or danger, show it visually (fire, cracks, explosion, red glow).\n"
+        "COMPOSITION: very simple and readable on a phone; the LEFT 40% of the image must be a clean, darker area of the "
+        "background (big title text will be added there later).\n"
+        "RULES: absolutely NO text, letters, numbers, logos or watermarks. Do not copy any existing YouTube channel's "
+        "characters or any famous cartoon character; do not depict real, recognizable people."
     )
 
 
