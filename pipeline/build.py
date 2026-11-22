@@ -128,7 +128,8 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     for k, (mp3, start) in enumerate(parts):
         inputs += ["-i", str(mp3)]
         ms = int(start * 1000)
-        filters.append(f"[{k}:a]aresample=44100,adelay={ms}|{ms}[a{k}]")
+        # Sin «brum» al empezar cada frase: fuera los graves de ruido (<80 Hz) y entrada/salida suaves de cada trozo de voz
+        filters.append(f"[{k}:a]aresample=44100,highpass=f=80:poles=2,highpass=f=80:poles=2,afade=t=in:d=0.03,areverse,afade=t=in:d=0.06,areverse,adelay={ms}|{ms}[a{k}]")
     mix = "".join(f"[a{k}]" for k in range(len(parts)))
     filters.append(f"{mix}amix=inputs={len(parts)}:normalize=0,apad=whole_dur={total:.2f}[v]")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(filters), "-map", "[v]", "-ac", "1", str(voice)], check=True)
@@ -158,7 +159,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     fc = f"[0:a]asplit={len(capas) + 1}[vo]" + "".join(f"[sc{k}]" for k in range(len(capas))) + ";"
     fc += "[1:a][sc0]sidechaincompress=threshold=0.06:ratio=2.5:attack=5:release=250[c0];"
     for k in range(1, len(capas)):
-        fc += f"[{k + 1}:a][sc{k}]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=400[c{k}];"
+        fc += f"[{k + 1}:a]highpass=f=90[h{k}];[h{k}][sc{k}]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=400[c{k}];"
     fc += "[vo]" + "".join(f"[c{k}]" for k in range(len(capas))) + f"amix=inputs={len(capas) + 1}:duration=longest:normalize=0,alimiter=limit=0.95,apad[out]"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *ins, "-filter_complex", fc,
                     "-map", "[out]", "-t", f"{total:.3f}", "-c:a", "aac", "-b:a", "192k", str(audio)], check=True)

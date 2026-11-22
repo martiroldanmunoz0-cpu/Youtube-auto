@@ -407,7 +407,8 @@ def _fill(cues, words, rng, total):
 
 def _bed(beats: list[dict], words: list[dict], n: int, rng) -> np.ndarray:
     bed = np.zeros(n)
-    fade = int(0.6 * SR)
+    fade = int(1.2 * SR)
+    tramos: list[list] = []  # [nombre, inicio, fin]
     for i, b in enumerate(beats):
         sc, p = _params(b)
         lugar = _norm(str(p.get("lugar") or ""))
@@ -422,10 +423,15 @@ def _bed(beats: list[dict], words: list[dict], n: int, rng) -> np.ndarray:
             name = "crickets"
         if not name:
             continue
+        if tramos and tramos[-1][0] == name and float(b["start"]) - tramos[-1][2] < 0.3:
+            tramos[-1][2] = float(b["end"])
+        else:
+            tramos.append([name, float(b["start"]), float(b["end"])])
+    for name, ts, te in tramos:
         x = _load(name)
         if x is None or len(x) < SR:
             continue
-        i0, i1 = int(float(b["start"]) * SR), min(n, int(float(b["end"]) * SR))
+        i0, i1 = int(ts * SR), min(n, int(te * SR))
         L = i1 - i0
         if L <= 0:
             continue
