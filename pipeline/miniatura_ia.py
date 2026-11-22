@@ -10,6 +10,7 @@ import base64
 import json
 import os
 import subprocess
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -21,8 +22,15 @@ API = "https://generativelanguage.googleapis.com/v1beta"
 def _req(url: str, body: dict | None = None, key: str = "") -> dict:
     data = json.dumps(body).encode() if body is not None else None
     r = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json", "x-goog-api-key": key})
-    with urllib.request.urlopen(r, timeout=180) as resp:
-        return json.loads(resp.read())
+    try:
+        with urllib.request.urlopen(r, timeout=180) as resp:
+            return json.loads(resp.read())
+    except urllib.error.HTTPError as e:  # se muestra el motivo que da Google (facturación, cuota, modelo...)
+        try:
+            msg = json.loads(e.read()).get("error", {}).get("message", "")
+        except Exception:  # noqa: BLE001
+            msg = ""
+        raise RuntimeError(f"HTTP {e.code}: {msg[:300]}") from None
 
 
 def _model(key: str, preferred: str) -> str:
