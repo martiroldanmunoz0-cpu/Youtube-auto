@@ -218,6 +218,9 @@ export class Renderer {
     if (t >= endStart) this.drawEndcard(ctx, t - endStart, end);
     // Gancho a pantalla grande en los primeros segundos (sin fundido desde negro: el fotograma 0 ya engancha)
     if (this.tl.hook?.text && t < (this.tl.hook.dur || 2.3)) this.drawHook(ctx, t, this.tl.hook);
+    // Pregunta para comentarios (al final, antes del bucle): invita a comentar
+    const cm = this.tl.comment;
+    if (cm?.text && t >= cm.start && t < cm.end) this.drawComment(ctx, t - cm.start, cm.end - cm.start, cm.text);
   }
 
   // Dibuja una capa escalada desde el centro, con estela de desenfoque (varias copias tenues).
@@ -251,6 +254,26 @@ export class Renderer {
     const dx = -dir[0] * W, dy = dir[1] * H;
     this.blurDraw(ctx, this.layerA, 1.02, dx * k, dy * k, 1, speed * 140, dir);
     this.blurDraw(ctx, this.layerB, 1.02, -dx * (1 - k), -dy * (1 - k), 1, speed * 140, dir);
+  }
+
+  // Burbuja de comentario: icono de bocadillo + pregunta, entra con rebote y sale al final
+  drawComment(ctx, t, dur, text) {
+    const k = ease.outBack(clamp(t / 0.35)), out = clamp((dur - t) / 0.25);
+    ctx.save(); ctx.globalAlpha = out; ctx.translate(W / 2, 600); ctx.scale(k, k);
+    ctx.font = '800 54px Poppins';
+    const lines = []; let cur = '';
+    for (const w of String(text).split(' ')) { const tryL = cur ? cur + ' ' + w : w; if (ctx.measureText(tryL).width > 720 && cur) { lines.push(cur); cur = w; } else cur = tryL; }
+    if (cur) lines.push(cur);
+    const tw = Math.max(...lines.map((l) => ctx.measureText(l).width)), bw = Math.min(W - 60, tw + 190), bh = 60 + lines.length * 66;
+    ctx.beginPath(); ctx.roundRect(-bw / 2, -bh / 2, bw, bh, 40); ctx.moveTo(-bw / 2 + 90, bh / 2 - 2); ctx.lineTo(-bw / 2 + 60, bh / 2 + 50); ctx.lineTo(-bw / 2 + 140, bh / 2 - 2);
+    ctx.fillStyle = '#ffffff'; ctx.fill(); ctx.lineWidth = 8; ctx.strokeStyle = '#1c1a2b'; ctx.lineJoin = 'round'; ctx.stroke();
+    // icono de comentarios
+    const ix = -bw / 2 + 70, wig = Math.sin(t * 8) * 0.08;
+    ctx.save(); ctx.translate(ix, 0); ctx.rotate(wig); ctx.beginPath(); ctx.roundRect(-38, -32, 76, 56, 16); ctx.moveTo(-14, 22); ctx.lineTo(-22, 44); ctx.lineTo(6, 22); ctx.fillStyle = '#ff4d6d'; ctx.fill();
+    ctx.fillStyle = '#fff'; for (const dx of [-18, 0, 18]) { ctx.beginPath(); ctx.arc(dx, -4, 6, 0, 7); ctx.fill(); } ctx.restore();
+    ctx.fillStyle = '#1c1a2b'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    lines.forEach((l, i) => ctx.fillText(l, -bw / 2 + 130, -((lines.length - 1) * 66) / 2 + i * 66));
+    ctx.restore();
   }
 
   drawHook(ctx, t, hook) {

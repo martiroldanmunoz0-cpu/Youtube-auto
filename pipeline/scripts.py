@@ -95,6 +95,8 @@ STORY_SCHEMA = {
         "gancho_elegido": {"type": "string"},
         "titulo": {"type": "string"},
         "descripcion": {"type": "string"},
+        "pregunta_comentarios": {"type": "string"},
+        "lista": {"type": "string"},
         "tags": {"type": "array", "items": {"type": "string"}},
         "planos": {
             "type": "array",
@@ -112,7 +114,7 @@ STORY_SCHEMA = {
             },
         },
     },
-    "required": ["pregunta_central", "frase_bucle", "texto_portada", "personajes", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "tags", "planos"],
+    "required": ["pregunta_central", "frase_bucle", "texto_portada", "personajes", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "pregunta_comentarios", "lista", "tags", "planos"],
     "additionalProperties": False,
 }
 
@@ -271,9 +273,16 @@ TÍTULO, PORTADA Y DESCRIPCIÓN
 - texto_portada: 2-6 palabras en MAYÚSCULAS. Sale ENORME en pantalla los 2 primeros segundos y en la miniatura: \
 tiene que dejar claro el tema de un vistazo y dar ganas de quedarse (p. ej. "¿11 KM BAJO EL MAR?", \
 "SIN DORMIR 11 DÍAS", "SE OPERÓ A SÍ MISMO"). Distinto del título, sin destripar el giro.
-- titulo: máx 70 caracteres, genera curiosidad sin destripar el giro, termina con " #shorts".
-- descripcion: 2-3 líneas que inviten a comentar (pregunta al espectador) + 3-5 hashtags.
-- tags: 8-12 etiquetas en español."""
+- titulo: máx 70 caracteres, genera curiosidad sin destripar el giro, termina con " #shorts". Incluye las \
+PALABRAS QUE LA GENTE BUSCA en YouTube sobre ese tema (p. ej. "qué pasa si te cae un rayo", "arenas movedizas"): \
+muchas visitas de los Shorts llegan desde la búsqueda.
+- descripcion: primera línea = frase con las palabras clave del tema (para la búsqueda); luego 1-2 líneas con un \
+dato extra + 3-5 hashtags.
+- pregunta_comentarios: UNA pregunta corta (máx 9 palabras) que den ganas de responder en comentarios: personal, \
+de opinión o de elegir bando ("¿Tú habrías aguantado?", "¿Saldrías o esperarías ayuda?", "¿Lo sabías?"). \
+Sale en pantalla al final y en la descripción. Nada de pedir likes ni suscripciones.
+- lista: la lista de reproducción del canal donde encaja, EXACTAMENTE una de: {LISTAS}.
+- tags: 8-12 etiquetas en español (incluye las búsquedas típicas del tema)."""
 
 
 COMEDY_EXTRA_SCENES = ["phone", "money", "big_text", "calendar", "clock", "map_pin", "tv"]
@@ -562,7 +571,8 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
         f"Cuéntalas antes de terminar; si te pasas, quita planos o acorta frases (nunca el gancho). "
         "Escribe los ganchos candidatos y después el guion completo."
     )
-    return make_params(SYSTEM_WRITER, context, user, STORY_SCHEMA, models(cfg)[1], effort=cfg["generacion"].get("esfuerzo_guiones", "medium"))
+    listas = ", ".join(f'"{x}"' for x in cfg.get("publicacion", {}).get("listas", []))
+    return make_params(SYSTEM_WRITER.replace("{LISTAS}", listas), context, user, STORY_SCHEMA, models(cfg)[1], effort=cfg["generacion"].get("esfuerzo_guiones", "medium"))
 
 
 def _fix_pieces(params: dict, text: str) -> tuple[dict, str | None]:
@@ -817,12 +827,14 @@ def validate_story(story: dict) -> dict:
         title = (title[:88] + " #shorts").strip()
     return {
         "title": title[:100],
-        "description": story["descripcion"].strip(),
+        "description": ((re.sub(r"\s+", " ", story.get("pregunta_comentarios") or "").strip() + " 👇\n\n") if story.get("pregunta_comentarios") else "") + story["descripcion"].strip(),
         "tags": [t.strip("# ") for t in story["tags"]][:15],
         "beats": beats,
         "looks": {str(p.get("who") or "protagonista").lower(): {k: v for k, v in p.items() if k not in ("who", "nombre_real")}
                   for p in (story.get("personajes") or [])},
         "cover_text": re.sub(r"\s+", " ", story.get("texto_portada") or "").strip()[:60],
+        "comment_q": re.sub(r"\s+", " ", story.get("pregunta_comentarios") or "").strip()[:80],
+        "lista": (story.get("lista") or "").strip(),
         "question": pregunta,
         # Piezas que el guion pidió y no existían (ya sustituidas por la más parecida): se dibujan el lunes
         "piezas_pendientes": list(dict.fromkeys(pendientes + [x for b in beats for x in (b.get("params") or {}).get("_faltan", [])])),

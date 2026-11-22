@@ -31,6 +31,15 @@ VOICE_MINUTES = 12  # pasado este tiempo generando voz, no se repite ninguna fra
 VOICE_ISSUES = ("narración", "La voz", "Silencio", "pisadas")
 
 
+
+def comment_window(story: dict, beats: list[dict]) -> dict | None:
+    """Pregunta para comentarios: en pantalla durante el último plano antes del bucle (invita a comentar)."""
+    q = (story.get("comment_q") or "").strip()
+    if not q or len(beats) < 3:
+        return None
+    last = beats[-2] if beats[-1].get("bucle") else beats[-1]
+    return {"text": q, "start": round(max(last["start"], last["end"] - 3.2), 3), "end": last["end"]}
+
 def cached_synth(cache: Path, text: str, cfg: dict, voice: dict | None) -> tuple[Path, float, list[dict]]:
     """Voz de una frase con caché: si ya se generó (y pasó la revisión de Whisper) se reutiliza tal cual."""
     # La clave incluye el motor forzado (VOZ_MOTOR) para no reutilizar nunca una voz de otro motor
@@ -152,6 +161,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
                     if con_tarjeta else None),
         "cover": {"text": story.get("cover_text") or story.get("question") or story["title"].replace(" #shorts", ""), "channel": c.get("nombre", "")},
         "hook": {"text": story.get("cover_text") or story.get("question") or "", "dur": 2.3},
+        "comment": comment_window(story, beats),
     }
     tl_path = out_dir / f"{sid}.timeline.json"
     write_json(tl_path, timeline)

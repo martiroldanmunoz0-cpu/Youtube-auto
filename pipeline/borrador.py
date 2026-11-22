@@ -19,6 +19,15 @@ PALABRAS_POR_SEG = 2.7  # ritmo medio de la voz clonada
 GAP = 0.12
 
 
+
+def comment_window(story: dict, beats: list[dict]) -> dict | None:
+    """Pregunta para comentarios: en pantalla durante el último plano antes del bucle (invita a comentar)."""
+    q = (story.get("comment_q") or "").strip()
+    if not q or len(beats) < 3:
+        return None
+    last = beats[-2] if beats[-1].get("bucle") else beats[-1]
+    return {"text": q, "start": round(max(last["start"], last["end"] - 3.2), 3), "end": last["end"]}
+
 def timeline_from_story(story: dict) -> dict:
     t, beats, words = 0.0, [], []
     for i, b in enumerate(story["beats"]):
@@ -36,6 +45,7 @@ def timeline_from_story(story: dict) -> dict:
         "cast": story.get("cast") or {}, "looks": story.get("looks", {}), "subtitle_style": story.get("subtitle_style", "page"),
         "endcard": None,
         "hook": {"text": story.get("cover_text") or story.get("question") or "", "dur": 2.3},
+        "comment": comment_window(story, beats),
     }
 
 

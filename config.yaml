@@ -64,6 +64,8 @@ musica:
 
 publicacion:
   zona_horaria: "Europe/Madrid"
+  # Listas de reproducción temáticas: cada Short se añade a la suya al subirlo (más tiempo de sesión en el canal).
+  listas: ["Cuerpo humano", "¿Qué pasaría si...?", "Historias reales increíbles", "Espacio y planeta Tierra", "Mitos y verdades", "Animales y naturaleza", "Ciencia curiosa"]
   # Horas de publicación (hora de España) según cuántos vídeos salen ese día.
   # Pensadas para España + Latinoamérica: se publica 1-2 h ANTES de los picos de audiencia para que YouTube
   # tenga tiempo de empezar a mostrarlo. Entre semana: comida (14-15 h) y tarde-noche (19-23 h, en Latinoamérica

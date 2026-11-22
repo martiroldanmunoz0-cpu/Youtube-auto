@@ -158,6 +158,88 @@ def upload(yt, item: dict, video_path: Path, cfg: dict) -> str:
     return resp["id"]
 
 
+PLAYLISTS = DATA / "playlists.json"
+_KEYWORDS = [("Historias reales increíbles", r"historia|sobreviv|caso real|el hombre|la mujer|el médico|el pescador|récord"),
+             ("Espacio y planeta Tierra", r"espacio|tierra|luna|sol\b|planeta|agujero negro|galaxia|astronaut|rayo|océano|volc"),
+             ("Cuerpo humano", r"cuerpo|cerebro|coraz|sangre|dormir|sueño|envejec|herida|piel|cosquilla|dedo|brazo"),
+             ("Animales y naturaleza", r"animal|tibur|dinosaur|perro|gato|pájaro|insect|selva|arenas movedizas|naturaleza"),
+             ("Mitos y verdades", r"mito|verdad|mentira|películas|cine"),
+             ("¿Qué pasaría si...?", r"qué pasaría|y si |qué pasa si")]
+
+
+def lista_para(q: dict, cfg: dict) -> str | None:
+    """Lista temática del vídeo: la que eligió el guionista o, si no, por palabras del título."""
+    import re as _re  # noqa: PLC0415
+    listas = cfg["publicacion"].get("listas") or []
+    if not listas:
+        return None
+    if q.get("lista") in listas:
+        return q["lista"]
+    t = (q.get("title") or "").lower()
+    for name, pat in _KEYWORDS:
+        if name in listas and _re.search(pat, t):
+            return name
+    return "Ciencia curiosa" if "Ciencia curiosa" in listas else listas[0]
+
+
+def ensure_playlist(yt, name: str) -> str | None:
+    """Id de la lista de reproducción (la crea pública la primera vez). Nunca bloquea la publicación."""
+    cache = read_json(PLAYLISTS, {})
+    if cache.get(name):
+        return cache[name]
+    try:
+        page = None
+        while True:
+            res = yt.playlists().list(part="snippet", mine=True, maxResults=50, pageToken=page).execute()
+            for it in res.get("items", []):
+                if it["snippet"]["title"].strip().lower() == name.lower():
+                    cache[name] = it["id"]
+            page = res.get("nextPageToken")
+            if not page or cache.get(name):
+                break
+        if not cache.get(name):
+            pl = yt.playlists().insert(part="snippet,status", body={"snippet": {"title": name, "description":
+                 f"{name}: curiosidades contadas en menos de un minuto. Un vídeo lleva a otro 👀", "defaultLanguage": "es"},
+                 "status": {"privacyStatus": "public"}}).execute()
+            cache[name] = pl["id"]
+            print(f"  lista creada: {name}")
+        write_json(PLAYLISTS, cache)
+        return cache[name]
+    except Exception as e:  # noqa: BLE001
+        print(f"  aviso: no se pudo preparar la lista «{name}» ({str(e)[:150]})")
+        return None
+
+
+def add_to_playlist(yt, vid: str, pid: str | None) -> str:
+    if not pid:
+        return ""
+    try:
+        yt.playlistItems().insert(part="snippet", body={"snippet": {"playlistId": pid, "resourceId": {"kind": "youtube#video", "videoId": vid}}}).execute()
+        return "\n   📂 Añadido a su lista de reproducción"
+    except Exception as e:  # noqa: BLE001
+        return f"\n   ⚠️ No se pudo añadir a la lista ({str(e)[:120]})"
+
+
+def backfill_playlists(queue: list[dict], cfg: dict) -> int:
+    """Añade a su lista los vídeos ya subidos (programados o publicados) que aún no están en ninguna. Nunca bloquea."""
+    todo = [q for q in queue if q.get("youtube_id") and q.get("estado") in ("programado", "publicado") and not q.get("lista_ok")]
+    if not todo or not cfg["publicacion"].get("listas") or not cfg["publicacion"].get("subir_por_api", True):
+        return 0
+    try:
+        yt = youtube_client()
+    except Exception as e:  # noqa: BLE001
+        print(f"  aviso: listas: {str(e)[:120]}")
+        return 0
+    n = 0
+    for q in todo[:20]:  # poco a poco para no gastar la cuota diaria
+        lista = lista_para(q, cfg)
+        msg = add_to_playlist(yt, q["youtube_id"], ensure_playlist(yt, lista) if lista else None)
+        if "Añadido" in msg:
+            q.update(lista=lista, lista_ok=True); n += 1
+            print(f"  {q['id']} -> lista «{lista}»")
+    return n
+
+
 def set_thumbnail(yt, vid: str, q: dict, tmp: Path) -> str:
     """Sube la portada propia del vídeo como miniatura. Nunca bloquea la publicación si falla."""
     if not q.get("portada"):
@@ -224,9 +306,15 @@ def process_queue(cfg: dict) -> list[str]:
         if not path.exists():
             gh("release", "download", q["tag"], "--pattern", q["video"], "--dir", str(tmp), "--clobber")
         try:
+            lista = lista_para(q, cfg)
+            pid = ensure_playlist(yt, lista) if lista else None
+            if pid and "playlist?list=" not in q["description"]:  # enlace a más vídeos del mismo tema (tiempo de sesión)
+                q["description"] = q["description"].rstrip() + f"\n\n▶️ Más de «{lista}»: https://www.youtube.com/playlist?list={pid}"
             vid = upload(yt, q, path, cfg)
-            q.update(estado="programado", youtube_id=vid)
-            portada_msg = set_thumbnail(yt, vid, q, tmp)
+            q.update(estado="programado", youtube_id=vid, lista=lista)
+            pl_msg = add_to_playlist(yt, vid, pid)
+            q["lista_ok"] = "Añadido" in pl_msg
+            portada_msg = set_thumbnail(yt, vid, q, tmp) + pl_msg
             local = dt.datetime.fromisoformat(q["publish_at"].replace("Z", "+00:00")).astimezone(ZoneInfo(cfg["publicacion"]["zona_horaria"]))
             dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
             cuando = f"{dias[local.weekday()]} {local:%d/%m} a las {local:%H:%M}"
@@ -285,6 +373,8 @@ def main():
     cfg = load_config()
     queue = read_json(QUEUE, [])
     if sync_youtube(queue, cfg):  # huecos liberados por vídeos publicados antes de tiempo
+        write_json(QUEUE, queue)
+    if backfill_playlists(queue, cfg):  # vídeos ya subidos que aún no están en su lista temática
         write_json(QUEUE, queue)
 
     if args.issue:
