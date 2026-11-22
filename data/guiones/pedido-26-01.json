@@ -1,349 +1,461 @@
 {
-  "title": "What If You Dug Straight Down? Where You'd Really Come Out #shorts",
-  "description": "Did you think it was China? 👇\n\nWhat happens if you dig a hole through the Earth from the US? The deepest hole ever dug, the Kola Superdeep Borehole, and where you'd really come out.\nThe Kola hole reached about 7.6 miles, only 0.2% of the way to the Earth's center.\n#shorts #whatif #earth #science #facts",
-  "tags": [
-    "what if you dug a hole through the earth",
-    "kola superdeep borehole",
-    "deepest hole in the world",
-    "dig to china",
-    "mponeng mine",
-    "earth core temperature",
-    "what is at the center of the earth",
-    "where would you come out if you dug straight down",
-    "myths vs facts",
-    "science facts"
-  ],
-  "beats": [
-    {
-      "text": "What if you dug straight down from Kansas?",
-      "scene": "composicion",
-      "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "montana_pieza",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "espada",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "temblar"
-          }
-        ],
-        "efecto": "velocidad"
-      },
-      "camera": "slam",
-      "transition": "cut"
-    },
-    {
-      "text": "Everyone says you'd pop out in China.",
-      "scene": "map_pin",
-      "params": {
-        "place": "China",
-        "detail": "The myth",
-        "style": "globo"
-      },
-      "camera": "push_in",
-      "transition": "whip"
-    },
-    {
-      "text": "Six feet down, you're already exhausted.",
-      "scene": "accion",
-      "params": {
-        "tipo": "marearse",
-        "lugar": "campo",
-        "hora": "dia"
-      },
-      "camera": "push_in",
-      "transition": "cut"
-    },
-    {
-      "text": "At a hundred feet, groundwater floods in.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "worried",
-        "piezas": [
-          {
-            "pieza": "ola_gigante",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "gota",
-            "pos": "arriba",
-            "tamano": "mediano",
-            "anim": "caer"
-          }
-        ],
-        "label": "100 feet"
-      },
-      "camera": "shake",
-      "transition": "fade"
-    },
-    {
-      "text": "Two and a half miles down, rock hits 130 degrees.",
-      "scene": "accion",
-      "params": {
-        "tipo": "quemarse",
-        "lugar": "fondo",
-        "label": "Mponeng Mine, South Africa"
-      },
-      "camera": "push_in",
-      "transition": "fade"
-    },
-    {
-      "text": "In 1970, Soviet engineers started drilling Kola.",
-      "scene": "year_jump",
-      "params": {
-        "from": 1970,
-        "to": 1989,
-        "label": "Kola Superdeep Borehole"
-      },
-      "camera": "pull_out",
-      "transition": "whip"
-    },
-    {
-      "text": "By 1989, they reached 40,230 feet.",
-      "scene": "big_text",
-      "params": {
-        "text": "40,230 FT",
-        "label": "7.6 miles deep",
-        "color": "#ffd400",
-        "lugar": "montana"
-      },
-      "camera": "slam",
-      "transition": "flash"
-    },
-    {
-      "text": "The hole was barely nine inches wide.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "montana",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "edificio",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "crecer"
-          }
-        ],
-        "label": "9 inches wide"
-      },
-      "camera": "tilt_down",
-      "transition": "cut"
-    },
-    {
-      "text": "Expected heat: 212 degrees. Found: 356.",
-      "scene": "big_text",
-      "params": {
-        "text": "356°F",
-        "label": "Expected: 212°F",
-        "color": "#ff3b30",
-        "lugar": "fondo"
-      },
-      "camera": "slam",
-      "transition": "red"
-    },
-    {
-      "text": "The rock turned soft as plastic, so they stopped.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "montana_pieza",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "fuego",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "latir"
-          }
-        ],
-        "label": "Rock like plastic"
-      },
-      "camera": "push_in",
-      "transition": "fade"
-    },
-    {
-      "text": "That's only zero point two percent of the way down.",
-      "scene": "accion",
-      "params": {
-        "tipo": "sorpresa",
-        "lugar": "campo",
-        "hora": "dia",
-        "label": "Only 0.2%"
-      },
-      "camera": "slam",
-      "transition": "flash"
-    },
-    {
-      "text": "Four thousand miles remain, ending in a core hot as the Sun.",
-      "scene": "big_text",
-      "params": {
-        "text": "9,800°F",
-        "label": "The Earth's core",
-        "color": "#ff9500",
-        "lugar": "espacio"
-      },
-      "camera": "pull_out",
-      "transition": "fade"
-    },
-    {
-      "text": "You wouldn't reach China. You'd surface in the Indian Ocean.",
-      "scene": "map_pin",
-      "params": {
-        "place": "Indian Ocean",
-        "detail": "Southwest of Australia",
-        "style": "globo"
-      },
-      "camera": "push_in",
-      "transition": "whip"
-    },
-    {
-      "text": "Today, Kola sits under a rusty metal lid.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "montana",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "medalla",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "fondo",
-            "tamano": "pequeno",
-            "anim": "temblar"
-          }
-        ],
-        "label": "Kola today"
-      },
-      "camera": "tilt_down",
-      "transition": "fade"
-    },
-    {
-      "text": "Grab your shovel. You've got 7,900 miles to go.",
-      "scene": "escena",
-      "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "plano": "medio",
-        "mood": "happy",
-        "objeto": "none",
-        "label": "7,900 miles to go"
-      },
-      "camera": "slam",
-      "transition": "flash"
-    },
-    {
-      "text": "So the next time you pick up a shovel and wonder,…",
-      "scene": "composicion",
-      "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "montana_pieza",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "espada",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "temblar"
-          }
-        ],
-        "efecto": "velocidad"
-      },
-      "camera": "static",
-      "transition": "cut",
-      "bucle": true
+ "title": "What If You Dug Straight Down? Where You'd Really Come Out #shorts",
+ "description": "Did you think it was China? 👇\n\nWhat happens if you dig a hole through the Earth from the US? The deepest hole ever dug, the Kola Superdeep Borehole, and where you'd really come out.\nThe Kola hole reached about 7.6 miles, only 0.2% of the way to the Earth's center.\n#shorts #whatif #earth #science #facts",
+ "tags": [
+  "what if you dug a hole through the earth",
+  "kola superdeep borehole",
+  "deepest hole in the world",
+  "dig to china",
+  "mponeng mine",
+  "earth core temperature",
+  "what is at the center of the earth",
+  "where would you come out if you dug straight down",
+  "myths vs facts",
+  "science facts"
+ ],
+ "beats": [
+  {
+   "text": "What if you dug straight down from Kansas?",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "campo",
+      "hora": "dia",
+      "persona": "medio",
+      "mood": "shocked",
+      "piezas": [
+       {
+        "pieza": "montana_pieza",
+        "pos": "derecha",
+        "tamano": "grande",
+        "anim": "crecer"
+       },
+       {
+        "pieza": "espada",
+        "pos": "izquierda",
+        "tamano": "mediano",
+        "anim": "temblar"
+       }
+      ],
+      "efecto": "velocidad"
+     }
     }
-  ],
-  "looks": {},
-  "cover_text": "DIG THROUGH THE EARTH?",
-  "comment_q": "Did you think it was China?",
-  "lista": "What If...?",
-  "question": "Where would you really come out if you dug straight down from the US?",
-  "piezas_pendientes": [
-    "corte_tierra_capas",
-    "pala",
-    "torre_perforacion",
-    "tapa_metalica"
-  ],
-  "id": "pedido-26-01",
-  "idea": {
-    "tipo": "pedido",
-    "premisa": "Narración inmersiva en segunda persona y por escalas de profundidad. Empiezas en tu jardín con una pala ('You grab a shovel in your backyard in Kansas…'). Cada pocos segundos bajas un nivel: 6 feet ya cansado; 100 feet y el agua subterránea te inunda; 2.5 miles, la mina más profunda del mundo (Mponeng, Sudáfrica), donde la roca supera los 130°F. Luego llega la protagonista real: los soviéticos lo intentaron en serio. En 1970 empezaron a perforar el Kola Superdeep Borehole y, tras casi 20 años, en 1989 llegaron a 40,230 feet, unas 7.6 millas, el agujero más profundo jamás excavado, de apenas 9 inches de ancho. Esperaban unos 212°F en el fondo y encontraron unos 356°F: la roca se comportaba casi como plástico y tapaba el agujero, así que pararon. La escala te golpea: eso es solo un 0.2% del camino al centro. Debajo te esperan casi 4,000 millas más, un núcleo de unos 9,800°F, tan caliente como la superficie del Sol, y una presión de más de 3 millones de veces la de la superficie. Mito contra realidad: 'Everyone says you'd pop out in China.' Error: desde casi cualquier punto de los EE. UU. continentales saldrías en medio del Océano Índico, al suroeste de Australia, en un mar de más de 2 millas de profundidad. Cierre en loop: vuelves a la pala en el jardín.",
-    "gancho": "What if you dug straight down from your backyard… where would you actually come out?",
-    "giro_final": "Primero el mito roto: no sales en China, sino en mitad del Océano Índico, y el agua te caería encima. Y el remate que casi nadie conoce: hoy el agujero más profundo del planeta está en ruinas en el Ártico ruso, sellado con una tapa de metal oxidada y atornillada del tamaño de una tapa de alcantarilla. 'The deepest hole humans ever dug… is now covered by a rusty lid you could stand on. So grab your shovel. You've got 7,900 miles to go.' (enlaza con la primera escena de la pala para el loop).",
-    "estilo_visual": "Dominan 'composicion' y 'big_text' en un corte vertical de la Tierra que se repite como hilo visual: una 'composicion' con la persona y la pieza 'pala' en un jardín, luego la misma persona cada vez más pequeña en un corte de capas de roca. 'escena' (lugar jardín, hora día) para el arranque y el loop final. 'big_text' para cada cifra que impacta: '40,230 FT', '356°F', '0.2%', '9,800°F', '7,900 MILES'. 'accion' tipo 'quemarse' cuando el calor sube en la mina y en Kola, y 'accion' tipo 'sorpresa' al revelar el 0.2%. 'year_jump' 1970 → 1989 para los años perforando Kola. 'composicion' con la pieza 'torre_perforacion' en paisaje nevado ártico para Kola, y con 'tapa_metalica' oxidada en el suelo para el giro final. 'map_pin' estilo globo terráqueo: la chincheta cae primero en China (tachada) y luego en el Océano Índico al suroeste de Australia. 'accion' tipo 'hundirse' cuando 'sales' en el océano. Nada de escenas de estilo oscuro: todo luminoso y didáctico.",
-    "por_que_funcionara": "La pregunta inicial es universal y deja el tema claro en 2 segundos; la estructura por escalas crea una escalada de tensión natural con cifras reales que sorprenden en cada nivel, y el formato mito contra realidad (China) engancha porque casi todos los estadounidenses crecieron oyendo ese mito. El doble giro (Océano Índico + tapa oxidada) da un final que pocos conocen, ideal para comentarios ('I always thought it was China!') y el loop hacia la pala favorece la retención y las repeticiones.",
-    "inspirado_en": [],
-    "piezas_nuevas": [
-      "pala",
-      "torre_perforacion",
-      "tapa_metalica",
-      "corte_tierra_capas"
-    ]
+   },
+   "camera": "slam",
+   "transition": "cut"
   },
-  "ganchos": [
-    {
-      "texto": "What if you dug straight down from Kansas?",
-      "tipo": "a",
-      "puntuacion": 9,
-      "motivo": "Aclara el tema al instante, es concreto y tiene 8 palabras."
-    },
-    {
-      "texto": "How deep could you dig before the Earth stops you?",
-      "tipo": "b",
-      "puntuacion": 7,
-      "motivo": "Plantea un reto claro, pero es menos concreto y tiene 10 palabras."
-    },
-    {
-      "texto": "Humans dug seven miles down. Then the rock fought back.",
-      "tipo": "c",
-      "puntuacion": 7,
-      "motivo": "El dato choca, pero el tema no queda tan claro como en una pregunta directa."
-    },
-    {
-      "texto": "You grab a shovel. You start digging straight down.",
-      "tipo": "d",
-      "puntuacion": 6,
-      "motivo": "Es inmersivo, pero el tema es menos explícito."
-    },
-    {
-      "texto": "Everyone says you'd pop out in China. Wrong.",
-      "tipo": "e",
-      "puntuacion": 8,
-      "motivo": "Mito contra realidad que atrapa a un público estadounidense, pero el tema se entiende un poco menos rápido."
+  {
+   "text": "Everyone says you'd pop out in China.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 1,
+    "respaldo": {
+     "scene": "map_pin",
+     "params": {
+      "place": "China",
+      "detail": "The myth",
+      "style": "globo"
+     }
     }
-  ],
-  "medida_estado": "esperando",
-  "tanda": "pedido-26"
+   },
+   "camera": "push_in",
+   "transition": "whip"
+  },
+  {
+   "text": "Six feet down, you're already exhausted.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 2,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "marearse",
+      "lugar": "campo",
+      "hora": "dia"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "At a hundred feet, groundwater floods in.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 3,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "campo",
+      "hora": "dia",
+      "persona": "medio",
+      "mood": "worried",
+      "piezas": [
+       {
+        "pieza": "ola_gigante",
+        "pos": "derecha",
+        "tamano": "grande",
+        "anim": "crecer"
+       },
+       {
+        "pieza": "gota",
+        "pos": "arriba",
+        "tamano": "mediano",
+        "anim": "caer"
+       }
+      ],
+      "label": "100 feet"
+     }
+    }
+   },
+   "camera": "shake",
+   "transition": "fade"
+  },
+  {
+   "text": "Two and a half miles down, rock hits 130 degrees.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 4,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "quemarse",
+      "lugar": "fondo",
+      "label": "Mponeng Mine, South Africa"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "fade"
+  },
+  {
+   "text": "In 1970, Soviet engineers started drilling Kola.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 5,
+    "respaldo": {
+     "scene": "year_jump",
+     "params": {
+      "from": 1970,
+      "to": 1989,
+      "label": "Kola Superdeep Borehole"
+     }
+    }
+   },
+   "camera": "pull_out",
+   "transition": "whip"
+  },
+  {
+   "text": "By 1989, they reached 40,230 feet.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 6,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "40,230 FT",
+      "label": "7.6 miles deep",
+      "color": "#ffd400",
+      "lugar": "montana"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "flash"
+  },
+  {
+   "text": "The hole was barely nine inches wide.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 7,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "montana",
+      "hora": "dia",
+      "persona": "no",
+      "piezas": [
+       {
+        "pieza": "edificio",
+        "pos": "centro",
+        "tamano": "grande",
+        "anim": "crecer"
+       }
+      ],
+      "label": "9 inches wide"
+     }
+    }
+   },
+   "camera": "tilt_down",
+   "transition": "cut"
+  },
+  {
+   "text": "Expected heat: 212 degrees. Found: 356.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 8,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "356°F",
+      "label": "Expected: 212°F",
+      "color": "#ff3b30",
+      "lugar": "fondo"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "red"
+  },
+  {
+   "text": "The rock turned soft as plastic, so they stopped.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 9,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "fondo",
+      "persona": "no",
+      "piezas": [
+       {
+        "pieza": "montana_pieza",
+        "pos": "centro",
+        "tamano": "grande",
+        "anim": "temblar"
+       },
+       {
+        "pieza": "fuego",
+        "pos": "izquierda",
+        "tamano": "mediano",
+        "anim": "latir"
+       }
+      ],
+      "label": "Rock like plastic"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "fade"
+  },
+  {
+   "text": "That's only zero point two percent of the way down.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 10,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "sorpresa",
+      "lugar": "campo",
+      "hora": "dia",
+      "label": "Only 0.2%"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "flash"
+  },
+  {
+   "text": "Four thousand miles remain, ending in a core hot as the Sun.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 11,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "9,800°F",
+      "label": "The Earth's core",
+      "color": "#ff9500",
+      "lugar": "espacio"
+     }
+    }
+   },
+   "camera": "pull_out",
+   "transition": "fade"
+  },
+  {
+   "text": "You wouldn't reach China. You'd surface in the Indian Ocean.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 12,
+    "respaldo": {
+     "scene": "map_pin",
+     "params": {
+      "place": "Indian Ocean",
+      "detail": "Southwest of Australia",
+      "style": "globo"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "whip"
+  },
+  {
+   "text": "Today, Kola sits under a rusty metal lid.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 13,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "montana",
+      "hora": "dia",
+      "persona": "no",
+      "piezas": [
+       {
+        "pieza": "medalla",
+        "pos": "centro",
+        "tamano": "grande",
+        "anim": "crecer"
+       },
+       {
+        "pieza": "edificio",
+        "pos": "fondo",
+        "tamano": "pequeno",
+        "anim": "temblar"
+       }
+      ],
+      "label": "Kola today"
+     }
+    }
+   },
+   "camera": "tilt_down",
+   "transition": "fade"
+  },
+  {
+   "text": "Grab your shovel. You've got 7,900 miles to go.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 14,
+    "respaldo": {
+     "scene": "escena",
+     "params": {
+      "lugar": "campo",
+      "hora": "dia",
+      "plano": "medio",
+      "mood": "happy",
+      "objeto": "none",
+      "label": "7,900 miles to go"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "flash"
+  },
+  {
+   "text": "So the next time you pick up a shovel and wonder,…",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-26-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "campo",
+      "hora": "dia",
+      "persona": "medio",
+      "mood": "shocked",
+      "piezas": [
+       {
+        "pieza": "montana_pieza",
+        "pos": "derecha",
+        "tamano": "grande",
+        "anim": "crecer"
+       },
+       {
+        "pieza": "espada",
+        "pos": "izquierda",
+        "tamano": "mediano",
+        "anim": "temblar"
+       }
+      ],
+      "efecto": "velocidad"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut",
+   "bucle": true
+  }
+ ],
+ "looks": {},
+ "cover_text": "DIG THROUGH THE EARTH?",
+ "comment_q": "Did you think it was China?",
+ "lista": "What If...?",
+ "question": "Where would you really come out if you dug straight down from the US?",
+ "piezas_pendientes": [
+  "corte_tierra_capas",
+  "pala",
+  "torre_perforacion",
+  "tapa_metalica"
+ ],
+ "id": "pedido-26-01",
+ "idea": {
+  "tipo": "pedido",
+  "premisa": "Narración inmersiva en segunda persona y por escalas de profundidad. Empiezas en tu jardín con una pala ('You grab a shovel in your backyard in Kansas…'). Cada pocos segundos bajas un nivel: 6 feet ya cansado; 100 feet y el agua subterránea te inunda; 2.5 miles, la mina más profunda del mundo (Mponeng, Sudáfrica), donde la roca supera los 130°F. Luego llega la protagonista real: los soviéticos lo intentaron en serio. En 1970 empezaron a perforar el Kola Superdeep Borehole y, tras casi 20 años, en 1989 llegaron a 40,230 feet, unas 7.6 millas, el agujero más profundo jamás excavado, de apenas 9 inches de ancho. Esperaban unos 212°F en el fondo y encontraron unos 356°F: la roca se comportaba casi como plástico y tapaba el agujero, así que pararon. La escala te golpea: eso es solo un 0.2% del camino al centro. Debajo te esperan casi 4,000 millas más, un núcleo de unos 9,800°F, tan caliente como la superficie del Sol, y una presión de más de 3 millones de veces la de la superficie. Mito contra realidad: 'Everyone says you'd pop out in China.' Error: desde casi cualquier punto de los EE. UU. continentales saldrías en medio del Océano Índico, al suroeste de Australia, en un mar de más de 2 millas de profundidad. Cierre en loop: vuelves a la pala en el jardín.",
+  "gancho": "What if you dug straight down from your backyard… where would you actually come out?",
+  "giro_final": "Primero el mito roto: no sales en China, sino en mitad del Océano Índico, y el agua te caería encima. Y el remate que casi nadie conoce: hoy el agujero más profundo del planeta está en ruinas en el Ártico ruso, sellado con una tapa de metal oxidada y atornillada del tamaño de una tapa de alcantarilla. 'The deepest hole humans ever dug… is now covered by a rusty lid you could stand on. So grab your shovel. You've got 7,900 miles to go.' (enlaza con la primera escena de la pala para el loop).",
+  "estilo_visual": "Dominan 'composicion' y 'big_text' en un corte vertical de la Tierra que se repite como hilo visual: una 'composicion' con la persona y la pieza 'pala' en un jardín, luego la misma persona cada vez más pequeña en un corte de capas de roca. 'escena' (lugar jardín, hora día) para el arranque y el loop final. 'big_text' para cada cifra que impacta: '40,230 FT', '356°F', '0.2%', '9,800°F', '7,900 MILES'. 'accion' tipo 'quemarse' cuando el calor sube en la mina y en Kola, y 'accion' tipo 'sorpresa' al revelar el 0.2%. 'year_jump' 1970 → 1989 para los años perforando Kola. 'composicion' con la pieza 'torre_perforacion' en paisaje nevado ártico para Kola, y con 'tapa_metalica' oxidada en el suelo para el giro final. 'map_pin' estilo globo terráqueo: la chincheta cae primero en China (tachada) y luego en el Océano Índico al suroeste de Australia. 'accion' tipo 'hundirse' cuando 'sales' en el océano. Nada de escenas de estilo oscuro: todo luminoso y didáctico.",
+  "por_que_funcionara": "La pregunta inicial es universal y deja el tema claro en 2 segundos; la estructura por escalas crea una escalada de tensión natural con cifras reales que sorprenden en cada nivel, y el formato mito contra realidad (China) engancha porque casi todos los estadounidenses crecieron oyendo ese mito. El doble giro (Océano Índico + tapa oxidada) da un final que pocos conocen, ideal para comentarios ('I always thought it was China!') y el loop hacia la pala favorece la retención y las repeticiones.",
+  "inspirado_en": [],
+  "piezas_nuevas": [
+   "pala",
+   "torre_perforacion",
+   "tapa_metalica",
+   "corte_tierra_capas"
+  ]
+ },
+ "ganchos": [
+  {
+   "texto": "What if you dug straight down from Kansas?",
+   "tipo": "a",
+   "puntuacion": 9,
+   "motivo": "Aclara el tema al instante, es concreto y tiene 8 palabras."
+  },
+  {
+   "texto": "How deep could you dig before the Earth stops you?",
+   "tipo": "b",
+   "puntuacion": 7,
+   "motivo": "Plantea un reto claro, pero es menos concreto y tiene 10 palabras."
+  },
+  {
+   "texto": "Humans dug seven miles down. Then the rock fought back.",
+   "tipo": "c",
+   "puntuacion": 7,
+   "motivo": "El dato choca, pero el tema no queda tan claro como en una pregunta directa."
+  },
+  {
+   "texto": "You grab a shovel. You start digging straight down.",
+   "tipo": "d",
+   "puntuacion": 6,
+   "motivo": "Es inmersivo, pero el tema es menos explícito."
+  },
+  {
+   "texto": "Everyone says you'd pop out in China. Wrong.",
+   "tipo": "e",
+   "puntuacion": 8,
+   "motivo": "Mito contra realidad que atrapa a un público estadounidense, pero el tema se entiende un poco menos rápido."
+  }
+ ],
+ "medida_estado": "lista",
+ "tanda": "pedido-26"
 }
