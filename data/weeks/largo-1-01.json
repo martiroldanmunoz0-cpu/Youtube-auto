@@ -1,0 +1,29 @@
+{
+  "semana": "largo-1-01",
+  "tanda": "largo-2",
+  "pedido": "",
+  "tag": "semana-largo-2",
+  "videos": [
+    {
+      "id": "largo-1-01",
+      "title": "7 lugares donde está prohibido entrar (y el peligro eres tú)",
+      "description": "¿Cuál de los siete lugares te ha sorprendido más? 👇\n\nLugares prohibidos del mundo: Área 51, Isla Sentinel del Norte, Lascaux, Svalbard, Surtsey, Ise y la isla de las serpientes, con la razón real de cada prohibición.\nDel siete al uno, descubre por qué no puedes entrar y quién protege a quién. El número uno cambia todo.\n¿Cuál de los siete lugares te ha sorprendido más?\n#lugaresprohibidos #curiosidades #area51 #islasentinel #misterios",
+      "tags": [
+        "lugares prohibidos",
+        "lugares donde no se puede entrar",
+        "isla sentinel del norte",
+        "area 51",
+        "isla de las serpientes",
+        "cueva de lascaux",
+        "bóveda de semillas svalbard",
+        "santuario de ise",
+        "surtsey",
+        "curiosidades del mundo",
+        "top 7 lugares prohibidos"
+      ],
+      "video": "largo-1-01.mp4",
+      "portada": "largo-1-01_portada.jpg",
+      "lista": "Mitos y verdades"
+    }
+  ]
+}
