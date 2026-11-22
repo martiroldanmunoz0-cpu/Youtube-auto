@@ -32,6 +32,7 @@ if (fs.existsSync(antonPath)) GlobalFonts.registerFromPath(antonPath, 'Anton');
 const TRANSITION = 0.32;
 const SETTLE = 0.3; // tras un corte, el plano entra con un pequeño empujón que se asienta
 // Escenas de estilo oscuro (misterio, noche, espacio): llevan el acabado oscuro del canal
+const OPAQUE_SCENES = new Set(['map_pin']);
 const DARK_SCENES = new Set(['eyes_dark', 'silhouette', 'hallway', 'front_door', 'bedroom', 'house_exterior', 'car_window', 'rearview_eyes', 'city_street', 'forest', 'space', 'ocean', 'character', 'duo', 'closeup', 'vice_street', 'vice_beach', 'car_ride', 'police_chase']);
 
 // Blindaje: la IA a veces pasa números (p. ej. día 1) donde el lienzo espera texto. Se convierten siempre.
@@ -153,13 +154,13 @@ export class Renderer {
     const local = b.bucle && b.scene_name === 'accion' ? 0.02 + (t - b.start) * 0.25 : t - b.start;
     const dur = Math.max(0.5, b.end - b.start);
     const prog = clamp(local / dur);
-    const cam = (CAMERAS[b.camera] || CAMERAS.push_in)(flowK(prog), t);
+    const cam = this.noCam ? { s: 1, x: 0, y: 0 } : (CAMERAS[b.camera] || CAMERAS.push_in)(flowK(prog), t);
     // Respiración continua: deriva suave y un pelín de giro, para que nada esté nunca congelado
-    const drift = 1;
+    const drift = this.noCam ? 0 : 1;
     const dx = (noise1(t * 0.6, 11) - 0.5) * 18 * drift, dy = (noise1(t * 0.6, 12) - 0.5) * 18 * drift;
     const rot = (noise1(t * 0.4, 13) - 0.5) * 0.012 * drift;
     // Entrada con energía tras un corte: arranca algo más cerca y se asienta
-    const settle = b.bucle || b.camera === 'slam' ? 0 : 0.07 * (1 - ease.out(clamp(local / SETTLE)));
+    const settle = b.bucle || b.camera === 'slam' || this.noCam ? 0 : 0.07 * (1 - ease.out(clamp(local / SETTLE)));
     ctx.save();
     if (!this.subjectOnly) { ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); }
     ctx.translate(W / 2 + cam.x + dx, H / 2 + cam.y + dy);
@@ -290,7 +291,7 @@ export class Renderer {
     // banda oscura detrás del texto para que se lea sobre cualquier imagen
     const g = ctx.createLinearGradient(0, 560, 0, 1360);
     g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(0.25, 'rgba(0,0,0,0.6)'); g.addColorStop(0.75, 'rgba(0,0,0,0.6)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = g; ctx.fillRect(0, 560, W, 800);
+    ctx.fillStyle = g; ctx.fillRect(this.wide ? -(WW - W) / 2 : 0, 560, this.wide ? WW : W, 800); // en horizontal, banda de lado a lado
     let size = 200, lines = [];
     for (; size >= 90; size -= 10) {
       ctx.font = `${size}px Anton`;
@@ -343,75 +344,146 @@ export class Renderer {
 // y los lados como continuación en espejo, sin costuras). Encima, solo los personajes, piezas y efectos de la escena
 // (la escena se dibuja «sin fondo»). Las escenas a medida de los vídeos largos pueden dibujarse directamente en ancho.
 export const WW = 1920, WH = 1080;
-const CROP_Y = 430, CROP_H = 1300;                  // franja de la escena vertical que se ve (cabe la persona entera)
-const SC = WH / CROP_H, TW = Math.round(W * SC), TX = Math.round((WW - TW) / 2);
+// Cada plano se dibuja en un lienzo vertical MUY ancho (la escena de siempre en el centro y PAD píxeles más a cada lado),
+// con el lugar continuado a lo ancho en espejo. Así lo que entra o se mueve por los lados nunca se corta.
+// El encuadre (qué franja vertical se ve) se calcula para cada plano mirando dónde hay dibujo: nada queda cortado arriba.
+// La cámara (acercar, paneo...) se aplica al fotograma ancho entero, fondo y personajes a la vez, y más suave que en los Shorts.
+const PAD = 1250, VW = W + 2 * PAD;
+const MEDIDA_CROP = { cy: 230, ch: 1580 };
 export class WideRenderer extends Renderer {
   constructor(timeline) {
     super(timeline);
     this.wide = true;
-    this.vcanvas = this.canvas; this.vctx = this.ctx;          // escena vertical (solo el sujeto)
+    this.pc = createCanvas(VW, H); this.pctx = this.pc.getContext('2d');
+    const orig = this.pctx.fillRect.bind(this.pctx);
+    // un relleno de «toda la pantalla» de la escena vertical se extiende a todo el ancho (velos, luz de la hora, fondos lisos)
+    this.pctx.fillRect = (x, y, w, h) => (x <= 2 && y <= 2 && w >= W - 4 && h >= H - 4 ? orig(x - PAD - 60, y, w + 2 * PAD + 120, h) : orig(x, y, w, h));
     this.canvas = createCanvas(WW, WH); this.ctx = this.canvas.getContext('2d');
     this.bg = createCanvas(W, H);
     this.wa = createCanvas(WW, WH); this.wb = createCanvas(WW, WH);
+    this.crops = new Map();
   }
-  // Lugar del plano (el del propio plano, el de su escena de respaldo o el del vídeo)
   placeOf(b) { return b.params?.lugar || b.params?.respaldo?.params?.lugar || b.ctxPlace || 'salon'; }
   horaOf(b) { return b.params?.hora || b.params?.respaldo?.params?.hora || b.ctxHora || 'dia'; }
-  // Fondo panorámico: tres «paneles» del lugar (centro normal, lados en espejo) => continuo y a pantalla completa
-  drawPanorama(ctx, lugar, hora, t) {
+  // El lugar continuado a lo ancho (coordenadas verticales, con la transformación actual): copias en espejo sin costuras
+  panoV(ctx, lugar, hora, t) {
     const bctx = this.bg.getContext('2d'); bctx.setTransform(1, 0, 0, 1, 0, 0); bctx.clearRect(0, 0, W, H);
-    BG_CONTEXT.none = false; drawPlaceWide(bctx, lugar, hora, t);
-    // se recortan unos píxeles de cada borde (los contornos del dibujo) para que las uniones no se noten
-    const E = 10, tw = Math.round((W - 2 * E) * SC), tx = Math.round((WW - tw) / 2);
-    for (const [x0, dir] of [[tx, -1], [tx + tw, 1]]) { // espejo a izquierda y derecha
-      ctx.save(); ctx.translate(dir < 0 ? x0 + 1 : x0 + tw - 1, 0); ctx.scale(-1, 1); ctx.drawImage(this.bg, E, CROP_Y, W - 2 * E, CROP_H, 0, 0, tw, WH); ctx.restore();
+    const none = BG_CONTEXT.none; BG_CONTEXT.none = false;
+    try { drawPlaceWide(bctx, lugar, hora, t); } finally { BG_CONTEXT.none = none; }
+    const E = 10, tw = W - 2 * E;
+    for (let k = -2; k <= 2; k++) {
+      const x = E + k * tw;
+      ctx.save();
+      if (k % 2) { ctx.translate(x + tw, 0); ctx.scale(-1, 1); ctx.drawImage(this.bg, E, 0, tw, H, 0, 0, tw, H); }
+      else ctx.drawImage(this.bg, E, 0, tw, H, x, 0, tw, H);
+      ctx.restore();
     }
-    ctx.drawImage(this.bg, E, CROP_Y, W - 2 * E, CROP_H, tx, 0, tw, WH);
+  }
+  gradeV(ctx, hora) {
+    if (hora !== 'noche' && hora !== 'atardecer') return;
+    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = hora === 'noche' ? 'rgb(135,145,205)' : 'rgb(255,214,180)';
+    ctx.fillRect(0, 0, VW + 1, H + 1); ctx.restore(); // (tamaño distinto de W×H: no lo toca el ensanchado)
+  }
+  isOpaque(b) {
+    if (b._opaque === undefined) { // ¿la escena se pinta su propio fondo? (se mira a mitad del plano, sin el lugar)
+      const p = this.pctx, t = (b.start + b.end) / 2;
+      p.setTransform(1, 0, 0, 1, 0, 0); p.clearRect(0, 0, VW, H); p.setTransform(1, 0, 0, 1, PAD, 0);
+      BG_CONTEXT.none = true; this.subjectOnly = true; this.noCam = true;
+      try { this.drawBeat(p, b, t, Math.round(t * this.fps)); } finally { BG_CONTEXT.none = false; this.subjectOnly = false; this.noCam = false; }
+      const a = p.getImageData(PAD + 4, 1000, 1, 1).data[3], c = p.getImageData(PAD + W - 4, 240, 1, 1).data[3];
+      b._opaque = DARK_SCENES.has(b.scene_name) || OPAQUE_SCENES.has(b.scene_name) || (a > 200 && c > 200);
+    }
+    return b._opaque;
+  }
+  // Dibuja el plano en el lienzo ancho vertical (sin cámara)
+  paint(b, t, frame) {
+    const p = this.pctx, local = t - b.start, dur = Math.max(0.5, b.end - b.start);
+    p.setTransform(1, 0, 0, 1, 0, 0); p.clearRect(0, 0, VW, H); p.setTransform(1, 0, 0, 1, PAD, 0);
+    this.noCam = true;
+    try {
+      const vfn = b.scene_name === 'medida' ? medidaFn(b.params) : null;
+      if (vfn) {
+        const who = personaWho(this.tl.persona || this.tl.seed, b.params);
+        const K2 = { ...KIT, X0: -PAD, XW: VW, drawPlace: (c, l, h, tt) => this.panoV(c, l, h, tt), grade: (c, h) => this.gradeV(c, h) };
+        p.fillStyle = '#1c1a2b'; p.fillRect(0, 0, W, H);
+        try { vfn(p, { t: local, dur, d: dur, prog: clamp(local / dur), params: b.params, who, frame }, K2); if (b.params.efecto) drawEffect(p, b.params.efecto, local); }
+        catch (e) { console.error('AVISO escena con error: ' + e.message); }
+        return 'medida';
+      }
+      if (this.isOpaque(b)) { // escena con fondo propio (papel, mapa, espacio...): su fondo se extiende a todo el ancho
+        BG_CONTEXT.none = false; this.subjectOnly = false;
+        this.drawBeat(p, b, t, frame);
+        const L = p.getImageData(PAD - 500, 960, 1, 1).data, C = p.getImageData(PAD + 6, 960, 1, 1).data;
+        if (L[0] + L[1] + L[2] < 8 && C[0] + C[1] + C[2] > 8) { // los lados se quedaron negros: se continúa el borde de la escena
+          p.save(); p.setTransform(1, 0, 0, 1, 0, 0);
+          p.drawImage(this.pc, PAD + 3, 0, 4, H, 0, 0, PAD + 3, H);
+          p.drawImage(this.pc, PAD + W - 7, 0, 4, H, PAD + W - 3, 0, PAD + 3, H);
+          p.restore();
+        }
+        return 'opaca';
+      }
+      this.panoV(p, this.placeOf(b), this.horaOf(b), local);
+      BG_CONTEXT.none = true; this.subjectOnly = true;
+      try { this.drawBeat(p, b, t, frame); } finally { BG_CONTEXT.none = false; this.subjectOnly = false; }
+      this.gradeV(p, this.horaOf(b));
+      return 'normal';
+    } finally { this.noCam = false; }
+  }
+  // Encuadre de cada plano: la franja vertical donde está todo lo que se dibuja (se mira en varios momentos del plano)
+  cropOf(b) {
+    if (this.crops.has(b)) return this.crops.get(b);
+    let cr = { cy: 430, ch: 1300 };
+    if (b.scene_name === 'medida' && medidaFn(b.params)) cr = MEDIDA_CROP;
+    else if (b.scene_name === 'medida' && medidaWide(b.params)) cr = MEDIDA_CROP;
+    else if (this.isOpaque(b)) cr = { cy: 300, ch: 1440 };
+    else {
+      let y0 = H, y1 = 0;
+      const p = this.pctx;
+      for (const f of [0.15, 0.45, 0.75, 0.97]) {
+        const t = b.start + f * (b.end - b.start);
+        p.setTransform(1, 0, 0, 1, 0, 0); p.clearRect(0, 0, VW, H); p.setTransform(1, 0, 0, 1, PAD, 0);
+        BG_CONTEXT.none = true; this.subjectOnly = true; this.noCam = true;
+        try { this.drawBeat(p, b, t, Math.round(t * this.fps)); } finally { BG_CONTEXT.none = false; this.subjectOnly = false; this.noCam = false; }
+        const x0 = PAD - 700, d = p.getImageData(x0, 0, W + 1400, H).data, rw = W + 1400;
+        for (let y = 0; y < H; y += 6) { const o = y * rw * 4; for (let x = 0; x < rw; x += 6) if (d[o + x * 4 + 3] > 24) { if (y < y0) y0 = y; if (y > y1) y1 = y; break; } }
+      }
+      if (y1 > y0) {
+        let cy = clamp(Math.min(430, y0 - 90), 0, 430);
+        let ch = Math.max(1300, Math.min(H, y1 + 60) - cy);
+        if (cy + ch > H) ch = H - cy;
+        if (ch < 1300) { cy = H - 1300; ch = 1300; }
+        cr = { cy, ch };
+      }
+    }
+    this.crops.set(b, cr);
+    return cr;
   }
   gradeWide(ctx, hora) {
     if (hora !== 'noche' && hora !== 'atardecer') return;
     ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = hora === 'noche' ? 'rgb(135,145,205)' : 'rgb(255,214,180)'; ctx.fillRect(0, 0, WW, WH); ctx.restore();
   }
-  // Un plano completo en ancho (fondo + sujeto), en el lienzo ctx
+  // Un plano completo en ancho (fondo + sujeto + cámara), en el lienzo ctx
   drawWideBeat(ctx, b, t, frame) {
     const local = t - b.start, dur = Math.max(0.5, b.end - b.start);
     const wideFn = b.scene_name === 'medida' ? medidaWide(b.params) : null;
-    const who = personaWho(this.tl.persona || this.tl.seed, b.params);
     if (wideFn) { // escena a medida dibujada directamente en horizontal
+      const who = personaWho(this.tl.persona || this.tl.seed, b.params);
       ctx.save(); try { wideFn(ctx, { t: local, d: dur, params: b.params, who, WW, WH }, KIT); } catch (e) { console.error('AVISO escena con error: ' + e.message); } ctx.restore();
       return;
     }
-    const vfn = b.scene_name === 'medida' ? medidaFn(b.params) : null;
-    if (vfn) { // escena a medida vertical: se dibuja a pantalla completa (los fondos usan K.X0/K.XW y los lugares son panorámicos)
-      const K2 = { ...KIT, X0: -TX / SC, XW: WW / SC,
-        drawPlace: (c, l, h, tt) => { c.save(); c.setTransform(1, 0, 0, 1, 0, 0); this.drawPanorama(c, l, h, tt); c.restore(); },
-        grade: (c, h) => { c.save(); c.setTransform(1, 0, 0, 1, 0, 0); this.gradeWide(c, h); c.restore(); } };
-      ctx.fillStyle = '#1c1a2b'; ctx.fillRect(0, 0, WW, WH);
-      const z = 1 + 0.04 * clamp(local / dur); // empuje suave de cámara
-      ctx.save(); ctx.translate(WW / 2, WH / 2); ctx.scale(z, z); ctx.translate(-WW / 2, -WH / 2);
-      ctx.translate(TX, 0); ctx.scale(SC, SC); ctx.translate(0, -CROP_Y);
-      try { vfn(ctx, { t: local, dur, d: dur, prog: clamp(local / dur), params: b.params, who, frame }, K2); if (b.params.efecto) drawEffect(ctx, b.params.efecto, local); }
-      catch (e) { console.error('AVISO escena con error: ' + e.message); }
-      ctx.restore();
-      return;
-    }
-    // sujeto sin fondo
-    const v = this.vctx; v.setTransform(1, 0, 0, 1, 0, 0); v.clearRect(0, 0, W, H);
-    BG_CONTEXT.none = true; this.subjectOnly = true;
-    try { this.drawBeat(v, b, t, frame); } finally { BG_CONTEXT.none = false; this.subjectOnly = false; }
-    const a = v.getImageData(3, 1000, 1, 1).data[3]; // ¿la escena se pintó su propio fondo? (papel, cueva, espacio...)
-    if (a > 200 || DARK_SCENES.has(b.scene_name)) {
-      // escena con fondo propio: se pinta entera y se continúa a los lados en espejo
-      BG_CONTEXT.none = false; v.setTransform(1, 0, 0, 1, 0, 0); this.drawBeat(v, b, t, frame);
-      // lados: la misma escena ampliada y muy suave (sin texto legible al revés), y la escena nítida en el centro
-      ctx.save(); ctx.filter = 'blur(14px)'; ctx.drawImage(this.vcanvas, 0, 760, W, W * WH / WW, -40, -40, WW + 80, WH + 80); ctx.restore();
-      ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.fillRect(0, 0, WW, WH);
-      ctx.save(); ctx.shadowColor = 'rgba(0,0,0,0.5)'; ctx.shadowBlur = 40; ctx.drawImage(this.vcanvas, 0, CROP_Y, W, CROP_H, TX, 0, TW, WH); ctx.restore();
-      return;
-    }
-    this.drawPanorama(ctx, this.placeOf(b), this.horaOf(b), local);
-    ctx.drawImage(this.vcanvas, 0, CROP_Y, W, CROP_H, TX, 0, TW, WH);
-    this.gradeWide(ctx, this.horaOf(b));
+    const cr = this.cropOf(b);
+    this.paint(b, t, frame);
+    const sc = WH / cr.ch, vw = WW / sc;
+    // cámara suave sobre el fotograma entero
+    const prog = clamp(local / dur);
+    const cam = (CAMERAS[b.camera] || CAMERAS.push_in)(flowK(prog), t);
+    const s = 1 + (cam.s - 1) * 0.3, dx = cam.x * sc * 0.5 + (noise1(t * 0.6, 11) - 0.5) * 10, dy = cam.y * sc * 0.25 + (noise1(t * 0.6, 12) - 0.5) * 8;
+    const M = 90; // margen extra para que la cámara nunca enseñe el borde
+    ctx.fillStyle = '#1c1a2b'; ctx.fillRect(0, 0, WW, WH);
+    ctx.save(); ctx.translate(WW / 2 + dx, WH / 2 + dy); ctx.rotate((noise1(t * 0.4, 13) - 0.5) * 0.006); ctx.scale(s, s); ctx.translate(-WW / 2, -WH / 2);
+    const sx = PAD + W / 2 - vw / 2 - M / sc, sy = Math.max(0, cr.cy - M / sc), sy1 = Math.min(H, cr.cy + cr.ch + M / sc);
+    ctx.drawImage(this.pc, sx, sy, vw + 2 * M / sc, sy1 - sy, -M, (sy - cr.cy) * sc, WW + 2 * M, (sy1 - sy) * sc);
+    ctx.restore();
   }
   renderFrame(frame) {
     const t = frame / this.fps, ctx = this.ctx;
