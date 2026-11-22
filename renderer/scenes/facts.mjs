@@ -1,4 +1,4 @@
-import { brightBg, INK } from '../lib/brightbg.mjs';
+import { brightBg, INK, BG_CONTEXT } from '../lib/brightbg.mjs';
 import { MAP_VARIANTS, NEWS_VARIANTS, mapSetup, pickVariant } from './variants.mjs';
 // Escenas para datos curiosos: cifra grande, recorte de periódico, mapa con chincheta.
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp } from '../lib/util.mjs';
@@ -25,7 +25,7 @@ export const big_text = {
       drawPlace(ctx, lugar, hora, t);
       if (params.persona !== 'no') midShot(ctx, personaWho(seed, params), { x: W / 2 + 60, y: 1330, s: 0.62, mood: params.mood || 'shocked', t, seed: 7 });
       grade(ctx, hora);
-      ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillRect(0, 0, W, H); // aclara un poco para que la cifra destaque
+      if (!BG_CONTEXT.none) { ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillRect(0, 0, W, H); } // aclara un poco para que la cifra destaque
     } else brightBg(ctx, t, ['crema', 'azul', 'verde', 'rosa', 'lila'][Math.abs(String(params.text || '').length) % 5]);
     radial(ctx, W / 2, lugar ? 640 : 1050, 600, col, 0.25);
     let text = String(params.text ?? '');

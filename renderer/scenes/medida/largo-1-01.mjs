@@ -8,9 +8,9 @@ function badgeN(ctx, K, n, name, k, y = 700) { // rótulo grande "Nº 7 · ÁREA
   ctx.font = '46px Anton'; ctx.fillStyle = '#ffd166'; ctx.fillText(name, 0, 58); ctx.restore();
 }
 function fence(ctx, K, y, t, col = '#9aa6b2') { // valla metálica con alambre
-  ctx.strokeStyle = col; ctx.lineWidth = 6; for (let x = -40; x < 1120; x += 60) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 60, y + 220); ctx.moveTo(x + 60, y); ctx.lineTo(x, y + 220); ctx.stroke(); }
-  for (let x = 0; x < 1080; x += 180) K.R(ctx, x, y - 40, 18, 280, 4, '#5a5d63', 4);
-  ctx.strokeStyle = '#c9ced6'; ctx.lineWidth = 4; for (let x = 0; x < 1080; x += 30) { ctx.beginPath(); ctx.arc(x, y - 30 + Math.sin(x + t) * 2, 12, 0, 7); ctx.stroke(); }
+  ctx.strokeStyle = col; ctx.lineWidth = 6; for (let x = K.X0 - 40; x < K.X0 + K.XW + 40; x += 60) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 60, y + 220); ctx.moveTo(x + 60, y); ctx.lineTo(x, y + 220); ctx.stroke(); }
+  for (let x = K.X0; x < K.X0 + K.XW; x += 180) K.R(ctx, x, y - 40, 18, 280, 4, '#5a5d63', 4);
+  ctx.strokeStyle = '#c9ced6'; ctx.lineWidth = 4; for (let x = K.X0; x < K.X0 + K.XW; x += 30) { ctx.beginPath(); ctx.arc(x, y - 30 + Math.sin(x + t) * 2, 12, 0, 7); ctx.stroke(); }
 }
 function sign(ctx, K, x, y, s, lines, col = '#e8505b', rot = 0) {
   ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(s, s); K.R(ctx, -14, 0, 28, 260, 6, '#5a5d63', 5);
@@ -26,13 +26,13 @@ function globeLocks(ctx, a, K) { // la Tierra girando con 7 candados que se cier
     ctx.save(); ctx.translate(540 + px * 260, 960 + py * 260); ctx.scale(s, s); K.R(ctx, -32, -10, 64, 54, 10, '#ffd166', 6); ctx.beginPath(); ctx.arc(0, -10, 22, Math.PI, 0); ctx.lineWidth = 10; ctx.strokeStyle = K.INK; ctx.stroke(); ctx.restore(); });
 }
 function cave(ctx, a, K, dark = 0) { // cueva con pinturas de animales
-  ctx.fillStyle = '#5a4030'; ctx.fillRect(0, 0, 1080, 1920);
+  ctx.fillStyle = '#5a4030'; ctx.fillRect(K.X0, 0, K.XW, 1920);
   ctx.beginPath(); ctx.ellipse(540, 1000, 620, 560, 0, 0, 7); ctx.fillStyle = '#c99a6a'; ctx.fill();
-  const g = ctx.createRadialGradient(540, 1000, 100, 540, 1000, 620); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(40,20,10,0.85)'); ctx.fillStyle = g; ctx.fillRect(0, 0, 1080, 1920);
+  const g = ctx.createRadialGradient(540, 1000, 100, 540, 1000, 620); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(40,20,10,0.85)'); ctx.fillStyle = g; ctx.fillRect(K.X0, 0, K.XW, 1920);
   const animal = (x, y, s, col, t0) => { ctx.save(); ctx.translate(x + Math.sin(a.t * 1.5 + t0) * 6, y); ctx.scale(s, s); ctx.fillStyle = col; ctx.beginPath(); ctx.ellipse(0, 0, 120, 60, 0, 0, 7); ctx.fill(); ctx.beginPath(); ctx.ellipse(110, -40, 40, 30, -0.4, 0, 7); ctx.fill();
     ctx.strokeStyle = col; ctx.lineWidth = 14; for (const lx of [-70, -30, 40, 80]) { ctx.beginPath(); ctx.moveTo(lx, 40); ctx.lineTo(lx + Math.sin(a.t * 3 + lx) * 8, 120); ctx.stroke(); } ctx.beginPath(); ctx.moveTo(130, -60); ctx.quadraticCurveTo(160, -130, 120, -150); ctx.stroke(); ctx.restore(); };
   animal(380, 860, 1, '#7a2e1e', 0); animal(700, 1080, 0.8, '#2b1a12', 1); animal(420, 1250, 0.7, '#a8562a', 2);
-  if (dark) { ctx.fillStyle = `rgba(0,0,0,${dark})`; ctx.fillRect(0, 0, 1080, 1920); }
+  if (dark) { ctx.fillStyle = `rgba(0,0,0,${dark})`; ctx.fillRect(K.X0, 0, K.XW, 1920); }
 }
 function virusSwarm(ctx, a, K, cx, cy, r, n, k) { for (let i = 0; i < n; i++) { const an = i * 2.4 + a.t * 0.8, rr = r * (0.3 + ((i * 37) % 10) / 14) * k; ctx.save(); ctx.translate(cx + Math.cos(an) * rr, cy + Math.sin(an) * rr * 0.7); ctx.scale(0.22, 0.22); ctx.rotate(a.t + i); K.PROPS.virus(ctx, a.t); ctx.restore(); } }
 
@@ -44,7 +44,7 @@ export default {
   },
   // 3. Y en el número uno descubrirás que el peligro... eres tú -> un dedo gigante señala a cámara
   2: (ctx, a, K) => {
-    K.drawPlace(ctx, 'calle', 'atardecer', a.t); ctx.fillStyle = 'rgba(20,10,30,0.45)'; ctx.fillRect(0, 0, 1080, 1920);
+    K.drawPlace(ctx, 'calle', 'atardecer', a.t); ctx.fillStyle = 'rgba(20,10,30,0.45)'; ctx.fillRect(K.X0, 0, K.XW, 1920);
     const k = K.ease.out(K.ph(a.t, a.d, 0.2, 0.6));
     K.radial(ctx, 540, 1050, 600, '#e8505b', 0.4 * k);
     ctx.save(); ctx.translate(540, 1300); ctx.scale(1 + k * 1.2, 1 + k * 1.2); K.prop(ctx, 'mano', 0, 0, 1, a.t); ctx.restore();
@@ -68,7 +68,7 @@ export default {
   },
   // 14. Desde abajo, su fuselaje brillaba con el sol... como un objeto extraño -> el U-2 altísimo brilla como una luz misteriosa
   13: (ctx, a, K) => {
-    K.drawPlace(ctx, 'desierto', 'atardecer', a.t); ctx.fillStyle = 'rgba(30,20,60,0.35)'; ctx.fillRect(0, 0, 1080, 1920);
+    K.drawPlace(ctx, 'desierto', 'atardecer', a.t); ctx.fillStyle = 'rgba(30,20,60,0.35)'; ctx.fillRect(K.X0, 0, K.XW, 1920);
     const x = 100 + K.ph(a.t, a.d, 0, 1) * 880;
     K.radial(ctx, x, 620, 200 + Math.sin(a.t * 8) * 30, '#fff3c4', 0.9);
     ctx.save(); ctx.translate(x, 620); ctx.scale(0.25, 0.25); K.PROPS.avion(ctx, a.t); ctx.restore();
@@ -87,7 +87,7 @@ export default {
   // 19. Número seis: la Bóveda Global de Semillas de Svalbard -> la entrada de hormigón en la montaña nevada, con aurora
   18: (ctx, a, K) => {
     K.drawPlace(ctx, 'montana', 'noche', a.t);
-    ctx.save(); ctx.globalCompositeOperation = 'lighter'; for (let i = 0; i < 3; i++) { ctx.strokeStyle = `rgba(${i ? 120 : 80},255,${170 + i * 30},0.25)`; ctx.lineWidth = 60; ctx.beginPath(); for (let x = 0; x <= 1080; x += 40) ctx.lineTo(x, 500 + i * 60 + Math.sin(x / 160 + a.t + i) * 50); ctx.stroke(); } ctx.restore();
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; for (let i = 0; i < 3; i++) { ctx.strokeStyle = `rgba(${i ? 120 : 80},255,${170 + i * 30},0.25)`; ctx.lineWidth = 60; ctx.beginPath(); for (let x = K.X0; x <= K.X0 + K.XW; x += 40) ctx.lineTo(x, 500 + i * 60 + Math.sin(x / 160 + a.t + i) * 50); ctx.stroke(); } ctx.restore();
     K.P(ctx, [[300, 1250], [540, 820], [780, 1250]], '#e9eef5', 8);
     K.R(ctx, 470, 980, 140, 300, 6, '#8d929b', 8); K.R(ctx, 490, 1000, 100, 260, 4, '#5a5d63', 0);
     ctx.save(); ctx.globalAlpha = 0.6 + 0.4 * Math.sin(a.t * 2); K.R(ctx, 480, 990, 120, 40, 4, '#7bdff2', 0); ctx.restore();
@@ -95,7 +95,7 @@ export default {
   },
   // 28-29. Siria: primera retirada -> cajas que salen de la bóveda y vuelan hacia Alepo en un avión
   28: (ctx, a, K) => {
-    K.drawPlace(ctx, 'ciudad', 'atardecer', a.t); ctx.fillStyle = 'rgba(60,40,30,0.35)'; ctx.fillRect(0, 0, 1080, 1920);
+    K.drawPlace(ctx, 'ciudad', 'atardecer', a.t); ctx.fillStyle = 'rgba(60,40,30,0.35)'; ctx.fillRect(K.X0, 0, K.XW, 1920);
     K.smoke(ctx, 540, 1100, a.t, 6);
     for (let i = 0; i < 4; i++) { const k = K.ph(a.t, a.d, 0.1 + i * 0.12, 0.6 + i * 0.1); if (k <= 0) continue; ctx.save(); ctx.translate(100 + k * 880, 1200 - Math.sin(k * Math.PI) * 500); ctx.rotate(k * 4); K.R(ctx, -50, -40, 100, 80, 8, '#c98a4b', 6); K.R(ctx, -50, -8, 100, 14, 0, '#8b5a2b', 0); ctx.restore(); }
     K.text(ctx, 'ALEPO · 2015', 540, 690, { size: 100, color: '#ffd166', k: K.ph(a.t, a.d, 0.05, 0.2) });
@@ -122,14 +122,14 @@ export default {
   // 45. Número cuatro: la isla de las serpientes -> isla verde y rocosa en el mar con serpientes asomando
   44: (ctx, a, K) => {
     K.drawPlace(ctx, 'playa', 'dia', a.t);
-    ctx.fillStyle = '#2f9ec9'; ctx.fillRect(0, 1150, 1080, 770);
+    ctx.fillStyle = '#2f9ec9'; ctx.fillRect(K.X0, 1150, K.XW, 770);
     ctx.beginPath(); ctx.moveTo(150, 1200); ctx.quadraticCurveTo(300, 760, 540, 800); ctx.quadraticCurveTo(820, 760, 930, 1200); ctx.closePath(); ctx.fillStyle = '#3e8c4a'; ctx.fill(); K.O(ctx, 9);
     for (let i = 0; i < 5; i++) { const k = K.ph(a.t, a.d, 0.2 + i * 0.1, 0.35 + i * 0.1); if (k <= 0) continue; ctx.save(); ctx.translate(280 + i * 120, 1000 + (i % 2) * 80 - k * 40); ctx.scale(0.3, 0.3); K.PROPS.serpiente(ctx, a.t + i); ctx.restore(); }
     badgeN(ctx, K, 4, 'ISLA DE LAS SERPIENTES · BRASIL', K.ph(a.t, a.d, 0.05, 0.25));
   },
   // 50-51. "Una serpiente por metro cuadrado"... es un mito -> cuadrícula llena de serpientes que se vacía con un sello MITO
   50: (ctx, a, K) => {
-    ctx.fillStyle = '#3e8c4a'; ctx.fillRect(0, 0, 1080, 1920);
+    ctx.fillStyle = '#3e8c4a'; ctx.fillRect(K.X0, 0, K.XW, 1920);
     const st = K.ph(a.t, a.d, 0.35, 0.45), gone = K.ph(a.t, a.d, 0.45, 0.9);
     ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 3; for (let x = 140; x <= 940; x += 160) { ctx.beginPath(); ctx.moveTo(x, 500); ctx.lineTo(x, 1500); ctx.stroke(); } for (let y = 500; y <= 1500; y += 160) { ctx.beginPath(); ctx.moveTo(140, y); ctx.lineTo(940, y); ctx.stroke(); }
     let i = 0; for (let x = 220; x < 940; x += 160) for (let y = 580; y < 1500; y += 160) { i++; if (gone > 0 && (i * 7) % 10 < gone * 10.5) continue; ctx.save(); ctx.translate(x, y + 30); ctx.scale(0.16, 0.16); K.PROPS.serpiente(ctx, a.t + i); ctx.restore(); }
@@ -137,24 +137,24 @@ export default {
   },
   // 59. Número tres: Surtsey -> rótulo y la isla negra humeante en mitad del mar
   58: (ctx, a, K) => {
-    K.drawPlace(ctx, 'playa', 'atardecer', a.t); ctx.fillStyle = '#2a6f99'; ctx.fillRect(0, 1100, 1080, 820);
+    K.drawPlace(ctx, 'playa', 'atardecer', a.t); ctx.fillStyle = '#2a6f99'; ctx.fillRect(K.X0, 1100, K.XW, 820);
     K.P(ctx, [[220, 1200], [420, 900], [660, 880], [860, 1200]], '#2b2b30', 9);
     K.smoke(ctx, 540, 880, a.t, 6);
     badgeN(ctx, K, 3, 'SURTSEY · ISLANDIA', K.ph(a.t, a.d, 0.1, 0.3));
   },
   // 60-61. El mar empezó a hervir... y nació una isla -> burbujas, explosión y la isla subiendo del agua
   59: (ctx, a, K) => {
-    ctx.fillStyle = '#5a6b80'; ctx.fillRect(0, 0, 1080, 1100); ctx.fillStyle = '#1f6f99'; ctx.fillRect(0, 1100, 1080, 820);
+    ctx.fillStyle = '#5a6b80'; ctx.fillRect(K.X0, 0, K.XW, 1100); ctx.fillStyle = '#1f6f99'; ctx.fillRect(K.X0, 1100, K.XW, 820);
     const rise = K.ease.out(K.ph(a.t, a.d, 0.35, 1));
     for (let i = 0; i < 16; i++) { const q = (a.t * 1.5 + i / 16) % 1; K.C(ctx, 300 + (i * 61) % 480, 1150 - q * 200, 10 + (i % 3) * 6, '#ffffff', 3); }
     ctx.save(); ctx.translate(540, 1150 + (1 - rise) * 300); K.P(ctx, [[-320, 0], [-120, -300], [120, -320], [320, 0]], '#2b2b30', 9); ctx.restore();
-    ctx.fillStyle = 'rgba(31,111,153,0.9)'; ctx.fillRect(0, 1150, 1080, 770);
+    ctx.fillStyle = 'rgba(31,111,153,0.9)'; ctx.fillRect(K.X0, 1150, K.XW, 770);
     if (rise > 0) { K.starBurst(ctx, 540, 900, 160 + Math.sin(a.t * 10) * 30, '#ff8a3d', Math.min(1, rise * 2)); K.smoke(ctx, 540, 820, a.t, 7); }
     K.text(ctx, '1963', 540, 690, { size: 140, color: '#ffd166', k: K.ph(a.t, a.d, 0.05, 0.2) });
   },
   // 68-70. Apareció una tomatera... de los excrementos de un investigador... y la arrancaron -> la tomatera crece y una mano la arranca
   67: (ctx, a, K) => {
-    K.drawPlace(ctx, 'playa', 'dia', a.t); ctx.fillStyle = '#2b2b30'; ctx.fillRect(0, 1250, 1080, 670);
+    K.drawPlace(ctx, 'playa', 'dia', a.t); ctx.fillStyle = '#2b2b30'; ctx.fillRect(K.X0, 1250, K.XW, 670);
     const g = K.ease.out(K.ph(a.t, a.d, 0, 0.6)), pull = K.ph(a.t, a.d, 0.7, 1);
     ctx.save(); ctx.translate(540, 1250 - pull * 600); ctx.rotate(pull * 0.6);
     K.L(ctx, [[0, 0], [0, -300 * g]], '#4caf50', 16); for (let i = 1; i < 4; i++) if (g > i * 0.25) K.E(ctx, (i % 2 ? 60 : -60), -80 * i, 50, 22, '#6fcf97', i % 2 ? -0.4 : 0.4);
@@ -186,7 +186,7 @@ export default {
   },
   // 88. Número uno: la isla Sentinel del Norte -> isla de selva rodeada de arrecife, rótulo Nº 1 con más dramatismo
   87: (ctx, a, K) => {
-    K.drawPlace(ctx, 'playa', 'atardecer', a.t); ctx.fillStyle = '#1f7fa9'; ctx.fillRect(0, 1050, 1080, 870);
+    K.drawPlace(ctx, 'playa', 'atardecer', a.t); ctx.fillStyle = '#1f7fa9'; ctx.fillRect(K.X0, 1050, K.XW, 870);
     ctx.beginPath(); ctx.ellipse(540, 1200, 400, 160, 0, 0, 7); ctx.fillStyle = '#f0d9a0'; ctx.fill(); K.O(ctx, 8);
     for (let i = 0; i < 9; i++) K.C(ctx, 250 + i * 70, 1120 - Math.abs(i - 4) * 10, 70, i % 2 ? '#2e7d4f' : '#3e9c57', 6);
     ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(540, 1200, 470 + Math.sin(a.t * 2) * 8, 200, 0, 0, 7); ctx.stroke();
@@ -213,7 +213,7 @@ export default {
   },
   // 102. En este lugar tú eres el arma -> primer plano tuyo y una diana roja encima: TÚ
   101: (ctx, a, K) => {
-    K.drawPlace(ctx, 'playa', 'atardecer', a.t); ctx.fillStyle = 'rgba(40,10,20,0.4)'; ctx.fillRect(0, 0, 1080, 1920);
+    K.drawPlace(ctx, 'playa', 'atardecer', a.t); ctx.fillStyle = 'rgba(40,10,20,0.4)'; ctx.fillRect(K.X0, 0, K.XW, 1920);
     K.face(ctx, a.who, 540, 1050, 1.5, { mood: 'shocked', t: a.t });
     const k = K.ease.outBack(K.ph(a.t, a.d, 0.2, 0.45));
     ctx.save(); ctx.translate(540, 1000); ctx.scale(k, k); ctx.strokeStyle = '#e8505b'; ctx.lineWidth = 16; for (const r of [420, 300]) { ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.stroke(); } ctx.beginPath(); ctx.moveTo(-480, 0); ctx.lineTo(480, 0); ctx.moveTo(0, -480); ctx.lineTo(0, 480); ctx.stroke(); ctx.restore();
@@ -221,7 +221,7 @@ export default {
   },
   // 105. Una tomatera, un aliento, un resfriado: el hilo de toda la lista -> tres iconos unidos por un hilo rojo
   104: (ctx, a, K) => {
-    ctx.fillStyle = '#2a2233'; ctx.fillRect(0, 0, 1080, 1920); K.radial(ctx, 540, 1000, 700, '#e8505b', 0.2);
+    ctx.fillStyle = '#2a2233'; ctx.fillRect(K.X0, 0, K.XW, 1920); K.radial(ctx, 540, 1000, 700, '#e8505b', 0.2);
     const pts = [[260, 760, 'TOMATERA'], [820, 1000, 'ALIENTO'], [300, 1300, 'RESFRIADO']];
     const k = K.ph(a.t, a.d, 0.1, 0.9);
     ctx.strokeStyle = '#e8505b'; ctx.lineWidth = 10; ctx.setLineDash([24, 14]); ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); if (k > 0.33) ctx.lineTo(pts[1][0], pts[1][1]); if (k > 0.66) ctx.lineTo(pts[2][0], pts[2][1]); ctx.stroke(); ctx.setLineDash([]);
@@ -230,7 +230,7 @@ export default {
   },
   // 106. Protege a un pueblo entero -> la isla al atardecer con humo de hogueras y un escudo de luz que la rodea
   106: (ctx, a, K) => {
-    K.drawPlace(ctx, 'playa', 'atardecer', a.t); ctx.fillStyle = '#1f7fa9'; ctx.fillRect(0, 1050, 1080, 870);
+    K.drawPlace(ctx, 'playa', 'atardecer', a.t); ctx.fillStyle = '#1f7fa9'; ctx.fillRect(K.X0, 1050, K.XW, 870);
     ctx.beginPath(); ctx.ellipse(540, 1200, 400, 160, 0, 0, 7); ctx.fillStyle = '#f0d9a0'; ctx.fill(); K.O(ctx, 8);
     for (let i = 0; i < 9; i++) K.C(ctx, 250 + i * 70, 1120 - Math.abs(i - 4) * 10, 70, i % 2 ? '#2e7d4f' : '#3e9c57', 6);
     for (const x of [420, 650]) for (let j = 0; j < 4; j++) { const q = (a.t * 0.5 + j / 4) % 1; ctx.globalAlpha = 0.5 * (1 - q); K.radial(ctx, x + Math.sin(a.t + j) * 20, 1060 - q * 250, 30 + q * 40, '#cccccc', 1); }

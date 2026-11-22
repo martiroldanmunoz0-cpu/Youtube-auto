@@ -18,6 +18,8 @@ import { setLooks } from './lib/persona.mjs';
 import { drawEffect, comicGate } from './lib/impact.mjs';
 import { drawPlace as drawPlaceWide } from './scenes/bright.mjs';
 import { BG_CONTEXT } from './lib/brightbg.mjs';
+import { medidaWide, medidaFn, KIT } from './scenes/medida.mjs';
+import { personaWho } from './lib/persona.mjs';
 import { lifeOverlay } from './lib/ambient.mjs';
 import { propName } from './lib/props.mjs';
 
@@ -159,8 +161,7 @@ export class Renderer {
     // Entrada con energía tras un corte: arranca algo más cerca y se asienta
     const settle = b.bucle || b.camera === 'slam' ? 0 : 0.07 * (1 - ease.out(clamp(local / SETTLE)));
     ctx.save();
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, W, H);
+    if (!this.subjectOnly) { ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); }
     ctx.translate(W / 2 + cam.x + dx, H / 2 + cam.y + dy);
     ctx.rotate(rot + (cam.r || 0));
     ctx.scale(cam.s + settle, cam.s + settle);
@@ -169,7 +170,7 @@ export class Renderer {
     BG_CONTEXT.lugar = DARK_SCENES.has(b.scene_name) ? null : b.ctxPlace; BG_CONTEXT.hora = b.ctxHora || 'dia';
     try {
       b.scene.draw(ctx, b.state, { t: local, dur, prog, params: b.params, frame, global: t, seed: this.tl.persona || this.tl.seed, cast: this.tl.cast || {}, speaker: b.speaker, voice_dur: b.voice_dur });
-      if (!LIVELY.has(b.scene_name)) lifeOverlay(ctx, local, DARK_SCENES.has(b.scene_name));
+      if (!LIVELY.has(b.scene_name) && !this.subjectOnly) lifeOverlay(ctx, local, DARK_SCENES.has(b.scene_name));
       if (b.params.efecto) drawEffect(ctx, b.params.efecto, local); // ¡PUM!, ¡ZAS!, velocidad, brillo...
       comicGate.on = true;
     } catch (e) {
@@ -337,40 +338,101 @@ export class Renderer {
   }
 }
 
-// ---------------- VÍDEOS LARGOS (horizontal 1920×1080) ----------------
-// Reutiliza todas las escenas (hechas en vertical): la escena va en el centro, grande, y los lados se rellenan con
-// el mismo lugar ampliado y un poco desenfocado (profundidad), fundidos sin cortes. Subtítulos abajo.
+// ---------------- VÍDEOS LARGOS (horizontal 1920×1080, pantalla completa) ----------------
+// El fondo es PANORÁMICO: el lugar del plano dibujado nítido a lo ancho de toda la pantalla (la parte central tal cual
+// y los lados como continuación en espejo, sin costuras). Encima, solo los personajes, piezas y efectos de la escena
+// (la escena se dibuja «sin fondo»). Las escenas a medida de los vídeos largos pueden dibujarse directamente en ancho.
 export const WW = 1920, WH = 1080;
-const CROP_Y = 430, CROP_H = 1180; // parte de la escena vertical que se ve (sin el cielo de arriba ni el suelo de abajo)
+const CROP_Y = 430, CROP_H = 1300;                  // franja de la escena vertical que se ve (cabe la persona entera)
+const SC = WH / CROP_H, TW = Math.round(W * SC), TX = Math.round((WW - TW) / 2);
 export class WideRenderer extends Renderer {
   constructor(timeline) {
     super(timeline);
     this.wide = true;
-    this.vcanvas = this.canvas; this.vctx = this.ctx;          // fotograma vertical de la escena
+    this.vcanvas = this.canvas; this.vctx = this.ctx;          // escena vertical (solo el sujeto)
     this.canvas = createCanvas(WW, WH); this.ctx = this.canvas.getContext('2d');
-    this.bg = createCanvas(W, H); this.fgw = Math.round(W * WH / CROP_H);
-    this.fg = createCanvas(this.fgw, WH);
+    this.bg = createCanvas(W, H);
+    this.wa = createCanvas(WW, WH); this.wb = createCanvas(WW, WH);
+  }
+  // Lugar del plano (el del propio plano, el de su escena de respaldo o el del vídeo)
+  placeOf(b) { return b.params?.lugar || b.params?.respaldo?.params?.lugar || b.ctxPlace || 'salon'; }
+  horaOf(b) { return b.params?.hora || b.params?.respaldo?.params?.hora || b.ctxHora || 'dia'; }
+  // Fondo panorámico: tres «paneles» del lugar (centro normal, lados en espejo) => continuo y a pantalla completa
+  drawPanorama(ctx, lugar, hora, t) {
+    const bctx = this.bg.getContext('2d'); bctx.setTransform(1, 0, 0, 1, 0, 0); bctx.clearRect(0, 0, W, H);
+    BG_CONTEXT.none = false; drawPlaceWide(bctx, lugar, hora, t);
+    // se recortan unos píxeles de cada borde (los contornos del dibujo) para que las uniones no se noten
+    const E = 10, tw = Math.round((W - 2 * E) * SC), tx = Math.round((WW - tw) / 2);
+    for (const [x0, dir] of [[tx, -1], [tx + tw, 1]]) { // espejo a izquierda y derecha
+      ctx.save(); ctx.translate(dir < 0 ? x0 + 1 : x0 + tw - 1, 0); ctx.scale(-1, 1); ctx.drawImage(this.bg, E, CROP_Y, W - 2 * E, CROP_H, 0, 0, tw, WH); ctx.restore();
+    }
+    ctx.drawImage(this.bg, E, CROP_Y, W - 2 * E, CROP_H, tx, 0, tw, WH);
+  }
+  gradeWide(ctx, hora) {
+    if (hora !== 'noche' && hora !== 'atardecer') return;
+    ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = hora === 'noche' ? 'rgb(135,145,205)' : 'rgb(255,214,180)'; ctx.fillRect(0, 0, WW, WH); ctx.restore();
+  }
+  // Un plano completo en ancho (fondo + sujeto), en el lienzo ctx
+  drawWideBeat(ctx, b, t, frame) {
+    const local = t - b.start, dur = Math.max(0.5, b.end - b.start);
+    const wideFn = b.scene_name === 'medida' ? medidaWide(b.params) : null;
+    const who = personaWho(this.tl.persona || this.tl.seed, b.params);
+    if (wideFn) { // escena a medida dibujada directamente en horizontal
+      ctx.save(); try { wideFn(ctx, { t: local, d: dur, params: b.params, who, WW, WH }, KIT); } catch (e) { console.error('AVISO escena con error: ' + e.message); } ctx.restore();
+      return;
+    }
+    const vfn = b.scene_name === 'medida' ? medidaFn(b.params) : null;
+    if (vfn) { // escena a medida vertical: se dibuja a pantalla completa (los fondos usan K.X0/K.XW y los lugares son panorámicos)
+      const K2 = { ...KIT, X0: -TX / SC, XW: WW / SC,
+        drawPlace: (c, l, h, tt) => { c.save(); c.setTransform(1, 0, 0, 1, 0, 0); this.drawPanorama(c, l, h, tt); c.restore(); },
+        grade: (c, h) => { c.save(); c.setTransform(1, 0, 0, 1, 0, 0); this.gradeWide(c, h); c.restore(); } };
+      ctx.fillStyle = '#1c1a2b'; ctx.fillRect(0, 0, WW, WH);
+      const z = 1 + 0.04 * clamp(local / dur); // empuje suave de cámara
+      ctx.save(); ctx.translate(WW / 2, WH / 2); ctx.scale(z, z); ctx.translate(-WW / 2, -WH / 2);
+      ctx.translate(TX, 0); ctx.scale(SC, SC); ctx.translate(0, -CROP_Y);
+      try { vfn(ctx, { t: local, dur, d: dur, prog: clamp(local / dur), params: b.params, who, frame }, K2); if (b.params.efecto) drawEffect(ctx, b.params.efecto, local); }
+      catch (e) { console.error('AVISO escena con error: ' + e.message); }
+      ctx.restore();
+      return;
+    }
+    // sujeto sin fondo
+    const v = this.vctx; v.setTransform(1, 0, 0, 1, 0, 0); v.clearRect(0, 0, W, H);
+    BG_CONTEXT.none = true; this.subjectOnly = true;
+    try { this.drawBeat(v, b, t, frame); } finally { BG_CONTEXT.none = false; this.subjectOnly = false; }
+    const a = v.getImageData(3, 1000, 1, 1).data[3]; // ¿la escena se pintó su propio fondo? (papel, cueva, espacio...)
+    if (a > 200 || DARK_SCENES.has(b.scene_name)) {
+      // escena con fondo propio: se pinta entera y se continúa a los lados en espejo
+      BG_CONTEXT.none = false; v.setTransform(1, 0, 0, 1, 0, 0); this.drawBeat(v, b, t, frame);
+      // lados: la misma escena ampliada y muy suave (sin texto legible al revés), y la escena nítida en el centro
+      ctx.save(); ctx.filter = 'blur(14px)'; ctx.drawImage(this.vcanvas, 0, 760, W, W * WH / WW, -40, -40, WW + 80, WH + 80); ctx.restore();
+      ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.fillRect(0, 0, WW, WH);
+      ctx.save(); ctx.shadowColor = 'rgba(0,0,0,0.5)'; ctx.shadowBlur = 40; ctx.drawImage(this.vcanvas, 0, CROP_Y, W, CROP_H, TX, 0, TW, WH); ctx.restore();
+      return;
+    }
+    this.drawPanorama(ctx, this.placeOf(b), this.horaOf(b), local);
+    ctx.drawImage(this.vcanvas, 0, CROP_Y, W, CROP_H, TX, 0, TW, WH);
+    this.gradeWide(ctx, this.horaOf(b));
   }
   renderFrame(frame) {
-    const t = frame / this.fps;
-    const saved = this.ctx; this.ctx = this.vctx; super.renderFrame(frame); this.ctx = saved; // escena vertical
-    const ctx = this.ctx, b = this.beats[this.beatIndexAt(t)];
-    // 1) fondo ancho: el lugar del plano, ampliado y algo desenfocado; si no hay lugar, la propia escena difuminada
-    // la propia escena, ampliada y difuminada: mismos colores y mismo lugar, sin saltos
-    ctx.save(); ctx.filter = 'blur(18px)';
-    ctx.drawImage(this.vcanvas, 0, 560, W, W * WH / WW, -40, -40, WW + 80, WH + 80); ctx.restore();
-    ctx.fillStyle = 'rgba(10,12,30,0.22)'; ctx.fillRect(0, 0, WW, WH);
-    // 2) la escena, grande en el centro, con los bordes fundidos con el fondo
-    const f = this.fg.getContext('2d'); f.setTransform(1, 0, 0, 1, 0, 0); f.globalCompositeOperation = 'source-over'; f.clearRect(0, 0, this.fgw, WH);
-    f.drawImage(this.vcanvas, 0, CROP_Y, W, CROP_H, 0, 0, this.fgw, WH);
-    f.globalCompositeOperation = 'destination-in';
-    const g = f.createLinearGradient(0, 0, this.fgw, 0); const e = 110 / this.fgw;
-    g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(e, 'rgba(0,0,0,1)'); g.addColorStop(1 - e, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-    f.fillStyle = g; f.fillRect(0, 0, this.fgw, WH);
-    ctx.drawImage(this.fg, (WW - this.fgw) / 2, 0);
-    // 3) subtítulos abajo, gancho y pregunta (los mismos dibujos del formato vertical, recolocados)
-    ctx.save(); const sh = ctx.createLinearGradient(0, WH - 300, 0, WH); sh.addColorStop(0, 'rgba(0,0,0,0)'); sh.addColorStop(1, 'rgba(0,0,0,0.55)'); ctx.fillStyle = sh; ctx.fillRect(0, WH - 300, WW, 300); ctx.restore();
-    ctx.save(); ctx.translate((WW - W) / 2, WH - 300 - 84 - 40 - 300 + 300 - 84); drawSubtitles(ctx, this.pages, t); ctx.restore();
+    const t = frame / this.fps, ctx = this.ctx;
+    const i = this.beatIndexAt(t), b = this.beats[i], prev = this.beats[i - 1];
+    const inTrans = prev && b.transition !== 'cut' && t < b.start + TRANSITION;
+    if (inTrans) { // transición en ancho: el plano nuevo entra con zoom suave sobre el anterior
+      const k = ease.inOut(seg(t, b.start, TRANSITION));
+      const A = this.wa.getContext('2d'), B = this.wb.getContext('2d');
+      A.setTransform(1, 0, 0, 1, 0, 0); B.setTransform(1, 0, 0, 1, 0, 0);
+      this.drawWideBeat(A, prev, t, frame); this.drawWideBeat(B, b, t, frame);
+      ctx.drawImage(this.wa, 0, 0);
+      const z = 1 + (1 - k) * 0.08; ctx.save(); ctx.globalAlpha = k; ctx.translate(WW / 2, WH / 2); ctx.scale(z, z); ctx.drawImage(this.wb, -WW / 2, -WH / 2); ctx.restore();
+      if (b.transition === 'flash') { ctx.fillStyle = `rgba(255,255,255,${Math.sin(k * Math.PI) * 0.8})`; ctx.fillRect(0, 0, WW, WH); }
+      if (b.transition === 'black') { ctx.fillStyle = `rgba(0,0,0,${Math.sin(k * Math.PI)})`; ctx.fillRect(0, 0, WW, WH); }
+    } else {
+      ctx.setTransform(1, 0, 0, 1, 0, 0); this.drawWideBeat(ctx, b, t, frame);
+    }
+    // acabado: viñeta suave y degradado bajo los subtítulos
+    const vg = ctx.createRadialGradient(WW / 2, WH / 2, WH * 0.45, WW / 2, WH / 2, WW * 0.62); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.28)'); ctx.fillStyle = vg; ctx.fillRect(0, 0, WW, WH);
+    const sh = ctx.createLinearGradient(0, WH - 280, 0, WH); sh.addColorStop(0, 'rgba(0,0,0,0)'); sh.addColorStop(1, 'rgba(0,0,0,0.5)'); ctx.fillStyle = sh; ctx.fillRect(0, WH - 280, WW, 280);
+    ctx.save(); ctx.translate((WW - W) / 2, WH - 300 - 168); drawSubtitles(ctx, this.pages, t); ctx.restore();
     ctx.save(); ctx.translate((WW - W) / 2, -380);
     if (this.tl.hook?.text && t < (this.tl.hook.dur || 2.3)) this.drawHook(ctx, t, this.tl.hook);
     const cm = this.tl.comment; if (cm?.text && t >= cm.start && t < cm.end) this.drawComment(ctx, t - cm.start, cm.end - cm.start, cm.text);

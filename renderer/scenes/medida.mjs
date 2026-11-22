@@ -18,7 +18,7 @@ import { composicion } from './compose.mjs';
 import { escena } from './bright.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const LOADED = {};
+const LOADED = {}, LOADED_WIDE = {};
 
 // Carga (antes de dibujar) los archivos a medida que usa un timeline.
 export async function preloadMedida(timeline) {
@@ -26,7 +26,9 @@ export async function preloadMedida(timeline) {
   for (const f of files) {
     const p = path.join(here, 'medida', `${f.replace(/[^\w.-]/g, '')}.mjs`);
     if (!f || !fs.existsSync(p)) { console.error(`AVISO escena a medida no encontrada: ${f}`); continue; }
-    LOADED[f] = (await import(pathToFileURL(p).href)).default || {};
+    const mod = await import(pathToFileURL(p).href);
+    LOADED[f] = mod.default || {};
+    LOADED_WIDE[f] = mod.ancho || {}; // escenas dibujadas directamente en horizontal (vídeos largos)
   }
 }
 
@@ -38,11 +40,13 @@ const text = (ctx, str, x, y, { size = 110, color = '#ffffff', rot = 0, k = 1 } 
   ctx.font = `${size}px Anton`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
   ctx.lineWidth = size * 0.2; ctx.strokeStyle = INK; ctx.strokeText(str, 0, 0); ctx.fillStyle = color; ctx.fillText(str, 0, 0); ctx.restore();
 };
-export const KIT = { W, H, INK, clamp, ease, lerp, seg, ph, radial, noise1, rr, ...DRAW, PROPS, prop, face, text,
+export const KIT = { X0: 0, XW: 1080, W, H, INK, clamp, ease, lerp, seg, ph, radial, noise1, rr, ...DRAW, PROPS, prop, face, text,
   drawPlace, midShot, grade, brightBg, drawHead, drawFullBody, personaWho,
   comicWord, speedLines, sparkles, smoke, flash, shakeAt, starBurst, drawEffect };
 
 const FALLBACK = { accion, composicion, escena };
+export function medidaFn(params) { const fn = LOADED[String(params?.archivo || '')]?.[params?.plano]; return typeof fn === 'function' ? fn : null; }
+export function medidaWide(params) { const fn = LOADED_WIDE[String(params?.archivo || '')]?.[params?.plano]; return typeof fn === 'function' ? fn : null; }
 export const medida = {
   setup(p, r) { return { seed: r.int(0, 99), sub: {} }; },
   draw(ctx, s, args) {

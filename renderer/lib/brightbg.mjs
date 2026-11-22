@@ -12,8 +12,10 @@ const TONES = {
 };
 // Contexto del plano: si el vídeo tiene un lugar (salón, calle, dormitorio...), las escenas de "objeto"
 // (reloj, calendario, documento, móvil...) se dibujan sobre ese lugar animado en vez de sobre un fondo liso.
-export const BG_CONTEXT = { lugar: null, hora: 'dia', busy: false, draw: null };
+// none: modo «solo sujeto» (vídeos largos): no se dibuja ningún fondo; el fondo panorámico lo pone el motor horizontal.
+export const BG_CONTEXT = { lugar: null, hora: 'dia', busy: false, draw: null, none: false };
 export function brightBg(ctx, t, tone = 'crema') {
+  if (BG_CONTEXT.none) return;
   if (BG_CONTEXT.lugar && BG_CONTEXT.draw && !BG_CONTEXT.busy) {
     BG_CONTEXT.busy = true;
     try { BG_CONTEXT.draw(ctx, BG_CONTEXT.lugar, BG_CONTEXT.hora, t); } finally { BG_CONTEXT.busy = false; }

@@ -135,7 +135,31 @@ def review(img: Path, story: dict) -> tuple[int, str]:
         return 7, ""
 
 
+def reuse_existing(story: dict, out_dir: Path) -> Path | None:
+    """Si el vídeo ya tuvo miniatura con IA (p. ej. al volver a montarlo), se reutiliza en vez de pagar otra."""
+    try:
+        repo = os.environ.get("GITHUB_REPOSITORY", "")
+        name = f"{story['id']}_portada.jpg"
+        rels = json.loads(subprocess.run(["gh", "api", f"repos/{repo}/releases?per_page=100"], capture_output=True, text=True).stdout or "[]")
+        asset = next((a for r in rels for a in r.get("assets", []) if a["name"] == name), None)
+        if not asset:
+            return None
+        dst = out_dir / name
+        data = subprocess.run(["gh", "api", "-H", "Accept: application/octet-stream", f"repos/{repo}/releases/assets/{asset['id']}"], capture_output=True).stdout
+        if len(data) < 10000:
+            return None
+        dst.write_bytes(data)
+        print("  miniatura con IA reutilizada (no se paga otra)")
+        return dst
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def generate(story: dict, out_dir: Path) -> Path | None:
+    if story.get("portada_ia_reusar", True):
+        found = reuse_existing(story, out_dir)
+        if found:
+            return found
     cfg = (load_config().get("miniaturas_ia") or {})
     okey, gkey = os.environ.get("OPENAI_API_KEY", "").strip(), os.environ.get("GEMINI_API_KEY", "").strip()
     proveedor = cfg.get("proveedor", "openai")

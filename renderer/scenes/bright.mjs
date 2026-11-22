@@ -37,6 +37,7 @@ function sky(ctx, x, y, w, h, hora, t) {
 }
 // Luz de la hora sobre toda la escena
 function grade(ctx, hora) {
+  if (BG_CONTEXT.none) return; // en horizontal la luz de la hora se aplica al fotograma ancho entero
   if (hora === 'noche') {
     ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = 'rgb(135,145,205)'; ctx.fillRect(0, 0, W, H); ctx.restore();
   } else if (hora === 'atardecer') {
@@ -223,7 +224,8 @@ const EXTERIOR = new Set(['calle', 'ciudad', 'campo', 'desierto', 'playa', 'mont
 const ALIAS = { casa: 'salon', 'salón': 'salon', habitacion: 'dormitorio', 'habitación': 'dormitorio', trabajo: 'oficina', colegio: 'aula', escuela: 'aula',
   clase: 'aula', bosque: 'selva', mar_fondo: 'bajo_el_mar', oceano: 'bajo_el_mar', 'océano': 'bajo_el_mar', submarino: 'bajo_el_mar', agua: 'bajo_el_mar', universo: 'espacio', cielo: 'espacio', liso: 'fondo', ninguno: 'fondo', jungla: 'selva', mar: 'playa', nieve: 'montana', 'montaña': 'montana', pueblo: 'calle', carretera: 'coche', hospital_hab: 'hospital' };
 export function placeName(p) { const k = String(p || 'salon').toLowerCase().trim(); return PLACES[k] ? k : (ALIAS[k] || 'salon'); }
-export function drawPlace(ctx, lugar, hora, t) { const l = placeName(lugar); PLACES[l](ctx, t, hora); ambientBack(ctx, l, t, hora); }
+export function drawPlace(ctx, lugar, hora, t) { if (BG_CONTEXT.none) return; const l = placeName(lugar); PLACES[l](ctx, t, hora); ambientBack(ctx, l, t, hora); }
+export { grade as gradeFn };
 export { ambientFront };
 BG_CONTEXT.draw = drawPlace;
 export { grade, EXTERIOR };
