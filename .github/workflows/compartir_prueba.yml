@@ -1,0 +1,29 @@
+name: Compartir prueba
+
+# Copia el vídeo de una ejecución de "Prueba" a la publicación "prueba" (para verlo/descargarlo fácil). No gasta nada.
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Número de la ejecución de Prueba"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  compartir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          RID: ${{ inputs.run_id }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh run download "$RID" -R "$REPO" -n video-prueba -D v
+          gh release view prueba -R "$REPO" >/dev/null 2>&1 || gh release create prueba -R "$REPO" --title "Pruebas" --notes "Vídeos de prueba (no se publican)" --prerelease
+          for f in v/*.mp4; do cp "$f" "v/prueba-$RID.mp4"; done
+          gh release upload prueba "v/prueba-$RID.mp4" -R "$REPO" --clobber
