@@ -178,6 +178,13 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     # Portada propia (se sube a YouTube como miniatura) y versión pequeña para la página de revisión
     portada = out_dir / f"{sid}_portada.jpg"
     rc = subprocess.run(["node", str(RENDERER / "render.mjs"), str(tl_path), str(portada), "--cover"], capture_output=True, text=True)
+    if story.get("formato") == "horizontal":  # vídeos largos: miniatura con IA (Gemini) si hay clave; si no, la de siempre
+        try:
+            import miniatura_ia  # noqa: PLC0415
+            if miniatura_ia.generate(story, out_dir):
+                story["portada_ia"] = True
+        except Exception as e:  # noqa: BLE001
+            print(f"  aviso: miniatura con IA: {e}")
     if rc.returncode == 0 and portada.exists():
         story["portada"] = portada.name
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(portada), "-vf", "scale=540:-1", str(out_dir / f"{sid}.jpg")], check=True)

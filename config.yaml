@@ -106,3 +106,7 @@ comedia:
     chica_1:      { clon: "chica",          voz: "es-ES-ElviraNeural",  velocidad: "+10%", tono: "+0Hz" }
     chica_2:      { voz: "es-ES-ElviraNeural",  velocidad: "+14%", tono: "+12Hz" }
     chica_latina: { voz: "es-MX-DaliaNeural",   velocidad: "+10%", tono: "+0Hz" }
+
+# Miniaturas con IA para los vídeos largos (Google Gemini). La clave va en el secreto GEMINI_API_KEY de GitHub.
+miniaturas_ia:
+  modelo: "gemini-2.5-flash-image"   # si este nombre ya no existe, se usa solo el primer modelo de imágenes disponible
