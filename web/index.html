@@ -143,7 +143,8 @@ nav .n.bad{background:var(--bad);color:#fff}
     <button data-t="calendario">Calendario</button>
     <button data-t="programados">Programados</button>
     <button data-t="marcha">En marcha<span class="n" id="n-marcha" hidden></span></button>
-    <button data-t="crear">Crear</button>
+    <button data-t="crear">Crear Shorts</button>
+    <button data-t="largos">Crear vídeos largos</button>
     <button data-t="historial">Historial</button>
     <button data-t="problemas">Problemas<span class="n bad" id="n-problemas" hidden></span></button>
   </nav>
@@ -183,7 +184,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   </section>
 
   <section id="crear">
-    <h2>Crear vídeos</h2>
+    <h2>Crear Shorts</h2>
     <form class="form" id="f-pedido">
       <h3>Pedido especial</h3>
       <p>Escribe el vídeo que quieres como se lo dirías a una persona. Se hace 1 vídeo (puedes pedir más versiones), con la voz del narrador.</p>
@@ -208,6 +209,22 @@ nav .n.bad{background:var(--bad);color:#fff}
       <p>Analiza lo que funciona en YouTube y genera la tanda de curiosidades (se lanza sola cada lunes).</p>
       <button class="btn main" type="submit">Lanzar tanda semanal</button>
     </form>
+  </section>
+
+  <section id="largos">
+    <h2>Crear vídeos largos</h2>
+    <p class="hint">Vídeos horizontales de 8-10 minutos para YouTube (no son Shorts). Son los que más rápido llevan a la monetización: suman horas de visualización y pagan bastante más por cada vista.</p>
+    <form class="form" id="f-largo">
+      <h3>Nuevo vídeo largo</h3>
+      <p>Escribe el tema o déjalo vacío para que la IA elija el que tenga más potencial. El guion va por capítulos, con gancho al principio y "mini-ganchos" cada minuto para que no se vayan.</p>
+      <textarea name="tema" placeholder="Ej.: Qué pasaría si la Tierra perdiera la Luna (opcional)"></textarea>
+      <label style="display:flex;gap:8px;align-items:flex-start;margin:10px 0;font-size:14px"><input type="checkbox" name="a_medida" checked style="margin-top:3px">
+        <span><b>Escenas a medida</b> (recomendado): Claude dibuja los momentos clave antes de montarlo. Después dile a Claude «haz las escenas del vídeo largo».</span></label>
+      <button class="btn main" type="submit">Crear vídeo largo</button>
+      <p class="hint" style="margin-top:10px">⏱️ El guion tarda unos 10 min; la voz se reparte entre 8 máquinas y el montaje lleva 2-4 horas. 💶 Unos 40-60 céntimos de API por vídeo.</p>
+    </form>
+    <h3 style="margin-top:22px">Vídeos largos en marcha</h3>
+    <div class="list" id="largos-list"><p class="hint">Cargando…</p></div>
   </section>
 
   <section id="problemas">
@@ -275,8 +292,8 @@ nav .n.bad{background:var(--bad);color:#fff}
   const REPO = host.endsWith(".github.io") ? (location.pathname.split("/")[1] || "Youtube-auto") : "Youtube-auto";
   const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
   const TZ = "Europe/Madrid";
-  const WF = {pedido: "pedido.yml", semanal: "semanal.yml", historia: "historia.yml"};
-  const GEN_PATHS = ["semanal.yml", "semanal_montar.yml", "pedido.yml", "historia.yml", "rehacer.yml"].map(f => ".github/workflows/" + f);
+  const WF = {pedido: "pedido.yml", semanal: "semanal.yml", historia: "historia.yml", largo: "largo.yml"};
+  const GEN_PATHS = ["semanal.yml", "semanal_montar.yml", "pedido.yml", "historia.yml", "rehacer.yml", "largo.yml"].map(f => ".github/workflows/" + f);
   const WEEKLY = {dow: 1, h: 4, m: 1}; // lunes 04:01 hora de Madrid (igual que semanal.yml)
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -847,6 +864,10 @@ nav .n.bad{background:var(--bad);color:#fff}
       phase = ahead.length ? "Esperando turno (va la tanda semanal delante)" : "Empezando";
     }
     else if (guiones && guiones.status !== "completed") { phase = "Escribiendo guiones"; pct = 15; cls = "run"; }
+    else if (list.some(j => /^voces/i.test(j.name) && j.status !== "completed")) {
+      const v = list.filter(j => /^voces/i.test(j.name)), done = v.filter(j => j.status === "completed").length;
+      phase = `Generando la voz · ${done}/${v.length} máquinas`; pct = 20 + Math.round(50 * done / v.length); cls = "run";
+    }
     else if (parts.length) {
       const done = parts.filter(j => j.status === "completed").length;
       phase = `Montando vídeos · ${done}/${parts.length} máquinas terminadas`; pct = 25 + Math.round(70 * done / parts.length); cls = "run";
@@ -885,6 +906,24 @@ nav .n.bad{background:var(--bad);color:#fff}
     if (f.a_medida.checked) inputs.a_medida = "true";
     if (await dispatch(WF.pedido, inputs, f.querySelector("button"))) { if (inputs.a_medida) toast("✓ Guion en marcha. Cuando esté, dile a Claude: «haz las escenas del pedido»."); f.reset(); }
   });
+  $("#f-largo").addEventListener("submit", async e => {
+    e.preventDefault(); const f = e.target;
+    const inputs = {tema: f.tema.value.trim(), a_medida: f.a_medida.checked ? "true" : "false"};
+    if (await dispatch(WF.largo, inputs, f.querySelector("button"))) { if (f.a_medida.checked) toast("✓ Guion en marcha. Cuando esté, dile a Claude: «haz las escenas del vídeo largo»."); f.reset(); f.a_medida.checked = true; setTimeout(loadLargos, 5000); }
+  });
+  async function loadLargos() {
+    const el = $("#largos-list"); if (!el) return;
+    try {
+      const runs = (await gh(`/actions/workflows/largo.yml/runs?per_page=10`)).workflow_runs;
+      if (!runs.length) { el.innerHTML = '<p class="hint">Aún no hay vídeos largos. ¡Crea el primero!</p>'; return; }
+      el.innerHTML = runs.map(r => {
+        const st = r.status !== "completed" ? ["en marcha", "run"] : r.conclusion === "success" ? ["terminado", "ok"] : r.conclusion === "cancelled" ? ["cancelado", "wait"] : ["con errores", "bad"];
+        return `<div class="row"><div class="what"><b>${esc(r.display_title)}</b><div class="meta"><span class="pill ${st[1]}">${st[0]}</span>${esc(new Date(r.created_at).toLocaleString("es-ES"))}</div>
+          <div class="links" style="margin-top:6px"><a href="${esc(r.html_url)}" target="_blank" rel="noopener">detalles</a></div></div></div>`;
+      }).join("");
+    } catch (err) { el.innerHTML = `<p class="hint">No se pudo cargar (${esc(err.message)})</p>`; }
+  }
+  document.querySelector('[data-t="largos"]').addEventListener("click", () => loadLargos());
   $("#f-historia").addEventListener("submit", async e => {
     e.preventDefault(); const f = e.target;
     if (await dispatch(WF.historia, {tema: f.tema.value.trim(), cantidad: f.cantidad.value}, f.querySelector("button"))) f.reset();

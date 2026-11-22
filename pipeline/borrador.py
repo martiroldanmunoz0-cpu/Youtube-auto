@@ -46,6 +46,8 @@ def timeline_from_story(story: dict) -> dict:
         "endcard": None,
         "hook": {"text": story.get("cover_text") or story.get("question") or "", "dur": 2.3},
         "comment": comment_window(story, beats),
+        **({"formato": "horizontal", "chapters": [{"title": b["capitulo"], "start": b["start"]} for b in beats if b.get("capitulo")]}
+           if story.get("formato") == "horizontal" else {}),
     }
 
 

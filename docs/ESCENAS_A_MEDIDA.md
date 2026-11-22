@@ -49,3 +49,15 @@ Las escenas a medida quedan guardadas para siempre. Si una animación sirve para
 La tanda semanal sigue siendo automática (no espera a Claude). La sesión del lunes (docs/PIEZAS_LUNES.md), además
 de las piezas, crea **acciones nuevas** en `actions2.mjs` para los momentos clave de las ideas del plan (gancho y
 giro final) cuando no exista ya una acción que lo muestre, y las añade al catálogo para que el guionista las use.
+
+## Vídeos largos (horizontal, 8-10 min)
+
+- Se lanzan con `largo.yml` (pestaña «Crear vídeos largos» del panel). Con `a_medida` (por defecto) solo escribe el
+  guion y lo deja en `data/guiones/largo-N-01.json` (planos con `capitulo` en el primero de cada capítulo).
+- Son 100-160 planos: NO hace falta dibujarlos todos. Dibuja a medida los **momentos clave** (15-30 planos): el gancho
+  (plano 1), el primer plano de cada capítulo, cada mini-gancho, el giro y el final. El resto se queda con su escena
+  de la biblioteca (ya animada). `pipeline/aplicar_medida.py` solo cambia los planos que tengan función en el archivo.
+- Las escenas se dibujan en vertical (1080×1920) como siempre; el motor las coloca en horizontal: se ve la franja
+  central (y ≈ 430-1610), así que pon lo importante ahí y no en los bordes de arriba y abajo.
+- Montaje (voz repartida en 8 máquinas + vídeo + Revisar, sin gastar API):
+  `gh api -X POST repos/martiroldanmunoz0-cpu/Youtube-auto/actions/workflows/largo.yml/dispatches -f ref=main -f 'inputs[id]=<id>'`

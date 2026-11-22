@@ -162,6 +162,8 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
         "cover": {"text": story.get("cover_text") or story.get("question") or story["title"].replace(" #shorts", ""), "channel": c.get("nombre", "")},
         "hook": {"text": story.get("cover_text") or story.get("question") or "", "dur": 2.3},
         "comment": comment_window(story, beats),
+        **({"formato": "horizontal", "chapters": [{"title": b["capitulo"], "start": b["start"]} for b in beats if b.get("capitulo")]}
+           if story.get("formato") == "horizontal" else {}),
     }
     tl_path = out_dir / f"{sid}.timeline.json"
     write_json(tl_path, timeline)

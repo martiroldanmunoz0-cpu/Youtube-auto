@@ -16,6 +16,7 @@ import { SCENES } from './scenes/index.mjs';
 import { preloadMedida } from './scenes/medida.mjs';
 import { setLooks } from './lib/persona.mjs';
 import { drawEffect, comicGate } from './lib/impact.mjs';
+import { drawPlace as drawPlaceWide } from './scenes/bright.mjs';
 import { BG_CONTEXT } from './lib/brightbg.mjs';
 import { lifeOverlay } from './lib/ambient.mjs';
 import { propName } from './lib/props.mjs';
@@ -210,9 +211,10 @@ export class Renderer {
     }
     // Acabado común del canal
     const bright = !DARK_SCENES.has(b.scene_name); // estilo luminoso: acabado suave; el oscuro solo en escenas de misterio/noche
-    if (this.tl.subtitle_style !== 'word') topShade(ctx, bright ? 0.32 : 0.55);
+    if (this.tl.subtitle_style !== 'word' && !this.wide) topShade(ctx, bright ? 0.32 : 0.55);
     vignette(ctx, bright ? 0.22 : 0.7);
     grain(ctx, frame, bright ? 0.015 : 0.05);
+    if (this.wide) return; // en horizontal, subtítulos y rótulos los pone WideRenderer sobre el fotograma ancho
     if (this.tl.subtitle_style === 'word') drawWordSubtitles(ctx, this.tl.words || [], t, this.tl.cast || {});
     else drawSubtitles(ctx, this.pages, t);
     if (t >= endStart) this.drawEndcard(ctx, t - endStart, end);
@@ -335,11 +337,63 @@ export class Renderer {
   }
 }
 
+// ---------------- VÍDEOS LARGOS (horizontal 1920×1080) ----------------
+// Reutiliza todas las escenas (hechas en vertical): la escena va en el centro, grande, y los lados se rellenan con
+// el mismo lugar ampliado y un poco desenfocado (profundidad), fundidos sin cortes. Subtítulos abajo.
+export const WW = 1920, WH = 1080;
+const CROP_Y = 430, CROP_H = 1180; // parte de la escena vertical que se ve (sin el cielo de arriba ni el suelo de abajo)
+export class WideRenderer extends Renderer {
+  constructor(timeline) {
+    super(timeline);
+    this.wide = true;
+    this.vcanvas = this.canvas; this.vctx = this.ctx;          // fotograma vertical de la escena
+    this.canvas = createCanvas(WW, WH); this.ctx = this.canvas.getContext('2d');
+    this.bg = createCanvas(W, H); this.fgw = Math.round(W * WH / CROP_H);
+    this.fg = createCanvas(this.fgw, WH);
+  }
+  renderFrame(frame) {
+    const t = frame / this.fps;
+    const saved = this.ctx; this.ctx = this.vctx; super.renderFrame(frame); this.ctx = saved; // escena vertical
+    const ctx = this.ctx, b = this.beats[this.beatIndexAt(t)];
+    // 1) fondo ancho: el lugar del plano, ampliado y algo desenfocado; si no hay lugar, la propia escena difuminada
+    // la propia escena, ampliada y difuminada: mismos colores y mismo lugar, sin saltos
+    ctx.save(); ctx.filter = 'blur(18px)';
+    ctx.drawImage(this.vcanvas, 0, 560, W, W * WH / WW, -40, -40, WW + 80, WH + 80); ctx.restore();
+    ctx.fillStyle = 'rgba(10,12,30,0.22)'; ctx.fillRect(0, 0, WW, WH);
+    // 2) la escena, grande en el centro, con los bordes fundidos con el fondo
+    const f = this.fg.getContext('2d'); f.setTransform(1, 0, 0, 1, 0, 0); f.globalCompositeOperation = 'source-over'; f.clearRect(0, 0, this.fgw, WH);
+    f.drawImage(this.vcanvas, 0, CROP_Y, W, CROP_H, 0, 0, this.fgw, WH);
+    f.globalCompositeOperation = 'destination-in';
+    const g = f.createLinearGradient(0, 0, this.fgw, 0); const e = 110 / this.fgw;
+    g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(e, 'rgba(0,0,0,1)'); g.addColorStop(1 - e, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    f.fillStyle = g; f.fillRect(0, 0, this.fgw, WH);
+    ctx.drawImage(this.fg, (WW - this.fgw) / 2, 0);
+    // 3) subtítulos abajo, gancho y pregunta (los mismos dibujos del formato vertical, recolocados)
+    ctx.save(); const sh = ctx.createLinearGradient(0, WH - 300, 0, WH); sh.addColorStop(0, 'rgba(0,0,0,0)'); sh.addColorStop(1, 'rgba(0,0,0,0.55)'); ctx.fillStyle = sh; ctx.fillRect(0, WH - 300, WW, 300); ctx.restore();
+    ctx.save(); ctx.translate((WW - W) / 2, WH - 300 - 84 - 40 - 300 + 300 - 84); drawSubtitles(ctx, this.pages, t); ctx.restore();
+    ctx.save(); ctx.translate((WW - W) / 2, -380);
+    if (this.tl.hook?.text && t < (this.tl.hook.dur || 2.3)) this.drawHook(ctx, t, this.tl.hook);
+    const cm = this.tl.comment; if (cm?.text && t >= cm.start && t < cm.end) this.drawComment(ctx, t - cm.start, cm.end - cm.start, cm.text);
+    ctx.restore();
+    if (this.tl.chapters) this.drawChapter(ctx, t);
+  }
+  // Rótulo de capítulo (vídeos largos): aparece arriba a la izquierda al empezar cada capítulo
+  drawChapter(ctx, t) {
+    const ch = (this.tl.chapters || []).filter((c) => t >= c.start).at(-1);
+    if (!ch || t - ch.start > 3.5) return;
+    const k = ease.outBack(clamp((t - ch.start) / 0.4)), out = clamp((ch.start + 3.5 - t) / 0.4);
+    ctx.save(); ctx.globalAlpha = out; ctx.translate(80, 90); ctx.scale(k, k); ctx.font = '700 44px Poppins';
+    const w = ctx.measureText(ch.title).width + 80; ctx.beginPath(); ctx.roundRect(0, -45, w, 90, 45); ctx.fillStyle = '#ffd166'; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = '#1c1a2b'; ctx.stroke();
+    ctx.fillStyle = '#1c1a2b'; ctx.textBaseline = 'middle'; ctx.fillText(ch.title, 40, 2); ctx.restore();
+  }
+}
+
 async function renderVideo(tl, out, opts) {
-  const r = new Renderer(tl);
+  const r = tl.formato === 'horizontal' ? new WideRenderer(tl) : new Renderer(tl);
+  const OW = r.canvas.width, OH = r.canvas.height;
   const fps = r.fps;
   const frames = Math.ceil(r.total * fps);
-  const args = ['-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${W}x${H}`, '-r', String(fps), '-i', '-'];
+  const args = ['-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba', '-s', `${OW}x${OH}`, '-r', String(fps), '-i', '-'];
   if (opts.audio) args.push('-i', opts.audio);
   args.push('-c:v', 'libx264', '-preset', opts.preset || 'medium', '-crf', '20', '-pix_fmt', 'yuv420p', '-movflags', '+faststart');
   if (opts.audio) args.push('-af', 'apad', '-c:a', 'aac', '-b:a', '192k');
@@ -362,9 +416,9 @@ async function renderVideo(tl, out, opts) {
 
 // Hoja de previsualización: N fotogramas repartidos en una cuadrícula.
 async function renderStills(tl, out, n) {
-  const r = new Renderer(tl);
+  const r = tl.formato === 'horizontal' ? new WideRenderer(tl) : new Renderer(tl);
   const cols = Math.min(4, n), rows = Math.ceil(n / cols);
-  const sw = 360, sh = 640;
+  const sw = tl.formato === 'horizontal' ? 640 : 360, sh = tl.formato === 'horizontal' ? 360 : 640;
   const sheet = createCanvas(cols * sw, rows * sh);
   const sctx = sheet.getContext('2d');
   for (let i = 0; i < n; i++) {
@@ -376,8 +430,32 @@ async function renderStills(tl, out, n) {
   console.log('Previsualización:', out);
 }
 
+// Miniatura de vídeo largo (1280×720): fotograma con más fuerza del vídeo + texto enorme con borde, estilo YouTube.
+export function renderCoverWide(tl, out) {
+  const r = new WideRenderer(tl);
+  const cands = r.beats.map((b, i) => ({ b, i })).filter(({ b }) => ['accion', 'medida', 'composicion'].includes(b.scene_name));
+  const pick = tl.cover?.beat ?? (cands[Math.floor(cands.length * 0.35)] || { i: Math.floor(r.beats.length / 3) }).i;
+  const b = r.beats[pick];
+  r.tl.hook = null; r.tl.comment = null; r.tl.chapters = null; r.pages = [];
+  r.renderFrame(Math.floor((b.start + (b.end - b.start) * 0.65) * r.fps));
+  const c = createCanvas(1280, 720), ctx = c.getContext('2d');
+  ctx.drawImage(r.canvas, 0, 0, 1280, 720);
+  const g = ctx.createLinearGradient(0, 0, 760, 0); g.addColorStop(0, 'rgba(0,0,0,0.75)'); g.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, 760, 720);
+  const words = String(tl.cover?.text || '').toUpperCase().split(/\s+/).filter(Boolean);
+  const lines = []; ctx.font = '120px Anton'; let cur = '';
+  for (const w of words) { const t2 = cur ? cur + ' ' + w : w; if (ctx.measureText(t2).width > 620 && cur) { lines.push(cur); cur = w; } else cur = t2; }
+  if (cur) lines.push(cur);
+  let size = lines.length > 3 ? 100 : 130; ctx.font = `${size}px Anton`;
+  let y = 360 - (lines.length - 1) * size * 0.55;
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  lines.forEach((l, i) => { ctx.lineWidth = size * 0.16; ctx.strokeStyle = '#000'; ctx.strokeText(l, 50, y); ctx.fillStyle = i % 2 ? '#ffd166' : '#ffffff'; ctx.fillText(l, 50, y); y += size * 1.05; });
+  fs.writeFileSync(out, c.encodeSync('jpeg', 90));
+  console.log('Portada ancha:', out, `(plano ${pick + 1})`);
+}
+
 // Portada (miniatura) del vídeo: la escena más representativa + el texto de portada en grande.
 export function renderCover(tl, out) {
+  if (tl.formato === 'horizontal') return renderCoverWide(tl, out);
   const r = new Renderer(tl);
   const avoid = new Set(['big_text', 'character', 'calendar', 'clock']);
   const cands = r.beats.map((b, i) => ({ b, i })).filter(({ b }) => !avoid.has(b.scene_name));

@@ -118,6 +118,28 @@ STORY_SCHEMA = {
     "additionalProperties": False,
 }
 
+# Vídeos largos: el mismo esquema, y cada plano puede abrir un capítulo ("capitulo": título o "")
+import copy as _copy
+LONG_SCHEMA = _copy.deepcopy(STORY_SCHEMA)
+LONG_SCHEMA["properties"]["planos"]["items"]["properties"]["capitulo"] = {"type": "string"}
+LONG_SCHEMA["properties"]["planos"]["items"]["required"].append("capitulo")
+
+LONG_RULES = """VÍDEO LARGO (NO es un Short): formato horizontal de {lo_min}-{hi_min} minutos para YouTube.
+- LONGITUD: entre {lo_w} y {hi_w} palabras en total (la voz lee ~2,4 palabras por segundo). Entre 100 y 160 planos.
+- CAPÍTULOS: 4-6 capítulos. En el primer plano de cada capítulo pon "capitulo" con un título corto y llamativo
+  ("Capítulo 2 · Lo que encontraron"); en el resto de planos, "capitulo": "". El plano 1 también abre capítulo.
+- LOS PRIMEROS 30 SEGUNDOS deciden todo: gancho fuerte en el plano 1, la pregunta central en el plano 2 y una
+  PROMESA clara de lo que va a ver ("y al final te cuento lo más increíble de todo").
+- RETENCIÓN: cada 45-60 segundos un mini-gancho que obligue a seguir ("pero eso no es lo peor", "aquí es donde la
+  historia se vuelve rara", "en un minuto vas a entender por qué"). Guarda la mayor sorpresa para el último capítulo.
+- Ritmo: cada plano 1 frase (5-15 palabras); cambia de escena en cada plano; usa mucho "accion" y "composicion".
+- FINAL: remate sorprendente + pregunta para comentarios + invita a ver otro vídeo del canal ("si te ha gustado, en
+  el siguiente vídeo…"). Aquí NO hay bucle: deja "frase_bucle" vacía ("").
+- titulo: máx 70 caracteres, muy llamativo y con las palabras que la gente busca, SIN "#shorts".
+- texto_portada: 2-4 palabras para la MINIATURA (enorme, se lee en el móvil), p. ej. "12 KM BAJO TIERRA".
+"""
+
+
 SYSTEM_ANALYST = """Eres el estratega de Curiosidario, un canal de YouTube Shorts en español de CURIOSIDADES: datos \
 sorprendentes, "¿qué pasaría si...?", ciencia, historia, cuerpo humano, espacio, animales, dinero, récords y \
 explicaciones de cosas cotidianas. Todos los vídeos tienen la MISMA estética (ilustración vectorial animada, \
@@ -378,13 +400,23 @@ def parse_message(resp) -> dict:
 
 
 def call_sync(params: dict) -> dict:
+    # Respuestas muy largas (guiones de vídeos largos): en streaming para que no caduque la conexión
+    big = params.get("max_tokens", 0) > 32000
     try:
         # Con "fallbacks", si el modelo rechaza la petición, la API la reintenta en otro modelo.
-        resp = client.beta.messages.create(**params, betas=["server-side-fallback-2026-07-01"], fallbacks="default")
+        if big:
+            with client.beta.messages.stream(**params, betas=["server-side-fallback-2026-07-01"], fallbacks="default") as st:
+                resp = st.get_final_message()
+        else:
+            resp = client.beta.messages.create(**params, betas=["server-side-fallback-2026-07-01"], fallbacks="default")
     except anthropic.BadRequestError as e:
         if "fallback" not in str(e).lower():
             raise
-        resp = client.messages.create(**params)
+        if big:
+            with client.messages.stream(**params) as st:
+                resp = st.get_final_message()
+        else:
+            resp = client.messages.create(**params)
     return parse_message(resp)
 
 
@@ -560,19 +592,24 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
     lo, hi = cfg["generacion"]["duracion_objetivo_seg"]
     if idea.get("tipo") == "caso_real":
         lo, hi = cfg["generacion"].get("duracion_caso_real_seg", [60, 100])
+    largo = formato() == "largo"
+    if largo:
+        lo, hi = cfg["generacion"].get("duracion_largo_seg", [480, 600])
     user = (
         f"Patrones de gancho que funcionan ahora:\n{json.dumps(analysis['patrones_gancho'], ensure_ascii=False)}\n\n"
         + (f"Pedido original del dueño del canal (respétalo): \"{pedido()}\"\n\n" if pedido() else "")
         + (f"Estilo que prefiere el dueño del canal:\n{style}\n\n" if style else "")
         + f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
         + (f"Para este vídeo se han añadido a la biblioteca estas piezas (úsalas en 'composicion'): {', '.join(idea['piezas_nuevas'])}\n\n" if idea.get("piezas_nuevas") else "")
+        + (LONG_RULES.format(lo_min=lo // 60, hi_min=hi // 60, lo_w=int(lo * 2.4), hi_w=int(hi * 2.4)) + "\n" if largo else "")
         + f"Duración objetivo: {lo}-{hi} segundos. LÍMITE DE PALABRAS (la voz lee unas 2,4 palabras por segundo): "
         f"entre {int(lo * 2.4)} y {int(hi * 2.4)} palabras EN TOTAL sumando todos los planos y la frase_bucle. "
         f"Cuéntalas antes de terminar; si te pasas, quita planos o acorta frases (nunca el gancho). "
         "Escribe los ganchos candidatos y después el guion completo."
     )
     listas = ", ".join(f'"{x}"' for x in cfg.get("publicacion", {}).get("listas", []))
-    return make_params(SYSTEM_WRITER.replace("{LISTAS}", listas), context, user, STORY_SCHEMA, models(cfg)[1], effort=cfg["generacion"].get("esfuerzo_guiones", "medium"))
+    return make_params(SYSTEM_WRITER.replace("{LISTAS}", listas), context, user, LONG_SCHEMA if largo else STORY_SCHEMA, models(cfg)[1],
+                       effort=cfg["generacion"].get("esfuerzo_guiones", "medium"), max_tokens=64000 if largo else 32000)
 
 
 def _fix_pieces(params: dict, text: str) -> tuple[dict, str | None]:
@@ -773,6 +810,7 @@ def validate_story(story: dict) -> dict:
         if scene == "big_text" and "text" not in params:
             params["text"] = ""
         beats.append({
+            **({"capitulo": p["capitulo"].strip()} if (p.get("capitulo") or "").strip() else {}),
             "text": text,
             "scene": scene,
             "params": params,
@@ -789,7 +827,8 @@ def validate_story(story: dict) -> dict:
     if reps:
         print(f"  aviso: escenas muy repetidas en este guion: {reps}")
     # Bucle: la frase final (que completa el plano 1) va al final con la MISMA imagen del plano 1
-    bucle = re.sub(r"\s+", " ", story.get("frase_bucle") or "").strip().rstrip(".")
+    largo = formato() == "largo"
+    bucle = "" if largo else re.sub(r"\s+", " ", story.get("frase_bucle") or "").strip().rstrip(".")
     if beats:
         bucle = fix_loop_phrase(bucle, beats[0]["text"], beats[-1]["text"])
     if beats and bucle:
@@ -797,7 +836,7 @@ def validate_story(story: dict) -> dict:
             beats.pop()  # el guionista la repitió como plano: se sustituye por la versión con la imagen del principio
         first = beats[0]
         beats.append({**first, "text": bucle if bucle.endswith(("…", "...")) else bucle + "…", "camera": "static", "transition": "cut", "bucle": True})
-    elif beats:
+    elif beats and not largo:
         print("  aviso: el guion no trae frase de bucle")
     # Red de seguridad: el vídeo tiene que presentar su tema con una pregunta al principio
     # (la gente lo ve sin título ni descripción). Si el guion no la tiene, se añade la pregunta central delante.
@@ -816,14 +855,16 @@ def validate_story(story: dict) -> dict:
     if beats and n_acc < len(beats) / 3:
         print(f"  aviso: pocas acciones animadas ({n_acc} de {len(beats)} planos)")
     palabras = sum(len(b["text"].split()) for b in beats)
-    if palabras > 150:
+    if palabras > 150 and not largo:
         print(f"  aviso: guion largo ({palabras} palabras ≈ {palabras / 2.45:.0f} s)")
     if beats:
         beats[0]["camera"] = beats[0]["camera"] if beats[0]["camera"] in ("slam", "shake") else "slam"  # movimiento desde el fotograma 0
         if len(beats[0]["text"].split()) > 12:
             print(f"  aviso: el plano 1 es largo ({len(beats[0]['text'].split())} palabras)")
     title = story["titulo"].strip()
-    if "#shorts" not in title.lower():
+    if largo:
+        title = re.sub(r"\s*#shorts", "", title, flags=re.I).strip()
+    elif "#shorts" not in title.lower():
         title = (title[:88] + " #shorts").strip()
     return {
         "title": title[:100],
@@ -835,6 +876,7 @@ def validate_story(story: dict) -> dict:
         "cover_text": re.sub(r"\s+", " ", story.get("texto_portada") or "").strip()[:60],
         "comment_q": re.sub(r"\s+", " ", story.get("pregunta_comentarios") or "").strip()[:80],
         "lista": (story.get("lista") or "").strip(),
+        **({"formato": "horizontal"} if largo else {}),
         "question": pregunta,
         # Piezas que el guion pidió y no existían (ya sustituidas por la más parecida): se dibujan el lunes
         "piezas_pendientes": list(dict.fromkeys(pendientes + [x for b in beats for x in (b.get("params") or {}).get("_faltan", [])])),
@@ -1078,6 +1120,11 @@ def main():
     elif fmt == "historia_real":
         n = int(os.environ.get("PEDIDO_N") or 1)
         params = real_story_ideas(read_json(wd / "trends.json"), n + EXTRA_IDEAS, history, cfg, request)
+    elif fmt == "largo":
+        n = 1
+        request = request or ("Elige TÚ el tema con más potencial para un vídeo LARGO de 8-10 minutos de curiosidades "
+                              "(qué pasaría si, misterios reales, ciencia sorprendente), que no se haya hecho antes en el canal.")
+        params = ideas_for_request(request, n, history, cfg)
     elif request:
         n = int(os.environ.get("PEDIDO_N") or 2)
         params = ideas_for_request(request, n, history, cfg)
@@ -1092,7 +1139,7 @@ def main():
     if isinstance(analysis, Exception):
         raise analysis
     write_json(wd / "analysis.json", analysis)
-    if request and fmt == "historias":
+    if request and fmt in ("historias", "largo"):
         ideas = analysis["ideas"][:n]  # pedido especial: varias versiones del MISMO tema a propósito
     else:
         keep = cfg["generacion"].get("no_repetir_ultimos", 150)

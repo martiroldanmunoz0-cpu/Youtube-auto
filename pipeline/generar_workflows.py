@@ -402,3 +402,165 @@ open(f"{out}/rehacer.yml", "w").write(workflow(
   FASE: rehacer
   REHACER_ID: ${{ inputs.id }}
 """, RID_STATIC, "", 1, "Vídeo rehecho", "\"Montar ${{ inputs.id }} (sin gastar API)\""))
+
+# ---------------- VÍDEOS LARGOS (horizontal, 8-10 min) ----------------
+# guion (o el guion ya guardado si se pasa "id") -> voz repartida en 8 máquinas -> montaje en una -> Revisar.
+# Con "a_medida": solo escribe el guion y espera a que Claude dibuje escenas para los momentos clave.
+LARGO = """name: Vídeo largo
+run-name: "Vídeo largo: ${{ inputs.id || inputs.tema || 'tema elegido por la IA' }}"
+
+# Vídeos largos horizontales (8-10 minutos) para monetizar antes (horas de visualización).
+on:
+  workflow_dispatch:
+    inputs:
+      tema:
+        description: "Tema (opcional). Vacío = la IA elige el tema con más potencial"
+        required: false
+        type: string
+      a_medida:
+        description: "Escenas a medida: solo escribe el guion; Claude dibuja los momentos clave y luego se monta"
+        required: false
+        default: true
+        type: boolean
+      id:
+        description: "(Lo usa Claude) Montar un guion largo ya guardado, p. ej. largo-3-01"
+        required: false
+        type: string
+
+env:
+  TQDM_DISABLE: "1"
+  HF_HUB_DISABLE_PROGRESS_BARS: "1"
+  RUN_ID: largo-${{ github.run_number }}
+  FORMATO: largo
+  PEDIDO: ${{ inputs.tema }}
+  PEDIDO_N: "1"
+  A_MEDIDA: ${{ inputs.a_medida }}
+  REHACER_ID: ${{ inputs.id }}
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+  actions: write
+
+jobs:
+  turno:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - name: Esperar a la tanda semanal si se está montando
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          MY_RUN: ${{ github.run_id }}
+        run: |
+          while true; do
+            ANTES=$(gh api "repos/$GH_REPO/actions/runs?per_page=100" --jq '[.workflow_runs[]
+              | select(.path == ".github/workflows/semanal.yml" or .path == ".github/workflows/semanal_montar.yml")
+              | select(.status != "completed" and .id < ('"$MY_RUN"'))] | length')
+            if [ "$ANTES" = "0" ]; then break; fi
+            echo "Espero a la tanda semanal..."; sleep 60
+          done
+
+  guiones:
+    needs: turno
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    outputs:
+      montar: ${{ steps.m.outputs.montar }}
+    steps:
+      - uses: actions/checkout@v4
+""" + SETUP_PY + """      - run: pip install -r requirements.txt
+      - name: Escribir el guion largo con IA (o recuperar el guardado)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -n "$REHACER_ID" ]; then FASE=rehacer python pipeline/scripts.py; else python pipeline/scripts.py; fi
+      - name: Escenas a medida — guardar el guion y esperar a Claude
+        if: env.A_MEDIDA == 'true' && env.REHACER_ID == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          python pipeline/medida.py guardar
+          git add data/guiones
+          git commit -m "Guion largo a la espera de escenas a medida: $RUN_ID" || echo "sin cambios"
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
+      - id: m
+        run: |
+          if [ "$A_MEDIDA" = "true" ] && [ -z "$REHACER_ID" ]; then echo "montar=no" >> "$GITHUB_OUTPUT"; else echo "montar=si" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: guiones
+          path: out
+          retention-days: 3
+
+  voces:
+    needs: guiones
+    if: needs.guiones.outputs.montar == 'si'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        parte: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+""" + SETUP_PY + SETUP_NODE + TOOLS + """      - uses: actions/download-artifact@v4
+        with:
+          name: guiones
+          path: out
+      - name: Generar la voz de mi parte de los planos
+        run: python pipeline/voces_largo.py --parte ${{ matrix.parte }} --partes 8
+      - uses: actions/upload-artifact@v4
+        with:
+          name: voces-${{ matrix.parte }}
+          path: out
+          retention-days: 3
+
+  montar:
+    needs: [guiones, voces]
+    if: needs.guiones.outputs.montar == 'si'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+""" + SETUP_PY + SETUP_NODE + TOOLS + """      - uses: actions/download-artifact@v4
+        with:
+          name: guiones
+          path: out
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: voces-*
+          path: out
+          merge-multiple: true
+      - name: Montar el vídeo largo (con todas las voces ya hechas) y mandarlo a Revisar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          python pipeline/build.py --parte 0 --partes 1 --revisar
+
+  aviso:
+    needs: [turno, guiones, voces, montar]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Avisar si algo ha fallado
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          gh label create aviso --color D73A4A --description "Algo ha fallado" --force || true
+          printf '🔔 @%s ha fallado **Vídeo largo**.\\n\\n👉 [Ver qué ha pasado](%s)\\n\\nDile a Claude «revisa los problemas».\\n' "$OWNER" "$RUN_URL" > aviso.md
+          URL=$(gh issue create --title "⚠️ Ha fallado: Vídeo largo" --label aviso --body-file aviso.md)
+          python3 pipeline/problemas.py run "${{ github.run_id }}" "${URL##*/}"
+"""
+open(f"{out}/largo.yml", "w").write(LARGO)
