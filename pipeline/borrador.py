@@ -13,6 +13,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from common import idioma  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 RENDERER = ROOT / "renderer"
 PALABRAS_POR_SEG = 2.7  # ritmo medio de la voz clonada
@@ -41,7 +44,7 @@ def timeline_from_story(story: dict) -> dict:
     total = round(t + 0.2, 3)
     beats[-1]["end"] = total
     return {
-        "seed": story.get("id", "borrador"), "fps": 30, "total": total, "beats": beats, "words": words,
+        "seed": story.get("id", "borrador"), "fps": 30, "lang": idioma(), "total": total, "beats": beats, "words": words,
         "cast": story.get("cast") or {}, "looks": story.get("looks", {}), "subtitle_style": story.get("subtitle_style", "page"),
         "endcard": None,
         "hook": {"text": story.get("cover_text") or story.get("question") or "", "dur": 2.3},

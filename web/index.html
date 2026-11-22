@@ -180,7 +180,7 @@ nav .n.bad{background:var(--bad);color:#fff}
 
   <section id="programados">
     <h2>Calendario de publicación</h2>
-    <p class="hint">Horas de España. Se publican solos a esa hora.</p>
+    <p class="hint">🇺🇸 Hora de EE. UU. (Nueva York) y al lado 🇪🇸 la hora de España. Se publican solos a esa hora.</p>
     <div id="prog-list"><p class="loading">Cargando…</p></div>
   </section>
 
@@ -273,7 +273,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   <p id="mv-title" style="font-weight:700;margin:0 0 4px"></p>
   <p id="mv-now" class="hint" style="margin:0 0 12px"></p>
   <div class="inline"><input type="date" id="mv-date" style="flex:1"><input type="time" id="mv-time" step="300" style="width:130px"></div>
-  <p class="hint" style="margin-top:10px">Hora de España. Se cambia también en YouTube (tarda 1–2 minutos).</p>
+  <p class="hint" style="margin-top:10px">Pon la hora de EE. UU. (Nueva York); en España son 6 horas más. Se cambia también en YouTube (tarda 1–2 minutos).</p>
   <p id="mv-warn" style="color:var(--accent);font-size:14px;margin:6px 0"></p>
   <div class="actions"><button class="btn no" id="mv-cancel" type="button">Cancelar</button><button class="btn main" id="mv-save" type="button">Guardar</button></div>
   <div id="mv-del-box" style="border-top:1px solid #333;margin-top:14px;padding-top:12px">
@@ -300,7 +300,8 @@ nav .n.bad{background:var(--bad);color:#fff}
   const OWNER = host.endsWith(".github.io") ? host.split(".")[0] : "martiroldanmunoz0-cpu";
   const REPO = host.endsWith(".github.io") ? (location.pathname.split("/")[1] || "Youtube-auto") : "Youtube-auto";
   const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
-  const TZ = "Europe/Madrid";
+  const TZ = "America/New_York"; // el calendario va en hora de EE. UU. (Nueva York), con la de España al lado
+  const TZ_ES = "Europe/Madrid";
   const WF = {pedido: "pedido.yml", semanal: "semanal.yml", historia: "historia.yml", largo: "largo.yml"};
   const GEN_PATHS = ["semanal.yml", "semanal_montar.yml", "pedido.yml", "historia.yml", "rehacer.yml", "largo.yml"].map(f => ".github/workflows/" + f);
   const WEEKLY = {dow: 1, h: 4, m: 1}; // lunes 04:01 hora de Madrid (igual que semanal.yml)
@@ -344,8 +345,9 @@ nav .n.bad{background:var(--bad);color:#fff}
     catch { return null; }
   }
   const fmtDay = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ, weekday: "long", day: "numeric", month: "long"}).format(d);
-  const fmtTime = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ, hour: "2-digit", minute: "2-digit"}).format(d);
-  const fmtShort = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ, day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"}).format(d);
+  const hhmm = (d, tz) => new Intl.DateTimeFormat("es-ES", {timeZone: tz, hour: "2-digit", minute: "2-digit"}).format(d);
+  const fmtTime = d => `${hhmm(d, TZ)} 🇺🇸 · ${hhmm(d, TZ_ES)} 🇪🇸`;
+  const fmtShort = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ_ES, day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"}).format(d);
   const dayKey = d => new Intl.DateTimeFormat("en-CA", {timeZone: TZ}).format(d);
   const mins = ms => { const m = Math.round(ms / 60000); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${m % 60} min`; };
   const cleanTitle = t => String(t || "").replace(/\s*#shorts/gi, "").replace(/^🎬 Revisar:\s*/, "").replace(/^#\d+\s+/, "");
@@ -606,7 +608,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   // ---------- Cuenta atrás de la tanda semanal ----------
   function nextWeekly(now = new Date()) {
     // Próximo lunes a las 04:01 en Madrid (vale en invierno y en verano)
-    const parts = d => Object.fromEntries(new Intl.DateTimeFormat("en-GB", {timeZone: TZ, weekday: "short", hour: "numeric", hourCycle: "h23"}).formatToParts(d).map(p => [p.type, p.value]));
+    const parts = d => Object.fromEntries(new Intl.DateTimeFormat("en-GB", {timeZone: TZ_ES, weekday: "short", hour: "numeric", hourCycle: "h23"}).formatToParts(d).map(p => [p.type, p.value]));
     const base = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
     for (let day = -1; day < 9; day++) for (const uh of [2, 3]) {
       const t = new Date(base + day * 864e5 + uh * 36e5 + WEEKLY.m * 6e4);
@@ -622,7 +624,7 @@ nav .n.bad{background:var(--bad);color:#fff}
     const h = Math.floor(s / 3600); s %= 3600;
     const m = Math.floor(s / 60); s %= 60;
     const left = (d ? `${d} d ` : "") + `${String(h).padStart(2, "0")} h ${String(m).padStart(2, "0")} min ${String(s).padStart(2, "0")} s`;
-    const when = new Intl.DateTimeFormat("es-ES", {timeZone: TZ, weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"}).format(t);
+    const when = new Intl.DateTimeFormat("es-ES", {timeZone: TZ_ES, weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"}).format(t) + " (hora de España)";
     document.querySelectorAll(".cd-left").forEach(e => e.textContent = left);
     document.querySelectorAll(".cd-when").forEach(e => e.textContent = when + " (GitHub puede retrasarlo unos minutos)");
   }
@@ -1056,7 +1058,7 @@ nav .n.bad{background:var(--bad);color:#fff}
     await Promise.all([loadFiles(), loadQueue()]);
     await Promise.all([loadReview(), loadRunning(), loadHistory(), loadProblems(), loadPlan(), loadSaldos().catch(() => {})]);
     renderProgramados(); renderCalendar();
-    $("#sub").textContent = "Actualizado " + fmtTime(new Date());
+    $("#sub").textContent = "Actualizado " + hhmm(new Date(), TZ_ES);
   }
   $("#refresh").onclick = refreshAll;
   updateBanner();

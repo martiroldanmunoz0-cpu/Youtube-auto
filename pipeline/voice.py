@@ -146,7 +146,7 @@ def synth(text: str, out_mp3: Path, cfg: dict, voice: dict | None = None) -> tup
     if not shutil.which("espeak-ng"):
         raise RuntimeError("No hay motor de voz disponible (instala espeak-ng o revisa la conexión con Edge TTS)")
     wav = out_mp3.with_suffix(".wav")
-    subprocess.run(["espeak-ng", "-v", "es", "-s", "165", "-w", str(wav), text], check=True)
+    subprocess.run(["espeak-ng", "-v", "en-us" if __import__("common").idioma() == "en" else "es", "-s", "165", "-w", str(wav), text], check=True)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), str(out_mp3)], check=True)
     dur, _ = trim_silence(out_mp3)
     return dur, _estimate_words(text, dur)

@@ -22,6 +22,7 @@ import { medidaWide, medidaFn, KIT } from './scenes/medida.mjs';
 import { personaWho } from './lib/persona.mjs';
 import { lifeOverlay } from './lib/ambient.mjs';
 import { propName } from './lib/props.mjs';
+import { T, LANG } from './lib/lang.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fontDir = path.join(here, '..', 'assets', 'fonts');
@@ -90,6 +91,7 @@ export class Renderer {
   constructor(timeline) {
     this.tl = timeline;
     setLooks(timeline.looks || {});
+    LANG.code = timeline.lang || 'es';
     this.fps = timeline.fps || 30;
     this.canvas = createCanvas(W, H);
     this.ctx = this.canvas.getContext('2d');
@@ -326,7 +328,7 @@ export class Renderer {
     ctx.textAlign = 'center';
     ctx.fillStyle = '#fff';
     ctx.font = '700 72px Poppins';
-    ctx.fillText(end.title || 'Sígueme', W / 2, H / 2 - 40 + (1 - k) * 30);
+    ctx.fillText(end.title || T('Sígueme', 'Follow'), W / 2, H / 2 - 40 + (1 - k) * 30);
     ctx.font = '400 44px Poppins';
     ctx.fillStyle = 'rgba(255,255,255,0.75)';
     if (end.subtitle) ctx.fillText(end.subtitle, W / 2, H / 2 + 40);

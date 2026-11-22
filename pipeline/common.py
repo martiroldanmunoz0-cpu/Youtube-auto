@@ -20,6 +20,11 @@ def load_config() -> dict:
         return yaml.safe_load(f)
 
 
+def idioma(cfg: dict | None = None) -> str:
+    """Idioma del canal ("en" = The Curio Lab, en inglés para EE. UU.; "es" = español)."""
+    return ((cfg or load_config()).get("canal") or {}).get("idioma", "es")
+
+
 def week_id(date: dt.date | None = None) -> str:
     d = date or dt.date.today()
     y, w, _ = d.isocalendar()

@@ -1,8 +1,10 @@
 // EFECTOS DE IMPACTO (estilo cómic): palabras "¡PUM!", líneas de velocidad, destellos, humo, chispas y temblor.
 import { W, H, clamp, ease } from './util.mjs';
 import { INK } from './brightbg.mjs';
+import { T } from './lang.mjs';
 
-const WORDS = { pum: '¡PUM!', boom: '¡BOOM!', ay: '¡AY!', zas: '¡ZAS!', wow: '¡WOW!', crac: '¡CRAC!', glup: '¡GLUP!', ups: '¡UPS!', bip: '¡BIP!', ring: '¡RING!', plaf: '¡PLAF!', ñam: '¡ÑAM!' };
+const WORDS_ES = { pum: '¡PUM!', boom: '¡BOOM!', ay: '¡AY!', zas: '¡ZAS!', wow: '¡WOW!', crac: '¡CRAC!', glup: '¡GLUP!', ups: '¡UPS!', bip: '¡BIP!', ring: '¡RING!', plaf: '¡PLAF!', ñam: '¡ÑAM!' };
+const WORDS_EN = { pum: 'BOOM!', boom: 'BOOM!', ay: 'OUCH!', zas: 'WHAM!', wow: 'WOW!', crac: 'CRACK!', glup: 'GULP!', ups: 'OOPS!', bip: 'BEEP!', ring: 'RING!', plaf: 'SPLAT!', ñam: 'CHOMP!' };
 const COLS = ['#ffd166', '#ff8fab', '#7bdff2', '#b8f2a8'];
 
 export function starBurst(ctx, x, y, r, color, k = 1, spikes = 14) {
@@ -16,7 +18,7 @@ export function starBurst(ctx, x, y, r, color, k = 1, spikes = 14) {
 export const comicGate = { on: true };
 export function comicWord(ctx, word, x, y, t, { size = 130, color } = {}) {
   if (!comicGate.on) return;
-  const text = WORDS[String(word).toLowerCase()] || String(word).toUpperCase();
+  const WORDS = T(WORDS_ES, WORDS_EN); const text = WORDS[String(word).toLowerCase()] || String(word).toUpperCase();
   const k = ease.outBack(clamp(t / 0.25)); if (t < 0) return;
   const shake = t < 0.4 ? Math.sin(t * 90) * 8 * (1 - t / 0.4) : 0;
   ctx.save(); ctx.translate(x + shake, y); ctx.rotate(-0.12); ctx.scale(k, k);

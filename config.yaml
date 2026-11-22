@@ -1,33 +1,33 @@
 # Configuración del canal. Cambia lo que quieras y haz commit: el sistema lo lee en cada ejecución.
 
 canal:
-  nombre: "Curiosidario"                  # nombre que aparece en la tarjeta final
-  handle: "@curiosdiario"                  # tu @ de YouTube (vacío = no se muestra)
-  idioma: "es"
+  nombre: "The Curio Lab"                 # canal en inglés para EE. UU. (antes: Curiosidario, en español)
+  handle: "@thecuriolabfac"                # tu @ de YouTube (vacío = no se muestra)
+  idioma: "en"                             # en = todo en inglés (guiones, voz, textos, títulos); es = español
   tarjeta_final:
-    titulo: "Sígueme"
-    subtitulo: "para más curiosidades"
+    titulo: "Follow"
+    subtitulo: "for more mind-blowing facts"
     mostrar: false   # false = sin tarjeta final ni despedida: el vídeo acaba en la última frase y enlaza con el principio (bucle)
-    locucion: ""     # despedida hablada al final ("" = sin voz). Antes: "Sígueme para más curiosidades. Curiosidario."
+    locucion: ""     # despedida hablada al final ("" = sin voz)
 
 analisis:
-  regiones: ["ES", "MX", "AR", "CO", "US"]   # países cuyo "Tendencias" se mira
+  regiones: ["US", "GB", "CA", "AU"]         # países cuyo "Tendencias" se mira
   dias: 7                                    # ventana de análisis
   duracion_max_seg: 180                      # solo Shorts
   # Búsquedas para encontrar las curiosidades que más funcionan. Se combinan con lo más visto de cada país.
   busquedas:
-    - "datos curiosos"
-    - "sabías que"
-    - "qué pasaría si"
-    - "curiosidades"
-    - "cosas que no sabías"
-    - "datos increíbles"
-    - "ciencia curiosa"
-    - "curiosidades del espacio"
-    - "curiosidades del cuerpo humano"
-    - "historia curiosa"
-    - "explicado en 1 minuto"
-    - "datos que te volarán la cabeza"
+    - "what if"
+    - "fun facts"
+    - "did you know"
+    - "weird facts"
+    - "things you didn't know"
+    - "mind blowing facts"
+    - "science facts"
+    - "space facts"
+    - "human body facts"
+    - "history facts"
+    - "explained in 60 seconds"
+    - "true story"
   top_videos: 60                             # cuántos vídeos se pasan a la IA
 
 generacion:
@@ -66,23 +66,23 @@ musica:
   volumen_ambiente: 0.1
 
 publicacion:
-  zona_horaria: "Europe/Madrid"
+  zona_horaria: "America/New_York"   # horas de publicación en hora de Nueva York (público de EE. UU.)
   # Listas de reproducción temáticas: cada Short se añade a la suya al subirlo (más tiempo de sesión en el canal).
-  listas: ["Cuerpo humano", "¿Qué pasaría si...?", "Historias reales increíbles", "Espacio y planeta Tierra", "Mitos y verdades", "Animales y naturaleza", "Ciencia curiosa"]
-  # Horas de publicación (hora de España) según cuántos vídeos salen ese día.
+  listas: ["Human Body", "What If...?", "Incredible True Stories", "Space & Planet Earth", "Myths vs Facts", "Animals & Nature", "Weird Science"]
+  # Horas de publicación (hora de Nueva York) según cuántos vídeos salen ese día. Picos de EE. UU.: mediodía y tarde-noche.
   # Pensadas para España + Latinoamérica: se publica 1-2 h ANTES de los picos de audiencia para que YouTube
   # tenga tiempo de empezar a mostrarlo. Entre semana: comida (14-15 h) y tarde-noche (19-23 h, en Latinoamérica
   # es mediodía-tarde). Fin de semana: media mañana y tarde. Si un día ya tiene un vídeo, los nuevos se separan
   # al menos 2 horas de él.
   horas:
     laborable:                     # lunes a viernes
-      1: ["19:00"]
-      2: ["14:00", "20:30"]
-      3: ["13:30", "18:00", "21:30"]
+      1: ["18:00"]
+      2: ["12:00", "19:00"]
+      3: ["11:30", "15:30", "19:30"]
     fin_de_semana:                 # sábado y domingo
-      1: ["12:00"]
-      2: ["12:00", "19:30"]
-      3: ["11:00", "16:30", "20:30"]
+      1: ["11:00"]
+      2: ["10:30", "17:00"]
+      3: ["10:00", "14:00", "18:30"]
   max_por_dia: 3                 # cada día se llena con 2 antes de pasar al siguiente; el 3.º solo cuando toda la semana tiene 2
   dias_horizonte: 7              # se intenta repartir lo pendiente en los próximos 7 días
   categoria_id: "24"             # 24 = Entretenimiento

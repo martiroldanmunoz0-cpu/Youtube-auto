@@ -6,6 +6,7 @@ import { drawPlace, midShot, grade } from './bright.mjs';
 import { drawHead, drawFullBody } from '../lib/persona.mjs';
 import { INK } from '../lib/brightbg.mjs';
 import { speedLines, sparkles, smoke, flash, shakeAt, starBurst } from '../lib/impact.mjs';
+import { T } from '../lib/lang.mjs';
 
 const { O, E, C, R, P, L } = DRAW;
 const ph = (t, d, a, b) => clamp((t / d - a) / (b - a));
@@ -145,7 +146,7 @@ export const MORE_ACTIONS = {
     ctx.save(); ctx.translate(Math.sin(t * 22) * 8 * k, Math.abs(Math.sin(t * 11)) * -20 * k);
     midShot(ctx, who, { x: W / 2, y: 960, s: 0.8, mood: 'happy', t }); ctx.restore();
     for (const s of [-1, 1]) { const q = (t * 1.2 + (s > 0 ? 0.5 : 0)) % 1; C(ctx, W / 2 + s * (120 + q * 80), 940 + q * 140, 14, '#8fd3ff', 4); }
-    for (let i = 0; i < 3; i++) popText(ctx, 'JA', W / 2 + (i - 1) * 260, 520 - i * 40 + Math.sin(t * 6 + i) * 20, ph(t, d, 0.12 + i * 0.1, 0.25 + i * 0.1), 120 - i * 15, (i - 1) * 0.2, '#ffd166');
+    for (let i = 0; i < 3; i++) popText(ctx, T('JA', 'HA'), W / 2 + (i - 1) * 260, 520 - i * 40 + Math.sin(t * 6 + i) * 20, ph(t, d, 0.12 + i * 0.1, 0.25 + i * 0.1), 120 - i * 15, (i - 1) * 0.2, '#ffd166');
   },
   // Llora: lágrimas que caen a chorro y una nube de lluvia encima
   llorar(ctx, t, d, who, params) {
@@ -165,7 +166,7 @@ export const MORE_ACTIONS = {
     ctx.restore();
     const ent = ease.out(ph(t, d, 0, 0.15));
     ctx.save(); ctx.translate(1100 - ent * 340 + Math.sin(t * 16) * 30, 1450 + Math.cos(t * 16) * 30); ctx.rotate(-1.1); ctx.scale(0.7, 0.7); PROPS.pluma(ctx, t * 3); ctx.restore();
-    if (k > 0) { speedLines(ctx, 760, 1450, t, 0.2 * k); for (let i = 0; i < 2; i++) popText(ctx, 'JI', 260 + i * 160, 460 + Math.sin(t * 8 + i) * 20, ph(t, d, 0.2 + i * 0.15, 0.32 + i * 0.15), 100, (i ? 0.2 : -0.2), '#ff8fab'); }
+    if (k > 0) { speedLines(ctx, 760, 1450, t, 0.2 * k); for (let i = 0; i < 2; i++) popText(ctx, T('JI', 'HEE'), 260 + i * 160, 460 + Math.sin(t * 8 + i) * 20, ph(t, d, 0.2 + i * 0.15, 0.32 + i * 0.15), 100, (i ? 0.2 : -0.2), '#ff8fab'); }
   },
   // Tormenta en el mar: la barca sube y baja entre olas enormes, lluvia y relámpagos
   tormenta_mar(ctx, t, d, who) {

@@ -49,7 +49,7 @@ def _model(key: str, preferred: str) -> str:
 def prompt_for(story: dict) -> str:
     beats = " / ".join(b["text"] for b in story.get("beats", [])[:6])
     return (
-        "Create a viral YouTube thumbnail image (16:9 landscape) for a Spanish 'what if / curiosities' video.\n"
+        "Create a viral YouTube thumbnail image (16:9 landscape) for a 'what if / curiosities' video (English-language channel, US audience).\n"
         f"Video title: {story.get('title', '')}\nMain idea: {story.get('question') or story.get('cover_text', '')}\n"
         f"Opening of the script: {beats}\n\n"
         "STYLE (very important): glossy, high-energy cartoon illustration like the most clicked animated 'what if' "

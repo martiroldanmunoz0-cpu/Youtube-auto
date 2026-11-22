@@ -4,6 +4,7 @@ import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, lerp, clamp } from '..
 import { makeBokeh, drawBokeh } from '../lib/fx.mjs';
 import { drawPhoneInHands } from '../lib/parts.mjs';
 import { linearBg } from './vehicle.mjs';
+import { T } from '../lib/lang.mjs';
 
 const F = (w, s) => `${w} ${s}px Poppins`;
 
@@ -26,9 +27,9 @@ const screens = {
     ctx.fillStyle = '#171a26'; ctx.fillRect(x, y, w, 150 * s);
     ctx.fillStyle = '#3a3f55'; ctx.beginPath(); ctx.arc(x + 70 * s, y + 100 * s, 30 * s, 0, 7); ctx.fill();
     ctx.fillStyle = P.white; ctx.font = F(600, 28 * s);
-    ctx.fillText(params.contact || 'Desconocido', x + 120 * s, y + 98 * s);
+    ctx.fillText(params.contact || T('Desconocido', 'Unknown'), x + 120 * s, y + 98 * s);
     ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.font = F(400, 20 * s);
-    ctx.fillText(params.status || 'en línea', x + 120 * s, y + 126 * s);
+    ctx.fillText(params.status || T('en línea', 'online'), x + 120 * s, y + 126 * s);
     const msgs = params.messages || [];
     const step = Math.max(0.6, (dur * 0.8) / Math.max(1, msgs.length));
     let cy = y + 190 * s;
@@ -69,7 +70,7 @@ const screens = {
     ctx.font = F(400, 24 * s); ctx.fillStyle = 'rgba(255,255,255,0.7)';
     ctx.fillText(params.date || 'martes, 14 de noviembre', x + w / 2, y + 130 * s);
     ctx.textAlign = 'left';
-    const list = params.notifications || [{ app: 'Mensajes', title: 'Desconocido', text: 'Sé dónde estás.' }];
+    const list = params.notifications || [{ app: T('Mensajes', 'Messages'), title: 'Desconocido', text: T('Sé dónde estás.', 'I know where you are.') }];
     list.forEach((n, i) => {
       const k = ease.out(seg(t, 0.3 + i * 0.9, 0.4));
       if (k <= 0) return;
@@ -77,7 +78,7 @@ const screens = {
       ctx.save(); ctx.globalAlpha = k; ctx.translate(0, (1 - k) * -40);
       ctx.fillStyle = 'rgba(40,40,60,0.85)'; rr(ctx, x + 22 * s, ny, w - 44 * s, 150 * s, 30 * s); ctx.fill();
       ctx.fillStyle = n.alert ? P.red : P.ui; rr(ctx, x + 44 * s, ny + 24 * s, 40 * s, 40 * s, 10 * s); ctx.fill();
-      ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = F(500, 20 * s); ctx.fillText((n.app || 'Mensajes').toUpperCase(), x + 100 * s, ny + 52 * s);
+      ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = F(500, 20 * s); ctx.fillText((n.app || T('Mensajes', 'Messages')).toUpperCase(), x + 100 * s, ny + 52 * s);
       ctx.fillStyle = P.white; ctx.font = F(600, 24 * s); ctx.fillText(n.title || '', x + 44 * s, ny + 96 * s);
       ctx.font = F(400, 22 * s); ctx.fillStyle = 'rgba(255,255,255,0.85)';
       ctx.fillText(wrapText(ctx, n.text || '', w - 100 * s)[0] || '', x + 44 * s, ny + 128 * s);
@@ -91,9 +92,9 @@ const screens = {
     ctx.fillStyle = g; ctx.fillRect(x, y, w, h);
     ctx.textAlign = 'center';
     ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = F(400, 24 * s);
-    ctx.fillText(params.label || 'Llamada entrante', x + w / 2, y + 170 * s);
+    ctx.fillText(params.label || T('Llamada entrante', 'Incoming call'), x + w / 2, y + 170 * s);
     ctx.fillStyle = P.white; ctx.font = F(600, 44 * s);
-    ctx.fillText(params.caller || 'Número oculto', x + w / 2, y + 230 * s);
+    ctx.fillText(params.caller || T('Número oculto', 'No caller ID'), x + w / 2, y + 230 * s);
     const pulse = (t * 1.2) % 1;
     ctx.strokeStyle = rgba('#ffffff', 0.4 * (1 - pulse)); ctx.lineWidth = 3;
     ctx.beginPath(); ctx.arc(x + w / 2, y + 420 * s, (80 + pulse * 80) * s, 0, 7); ctx.stroke();
@@ -147,7 +148,7 @@ const screens = {
   // params: { query, results: [..] }
   search(ctx, x, y, w, h, s, t, params) {
     ctx.fillStyle = '#0f1017'; ctx.fillRect(x, y, w, h);
-    const q = params.query || '¿qué significa...?';
+    const q = params.query || T('¿qué significa...?', 'what does it mean...?');
     const n = Math.floor(clamp(t / Math.max(0.8, q.length * 0.06)) * q.length);
     ctx.fillStyle = '#1f2230'; rr(ctx, x + 24 * s, y + 120 * s, w - 48 * s, 80 * s, 40 * s); ctx.fill();
     ctx.fillStyle = P.white; ctx.font = F(400, 26 * s);
@@ -168,7 +169,7 @@ const screens = {
     g.addColorStop(0, '#16233f'); g.addColorStop(1, '#0a0d16');
     ctx.fillStyle = g; ctx.fillRect(x, y, w, h);
     ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = F(400, 24 * s);
-    ctx.fillText(params.label || 'Saldo disponible', x + 40 * s, y + 150 * s);
+    ctx.fillText(params.label || T('Saldo disponible', 'Available balance'), x + 40 * s, y + 150 * s);
     let bal = String(params.balance || '0 €');
     const m = bal.match(/^(-?)([\d.,]+)(.*)$/);
     if (m) {
@@ -205,11 +206,11 @@ const screens = {
     g.addColorStop(0, '#1d1a2e'); g.addColorStop(1, '#0a0a10');
     ctx.fillStyle = g; ctx.fillRect(x, y, w, h);
     ctx.textAlign = 'center';
-    ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = F(400, 24 * s); ctx.fillText(params.label || 'Tu conductor', x + w / 2, y + 140 * s);
+    ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = F(400, 24 * s); ctx.fillText(params.label || T('Tu conductor', 'Your driver'), x + w / 2, y + 140 * s);
     ctx.fillStyle = '#d9dcf0'; ctx.beginPath(); ctx.arc(x + w / 2, y + 330 * s, 130 * s, 0, 7); ctx.fill();
     ctx.fillStyle = '#6a7090'; ctx.beginPath(); ctx.arc(x + w / 2, y + 300 * s, 50 * s, 0, 7); ctx.fill();
     ctx.beginPath(); ctx.ellipse(x + w / 2, y + 420 * s, 90 * s, 60 * s, 0, Math.PI, 0); ctx.fill();
-    ctx.fillStyle = P.white; ctx.font = F(600, 42 * s); ctx.fillText(params.name || 'Andrés', x + w / 2, y + 540 * s);
+    ctx.fillStyle = P.white; ctx.font = F(600, 42 * s); ctx.fillText(params.name || T('Andrés', 'Jake'), x + w / 2, y + 540 * s);
     if (params.detail) { ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font = F(400, 24 * s); ctx.fillText(params.detail, x + w / 2, y + 590 * s); }
     ctx.textAlign = 'left';
   },

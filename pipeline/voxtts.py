@@ -60,7 +60,20 @@ _UNITS = {"cero": 0, "un": 1, "uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro":
           "cuatrocientas": 400, "quinientos": 500, "quinientas": 500, "seiscientos": 600, "seiscientas": 600,
           "setecientos": 700, "setecientas": 700, "ochocientos": 800, "ochocientas": 800, "novecientos": 900,
           "novecientas": 900}
-_SCALES = {"mil": 1000, "millon": 1_000_000, "millones": 1_000_000}
+_UNITS.update({"zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9,
+               "ten": 10, "eleven": 11, "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15, "sixteen": 16,
+               "seventeen": 17, "eighteen": 18, "nineteen": 19, "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
+               "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90})
+_SCALES = {"mil": 1000, "millon": 1_000_000, "millones": 1_000_000, "hundred": 100, "thousand": 1000, "million": 1_000_000,
+           "billion": 1_000_000_000}
+def _LANG() -> str:
+    try:
+        from common import idioma  # noqa: PLC0415
+        return idioma()
+    except Exception:  # noqa: BLE001
+        return "es"
+
+
 _ROMAN = {"ii": "2", "iii": "3", "iv": "4", "vi": "6", "vii": "7", "viii": "8", "ix": "9"}
 
 
@@ -69,11 +82,11 @@ def _merge_numbers(words: list[str]) -> list[str]:
     out, i = [], 0
     while i < len(words):
         w = words[i]
-        if w in _UNITS or (w in _SCALES and w != "millon"):
+        if w in _UNITS or (w in _SCALES and w not in ("millon", "million", "billion", "hundred")):
             total, cur, j = 0, 0, i
-            while j < len(words) and (words[j] in _UNITS or words[j] in _SCALES or (words[j] == "y" and j + 1 < len(words) and words[j + 1] in _UNITS)):
+            while j < len(words) and (words[j] in _UNITS or words[j] in _SCALES or (words[j] in ("y", "and") and j + 1 < len(words) and words[j + 1] in _UNITS)):
                 t = words[j]
-                if t == "y":
+                if t in ("y", "and"):
                     j += 1
                     continue
                 if t in _UNITS:
@@ -128,7 +141,7 @@ def _transcribe(asr, wav: np.ndarray, sr: int):
     import librosa  # noqa: PLC0415
 
     y = librosa.resample(np.asarray(wav, dtype=np.float32), orig_sr=sr, target_sr=16000)
-    segs, _ = asr.transcribe(y, language="es", word_timestamps=True)
+    segs, _ = asr.transcribe(y, language=_LANG(), word_timestamps=True)
     return [w for s in segs for w in (s.words or [])]
 
 

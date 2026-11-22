@@ -6,6 +6,7 @@ import { makeDust, drawDust, makeBokeh, drawBokeh } from '../lib/fx.mjs';
 import { linearBg } from './vehicle.mjs';
 import { drawPlace, midShot, grade, placeName } from './bright.mjs';
 import { personaWho } from '../lib/persona.mjs';
+import { T } from '../lib/lang.mjs';
 
 function fitFont(ctx, text, weight, maxSize, maxW) {
   let size = maxSize;
@@ -74,7 +75,7 @@ export const newspaper = {
     ctx.fillStyle = linearBg(ctx, 0, -ph / 2, 0, ph / 2, ['#e9dfc8', '#d4c6a6']);
     ctx.fillRect(-pw / 2, -ph / 2, pw, ph);
     ctx.fillStyle = '#1d1a14'; ctx.textAlign = 'center';
-    ctx.font = '700 44px Poppins'; ctx.fillText(params.kicker || 'EL DIARIO', 0, -ph / 2 + 80);
+    ctx.font = '700 44px Poppins'; ctx.fillText(params.kicker || T('EL DIARIO', 'THE DAILY'), 0, -ph / 2 + 80);
     ctx.fillRect(-pw / 2 + 40, -ph / 2 + 105, pw - 80, 4);
     ctx.font = '400 22px Poppins'; ctx.fillText(params.date || '', 0, -ph / 2 + 140);
     // Titular con salto de línea automático

@@ -3,6 +3,7 @@ import { brightBg, INK } from '../lib/brightbg.mjs';
 // Si el guion no elige "style", cada plano elige una al azar (según su semilla): dos mapas seguidos salen distintos.
 import { W, H, PALETTE as P, rr, radial, rgba, seg, ease, clamp, noise1 } from '../lib/util.mjs';
 import { linearBg } from './vehicle.mjs';
+import { T } from '../lib/lang.mjs';
 
 function pinDrop(ctx, px, py, t, color = P.red) {
   const k = ease.outBack(seg(t, 0.2, 0.6));
@@ -119,7 +120,7 @@ export const CAL_VARIANTS = {
     ctx.fillStyle = '#f2ece0'; rr(ctx, x0, y0 - 160, cw, ch + 180, 24); ctx.fill();
     ctx.fillStyle = '#2b4a7a'; rr(ctx, x0, y0 - 160, cw, 150, 24); ctx.fill(); ctx.fillRect(x0, y0 - 40, cw, 30);
     ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '700 64px Poppins';
-    ctx.fillText(String(params.month || 'DÍAS').toUpperCase(), W / 2, y0 - 90);
+    ctx.fillText(String(params.month || T('DÍAS', 'DAYS')).toUpperCase(), W / 2, y0 - 90);
     const cell = cw / 7;
     const shown = Math.ceil(target * clamp(t / Math.max(0.8, Math.min(dur * 0.7, 2.5))));
     for (let d = 1; d <= 31; d++) {
@@ -155,7 +156,7 @@ export const CAL_VARIANTS = {
     ctx.lineCap = 'butt';
     ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.font = '200px Anton';
     ctx.lineWidth = 14; ctx.strokeStyle = '#000';
-    const txt = `${String(params.month || 'DÍA').toUpperCase()} ${target}`;
+    const txt = `${String(params.month || T('DÍA', 'DAY')).toUpperCase()} ${target}`;
     ctx.strokeText(txt, W / 2, 1620); ctx.fillText(txt, W / 2, 1620);
     if (params.label) { ctx.font = '600 48px Poppins'; ctx.fillStyle = '#e8dcc4'; ctx.fillText(params.label, W / 2, 1720); }
     ctx.textAlign = 'left';
@@ -177,10 +178,10 @@ export const NEWS_VARIANTS = {
     ctx.fillStyle = '#ffffff'; rr(ctx, x, y, w, h, 26); ctx.fill();
     ctx.fillStyle = '#c62f2f'; ctx.fillRect(x, y + 26, w, 90);
     ctx.fillStyle = '#fff'; ctx.font = '700 44px Poppins'; ctx.textBaseline = 'middle';
-    ctx.fillText((params.kicker || 'NOTICIAS').toUpperCase(), x + 40, y + 72);
+    ctx.fillText((params.kicker || T('NOTICIAS', 'NEWS')).toUpperCase(), x + 40, y + 72);
     const blink = Math.sin(t * 6) > 0;
     ctx.fillStyle = '#ffd34a'; rr(ctx, x + 40, y + 150, 300, 56, 12); ctx.fill();
-    ctx.fillStyle = '#1a1206'; ctx.font = '700 32px Poppins'; ctx.fillText(blink ? '● ÚLTIMA HORA' : '  ÚLTIMA HORA', x + 56, y + 179);
+    ctx.fillStyle = '#1a1206'; ctx.font = '700 32px Poppins'; ctx.fillText(blink ? T('● ÚLTIMA HORA', '● BREAKING NEWS') : T('  ÚLTIMA HORA', '  BREAKING NEWS'), x + 56, y + 179);
     ctx.fillStyle = '#121418'; ctx.font = '700 62px Poppins'; ctx.textBaseline = 'alphabetic';
     const lines = wrapText(ctx, params.headline, w - 80).slice(0, 4);
     lines.forEach((l, i) => ctx.fillText(l, x + 40, y + 300 + i * 74));
@@ -200,7 +201,7 @@ export const NEWS_VARIANTS = {
     const pw = 920, ph = 1300;
     ctx.fillStyle = '#f1ead8'; ctx.fillRect(-pw / 2, -ph / 2, pw, ph);
     ctx.fillStyle = '#111'; ctx.textAlign = 'center';
-    ctx.font = '700 74px Poppins'; ctx.fillText(String(params.kicker || 'LA GACETA').toUpperCase(), 0, -ph / 2 + 100);
+    ctx.font = '700 74px Poppins'; ctx.fillText(String(params.kicker || T('LA GACETA', 'THE GAZETTE')).toUpperCase(), 0, -ph / 2 + 100);
     ctx.fillRect(-pw / 2 + 30, -ph / 2 + 130, pw - 60, 6); ctx.fillRect(-pw / 2 + 30, -ph / 2 + 190, pw - 60, 2);
     ctx.font = '400 26px Poppins'; ctx.fillText(params.date || '', 0, -ph / 2 + 168);
     ctx.font = '86px Anton';

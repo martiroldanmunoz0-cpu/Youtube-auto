@@ -6,6 +6,7 @@ import { makeBokeh, drawBokeh, makeDust, drawDust } from '../lib/fx.mjs';
 import { drawEyes, blinkAt } from '../lib/parts.mjs';
 import { linearBg } from './vehicle.mjs';
 import { personaWho, drawHead } from '../lib/persona.mjs';
+import { T } from '../lib/lang.mjs';
 
 // Personaje (busto frontal, estilo plano). params: { mood: neutral|happy|worried|shocked|angry|sad,
 //   prop?: 'money'|'phone'|'none', bg?: 'night'|'warm'|'cold'|'red', outfit?: #hex }
@@ -118,7 +119,7 @@ export const calendar = {
     ctx.fillStyle = '#efe7d6'; rr(ctx, cx - cw / 2, cy - ch / 2, cw, ch, 40); ctx.fill();
     ctx.fillStyle = '#c0262e'; rr(ctx, cx - cw / 2, cy - ch / 2, cw, 170, 40); ctx.fill(); ctx.fillRect(cx - cw / 2, cy - ch / 2 + 120, cw, 50);
     ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.font = '700 64px Poppins'; ctx.fillText(String(params.month || 'DÍA').toUpperCase(), cx, cy - ch / 2 + 88);
+    ctx.font = '700 64px Poppins'; ctx.fillText(String(params.month || T('DÍA', 'DAY')).toUpperCase(), cx, cy - ch / 2 + 88);
     ctx.fillStyle = '#1b1612';
     let size = 330; do { ctx.font = `700 ${size}px Poppins`; size -= 10; } while (ctx.measureText(shown).width > cw - 80 && size > 60);
     ctx.fillText(shown, cx, cy + 70);

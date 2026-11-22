@@ -159,12 +159,24 @@ def upload(yt, item: dict, video_path: Path, cfg: dict) -> str:
 
 
 PLAYLISTS = DATA / "playlists.json"
+
+
+def cfg_lang() -> str:
+    from common import idioma  # noqa: PLC0415
+    return idioma()
 _KEYWORDS = [("Historias reales increíbles", r"historia|sobreviv|caso real|el hombre|la mujer|el médico|el pescador|récord"),
              ("Espacio y planeta Tierra", r"espacio|tierra|luna|sol\b|planeta|agujero negro|galaxia|astronaut|rayo|océano|volc"),
              ("Cuerpo humano", r"cuerpo|cerebro|coraz|sangre|dormir|sueño|envejec|herida|piel|cosquilla|dedo|brazo"),
              ("Animales y naturaleza", r"animal|tibur|dinosaur|perro|gato|pájaro|insect|selva|arenas movedizas|naturaleza"),
              ("Mitos y verdades", r"mito|verdad|mentira|películas|cine"),
-             ("¿Qué pasaría si...?", r"qué pasaría|y si |qué pasa si")]
+             ("¿Qué pasaría si...?", r"qué pasaría|y si |qué pasa si"),
+             # inglés (The Curio Lab)
+             ("Incredible True Stories", r"survived|true story|real story|the man who|the woman who|record|history"),
+             ("Space & Planet Earth", r"space|earth|moon|\bsun\b|planet|black hole|galaxy|astronaut|lightning|ocean|volcan"),
+             ("Human Body", r"body|brain|heart|blood|sleep|aging|skin|tickl|finger|\barm\b"),
+             ("Animals & Nature", r"animal|shark|dinosaur|\bdog|\bcat\b|bird|insect|jungle|quicksand|nature"),
+             ("Myths vs Facts", r"myth|truth|\blie\b|movies|hollywood"),
+             ("What If...?", r"what if|what would happen")]
 
 
 def lista_para(q: dict, cfg: dict) -> str | None:
@@ -179,7 +191,10 @@ def lista_para(q: dict, cfg: dict) -> str | None:
     for name, pat in _KEYWORDS:
         if name in listas and _re.search(pat, t):
             return name
-    return "Ciencia curiosa" if "Ciencia curiosa" in listas else listas[0]
+    for fallback in ("Ciencia curiosa", "Weird Science"):
+        if fallback in listas:
+            return fallback
+    return listas[0]
 
 
 def ensure_playlist(yt, name: str) -> str | None:
@@ -199,7 +214,8 @@ def ensure_playlist(yt, name: str) -> str | None:
                 break
         if not cache.get(name):
             pl = yt.playlists().insert(part="snippet,status", body={"snippet": {"title": name, "description":
-                 f"{name}: curiosidades contadas en menos de un minuto. Un vídeo lleva a otro 👀", "defaultLanguage": "es"},
+                 (f"{name}: mind-blowing facts in under a minute. One video leads to another 👀" if cfg_lang() == "en"
+                  else f"{name}: curiosidades contadas en menos de un minuto. Un vídeo lleva a otro 👀"), "defaultLanguage": cfg_lang()},
                  "status": {"privacyStatus": "public"}}).execute()
             cache[name] = pl["id"]
             print(f"  lista creada: {name}")
@@ -309,7 +325,7 @@ def process_queue(cfg: dict) -> list[str]:
             lista = lista_para(q, cfg)
             pid = ensure_playlist(yt, lista) if lista else None
             if pid and "playlist?list=" not in q["description"]:  # enlace a más vídeos del mismo tema (tiempo de sesión)
-                q["description"] = q["description"].rstrip() + f"\n\n▶️ Más de «{lista}»: https://www.youtube.com/playlist?list={pid}"
+                q["description"] = q["description"].rstrip() + (f"\n\n▶️ More «{lista}»: " if cfg_lang() == "en" else f"\n\n▶️ Más de «{lista}»: ") + f"https://www.youtube.com/playlist?list={pid}"
             vid = upload(yt, q, path, cfg)
             q.update(estado="programado", youtube_id=vid, lista=lista)
             pl_msg = add_to_playlist(yt, vid, pid)

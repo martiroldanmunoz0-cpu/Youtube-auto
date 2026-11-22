@@ -16,6 +16,8 @@ import re
 import subprocess
 from pathlib import Path
 
+from common import idioma
+
 
 def _probe(mp4: Path) -> dict:
     out = subprocess.run(
@@ -138,7 +140,7 @@ def check(mp4: Path, timeline: dict, script_text: str, end_card: float = 2.4) ->
             capture_output=True, check=True,
         ).stdout
         audio = np.frombuffer(raw, dtype=np.float32)
-        segs, _ = asr.transcribe(audio, language="es", word_timestamps=True)
+        segs, _ = asr.transcribe(audio, language=idioma(), word_timestamps=True)
         heard = [w for sg in segs for w in (sg.words or [])]
         score = voxtts._similarity(script_text, " ".join(w.word for w in heard))
         if score < 0.85:

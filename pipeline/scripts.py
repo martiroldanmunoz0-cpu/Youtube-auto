@@ -18,7 +18,7 @@ import anthropic
 import os
 
 import gasto
-from common import CATALOG, DATA, formato, load_config, load_history, pedido, read_json, run_id, week_dir, write_json
+from common import CATALOG, DATA, formato, idioma, load_config, load_history, pedido, read_json, run_id, week_dir, write_json
 
 client = anthropic.Anthropic()
 
@@ -338,7 +338,11 @@ mas me mi mucho muy nadie ni no nos o para pero por que quien se si sin sobre so
 y ya yo pasaria pasa seria seria si como cuando dato datos curioso curiosos curiosidad curiosidades sabias shorts
 nunca todo todos cada vez mundo esta estos estas eso existe hace hacer puede vuelve otra otro
 dia dias ano anos vez veces solo sola tuvo tenia era fue han hombre mujer persona gente vida tiempo historia real
-primer primera despues antes ahora asi tan tanto entre hasta desde durante dos tres mil""".split())
+primer primera despues antes ahora asi tan tanto entre hasta desde durante dos tres mil
+the an and or of to in on at for with from by is are was were be been it its this that these those you your what if
+would could should will can how why when where who which there their they them he she his her we our us not no do does
+did have has had just about into than then so very more most one two three thousand million day days year years time
+fact facts happen happens happened really ever never every world people life story true""".split())
 
 
 def _keywords(text: str) -> set[str]:
@@ -385,9 +389,35 @@ def pick_new_ideas(ideas: list[dict], history: list[dict], n: int, keep_last: in
     return chosen
 
 
+EN_OVERRIDE = """
+
+=== LANGUAGE OVERRIDE (this overrides anything above about Spanish) ===
+The channel is now "{nombre}" ({handle}), an ENGLISH-language YouTube channel for a US audience (also UK, Canada, Australia).
+- Write EVERY viewer-facing text in natural, punchy American English: narration ("texto"), the loop sentence, titles,
+  descriptions, hashtags, tags, cover text, hook question, comment question, labels ("label"), on-screen texts, numbers
+  shown on screen, chapter names and playlist names. Never Spanish.
+- Pick topics, references, examples and comparisons that a US viewer instantly gets (US places, money in dollars,
+  American culture), and use US units (miles, feet, pounds, °F) — add metric only if it helps.
+- Titles and descriptions are optimised for ENGLISH YouTube search ("What If…", "Why…", "How…", "The…").
+- Second-person immersive narration ("You wake up…", "Imagine…") works great; keep sentences short and spoken.
+- Words per second in English are similar: respect the same word limits.
+- KEEP all JSON field names and all technical identifiers EXACTLY as the catalog defines them (scene names, camera,
+  transition, "lugar", "hora", "tipo", piece names like "barco", "fuego", "mano", moods...). Those stay in Spanish:
+  they are code, not text the viewer sees. Only translate what appears on screen or is heard.
+"""
+
+
+def _lang_system(system: str) -> str:
+    cfg = load_config()
+    if idioma(cfg) != "en":
+        return system
+    c = cfg.get("canal") or {}
+    return system + EN_OVERRIDE.format(nombre=c.get("nombre", ""), handle=c.get("handle", ""))
+
+
 def make_params(system: str, context: str | None, user: str, schema: dict, model: str, effort: str = "high", max_tokens: int = 32000) -> dict:
     """Petición con la parte fija (instrucciones + catálogo) cacheada: se paga casi una sola vez."""
-    blocks = [{"type": "text", "text": system}]
+    blocks = [{"type": "text", "text": _lang_system(system)}]
     if context:
         blocks.append({"type": "text", "text": context})
     blocks[-1]["cache_control"] = {"type": "ephemeral", "ttl": "1h"}
@@ -686,7 +716,8 @@ def _fix_pieces(params: dict, text: str) -> tuple[dict, str | None]:
             "label": str(label)[:28], "efecto": params.get("efecto") or "", "_faltan": unknown}, "escena"
 
 
-META_BUCLE = re.compile(r"(la pregunta|este v[ií]deo|el v[ií]deo|al principio|volvamos|otra vez|de nuevo|como dec[ií]amos|sigue en pie|vuelve a empezar)", re.I)
+META_BUCLE = re.compile(r"(la pregunta|este v[ií]deo|el v[ií]deo|al principio|volvamos|otra vez|de nuevo|como dec[ií]amos|sigue en pie|vuelve a empezar"
+                        r"|the question|this video|the video|the beginning|let's go back|once again|all over again|as we said|still stands|starts again)", re.I)
 MODELO_BARATO = "claude-haiku-5-5"
 
 
@@ -747,8 +778,9 @@ def fix_loop_phrase(bucle: str, first: str, last: str) -> str:
     if not bucle or not META_BUCLE.search(bucle):
         return bucle
     schema = {"type": "object", "additionalProperties": False, "required": ["frase_bucle"], "properties": {"frase_bucle": {"type": "string"}}}
-    out = _cheap_json("Un vídeo corto termina con una frase a medias que la PRIMERA frase del vídeo completa, para que al repetirse "
-                      "parezca que sigue. La actual suena rara porque habla del vídeo o de la pregunta. Reescríbela en español: "
+    LENGUA = "inglés (American English)" if idioma() == "en" else "español"
+    out = _cheap_json(f"Un vídeo corto termina con una frase a medias que la PRIMERA frase del vídeo completa, para que al repetirse "
+                      f"parezca que sigue. La actual suena rara porque habla del vídeo o de la pregunta. Reescríbela en {LENGUA}: "
                       "máximo 14 palabras, sin punto final, que salga de la historia y que al leerla seguida de la primera frase "
                       "suene como UNA frase natural. No menciones el vídeo, la pregunta, el principio ni 'otra vez'.\n"
                       f"Penúltima frase del vídeo: {last}\nFrase actual: {bucle}\nPrimera frase: {first}", schema)
@@ -770,6 +802,15 @@ ACCION_POR_FRASE = [
     (r"mare[ao]|da vueltas", "marearse"), (r"quema|abrasa|insolaci", "quemarse"),
     (r"pulmones|el aire sale|sueltas el aire|soltar el aire", "soltar_aire"), (r"flota|a la deriva por el espacio", "flotar_espacio"),
     (r"te duermes|se duerme|dormid", "dormir"), (r"tachas los d[ií]as|cuenta los d[ií]as|pasan los d[ií]as|d[ií]a tras d[ií]a", "contar_dias"),
+    # inglés
+    (r"vision blurs|blurry|your eyes close|eyelids", "vista_nublada"), (r"\bswell|\bbloat|puff(s|ed)? up", "hincharse"),
+    (r"pass(es)? out|faint|black out|unconscious", "desmayarse"), (r"saliva|boils|bubbl", "saliva_hierve"),
+    (r"\bheart\b|heartbeat|\bpulse", "latido"), (r"freez|shiver|hypothermia", "congelarse"), (r"laugh", "reir"),
+    (r"\bcr(y|ies|ying)\b|\btears\b", "llorar"), (r"tickl", "cosquillas"), (r"\bstorm|shipwreck", "tormenta_mar"),
+    (r"scream|\bshout|\byell", "gritar"), (r"\brun(s|ning)?\b|\bflee|escape", "correr"), (r"\bsink|drown", "hundirse"),
+    (r"dizz|spinning", "marearse"), (r"\bburn|sunburn|scorch", "quemarse"), (r"\blungs\b|air rushes out|exhale", "soltar_aire"),
+    (r"\bfloat|drift(ing)? through space", "flotar_espacio"), (r"fall(s)? asleep|\basleep\b", "dormir"),
+    (r"count(ing)? the days|days pass|day after day", "contar_dias"),
 ]
 ESCENAS_QUIETAS = {"person", "group", "character", "closeup", "duo", "quote"}
 

@@ -17,7 +17,7 @@ import tempfile
 import zlib
 from pathlib import Path
 
-from common import RENDERER, load_config, read_json, run_id, week_dir, write_json
+from common import RENDERER, idioma, load_config, read_json, run_id, week_dir, write_json
 from soundtrack import make_soundtrack
 import sonido
 from voice import synth
@@ -167,7 +167,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     # 5) Timeline -> render
     c = cfg["canal"]
     timeline = {
-        "seed": sid, "fps": 30, "total": round(total, 3),
+        "seed": sid, "fps": 30, "lang": idioma(), "total": round(total, 3),
         "beats": beats, "words": words,
         "cast": cast, "looks": story.get("looks", {}), "subtitle_style": story.get("subtitle_style", "page"),
         "endcard": ({"duration": round(end_dur, 3), "title": c["tarjeta_final"]["titulo"], "subtitle": c["tarjeta_final"]["subtitulo"], "handle": c["handle"]}
