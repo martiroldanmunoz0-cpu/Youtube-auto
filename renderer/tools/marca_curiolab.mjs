@@ -33,14 +33,23 @@ function qmark(ctx, x, y, size, rot, col = '#ffd166') { ctx.save(); ctx.translat
 function burst(ctx, x, y, r, n, c1, c2) { for (let i = 0; i < n; i++) { const a0 = i / n * Math.PI * 2, a1 = (i + 0.5) / n * Math.PI * 2; ctx.beginPath(); ctx.moveTo(x, y); ctx.arc(x, y, r, a0, a1); ctx.closePath(); ctx.fillStyle = i % 2 ? c1 : c2; ctx.fill(); } }
 function title(ctx, txt, x, y, size, fill = '#ffffff') { ctx.save(); ctx.font = `${size}px Anton`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round'; ctx.lineWidth = size * 0.22; ctx.strokeStyle = INK; ctx.strokeText(txt, x, y); ctx.fillStyle = fill; ctx.fillText(txt, x, y); ctx.restore(); }
 
-// ---- Foto de perfil (YouTube la recorta en círculo) ----
+// ---- Foto de perfil (YouTube la recorta en círculo): insignia con el matraz y el nombre en una cinta ----
 {
   const c = createCanvas(800, 800), ctx = c.getContext('2d');
   ctx.fillStyle = '#2b1f6e'; ctx.fillRect(0, 0, 800, 800); burst(ctx, 400, 400, 600, 24, '#2b1f6e', '#3a2a8f');
-  const rg = ctx.createRadialGradient(400, 420, 60, 400, 420, 420); rg.addColorStop(0, 'rgba(255,170,90,0.35)'); rg.addColorStop(1, 'rgba(255,210,120,0)'); ctx.fillStyle = rg; ctx.fillRect(0, 0, 800, 800);
-  for (let i = 0; i < 26; i++) { const a = i * 2.4, r = 250 + (i * 37) % 120; C(ctx, 400 + Math.cos(a) * r, 400 + Math.sin(a) * r, 4 + (i % 3) * 3, '#ffffff', 0); }
-  flask(ctx, 400, 450, 1.05);
-  qmark(ctx, 585, 190, 190, 0.2);
+  const rg = ctx.createRadialGradient(400, 360, 40, 400, 360, 380); rg.addColorStop(0, 'rgba(255,170,90,0.45)'); rg.addColorStop(1, 'rgba(255,170,90,0)'); ctx.fillStyle = rg; ctx.fillRect(0, 0, 800, 800);
+  for (let i = 0; i < 26; i++) { const a = i * 2.4, r = 240 + (i * 37) % 120; C(ctx, 400 + Math.cos(a) * r, 400 + Math.sin(a) * r, 3 + (i % 3) * 3, '#ffffff', 0); }
+  // anillo de insignia
+  ctx.lineWidth = 22; ctx.strokeStyle = '#ffd166'; ctx.beginPath(); ctx.arc(400, 400, 350, 0, 7); ctx.stroke(); ctx.lineWidth = 8; ctx.strokeStyle = INK; ctx.beginPath(); ctx.arc(400, 400, 362, 0, 7); ctx.stroke(); ctx.beginPath(); ctx.arc(400, 400, 338, 0, 7); ctx.stroke();
+  flask(ctx, 400, 330, 0.78);
+  qmark(ctx, 560, 150, 130, 0.25);
+  // cinta con el nombre
+  ctx.save(); ctx.translate(400, 560); ctx.rotate(-0.05);
+  P(ctx, [[-360, -40], [-300, -40], [-300, 70], [-360, 70], [-330, 15]], '#c23b6c', 10); P(ctx, [[360, -40], [300, -40], [300, 70], [360, 70], [330, 15]], '#c23b6c', 10);
+  R(ctx, -310, -75, 620, 150, 26, '#ff4f8b', 12);
+  title(ctx, 'CURIO LAB', 0, 6, 118, '#ffffff');
+  ctx.restore();
+  title(ctx, 'THE', 400, 448, 64, '#ffd166');
   fs.writeFileSync(path.join(OUT, 'perfil.png'), c.encodeSync('png'));
 }
 // ---- Banner (2560x1440; lo que se ve en todos los dispositivos es el centro 1546x423) ----
