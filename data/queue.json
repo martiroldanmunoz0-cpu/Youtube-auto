@@ -21,7 +21,9 @@
     "issue": 1,
     "estado": "programado",
     "publish_at": "2026-11-20T18:30:00Z",
-    "youtube_id": "6jtwrP71fF0"
+    "youtube_id": "6jtwrP71fF0",
+    "lista": "Espacio y planeta Tierra",
+    "lista_ok": true
   },
   {
     "id": "pedido-8-03",
@@ -46,7 +48,9 @@
     "estado": "programado",
     "publish_at": "2026-11-21T16:40:00Z",
     "youtube_id": "KxWrJFbTU7g",
-    "reprogramado": true
+    "reprogramado": true,
+    "lista": "Ciencia curiosa",
+    "lista_ok": true
   },
   {
     "id": "historia-1-01",
@@ -99,7 +103,9 @@
     "publish_at": "2026-11-20T23:19:23.144949Z",
     "youtube_id": "CLjRSqxg6jM",
     "portada_ok": true,
-    "fecha_prevista": "2026-11-23T18:00:00Z"
+    "fecha_prevista": "2026-11-23T18:00:00Z",
+    "lista": "Cuerpo humano",
+    "lista_ok": true
   },
   {
     "id": "historia-2-01",
@@ -125,7 +131,9 @@
     "estado": "programado",
     "publish_at": "2026-11-21T11:00:00Z",
     "youtube_id": "RiryFNe3xRQ",
-    "portada_ok": true
+    "portada_ok": true,
+    "lista": "Historias reales increíbles",
+    "lista_ok": true
   },
   {
     "id": "pedido-9-03",
@@ -288,7 +296,9 @@
     "estado": "programado",
     "publish_at": "2026-11-23T13:00:00Z",
     "youtube_id": "EoPU9BJ7HQc",
-    "portada_ok": true
+    "portada_ok": true,
+    "lista": "Animales y naturaleza",
+    "lista_ok": true
   },
   {
     "id": "pedido-22-01",
