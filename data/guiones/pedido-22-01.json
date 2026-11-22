@@ -1,569 +1,567 @@
 {
- "title": "Violet Jessop: la mujer que sobrevivió al Titanic y más #shorts",
- "description": "¿Tú habrías vuelto a subir a un barco? 👇\n\nViolet Jessop, la mujer que sobrevivió al Titanic, al Olympic y al Britannic: Miss Insumergible.\nEn 1911, 1912 y 1916 estuvo a bordo de los tres transatlánticos gemelos de la White Star Line cuando sufrieron sus desastres, y vivió para contarlo.\n#titanic #violetjessop #historiasreales #curiosidades",
- "tags": [
-  "Violet Jessop",
-  "Miss Insumergible",
-  "Titanic",
-  "supervivientes del Titanic",
-  "Britannic",
-  "Olympic",
-  "historias reales",
-  "curiosidades históricas",
-  "White Star Line",
-  "naufragios famosos"
- ],
- "beats": [
-  {
-   "text": "Sobrevivió al Titanic y a sus dos hermanos.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "bajo_el_mar",
-      "hora": "dia",
-      "persona": "medio",
-      "mood": "shocked",
-      "piezas": [
-       {
-        "pieza": "barco",
-        "pos": "izquierda",
-        "tamano": "mediano",
-        "anim": "entrar_izq"
-       },
-       {
-        "pieza": "barco",
-        "pos": "centro",
-        "tamano": "mediano",
-        "anim": "temblar"
-       },
-       {
-        "pieza": "barco",
-        "pos": "derecha",
-        "tamano": "mediano",
-        "anim": "entrar_der"
-       }
-      ],
-      "efecto": "brillo",
-      "label": "Tres barcos hermanos"
-     }
+  "title": "Violet Jessop: la mujer que sobrevivió al Titanic y más #shorts",
+  "description": "¿Tú habrías vuelto a subir a un barco? 👇\n\nViolet Jessop, la mujer que sobrevivió al Titanic, al Olympic y al Britannic: Miss Insumergible.\nEn 1911, 1912 y 1916 estuvo a bordo de los tres transatlánticos gemelos de la White Star Line cuando sufrieron sus desastres, y vivió para contarlo.\n#titanic #violetjessop #historiasreales #curiosidades",
+  "tags": [
+    "Violet Jessop",
+    "Miss Insumergible",
+    "Titanic",
+    "supervivientes del Titanic",
+    "Britannic",
+    "Olympic",
+    "historias reales",
+    "curiosidades históricas",
+    "White Star Line",
+    "naufragios famosos"
+  ],
+  "beats": [
+    {
+      "text": "Sobrevivió al Titanic y a sus dos hermanos.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "barco",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "barco",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "barco",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              }
+            ],
+            "efecto": "brillo",
+            "label": "Tres barcos hermanos"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "¿Cómo sobrevivió una misma mujer a los tres barcos gemelos del Titanic?",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "barco",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "barco",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "barco",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              }
+            ],
+            "efecto": "brillo",
+            "label": "Tres barcos hermanos"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Violet Jessop, camarera. Tres barcos gemelos, tres intentos de hundirla.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "worried",
+            "objeto": "papel",
+            "label": "Violet Jessop"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Mil novecientos once. Trabaja en el gigante Olympic.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "happy",
+            "objeto": "none",
+            "piezas": [
+              {
+                "pieza": "barco",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "acercarse"
+              }
+            ],
+            "label": "RMS Olympic"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Un crucero de guerra le embiste el costado.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "choque",
+            "lugar": "fondo",
+            "hora": "dia",
+            "label": "HMS Hawke"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "flash"
+    },
+    {
+      "text": "Mil novecientos doce: la destinan al Titanic.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": 1911,
+            "to": 1912,
+            "label": "Su barco gemelo"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "black"
+    },
+    {
+      "text": "Noche de abril. Un iceberg.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "ocean",
+          "params": {
+            "ship": true,
+            "storm": false
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "La suben a un bote y le ponen un bebé en los brazos.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "noche",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "barca",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "pluma",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "crecer"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Pasan la noche helada en el mar.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "congelarse",
+            "lugar": "fondo",
+            "hora": "noche"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Mil novecientos dieciséis: es enfermera en el Britannic, barco hospital.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Mar Egeo",
+            "detail": "Primera Guerra Mundial",
+            "style": "relieve"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Una explosión. El barco se hunde.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "barco",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "fuego",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "latir"
+              }
+            ],
+            "efecto": "humo",
+            "label": "HMHS Britannic"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "Su bote se acerca a las hélices, aún girando.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "barca",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "acercarse"
+              },
+              {
+                "pieza": "viento",
+                "pos": "derecha",
+                "tamano": "gigante",
+                "anim": "girar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Salta, la corriente la hunde y se golpea la cabeza.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "hundirse",
+            "lugar": "bajo_el_mar",
+            "hora": "dia",
+            "efecto": "impacto"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Y sale a flote. Sobrevive otra vez.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "fondo",
+            "hora": "atardecer",
+            "plano": "medio",
+            "mood": "sad",
+            "objeto": "none",
+            "label": "Rescatada al amanecer"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Antes de saltar, volvió al camarote a por su cepillo de dientes.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "mano",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "diente",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "label": "Su cepillo"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Lo había echado de menos en el Titanic.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "dormitorio",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "neutral",
+            "objeto": "none"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Murió en tierra firme, a los ochenta y tres años.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "83 AÑOS",
+            "label": "Murió en tierra firme",
+            "lugar": "campo",
+            "color": "#FFD23F"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Y así fue como vivió la mujer que…",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-22-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "barco",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "barco",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "barco",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              }
+            ],
+            "efecto": "brillo",
+            "label": "Tres barcos hermanos"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
     }
-   },
-   "camera": "slam",
-   "transition": "cut"
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "mujer",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "moño",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "negro"
+    }
   },
-  {
-   "text": "¿Cómo sobrevivió una misma mujer a los tres barcos gemelos del Titanic?",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 1,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "bajo_el_mar",
-      "hora": "dia",
-      "persona": "medio",
-      "mood": "shocked",
-      "piezas": [
-       {
-        "pieza": "barco",
-        "pos": "izquierda",
-        "tamano": "mediano",
-        "anim": "entrar_izq"
-       },
-       {
-        "pieza": "barco",
-        "pos": "centro",
-        "tamano": "mediano",
-        "anim": "temblar"
-       },
-       {
-        "pieza": "barco",
-        "pos": "derecha",
-        "tamano": "mediano",
-        "anim": "entrar_der"
-       }
-      ],
-      "efecto": "brillo",
-      "label": "Tres barcos hermanos"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
+  "cover_text": "SOBREVIVIÓ A 3 BARCOS",
+  "comment_q": "¿Tú habrías vuelto a subir a un barco?",
+  "lista": "Historias reales increíbles",
+  "question": "¿Cómo sobrevivió una misma mujer a los tres barcos gemelos del Titanic?",
+  "piezas_pendientes": [
+    "transatlantico",
+    "bote_salvavidas",
+    "bebe",
+    "helice",
+    "cepillo_dientes"
+  ],
+  "id": "pedido-22-01",
+  "idea": {
+    "tipo": "caso_real",
+    "premisa": "Documental de unos 45 segundos sobre Violet Jessop, camarera de barcos, contado como si los tres transatlánticos hermanos de la White Star Line fueran tres intentos de acabar con ella. Cada acto muestra un barco y la escalada de tensión. 1911: Violet trabaja de camarera en el RMS Olympic, el barco más grande del mundo. El crucero de guerra HMS Hawke le embiste el costado. El Olympic no se hunde y regresa a puerto. Ella sale ilesa. 1912: la destinan a su gemelo, el Titanic. Noche del 14 de abril, iceberg. Desde la cubierta ve cómo se llenan los botes. La suben a uno, y alguien le pone un bebé en los brazos. Pasa la noche en el mar helado con ese niño. La rescata el Carpathia. 1916: Primera Guerra Mundial. Violet es enfermera en el HMHS Britannic, el hermano pequeño, convertido en barco hospital. Una explosión en el mar Egeo y el barco se hunde. Su bote es arrastrado hacia las hélices, que siguen girando. Ella salta al agua, la corriente la hunde y se golpea la cabeza. Sale a la superficie y la rescatan. Sobrevive otra vez. Remate: ¿y qué hizo antes de abandonar el Britannic? Volvió a su camarote a por su cepillo de dientes, porque en el Titanic lo había echado de menos. Siguió trabajando en el mar muchos años y murió en tierra firme, en 1971, con 83 años.",
+    "gancho": "¿Cómo sobrevive una misma mujer a los tres barcos hermanos del Titanic? Se llamaba Violet Jessop, y los tres intentaron hundirla.",
+    "giro_final": "Antes de saltar del Britannic, Violet volvió a su camarote a por algo: su cepillo de dientes, porque en el Titanic lo había echado de menos. Se enlaza con el gancho: «Tres barcos hermanos lo intentaron. Ninguno pudo con ella. Murió en tierra firme, a los 83 años.» La última imagen muestra a los tres barcos en fila y a Violet delante con el cepillo en la mano.",
+    "estilo_visual": "El vídeo tiene paleta luminosa en los actos 1 y 3 y nocturna solo en el Titanic, para que cada barco se vea distinto. Ninguna escena se repite. Gancho: una 'composicion' con tres siluetas de transatlánticos de cuatro chimeneas en fila sobre el mar y Violet con uniforme de camarera delante; cada barco se ilumina en rojo al nombrarlo. Acto Olympic: una 'escena' de día en un muelle con el barco gigante y Violet con una bandeja. Después, una 'accion' de tipo choque adaptado: la proa gris del HMS Hawke entra en el costado del Olympic y saltan remaches y agua. Transición con 'year_jump' de 1911 a 1912. Acto Titanic: 'ocean' de noche con el iceberg. Luego una 'composicion' de un bote salvavidas en agua negra con Violet sosteniendo un bebé envuelto en una manta, con su vaho visible. Cierra con un 'newspaper' de recorte antiguo cuyo titular anuncia el hundimiento del Titanic. Transición con 'year_jump' de 1912 a 1916. Acto Britannic: 'map_pin' en el mar Egeo con estilo de mapa de relieve. Después, una 'composicion' del barco hospital blanco con cruces rojas escorado y humo. A continuación, una 'composicion' de un bote acercándose a una hélice gigante que gira. Le sigue una 'accion' de hundirse: Violet bajo el agua con burbujas y la imagen que se oscurece, con un destello al golpearse. Termina con una 'escena' de Violet con manta en la cubierta de un barco de rescate al amanecer. Remate: un primer plano en 'composicion' de su mano con el cepillo de dientes, luego 'big_text' con '83 AÑOS' y, por último, la imagen de los tres barcos del principio cerrando el círculo.",
+    "por_que_funcionara": "Repite lo que funcionó en sus vídeos aprobados de historias reales, como los de la mujer que cayó 3.000 metros y el médico de la Antártida: protagonista con nombre, peligro que escala y un dato final que casi nadie conoce. El gancho menciona el Titanic en el primer segundo, así que el tema queda claro sin título. La estructura en tres barcos hermanos evita la cuenta por días, da un ritmo de tres golpes cada vez más intensos y permite que el final enlace de forma natural con la primera imagen. Cada frase tiene su propia escena, distinta y concreta, lo que corrige su queja principal: escenas feas o repetidas. Además, la duración contenida responde al descarte por 'demasiado largo'.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "Transatlántico de cuatro chimeneas (Olympic, Titanic y Britannic, este en versión blanca con cruces rojas de barco hospital)",
+      "Crucero de guerra HMS Hawke con proa gris de espolón",
+      "Bote salvavidas de madera de 1912 con remos",
+      "Bebé envuelto en manta",
+      "Hélice gigante de barco girando bajo la superficie",
+      "Iceberg nocturno",
+      "Uniforme de camarera y uniforme de enfermera de principios del siglo XX",
+      "Cepillo de dientes antiguo"
+    ]
   },
-  {
-   "text": "Violet Jessop, camarera. Tres barcos gemelos, tres intentos de hundirla.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 2,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "playa",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "worried",
-      "objeto": "papel",
-      "label": "Violet Jessop"
-     }
+  "ganchos": [
+    {
+      "texto": "¿Cómo sobrevive alguien a los tres barcos del Titanic?",
+      "tipo": "pregunta con reto",
+      "puntuacion": 7,
+      "motivo": "Deja claro el tema y la duda, pero son 9 palabras y 'tres barcos' es confuso sin contexto."
+    },
+    {
+      "texto": "Sobrevivió al Titanic y a sus dos hermanos.",
+      "tipo": "dato que choca",
+      "puntuacion": 9,
+      "motivo": "Nombre famoso en el primer segundo, 8 palabras, abre la duda de quién es y cómo, y enlaza con la frase_bucle."
+    },
+    {
+      "texto": "Vas a subir a tres barcos gemelos. Todos se hunden.",
+      "tipo": "segunda persona",
+      "puntuacion": 6,
+      "motivo": "Inmersivo, pero revela poco del Titanic y no habla de una persona real."
+    },
+    {
+      "texto": "¿Qué pasa si trabajas en los tres barcos malditos?",
+      "tipo": "qué pasaría si",
+      "puntuacion": 5,
+      "motivo": "Vago: no nombra el Titanic ni a la protagonista."
+    },
+    {
+      "texto": "Todos conocen el Titanic. Nadie conoce a Violet.",
+      "tipo": "contradicción",
+      "puntuacion": 7,
+      "motivo": "Nombra el Titanic y despierta curiosidad, pero no deja claro el tema de supervivencia."
     }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Mil novecientos once. Trabaja en el gigante Olympic.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 3,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "ciudad",
-      "hora": "dia",
-      "persona": "medio",
-      "mood": "happy",
-      "objeto": "none",
-      "piezas": [
-       {
-        "pieza": "barco",
-        "pos": "fondo",
-        "tamano": "gigante",
-        "anim": "acercarse"
-       }
-      ],
-      "label": "RMS Olympic"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "whip"
-  },
-  {
-   "text": "Un crucero de guerra le embiste el costado.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 4,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "choque",
-      "lugar": "fondo",
-      "hora": "dia",
-      "label": "HMS Hawke"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "flash"
-  },
-  {
-   "text": "Mil novecientos doce: la destinan al Titanic.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 5,
-    "respaldo": {
-     "scene": "year_jump",
-     "params": {
-      "from": 1911,
-      "to": 1912,
-      "label": "Su barco gemelo"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "black"
-  },
-  {
-   "text": "Noche de abril. Un iceberg.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 6,
-    "respaldo": {
-     "scene": "ocean",
-     "params": {
-      "ship": true,
-      "storm": false
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "red"
-  },
-  {
-   "text": "La suben a un bote y le ponen un bebé en los brazos.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 7,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "bajo_el_mar",
-      "hora": "noche",
-      "persona": "medio",
-      "mood": "worried",
-      "piezas": [
-       {
-        "pieza": "barca",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "flotar"
-       },
-       {
-        "pieza": "pluma",
-        "pos": "derecha",
-        "tamano": "pequeno",
-        "anim": "crecer"
-       }
-      ]
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Pasan la noche helada en el mar.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 8,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "congelarse",
-      "lugar": "fondo",
-      "hora": "noche"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "fade"
-  },
-  {
-   "text": "Mil novecientos dieciséis: es enfermera en el Britannic, barco hospital.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 9,
-    "respaldo": {
-     "scene": "map_pin",
-     "params": {
-      "place": "Mar Egeo",
-      "detail": "Primera Guerra Mundial",
-      "style": "relieve"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "whip"
-  },
-  {
-   "text": "Una explosión. El barco se hunde.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 10,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "bajo_el_mar",
-      "hora": "dia",
-      "persona": "no",
-      "piezas": [
-       {
-        "pieza": "barco",
-        "pos": "centro",
-        "tamano": "gigante",
-        "anim": "temblar"
-       },
-       {
-        "pieza": "fuego",
-        "pos": "arriba",
-        "tamano": "mediano",
-        "anim": "latir"
-       }
-      ],
-      "efecto": "humo",
-      "label": "HMHS Britannic"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "red"
-  },
-  {
-   "text": "Su bote se acerca a las hélices, aún girando.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 11,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "bajo_el_mar",
-      "hora": "dia",
-      "persona": "no",
-      "piezas": [
-       {
-        "pieza": "barca",
-        "pos": "izquierda",
-        "tamano": "mediano",
-        "anim": "acercarse"
-       },
-       {
-        "pieza": "viento",
-        "pos": "derecha",
-        "tamano": "gigante",
-        "anim": "girar"
-       }
-      ]
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Salta, la corriente la hunde y se golpea la cabeza.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 12,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "hundirse",
-      "lugar": "bajo_el_mar",
-      "hora": "dia",
-      "efecto": "impacto"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Y sale a flote. Sobrevive otra vez.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 13,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "fondo",
-      "hora": "atardecer",
-      "plano": "medio",
-      "mood": "sad",
-      "objeto": "none",
-      "label": "Rescatada al amanecer"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Antes de saltar, volvió al camarote a por su cepillo de dientes.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 14,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "persona": "no",
-      "piezas": [
-       {
-        "pieza": "mano",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "crecer"
-       },
-       {
-        "pieza": "diente",
-        "pos": "centro",
-        "tamano": "mediano",
-        "anim": "temblar"
-       }
-      ],
-      "label": "Su cepillo"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Lo había echado de menos en el Titanic.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 15,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "dormitorio",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "neutral",
-      "objeto": "none"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Murió en tierra firme, a los ochenta y tres años.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 16,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "83 AÑOS",
-      "label": "Murió en tierra firme",
-      "lugar": "campo",
-      "color": "#FFD23F"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "Y así fue como vivió la mujer que…",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-22-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "bajo_el_mar",
-      "hora": "dia",
-      "persona": "medio",
-      "mood": "shocked",
-      "piezas": [
-       {
-        "pieza": "barco",
-        "pos": "izquierda",
-        "tamano": "mediano",
-        "anim": "entrar_izq"
-       },
-       {
-        "pieza": "barco",
-        "pos": "centro",
-        "tamano": "mediano",
-        "anim": "temblar"
-       },
-       {
-        "pieza": "barco",
-        "pos": "derecha",
-        "tamano": "mediano",
-        "anim": "entrar_der"
-       }
-      ],
-      "efecto": "brillo",
-      "label": "Tres barcos hermanos"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut",
-   "bucle": true
-  }
- ],
- "looks": {
-  "protagonista": {
-   "genero": "mujer",
-   "edad": "joven",
-   "piel": "clara",
-   "pelo": "moño",
-   "color_pelo": "castaño_oscuro",
-   "barba": "no",
-   "gafas": false,
-   "ropa": "negro"
-  }
- },
- "cover_text": "SOBREVIVIÓ A 3 BARCOS",
- "comment_q": "¿Tú habrías vuelto a subir a un barco?",
- "lista": "Historias reales increíbles",
- "question": "¿Cómo sobrevivió una misma mujer a los tres barcos gemelos del Titanic?",
- "piezas_pendientes": [
-  "transatlantico",
-  "bote_salvavidas",
-  "bebe",
-  "helice",
-  "cepillo_dientes"
- ],
- "id": "pedido-22-01",
- "idea": {
-  "tipo": "caso_real",
-  "premisa": "Documental de unos 45 segundos sobre Violet Jessop, camarera de barcos, contado como si los tres transatlánticos hermanos de la White Star Line fueran tres intentos de acabar con ella. Cada acto muestra un barco y la escalada de tensión. 1911: Violet trabaja de camarera en el RMS Olympic, el barco más grande del mundo. El crucero de guerra HMS Hawke le embiste el costado. El Olympic no se hunde y regresa a puerto. Ella sale ilesa. 1912: la destinan a su gemelo, el Titanic. Noche del 14 de abril, iceberg. Desde la cubierta ve cómo se llenan los botes. La suben a uno, y alguien le pone un bebé en los brazos. Pasa la noche en el mar helado con ese niño. La rescata el Carpathia. 1916: Primera Guerra Mundial. Violet es enfermera en el HMHS Britannic, el hermano pequeño, convertido en barco hospital. Una explosión en el mar Egeo y el barco se hunde. Su bote es arrastrado hacia las hélices, que siguen girando. Ella salta al agua, la corriente la hunde y se golpea la cabeza. Sale a la superficie y la rescatan. Sobrevive otra vez. Remate: ¿y qué hizo antes de abandonar el Britannic? Volvió a su camarote a por su cepillo de dientes, porque en el Titanic lo había echado de menos. Siguió trabajando en el mar muchos años y murió en tierra firme, en 1971, con 83 años.",
-  "gancho": "¿Cómo sobrevive una misma mujer a los tres barcos hermanos del Titanic? Se llamaba Violet Jessop, y los tres intentaron hundirla.",
-  "giro_final": "Antes de saltar del Britannic, Violet volvió a su camarote a por algo: su cepillo de dientes, porque en el Titanic lo había echado de menos. Se enlaza con el gancho: «Tres barcos hermanos lo intentaron. Ninguno pudo con ella. Murió en tierra firme, a los 83 años.» La última imagen muestra a los tres barcos en fila y a Violet delante con el cepillo en la mano.",
-  "estilo_visual": "El vídeo tiene paleta luminosa en los actos 1 y 3 y nocturna solo en el Titanic, para que cada barco se vea distinto. Ninguna escena se repite. Gancho: una 'composicion' con tres siluetas de transatlánticos de cuatro chimeneas en fila sobre el mar y Violet con uniforme de camarera delante; cada barco se ilumina en rojo al nombrarlo. Acto Olympic: una 'escena' de día en un muelle con el barco gigante y Violet con una bandeja. Después, una 'accion' de tipo choque adaptado: la proa gris del HMS Hawke entra en el costado del Olympic y saltan remaches y agua. Transición con 'year_jump' de 1911 a 1912. Acto Titanic: 'ocean' de noche con el iceberg. Luego una 'composicion' de un bote salvavidas en agua negra con Violet sosteniendo un bebé envuelto en una manta, con su vaho visible. Cierra con un 'newspaper' de recorte antiguo cuyo titular anuncia el hundimiento del Titanic. Transición con 'year_jump' de 1912 a 1916. Acto Britannic: 'map_pin' en el mar Egeo con estilo de mapa de relieve. Después, una 'composicion' del barco hospital blanco con cruces rojas escorado y humo. A continuación, una 'composicion' de un bote acercándose a una hélice gigante que gira. Le sigue una 'accion' de hundirse: Violet bajo el agua con burbujas y la imagen que se oscurece, con un destello al golpearse. Termina con una 'escena' de Violet con manta en la cubierta de un barco de rescate al amanecer. Remate: un primer plano en 'composicion' de su mano con el cepillo de dientes, luego 'big_text' con '83 AÑOS' y, por último, la imagen de los tres barcos del principio cerrando el círculo.",
-  "por_que_funcionara": "Repite lo que funcionó en sus vídeos aprobados de historias reales, como los de la mujer que cayó 3.000 metros y el médico de la Antártida: protagonista con nombre, peligro que escala y un dato final que casi nadie conoce. El gancho menciona el Titanic en el primer segundo, así que el tema queda claro sin título. La estructura en tres barcos hermanos evita la cuenta por días, da un ritmo de tres golpes cada vez más intensos y permite que el final enlace de forma natural con la primera imagen. Cada frase tiene su propia escena, distinta y concreta, lo que corrige su queja principal: escenas feas o repetidas. Además, la duración contenida responde al descarte por 'demasiado largo'.",
-  "inspirado_en": [],
-  "piezas_nuevas": [
-   "Transatlántico de cuatro chimeneas (Olympic, Titanic y Britannic, este en versión blanca con cruces rojas de barco hospital)",
-   "Crucero de guerra HMS Hawke con proa gris de espolón",
-   "Bote salvavidas de madera de 1912 con remos",
-   "Bebé envuelto en manta",
-   "Hélice gigante de barco girando bajo la superficie",
-   "Iceberg nocturno",
-   "Uniforme de camarera y uniforme de enfermera de principios del siglo XX",
-   "Cepillo de dientes antiguo"
   ]
- },
- "ganchos": [
-  {
-   "texto": "¿Cómo sobrevive alguien a los tres barcos del Titanic?",
-   "tipo": "pregunta con reto",
-   "puntuacion": 7,
-   "motivo": "Deja claro el tema y la duda, pero son 9 palabras y 'tres barcos' es confuso sin contexto."
-  },
-  {
-   "texto": "Sobrevivió al Titanic y a sus dos hermanos.",
-   "tipo": "dato que choca",
-   "puntuacion": 9,
-   "motivo": "Nombre famoso en el primer segundo, 8 palabras, abre la duda de quién es y cómo, y enlaza con la frase_bucle."
-  },
-  {
-   "texto": "Vas a subir a tres barcos gemelos. Todos se hunden.",
-   "tipo": "segunda persona",
-   "puntuacion": 6,
-   "motivo": "Inmersivo, pero revela poco del Titanic y no habla de una persona real."
-  },
-  {
-   "texto": "¿Qué pasa si trabajas en los tres barcos malditos?",
-   "tipo": "qué pasaría si",
-   "puntuacion": 5,
-   "motivo": "Vago: no nombra el Titanic ni a la protagonista."
-  },
-  {
-   "texto": "Todos conocen el Titanic. Nadie conoce a Violet.",
-   "tipo": "contradicción",
-   "puntuacion": 7,
-   "motivo": "Nombra el Titanic y despierta curiosidad, pero no deja claro el tema de supervivencia."
-  }
- ],
- "medida_estado": "lista",
- "tanda": "pedido-22"
 }
