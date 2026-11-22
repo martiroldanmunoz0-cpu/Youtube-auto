@@ -260,5 +260,30 @@
     "youtube_id": "oqZXoFFAAAs",
     "portada_ok": true,
     "reprogramado": true
+  },
+  {
+    "id": "pedido-20-01",
+    "title": "¿Y si caes en arenas movedizas? La verdad del cine #shorts",
+    "description": "Las películas mienten: la arena no te traga. ¿Sabías que lo peligroso es otra cosa? Cuéntame en comentarios qué mito del cine creías de pequeño.\n#curiosidades #arenasmovedizas #ciencia #mitos #supervivencia",
+    "tags": [
+      "arenas movedizas",
+      "mitos del cine",
+      "curiosidades",
+      "ciencia",
+      "supervivencia",
+      "qué pasaría si",
+      "marea",
+      "datos curiosos",
+      "física",
+      "trucos de supervivencia"
+    ],
+    "video": "pedido-20-01.mp4",
+    "portada": "pedido-20-01_portada.jpg",
+    "tag": "pedido-20",
+    "issue": 39,
+    "estado": "programado",
+    "publish_at": "2026-11-23T13:00:00Z",
+    "youtube_id": "EoPU9BJ7HQc",
+    "portada_ok": true
   }
 ]
