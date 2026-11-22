@@ -110,3 +110,6 @@ comedia:
 # Miniaturas con IA para los vídeos largos (Google Gemini). La clave va en el secreto GEMINI_API_KEY de GitHub.
 miniaturas_ia:
   modelo: "gemini-2.5-flash-image"   # si este nombre ya no existe, se usa solo el primer modelo de imágenes disponible
+  nota_minima: 8        # Claude puntúa cada miniatura; por debajo de 8 se repite una vez con las correcciones
+  intentos: 2           # máximo de imágenes por vídeo (~4 céntimos cada una)
+  nota_descartar: 5     # si ninguna llega a 5, se usa la miniatura de siempre (fotograma del vídeo)

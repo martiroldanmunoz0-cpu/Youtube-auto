@@ -62,22 +62,72 @@ def prompt_for(story: dict) -> str:
     )
 
 
+REF = Path(__file__).resolve().parent.parent / "data" / "mascota_ref.png"  # miniatura aprobada: Curio siempre igual
+
+
+def _gemini_image(key: str, model: str, prompt: str) -> bytes:
+    parts = [{"text": prompt}]
+    if REF.exists():  # referencia del personaje aprobada por el dueño
+        parts.append({"inline_data": {"mime_type": "image/png", "data": base64.b64encode(REF.read_bytes()).decode()}})
+        parts[0]["text"] += ("\nThe attached image is the approved reference: draw Curio EXACTLY like in it (same face, hair, "
+                             "hoodie and art style), but in a new scene and pose for this video.")
+    body = {"contents": [{"parts": parts}], "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}}
+    res = _req(f"{API}/models/{model}:generateContent", body, key)
+    part = next(p for c in res.get("candidates", []) for p in c.get("content", {}).get("parts", []) if p.get("inlineData"))
+    return base64.b64decode(part["inlineData"]["data"])
+
+
+def review(img: Path, story: dict) -> tuple[int, str]:
+    """Claude mira la miniatura y le pone nota (1-10) con criterios de miniatura viral. Coste: décimas de céntimo."""
+    try:
+        import anthropic  # noqa: PLC0415
+
+        schema = {"type": "object", "additionalProperties": False, "required": ["nota", "problemas"],
+                  "properties": {"nota": {"type": "integer"}, "problemas": {"type": "string"}}}
+        media = "image/jpeg" if img.suffix.lower() in (".jpg", ".jpeg") else "image/png"
+        r = anthropic.Anthropic().messages.create(
+            model="claude-haiku-5-5", max_tokens=600, output_config={"effort": "low", "format": {"type": "json_schema", "schema": schema}},
+            messages=[{"role": "user", "content": [
+                {"type": "image", "source": {"type": "base64", "media_type": media, "data": base64.b64encode(img.read_bytes()).decode()}},
+                {"type": "text", "text": (
+                    f"Es la miniatura de un vídeo de YouTube titulado «{story.get('title', '')}». Puntúala del 1 al 10 como "
+                    "miniatura VIRAL de canal de curiosidades animadas (estilo dibujos brillantes, muy llamativa). Exige: "
+                    "personaje con emoción EXAGERADA y bien visible; objeto o situación del vídeo enorme y entendible al "
+                    "instante; colores muy vivos y contraste (nada oscuro ni apagado); composición simple que se lea en el "
+                    "móvil; lado izquierdo despejado para el título; SIN letras, números ni marcas de agua dentro del dibujo; "
+                    "sin deformidades raras (manos, caras). En 'problemas' di en inglés, en una frase, qué corregir.")}]}])
+        out = json.loads(next(b.text for b in r.content if b.type == "text"))
+        return int(out["nota"]), out["problemas"]
+    except Exception as e:  # noqa: BLE001
+        print(f"  aviso: no se pudo revisar la miniatura ({str(e)[:120]})")
+        return 7, ""
+
+
 def generate(story: dict, out_dir: Path) -> Path | None:
     key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not key:
         return None
     cfg = (load_config().get("miniaturas_ia") or {})
     model = _model(key, cfg.get("modelo", "gemini-2.5-flash-image"))
-    body = {"contents": [{"parts": [{"text": prompt_for(story)}]}],
-            "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}}
-    try:
-        res = _req(f"{API}/models/{model}:generateContent", body, key)
-        part = next(p for c in res.get("candidates", []) for p in c.get("content", {}).get("parts", []) if p.get("inlineData"))
-        raw = out_dir / f"{story['id']}_ia_fondo.png"
-        raw.write_bytes(base64.b64decode(part["inlineData"]["data"]))
-    except Exception as e:  # noqa: BLE001
-        print(f"  aviso: la miniatura con IA no salió ({str(e)[:200]}); se usa la de siempre")
+    raw = out_dir / f"{story['id']}_ia_fondo.png"
+    prompt, best = prompt_for(story), None
+    for intento in range(int(cfg.get("intentos", 2))):  # como mucho 2 imágenes: la segunda solo si la primera es floja
+        try:
+            raw.write_bytes(_gemini_image(key, model, prompt))
+        except Exception as e:  # noqa: BLE001
+            print(f"  aviso: la miniatura con IA no salió ({str(e)[:200]}); se usa la de siempre")
+            break
+        nota, fallos = review(raw, story)
+        print(f"  miniatura IA, intento {intento + 1}: nota {nota}/10 {('· ' + fallos) if fallos else ''}")
+        if best is None or nota > best[0]:
+            best = (nota, raw.read_bytes())
+        if nota >= int(cfg.get("nota_minima", 8)):
+            break
+        prompt = prompt_for(story) + f"\nFIX THESE PROBLEMS from a previous attempt: {fallos}"
+    if not best or best[0] < int(cfg.get("nota_descartar", 5)):
+        print("  la miniatura con IA no llega al nivel: se usa la de siempre")
         return None
+    raw.write_bytes(best[1])
     final = out_dir / f"{story['id']}_portada.jpg"
     text = story.get("cover_text") or story.get("question") or story.get("title", "")
     r = subprocess.run(["node", str(RENDERER / "tools" / "portada_ia.mjs"), str(raw), text, str(final)], capture_output=True, text=True)
@@ -88,7 +138,18 @@ def generate(story: dict, out_dir: Path) -> Path | None:
     return final
 
 
-if __name__ == "__main__":  # prueba: python pipeline/miniatura_ia.py data/guiones/<id>.json
+if __name__ == "__main__":
+    # Prueba: python pipeline/miniatura_ia.py "Título" "Idea" "TEXTO PORTADA"  -> data/miniaturas_prueba/
+    import datetime as _dt
     import sys
-    st = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-    print(generate(st, Path(".")) or "sin miniatura (¿falta GEMINI_API_KEY?)")
+    if len(sys.argv) > 1 and sys.argv[1].endswith(".json"):
+        st = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+    else:
+        st = {"id": "prueba", "title": sys.argv[1], "question": sys.argv[2], "cover_text": sys.argv[3], "beats": [{"text": sys.argv[2]}]}
+    out = Path(__file__).resolve().parent.parent / "data" / "miniaturas_prueba"
+    out.mkdir(parents=True, exist_ok=True)
+    st["id"] = f"prueba-{_dt.datetime.now():%Y%m%d-%H%M%S}"
+    res = generate(st, out)
+    print(res or "sin miniatura (¿falta GEMINI_API_KEY o la facturación?)")
+    if not res:
+        sys.exit(1)
