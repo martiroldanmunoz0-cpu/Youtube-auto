@@ -1,0 +1,336 @@
+{
+  "title": "El pozo de Kola: el agujero más profundo del mundo #shorts",
+  "description": "¿Tú habrías seguido perforando? 👇\n\nEl pozo superprofundo de Kola, el agujero más profundo del mundo: por qué lo hicieron y por qué lo taparon.\nSolo llegó a cerca del 0,2% del camino hasta el centro de la Tierra, y los gritos del infierno son un bulo.\n#pozodekola #curiosidades #ciencia #rusia",
+  "tags": [
+    "pozo de Kola",
+    "agujero más profundo del mundo",
+    "pozo superprofundo de Kola",
+    "Kola Rusia",
+    "gritos del infierno bulo",
+    "centro de la Tierra",
+    "curiosidades",
+    "ciencia curiosa",
+    "Unión Soviética",
+    "perforación"
+  ],
+  "beats": [
+    {
+      "text": "¿Por qué taparon un agujero de doce kilómetros?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "escombros",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried",
+        "label": "12 KM"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Estás ante una tapa oxidada, en la tundra rusa.",
+      "scene": "escena",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "worried",
+        "label": "Península de Kola"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Pista uno: en mil novecientos setenta empezaron a perforar.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "volcan",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "no"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Tardaron casi veinte años en bajar doce mil metros.",
+      "scene": "year_jump",
+      "params": {
+        "from": 1970,
+        "to": 1989,
+        "label": "Casi 20 años"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Más que el Everest, pero hacia abajo, por un hueco de veintitrés centímetros.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "montana_pieza",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "medio",
+        "mood": "shocked",
+        "label": "12.262 m"
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "Pista dos: agua, kilómetros bajo tierra, donde nadie la esperaba.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "gota",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "latir"
+          }
+        ],
+        "persona": "no"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "A seis kilómetros, microfósiles de plancton: vida marina antiquísima.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "lupa",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "acercarse"
+          }
+        ],
+        "persona": "no",
+        "label": "6 km"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Pista tres: abajo hacía ciento ochenta grados.",
+      "scene": "big_text",
+      "params": {
+        "text": "180 °C",
+        "label": "mucho más de lo previsto",
+        "color": "#ff4422",
+        "lugar": "desierto"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "La roca se volvía como plástico y rompía las brocas.",
+      "scene": "accion",
+      "params": {
+        "tipo": "caer_romper",
+        "objeto": "broca_perforacion",
+        "lugar": "fondo",
+        "hora": "dia"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Y no, nadie grabó gritos del infierno. Es un bulo.",
+      "scene": "newspaper",
+      "params": {
+        "style": "papel",
+        "headline": "LOS GRITOS DEL INFIERNO",
+        "kicker": "Diario Misterio",
+        "date": "1990"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "En mil novecientos noventa y dos, cerraron el pozo.",
+      "scene": "document",
+      "params": {
+        "title": "Informe oficial",
+        "lines": [
+          "Pozo de Kola",
+          "Profundidad: 12.262 m",
+          "Perforación detenida: 1992"
+        ],
+        "highlight": 2,
+        "stamp": "CERRADO"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Llegaron al cero coma dos por ciento del camino al centro.",
+      "scene": "big_text",
+      "params": {
+        "text": "0,2%",
+        "label": "del camino al centro",
+        "color": "#ffcc00",
+        "lugar": "espacio"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Si la Tierra fuera una manzana, ni habrían cruzado la piel.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "girar"
+          },
+          {
+            "pieza": "manzana",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "persona": "no"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Esta tapa esconde lo poco que conocemos de nuestro planeta.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "escombros",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ],
+        "persona": "no"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Así que la próxima vez que pises tierra, piensa…",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "piezas": [
+          {
+            "pieza": "escombros",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "persona": "medio",
+        "mood": "worried",
+        "label": "12 KM"
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {},
+  "cover_text": "¿12 KM BAJO TIERRA?",
+  "comment_q": "¿Tú habrías seguido perforando?",
+  "lista": "Ciencia curiosa",
+  "question": "¿Por qué hicieron un agujero de doce kilómetros y luego lo taparon?",
+  "piezas_pendientes": [
+    "tapa_metalica_oxidada",
+    "torre_perforacion_sovietica",
+    "everest_profundidad_invertida",
+    "corte_roca_gota_agua",
+    "lupa_microfosiles",
+    "tierra_capas_rayita_pozo"
+  ],
+  "id": "pedido-21-01",
+  "idea": {
+    "tipo": "misterio",
+    "premisa": "Narración en segunda persona: estás en la tundra helada de la península de Kola, en el norte de Rusia, delante de una tapa metálica oxidada y soldada, del tamaño de un plato. Debajo está el agujero más profundo jamás hecho por el ser humano. El vídeo resuelve el misterio en tres pistas, bajando contigo por el agujero. PISTA 1, por qué lo hicieron: en 1970 la Unión Soviética empezó a perforar para ver con sus propios ojos qué hay dentro de la corteza terrestre, en plena carrera científica con Estados Unidos. Tardaron casi 20 años en llegar a unos 12.262 metros: más que el Everest, pero hacia abajo. Y el agujero solo mide unos 23 centímetros de ancho. PISTA 2, lo que encontraron: agua a kilómetros de profundidad, donde nadie la esperaba, porque la presión exprimía el agua de los propios minerales y la roca la mantenía encerrada. Y a unos 6 kilómetros, microfósiles de plancton, restos diminutos de vida marina de hace muchísimo tiempo. PISTA 3, por qué pararon: abajo hacía unos 180 °C, mucho más de lo previsto. La roca se volvía casi como plástico, se cerraba sobre el agujero y destrozaba las brocas. Mito desmentido de paso: no grabaron 'gritos del infierno'; esa historia es un bulo que se hizo famoso en los años 90 y no tiene ninguna prueba. En 1992 se paró la perforación y después cerraron el pozo. Vuelta a la tapa para el remate.",
+    "gancho": "¿Por qué alguien hizo un agujero de 12 kilómetros bajo tierra... y luego lo tapó con esto?",
+    "giro_final": "Vuelves a la tapa oxidada a tus pies. Después de casi 20 años, el agujero más profundo de la historia solo recorrió alrededor del 0,2% del camino hasta el centro de la Tierra. Si la Tierra fuera una manzana, ni siquiera habrían atravesado la piel. Por eso esta tapa no esconde ningún infierno. Esconde lo poquísimo que hemos llegado a ver de nuestro propio planeta.",
+    "estilo_visual": "Escenas luminosas y variadas, sin repetir ningún plano, y estilo oscuro solo un instante para el mito. 1) Composición en primer plano: tapa metálica oxidada con tornillos soldados sobre la tundra con nieve. La persona se agacha a mirarla y aparece un signo de interrogación. Será también la portada: tapa naranja oxidada sobre nieve blanca con el texto '12 KM' (contraste fuerte). 2) map_pin estilo globo terráqueo: la chincheta cae sobre la península de Kola, junto al Ártico. 3) Escena de día ártico: torre de perforación soviética roja y blanca en la tundra, con operarios con casco. 4) year_jump 1970 → 1989 con la broca bajando por la barra de tiempo. 5) Composición de comparación: el Everest en el suelo y, al lado, una línea que baja hacia abajo y lo supera. Después, big_text '12.262 m' con la persona boquiabierta. 6) Composición de corte de roca en capas: una gota de agua que brilla atrapada entre los cristales a gran profundidad. 7) Composición tipo microscopio: lupa gigante sobre la roca, donde aparecen diminutos fósiles de plancton en forma de estrella y espiral, con la marca '6 km'. 8) big_text '180 °C' sobre la roca roja incandescente. Después, acción 'caer_romper': la broca se dobla y se rompe mientras la roca se deforma como plastilina. 9) Mito: newspaper en recorte antiguo con el titular 'LOS GRITOS DEL INFIERNO' y un sello rojo de 'FALSO' que cae encima (único momento algo oscuro). 10) document: informe oficial con la línea resaltada 'Perforación detenida: 1992' y el sello 'CERRADO'. 11) Composición de escala: la Tierra cortada en capas, con una rayita minúscula en la superficie y una flecha. Después, big_text '0,2%'. 12) Cierre en la misma composición del inicio: la tapa oxidada en la nieve, con la cámara que se aleja hasta ver solo la tundra infinita.",
+    "por_que_funcionara": "Repite la fórmula de los vídeos aprobados ('Bajas once kilómetros...', '¿Y si caes en arenas movedizas? La verdad del cine'): segunda persona, misterio con respuesta y un mito desmentido. El gancho deja claro el tema en dos segundos con un objeto físico intrigante y una doble pregunta. Las tres pistas dan una estructura de 'desbloqueo' que retiene sin caer en la cuenta por días. Cada frase tiene un plano propio y distinto (mapa, torre, Everest invertido, microscopio, roca fundida, periódico falso, Tierra en capas), lo que corrige el motivo de descarte más frecuente (escenas feas o repetidas). La portada de tapa oxidada sobre nieve es simple y de alto contraste. El final cierra el bucle con la imagen del principio y deja una sorpresa de escala que invita a volver a verlo.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "tapa metálica oxidada y soldada sobre suelo nevado",
+      "torre de perforación soviética roja y blanca",
+      "broca de perforación (entera y rota)",
+      "Everest con línea de profundidad invertida",
+      "corte de roca en capas con gota de agua atrapada",
+      "lupa o microscopio con microfósiles de plancton",
+      "roca incandescente deformándose como plástico",
+      "Tierra cortada en capas con la rayita del pozo en la superficie",
+      "sello rojo de 'FALSO'"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Por qué taparon un agujero de doce kilómetros?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Deja claro el tema, es concreto y abre el misterio en menos de 3 segundos."
+    },
+    {
+      "texto": "¿Hasta dónde puedes perforar la Tierra antes de rendirte?",
+      "tipo": "b",
+      "puntuacion": 7,
+      "motivo": "Plantea un reto claro, pero no menciona el objeto misterioso."
+    },
+    {
+      "texto": "Esta tapa oxidada esconde un agujero de doce kilómetros.",
+      "tipo": "c",
+      "puntuacion": 7,
+      "motivo": "Objeto físico intrigante y dato que choca, pero no lleva pregunta."
+    },
+    {
+      "texto": "Estás sobre el agujero más profundo del mundo.",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Segunda persona con el tema dicho, aunque menos intrigante."
+    },
+    {
+      "texto": "Dicen que abajo hay un infierno. Es mentira.",
+      "tipo": "e",
+      "puntuacion": 6,
+      "motivo": "Contradicción que engancha, pero el tema queda menos claro."
+    }
+  ],
+  "medida_estado": "esperando",
+  "tanda": "pedido-21"
+}
