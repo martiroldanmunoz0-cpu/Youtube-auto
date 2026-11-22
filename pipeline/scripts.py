@@ -219,8 +219,12 @@ imagen cada 2-3 segundos. Cada plano, UNA frase corta (6-12 palabras). \
 Cada plano: 1-2 frases, 6-22 palabras.
 - Escribe para el oído: sin emojis, sin abreviaturas, números escritos como se dicen si son cortos.
 - Es un canal de CURIOSIDADES: tono divulgativo, cercano y con ritmo, como un amigo que te cuenta algo alucinante.
-- El estilo preferido del dueño (segunda persona, día a día) es para "qué pasaría si" e "imagina que"; las \
-historias reales van en tercera persona.
+- El estilo preferido del dueño (inmersivo, a menudo en segunda persona) es para "qué pasaría si" e "imagina que"; \
+las historias reales van en tercera persona.
+- ESTRUCTURA VARIADA (el dueño lo pide): NO uses por defecto la cuenta por tiempos ("Día uno…", "Hora tres…", \
+"Segundo diez…", "Mes uno…"). Como mucho 2 planos pueden empezar con una marca de tiempo así. Elige la estructura \
+que mejor cuente ESTA idea: mito contra realidad, misterio que se resuelve, escala de pequeño a enorme, comparación, \
+experimento mental, historia con giro, ranking, antes y después…
 - RIGOR ABSOLUTO: cada dato y cada cifra tiene que ser correcto y estar bien documentado. Si no estás seguro de \
 una cifra, no la pongas o redondea con "más de", "casi". En los "¿qué pasaría si?" explica lo que dice la ciencia.
 - Haz comparaciones que se entiendan ("más rápido que un avión", "como llenar diez estadios").
@@ -795,6 +799,9 @@ def validate_story(story: dict) -> dict:
             base = {**base, "scene": "escena", "params": {"lugar": base["params"].get("lugar") or "salon", "plano": "medio", "mood": "shocked", "efecto": "wow"}}
         beats.insert(pos, {**base, "text": pregunta, "camera": "push_in", "transition": "cut"})
         print(f"  (añadida la pregunta central en el plano {pos + 1}: «{pregunta}»)")
+    marcas = sum(bool(re.match(r"(d[ií]a|hora|segundo|minuto|mes|a[nñ]o|semana)s?\s+(\d+|uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|cero)\b", b["text"], re.I)) for b in beats)
+    if marcas > 2:
+        print(f"  aviso: estructura por tiempos repetida ({marcas} planos empiezan con 'día/hora/segundo N')")
     n_acc = sum(b["scene"] == "accion" for b in beats)
     if beats and n_acc < len(beats) / 3:
         print(f"  aviso: pocas acciones animadas ({n_acc} de {len(beats)} planos)")

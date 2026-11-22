@@ -44,14 +44,13 @@ generacion:
   mezcla: "auto"                 # auto = la IA decide según tendencias (historias, datos, casos reales...)
   # Lo que más te gusta (se tiene en cuenta en ideas y guiones). Edítalo cuando quieras.
   estilo_preferido: >-
-    Narración inmersiva en segunda persona: el espectador VIVE la situación ("Te despiertas y...", "Esta noche,
-    en tu cama..."). Progresión paso a paso o día a día (día 1, día 2, día 3... o cada vez más grande), con
-    escalada de tensión y un giro final que sorprenda. Formatos que funcionan: "cada noche/cada día pasa algo
-    más", falso telediario o diario que avanza, "imagina que...". Los rankings o listas de cifras solo como
-    recurso puntual dentro de una historia, no como vídeo entero. También le gustan las HISTORIAS REALES
-    contadas como un buen documental (protagonista con nombre, qué le pasó, giros y un final que pocos conocen).
-    Variedad: no todos los vídeos con el mismo formato.
-
+    Narración inmersiva y cercana (a menudo en segunda persona: el espectador VIVE la situación), con escalada de
+    tensión y un giro final que sorprenda. ESTRUCTURAS VARIADAS: no repitas la cuenta por tiempos ("día 1, hora 2,
+    segundo 3…"); úsala como mucho en 1 de cada 4 vídeos. Alterna entre: mito contra realidad, misterio que se va
+    resolviendo, comparación de escalas (de lo pequeño a lo enorme), "lo que nadie te cuenta", experimento mental,
+    ranking o top, historia con protagonista y giro, pregunta que se responde con una sorpresa, antes y después.
+    También le gustan las HISTORIAS REALES contadas como un buen documental (protagonista con nombre, qué le pasó,
+    giros y un final que pocos conocen).
 voz:
   motor: "auto"                  # auto = voz clonada si existe, si no Edge | edge | espeak
   clon: "narrador"               # voz clonada de assets/voices/ (VoxCPM2). Vacío = solo Edge
