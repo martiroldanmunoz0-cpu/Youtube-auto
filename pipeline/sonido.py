@@ -29,7 +29,7 @@ SR = 44100
 # Señal -> variantes de la biblioteca, y volumen (dB de pico)
 CUES: dict[str, tuple[list[str], float]] = {
     "whoosh": (["whoosh_fast_1", "whoosh_fast_2", "whoosh_fast_3", "whoosh_fast_4", "whoosh_soft_1", "whoosh_soft_2", "whoosh_soft_3", "whoosh_air_1", "whoosh_air_2"], -15),
-    "whoosh_big": (["whoosh_big_1", "whoosh_big_2", "whoosh_big_3", "whoosh_flyby_1", "whoosh_flyby_2", "whoosh_low_1", "whoosh_low_2"], -13),
+    "whoosh_big": (["whoosh_big_1", "whoosh_big_2", "whoosh_big_3", "whoosh_flyby_1", "whoosh_flyby_2"], -13),
     "whip": (["swish_whip_1", "swish_whip_2", "swish_whip_3", "swipe_1", "swipe_2", "swipe_3"], -14),
     "zoom_in": (["zoom_in_1", "zoom_in_2", "whoosh_hit_1", "whoosh_hit_2", "whoosh_hit_3"], -14),
     "zoom_out": (["zoom_out_1", "zoom_out_2", "glide_down", "whoosh_reverse_1"], -15),
@@ -67,7 +67,7 @@ CUES: dict[str, tuple[list[str], float]] = {
     "steps": (["footsteps", "tiptoe"], -14),
     "run": (["run_away", "footsteps"], -13),
     "fall": (["slide_whistle_down"], -15),
-    "rise": (["slide_whistle_up", "riser_short_1", "riser_short_2", "swoosh_rise", "glide_up"], -15),
+    "rise": (["slide_whistle_up", "glide_up"], -15),
     "riser": (["riser_short_1", "riser_short_2", "riser_noise_1", "riser_tonal_1", "swell_reverse_1", "swell_reverse_2"], -15),
     "downer": (["downlifter_1", "downlifter_2", "power_down", "tail_reverb"], -14),
     "mystery": (["mystery", "suspense_sting", "suspense_hit", "dun_dun_dunnn", "question_hmm"], -14),
@@ -164,7 +164,6 @@ KEYWORDS: list[tuple[str, str]] = [
     (r"gana\b|gano|victoria|premio|record|celebr|fiesta|exito", "win"),
     (r"gente|multitud|publico|todo el mundo|nadie lo cre", "crowd_ooh"),
     (r"misterio|secreto|nadie sabe|extran|inexplic|desaparec|enigma|oculto", "mystery"),
-    (r"muere|murio|muerte|mata\b|mato\b|matar|cadaver|tumba|fallec", "downer"),
     (r"pajaro|aves?\b|gaviota|loro", "birds"),
     (r"barco|bote\b|nave\b|navio|crucero|velero|balsa|canoa", "creak"),
     (r"avion|vuela|volar|cohete|despeg|helicoptero|dron", "whoosh_big"),
@@ -181,28 +180,27 @@ KEYWORDS: list[tuple[str, str]] = [
     (r"silbato|arbitro", "whistle"),
     (r"llaves?\b|cerradura", "keys"),
     (r"ropa|tela|vestido|abrigo|cremallera", "cloth"),
-    (r"de repente|de golpe|en ese momento|entonces\b", "hit"),
-]
+    ]
 KW = [(re.compile(r"\b(?:" + rx + ")"), cue) for rx, cue in KEYWORDS]
 NUM = re.compile(r"\b(mil|millon|millones|cien|cientos|\d{2,})\b")
 YEAR = re.compile(r"\bmil novecientos|\bdos mil\b|\b1[5-9]\d\d\b|\b20[0-4]\d\b")
 
 # Acciones animadas: (fracción de la duración del plano, sonido)
 ACTION_SFX: dict[str, list[tuple[float, str]]] = {
-    "cortarse": [(0.0, "whoosh"), (0.33, "chop"), (0.45, "splat")],
+    "cortarse": [(0.33, "chop"), (0.45, "splat")],
     "caer_romper": [(0.08, "fall"), (0.38, "glass")],
-    "explosion": [(0.05, "riser"), (0.38, "explosion"), (0.4, "boom")],
+    "explosion": [(0.38, "explosion"), (0.4, "boom")],
     "beber": [(0.1, "drink"), (0.45, "drink")],
     "comer": [(0.15, "eat"), (0.4, "eat"), (0.65, "eat")],
     "idea": [(0.22, "ding"), (0.3, "sparkle")],
     "sorpresa": [(0.18, "eyes"), (0.22, "hit")],
     "crecer": [(0.05, "rise"), (0.85, "pop")],
-    "choque": [(0.0, "whoosh_big"), (0.33, "hit_hard"), (0.36, "glass")],
+    "choque": [(0.33, "hit_hard"), (0.36, "glass")],
     "dormir": [(0.1, "pop_soft"), (0.5, "sparkle")],
     "rayo": [(0.05, "rain"), (0.38, "thunder")],
     "vista_nublada": [(0.1, "wobble"), (0.55, "heartbeat")],
     "hincharse": [(0.1, "rise"), (0.42, "boing")],
-    "flotar_espacio": [(0.0, "whoosh_big"), (0.35, "sparkle")],
+    "flotar_espacio": [(0.35, "sparkle")],
     "desmayarse": [(0.1, "wobble"), (0.45, "thud")],
     "soltar_aire": [(0.15, "wind"), (0.5, "whoosh")],
     "saliva_hierve": [(0.1, "bubbles"), (0.32, "sizzle")],
@@ -215,7 +213,7 @@ ACTION_SFX: dict[str, list[tuple[float, str]]] = {
     "tormenta_mar": [(0.0, "rain"), (0.12, "wave"), (0.5, "thunder")],
     "contar_dias": [(0.15, "write"), (0.45, "write"), (0.75, "write")],
     "gritar": [(0.08, "scare"), (0.15, "hit")],
-    "correr": [(0.0, "run"), (0.45, "whoosh")],
+    "correr": [(0.1, "run")],
     "hundirse": [(0.0, "splash"), (0.3, "bubbles")],
     "dudar": [(0.1, "mystery")],
     "marearse": [(0.0, "wobble"), (0.5, "wobble")],
@@ -224,16 +222,15 @@ ACTION_ALIAS = {"bomba": "explosion", "tormenta": "rayo", "relampago": "rayo", "
                 "pensar": "idea", "descubrir": "idea", "beber_agua": "beber", "tomar": "beber", "morder": "comer", "comida": "comer", "dormirse": "dormir"}
 
 SCENE_SFX = {
-    "year_jump": [(0.0, "whoosh"), (0.15, "year"), (0.65, "ding")],
-    "map_pin": [(0.0, "zoom_in"), (0.35, "pop"), (0.4, "thud")],
+    "year_jump": [(0.15, "year"), (0.65, "ding")],
+    "map_pin": [(0.35, "pop")],
     "ocean": [(0.0, "wave")],
-    "big_text": [(0.05, "hit_hard")],
+    "big_text": [(0.3, "pop")],
 }
-PIECE_ANIM = {"caer": "fall", "entrar_izq": "whip", "entrar_der": "whip", "entrar": "whip", "crecer": "pop", "flotar": "pop_soft",
-              "girar": "whoosh", "temblar": "rumble", "latir": "heartbeat", "acercarse": "whoosh_big"}
+PIECE_ANIM = {"caer": "fall", "crecer": "pop", "flotar": "pop_soft", "latir": "heartbeat"}  # entrar/acercarse/girar: sin «whoosh»
 TRANSITION_SFX = {"whip": "whip", "zoom": "zoom_in", "zoomThrough": "zoom_in", "flash": "hit", "red": "hit_hard", "black": "boom", "blurDraw": "whoosh"}
 GENERIC = {"whoosh", "whoosh_big", "whip", "zoom_in", "zoom_out", "hit", "pop", "pop_soft", "sparkle", "ding", "type", "count", "year", "tick", "punch", "thud", "boom", "hit_hard", "rise", "fall"}
-FILLERS = ["pop_soft", "whoosh", "tick", "sparkle", "pop", "paper", "zip"]
+FILLERS = ["pop_soft", "tick", "sparkle", "pop", "paper"]
 
 
 def _norm(s: str) -> str:
@@ -298,8 +295,7 @@ def plan_cues(beats: list[dict], words: list[dict], total: float, rng, hook: boo
     by_beat: dict[int, list[dict]] = {}
     for w in words:
         by_beat.setdefault(w["b"], []).append(w)
-    if hook:
-        cues += [(0.0, "whoosh_big", 4), (0.08, "hit", 4)]
+    # Sin sonido en los cambios de plano (ni «whoosh» ni «brum»): solo suenan las cosas que pasan.
     for i, b in enumerate(beats):
         s, e = float(b["start"]), float(b["end"])
         d = max(0.5, e - s)
@@ -309,21 +305,6 @@ def plan_cues(beats: list[dict], words: list[dict], total: float, rng, hook: boo
             if isinstance(c, dict) and c.get("s") in CUES:
                 tt = float(c.get("t", 0))
                 cues.append((s + (tt * d if c.get("k") else tt), c["s"], 5))
-        # 2) transición y cámara
-        if i > 0:
-            tr = b.get("transition", "cut")
-            cue = TRANSITION_SFX.get(tr)
-            if cue is None and rng.random() < (0.55 if tr == "fade" else 0.4):
-                cue = "whoosh"
-            if cue:
-                cues.append((max(0, s - (0.12 if cue in ("whoosh", "whip", "zoom_in", "whoosh_big") else 0)), cue, 2))
-        cam = b.get("camera")
-        if cam == "slam":
-            cues.append((s + 0.04, "punch" if rng.random() < 0.5 else "hit", 3))
-        elif cam == "shake":
-            cues.append((s + 0.1, "rumble", 2))
-        elif cam == "pull_out" and rng.random() < 0.35:
-            cues.append((s + 0.05, "zoom_out", 1))
         # 3) acción animada / tipo de escena
         tipo = _norm(str(p.get("tipo") or "")) if sc == "accion" else ""
         tipo = ACTION_ALIAS.get(tipo, tipo)
@@ -345,8 +326,9 @@ def plan_cues(beats: list[dict], words: list[dict], total: float, rng, hook: boo
                 continue
             a = str(it.get("anim") or "crecer")
             t0 = s + j * 0.15
-            cue = PIECE_ANIM.get(a, "pop")
-            cues.append((t0 + (0.0 if a != "caer" else -0.05), cue, 2))
+            cue = PIECE_ANIM.get(a)
+            if cue:
+                cues.append((t0 + 0.12, cue, 2))
             if a == "caer":
                 cues.append((t0 + 0.42, "thud", 2))
             name = _norm(str(it.get("pieza") or ""))
@@ -383,8 +365,6 @@ def plan_cues(beats: list[dict], words: list[dict], total: float, rng, hook: boo
             m = NUM.search(frase)
             pos = len(frase[:m.start()].split())
             cues.append((float(ws[min(pos, len(ws) - 1)]["start"]), "count", 2))
-        if b.get("bucle"):
-            cues.append((max(s, e - 0.45), "whoosh_big", 4))
     return cues
 
 
