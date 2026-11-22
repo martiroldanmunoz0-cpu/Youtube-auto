@@ -233,7 +233,9 @@
     "publish_at": "2026-11-22T10:30:00Z",
     "youtube_id": "zXTK7iknzAM",
     "portada_ok": true,
-    "reprogramado": true
+    "reprogramado": true,
+    "lista": "Cuerpo humano",
+    "lista_ok": true
   },
   {
     "id": "pedido-19-01",
@@ -259,7 +261,9 @@
     "publish_at": "2026-11-22T13:00:00Z",
     "youtube_id": "oqZXoFFAAAs",
     "portada_ok": true,
-    "reprogramado": true
+    "reprogramado": true,
+    "lista": "Espacio y planeta Tierra",
+    "lista_ok": true
   },
   {
     "id": "pedido-20-01",
@@ -284,6 +288,33 @@
     "estado": "programado",
     "publish_at": "2026-11-23T13:00:00Z",
     "youtube_id": "EoPU9BJ7HQc",
+    "portada_ok": true
+  },
+  {
+    "id": "pedido-22-01",
+    "title": "Violet Jessop: la mujer que sobrevivió al Titanic y más #shorts",
+    "description": "¿Tú habrías vuelto a subir a un barco? 👇\n\nViolet Jessop, la mujer que sobrevivió al Titanic, al Olympic y al Britannic: Miss Insumergible.\nEn 1911, 1912 y 1916 estuvo a bordo de los tres transatlánticos gemelos de la White Star Line cuando sufrieron sus desastres, y vivió para contarlo.\n#titanic #violetjessop #historiasreales #curiosidades\n\n▶️ Más de «Historias reales increíbles»: https://www.youtube.com/playlist?list=PLM8HPkDKcYF8",
+    "tags": [
+      "Violet Jessop",
+      "Miss Insumergible",
+      "Titanic",
+      "supervivientes del Titanic",
+      "Britannic",
+      "Olympic",
+      "historias reales",
+      "curiosidades históricas",
+      "White Star Line",
+      "naufragios famosos"
+    ],
+    "video": "pedido-22-01.mp4",
+    "portada": "pedido-22-01_portada.jpg",
+    "lista": "Historias reales increíbles",
+    "tag": "pedido-22",
+    "issue": 43,
+    "estado": "programado",
+    "publish_at": "2026-11-23T19:30:00Z",
+    "youtube_id": "rJkjUzPL5OE",
+    "lista_ok": true,
     "portada_ok": true
   }
 ]
