@@ -1,473 +1,471 @@
 {
- "title": "The Man Who Survived Two Atomic Bombs: Tsutomu Yamaguchi #shorts",
- "description": "Did you know this story? 👇\n\nThe true story of Tsutomu Yamaguchi, the man who survived both atomic bombs, Hiroshima and Nagasaki, in August 1945.\nAround 160 people are believed to have lived through both blasts, but Japan officially recognized only one of them, and not until 2009.\n#history #hiroshima #nagasaki #truestory #shorts",
- "tags": [
-  "tsutomu yamaguchi",
-  "survived two atomic bombs",
-  "hiroshima and nagasaki",
-  "double survivor",
-  "true story",
-  "world war 2",
-  "atomic bomb survivor",
-  "history facts",
-  "incredible true stories",
-  "luckiest man alive"
- ],
- "beats": [
-  {
-   "text": "This man survived two atomic bombs.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "explosion",
-      "lugar": "ciudad",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "How did one man survive both atomic bombs, and what do few people know about his story?",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 1,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "ciudad",
-      "plano": "medio",
-      "mood": "shocked",
-      "efecto": "wow"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Tsutomu Yamaguchi. Twenty-nine-year-old engineer. One business trip to Hiroshima.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 2,
-    "respaldo": {
-     "scene": "map_pin",
-     "params": {
-      "place": "Hiroshima",
-      "detail": "Japan, 1945",
-      "style": "globo"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "whip"
-  },
-  {
-   "text": "August sixth, 1945. You're walking to work with a briefcase.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 3,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "calle",
-      "hora": "dia",
-      "plano": "entero",
-      "mood": "neutral",
-      "label": "Hiroshima, 8:15 a.m."
-     }
-    }
-   },
-   "camera": "pan_right",
-   "transition": "fade"
-  },
-  {
-   "text": "Two miles away, the first atomic bomb explodes.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 4,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "ciudad",
-      "hora": "dia",
-      "persona": "medio",
-      "mood": "shocked",
-      "piezas": [
-       {
-        "pieza": "nube",
-        "pos": "fondo",
-        "tamano": "gigante",
-        "anim": "crecer"
-       }
-      ],
-      "efecto": "brillo"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "The blast bursts your eardrums and blinds you.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 5,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "vista_nublada"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Your upper body burns. But you're alive.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 6,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "quemarse",
-      "lugar": "calle",
-      "hora": "dia",
-      "who": "protagonista"
-     }
+  "title": "The Man Who Survived Two Atomic Bombs: Tsutomu Yamaguchi #shorts",
+  "description": "Did you know this story? 👇\n\nThe true story of Tsutomu Yamaguchi, the man who survived both atomic bombs, Hiroshima and Nagasaki, in August 1945.\nAround 160 people are believed to have lived through both blasts, but Japan officially recognized only one of them, and not until 2009.\n#history #hiroshima #nagasaki #truestory #shorts",
+  "tags": [
+    "tsutomu yamaguchi",
+    "survived two atomic bombs",
+    "hiroshima and nagasaki",
+    "double survivor",
+    "true story",
+    "world war 2",
+    "atomic bomb survivor",
+    "history facts",
+    "incredible true stories",
+    "luckiest man alive"
+  ],
+  "beats": [
+    {
+      "text": "This man survived two atomic bombs.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "explosion",
+            "lugar": "ciudad",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
     },
-    "who": "protagonista"
-   },
-   "camera": "tilt_down",
-   "transition": "fade"
-  },
-  {
-   "text": "You spend the night in a shelter, then board a train home.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 7,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "campo",
-      "hora": "atardecer",
-      "persona": "medio",
-      "mood": "sad",
-      "piezas": [
-       {
-        "pieza": "tren",
-        "pos": "fondo",
-        "tamano": "grande",
-        "anim": "entrar_izq"
-       },
-       {
-        "pieza": "tirita",
-        "pos": "derecha",
-        "tamano": "pequeno",
-        "anim": "flotar"
-       }
-      ]
-     }
-    }
-   },
-   "camera": "pan_left",
-   "transition": "fade"
-  },
-  {
-   "text": "Home is Nagasaki. Another bomb is coming.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 8,
-    "respaldo": {
-     "scene": "map_pin",
-     "params": {
-      "place": "Nagasaki",
-      "detail": "Three days later",
-      "style": "relieve"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "whip"
-  },
-  {
-   "text": "August ninth. Bandaged, you go back to work.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 9,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "oficina",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "worried",
-      "objeto": "papel"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "You tell your boss: one bomb destroyed an entire city.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 10,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "dudar",
-      "lugar": "oficina",
-      "hora": "dia",
-      "who": "jefe"
-     }
+    {
+      "text": "How did one man survive both atomic bombs, and what do few people know about his story?",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "plano": "medio",
+            "mood": "shocked",
+            "efecto": "wow"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
     },
-    "who": "jefe"
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "He thinks you're crazy. Then the window turns white.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 11,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "oficina",
-      "hora": "dia",
-      "persona": "medio",
-      "mood": "shocked",
-      "piezas": [
-       {
-        "pieza": "edificio",
-        "pos": "fondo",
-        "tamano": "gigante",
-        "anim": "temblar"
-       }
-      ],
-      "efecto": "brillo"
-     }
+    {
+      "text": "Tsutomu Yamaguchi. Twenty-nine-year-old engineer. One business trip to Hiroshima.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Hiroshima",
+            "detail": "Japan, 1945",
+            "style": "globo"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "August sixth, 1945. You're walking to work with a briefcase.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "plano": "entero",
+            "mood": "neutral",
+            "label": "Hiroshima, 8:15 a.m."
+          }
+        }
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Two miles away, the first atomic bomb explodes.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "nube",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "crecer"
+              }
+            ],
+            "efecto": "brillo"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "The blast bursts your eardrums and blinds you.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "vista_nublada"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Your upper body burns. But you're alive.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "quemarse",
+            "lugar": "calle",
+            "hora": "dia",
+            "who": "protagonista"
+          }
+        },
+        "who": "protagonista"
+      },
+      "camera": "tilt_down",
+      "transition": "fade"
+    },
+    {
+      "text": "You spend the night in a shelter, then board a train home.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "atardecer",
+            "persona": "medio",
+            "mood": "sad",
+            "piezas": [
+              {
+                "pieza": "tren",
+                "pos": "fondo",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "tirita",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "Home is Nagasaki. Another bomb is coming.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Nagasaki",
+            "detail": "Three days later",
+            "style": "relieve"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "August ninth. Bandaged, you go back to work.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "oficina",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "worried",
+            "objeto": "papel"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "You tell your boss: one bomb destroyed an entire city.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "oficina",
+            "hora": "dia",
+            "who": "jefe"
+          }
+        },
+        "who": "jefe"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "He thinks you're crazy. Then the window turns white.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "oficina",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "edificio",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "temblar"
+              }
+            ],
+            "efecto": "brillo"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Second bomb. Same distance. Same man. Somehow, he survives again.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "explosion",
+            "lugar": "oficina",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "Around one hundred sixty people likely lived through both.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "160 people",
+            "label": "survived both bombs",
+            "lugar": "ciudad",
+            "color": "#ffcc00"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Japan officially recognized only one: Yamaguchi.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "1",
+            "label": "officially recognized",
+            "lugar": "oficina",
+            "color": "#ff3b30"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "It took until 2009. Sixty-four years later.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": 1945,
+            "to": 2009,
+            "label": "Official recognition"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "He was ninety-three. He died the next year.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "campo",
+            "hora": "atardecer",
+            "plano": "medio",
+            "mood": "happy",
+            "edad": "mayor",
+            "objeto": "taza"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "black"
+    },
+    {
+      "text": "So if you ever feel unlucky, remember…",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-24-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "explosion",
+            "lugar": "ciudad",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
     }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Second bomb. Same distance. Same man. Somehow, he survives again.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 12,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "explosion",
-      "lugar": "oficina",
-      "hora": "dia"
-     }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "negro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "gris"
+    },
+    "jefe": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "negro",
+      "barba": "bigote",
+      "gafas": true,
+      "ropa": "azul"
     }
-   },
-   "camera": "shake",
-   "transition": "red"
   },
-  {
-   "text": "Around one hundred sixty people likely lived through both.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 13,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "160 people",
-      "label": "survived both bombs",
-      "lugar": "ciudad",
-      "color": "#ffcc00"
-     }
+  "cover_text": "SURVIVED 2 ATOMIC BOMBS",
+  "comment_q": "Did you know this story?",
+  "lista": "Incredible True Stories",
+  "question": "How did one man survive both atomic bombs, and what do few people know about his story?",
+  "piezas_pendientes": [
+    "nube_hongo",
+    "tren_vapor",
+    "vendas",
+    "ventana_oficina"
+  ],
+  "id": "pedido-24-01",
+  "idea": {
+    "tipo": "caso_real",
+    "premisa": "You are Tsutomu Yamaguchi, a 29-year-old Mitsubishi engineer on a business trip to Hiroshima. On August 6, 1945, the first atomic bomb explodes about 2 miles away. It ruptures your eardrums, burns your upper body and blinds you for a while. You spend the night in a shelter, then catch a train home to Nagasaki. On August 9 you go back to work, still bandaged, and tell your boss that a single bomb destroyed a whole city. He doesn't believe you. At that moment the window turns white: the second bomb, again about 2 miles away. You survive again. Closing twist: around 160 people are believed to have lived through both bombs. Japan officially recognized only one of them, you, and not until 2009, when you were 93. You died a year later.",
+    "gancho": "What are the odds of surviving TWO atomic bombs? This man did… and the craziest part isn't the second bomb.",
+    "giro_final": "He wasn't the only one who lived through both blasts. Roughly 160 people likely did. But Japan officially recognized just one double survivor, Tsutomu Yamaguchi, and only in 2009, 64 years later. He died the next year, at 93. Loop line: 'So… what are the odds?'",
+    "estilo_visual": "Arranca con big_text '2 BOMBS' sobre una ciudad de día y la persona reaccionando debajo. Le sigue map_pin (estilo globo terráqueo) con la chincheta cayendo en Hiroshima. Para el viaje de negocios, escena luminosa de una calle japonesa de 1945 por la mañana, con el protagonista y un maletín. El primer impacto se cuenta con accion 'explosion' (destello blanco), accion 'vista_nublada' y person con la mitad superior izquierda del cuerpo resaltada en rojo (quemaduras). Para el regreso, composicion con un tren de vapor y el protagonista vendado. Segundo acto: map_pin con la chincheta en Nagasaki, luego escena de oficina con el jefe incrédulo y una ventana al fondo, accion 'dudar' sobre el jefe, y la ventana estalla en blanco con una segunda accion 'explosion'. Cierre documental: year_jump 1945 → 2009, document 'Official Double Survivor Certification' con una línea resaltada 'Hiroshima + Nagasaki' y sello, y big_text '1' para el único reconocido oficialmente. Termina con escena tranquila de un anciano de 93 años en un jardín al atardecer.",
+    "por_que_funcionara": "La pregunta de probabilidades es irresistible y deja claro el tema al instante. La segunda persona hace que el espectador sienta el destello. Además, se adelanta al espectador: anuncia que la segunda bomba no es lo más loco y le obliga a quedarse hasta el dato poco conocido del reconocimiento oficial en 2009. La escena del jefe incrédulo justo antes del segundo destello es un pico de tensión casi cinematográfico y totalmente documentado.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "tren_vapor",
+      "nube_hongo",
+      "maletin",
+      "vendas",
+      "ventana_oficina"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "What if you survived two atomic bombs?",
+      "tipo": "a",
+      "puntuacion": 7,
+      "motivo": "Pregunta directa que deja claro el tema, pero suena hipotética y no promete una historia real."
+    },
+    {
+      "texto": "Could you survive two atomic bombs?",
+      "tipo": "b",
+      "puntuacion": 7,
+      "motivo": "Reto en segunda persona, claro en dos segundos, pero sin el gancho de que es una persona real."
+    },
+    {
+      "texto": "Two atomic bombs. One man. Both survived.",
+      "tipo": "c",
+      "puntuacion": 8,
+      "motivo": "Dato que choca y deja claro el tema, aunque destripa un poco el resultado."
+    },
+    {
+      "texto": "You're in Hiroshima. The bomb just fell.",
+      "tipo": "d",
+      "puntuacion": 5,
+      "motivo": "Inmersivo, pero el espectador desconocido no sabe que va a haber una segunda bomba ni cuál es el reto."
+    },
+    {
+      "texto": "This man survived two atomic bombs.",
+      "tipo": "e",
+      "puntuacion": 9,
+      "motivo": "Dato imposible, concreto y de 6 palabras. Se entiende al instante, no revela cómo y abre la curiosidad por saber cómo fue posible."
     }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Japan officially recognized only one: Yamaguchi.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 14,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "1",
-      "label": "officially recognized",
-      "lugar": "oficina",
-      "color": "#ff3b30"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "It took until 2009. Sixty-four years later.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 15,
-    "respaldo": {
-     "scene": "year_jump",
-     "params": {
-      "from": 1945,
-      "to": 2009,
-      "label": "Official recognition"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "He was ninety-three. He died the next year.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 16,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "campo",
-      "hora": "atardecer",
-      "plano": "medio",
-      "mood": "happy",
-      "edad": "mayor",
-      "objeto": "taza"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "black"
-  },
-  {
-   "text": "So if you ever feel unlucky, remember…",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-24-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "explosion",
-      "lugar": "ciudad",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut",
-   "bucle": true
-  }
- ],
- "looks": {
-  "protagonista": {
-   "genero": "hombre",
-   "edad": "adulto",
-   "piel": "clara",
-   "pelo": "corto",
-   "color_pelo": "negro",
-   "barba": "no",
-   "gafas": false,
-   "ropa": "gris"
-  },
-  "jefe": {
-   "genero": "hombre",
-   "edad": "adulto",
-   "piel": "clara",
-   "pelo": "corto",
-   "color_pelo": "negro",
-   "barba": "bigote",
-   "gafas": true,
-   "ropa": "azul"
-  }
- },
- "cover_text": "SURVIVED 2 ATOMIC BOMBS",
- "comment_q": "Did you know this story?",
- "lista": "Incredible True Stories",
- "question": "How did one man survive both atomic bombs, and what do few people know about his story?",
- "piezas_pendientes": [
-  "nube_hongo",
-  "tren_vapor",
-  "vendas",
-  "ventana_oficina"
- ],
- "id": "pedido-24-01",
- "idea": {
-  "tipo": "caso_real",
-  "premisa": "You are Tsutomu Yamaguchi, a 29-year-old Mitsubishi engineer on a business trip to Hiroshima. On August 6, 1945, the first atomic bomb explodes about 2 miles away. It ruptures your eardrums, burns your upper body and blinds you for a while. You spend the night in a shelter, then catch a train home to Nagasaki. On August 9 you go back to work, still bandaged, and tell your boss that a single bomb destroyed a whole city. He doesn't believe you. At that moment the window turns white: the second bomb, again about 2 miles away. You survive again. Closing twist: around 160 people are believed to have lived through both bombs. Japan officially recognized only one of them, you, and not until 2009, when you were 93. You died a year later.",
-  "gancho": "What are the odds of surviving TWO atomic bombs? This man did… and the craziest part isn't the second bomb.",
-  "giro_final": "He wasn't the only one who lived through both blasts. Roughly 160 people likely did. But Japan officially recognized just one double survivor, Tsutomu Yamaguchi, and only in 2009, 64 years later. He died the next year, at 93. Loop line: 'So… what are the odds?'",
-  "estilo_visual": "Arranca con big_text '2 BOMBS' sobre una ciudad de día y la persona reaccionando debajo. Le sigue map_pin (estilo globo terráqueo) con la chincheta cayendo en Hiroshima. Para el viaje de negocios, escena luminosa de una calle japonesa de 1945 por la mañana, con el protagonista y un maletín. El primer impacto se cuenta con accion 'explosion' (destello blanco), accion 'vista_nublada' y person con la mitad superior izquierda del cuerpo resaltada en rojo (quemaduras). Para el regreso, composicion con un tren de vapor y el protagonista vendado. Segundo acto: map_pin con la chincheta en Nagasaki, luego escena de oficina con el jefe incrédulo y una ventana al fondo, accion 'dudar' sobre el jefe, y la ventana estalla en blanco con una segunda accion 'explosion'. Cierre documental: year_jump 1945 → 2009, document 'Official Double Survivor Certification' con una línea resaltada 'Hiroshima + Nagasaki' y sello, y big_text '1' para el único reconocido oficialmente. Termina con escena tranquila de un anciano de 93 años en un jardín al atardecer.",
-  "por_que_funcionara": "La pregunta de probabilidades es irresistible y deja claro el tema al instante. La segunda persona hace que el espectador sienta el destello. Además, se adelanta al espectador: anuncia que la segunda bomba no es lo más loco y le obliga a quedarse hasta el dato poco conocido del reconocimiento oficial en 2009. La escena del jefe incrédulo justo antes del segundo destello es un pico de tensión casi cinematográfico y totalmente documentado.",
-  "inspirado_en": [],
-  "piezas_nuevas": [
-   "tren_vapor",
-   "nube_hongo",
-   "maletin",
-   "vendas",
-   "ventana_oficina"
   ]
- },
- "ganchos": [
-  {
-   "texto": "What if you survived two atomic bombs?",
-   "tipo": "a",
-   "puntuacion": 7,
-   "motivo": "Pregunta directa que deja claro el tema, pero suena hipotética y no promete una historia real."
-  },
-  {
-   "texto": "Could you survive two atomic bombs?",
-   "tipo": "b",
-   "puntuacion": 7,
-   "motivo": "Reto en segunda persona, claro en dos segundos, pero sin el gancho de que es una persona real."
-  },
-  {
-   "texto": "Two atomic bombs. One man. Both survived.",
-   "tipo": "c",
-   "puntuacion": 8,
-   "motivo": "Dato que choca y deja claro el tema, aunque destripa un poco el resultado."
-  },
-  {
-   "texto": "You're in Hiroshima. The bomb just fell.",
-   "tipo": "d",
-   "puntuacion": 5,
-   "motivo": "Inmersivo, pero el espectador desconocido no sabe que va a haber una segunda bomba ni cuál es el reto."
-  },
-  {
-   "texto": "This man survived two atomic bombs.",
-   "tipo": "e",
-   "puntuacion": 9,
-   "motivo": "Dato imposible, concreto y de 6 palabras. Se entiende al instante, no revela cómo y abre la curiosidad por saber cómo fue posible."
-  }
- ],
- "medida_estado": "lista",
- "tanda": "pedido-24"
 }
