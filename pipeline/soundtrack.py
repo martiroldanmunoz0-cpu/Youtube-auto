@@ -1,8 +1,10 @@
-"""Música ambiente oscura y efectos generados por código (sin derechos de autor).
+"""Música ambiente y efectos generados por código (sin derechos de autor).
 
-- Pad grave con dos notas que respiran + ruido filtrado (atmósfera).
-- "Whoosh" en cada cambio de plano.
-- Golpe grave ("boom") en el gancho y en el giro final.
+- "bright" (por defecto): melodía suave tipo caja de música / pizzicato sobre acordes ligeros, en tonalidad mayor,
+  distinta en cada vídeo (tonalidad, tempo y patrón al azar). Nada de notas graves que suenen a zumbido.
+- "dark": pad grave antiguo (solo si un guion lo pide).
+- Efectos MUY escasos: un golpe suave solo en el gancho y en algún momento fuerte (como mucho uno cada 15 s).
+  Ya no hay "whoosh" en cada cambio de plano.
 """
 from __future__ import annotations
 
@@ -46,7 +48,51 @@ def _synth_loop(n: int, rng) -> np.ndarray:
     return out + pad
 
 
-def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: Path, seed: int = 1, volume: float = 0.16, sfx: bool = True, style: str = "dark", loop: bool = False):
+def _bright_loop(n: int, rng) -> np.ndarray:
+    """Música luminosa y ligera: arpegio de notas pulsadas (caja de música / pizzicato) + acordes suaves."""
+    t = np.arange(n) / SR
+    bpm = rng.choice([84, 92, 100, 108])
+    eighth = 60 / bpm / 2
+    key = rng.choice([261.63, 293.66, 329.63, 349.23, 392.0])  # do, re, mi, fa, sol (registro medio)
+    major = [1.0, 1.122, 1.26, 1.335, 1.498, 1.682, 1.888, 2.0]
+    progs = [[0, 5, 3, 4], [0, 3, 4, 0], [5, 3, 0, 4], [0, 4, 5, 3]]
+    prog = progs[rng.integers(len(progs))]
+    pattern = rng.choice([[0, 2, 4, 7, 4, 2, 4, 2], [0, 4, 2, 4, 7, 4, 2, 4], [0, 2, 4, 2, 7, 4, 2, 0]])
+    timbre = rng.choice(["caja", "pizz"])
+    out = np.zeros(n)
+    k = 0
+    while k * eighth < n / SR:
+        i0 = int(k * eighth * SR)
+        L = min(int(eighth * SR * 3), n - i0)
+        if L <= 0:
+            break
+        tt = np.arange(L) / SR
+        chord = prog[int(k // 16) % 4]
+        deg = (chord + pattern[k % 8]) % 7
+        f = key * major[deg] * (2 if (chord + pattern[k % 8]) >= 7 else 1)
+        if timbre == "caja":
+            note = (np.sin(2 * np.pi * f * tt) + 0.3 * np.sin(2 * np.pi * f * 2 * tt)) * np.exp(-tt * 7)
+        else:
+            note = (np.sin(2 * np.pi * f * tt) + 0.5 * np.sin(2 * np.pi * f * 1.5 * tt) * np.exp(-tt * 20)) * np.exp(-tt * 10)
+        out[i0:i0 + L] += 0.35 * note * (1.0 if k % 2 == 0 else 0.7)
+        k += 1
+    # acordes muy suaves de fondo (registro medio, nada de graves)
+    pad = np.zeros(n)
+    bar = eighth * 16
+    for b in range(int(n / SR / bar) + 1):
+        i0, L = int(b * bar * SR), int(bar * SR)
+        L = min(L, n - i0)
+        if L <= 0:
+            break
+        tt = np.arange(L) / SR
+        c = prog[b % 4]
+        env = np.minimum(1, tt / 0.6) * np.minimum(1, (bar - tt) / 0.6)
+        for d in (0, 2, 4):
+            pad[i0:i0 + L] += 0.06 * np.sin(2 * np.pi * key / 2 * major[(c + d) % 7] * tt) * env
+    return out + pad
+
+
+def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: Path, seed: int = 1, volume: float = 0.16, sfx: bool = True, style: str = "bright", loop: bool = False):
     rng = np.random.default_rng(seed)
     n = int(duration * SR) + SR
     t = np.arange(n) / SR
@@ -64,16 +110,16 @@ def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: 
     track = 0.75 * pad + 0.25 * air
     if style == "synth":
         track = _synth_loop(n, rng)
+    elif style != "dark":
+        track = _bright_loop(n, rng)
 
     if sfx:
-        for c in cuts:
-            i0 = int(c * SR) - int(0.35 * SR)
-            L = int(0.7 * SR)
-            if i0 < 0:
-                continue
-            env = np.sin(np.linspace(0, np.pi, L)) ** 2
-            noise = _fast_lowpass(rng.standard_normal(L), 12) * 1.2
-            track[i0:i0 + L] += noise * env * 0.9
+        # Sin "whoosh" en cada cambio de plano. Golpe suave solo en el gancho y en momentos fuertes, separados 15 s.
+        sel, last = [], -99.0
+        for h in sorted(hits):
+            if h - last >= 15:
+                sel.append(h); last = h
+        hits = sel
         for h in hits:
             i0 = int(h * SR)
             L = int(1.6 * SR)
@@ -81,7 +127,7 @@ def make_soundtrack(duration: float, cuts: list[float], hits: list[float], out: 
                 continue
             tt = np.arange(L) / SR
             boom = np.sin(2 * np.pi * (45 + 30 * np.exp(-tt * 8)) * tt) * np.exp(-tt * 2.5)
-            track[i0:i0 + L] += boom * 2.2
+            track[i0:i0 + L] += boom * (2.2 if style == "dark" else 0.9)
 
     # Fundido de entrada/salida y normalización
     fade = int((0.06 if loop else 1.5) * SR)  # en bucle: sin fundidos que delaten el final

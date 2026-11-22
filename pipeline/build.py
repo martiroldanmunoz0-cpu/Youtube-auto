@@ -137,7 +137,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     hits = [0.05] + [b["start"] for b in beats if b.get("camera") == "slam" or b.get("transition") in ("red", "flash")]
     music = work / "music.wav"
     m = cfg.get("musica", {})
-    make_soundtrack(total, cuts, hits, music, seed=zlib.crc32(sid.encode()) % 10_000, volume=m.get("volumen_ambiente", 0.16), sfx=m.get("efectos", True), style=story.get("music", "dark"), loop=not con_tarjeta)
+    make_soundtrack(total, cuts, hits, music, seed=zlib.crc32(sid.encode()) % 10_000, volume=m.get("volumen_ambiente", 0.16), sfx=m.get("efectos", True), style=story.get("music", "bright"), loop=not con_tarjeta)
 
     # 4) Mezcla final (la música baja cuando habla la voz).
     # En dos pasos: normalizar la voz y luego mezclar con duración fija (en un solo paso ffmpeg recortaba el final).

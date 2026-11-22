@@ -60,7 +60,7 @@ voz:
   tono: "-2Hz"
 
 musica:
-  volumen_ambiente: 0.16         # pad oscuro generado + efectos de transición
+  volumen_ambiente: 0.13         # música suave generada (distinta en cada vídeo) + algún golpe suave en el gancho
   efectos: true
 
 publicacion:
