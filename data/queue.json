@@ -79,9 +79,10 @@
     "tag": "pedido-26",
     "issue": 63,
     "estado": "programado",
-    "publish_at": "2026-11-24T17:00:00Z",
+    "publish_at": "2026-11-24T19:00:00Z",
     "youtube_id": "bky3MeuOfcw",
     "lista_ok": true,
-    "portada_ok": true
+    "portada_ok": true,
+    "reprogramado": true
   }
 ]
