@@ -76,6 +76,35 @@ def _gemini_image(key: str, model: str, prompt: str) -> bytes:
     return base64.b64decode(part["inlineData"]["data"])
 
 
+def _openai_image(key: str, cfg: dict, prompt: str) -> bytes:
+    """Imagen con la API de OpenAI (apaisada). El modelo se elige solo si el configurado no existe."""
+    model = cfg.get("modelo_openai", "gpt-image-1")
+    try:
+        r = urllib.request.Request("https://api.openai.com/v1/models", headers={"Authorization": f"Bearer {key}"})
+        with urllib.request.urlopen(r, timeout=60) as resp:
+            names = sorted(m["id"] for m in json.loads(resp.read()).get("data", []) if "image" in m["id"])
+        if names and model not in names:
+            model = names[-1]
+    except Exception:  # noqa: BLE001
+        pass
+    body = {"model": model, "prompt": prompt, "size": cfg.get("tamano_openai", "1536x1024"), "quality": cfg.get("calidad_openai", "medium"), "n": 1}
+    r = urllib.request.Request("https://api.openai.com/v1/images/generations", data=json.dumps(body).encode(),
+                               headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
+    try:
+        with urllib.request.urlopen(r, timeout=240) as resp:
+            data = json.loads(resp.read())["data"][0]
+    except urllib.error.HTTPError as e:
+        try:
+            msg = json.loads(e.read()).get("error", {}).get("message", "")
+        except Exception:  # noqa: BLE001
+            msg = ""
+        raise RuntimeError(f"OpenAI HTTP {e.code}: {msg[:300]}") from None
+    if data.get("b64_json"):
+        return base64.b64decode(data["b64_json"])
+    with urllib.request.urlopen(data["url"], timeout=120) as resp:
+        return resp.read()
+
+
 def review(img: Path, story: dict) -> tuple[int, str]:
     """Claude mira la miniatura y le pone nota (1-10) con criterios de miniatura viral. Coste: décimas de céntimo."""
     try:
@@ -89,7 +118,7 @@ def review(img: Path, story: dict) -> tuple[int, str]:
             messages=[{"role": "user", "content": [
                 {"type": "image", "source": {"type": "base64", "media_type": media, "data": base64.b64encode(img.read_bytes()).decode()}},
                 {"type": "text", "text": (
-                    f"Es la miniatura de un vídeo de YouTube titulado «{story.get('title', '')}». Puntúala del 1 al 10 como "
+                    f"Es la miniatura de un vídeo de YouTube titulado «{story.get('title', '')}» (texto grande que se le pondrá encima: «{story.get('cover_text', '')}»). Puntúala del 1 al 10 según si, junto al título, dan MUCHAS GANAS DE HACER CLIC, como "
                     "miniatura VIRAL de canal de curiosidades animadas (estilo dibujos brillantes, muy llamativa). Exige: "
                     "personaje con emoción EXAGERADA y bien visible; objeto o situación del vídeo enorme y entendible al "
                     "instante; colores muy vivos y contraste (nada oscuro ni apagado); composición simple que se lea en el "
@@ -103,16 +132,22 @@ def review(img: Path, story: dict) -> tuple[int, str]:
 
 
 def generate(story: dict, out_dir: Path) -> Path | None:
-    key = os.environ.get("GEMINI_API_KEY", "").strip()
+    cfg = (load_config().get("miniaturas_ia") or {})
+    okey, gkey = os.environ.get("OPENAI_API_KEY", "").strip(), os.environ.get("GEMINI_API_KEY", "").strip()
+    proveedor = cfg.get("proveedor", "openai")
+    if proveedor == "openai" and not okey and gkey:
+        proveedor = "gemini"
+    if proveedor == "gemini" and not gkey and okey:
+        proveedor = "openai"
+    key = okey if proveedor == "openai" else gkey
     if not key:
         return None
-    cfg = (load_config().get("miniaturas_ia") or {})
-    model = _model(key, cfg.get("modelo", "gemini-2.5-flash-image"))
+    model = "openai" if proveedor == "openai" else _model(key, cfg.get("modelo", "gemini-2.5-flash-image"))
     raw = out_dir / f"{story['id']}_ia_fondo.png"
     prompt, best = prompt_for(story), None
     for intento in range(int(cfg.get("intentos", 2))):  # como mucho 2 imágenes: la segunda solo si la primera es floja
         try:
-            raw.write_bytes(_gemini_image(key, model, prompt))
+            raw.write_bytes(_openai_image(key, cfg, prompt) if proveedor == "openai" else _gemini_image(key, model, prompt))
         except Exception as e:  # noqa: BLE001
             print(f"  aviso: la miniatura con IA no salió ({str(e)[:200]}); se usa la de siempre")
             break
@@ -133,7 +168,7 @@ def generate(story: dict, out_dir: Path) -> Path | None:
     if r.returncode or not final.exists():
         print(f"  aviso: no se pudo poner el texto a la miniatura ({r.stderr[-200:]})")
         return None
-    print(f"  miniatura con IA lista ({model})")
+    print(f"  miniatura con IA lista ({proveedor})")
     return final
 
 

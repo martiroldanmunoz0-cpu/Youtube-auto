@@ -107,8 +107,12 @@ comedia:
     chica_2:      { voz: "es-ES-ElviraNeural",  velocidad: "+14%", tono: "+12Hz" }
     chica_latina: { voz: "es-MX-DaliaNeural",   velocidad: "+10%", tono: "+0Hz" }
 
-# Miniaturas con IA para los vídeos largos (Google Gemini). La clave va en el secreto GEMINI_API_KEY de GitHub.
+# Miniaturas con IA para los vídeos largos. Claves en los secretos de GitHub: OPENAI_API_KEY (o GEMINI_API_KEY).
 miniaturas_ia:
+  proveedor: "openai"             # openai | gemini (si falta la clave de uno, usa el otro)
+  modelo_openai: "gpt-image-1"    # si este nombre ya no existe, se usa el modelo de imágenes más nuevo
+  calidad_openai: "medium"        # low | medium | high (high se ve algo mejor pero cuesta ~4 veces más)
+  tamano_openai: "1536x1024"
   modelo: "gemini-2.5-flash-image"   # si este nombre ya no existe, se usa solo el primer modelo de imágenes disponible
   nota_minima: 8        # Claude puntúa cada miniatura; por debajo de 8 se repite una vez con las correcciones
   intentos: 2           # máximo de imágenes por vídeo (~4 céntimos cada una)

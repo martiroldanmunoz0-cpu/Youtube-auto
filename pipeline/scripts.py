@@ -123,6 +123,10 @@ import copy as _copy
 LONG_SCHEMA = _copy.deepcopy(STORY_SCHEMA)
 LONG_SCHEMA["properties"]["planos"]["items"]["properties"]["capitulo"] = {"type": "string"}
 LONG_SCHEMA["properties"]["planos"]["items"]["required"].append("capitulo")
+# Títulos: 5 candidatos puntuados ANTES de elegir (el título y la miniatura deciden si alguien entra)
+LONG_SCHEMA["properties"]["titulos_candidatos"] = {"type": "array", "items": {"type": "object", "additionalProperties": False,
+    "required": ["titulo", "nota"], "properties": {"titulo": {"type": "string"}, "nota": {"type": "integer"}}}}
+LONG_SCHEMA["required"] = ["titulos_candidatos"] + LONG_SCHEMA["required"]
 
 LONG_RULES = """VÍDEO LARGO (NO es un Short): formato horizontal de {lo_min}-{hi_min} minutos para YouTube.
 - LONGITUD: entre {lo_w} y {hi_w} palabras en total (la voz lee ~2,4 palabras por segundo). Entre 100 y 160 planos.
@@ -135,8 +139,13 @@ LONG_RULES = """VÍDEO LARGO (NO es un Short): formato horizontal de {lo_min}-{h
 - Ritmo: cada plano 1 frase (5-15 palabras); cambia de escena en cada plano; usa mucho "accion" y "composicion".
 - FINAL: remate sorprendente + pregunta para comentarios + invita a ver otro vídeo del canal ("si te ha gustado, en
   el siguiente vídeo…"). Aquí NO hay bucle: deja "frase_bucle" vacía ("").
-- titulo: máx 70 caracteres, muy llamativo y con las palabras que la gente busca, SIN "#shorts".
-- texto_portada: 2-4 palabras para la MINIATURA (enorme, se lee en el móvil), p. ej. "12 KM BAJO TIERRA".
+- TÍTULO (decide si la gente entra): primero escribe 5 "titulos_candidatos" MUY distintos y ponles nota del 1 al 10
+  según cuántas ganas dan de hacer clic. Fórmulas que funcionan en vídeos largos de curiosidades: "¿Qué pasaría si…?",
+  "Qué hay realmente…", "Por qué nadie…", "Lo que pasó cuando…", cifra extrema ("…durante 1000 años"), reto o
+  misterio sin resolver. Concreto, con emoción, sin mentir ni prometer lo que el vídeo no da, máx 60-70 caracteres y
+  con las palabras que la gente busca. En "titulo" pon el de mayor nota, SIN "#shorts".
+- texto_portada: 2-4 palabras ENORMES para la miniatura que COMPLEMENTEN al título sin repetirlo (añaden intriga o
+  la cifra impactante), p. ej. título "¿Qué hay a 12 km bajo tierra?" -> portada "LO TAPARON". Se lee en el móvil.
 """
 
 
