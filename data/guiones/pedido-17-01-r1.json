@@ -1,0 +1,414 @@
+{
+  "title": "El pescador que sobrevivió 438 días en el mar #shorts",
+  "description": "José Salvador Alvarenga salió a pescar un día y volvió 438 días después. ¿Tú habrías aguantado tanto? Cuéntanoslo en los comentarios.\n#supervivencia #historiareal #curiosidades #oceano",
+  "tags": [
+    "supervivencia",
+    "historia real",
+    "Alvarenga",
+    "438 días",
+    "océano Pacífico",
+    "naufragio",
+    "curiosidades",
+    "México",
+    "Islas Marshall",
+    "a la deriva"
+  ],
+  "beats": [
+    {
+      "text": "¿Aguantarías 438 días perdido en el Pacífico?",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "plano": "entero",
+        "mood": "sad",
+        "arms": "normal",
+        "label": "Ebon, 2014"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Noviembre de 2012. Eres pescador en Chiapas, y solo sales a trabajar un día.",
+      "scene": "escena",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "happy",
+        "objeto": "none",
+        "edad": "joven",
+        "label": "José Salvador, 35 años"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Te acompaña Ezequiel, de veintidós años. Una jornada de pesca, nada más.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "neutral",
+        "who": "ezequiel",
+        "objeto": "none",
+        "label": "Ezequiel, 22 años"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Entonces estalla una tormenta y os arrastra mar adentro.",
+      "scene": "accion",
+      "params": {
+        "tipo": "rayo",
+        "lugar": "bajo_el_mar",
+        "hora": "noche"
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "El motor falla. La radio muere. Nadie sabe dónde estáis.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "barca",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Pasan los días. Sin comida ni agua dulce, el sol te castiga.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "sol",
+            "pos": "arriba",
+            "tamano": "gigante",
+            "anim": "latir"
+          },
+          {
+            "pieza": "barca",
+            "pos": "centro",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Pescas con las manos. Atrapas pájaros que se posan en la barca.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "neutral",
+        "piezas": [
+          {
+            "pieza": "pajaro",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "entrar_der"
+          },
+          {
+            "pieza": "pez",
+            "pos": "izquierda",
+            "tamano": "pequeno",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "También tortugas. Todo lo comes crudo.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "tortuga",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "slam",
+      "transition": "whip"
+    },
+    {
+      "text": "Cuando llueve, recoges cada gota que puedes.",
+      "scene": "accion",
+      "params": {
+        "tipo": "beber",
+        "lugar": "bajo_el_mar",
+        "hora": "dia"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Y los tiburones no se van. Rondan la barca, día tras día.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "tiburon",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "barca",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Hacia el cuarto mes, Ezequiel enferma y ya no puede comer.",
+      "scene": "calendar",
+      "params": {
+        "style": "marcas",
+        "day": 120,
+        "label": "Cuatro meses"
+      },
+      "camera": "push_in",
+      "transition": "black"
+    },
+    {
+      "text": "Muere. Tú le hablas durante días, hasta despedirte de él en el mar.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "atardecer",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "barca",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "sol",
+            "pos": "fondo",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Sigues solo. Ves barcos a lo lejos, y ninguno te ve.",
+      "scene": "escena",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "sad",
+        "objeto": "none",
+        "edad": "adulto"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Tachas los días. La barba y el pelo te crecen.",
+      "scene": "calendar",
+      "params": {
+        "style": "marcas",
+        "day": 300,
+        "label": "Un año perdido"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Hasta que, el treinta de enero de 2014, la corriente te empuja a una playa.",
+      "scene": "big_text",
+      "params": {
+        "text": "438 DÍAS",
+        "label": "A la deriva",
+        "color": "#FFD400",
+        "lugar": "playa"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Es el atolón de Ebon, en las Islas Marshall, a unos diez mil kilómetros.",
+      "scene": "map_pin",
+      "params": {
+        "style": "globo",
+        "place": "Islas Marshall",
+        "detail": "10.000 km"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Pero había prometido algo a Ezequiel: visitar a su madre si sobrevivía.",
+      "scene": "group",
+      "params": {
+        "count": 2,
+        "hora": "dia",
+        "lugar": "salon",
+        "mood": "sad",
+        "people": [
+          "madre"
+        ],
+        "label": "Una promesa"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Y lo cumplió: viajó a México para contarle cómo fueron sus últimos días.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "plano": "entero",
+        "mood": "happy",
+        "arms": "up",
+        "edad": "adulto"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Y así fue como un hombre, tras cumplir su promesa, nos recuerda que…",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "plano": "entero",
+        "mood": "sad",
+        "arms": "normal",
+        "label": "Ebon, 2014"
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "morena",
+      "pelo": "largo",
+      "color_pelo": "negro",
+      "barba": "larga",
+      "gafas": false,
+      "ropa": "azul"
+    },
+    "ezequiel": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "morena",
+      "pelo": "corto",
+      "color_pelo": "negro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "naranja"
+    },
+    "madre": {
+      "genero": "mujer",
+      "edad": "mayor",
+      "piel": "morena",
+      "pelo": "moño",
+      "color_pelo": "canoso",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "morado"
+    }
+  },
+  "cover_text": "¿438 DÍAS PERDIDO?",
+  "question": "¿Cómo sobrevivió un pescador 438 días a la deriva en el océano Pacífico?",
+  "id": "pedido-17-01-r1",
+  "idea": {
+    "tipo": "caso_real",
+    "premisa": "El espectador se mete en la piel de José Salvador Alvarenga, pescador de unos 35 años. En noviembre de 2012 sale de la costa de Chiapas (México) en una barca de fibra de unos 7 metros con Ezequiel Córdoba, un joven de 22 años, para una jornada de pesca. Estructura de cuenta de días: DÍA 1, una tormenta los arrastra mar adentro, el motor falla y la radio muere. PRIMERAS SEMANAS: sin comida ni agua dulce, pescas con las manos, atrapas pájaros que se posan en la barca y tortugas, y recoges cada gota de lluvia. Cuando no llueve, bebéis orina y sangre de tortuga. Los tiburones rondan la barca. HACIA EL CUARTO MES: Ezequiel enferma y deja de poder comer la carne cruda; muere. Tú le hablas durante días antes de despedirte de él en el mar (contado con sobriedad, sin detalles morbosos). MESES SIGUIENTES: tachas días, ves barcos pasar a lo lejos que no te ven, el sol te quema y la barba y el pelo te crecen. DÍA 438: el 30 de enero de 2014 la corriente te deja en el atolón de Ebon, en las Islas Marshall, a unos 10.000 km de donde saliste.",
+    "gancho": "Plano de una playa tropical: un hombre con barba larga y pelo enmarañado sale de una barca destrozada. Narrador: '¿Aguantarías 438 días perdido en el océano Pacífico? Sales a pescar un solo día en México… y esto es lo que te pasa.'",
+    "giro_final": "Volvemos a la playa del principio, ya sabiendo quién es ese hombre. Pocos conocen lo que vino después: Alvarenga contó que le había prometido a Ezequiel que, si sobrevivía, iría a ver a su madre. En 2014, ya recuperado, viajó a México y la visitó para contarle cómo fueron los últimos días de su hijo. Cierre: 'Saliste a pescar un día. Volviste 438 días después… y lo primero que hiciste fue cumplir una promesa.'",
+    "estilo_visual": "Estilo luminoso y cálido para contrastar con la dureza, sin escenas oscuras ni repetidas. 1) 'escena' de una playa de islas al atardecer con el protagonista de cuerpo entero (hombre latino, barba y pelo largo) junto a la barca rota, para el gancho y para cerrar el círculo. 2) 'escena' del puerto de Chiapas al amanecer, con él más joven, barba corta, sujetando una red junto a Ezequiel. 3) 'accion' rayo con la tormenta. 4) 'composicion' variadas, una por momento y nunca la misma dos veces: barca pequeña en mar abierto con sol abrasador; barca con tortuga subiendo a bordo y el protagonista sorprendido; pájaro posado en la proa; pez saltando junto a sus manos; tiburón rodeando la barca bajo el agua; gotas de lluvia cayendo en un cubo. 5) 'accion' beber para el agua de lluvia. 6) 'calendar' en estilo marcas de recuento como hilo conductor, reapareciendo con más marcas cada vez. 7) La muerte de Ezequiel, solo con una 'composicion' sobria: barca al atardecer, sol bajo y una silueta sentada mirando el mar, sin mostrar el cuerpo. 8) 'map_pin' en estilo globo terráqueo trazando la ruta México → Islas Marshall. 9) 'big_text' únicamente para '438 DÍAS' y '10.000 KM'. 10) 'group' final: el protagonista con la madre de Ezequiel, abrazados. Portada: el protagonista barbudo sobre la barca con una tortuga y un tiburón asomando, cielo naranja y '438 DÍAS' en grande.",
+    "por_que_funcionara": "Combina los dos formatos que el dueño aprueba: el 'tú' inmersivo con progresión de días (como 'Tienes 17 años y no vas a dormir en 11 días') y la historia real tipo documental con final poco conocido (como 'Cayó 3.000 metros atada a su asiento'). El gancho deja el tema claro en 2 segundos con pregunta y cifra. Las marcas de recuento crean escalada constante. Cada pieza (tortuga, pájaro, pez, tiburón, gota, sol) tiene su propia escena, lo que evita el principal motivo de descarte. El final circular con la promesa cumplida emociona, honra a Ezequiel y anima a ver el vídeo otra vez.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "barca",
+      "tortuga",
+      "pajaro",
+      "pez",
+      "tiburon",
+      "gota",
+      "sol"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "¿Aguantarías 438 días perdido en el Pacífico?",
+      "tipo": "pregunta con cifra imposible",
+      "puntuacion": 9,
+      "motivo": "Deja claro el tema en dos segundos, usa una cifra que choca y exige saber la respuesta."
+    },
+    {
+      "texto": "Sales a pescar un día… y vuelves en 438.",
+      "tipo": "contradicción / contraste",
+      "puntuacion": 8,
+      "motivo": "Contraste brutal entre un día y 438, en segunda persona, aunque el tema se intuye menos."
+    },
+    {
+      "texto": "¿Qué harías si te pierdes en el océano un año?",
+      "tipo": "qué pasaría si",
+      "puntuacion": 7,
+      "motivo": "Tema claro, pero la cifra es menos concreta y pierde fuerza."
+    },
+    {
+      "texto": "Vas a pescar. Una tormenta se lleva tu barca.",
+      "tipo": "segunda persona con el tema",
+      "puntuacion": 7,
+      "motivo": "Inmersivo y con tema claro, pero menos impactante que una cifra."
+    },
+    {
+      "texto": "Nadie sobrevive tanto a la deriva. Él sí.",
+      "tipo": "contradicción",
+      "puntuacion": 6,
+      "motivo": "Engancha, pero no dice dónde ni cómo, así que pasa peor la prueba del desconocido."
+    }
+  ]
+}

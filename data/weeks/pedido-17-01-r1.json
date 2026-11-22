@@ -1,0 +1,27 @@
+{
+  "semana": "pedido-17-01-r1",
+  "tanda": "pedido-17",
+  "pedido": null,
+  "tag": "pedido-17",
+  "videos": [
+    {
+      "id": "pedido-17-01-r1",
+      "title": "El pescador que sobrevivió 438 días en el mar #shorts",
+      "description": "José Salvador Alvarenga salió a pescar un día y volvió 438 días después. ¿Tú habrías aguantado tanto? Cuéntanoslo en los comentarios.\n#supervivencia #historiareal #curiosidades #oceano",
+      "tags": [
+        "supervivencia",
+        "historia real",
+        "Alvarenga",
+        "438 días",
+        "océano Pacífico",
+        "naufragio",
+        "curiosidades",
+        "México",
+        "Islas Marshall",
+        "a la deriva"
+      ],
+      "video": "pedido-17-01-r1.mp4",
+      "portada": "pedido-17-01-r1_portada.jpg"
+    }
+  ]
+}
