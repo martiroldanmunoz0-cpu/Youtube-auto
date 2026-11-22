@@ -14,6 +14,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+import gasto
 from common import RENDERER, load_config
 
 API = "https://generativelanguage.googleapis.com/v1beta"
@@ -92,13 +93,15 @@ def _openai_image(key: str, cfg: dict, prompt: str) -> bytes:
                                headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
     try:
         with urllib.request.urlopen(r, timeout=240) as resp:
-            data = json.loads(resp.read())["data"][0]
+            data_all = json.loads(resp.read())
+            data = data_all["data"][0]
     except urllib.error.HTTPError as e:
         try:
             msg = json.loads(e.read()).get("error", {}).get("message", "")
         except Exception:  # noqa: BLE001
             msg = ""
         raise RuntimeError(f"OpenAI HTTP {e.code}: {msg[:300]}") from None
+    gasto.openai_image(model, data_all.get("usage"), cfg.get("calidad_openai", "medium"))
     if data.get("b64_json"):
         return base64.b64decode(data["b64_json"])
     with urllib.request.urlopen(data["url"], timeout=120) as resp:
@@ -124,6 +127,7 @@ def review(img: Path, story: dict) -> tuple[int, str]:
                     "instante; colores muy vivos y contraste (nada oscuro ni apagado); composición simple que se lea en el "
                     "móvil; lado izquierdo despejado para el título; SIN letras, números ni marcas de agua dentro del dibujo; "
                     "sin deformidades raras (manos, caras). En 'problemas' di en inglés, en una frase, qué corregir.")}]}])
+        gasto.anthropic(r.model, r.usage, que="revisar miniatura")
         out = json.loads(next(b.text for b in r.content if b.type == "text"))
         return int(out["nota"]), out["problemas"]
     except Exception as e:  # noqa: BLE001

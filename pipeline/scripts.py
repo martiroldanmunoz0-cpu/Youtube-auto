@@ -17,6 +17,7 @@ import anthropic
 
 import os
 
+import gasto
 from common import CATALOG, DATA, formato, load_config, load_history, pedido, read_json, run_id, week_dir, write_json
 
 client = anthropic.Anthropic()
@@ -399,7 +400,8 @@ def make_params(system: str, context: str | None, user: str, schema: dict, model
     )
 
 
-def parse_message(resp) -> dict:
+def parse_message(resp, batch: bool = False) -> dict:
+    gasto.anthropic(getattr(resp, "model", ""), getattr(resp, "usage", None), batch)  # se paga aunque luego falle
     if resp.stop_reason == "refusal":
         raise RuntimeError(f"El modelo rechazó la petición: {resp.stop_details}")
     if resp.stop_reason == "max_tokens":
@@ -453,7 +455,7 @@ def run_many(requests: dict[str, dict], use_batch: bool, timeout_s: int = 5400) 
                 for r in client.messages.batches.results(batch.id):
                     if r.result.type == "succeeded":
                         try:
-                            results[r.custom_id] = parse_message(r.result.message)
+                            results[r.custom_id] = parse_message(r.result.message, batch=True)
                         except Exception as e:
                             results[r.custom_id] = e
                     else:

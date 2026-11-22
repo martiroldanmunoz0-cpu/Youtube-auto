@@ -20,6 +20,11 @@ header{position:sticky;top:0;z-index:5;background:rgba(11,12,18,.92);backdrop-fi
 .logo{width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:800}
 .top h1{font-size:17px;margin:0;flex:1;line-height:1.2}
 .top h1 small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.saldos{display:flex;gap:6px}
+.saldo{display:flex;flex-direction:column;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:3px 9px;color:var(--fg,#eee);cursor:pointer;line-height:1.15}
+.saldo i{font-style:normal;font-size:10px;color:var(--muted)}.saldo b{font-size:13px;white-space:nowrap}
+.saldo.low b{color:var(--bad)}
+@media(max-width:480px){.saldo{padding:2px 6px}.saldo b{font-size:12px}.saldo i{font-size:9px}}.saldo.none b{color:var(--accent);font-weight:600;font-size:11px}
 .iconbtn{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 10px;cursor:pointer}
 nav{max-width:1100px;margin:auto;display:flex;gap:4px;padding:0 12px 8px;overflow-x:auto;scrollbar-width:none}
 nav button{flex:0 0 auto;background:none;border:0;border-radius:999px;padding:7px 14px;color:var(--muted);cursor:pointer;white-space:nowrap}
@@ -135,6 +140,10 @@ nav .n.bad{background:var(--bad);color:#fff}
   <div class="top">
     <div class="logo">C</div>
     <h1>Curiosidario<small id="sub">Panel de vídeos</small></h1>
+    <div class="saldos" id="saldos" title="Saldo que te queda en cada API (lo que pusiste menos lo que han gastado los vídeos desde entonces). Pulsa para corregirlo.">
+      <button class="saldo" data-s="anthropic"><i>Claude</i><b>…</b></button>
+      <button class="saldo" data-s="openai"><i>OpenAI</i><b>…</b></button>
+    </div>
     <button class="iconbtn" id="refresh" title="Actualizar">↻</button>
     <button class="iconbtn" id="settings" title="Ajustes">⚙︎</button>
   </div>
@@ -356,6 +365,53 @@ nav .n.bad{background:var(--bad);color:#fff}
   async function loadFiles() {
     try { const r = await fetch("archivos.json", {cache: "no-store"}); files = r.ok ? await r.json() : {}; } catch { files = {}; }
   }
+  // ---------- Saldo de las APIs ----------
+  // Nadie (ni Anthropic ni OpenAI) deja consultar el saldo desde fuera: el dueño apunta su saldo una vez y el panel le
+  // resta lo que han gastado los vídeos desde entonces (data/gasto/*.json, calculado con los tokens reales).
+  const SALDO_SRV = {anthropic: {nombre: "Claude", web: "console.anthropic.com → Billing"}, openai: {nombre: "OpenAI", web: "platform.openai.com → Billing"}};
+  const stampNow = () => new Date().toISOString().replace(/[-:]/g, "").slice(0, 15);
+  async function loadSaldos() {
+    let base = await ghFile("data/saldo.json");
+    if (!base || typeof base !== "object") { try { base = JSON.parse(store.get("saldo_base") || "{}"); } catch { base = {}; } }
+    let files = [];
+    try { files = (await gh("/contents/data/gasto")).filter(f => f.name.endsWith(".json")); } catch {}
+    let cache = {}; try { cache = JSON.parse(store.get("gasto_cache") || "{}"); } catch {}
+    const spent = {anthropic: 0, openai: 0};
+    for (const f of files) {
+      const stamp = f.name.slice(0, 15);
+      const needed = Object.keys(SALDO_SRV).some(k => base[k] && stamp >= base[k].desde);
+      if (!needed) continue;
+      if (!cache[f.name]) { const d = await ghFile(`data/gasto/${f.name}`); if (d && d.total_usd) cache[f.name] = d.total_usd; }
+      for (const k of Object.keys(spent)) if (base[k] && stamp >= base[k].desde && cache[f.name]) spent[k] += cache[f.name][k] || 0;
+    }
+    store.set("gasto_cache", JSON.stringify(cache));
+    document.querySelectorAll(".saldo").forEach(btn => {
+      const k = btn.dataset.s, b = btn.querySelector("b");
+      if (!base[k]) { btn.className = "saldo none"; b.textContent = "poner saldo"; return; }
+      const left = base[k].usd - spent[k];
+      btn.className = "saldo" + (left < 1 ? " low" : "");
+      b.textContent = left.toLocaleString("es-ES", {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " $";
+      btn.title = `${SALDO_SRV[k].nombre}: pusiste ${base[k].usd} $ · gastado desde entonces ${spent[k].toFixed(3)} $. Pulsa para corregirlo.`;
+    });
+  }
+  document.querySelectorAll(".saldo").forEach(btn => btn.addEventListener("click", async () => {
+    const k = btn.dataset.s, srv = SALDO_SRV[k];
+    const v = prompt(`¿Cuánto saldo te queda ahora en ${srv.nombre}? (en dólares, como lo enseña ${srv.web})`);
+    if (v === null) return;
+    const usd = parseFloat(String(v).replace(",", ".").replace(/[^\d.]/g, ""));
+    if (!isFinite(usd)) { toast("Pon solo el número, p. ej. 4,50", true); return; }
+    let base = await ghFile("data/saldo.json"); if (!base || typeof base !== "object") { try { base = JSON.parse(store.get("saldo_base") || "{}"); } catch { base = {}; } }
+    base[k] = {usd, desde: stampNow()};
+    store.set("saldo_base", JSON.stringify(base));
+    try { // se guarda también en el repositorio para verlo igual en el móvil y en el ordenador
+      let sha; try { sha = (await gh("/contents/data/saldo.json")).sha; } catch {}
+      await gh("/contents/data/saldo.json", {method: "PUT", headers: {"Content-Type": "application/json"}, body: JSON.stringify({
+        message: `Saldo de ${srv.nombre}: ${usd} $`, content: btoa(unescape(encodeURIComponent(JSON.stringify(base, null, 1)))), ...(sha ? {sha} : {})})});
+      toast(`✓ Saldo de ${srv.nombre} guardado`);
+    } catch { toast(`Saldo de ${srv.nombre} guardado en este dispositivo`); }
+    loadSaldos();
+  }));
+
   async function loadQueue() {
     const q = await ghFile("data/queue.json");
     queue = Array.isArray(q) ? q : [];
@@ -998,7 +1054,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   async function refreshAll() {
     $("#sub").textContent = "Actualizando…";
     await Promise.all([loadFiles(), loadQueue()]);
-    await Promise.all([loadReview(), loadRunning(), loadHistory(), loadProblems(), loadPlan()]);
+    await Promise.all([loadReview(), loadRunning(), loadHistory(), loadProblems(), loadPlan(), loadSaldos().catch(() => {})]);
     renderProgramados(); renderCalendar();
     $("#sub").textContent = "Actualizado " + fmtTime(new Date());
   }

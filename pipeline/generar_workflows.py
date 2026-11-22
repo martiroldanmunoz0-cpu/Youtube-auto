@@ -144,6 +144,15 @@ jobs:
           GH_TOKEN: ${{{{ github.token }}}}
         run: python pipeline/scripts.py
 
+      - name: Guardar el gasto de API (para el saldo del panel)
+        if: always()
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data/gasto 2>/dev/null || exit 0
+          git commit -m "Gasto de API: $RUN_ID" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
+
       - name: Escenas a medida — guardar el guion y esperar a Claude
         if: env.A_MEDIDA == 'true'
         env:
@@ -161,7 +170,7 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "shorts-bot@users.noreply.github.com"
-          git add data/planes
+          git add data/planes data/gasto 2>/dev/null || git add data/planes
           git commit -m "Plan $RUN_ID: montando" || echo "sin cambios"
           for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
 
@@ -283,7 +292,7 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "shorts-bot@users.noreply.github.com"
-          git add data/planes
+          git add data/planes data/gasto 2>/dev/null || git add data/planes
           git commit -m "Plan de la semana $RUN_ID" || echo "sin cambios"
           for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
       - name: Si no falta ninguna pieza, montar ya
@@ -478,6 +487,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           if [ -n "$REHACER_ID" ]; then FASE=rehacer python pipeline/scripts.py; else python pipeline/scripts.py; fi
+      - name: Guardar el gasto de API (para el saldo del panel)
+        if: always()
+        run: |
+          git config user.name "shorts-bot"
+          git config user.email "shorts-bot@users.noreply.github.com"
+          git add data/gasto 2>/dev/null || exit 0
+          git commit -m "Gasto de API: $RUN_ID" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
       - name: Escenas a medida — guardar el guion y esperar a Claude
         if: env.A_MEDIDA == 'true' && env.REHACER_ID == ''
         env:
