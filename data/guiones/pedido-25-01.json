@@ -1,532 +1,530 @@
 {
- "title": "What Happens If You Stop Sleeping? The 11-Day Record #shorts",
- "description": "How long can you go without sleep? 👇\n\nWhat happens to your body if you stop sleeping? The true story of Randy Gardner, who stayed awake 264 hours in 1964.\nGuinness stopped tracking sleep-deprivation records because they were too dangerous.\n#sleepdeprivation #whathappensifyoustopsleeping #randygardner #truestory #facts",
- "tags": [
-  "what happens if you stop sleeping",
-  "sleep deprivation",
-  "randy gardner",
-  "11 days awake",
-  "no sleep experiment",
-  "hallucinations",
-  "microsleep",
-  "stay awake 264 hours",
-  "sleep facts",
-  "true story",
-  "human body",
-  "insomnia"
- ],
- "beats": [
-  {
-   "text": "This teenager stayed awake for 11 days.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "264 HOURS",
-      "label": "No sleep",
-      "lugar": "dormitorio",
-      "color": "#ff3b30"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "What happens to your body without sleep?",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 1,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "dormitorio",
-      "hora": "noche",
-      "persona": "medio",
-      "mood": "worried",
-      "piezas": [
-       {
-        "pieza": "cerebro",
-        "pos": "derecha",
-        "tamano": "grande",
-        "anim": "latir"
-       }
-      ]
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "whip"
-  },
-  {
-   "text": "Randy Gardner, seventeen, wanted a science fair project.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 2,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "dormitorio",
-      "hora": "dia",
-      "persona": "medio",
-      "mood": "happy",
-      "piezas": [
-       {
-        "pieza": "microscopio",
-        "pos": "derecha",
-        "tamano": "grande",
-        "anim": "entrar_der"
-       }
-      ],
-      "label": "San Diego, 1963"
-     }
-    }
-   },
-   "camera": "pan_right",
-   "transition": "fade"
-  },
-  {
-   "text": "Hour twenty-four: you react like a drunk driver.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 3,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "calle",
-      "hora": "atardecer",
-      "persona": "medio",
-      "mood": "worried",
-      "piezas": [
-       {
-        "pieza": "coche_rojo",
-        "pos": "izquierda",
-        "tamano": "grande",
-        "anim": "entrar_izq"
-       },
-       {
-        "pieza": "vaso_agua",
-        "pos": "derecha",
-        "tamano": "mediano",
-        "anim": "temblar"
-       }
-      ],
-      "label": "Legally drunk"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Your vision blurs, and everything goes dark.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 4,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "vista_nublada"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "At forty-eight hours, your brain steals microsleeps.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 5,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "dormir",
-      "lugar": "oficina",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Seconds of blackout, eyes wide open.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 6,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "sorpresa",
-      "lugar": "oficina",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Friends Bruce and Joe kept shaking him awake.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 7,
-    "respaldo": {
-     "scene": "group",
-     "params": {
-      "count": 3,
-      "lugar": "salon",
-      "hora": "noche",
-      "mood": "worried",
-      "people": [
-       "bruce",
-       "joe"
-      ],
-      "label": "3 AM"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "whip"
-  },
-  {
-   "text": "By seventy-two hours, your memory slips.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 8,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "marearse",
-      "lugar": "salon",
-      "hora": "noche"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "Your heart races. The world looks wrong.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 9,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "latido"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Randy mistook a street sign for a person.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 10,
-    "respaldo": {
-     "scene": "city_street",
-     "params": {
-      "figure": true,
-      "fog": true
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "red"
-  },
-  {
-   "text": "Day four: he believed he was a Chargers player.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 11,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "hora": "noche",
-      "persona": "medio",
-      "mood": "shocked",
-      "piezas": [
-       {
-        "pieza": "calavera",
-        "pos": "izquierda",
-        "tamano": "grande",
-        "anim": "flotar"
-       },
-       {
-        "pieza": "huevo",
-        "pos": "derecha",
-        "tamano": "mediano",
-        "anim": "girar"
-       }
-      ],
-      "label": "Paul Lowe?"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Researcher William Dement watched: lucid, barely.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 12,
-    "respaldo": {
-     "scene": "doctor",
-     "params": {
-      "say": "He's still lucid... barely.",
-      "mood": "worried",
-      "hora": "noche",
-      "who": "medico"
-     }
+  "title": "What Happens If You Stop Sleeping? The 11-Day Record #shorts",
+  "description": "How long can you go without sleep? 👇\n\nWhat happens to your body if you stop sleeping? The true story of Randy Gardner, who stayed awake 264 hours in 1964.\nGuinness stopped tracking sleep-deprivation records because they were too dangerous.\n#sleepdeprivation #whathappensifyoustopsleeping #randygardner #truestory #facts",
+  "tags": [
+    "what happens if you stop sleeping",
+    "sleep deprivation",
+    "randy gardner",
+    "11 days awake",
+    "no sleep experiment",
+    "hallucinations",
+    "microsleep",
+    "stay awake 264 hours",
+    "sleep facts",
+    "true story",
+    "human body",
+    "insomnia"
+  ],
+  "beats": [
+    {
+      "text": "This teenager stayed awake for 11 days.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "264 HOURS",
+            "label": "No sleep",
+            "lugar": "dormitorio",
+            "color": "#ff3b30"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
     },
-    "who": "medico"
-   },
-   "camera": "static",
-   "transition": "fade"
-  },
-  {
-   "text": "Day eleven, he held a press conference.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 13,
-    "respaldo": {
-     "scene": "newspaper",
-     "params": {
-      "headline": "TEEN ENDS 11-DAY VIGIL",
-      "kicker": "San Diego Daily",
-      "date": "Jan 8, 1964",
-      "style": "papel"
-     }
+    {
+      "text": "What happens to your body without sleep?",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "dormitorio",
+            "hora": "noche",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "cerebro",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "latir"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Randy Gardner, seventeen, wanted a science fair project.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "dormitorio",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "happy",
+            "piezas": [
+              {
+                "pieza": "microscopio",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "entrar_der"
+              }
+            ],
+            "label": "San Diego, 1963"
+          }
+        }
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Hour twenty-four: you react like a drunk driver.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "atardecer",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "coche_rojo",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "vaso_agua",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "label": "Legally drunk"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Your vision blurs, and everything goes dark.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "vista_nublada"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "At forty-eight hours, your brain steals microsleeps.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dormir",
+            "lugar": "oficina",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Seconds of blackout, eyes wide open.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "oficina",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Friends Bruce and Joe kept shaking him awake.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "group",
+          "params": {
+            "count": 3,
+            "lugar": "salon",
+            "hora": "noche",
+            "mood": "worried",
+            "people": [
+              "bruce",
+              "joe"
+            ],
+            "label": "3 AM"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "By seventy-two hours, your memory slips.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "marearse",
+            "lugar": "salon",
+            "hora": "noche"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Your heart races. The world looks wrong.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "latido"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Randy mistook a street sign for a person.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "city_street",
+          "params": {
+            "figure": true,
+            "fog": true
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "red"
+    },
+    {
+      "text": "Day four: he believed he was a Chargers player.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "noche",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "calavera",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "huevo",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "girar"
+              }
+            ],
+            "label": "Paul Lowe?"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Researcher William Dement watched: lucid, barely.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "doctor",
+          "params": {
+            "say": "He's still lucid... barely.",
+            "mood": "worried",
+            "hora": "noche",
+            "who": "medico"
+          }
+        },
+        "who": "medico"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Day eleven, he held a press conference.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "headline": "TEEN ENDS 11-DAY VIGIL",
+            "kicker": "San Diego Daily",
+            "date": "Jan 8, 1964",
+            "style": "papel"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "cut"
+    },
+    {
+      "text": "Then he slept fourteen hours, and woke up fine.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dormir",
+            "lugar": "dormitorio",
+            "hora": "dia",
+            "label": "14 HRS"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Guinness stopped tracking sleep records. Too dangerous.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "WORLD RECORDS",
+            "lines": [
+              "Longest awake: 264 hours",
+              "Holder: Randy Gardner",
+              "Year: 1964"
+            ],
+            "highlight": 0,
+            "stamp": "NO LONGER ACCEPTED"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Decades later, Randy battled severe insomnia.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": 1964,
+            "to": 2017,
+            "label": "Decades later"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "black"
+    },
+    {
+      "text": "The boy who refused to sleep... couldn't.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 17,
+        "respaldo": {
+          "scene": "bedroom",
+          "params": {
+            "moon": true,
+            "door_open": 0.3
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "And if you ever feel exhausted, remember that…",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-25-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "264 HOURS",
+            "label": "No sleep",
+            "lugar": "dormitorio",
+            "color": "#ff3b30"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
     }
-   },
-   "camera": "pull_out",
-   "transition": "cut"
-  },
-  {
-   "text": "Then he slept fourteen hours, and woke up fine.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 14,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "dormir",
-      "lugar": "dormitorio",
-      "hora": "dia",
-      "label": "14 HRS"
-     }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "blanco"
+    },
+    "bruce": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño_claro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    },
+    "joe": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "media",
+      "pelo": "corto",
+      "color_pelo": "negro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "verde"
+    },
+    "medico": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": true,
+      "ropa": "blanco"
     }
-   },
-   "camera": "static",
-   "transition": "fade"
   },
-  {
-   "text": "Guinness stopped tracking sleep records. Too dangerous.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 15,
-    "respaldo": {
-     "scene": "document",
-     "params": {
-      "title": "WORLD RECORDS",
-      "lines": [
-       "Longest awake: 264 hours",
-       "Holder: Randy Gardner",
-       "Year: 1964"
-      ],
-      "highlight": 0,
-      "stamp": "NO LONGER ACCEPTED"
-     }
+  "cover_text": "11 DAYS WITHOUT SLEEP",
+  "comment_q": "How long can you go without sleep?",
+  "lista": "Human Body",
+  "question": "What happens to your body and brain when you stop sleeping for days?",
+  "piezas_pendientes": [
+    "poster_feria_ciencias",
+    "coche_antiguo",
+    "botella_cerveza",
+    "casco_futbol_americano",
+    "balon_futbol_americano"
+  ],
+  "id": "pedido-25-01",
+  "idea": {
+    "tipo": "caso_real",
+    "premisa": "A documentary-style story told in two layers. Narration puts YOU in the chair ('By hour 24, you...'), then cuts to what was really happening to Randy Gardner, a 17-year-old San Diego high schooler who stayed awake 264 hours (about 11 days) from December 28, 1963 to January 8, 1964 for a science fair project. His friends Bruce McAllister and Joe Marciano kept him awake, and Stanford sleep researcher William Dement later joined them. Escalation: at 24 hours your reaction time is about as bad as being legally drunk, with a blood alcohol level around 0.10%. At 48 hours your brain starts stealing 'microsleeps', blackouts lasting seconds while your eyes are open. By about 72 hours your mood swings, your memory slips and the world starts to look wrong. Randy grew moody and forgetful, his speech slurred and he hallucinated, mistaking a street sign for a person. Around day 4 he became convinced he was Paul Lowe, a running back for the San Diego Chargers. On day 11 he held a press conference, then slept about 14 hours and 40 minutes and woke up seemingly fine. No version of this story is a countdown list: the hours only mark the turning points in Randy's story.",
+    "gancho": "What happens to your body if you just... stop sleeping? In 1964, a 17-year-old kid tried it for 11 days straight.",
+    "giro_final": "Everyone called it a happy ending: one long sleep, and Randy was back to normal. But Guinness eventually stopped accepting sleep-deprivation records because they were too dangerous, so his record may never be officially broken. And decades later, Randy said he spent years battling severe insomnia. The boy who refused to sleep... later couldn't. Loop line: 'So... how long have YOU been awake?'",
+    "estilo_visual": "Bright main style for the documentary part, with dark scenes reserved for the hallucinations. Opening: 'escena' with a 1960s San Diego teen's bedroom by day, Randy holding a science fair poster, then 'big_text' showing '264 HOURS' with the person reacting below. Each 'you' stage uses 'accion'. At 24h, 'vista_nublada' plus a 'composicion' with a car and a beer bottle for the drunk comparison. At 48h, 'accion' dormir cut short by 'sorpresa' to show the microsleeps. At 72h, 'marearse' and 'latido'. The cut to Randy uses 'group' (Randy with Bruce and Joe shaking him awake) and 'clock' ticking at 3 AM. The hallucinations switch to dark style: 'city_street' where a street sign morphs into a person, then a 'composicion' with a football and Chargers-style helmet floating around Randy. 'doctor' shows Dement with a speech bubble ('He's still lucid... barely'). The press conference is a vintage 'newspaper' clipping ('TEEN ENDS 11-DAY VIGIL'), then 'accion' dormir with a '14 HRS' 'big_text'. The twist uses a 'document' with a Guinness-style record sheet stamped 'NO LONGER ACCEPTED', then 'year_jump' 1964 → 2017 and closes on dark 'bedroom' with Randy older, eyes wide open next to the 'clock'.",
+    "por_que_funcionara": "It delivers exactly what the owner asked for (24h, 48h, 72h, hallucinations, Randy Gardner) without feeling like a dry countdown, because every stage is felt in second person and then 'proven' by a real kid with a name. The relatable comparisons (legally drunk, blacking out with your eyes open) are instantly clear to a US viewer. The bizarre detail of him believing he was a Chargers football player is shareable. The double twist rewards viewers who stay to the end: Guinness banning the record and the irony of later insomnia. The closing question loops straight back into the hook and invites comments.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "cerebro",
+      "poster_feria_ciencias",
+      "senal_trafico",
+      "balon_futbol_americano",
+      "casco_futbol_americano",
+      "botella_cerveza",
+      "coche_antiguo",
+      "trofeo_record"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "This teenager stayed awake for 11 days.",
+      "tipo": "c",
+      "puntuacion": 9,
+      "motivo": "Concrete shocking fact with a protagonist, and the topic (no sleep) is clear in under 2 seconds."
+    },
+    {
+      "texto": "What happens if you stop sleeping completely?",
+      "tipo": "a",
+      "puntuacion": 8,
+      "motivo": "Direct question that names the topic, but with no protagonist or number to anchor it."
+    },
+    {
+      "texto": "How long could you stay awake before breaking?",
+      "tipo": "b",
+      "puntuacion": 7,
+      "motivo": "Challenge question that makes the viewer curious, but it is less concrete."
+    },
+    {
+      "texto": "You haven't slept in 24 hours. Now what?",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Second-person immersion, but it sounds like the middle of the story."
+    },
+    {
+      "texto": "Everyone thinks sleep loss just makes you tired.",
+      "tipo": "e",
+      "puntuacion": 6,
+      "motivo": "Contradiction hook, but it is vague and doesn't say what the video will show."
     }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Decades later, Randy battled severe insomnia.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 16,
-    "respaldo": {
-     "scene": "year_jump",
-     "params": {
-      "from": 1964,
-      "to": 2017,
-      "label": "Decades later"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "black"
-  },
-  {
-   "text": "The boy who refused to sleep... couldn't.",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 17,
-    "respaldo": {
-     "scene": "bedroom",
-     "params": {
-      "moon": true,
-      "door_open": 0.3
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "And if you ever feel exhausted, remember that…",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-25-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "264 HOURS",
-      "label": "No sleep",
-      "lugar": "dormitorio",
-      "color": "#ff3b30"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut",
-   "bucle": true
-  }
- ],
- "looks": {
-  "protagonista": {
-   "genero": "hombre",
-   "edad": "joven",
-   "piel": "clara",
-   "pelo": "corto",
-   "color_pelo": "castaño",
-   "barba": "no",
-   "gafas": false,
-   "ropa": "blanco"
-  },
-  "bruce": {
-   "genero": "hombre",
-   "edad": "joven",
-   "piel": "clara",
-   "pelo": "corto",
-   "color_pelo": "castaño_claro",
-   "barba": "no",
-   "gafas": false,
-   "ropa": "azul"
-  },
-  "joe": {
-   "genero": "hombre",
-   "edad": "joven",
-   "piel": "media",
-   "pelo": "corto",
-   "color_pelo": "negro",
-   "barba": "no",
-   "gafas": false,
-   "ropa": "verde"
-  },
-  "medico": {
-   "genero": "hombre",
-   "edad": "adulto",
-   "piel": "clara",
-   "pelo": "corto",
-   "color_pelo": "castaño_oscuro",
-   "barba": "no",
-   "gafas": true,
-   "ropa": "blanco"
-  }
- },
- "cover_text": "11 DAYS WITHOUT SLEEP",
- "comment_q": "How long can you go without sleep?",
- "lista": "Human Body",
- "question": "What happens to your body and brain when you stop sleeping for days?",
- "piezas_pendientes": [
-  "poster_feria_ciencias",
-  "coche_antiguo",
-  "botella_cerveza",
-  "casco_futbol_americano",
-  "balon_futbol_americano"
- ],
- "id": "pedido-25-01",
- "idea": {
-  "tipo": "caso_real",
-  "premisa": "A documentary-style story told in two layers. Narration puts YOU in the chair ('By hour 24, you...'), then cuts to what was really happening to Randy Gardner, a 17-year-old San Diego high schooler who stayed awake 264 hours (about 11 days) from December 28, 1963 to January 8, 1964 for a science fair project. His friends Bruce McAllister and Joe Marciano kept him awake, and Stanford sleep researcher William Dement later joined them. Escalation: at 24 hours your reaction time is about as bad as being legally drunk, with a blood alcohol level around 0.10%. At 48 hours your brain starts stealing 'microsleeps', blackouts lasting seconds while your eyes are open. By about 72 hours your mood swings, your memory slips and the world starts to look wrong. Randy grew moody and forgetful, his speech slurred and he hallucinated, mistaking a street sign for a person. Around day 4 he became convinced he was Paul Lowe, a running back for the San Diego Chargers. On day 11 he held a press conference, then slept about 14 hours and 40 minutes and woke up seemingly fine. No version of this story is a countdown list: the hours only mark the turning points in Randy's story.",
-  "gancho": "What happens to your body if you just... stop sleeping? In 1964, a 17-year-old kid tried it for 11 days straight.",
-  "giro_final": "Everyone called it a happy ending: one long sleep, and Randy was back to normal. But Guinness eventually stopped accepting sleep-deprivation records because they were too dangerous, so his record may never be officially broken. And decades later, Randy said he spent years battling severe insomnia. The boy who refused to sleep... later couldn't. Loop line: 'So... how long have YOU been awake?'",
-  "estilo_visual": "Bright main style for the documentary part, with dark scenes reserved for the hallucinations. Opening: 'escena' with a 1960s San Diego teen's bedroom by day, Randy holding a science fair poster, then 'big_text' showing '264 HOURS' with the person reacting below. Each 'you' stage uses 'accion'. At 24h, 'vista_nublada' plus a 'composicion' with a car and a beer bottle for the drunk comparison. At 48h, 'accion' dormir cut short by 'sorpresa' to show the microsleeps. At 72h, 'marearse' and 'latido'. The cut to Randy uses 'group' (Randy with Bruce and Joe shaking him awake) and 'clock' ticking at 3 AM. The hallucinations switch to dark style: 'city_street' where a street sign morphs into a person, then a 'composicion' with a football and Chargers-style helmet floating around Randy. 'doctor' shows Dement with a speech bubble ('He's still lucid... barely'). The press conference is a vintage 'newspaper' clipping ('TEEN ENDS 11-DAY VIGIL'), then 'accion' dormir with a '14 HRS' 'big_text'. The twist uses a 'document' with a Guinness-style record sheet stamped 'NO LONGER ACCEPTED', then 'year_jump' 1964 → 2017 and closes on dark 'bedroom' with Randy older, eyes wide open next to the 'clock'.",
-  "por_que_funcionara": "It delivers exactly what the owner asked for (24h, 48h, 72h, hallucinations, Randy Gardner) without feeling like a dry countdown, because every stage is felt in second person and then 'proven' by a real kid with a name. The relatable comparisons (legally drunk, blacking out with your eyes open) are instantly clear to a US viewer. The bizarre detail of him believing he was a Chargers football player is shareable. The double twist rewards viewers who stay to the end: Guinness banning the record and the irony of later insomnia. The closing question loops straight back into the hook and invites comments.",
-  "inspirado_en": [],
-  "piezas_nuevas": [
-   "cerebro",
-   "poster_feria_ciencias",
-   "senal_trafico",
-   "balon_futbol_americano",
-   "casco_futbol_americano",
-   "botella_cerveza",
-   "coche_antiguo",
-   "trofeo_record"
   ]
- },
- "ganchos": [
-  {
-   "texto": "This teenager stayed awake for 11 days.",
-   "tipo": "c",
-   "puntuacion": 9,
-   "motivo": "Concrete shocking fact with a protagonist, and the topic (no sleep) is clear in under 2 seconds."
-  },
-  {
-   "texto": "What happens if you stop sleeping completely?",
-   "tipo": "a",
-   "puntuacion": 8,
-   "motivo": "Direct question that names the topic, but with no protagonist or number to anchor it."
-  },
-  {
-   "texto": "How long could you stay awake before breaking?",
-   "tipo": "b",
-   "puntuacion": 7,
-   "motivo": "Challenge question that makes the viewer curious, but it is less concrete."
-  },
-  {
-   "texto": "You haven't slept in 24 hours. Now what?",
-   "tipo": "d",
-   "puntuacion": 7,
-   "motivo": "Second-person immersion, but it sounds like the middle of the story."
-  },
-  {
-   "texto": "Everyone thinks sleep loss just makes you tired.",
-   "tipo": "e",
-   "puntuacion": 6,
-   "motivo": "Contradiction hook, but it is vague and doesn't say what the video will show."
-  }
- ],
- "medida_estado": "lista",
- "tanda": "pedido-25"
 }
