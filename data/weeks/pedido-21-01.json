@@ -1,0 +1,28 @@
+{
+  "semana": "pedido-21-01",
+  "tanda": "pedido-21",
+  "pedido": null,
+  "tag": "pedido-21",
+  "videos": [
+    {
+      "id": "pedido-21-01",
+      "title": "El pozo de Kola: el agujero más profundo del mundo #shorts",
+      "description": "¿Tú habrías seguido perforando? 👇\n\nEl pozo superprofundo de Kola, el agujero más profundo del mundo: por qué lo hicieron y por qué lo taparon.\nSolo llegó a cerca del 0,2% del camino hasta el centro de la Tierra, y los gritos del infierno son un bulo.\n#pozodekola #curiosidades #ciencia #rusia",
+      "tags": [
+        "pozo de Kola",
+        "agujero más profundo del mundo",
+        "pozo superprofundo de Kola",
+        "Kola Rusia",
+        "gritos del infierno bulo",
+        "centro de la Tierra",
+        "curiosidades",
+        "ciencia curiosa",
+        "Unión Soviética",
+        "perforación"
+      ],
+      "video": "pedido-21-01.mp4",
+      "portada": "pedido-21-01_portada.jpg",
+      "lista": "Ciencia curiosa"
+    }
+  ]
+}
