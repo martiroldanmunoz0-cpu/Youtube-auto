@@ -41,6 +41,15 @@ def tanda_titulo(wid: str, cfg: dict) -> str:
     return f"Pedido: {pedido()}" if pedido() else f"Vídeos de la semana {wid}"
 
 
+def release_url(wid: str, name: str) -> str:
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    return f"https://github.com/{repo}/releases/download/{release_tag(wid)}/{name}"
+
+
+def release_tag(wid: str) -> str:
+    return wid if wid.startswith(("pedido", "comedia", "historia", "largo")) else f"semana-{wid}"
+
+
 def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dict) -> Path:
     site = ROOT / "site" / wid
     if site.exists():
@@ -48,7 +57,9 @@ def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dic
     (site / "v").mkdir(parents=True)
     cards = []
     for i, st in enumerate(stories, 1):
-        shutil.copy(wd / st["video"], site / "v" / st["video"])
+        big = (wd / st["video"]).stat().st_size > 90 * 1024 * 1024  # GitHub rechaza archivos de más de 100 MB en la página
+        if not big:
+            shutil.copy(wd / st["video"], site / "v" / st["video"])
         thumb = Path(st["video"]).with_suffix(".jpg").name
         if (wd / thumb).exists():
             shutil.copy(wd / thumb, site / "v" / thumb)
@@ -61,7 +72,7 @@ def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dic
         cards.append(f"""
 <article id="{st['id']}">
   <div class="num">#{i}</div>
-  <video controls playsinline preload="none" poster="v/{thumb}" src="v/{st['video']}"></video>
+  <video controls playsinline preload="none" poster="v/{thumb}" src="{(release_url(wid, st['video']) if big else 'v/' + st['video'])}"></video>
   <div class="meta">
     <h2>{html.escape(st['title'])}</h2>
     <p class="id">{st['id']} · {html.escape(idea.get('tipo', ''))}</p>
@@ -142,7 +153,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
 
     req = pedido()
     vid = st["id"]
-    tag = wid if wid.startswith(("pedido", "comedia", "historia")) else f"semana-{wid}"
+    tag = release_tag(wid)
     repo = os.environ.get("GITHUB_REPOSITORY", "")
     files = [str(wd / st["video"])] + ([str(wd / st["portada"])] if st.get("portada") and (wd / st["portada"]).exists() else [])
     upload_to_release(tag, files, wid, req)
@@ -152,7 +163,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     try:
         pages.main(vid, st["title"].replace(" #shorts", ""))
         subprocess.run(["gh", "workflow", "run", "pagina.yml"], check=False)
-    except Exception as e:  # sin página: el enlace del issue va directo al vídeo (nunca a otra tanda)
+    except (Exception, SystemExit) as e:  # sin página: el enlace del issue va directo al vídeo (nunca a otra tanda)
         page_ok = False
         print(f"  aviso: página de revisión no actualizada ({e})")
     base = pages_url() if page_ok else None
@@ -239,7 +250,7 @@ def main_tanda():
         sys.exit("No hay vídeos montados esta semana")
 
     # 1) Release con los vídeos
-    tag = wid if wid.startswith(("pedido", "comedia", "historia")) else f"semana-{wid}"
+    tag = release_tag(wid)
     files = [str(wd / s["video"]) for s in stories]
     try:
         gh("release", "view", tag)

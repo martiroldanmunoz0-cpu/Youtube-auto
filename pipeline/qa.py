@@ -68,8 +68,9 @@ def check(mp4: Path, timeline: dict, script_text: str, end_card: float = 2.4) ->
     if "audio" not in streams:
         problems.append("El vídeo no tiene sonido")
     v = streams.get("video", {})
-    if (v.get("width"), v.get("height")) != (1080, 1920):
-        problems.append(f"Tamaño incorrecto {v.get('width')}x{v.get('height')} (debe ser 1080x1920)")
+    want = (1920, 1080) if timeline.get("formato") == "horizontal" else (1080, 1920)
+    if (v.get("width"), v.get("height")) != want:
+        problems.append(f"Tamaño incorrecto {v.get('width')}x{v.get('height')} (debe ser {want[0]}x{want[1]})")
     if abs(fmt_dur - total) > 0.3:
         problems.append(f"Duración {fmt_dur:.1f}s distinta de la prevista {total:.1f}s (posible corte)")
     for kind in ("video", "audio"):

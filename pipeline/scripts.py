@@ -130,7 +130,7 @@ LONG_SCHEMA["properties"]["titulos_candidatos"] = {"type": "array", "items": {"t
 LONG_SCHEMA["required"] = ["titulos_candidatos"] + LONG_SCHEMA["required"]
 
 LONG_RULES = """VÍDEO LARGO (NO es un Short): formato horizontal de {lo_min}-{hi_min} minutos para YouTube.
-- LONGITUD: entre {lo_w} y {hi_w} palabras en total (la voz lee ~2,4 palabras por segundo). Entre 100 y 160 planos.
+- LONGITUD: entre {lo_w} y {hi_w} palabras en total (en los vídeos largos la voz lee ~3 palabras por segundo). Entre 120 y 190 planos.
 - CAPÍTULOS: 4-6 capítulos. En el primer plano de cada capítulo pon "capitulo" con un título corto y llamativo
   ("Capítulo 2 · Lo que encontraron"); en el resto de planos, "capitulo": "". El plano 1 también abre capítulo.
 - LOS PRIMEROS 30 SEGUNDOS deciden todo: gancho fuerte en el plano 1, la pregunta central en el plano 2 y una
@@ -612,9 +612,9 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
         + (f"Estilo que prefiere el dueño del canal:\n{style}\n\n" if style else "")
         + f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
         + (f"Para este vídeo se han añadido a la biblioteca estas piezas (úsalas en 'composicion'): {', '.join(idea['piezas_nuevas'])}\n\n" if idea.get("piezas_nuevas") else "")
-        + (LONG_RULES.format(lo_min=lo // 60, hi_min=hi // 60, lo_w=int(lo * 2.4), hi_w=int(hi * 2.4)) + "\n" if largo else "")
-        + f"Duración objetivo: {lo}-{hi} segundos. LÍMITE DE PALABRAS (la voz lee unas 2,4 palabras por segundo): "
-        f"entre {int(lo * 2.4)} y {int(hi * 2.4)} palabras EN TOTAL sumando todos los planos y la frase_bucle. "
+        + (LONG_RULES.format(lo_min=lo // 60, hi_min=hi // 60, lo_w=int(lo * 2.9), hi_w=int(hi * 2.9)) + "\n" if largo else "")
+        + f"Duración objetivo: {lo}-{hi} segundos. LÍMITE DE PALABRAS (la voz lee unas {2.9 if largo else 2.4} palabras por segundo): "
+        f"entre {int(lo * (2.9 if largo else 2.4))} y {int(hi * (2.9 if largo else 2.4))} palabras EN TOTAL sumando todos los planos y la frase_bucle. "
         f"Cuéntalas antes de terminar; si te pasas, quita planos o acorta frases (nunca el gancho). "
         "Escribe los ganchos candidatos y después el guion completo."
     )
