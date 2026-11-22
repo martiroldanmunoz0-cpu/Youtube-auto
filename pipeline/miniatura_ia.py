@@ -37,11 +37,6 @@ def _model(key: str, preferred: str) -> str:
     return sorted(names, key=lambda n: ("preview" in n, n))[0]
 
 
-# Personaje propio del canal para las miniaturas (siempre el mismo: la gente reconoce el canal de un vistazo)
-MASCOTA = ("Curio, the channel's own ORIGINAL mascot: a cartoon boy with a big round head, warm light-brown skin, messy "
-           "dark-brown hair with one spiky tuft on top, huge expressive eyes and a bright orange hoodie")
-
-
 def prompt_for(story: dict) -> str:
     beats = " / ".join(b["text"] for b in story.get("beats", [])[:6])
     return (
@@ -49,12 +44,15 @@ def prompt_for(story: dict) -> str:
         f"Video title: {story.get('title', '')}\nMain idea: {story.get('question') or story.get('cover_text', '')}\n"
         f"Opening of the script: {beats}\n\n"
         "STYLE (very important): glossy, high-energy cartoon illustration like the most clicked animated 'what if' "
-        "thumbnails: smooth shiny 3D-looking cartoon shading, ultra-saturated colors, purple / electric blue / hot pink "
-        "background with dramatic speed lines, radial burst and glowing light, strong rim light on the character.\n"
-        f"CHARACTER: {MASCOTA}. Show him BIG in the right half of the image with an EXTREME, exaggerated emotion that fits "
-        "the video (screaming in panic, crying with big tears, sweating, jaw dropped in shock), dynamic pose, motion "
-        "lines. Next to him, the key object or situation of the video, huge and instantly understandable (one clear "
-        "focal point). If the video has a big number or danger, show it visually (fire, cracks, explosion, red glow).\n"
+        "thumbnails: smooth shiny 3D-looking cartoon shading, ultra-saturated colors, vivid "
+        "backgrounds with dramatic speed lines, radial burst and glowing light, strong rim light on the character.\n"
+        "CHARACTERS AND SCENE: invent them specifically for THIS video (who suffers or lives the situation: a person, an "
+        "astronaut, a fisherman, an animal...), different every time, never a generic mascot. Show the main character BIG "
+        "in the right half of the image with an EXTREME, exaggerated emotion that fits the video (screaming in panic, "
+        "crying with big tears, sweating, jaw dropped in shock), dynamic pose, motion lines. Next to it, the key object or "
+        "situation of the video, huge and instantly understandable (one clear focal point). If the video has a big number "
+        "or danger, show it visually (fire, cracks, explosion, red glow). Choose the color palette that best fits this "
+        "topic (space = purple/blue, fire = orange/red, ocean = cyan/blue...).\n"
         "COMPOSITION: very simple and readable on a phone; the LEFT 40% of the image must be a clean, darker area of the "
         "background (big title text will be added there later).\n"
         "RULES: absolutely NO text, letters, numbers, logos or watermarks. Do not copy any existing YouTube channel's "
@@ -62,15 +60,8 @@ def prompt_for(story: dict) -> str:
     )
 
 
-REF = Path(__file__).resolve().parent.parent / "data" / "mascota_ref.png"  # miniatura aprobada: Curio siempre igual
-
-
 def _gemini_image(key: str, model: str, prompt: str) -> bytes:
-    parts = [{"text": prompt}]
-    if REF.exists():  # referencia del personaje aprobada por el dueño
-        parts.append({"inline_data": {"mime_type": "image/png", "data": base64.b64encode(REF.read_bytes()).decode()}})
-        parts[0]["text"] += ("\nThe attached image is the approved reference: draw Curio EXACTLY like in it (same face, hair, "
-                             "hoodie and art style), but in a new scene and pose for this video.")
+    parts = [{"text": prompt}]  # cada miniatura se crea desde cero para su vídeo (sin imágenes de referencia)
     body = {"contents": [{"parts": parts}], "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}}
     res = _req(f"{API}/models/{model}:generateContent", body, key)
     part = next(p for c in res.get("candidates", []) for p in c.get("content", {}).get("parts", []) if p.get("inlineData"))
