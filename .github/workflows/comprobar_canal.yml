@@ -1,0 +1,33 @@
+name: Comprobar canal
+
+# Dice a qué canal de YouTube está conectado el sistema (no sube ni cambia nada).
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  canal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install google-api-python-client google-auth
+      - env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: |
+          cd pipeline && python - <<'PY'
+          from common import youtube_client
+          r = youtube_client().channels().list(part="snippet,statistics", mine=True).execute()
+          for c in r.get("items", []):
+              s = c["snippet"]
+              print(f"CANAL: {s['title']} | {s.get('customUrl', '')} | vídeos: {c['statistics'].get('videoCount')}")
+          if not r.get("items"):
+              print("CANAL: ninguno (la cuenta no tiene canal)")
+          PY
