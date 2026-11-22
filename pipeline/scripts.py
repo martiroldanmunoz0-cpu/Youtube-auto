@@ -835,7 +835,7 @@ def validate_story(story: dict) -> dict:
         if beats[-1]["text"].strip().rstrip(".…").lower() == bucle.lower().rstrip("…"):
             beats.pop()  # el guionista la repitió como plano: se sustituye por la versión con la imagen del principio
         first = beats[0]
-        beats.append({**first, "text": bucle if bucle.endswith(("…", "...")) else bucle + "…", "camera": "static", "transition": "cut", "bucle": True})
+        beats.append({**{k: v for k, v in first.items() if k != "capitulo"}, "text": bucle if bucle.endswith(("…", "...")) else bucle + "…", "camera": "static", "transition": "cut", "bucle": True})
     elif beats and not largo:
         print("  aviso: el guion no trae frase de bucle")
     # Red de seguridad: el vídeo tiene que presentar su tema con una pregunta al principio
@@ -846,7 +846,7 @@ def validate_story(story: dict) -> dict:
         base = beats[pos - 1 if pos else 0]
         if base["scene"] == "accion":  # no repetir la acción: la persona reacciona en su sitio
             base = {**base, "scene": "escena", "params": {"lugar": base["params"].get("lugar") or "salon", "plano": "medio", "mood": "shocked", "efecto": "wow"}}
-        beats.insert(pos, {**base, "text": pregunta, "camera": "push_in", "transition": "cut"})
+        beats.insert(pos, {**{k: v for k, v in base.items() if k != "capitulo"}, "text": pregunta, "camera": "push_in", "transition": "cut"})
         print(f"  (añadida la pregunta central en el plano {pos + 1}: «{pregunta}»)")
     marcas = sum(bool(re.match(r"(d[ií]a|hora|segundo|minuto|mes|a[nñ]o|semana)s?\s+(\d+|uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|cero)\b", b["text"], re.I)) for b in beats)
     if marcas > 2:
