@@ -1,0 +1,30 @@
+{
+  "semana": "largo-7-01",
+  "tanda": "largo-8",
+  "pedido": null,
+  "tag": "largo-8",
+  "videos": [
+    {
+      "id": "largo-7-01",
+      "title": "What If You Were the Last Person on Earth? (1,000 Years)",
+      "description": "What would you do first? 👇\n\nWhat if you were the last person on Earth? Follow the real science of what happens to New York, the power grid, zoo animals and landmarks like Mount Rushmore over 1,000 years.\nHoney found in Egyptian tombs was reportedly still edible, and the bootprints on the Moon could last millions of years.\n#whatif #lastpersononearth #science #curiosities #thecuriolab",
+      "tags": [
+        "what if you were the last person on earth",
+        "last person on earth",
+        "what if humans disappeared",
+        "what happens if everyone vanished",
+        "world without humans",
+        "what would happen to the power grid",
+        "new york subway flooding",
+        "mount rushmore erosion",
+        "footprints on the moon",
+        "honey never spoils",
+        "the curio lab",
+        "what if"
+      ],
+      "video": "largo-7-01.mp4",
+      "portada": "largo-7-01_portada.jpg",
+      "lista": "What If...?"
+    }
+  ]
+}
