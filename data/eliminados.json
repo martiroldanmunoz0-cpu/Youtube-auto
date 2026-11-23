@@ -59,5 +59,33 @@
     "lista_ok": true,
     "portada_ok": true,
     "eliminado": "2026-11-23T15:59:54Z"
+  },
+  {
+    "id": "pedido-24-01",
+    "title": "The Man Who Survived Two Atomic Bombs: Tsutomu Yamaguchi #shorts",
+    "description": "Did you know this story? 👇\n\nThe true story of Tsutomu Yamaguchi, the man who survived both atomic bombs, Hiroshima and Nagasaki, in August 1945.\nAround 160 people are believed to have lived through both blasts, but Japan officially recognized only one of them, and not until 2009.\n#history #hiroshima #nagasaki #truestory #shorts\n\n▶️ More «Incredible True Stories»: https://www.youtube.com/playlist?list=PLaAKt3Q4VRis",
+    "tags": [
+      "tsutomu yamaguchi",
+      "survived two atomic bombs",
+      "hiroshima and nagasaki",
+      "double survivor",
+      "true story",
+      "world war 2",
+      "atomic bomb survivor",
+      "history facts",
+      "incredible true stories",
+      "luckiest man alive"
+    ],
+    "video": "pedido-24-01.mp4",
+    "portada": "pedido-24-01_portada.jpg",
+    "lista": "Incredible True Stories",
+    "tag": "pedido-24",
+    "issue": 65,
+    "estado": "programado",
+    "publish_at": "2026-11-24T17:00:00Z",
+    "youtube_id": "FVC_jTrc7EQ",
+    "lista_ok": true,
+    "portada_ok": false,
+    "eliminado": "2026-11-23T16:01:11Z"
   }
 ]
