@@ -15,9 +15,10 @@ TEXTO = ("Imagine you could control your luck. Turn it up, turn it down, anytime
          "Sounds amazing, right? But here's the thing nobody tells you: luck always collects. "
          "And when it does, it never asks for permission.")
 CANDIDATAS = {
-    "voz_a": "A young American man in his mid twenties, warm, friendly and conversational storyteller, clear diction, medium-fast pace, a slight smile in the voice",
-    "voz_b": "A young American male narrator, energetic and expressive, playful and curious tone, crisp diction, upbeat fast pace, dramatic short pauses",
-    "voz_c": "An American man in his late twenties, smooth and slightly deep voice, confident and calm storyteller, relaxed but engaging, clear diction",
+    "voz_d": "A young American man around twenty, energetic storyteller telling a crazy personal story to friends, expressive and dramatic, fast pace, punchy emphasis, slight laugh in the voice",
+    "voz_e": "A young American male YouTube narrator, deep-ish and slightly raspy voice, dramatic suspenseful delivery, confident, medium-fast pace with tense pauses",
+    "voz_f": "A teenage-sounding young American guy, bright and lively voice, sarcastic and funny storyteller, very expressive intonation, quick pace",
+    "voz_g": "A young American man in his early twenties, warm mid-pitched voice, casual but gripping storytime narrator, builds tension then releases it, clear diction",
 }
 
 
