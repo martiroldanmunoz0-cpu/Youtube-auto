@@ -1,338 +1,339 @@
 {
-  "rid": "2026-S48-5",
-  "fecha": "2026-11-23T03:52:21.880482+00:00",
-  "estado": "pendiente",
-  "piezas_nuevas": [
-    "bebé",
-    "mazo de juez",
-    "paracaídas",
-    "salvavidas",
-    "sombrero de guardabosques"
+ "rid": "2026-S48-5",
+ "fecha": "2026-11-23T03:52:21.880482+00:00",
+ "estado": "cancelado",
+ "piezas_nuevas": [
+  "bebé",
+  "mazo de juez",
+  "paracaídas",
+  "salvavidas",
+  "sombrero de guardabosques"
+ ],
+ "analysis": {
+  "resumen": "Esta semana el ranking lo dominan tráileres y K-pop, que no nos sirven. Entre los Shorts de curiosidades destacan cuatro mecanismos. (1) 'Things you didn't know' en formato lista corta con un dato fuerte al final: la saga de GTA 6 suma más de 19M de vistas con tres vídeos casi iguales. (2) 'Did you know…' sobre el cuerpo, contado como una explicación animada que desmonta un miedo, como el cordón umbilical del bebé o 'Your Body Is Not Like You Think'. (3) 'What if' a escala planetaria o de rediseño del cuerpo: el último periodo de todas las mujeres, construir un humano con cuatro brazos o hundirte más cada vez que te castigan. Este último consigue un 0,77% de comentarios gracias a una llamada a comentar muy clara. (4) Historias reales con protagonista y fenómeno extremo: un hombre atrapado dentro de una nube de tormenta (2,7M) y un misterio de ADN de paternidad imposible (1,2M). Traducción para The Curio Lab: (a) preguntas imposibles con base científica real, (b) casos reales documentados que suenan a ciencia ficción y (c) listas cortas con giro sobre cosas cotidianas de EE. UU. (dinero, clima, NASA). Cada vídeo debe cerrar con una pregunta que invite a comentar.",
+  "patrones_gancho": [
+   "Pregunta 'What if…' que nombra el tema y la consecuencia extrema en la primera frase ('What if Earth stopped spinning… right now?')",
+   "'Did you know…' + dato que contradice lo que todo el mundo cree (desmontar un miedo o un mito)",
+   "Lista numerada corta ('5 things you didn't know about…') donde el último punto es el más fuerte",
+   "Caso real presentado como algo imposible: 'This man fell INTO a thunderstorm… and it took him 40 minutes to reach the ground'",
+   "Misterio con dato numérico chocante (0% de coincidencia de ADN) que se resuelve al final",
+   "Mito contra realidad: frase popular ('Lightning never strikes the same place twice') y después la prueba de que es falsa",
+   "Segunda persona inmersiva ('You…') que mete al espectador dentro del experimento",
+   "Remate con pregunta directa al espectador para disparar comentarios (como el 'comment GROUNDED' de BloxDaze)"
   ],
-  "analysis": {
-    "resumen": "Esta semana el ranking lo dominan tráileres y K-pop, que no nos sirven. Entre los Shorts de curiosidades destacan cuatro mecanismos. (1) 'Things you didn't know' en formato lista corta con un dato fuerte al final: la saga de GTA 6 suma más de 19M de vistas con tres vídeos casi iguales. (2) 'Did you know…' sobre el cuerpo, contado como una explicación animada que desmonta un miedo, como el cordón umbilical del bebé o 'Your Body Is Not Like You Think'. (3) 'What if' a escala planetaria o de rediseño del cuerpo: el último periodo de todas las mujeres, construir un humano con cuatro brazos o hundirte más cada vez que te castigan. Este último consigue un 0,77% de comentarios gracias a una llamada a comentar muy clara. (4) Historias reales con protagonista y fenómeno extremo: un hombre atrapado dentro de una nube de tormenta (2,7M) y un misterio de ADN de paternidad imposible (1,2M). Traducción para The Curio Lab: (a) preguntas imposibles con base científica real, (b) casos reales documentados que suenan a ciencia ficción y (c) listas cortas con giro sobre cosas cotidianas de EE. UU. (dinero, clima, NASA). Cada vídeo debe cerrar con una pregunta que invite a comentar.",
-    "patrones_gancho": [
-      "Pregunta 'What if…' que nombra el tema y la consecuencia extrema en la primera frase ('What if Earth stopped spinning… right now?')",
-      "'Did you know…' + dato que contradice lo que todo el mundo cree (desmontar un miedo o un mito)",
-      "Lista numerada corta ('5 things you didn't know about…') donde el último punto es el más fuerte",
-      "Caso real presentado como algo imposible: 'This man fell INTO a thunderstorm… and it took him 40 minutes to reach the ground'",
-      "Misterio con dato numérico chocante (0% de coincidencia de ADN) que se resuelve al final",
-      "Mito contra realidad: frase popular ('Lightning never strikes the same place twice') y después la prueba de que es falsa",
-      "Segunda persona inmersiva ('You…') que mete al espectador dentro del experimento",
-      "Remate con pregunta directa al espectador para disparar comentarios (como el 'comment GROUNDED' de BloxDaze)"
-    ],
-    "temas_calientes": [
-      "Cuerpo humano y cosas que 'no funcionan como crees'",
-      "ADN, gemelos y misterios genéticos",
-      "Fenómenos meteorológicos extremos (tormentas, rayos, tsunamis)",
-      "Escenarios planetarios 'what if' (la Tierra, el espacio, toda la humanidad a la vez)",
-      "Rediseñar el cuerpo o cambiar de tamaño (cuatro brazos, toro bípedo)",
-      "Listas 'things you didn't know' sobre algo que todo el mundo conoce",
-      "Animales con rasgos extraños y especies en peligro",
-      "Supervivencia real con protagonista"
-    ],
-    "formatos": [
-      "Lista top 5 con giro final",
-      "Mito contra realidad",
-      "Documental en tercera persona con protagonista real",
-      "Segunda persona inmersiva / experimento mental",
-      "Misterio que se resuelve por pistas",
-      "Telediario / noticia de última hora",
-      "Comparación de escalas",
-      "Guía de viaje / postal desde un lugar imposible",
-      "Pregunta-respuesta con prueba que el espectador puede hacer en casa",
-      "Antes y después / viaje de una gota"
-    ],
-    "ideas": [
-      {
-        "tipo": "que_pasaria_si",
-        "premisa": "What if you got struck by lightning? Myth vs reality, then a real record-holder. MYTH: you'd be vaporized. REALITY: a bolt hits about 50,000°F, roughly five times hotter than the surface of the Sun, but it passes in a split second, and the National Weather Service says about 90% of people who get struck survive. The current can scramble your heart rhythm and nerves, and many survivors live with long-term symptoms. MYTH: 'lightning never strikes the same place twice.' REALITY: the Empire State Building gets hit around 20 to 25 times a year. Then the protagonist: Roy Sullivan, a park ranger in Shenandoah National Park, Virginia. He was struck SEVEN times between 1942 and 1977 and survived every one. It's a Guinness World Record.",
-        "gancho": "What actually happens if lightning hits YOU?",
-        "giro_final": "The odds of being struck in a single year are about one in a million. Roy Sullivan got hit seven times, and Guinness put his scorched ranger hats on display. Would you ever go outside in a storm again?",
-        "estilo_visual": "accion 'rayo' sobre la persona en un sendero de montaña; big_text '50,000°F' junto a composicion con sol y rayo comparados; accion 'latido' para el corazón; composicion edificio + rayo (Empire State) con lugar ciudad tormentosa; person con la zona del cuerpo resaltada; newspaper antiguo 'RANGER STRUCK AGAIN'; big_text '7'; document estilo récord Guinness con sello.",
-        "por_que_funcionara": "Une la pregunta imposible del 'what if' con un caso real casi increíble, el mismo mecanismo que el vídeo coreano de la nube de tormenta. El formato mito/realidad ya funcionó en el vídeo aprobado del Gran Cañón. La frase hecha 'never strikes twice' la conoce todo el mundo en EE. UU., y el '7' en pantalla es un número que se comparte.",
-        "inspirado_en": [
-          "l_mGBAyVVjg",
-          "YWwKYyQGfYw"
-        ],
-        "piezas_nuevas": [
-          "sombrero de guardabosques"
-        ]
-      },
-      {
-        "tipo": "caso_real",
-        "premisa": "Documentary in third person with an altitude counter on screen. July 26, 1959: Marine Lt. Col. William Rankin is flying an F-8 Crusader at about 47,000 feet over the East Coast. His engine dies right above a monster thunderstorm, and he has to eject in a summer flight suit. The cold is brutal and the thin air makes his body swell painfully. His parachute opens inside the storm, and the updrafts start throwing him UP and down like an elevator. Hail pounds him, rain is so heavy he fears drowning in midair, and lightning flashes all around him. A fall that should take about 10 minutes lasts about 40. He lands in a North Carolina forest, badly hurt but alive.",
-        "gancho": "What happens if you fall INTO a thunderstorm? One pilot found out.",
-        "giro_final": "He survived, recovered and wrote a book about it, titled 'The Man Who Rode the Thunder.' Would you ever get back in a cockpit after that?",
-        "estilo_visual": "composicion avion + nube sobre cielo nocturno; accion 'congelarse' tras la eyección; accion 'hincharse' (versión suave); composicion persona + nube + rayo subiendo y bajando con un contador de altitud; accion 'tormenta_mar' adaptada al cielo con hielo (granizo); big_text '40 MIN'; forest kind 'jungle' para el aterrizaje; quote con el título del libro.",
-        "por_que_funcionara": "Es el mismo hecho que el vídeo coreano del hombre atrapado en una nube de tormenta (2,7M de vistas), pero contado para EE. UU., con un piloto estadounidense y en pies. El ascensor de la tormenta, que te devuelve hacia arriba mientras caes, es una imagen imposible y muy visual. La escalada de tensión casa con el estilo que prefiere el dueño.",
-        "inspirado_en": [
-          "l_mGBAyVVjg"
-        ],
-        "piezas_nuevas": [
-          "paracaídas"
-        ]
-      },
-      {
-        "tipo": "que_pasaria_si",
-        "premisa": "Thought experiment in second person. You're standing in Ecuador when Earth suddenly stops spinning. You've always been moving: about 1,000 mph at the equator and nearly 800 mph in New York. The planet stops, but you, the air and the oceans don't. Everything not bolted to bedrock keeps flying east, and winds faster than any hurricane rip across the surface. Over time the oceans slide toward the poles, because the equator's bulge only exists thanks to the spin, leaving a giant continent around the middle of the planet. One 'day' would last a whole year: about six months of daylight, then six months of night. The scale twist: this is slowly happening for real. The Moon's tides act like brakes, and fossil shells show that when T. rex was alive, a year had about 372 days.",
-        "gancho": "What if Earth stopped spinning… right now?",
-        "giro_final": "Earth IS slowing down, just very, very slowly. When dinosaurs were alive, a day was about half an hour shorter. So how long will your great-great-grandkids' days be?",
-        "estilo_visual": "composicion tierra girando en el espacio; big_text '1,000 MPH'; map_pin globo terráqueo marcando New York; accion 'correr' y composicion viento + escombros barriendo la ciudad; composicion ola_gigante; composicion sol fijo (día eterno) y luna (noche eterna); composicion dinosaurio + reloj_digital '23:30' para el giro.",
-        "por_que_funcionara": "Es la pregunta planetaria tipo 'what if every woman on Earth…', que provoca escalada y comentarios. La velocidad a la que ya te mueves sin notarlo es un 'no sabía esto' inmediato. El giro de los dinosaurios convierte la fantasía en un hecho real verificable.",
-        "inspirado_en": [
-          "xKrJ7wgzoxQ",
-          "98b3Knhngxw"
-        ],
-        "piezas_nuevas": []
-      },
-      {
-        "tipo": "caso_real",
-        "premisa": "Mystery that unfolds clue by clue. In 2002, Lydia Fairchild, a young mom in Washington state, applies for government assistance and the state requires DNA tests. The results say the father is the father, but SHE is not the mother of her own children. Prosecutors suspect fraud and she nearly loses her kids. She is pregnant with her third child, so a court official watches the birth and samples are taken right away. That baby doesn't match her either. Her lawyer then finds a Boston medical case about a woman named Karen Keegan, and new tests on other tissue from Lydia's body finally match. Explanation: Lydia is a chimera. Before she was born, two fertilized eggs (she should have had a twin) fused into one person with two sets of DNA.",
-        "gancho": "What if a DNA test said you're not your own kids' mom?",
-        "giro_final": "Lydia's children were genetically her twin's kids, a twin who never existed as a separate person. Scientists think chimeras may be more common than we realize. How sure are you that you're only one person?",
-        "estilo_visual": "document con resultado 'MATERNITY: 0%' resaltado y sello rojo; group de la madre con sus hijos; hospital para el parto vigilado; newspaper web 'MOM FAILS DNA TEST'; composicion lupa + adn; composicion celula_dividiendose + cromosoma para explicar las dos células que se fusionan; doctor explicando.",
-        "por_que_funcionara": "Es el mecanismo del misterio de ADN que arrasa ahora mismo ('Bina Paida Hue Baap Ka DNA', 1,2M), pero con un caso estadounidense muy documentado (ABC News, NEJM). El '0%' engancha y la explicación científica tiene giro. El remate interpela directamente al espectador.",
-        "inspirado_en": [
-          "eS-He01EmmI",
-          "eYGdrRn3IZQ"
-        ],
-        "piezas_nuevas": [
-          "bebé",
-          "mazo de juez"
-        ]
-      },
-      {
-        "tipo": "que_pasaria_si",
-        "premisa": "Scale comparison: you shrink step by step from human size to the size of an ant, and the physics flips at each step. As a human, a fall from a skyscraper is fatal. At ant size, air resistance wins and you drift down so slowly you could survive a fall from ANY height. Biologist J.B.S. Haldane wrote that a mouse dropped down a mine shaft can walk away, while a man is broken and a horse splashes. Strength works the same way: ants can lift many times their own body weight. Then the dark side: water becomes your enemy. Surface tension makes a single drop cling like glue, and getting wet could pin you down. Small bodies also lose heat fast.",
-        "gancho": "What if you shrank to the size of an ant?",
-        "giro_final": "At ant size, falling off the Empire State Building is no big deal, but a single raindrop could trap you like quicksand. Would you still want to shrink?",
-        "estilo_visual": "composicion persona junto a edificio y cambio progresivo de escala con hormiga al lado; accion 'caer_romper' (escala humana) frente a la persona flotando suavemente como una pluma; composicion hormiga levantando un trozo de manzana; quote con la frase de Haldane; composicion gota gigante atrapando a la persona diminuta; accion 'congelarse' para la pérdida de calor.",
-        "por_que_funcionara": "Aprovecha el rediseño del cuerpo de 'What If You Built a Human With Four Arms' y el toro bípedo, pero con física real y frases citables. La comparación de escalas es una de las estructuras favoritas del dueño, y el contraste invencible a las caídas / vencido por una gota es un giro perfecto.",
-        "inspirado_en": [
-          "tbVQi4m5OQI",
-          "aqEePKpgRc0"
-        ],
-        "piezas_nuevas": []
-      },
-      {
-        "tipo": "caso_real",
-        "premisa": "List with a twist, three ships and one woman. Violet Jessop was a stewardess and nurse who worked on the three giant sister ships of the White Star Line. SHIP 1: in 1911 she is aboard the RMS Olympic when it collides with the warship HMS Hawke. It makes it back to port. SHIP 2: in 1912 she works on the Titanic. Ordered into lifeboat 16, she is handed a baby to look after. On the rescue ship Carpathia, a woman snatches the baby back without a word. SHIP 3: in 1916, during World War I, she serves as a nurse on the hospital ship Britannic when it hits a mine and sinks within an hour. She jumps from a lifeboat and survives a head injury.",
-        "gancho": "How did one woman survive the Titanic… and two other shipwrecks?",
-        "giro_final": "All three disasters happened on sister ships of the same class, and she still went back to sea for decades. The press called her 'Miss Unsinkable.' Would YOU have boarded a fourth ship?",
-        "estilo_visual": "composicion tres barcos alineados con etiquetas 1911 / 1912 / 1916; person presentando a Violet con uniforme; composicion barco + hielo de noche (ocean); accion 'tormenta_mar' con la barca salvavidas; composicion bebé en brazos en la barca; newspaper antiguo 'BRITANNIC SUNK'; big_text '3'.",
-        "por_que_funcionara": "El Titanic es un tema que nunca falla en EE. UU. y la protagonista sorprende porque casi nadie la conoce. La lista de 3 con giro reproduce el mecanismo 'things you didn't know'. El detalle documentado del bebé humaniza la historia sin caer en lo morboso.",
-        "inspirado_en": [
-          "l_mGBAyVVjg",
-          "T8FzQ5cW-94"
-        ],
-        "piezas_nuevas": [
-          "bebé",
-          "salvavidas"
-        ]
-      },
-      {
-        "tipo": "dato_curioso",
-        "premisa": "Question-and-answer format with a countdown of 3 strange facts about the octopus. 3: it has THREE hearts. Two pump blood through the gills and one pumps it to the rest of the body. 2: its blood is blue, because it carries oxygen with a copper-based molecule called hemocyanin instead of our iron-based hemoglobin. 1: when it swims, the heart that feeds its body stops beating. Swimming exhausts it, so octopuses usually prefer to crawl. Bonus twist: about two-thirds of its neurons are in its arms, so each arm can react on its own.",
-        "gancho": "Did you know an octopus has three hearts?",
-        "giro_final": "Most of an octopus's neurons live in its arms, not its head, so in a way it thinks with its arms. If you had eight brainy arms, what would you do first?",
-        "estilo_visual": "composicion pulpo bajo el mar con tres corazones latiendo resaltados; accion 'latido'; composicion gota azul frente a gota roja (sangre de pulpo frente a humana); composicion pulpo nadando con un corazón que se para y después reptando; composicion cerebro + pulpo con brazos iluminados; big_text '3'.",
-        "por_que_funcionara": "El arranque 'Did you know…' con un dato rarísimo del cuerpo es justo lo que funciona en los vídeos del cordón umbilical y de las formas. Es corto, visual y fácil de repetir. La pregunta final es abierta y saca comentarios divertidos.",
-        "inspirado_en": [
-          "eYGdrRn3IZQ",
-          "TkUxHsLUCX4"
-        ],
-        "piezas_nuevas": []
-      },
-      {
-        "tipo": "explicacion",
-        "premisa": "Question answered with a test you can do right now. 'Try tickling your own feet. Nothing, right?' Explanation: when you move, your cerebellum predicts exactly what you're going to feel and turns the sensation down, which is why you don't feel your own tongue in your mouth or your clothes all day. When someone else tickles you, there's no prediction, so it's a surprise. Then the experiment: researchers at University College London built a robot that tickled people's palms as they moved a control. When they added a tiny delay, a fraction of a second, between the hand movement and the tickle, people started feeling it more, because the brain's prediction no longer matched.",
-        "gancho": "Why can't you tickle yourself?",
-        "giro_final": "You CAN trick your brain, but you need a robot with a fraction-of-a-second delay. Now try it on someone else and tell us: what's the most ticklish spot?",
-        "estilo_visual": "accion 'cosquillas' (pluma en el pie de otra persona); persona intentando hacerse cosquillas sin reacción, con accion 'dudar'; composicion cerebro con zona resaltada (cerebelo) + bombilla; composicion robot + mano + pluma; big_text '0.2 SEC'; accion 'reir' final.",
-        "por_que_funcionara": "Funciona como 'Your Body Is Not Like You Think' (4,6M): una explicación sobre tu propio cuerpo que puedes comprobar en el momento, lo que alarga la retención. La invitación final a probarlo y comentar sube la interacción.",
-        "inspirado_en": [
-          "HCW-RUvLFW4",
-          "eYGdrRn3IZQ"
-        ],
-        "piezas_nuevas": []
-      },
-      {
-        "tipo": "caso_real",
-        "premisa": "Told like a breaking-news broadcast. September 23, 1999: NASA's Mars Climate Orbiter arrives at Mars after a journey of more than nine months, and contact is lost. The investigation finds the cause. Software from contractor Lockheed Martin reported the thruster force in American units (pound-force seconds), while NASA's navigation team assumed metric units (newton-seconds). Nobody converted them. Every small course correction was wrong, the probe flew far too low into Mars's atmosphere and it was lost. A spacecraft that cost about $125 million was destroyed by a units mix-up.",
-        "gancho": "How did NASA lose a $125 million spacecraft… over inches and centimeters?",
-        "giro_final": "The US is one of only three countries that still haven't officially switched to the metric system, along with Liberia and Myanmar. Should America finally go metric? Comment yes or no.",
-        "estilo_visual": "newspaper web 'NASA LOSES MARS PROBE'; composicion planeta rojo + sonda acercándose; composicion dos ordenadores con pantallas 'POUNDS' frente a 'NEWTONS'; money con la cifra subiendo hasta $125,000,000; composicion sonda + fuego en la atmósfera; map_pin globo terráqueo marcando EE. UU., Liberia y Myanmar.",
-        "por_que_funcionara": "Es un error histórico real, con cifra en dólares y conexión directa con la vida diaria estadounidense (pulgadas, libras). El remate yes/no polariza y dispara comentarios. El formato telediario aporta variedad respecto a las otras ideas.",
-        "inspirado_en": [
-          "T8FzQ5cW-94",
-          "XiPynnev_HU"
-        ],
-        "piezas_nuevas": [
-          "sonda espacial"
-        ]
-      },
-      {
-        "tipo": "que_pasaria_si",
-        "premisa": "Travel guide in second person: 'Welcome to Venus, your vacation from hell.' Stop 1: the air is so thick it presses on you about 90 times harder than on Earth, like being roughly half a mile underwater. Stop 2: it's around 900°F on the surface, hot enough to melt lead and hotter than Mercury, even though Mercury is closer to the Sun. Stop 3: the clouds are made of sulfuric acid. Stop 4: the weird calendar. Venus spins so slowly that one day lasts longer than its whole year, and it spins backwards, so the Sun rises in the west. Real twist: in 1982 the Soviet probe Venera 13 landed there and lasted 127 minutes, long enough to send back the first color photos from the surface.",
-        "gancho": "What if you spent one day on Venus?",
-        "giro_final": "On Venus, a day lasts longer than a year, so you'd celebrate your birthday before seeing a single sunset. Which planet should we visit next?",
-        "estilo_visual": "composicion planeta Venus en space; accion 'hundirse' para representar la presión; big_text '900°F'; accion 'quemarse'; composicion nube amarilla + gota (ácido); composicion sol saliendo por el lado contrario + tarta_cumpleanos; composicion sonda en la superficie con volcan; reloj_digital '127 MIN'.",
-        "por_que_funcionara": "Usa el mecanismo de 'What if you're stuck in the Nether roof with nothing' y 'PS5 on the Moon': ponerte en un lugar imposible. El dato del día más largo que el año es un 'no sabía esto' perfecto para comentar. La guía de viaje aporta un formato nuevo al canal.",
-        "inspirado_en": [
-          "1ySsFGvou4o",
-          "APHpOaYqTsE"
-        ],
-        "piezas_nuevas": [
-          "sonda espacial"
-        ]
-      },
-      {
-        "tipo": "dato_curioso",
-        "premisa": "Top 5 things you didn't know about the money in your pocket. 5: a dollar bill isn't paper. It's about 75% cotton and 25% linen, which is why it survives the washing machine. 4: a $1 bill lasts only about 6 or 7 years before the Federal Reserve shreds it, while a $100 bill lasts around 20. 3: if your bills get burned or chewed up, the Bureau of Engraving and Printing can replace them for free if you send in more than half of the bill. 2: the government spent more than a cent to make each penny, about 3.7 cents in 2024. 1 (twist): that's why the US Mint struck its last circulating penny in November 2025.",
-        "gancho": "Did you know a dollar bill isn't made of paper?",
-        "giro_final": "After more than 200 years, the US stopped making pennies because each one cost almost 4 cents to make. Do you still have a jar full of them?",
-        "estilo_visual": "composicion dinero_billete + lavadora; big_text '75%'; composicion billete de $1 frente a billete de $100 con reloj_arena; document estilo carta oficial del Bureau con sello; composicion fuego + dinero_billete; money con la cifra 3.7¢; composicion moneda + casa (bote de centavos).",
-        "por_que_funcionara": "Copia la estructura exacta de la serie más vista de la semana ('5 Things You Didn't Know About…', 19M acumuladas) sobre un objeto que todo estadounidense tiene en el bolsillo. El final del penny es noticia reciente y saca historias personales en los comentarios.",
-        "inspirado_en": [
-          "T8FzQ5cW-94",
-          "u5h2l6SKsCc"
-        ],
-        "piezas_nuevas": [
-          "lavadora",
-          "moneda"
-        ]
-      },
-      {
-        "tipo": "explicacion",
-        "premisa": "Before and after, following the journey of a single raindrop. Rain falls slightly acidic and slowly dissolves minerals from rocks. Rivers carry those minerals to the sea, and hot vents and volcanoes on the ocean floor add more. The sun evaporates the water, but the salt stays behind, and over millions of years it has piled up to about 3.5% of seawater. Rivers are also slightly salty, just not enough to taste. The scale reveal: according to NOAA, if you pulled all the salt out of the ocean and spread it over the land, it would form a layer more than 500 feet thick, about as tall as a 40-story building.",
-        "gancho": "Why is the ocean salty if rivers aren't?",
-        "giro_final": "Spread out, the ocean's salt would bury every continent under 500 feet of salt, taller than a 40-story building. And the river water you drink? It's carrying a tiny bit of salt to the sea right now.",
-        "estilo_visual": "composicion gota cayendo sobre montana_pieza; composicion gota disolviendo roca con zoom; map_pin mapa de relieve con un río hacia el mar; composicion volcan submarino; composicion sol + nube (evaporación) dejando cristales; big_text '500 FT'; composicion edificio de 40 plantas enterrado en sal.",
-        "por_que_funcionara": "Es una explicación de algo cotidiano que todo el mundo se ha preguntado, el mecanismo del 'science facts' corto y visual. El remate con una comparación exagerada pero oficial de NOAA da una imagen memorable.",
-        "inspirado_en": [
-          "KgKsbEH8S8U",
-          "H2ahIGv9bFM"
-        ],
-        "piezas_nuevas": [
-          "salero"
-        ]
-      }
-    ]
-  },
+  "temas_calientes": [
+   "Cuerpo humano y cosas que 'no funcionan como crees'",
+   "ADN, gemelos y misterios genéticos",
+   "Fenómenos meteorológicos extremos (tormentas, rayos, tsunamis)",
+   "Escenarios planetarios 'what if' (la Tierra, el espacio, toda la humanidad a la vez)",
+   "Rediseñar el cuerpo o cambiar de tamaño (cuatro brazos, toro bípedo)",
+   "Listas 'things you didn't know' sobre algo que todo el mundo conoce",
+   "Animales con rasgos extraños y especies en peligro",
+   "Supervivencia real con protagonista"
+  ],
+  "formatos": [
+   "Lista top 5 con giro final",
+   "Mito contra realidad",
+   "Documental en tercera persona con protagonista real",
+   "Segunda persona inmersiva / experimento mental",
+   "Misterio que se resuelve por pistas",
+   "Telediario / noticia de última hora",
+   "Comparación de escalas",
+   "Guía de viaje / postal desde un lugar imposible",
+   "Pregunta-respuesta con prueba que el espectador puede hacer en casa",
+   "Antes y después / viaje de una gota"
+  ],
   "ideas": [
-    {
-      "tipo": "que_pasaria_si",
-      "premisa": "What if you got struck by lightning? Myth vs reality, then a real record-holder. MYTH: you'd be vaporized. REALITY: a bolt hits about 50,000°F, roughly five times hotter than the surface of the Sun, but it passes in a split second, and the National Weather Service says about 90% of people who get struck survive. The current can scramble your heart rhythm and nerves, and many survivors live with long-term symptoms. MYTH: 'lightning never strikes the same place twice.' REALITY: the Empire State Building gets hit around 20 to 25 times a year. Then the protagonist: Roy Sullivan, a park ranger in Shenandoah National Park, Virginia. He was struck SEVEN times between 1942 and 1977 and survived every one. It's a Guinness World Record.",
-      "gancho": "What actually happens if lightning hits YOU?",
-      "giro_final": "The odds of being struck in a single year are about one in a million. Roy Sullivan got hit seven times, and Guinness put his scorched ranger hats on display. Would you ever go outside in a storm again?",
-      "estilo_visual": "accion 'rayo' sobre la persona en un sendero de montaña; big_text '50,000°F' junto a composicion con sol y rayo comparados; accion 'latido' para el corazón; composicion edificio + rayo (Empire State) con lugar ciudad tormentosa; person con la zona del cuerpo resaltada; newspaper antiguo 'RANGER STRUCK AGAIN'; big_text '7'; document estilo récord Guinness con sello.",
-      "por_que_funcionara": "Une la pregunta imposible del 'what if' con un caso real casi increíble, el mismo mecanismo que el vídeo coreano de la nube de tormenta. El formato mito/realidad ya funcionó en el vídeo aprobado del Gran Cañón. La frase hecha 'never strikes twice' la conoce todo el mundo en EE. UU., y el '7' en pantalla es un número que se comparte.",
-      "inspirado_en": [
-        "l_mGBAyVVjg",
-        "YWwKYyQGfYw"
-      ],
-      "piezas_nuevas": [
-        "sombrero de guardabosques"
-      ]
-    },
-    {
-      "tipo": "caso_real",
-      "premisa": "Documentary in third person with an altitude counter on screen. July 26, 1959: Marine Lt. Col. William Rankin is flying an F-8 Crusader at about 47,000 feet over the East Coast. His engine dies right above a monster thunderstorm, and he has to eject in a summer flight suit. The cold is brutal and the thin air makes his body swell painfully. His parachute opens inside the storm, and the updrafts start throwing him UP and down like an elevator. Hail pounds him, rain is so heavy he fears drowning in midair, and lightning flashes all around him. A fall that should take about 10 minutes lasts about 40. He lands in a North Carolina forest, badly hurt but alive.",
-      "gancho": "What happens if you fall INTO a thunderstorm? One pilot found out.",
-      "giro_final": "He survived, recovered and wrote a book about it, titled 'The Man Who Rode the Thunder.' Would you ever get back in a cockpit after that?",
-      "estilo_visual": "composicion avion + nube sobre cielo nocturno; accion 'congelarse' tras la eyección; accion 'hincharse' (versión suave); composicion persona + nube + rayo subiendo y bajando con un contador de altitud; accion 'tormenta_mar' adaptada al cielo con hielo (granizo); big_text '40 MIN'; forest kind 'jungle' para el aterrizaje; quote con el título del libro.",
-      "por_que_funcionara": "Es el mismo hecho que el vídeo coreano del hombre atrapado en una nube de tormenta (2,7M de vistas), pero contado para EE. UU., con un piloto estadounidense y en pies. El ascensor de la tormenta, que te devuelve hacia arriba mientras caes, es una imagen imposible y muy visual. La escalada de tensión casa con el estilo que prefiere el dueño.",
-      "inspirado_en": [
-        "l_mGBAyVVjg"
-      ],
-      "piezas_nuevas": [
-        "paracaídas"
-      ]
-    },
-    {
-      "tipo": "que_pasaria_si",
-      "premisa": "Thought experiment in second person. You're standing in Ecuador when Earth suddenly stops spinning. You've always been moving: about 1,000 mph at the equator and nearly 800 mph in New York. The planet stops, but you, the air and the oceans don't. Everything not bolted to bedrock keeps flying east, and winds faster than any hurricane rip across the surface. Over time the oceans slide toward the poles, because the equator's bulge only exists thanks to the spin, leaving a giant continent around the middle of the planet. One 'day' would last a whole year: about six months of daylight, then six months of night. The scale twist: this is slowly happening for real. The Moon's tides act like brakes, and fossil shells show that when T. rex was alive, a year had about 372 days.",
-      "gancho": "What if Earth stopped spinning… right now?",
-      "giro_final": "Earth IS slowing down, just very, very slowly. When dinosaurs were alive, a day was about half an hour shorter. So how long will your great-great-grandkids' days be?",
-      "estilo_visual": "composicion tierra girando en el espacio; big_text '1,000 MPH'; map_pin globo terráqueo marcando New York; accion 'correr' y composicion viento + escombros barriendo la ciudad; composicion ola_gigante; composicion sol fijo (día eterno) y luna (noche eterna); composicion dinosaurio + reloj_digital '23:30' para el giro.",
-      "por_que_funcionara": "Es la pregunta planetaria tipo 'what if every woman on Earth…', que provoca escalada y comentarios. La velocidad a la que ya te mueves sin notarlo es un 'no sabía esto' inmediato. El giro de los dinosaurios convierte la fantasía en un hecho real verificable.",
-      "inspirado_en": [
-        "xKrJ7wgzoxQ",
-        "98b3Knhngxw"
-      ],
-      "piezas_nuevas": []
-    },
-    {
-      "tipo": "caso_real",
-      "premisa": "Mystery that unfolds clue by clue. In 2002, Lydia Fairchild, a young mom in Washington state, applies for government assistance and the state requires DNA tests. The results say the father is the father, but SHE is not the mother of her own children. Prosecutors suspect fraud and she nearly loses her kids. She is pregnant with her third child, so a court official watches the birth and samples are taken right away. That baby doesn't match her either. Her lawyer then finds a Boston medical case about a woman named Karen Keegan, and new tests on other tissue from Lydia's body finally match. Explanation: Lydia is a chimera. Before she was born, two fertilized eggs (she should have had a twin) fused into one person with two sets of DNA.",
-      "gancho": "What if a DNA test said you're not your own kids' mom?",
-      "giro_final": "Lydia's children were genetically her twin's kids, a twin who never existed as a separate person. Scientists think chimeras may be more common than we realize. How sure are you that you're only one person?",
-      "estilo_visual": "document con resultado 'MATERNITY: 0%' resaltado y sello rojo; group de la madre con sus hijos; hospital para el parto vigilado; newspaper web 'MOM FAILS DNA TEST'; composicion lupa + adn; composicion celula_dividiendose + cromosoma para explicar las dos células que se fusionan; doctor explicando.",
-      "por_que_funcionara": "Es el mecanismo del misterio de ADN que arrasa ahora mismo ('Bina Paida Hue Baap Ka DNA', 1,2M), pero con un caso estadounidense muy documentado (ABC News, NEJM). El '0%' engancha y la explicación científica tiene giro. El remate interpela directamente al espectador.",
-      "inspirado_en": [
-        "eS-He01EmmI",
-        "eYGdrRn3IZQ"
-      ],
-      "piezas_nuevas": [
-        "bebé",
-        "mazo de juez"
-      ]
-    },
-    {
-      "tipo": "que_pasaria_si",
-      "premisa": "Scale comparison: you shrink step by step from human size to the size of an ant, and the physics flips at each step. As a human, a fall from a skyscraper is fatal. At ant size, air resistance wins and you drift down so slowly you could survive a fall from ANY height. Biologist J.B.S. Haldane wrote that a mouse dropped down a mine shaft can walk away, while a man is broken and a horse splashes. Strength works the same way: ants can lift many times their own body weight. Then the dark side: water becomes your enemy. Surface tension makes a single drop cling like glue, and getting wet could pin you down. Small bodies also lose heat fast.",
-      "gancho": "What if you shrank to the size of an ant?",
-      "giro_final": "At ant size, falling off the Empire State Building is no big deal, but a single raindrop could trap you like quicksand. Would you still want to shrink?",
-      "estilo_visual": "composicion persona junto a edificio y cambio progresivo de escala con hormiga al lado; accion 'caer_romper' (escala humana) frente a la persona flotando suavemente como una pluma; composicion hormiga levantando un trozo de manzana; quote con la frase de Haldane; composicion gota gigante atrapando a la persona diminuta; accion 'congelarse' para la pérdida de calor.",
-      "por_que_funcionara": "Aprovecha el rediseño del cuerpo de 'What If You Built a Human With Four Arms' y el toro bípedo, pero con física real y frases citables. La comparación de escalas es una de las estructuras favoritas del dueño, y el contraste invencible a las caídas / vencido por una gota es un giro perfecto.",
-      "inspirado_en": [
-        "tbVQi4m5OQI",
-        "aqEePKpgRc0"
-      ],
-      "piezas_nuevas": []
-    },
-    {
-      "tipo": "caso_real",
-      "premisa": "List with a twist, three ships and one woman. Violet Jessop was a stewardess and nurse who worked on the three giant sister ships of the White Star Line. SHIP 1: in 1911 she is aboard the RMS Olympic when it collides with the warship HMS Hawke. It makes it back to port. SHIP 2: in 1912 she works on the Titanic. Ordered into lifeboat 16, she is handed a baby to look after. On the rescue ship Carpathia, a woman snatches the baby back without a word. SHIP 3: in 1916, during World War I, she serves as a nurse on the hospital ship Britannic when it hits a mine and sinks within an hour. She jumps from a lifeboat and survives a head injury.",
-      "gancho": "How did one woman survive the Titanic… and two other shipwrecks?",
-      "giro_final": "All three disasters happened on sister ships of the same class, and she still went back to sea for decades. The press called her 'Miss Unsinkable.' Would YOU have boarded a fourth ship?",
-      "estilo_visual": "composicion tres barcos alineados con etiquetas 1911 / 1912 / 1916; person presentando a Violet con uniforme; composicion barco + hielo de noche (ocean); accion 'tormenta_mar' con la barca salvavidas; composicion bebé en brazos en la barca; newspaper antiguo 'BRITANNIC SUNK'; big_text '3'.",
-      "por_que_funcionara": "El Titanic es un tema que nunca falla en EE. UU. y la protagonista sorprende porque casi nadie la conoce. La lista de 3 con giro reproduce el mecanismo 'things you didn't know'. El detalle documentado del bebé humaniza la historia sin caer en lo morboso.",
-      "inspirado_en": [
-        "l_mGBAyVVjg",
-        "T8FzQ5cW-94"
-      ],
-      "piezas_nuevas": [
-        "bebé",
-        "salvavidas"
-      ]
-    },
-    {
-      "tipo": "dato_curioso",
-      "premisa": "Question-and-answer format with a countdown of 3 strange facts about the octopus. 3: it has THREE hearts. Two pump blood through the gills and one pumps it to the rest of the body. 2: its blood is blue, because it carries oxygen with a copper-based molecule called hemocyanin instead of our iron-based hemoglobin. 1: when it swims, the heart that feeds its body stops beating. Swimming exhausts it, so octopuses usually prefer to crawl. Bonus twist: about two-thirds of its neurons are in its arms, so each arm can react on its own.",
-      "gancho": "Did you know an octopus has three hearts?",
-      "giro_final": "Most of an octopus's neurons live in its arms, not its head, so in a way it thinks with its arms. If you had eight brainy arms, what would you do first?",
-      "estilo_visual": "composicion pulpo bajo el mar con tres corazones latiendo resaltados; accion 'latido'; composicion gota azul frente a gota roja (sangre de pulpo frente a humana); composicion pulpo nadando con un corazón que se para y después reptando; composicion cerebro + pulpo con brazos iluminados; big_text '3'.",
-      "por_que_funcionara": "El arranque 'Did you know…' con un dato rarísimo del cuerpo es justo lo que funciona en los vídeos del cordón umbilical y de las formas. Es corto, visual y fácil de repetir. La pregunta final es abierta y saca comentarios divertidos.",
-      "inspirado_en": [
-        "eYGdrRn3IZQ",
-        "TkUxHsLUCX4"
-      ],
-      "piezas_nuevas": []
-    },
-    {
-      "tipo": "explicacion",
-      "premisa": "Question answered with a test you can do right now. 'Try tickling your own feet. Nothing, right?' Explanation: when you move, your cerebellum predicts exactly what you're going to feel and turns the sensation down, which is why you don't feel your own tongue in your mouth or your clothes all day. When someone else tickles you, there's no prediction, so it's a surprise. Then the experiment: researchers at University College London built a robot that tickled people's palms as they moved a control. When they added a tiny delay, a fraction of a second, between the hand movement and the tickle, people started feeling it more, because the brain's prediction no longer matched.",
-      "gancho": "Why can't you tickle yourself?",
-      "giro_final": "You CAN trick your brain, but you need a robot with a fraction-of-a-second delay. Now try it on someone else and tell us: what's the most ticklish spot?",
-      "estilo_visual": "accion 'cosquillas' (pluma en el pie de otra persona); persona intentando hacerse cosquillas sin reacción, con accion 'dudar'; composicion cerebro con zona resaltada (cerebelo) + bombilla; composicion robot + mano + pluma; big_text '0.2 SEC'; accion 'reir' final.",
-      "por_que_funcionara": "Funciona como 'Your Body Is Not Like You Think' (4,6M): una explicación sobre tu propio cuerpo que puedes comprobar en el momento, lo que alarga la retención. La invitación final a probarlo y comentar sube la interacción.",
-      "inspirado_en": [
-        "HCW-RUvLFW4",
-        "eYGdrRn3IZQ"
-      ],
-      "piezas_nuevas": []
-    }
+   {
+    "tipo": "que_pasaria_si",
+    "premisa": "What if you got struck by lightning? Myth vs reality, then a real record-holder. MYTH: you'd be vaporized. REALITY: a bolt hits about 50,000°F, roughly five times hotter than the surface of the Sun, but it passes in a split second, and the National Weather Service says about 90% of people who get struck survive. The current can scramble your heart rhythm and nerves, and many survivors live with long-term symptoms. MYTH: 'lightning never strikes the same place twice.' REALITY: the Empire State Building gets hit around 20 to 25 times a year. Then the protagonist: Roy Sullivan, a park ranger in Shenandoah National Park, Virginia. He was struck SEVEN times between 1942 and 1977 and survived every one. It's a Guinness World Record.",
+    "gancho": "What actually happens if lightning hits YOU?",
+    "giro_final": "The odds of being struck in a single year are about one in a million. Roy Sullivan got hit seven times, and Guinness put his scorched ranger hats on display. Would you ever go outside in a storm again?",
+    "estilo_visual": "accion 'rayo' sobre la persona en un sendero de montaña; big_text '50,000°F' junto a composicion con sol y rayo comparados; accion 'latido' para el corazón; composicion edificio + rayo (Empire State) con lugar ciudad tormentosa; person con la zona del cuerpo resaltada; newspaper antiguo 'RANGER STRUCK AGAIN'; big_text '7'; document estilo récord Guinness con sello.",
+    "por_que_funcionara": "Une la pregunta imposible del 'what if' con un caso real casi increíble, el mismo mecanismo que el vídeo coreano de la nube de tormenta. El formato mito/realidad ya funcionó en el vídeo aprobado del Gran Cañón. La frase hecha 'never strikes twice' la conoce todo el mundo en EE. UU., y el '7' en pantalla es un número que se comparte.",
+    "inspirado_en": [
+     "l_mGBAyVVjg",
+     "YWwKYyQGfYw"
+    ],
+    "piezas_nuevas": [
+     "sombrero de guardabosques"
+    ]
+   },
+   {
+    "tipo": "caso_real",
+    "premisa": "Documentary in third person with an altitude counter on screen. July 26, 1959: Marine Lt. Col. William Rankin is flying an F-8 Crusader at about 47,000 feet over the East Coast. His engine dies right above a monster thunderstorm, and he has to eject in a summer flight suit. The cold is brutal and the thin air makes his body swell painfully. His parachute opens inside the storm, and the updrafts start throwing him UP and down like an elevator. Hail pounds him, rain is so heavy he fears drowning in midair, and lightning flashes all around him. A fall that should take about 10 minutes lasts about 40. He lands in a North Carolina forest, badly hurt but alive.",
+    "gancho": "What happens if you fall INTO a thunderstorm? One pilot found out.",
+    "giro_final": "He survived, recovered and wrote a book about it, titled 'The Man Who Rode the Thunder.' Would you ever get back in a cockpit after that?",
+    "estilo_visual": "composicion avion + nube sobre cielo nocturno; accion 'congelarse' tras la eyección; accion 'hincharse' (versión suave); composicion persona + nube + rayo subiendo y bajando con un contador de altitud; accion 'tormenta_mar' adaptada al cielo con hielo (granizo); big_text '40 MIN'; forest kind 'jungle' para el aterrizaje; quote con el título del libro.",
+    "por_que_funcionara": "Es el mismo hecho que el vídeo coreano del hombre atrapado en una nube de tormenta (2,7M de vistas), pero contado para EE. UU., con un piloto estadounidense y en pies. El ascensor de la tormenta, que te devuelve hacia arriba mientras caes, es una imagen imposible y muy visual. La escalada de tensión casa con el estilo que prefiere el dueño.",
+    "inspirado_en": [
+     "l_mGBAyVVjg"
+    ],
+    "piezas_nuevas": [
+     "paracaídas"
+    ]
+   },
+   {
+    "tipo": "que_pasaria_si",
+    "premisa": "Thought experiment in second person. You're standing in Ecuador when Earth suddenly stops spinning. You've always been moving: about 1,000 mph at the equator and nearly 800 mph in New York. The planet stops, but you, the air and the oceans don't. Everything not bolted to bedrock keeps flying east, and winds faster than any hurricane rip across the surface. Over time the oceans slide toward the poles, because the equator's bulge only exists thanks to the spin, leaving a giant continent around the middle of the planet. One 'day' would last a whole year: about six months of daylight, then six months of night. The scale twist: this is slowly happening for real. The Moon's tides act like brakes, and fossil shells show that when T. rex was alive, a year had about 372 days.",
+    "gancho": "What if Earth stopped spinning… right now?",
+    "giro_final": "Earth IS slowing down, just very, very slowly. When dinosaurs were alive, a day was about half an hour shorter. So how long will your great-great-grandkids' days be?",
+    "estilo_visual": "composicion tierra girando en el espacio; big_text '1,000 MPH'; map_pin globo terráqueo marcando New York; accion 'correr' y composicion viento + escombros barriendo la ciudad; composicion ola_gigante; composicion sol fijo (día eterno) y luna (noche eterna); composicion dinosaurio + reloj_digital '23:30' para el giro.",
+    "por_que_funcionara": "Es la pregunta planetaria tipo 'what if every woman on Earth…', que provoca escalada y comentarios. La velocidad a la que ya te mueves sin notarlo es un 'no sabía esto' inmediato. El giro de los dinosaurios convierte la fantasía en un hecho real verificable.",
+    "inspirado_en": [
+     "xKrJ7wgzoxQ",
+     "98b3Knhngxw"
+    ],
+    "piezas_nuevas": []
+   },
+   {
+    "tipo": "caso_real",
+    "premisa": "Mystery that unfolds clue by clue. In 2002, Lydia Fairchild, a young mom in Washington state, applies for government assistance and the state requires DNA tests. The results say the father is the father, but SHE is not the mother of her own children. Prosecutors suspect fraud and she nearly loses her kids. She is pregnant with her third child, so a court official watches the birth and samples are taken right away. That baby doesn't match her either. Her lawyer then finds a Boston medical case about a woman named Karen Keegan, and new tests on other tissue from Lydia's body finally match. Explanation: Lydia is a chimera. Before she was born, two fertilized eggs (she should have had a twin) fused into one person with two sets of DNA.",
+    "gancho": "What if a DNA test said you're not your own kids' mom?",
+    "giro_final": "Lydia's children were genetically her twin's kids, a twin who never existed as a separate person. Scientists think chimeras may be more common than we realize. How sure are you that you're only one person?",
+    "estilo_visual": "document con resultado 'MATERNITY: 0%' resaltado y sello rojo; group de la madre con sus hijos; hospital para el parto vigilado; newspaper web 'MOM FAILS DNA TEST'; composicion lupa + adn; composicion celula_dividiendose + cromosoma para explicar las dos células que se fusionan; doctor explicando.",
+    "por_que_funcionara": "Es el mecanismo del misterio de ADN que arrasa ahora mismo ('Bina Paida Hue Baap Ka DNA', 1,2M), pero con un caso estadounidense muy documentado (ABC News, NEJM). El '0%' engancha y la explicación científica tiene giro. El remate interpela directamente al espectador.",
+    "inspirado_en": [
+     "eS-He01EmmI",
+     "eYGdrRn3IZQ"
+    ],
+    "piezas_nuevas": [
+     "bebé",
+     "mazo de juez"
+    ]
+   },
+   {
+    "tipo": "que_pasaria_si",
+    "premisa": "Scale comparison: you shrink step by step from human size to the size of an ant, and the physics flips at each step. As a human, a fall from a skyscraper is fatal. At ant size, air resistance wins and you drift down so slowly you could survive a fall from ANY height. Biologist J.B.S. Haldane wrote that a mouse dropped down a mine shaft can walk away, while a man is broken and a horse splashes. Strength works the same way: ants can lift many times their own body weight. Then the dark side: water becomes your enemy. Surface tension makes a single drop cling like glue, and getting wet could pin you down. Small bodies also lose heat fast.",
+    "gancho": "What if you shrank to the size of an ant?",
+    "giro_final": "At ant size, falling off the Empire State Building is no big deal, but a single raindrop could trap you like quicksand. Would you still want to shrink?",
+    "estilo_visual": "composicion persona junto a edificio y cambio progresivo de escala con hormiga al lado; accion 'caer_romper' (escala humana) frente a la persona flotando suavemente como una pluma; composicion hormiga levantando un trozo de manzana; quote con la frase de Haldane; composicion gota gigante atrapando a la persona diminuta; accion 'congelarse' para la pérdida de calor.",
+    "por_que_funcionara": "Aprovecha el rediseño del cuerpo de 'What If You Built a Human With Four Arms' y el toro bípedo, pero con física real y frases citables. La comparación de escalas es una de las estructuras favoritas del dueño, y el contraste invencible a las caídas / vencido por una gota es un giro perfecto.",
+    "inspirado_en": [
+     "tbVQi4m5OQI",
+     "aqEePKpgRc0"
+    ],
+    "piezas_nuevas": []
+   },
+   {
+    "tipo": "caso_real",
+    "premisa": "List with a twist, three ships and one woman. Violet Jessop was a stewardess and nurse who worked on the three giant sister ships of the White Star Line. SHIP 1: in 1911 she is aboard the RMS Olympic when it collides with the warship HMS Hawke. It makes it back to port. SHIP 2: in 1912 she works on the Titanic. Ordered into lifeboat 16, she is handed a baby to look after. On the rescue ship Carpathia, a woman snatches the baby back without a word. SHIP 3: in 1916, during World War I, she serves as a nurse on the hospital ship Britannic when it hits a mine and sinks within an hour. She jumps from a lifeboat and survives a head injury.",
+    "gancho": "How did one woman survive the Titanic… and two other shipwrecks?",
+    "giro_final": "All three disasters happened on sister ships of the same class, and she still went back to sea for decades. The press called her 'Miss Unsinkable.' Would YOU have boarded a fourth ship?",
+    "estilo_visual": "composicion tres barcos alineados con etiquetas 1911 / 1912 / 1916; person presentando a Violet con uniforme; composicion barco + hielo de noche (ocean); accion 'tormenta_mar' con la barca salvavidas; composicion bebé en brazos en la barca; newspaper antiguo 'BRITANNIC SUNK'; big_text '3'.",
+    "por_que_funcionara": "El Titanic es un tema que nunca falla en EE. UU. y la protagonista sorprende porque casi nadie la conoce. La lista de 3 con giro reproduce el mecanismo 'things you didn't know'. El detalle documentado del bebé humaniza la historia sin caer en lo morboso.",
+    "inspirado_en": [
+     "l_mGBAyVVjg",
+     "T8FzQ5cW-94"
+    ],
+    "piezas_nuevas": [
+     "bebé",
+     "salvavidas"
+    ]
+   },
+   {
+    "tipo": "dato_curioso",
+    "premisa": "Question-and-answer format with a countdown of 3 strange facts about the octopus. 3: it has THREE hearts. Two pump blood through the gills and one pumps it to the rest of the body. 2: its blood is blue, because it carries oxygen with a copper-based molecule called hemocyanin instead of our iron-based hemoglobin. 1: when it swims, the heart that feeds its body stops beating. Swimming exhausts it, so octopuses usually prefer to crawl. Bonus twist: about two-thirds of its neurons are in its arms, so each arm can react on its own.",
+    "gancho": "Did you know an octopus has three hearts?",
+    "giro_final": "Most of an octopus's neurons live in its arms, not its head, so in a way it thinks with its arms. If you had eight brainy arms, what would you do first?",
+    "estilo_visual": "composicion pulpo bajo el mar con tres corazones latiendo resaltados; accion 'latido'; composicion gota azul frente a gota roja (sangre de pulpo frente a humana); composicion pulpo nadando con un corazón que se para y después reptando; composicion cerebro + pulpo con brazos iluminados; big_text '3'.",
+    "por_que_funcionara": "El arranque 'Did you know…' con un dato rarísimo del cuerpo es justo lo que funciona en los vídeos del cordón umbilical y de las formas. Es corto, visual y fácil de repetir. La pregunta final es abierta y saca comentarios divertidos.",
+    "inspirado_en": [
+     "eYGdrRn3IZQ",
+     "TkUxHsLUCX4"
+    ],
+    "piezas_nuevas": []
+   },
+   {
+    "tipo": "explicacion",
+    "premisa": "Question answered with a test you can do right now. 'Try tickling your own feet. Nothing, right?' Explanation: when you move, your cerebellum predicts exactly what you're going to feel and turns the sensation down, which is why you don't feel your own tongue in your mouth or your clothes all day. When someone else tickles you, there's no prediction, so it's a surprise. Then the experiment: researchers at University College London built a robot that tickled people's palms as they moved a control. When they added a tiny delay, a fraction of a second, between the hand movement and the tickle, people started feeling it more, because the brain's prediction no longer matched.",
+    "gancho": "Why can't you tickle yourself?",
+    "giro_final": "You CAN trick your brain, but you need a robot with a fraction-of-a-second delay. Now try it on someone else and tell us: what's the most ticklish spot?",
+    "estilo_visual": "accion 'cosquillas' (pluma en el pie de otra persona); persona intentando hacerse cosquillas sin reacción, con accion 'dudar'; composicion cerebro con zona resaltada (cerebelo) + bombilla; composicion robot + mano + pluma; big_text '0.2 SEC'; accion 'reir' final.",
+    "por_que_funcionara": "Funciona como 'Your Body Is Not Like You Think' (4,6M): una explicación sobre tu propio cuerpo que puedes comprobar en el momento, lo que alarga la retención. La invitación final a probarlo y comentar sube la interacción.",
+    "inspirado_en": [
+     "HCW-RUvLFW4",
+     "eYGdrRn3IZQ"
+    ],
+    "piezas_nuevas": []
+   },
+   {
+    "tipo": "caso_real",
+    "premisa": "Told like a breaking-news broadcast. September 23, 1999: NASA's Mars Climate Orbiter arrives at Mars after a journey of more than nine months, and contact is lost. The investigation finds the cause. Software from contractor Lockheed Martin reported the thruster force in American units (pound-force seconds), while NASA's navigation team assumed metric units (newton-seconds). Nobody converted them. Every small course correction was wrong, the probe flew far too low into Mars's atmosphere and it was lost. A spacecraft that cost about $125 million was destroyed by a units mix-up.",
+    "gancho": "How did NASA lose a $125 million spacecraft… over inches and centimeters?",
+    "giro_final": "The US is one of only three countries that still haven't officially switched to the metric system, along with Liberia and Myanmar. Should America finally go metric? Comment yes or no.",
+    "estilo_visual": "newspaper web 'NASA LOSES MARS PROBE'; composicion planeta rojo + sonda acercándose; composicion dos ordenadores con pantallas 'POUNDS' frente a 'NEWTONS'; money con la cifra subiendo hasta $125,000,000; composicion sonda + fuego en la atmósfera; map_pin globo terráqueo marcando EE. UU., Liberia y Myanmar.",
+    "por_que_funcionara": "Es un error histórico real, con cifra en dólares y conexión directa con la vida diaria estadounidense (pulgadas, libras). El remate yes/no polariza y dispara comentarios. El formato telediario aporta variedad respecto a las otras ideas.",
+    "inspirado_en": [
+     "T8FzQ5cW-94",
+     "XiPynnev_HU"
+    ],
+    "piezas_nuevas": [
+     "sonda espacial"
+    ]
+   },
+   {
+    "tipo": "que_pasaria_si",
+    "premisa": "Travel guide in second person: 'Welcome to Venus, your vacation from hell.' Stop 1: the air is so thick it presses on you about 90 times harder than on Earth, like being roughly half a mile underwater. Stop 2: it's around 900°F on the surface, hot enough to melt lead and hotter than Mercury, even though Mercury is closer to the Sun. Stop 3: the clouds are made of sulfuric acid. Stop 4: the weird calendar. Venus spins so slowly that one day lasts longer than its whole year, and it spins backwards, so the Sun rises in the west. Real twist: in 1982 the Soviet probe Venera 13 landed there and lasted 127 minutes, long enough to send back the first color photos from the surface.",
+    "gancho": "What if you spent one day on Venus?",
+    "giro_final": "On Venus, a day lasts longer than a year, so you'd celebrate your birthday before seeing a single sunset. Which planet should we visit next?",
+    "estilo_visual": "composicion planeta Venus en space; accion 'hundirse' para representar la presión; big_text '900°F'; accion 'quemarse'; composicion nube amarilla + gota (ácido); composicion sol saliendo por el lado contrario + tarta_cumpleanos; composicion sonda en la superficie con volcan; reloj_digital '127 MIN'.",
+    "por_que_funcionara": "Usa el mecanismo de 'What if you're stuck in the Nether roof with nothing' y 'PS5 on the Moon': ponerte en un lugar imposible. El dato del día más largo que el año es un 'no sabía esto' perfecto para comentar. La guía de viaje aporta un formato nuevo al canal.",
+    "inspirado_en": [
+     "1ySsFGvou4o",
+     "APHpOaYqTsE"
+    ],
+    "piezas_nuevas": [
+     "sonda espacial"
+    ]
+   },
+   {
+    "tipo": "dato_curioso",
+    "premisa": "Top 5 things you didn't know about the money in your pocket. 5: a dollar bill isn't paper. It's about 75% cotton and 25% linen, which is why it survives the washing machine. 4: a $1 bill lasts only about 6 or 7 years before the Federal Reserve shreds it, while a $100 bill lasts around 20. 3: if your bills get burned or chewed up, the Bureau of Engraving and Printing can replace them for free if you send in more than half of the bill. 2: the government spent more than a cent to make each penny, about 3.7 cents in 2024. 1 (twist): that's why the US Mint struck its last circulating penny in November 2025.",
+    "gancho": "Did you know a dollar bill isn't made of paper?",
+    "giro_final": "After more than 200 years, the US stopped making pennies because each one cost almost 4 cents to make. Do you still have a jar full of them?",
+    "estilo_visual": "composicion dinero_billete + lavadora; big_text '75%'; composicion billete de $1 frente a billete de $100 con reloj_arena; document estilo carta oficial del Bureau con sello; composicion fuego + dinero_billete; money con la cifra 3.7¢; composicion moneda + casa (bote de centavos).",
+    "por_que_funcionara": "Copia la estructura exacta de la serie más vista de la semana ('5 Things You Didn't Know About…', 19M acumuladas) sobre un objeto que todo estadounidense tiene en el bolsillo. El final del penny es noticia reciente y saca historias personales en los comentarios.",
+    "inspirado_en": [
+     "T8FzQ5cW-94",
+     "u5h2l6SKsCc"
+    ],
+    "piezas_nuevas": [
+     "lavadora",
+     "moneda"
+    ]
+   },
+   {
+    "tipo": "explicacion",
+    "premisa": "Before and after, following the journey of a single raindrop. Rain falls slightly acidic and slowly dissolves minerals from rocks. Rivers carry those minerals to the sea, and hot vents and volcanoes on the ocean floor add more. The sun evaporates the water, but the salt stays behind, and over millions of years it has piled up to about 3.5% of seawater. Rivers are also slightly salty, just not enough to taste. The scale reveal: according to NOAA, if you pulled all the salt out of the ocean and spread it over the land, it would form a layer more than 500 feet thick, about as tall as a 40-story building.",
+    "gancho": "Why is the ocean salty if rivers aren't?",
+    "giro_final": "Spread out, the ocean's salt would bury every continent under 500 feet of salt, taller than a 40-story building. And the river water you drink? It's carrying a tiny bit of salt to the sea right now.",
+    "estilo_visual": "composicion gota cayendo sobre montana_pieza; composicion gota disolviendo roca con zoom; map_pin mapa de relieve con un río hacia el mar; composicion volcan submarino; composicion sol + nube (evaporación) dejando cristales; big_text '500 FT'; composicion edificio de 40 plantas enterrado en sal.",
+    "por_que_funcionara": "Es una explicación de algo cotidiano que todo el mundo se ha preguntado, el mecanismo del 'science facts' corto y visual. El remate con una comparación exagerada pero oficial de NOAA da una imagen memorable.",
+    "inspirado_en": [
+     "KgKsbEH8S8U",
+     "H2ahIGv9bFM"
+    ],
+    "piezas_nuevas": [
+     "salero"
+    ]
+   }
   ]
+ },
+ "ideas": [
+  {
+   "tipo": "que_pasaria_si",
+   "premisa": "What if you got struck by lightning? Myth vs reality, then a real record-holder. MYTH: you'd be vaporized. REALITY: a bolt hits about 50,000°F, roughly five times hotter than the surface of the Sun, but it passes in a split second, and the National Weather Service says about 90% of people who get struck survive. The current can scramble your heart rhythm and nerves, and many survivors live with long-term symptoms. MYTH: 'lightning never strikes the same place twice.' REALITY: the Empire State Building gets hit around 20 to 25 times a year. Then the protagonist: Roy Sullivan, a park ranger in Shenandoah National Park, Virginia. He was struck SEVEN times between 1942 and 1977 and survived every one. It's a Guinness World Record.",
+   "gancho": "What actually happens if lightning hits YOU?",
+   "giro_final": "The odds of being struck in a single year are about one in a million. Roy Sullivan got hit seven times, and Guinness put his scorched ranger hats on display. Would you ever go outside in a storm again?",
+   "estilo_visual": "accion 'rayo' sobre la persona en un sendero de montaña; big_text '50,000°F' junto a composicion con sol y rayo comparados; accion 'latido' para el corazón; composicion edificio + rayo (Empire State) con lugar ciudad tormentosa; person con la zona del cuerpo resaltada; newspaper antiguo 'RANGER STRUCK AGAIN'; big_text '7'; document estilo récord Guinness con sello.",
+   "por_que_funcionara": "Une la pregunta imposible del 'what if' con un caso real casi increíble, el mismo mecanismo que el vídeo coreano de la nube de tormenta. El formato mito/realidad ya funcionó en el vídeo aprobado del Gran Cañón. La frase hecha 'never strikes twice' la conoce todo el mundo en EE. UU., y el '7' en pantalla es un número que se comparte.",
+   "inspirado_en": [
+    "l_mGBAyVVjg",
+    "YWwKYyQGfYw"
+   ],
+   "piezas_nuevas": [
+    "sombrero de guardabosques"
+   ]
+  },
+  {
+   "tipo": "caso_real",
+   "premisa": "Documentary in third person with an altitude counter on screen. July 26, 1959: Marine Lt. Col. William Rankin is flying an F-8 Crusader at about 47,000 feet over the East Coast. His engine dies right above a monster thunderstorm, and he has to eject in a summer flight suit. The cold is brutal and the thin air makes his body swell painfully. His parachute opens inside the storm, and the updrafts start throwing him UP and down like an elevator. Hail pounds him, rain is so heavy he fears drowning in midair, and lightning flashes all around him. A fall that should take about 10 minutes lasts about 40. He lands in a North Carolina forest, badly hurt but alive.",
+   "gancho": "What happens if you fall INTO a thunderstorm? One pilot found out.",
+   "giro_final": "He survived, recovered and wrote a book about it, titled 'The Man Who Rode the Thunder.' Would you ever get back in a cockpit after that?",
+   "estilo_visual": "composicion avion + nube sobre cielo nocturno; accion 'congelarse' tras la eyección; accion 'hincharse' (versión suave); composicion persona + nube + rayo subiendo y bajando con un contador de altitud; accion 'tormenta_mar' adaptada al cielo con hielo (granizo); big_text '40 MIN'; forest kind 'jungle' para el aterrizaje; quote con el título del libro.",
+   "por_que_funcionara": "Es el mismo hecho que el vídeo coreano del hombre atrapado en una nube de tormenta (2,7M de vistas), pero contado para EE. UU., con un piloto estadounidense y en pies. El ascensor de la tormenta, que te devuelve hacia arriba mientras caes, es una imagen imposible y muy visual. La escalada de tensión casa con el estilo que prefiere el dueño.",
+   "inspirado_en": [
+    "l_mGBAyVVjg"
+   ],
+   "piezas_nuevas": [
+    "paracaídas"
+   ]
+  },
+  {
+   "tipo": "que_pasaria_si",
+   "premisa": "Thought experiment in second person. You're standing in Ecuador when Earth suddenly stops spinning. You've always been moving: about 1,000 mph at the equator and nearly 800 mph in New York. The planet stops, but you, the air and the oceans don't. Everything not bolted to bedrock keeps flying east, and winds faster than any hurricane rip across the surface. Over time the oceans slide toward the poles, because the equator's bulge only exists thanks to the spin, leaving a giant continent around the middle of the planet. One 'day' would last a whole year: about six months of daylight, then six months of night. The scale twist: this is slowly happening for real. The Moon's tides act like brakes, and fossil shells show that when T. rex was alive, a year had about 372 days.",
+   "gancho": "What if Earth stopped spinning… right now?",
+   "giro_final": "Earth IS slowing down, just very, very slowly. When dinosaurs were alive, a day was about half an hour shorter. So how long will your great-great-grandkids' days be?",
+   "estilo_visual": "composicion tierra girando en el espacio; big_text '1,000 MPH'; map_pin globo terráqueo marcando New York; accion 'correr' y composicion viento + escombros barriendo la ciudad; composicion ola_gigante; composicion sol fijo (día eterno) y luna (noche eterna); composicion dinosaurio + reloj_digital '23:30' para el giro.",
+   "por_que_funcionara": "Es la pregunta planetaria tipo 'what if every woman on Earth…', que provoca escalada y comentarios. La velocidad a la que ya te mueves sin notarlo es un 'no sabía esto' inmediato. El giro de los dinosaurios convierte la fantasía en un hecho real verificable.",
+   "inspirado_en": [
+    "xKrJ7wgzoxQ",
+    "98b3Knhngxw"
+   ],
+   "piezas_nuevas": []
+  },
+  {
+   "tipo": "caso_real",
+   "premisa": "Mystery that unfolds clue by clue. In 2002, Lydia Fairchild, a young mom in Washington state, applies for government assistance and the state requires DNA tests. The results say the father is the father, but SHE is not the mother of her own children. Prosecutors suspect fraud and she nearly loses her kids. She is pregnant with her third child, so a court official watches the birth and samples are taken right away. That baby doesn't match her either. Her lawyer then finds a Boston medical case about a woman named Karen Keegan, and new tests on other tissue from Lydia's body finally match. Explanation: Lydia is a chimera. Before she was born, two fertilized eggs (she should have had a twin) fused into one person with two sets of DNA.",
+   "gancho": "What if a DNA test said you're not your own kids' mom?",
+   "giro_final": "Lydia's children were genetically her twin's kids, a twin who never existed as a separate person. Scientists think chimeras may be more common than we realize. How sure are you that you're only one person?",
+   "estilo_visual": "document con resultado 'MATERNITY: 0%' resaltado y sello rojo; group de la madre con sus hijos; hospital para el parto vigilado; newspaper web 'MOM FAILS DNA TEST'; composicion lupa + adn; composicion celula_dividiendose + cromosoma para explicar las dos células que se fusionan; doctor explicando.",
+   "por_que_funcionara": "Es el mecanismo del misterio de ADN que arrasa ahora mismo ('Bina Paida Hue Baap Ka DNA', 1,2M), pero con un caso estadounidense muy documentado (ABC News, NEJM). El '0%' engancha y la explicación científica tiene giro. El remate interpela directamente al espectador.",
+   "inspirado_en": [
+    "eS-He01EmmI",
+    "eYGdrRn3IZQ"
+   ],
+   "piezas_nuevas": [
+    "bebé",
+    "mazo de juez"
+   ]
+  },
+  {
+   "tipo": "que_pasaria_si",
+   "premisa": "Scale comparison: you shrink step by step from human size to the size of an ant, and the physics flips at each step. As a human, a fall from a skyscraper is fatal. At ant size, air resistance wins and you drift down so slowly you could survive a fall from ANY height. Biologist J.B.S. Haldane wrote that a mouse dropped down a mine shaft can walk away, while a man is broken and a horse splashes. Strength works the same way: ants can lift many times their own body weight. Then the dark side: water becomes your enemy. Surface tension makes a single drop cling like glue, and getting wet could pin you down. Small bodies also lose heat fast.",
+   "gancho": "What if you shrank to the size of an ant?",
+   "giro_final": "At ant size, falling off the Empire State Building is no big deal, but a single raindrop could trap you like quicksand. Would you still want to shrink?",
+   "estilo_visual": "composicion persona junto a edificio y cambio progresivo de escala con hormiga al lado; accion 'caer_romper' (escala humana) frente a la persona flotando suavemente como una pluma; composicion hormiga levantando un trozo de manzana; quote con la frase de Haldane; composicion gota gigante atrapando a la persona diminuta; accion 'congelarse' para la pérdida de calor.",
+   "por_que_funcionara": "Aprovecha el rediseño del cuerpo de 'What If You Built a Human With Four Arms' y el toro bípedo, pero con física real y frases citables. La comparación de escalas es una de las estructuras favoritas del dueño, y el contraste invencible a las caídas / vencido por una gota es un giro perfecto.",
+   "inspirado_en": [
+    "tbVQi4m5OQI",
+    "aqEePKpgRc0"
+   ],
+   "piezas_nuevas": []
+  },
+  {
+   "tipo": "caso_real",
+   "premisa": "List with a twist, three ships and one woman. Violet Jessop was a stewardess and nurse who worked on the three giant sister ships of the White Star Line. SHIP 1: in 1911 she is aboard the RMS Olympic when it collides with the warship HMS Hawke. It makes it back to port. SHIP 2: in 1912 she works on the Titanic. Ordered into lifeboat 16, she is handed a baby to look after. On the rescue ship Carpathia, a woman snatches the baby back without a word. SHIP 3: in 1916, during World War I, she serves as a nurse on the hospital ship Britannic when it hits a mine and sinks within an hour. She jumps from a lifeboat and survives a head injury.",
+   "gancho": "How did one woman survive the Titanic… and two other shipwrecks?",
+   "giro_final": "All three disasters happened on sister ships of the same class, and she still went back to sea for decades. The press called her 'Miss Unsinkable.' Would YOU have boarded a fourth ship?",
+   "estilo_visual": "composicion tres barcos alineados con etiquetas 1911 / 1912 / 1916; person presentando a Violet con uniforme; composicion barco + hielo de noche (ocean); accion 'tormenta_mar' con la barca salvavidas; composicion bebé en brazos en la barca; newspaper antiguo 'BRITANNIC SUNK'; big_text '3'.",
+   "por_que_funcionara": "El Titanic es un tema que nunca falla en EE. UU. y la protagonista sorprende porque casi nadie la conoce. La lista de 3 con giro reproduce el mecanismo 'things you didn't know'. El detalle documentado del bebé humaniza la historia sin caer en lo morboso.",
+   "inspirado_en": [
+    "l_mGBAyVVjg",
+    "T8FzQ5cW-94"
+   ],
+   "piezas_nuevas": [
+    "bebé",
+    "salvavidas"
+   ]
+  },
+  {
+   "tipo": "dato_curioso",
+   "premisa": "Question-and-answer format with a countdown of 3 strange facts about the octopus. 3: it has THREE hearts. Two pump blood through the gills and one pumps it to the rest of the body. 2: its blood is blue, because it carries oxygen with a copper-based molecule called hemocyanin instead of our iron-based hemoglobin. 1: when it swims, the heart that feeds its body stops beating. Swimming exhausts it, so octopuses usually prefer to crawl. Bonus twist: about two-thirds of its neurons are in its arms, so each arm can react on its own.",
+   "gancho": "Did you know an octopus has three hearts?",
+   "giro_final": "Most of an octopus's neurons live in its arms, not its head, so in a way it thinks with its arms. If you had eight brainy arms, what would you do first?",
+   "estilo_visual": "composicion pulpo bajo el mar con tres corazones latiendo resaltados; accion 'latido'; composicion gota azul frente a gota roja (sangre de pulpo frente a humana); composicion pulpo nadando con un corazón que se para y después reptando; composicion cerebro + pulpo con brazos iluminados; big_text '3'.",
+   "por_que_funcionara": "El arranque 'Did you know…' con un dato rarísimo del cuerpo es justo lo que funciona en los vídeos del cordón umbilical y de las formas. Es corto, visual y fácil de repetir. La pregunta final es abierta y saca comentarios divertidos.",
+   "inspirado_en": [
+    "eYGdrRn3IZQ",
+    "TkUxHsLUCX4"
+   ],
+   "piezas_nuevas": []
+  },
+  {
+   "tipo": "explicacion",
+   "premisa": "Question answered with a test you can do right now. 'Try tickling your own feet. Nothing, right?' Explanation: when you move, your cerebellum predicts exactly what you're going to feel and turns the sensation down, which is why you don't feel your own tongue in your mouth or your clothes all day. When someone else tickles you, there's no prediction, so it's a surprise. Then the experiment: researchers at University College London built a robot that tickled people's palms as they moved a control. When they added a tiny delay, a fraction of a second, between the hand movement and the tickle, people started feeling it more, because the brain's prediction no longer matched.",
+   "gancho": "Why can't you tickle yourself?",
+   "giro_final": "You CAN trick your brain, but you need a robot with a fraction-of-a-second delay. Now try it on someone else and tell us: what's the most ticklish spot?",
+   "estilo_visual": "accion 'cosquillas' (pluma en el pie de otra persona); persona intentando hacerse cosquillas sin reacción, con accion 'dudar'; composicion cerebro con zona resaltada (cerebelo) + bombilla; composicion robot + mano + pluma; big_text '0.2 SEC'; accion 'reir' final.",
+   "por_que_funcionara": "Funciona como 'Your Body Is Not Like You Think' (4,6M): una explicación sobre tu propio cuerpo que puedes comprobar en el momento, lo que alarga la retención. La invitación final a probarlo y comentar sube la interacción.",
+   "inspirado_en": [
+    "HCW-RUvLFW4",
+    "eYGdrRn3IZQ"
+   ],
+   "piezas_nuevas": []
+  }
+ ],
+ "nota": "Cancelado: desde el 23-11-2026 la tanda semanal son vídeos largos"
 }

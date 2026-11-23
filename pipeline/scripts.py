@@ -130,14 +130,20 @@ LONG_SCHEMA["properties"]["titulos_candidatos"] = {"type": "array", "items": {"t
 LONG_SCHEMA["required"] = ["titulos_candidatos"] + LONG_SCHEMA["required"]
 
 LONG_RULES = """VÍDEO LARGO (NO es un Short): formato horizontal de {lo_min}-{hi_min} minutos para YouTube.
-- LONGITUD: entre {lo_w} y {hi_w} palabras en total (en los vídeos largos la voz lee ~3 palabras por segundo). Entre 120 y 190 planos.
+- LONGITUD: entre {lo_w} y {hi_w} palabras en total (en los vídeos largos la voz lee ~3 palabras por segundo). Entre 70 y 100 planos
+  (cada plano 1-2 frases, 12-22 palabras, unos 5-7 segundos).
+- CADA PLANO ES UNA ESCENA ÚNICA (el dueño lo exige): cada plano se dibuja a medida con su propia animación, así que
+  cada uno tiene que ser un MOMENTO VISUAL DISTINTO y concreto (qué se ve, qué se mueve, dónde, quién). NUNCA repitas
+  el mismo lugar con la misma acción, ni la misma idea visual; nada de "otra vez la persona hablando". Si dos frases
+  seguidas cuentan lo mismo, júntalas en un plano. Describe lo que se ve con detalle en params (lugar, piezas, acción,
+  label) para que el dibujante sepa qué animar.
 - CAPÍTULOS: 4-6 capítulos. En el primer plano de cada capítulo pon "capitulo" con un título corto y llamativo
   ("Capítulo 2 · Lo que encontraron"); en el resto de planos, "capitulo": "". El plano 1 también abre capítulo.
 - LOS PRIMEROS 30 SEGUNDOS deciden todo: gancho fuerte en el plano 1, la pregunta central en el plano 2 y una
   PROMESA clara de lo que va a ver ("y al final te cuento lo más increíble de todo").
 - RETENCIÓN: cada 45-60 segundos un mini-gancho que obligue a seguir ("pero eso no es lo peor", "aquí es donde la
   historia se vuelve rara", "en un minuto vas a entender por qué"). Guarda la mayor sorpresa para el último capítulo.
-- Ritmo: cada plano 1 frase (5-15 palabras); cambia de escena en cada plano; usa mucho "accion" y "composicion".
+- Ritmo: cambia de escena en cada plano; usa mucho "accion" y "composicion".
 - FINAL: remate sorprendente + pregunta para comentarios + invita a ver otro vídeo del canal ("si te ha gustado, en
   el siguiente vídeo…"). Aquí NO hay bucle: deja "frase_bucle" vacía ("").
 - TÍTULO (decide si la gente entra): primero escribe 5 "titulos_candidatos" MUY distintos y ponles nota del 1 al 10

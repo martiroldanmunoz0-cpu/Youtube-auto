@@ -255,19 +255,16 @@ TRENDS_OPT = """      - name: Analizar vídeos de GTA 6 en YouTube
 out = sys.argv[1]
 PLAN = """name: Generar vídeos de la semana
 
-# Cada lunes a las 4:00 (España): analiza YouTube y hace el PLAN de la semana (ideas + piezas nuevas que hacen falta).
-# Después, una sesión de Claude dibuja las piezas que faltan y lanza "Montar vídeos de la semana".
-# Si no falta ninguna pieza, el montaje se lanza directamente. Red de seguridad: "Respaldo del montaje semanal".
+# Cada lunes a las 4:00 (España) se escriben los guiones de los VÍDEOS LARGOS de la semana (los Shorts ahora son solo
+# pedidos especiales). Cada guion queda esperando a que Claude dibuje TODAS sus escenas a medida (una distinta por plano);
+# después Claude lanza su montaje. Cuántos por semana: generacion.largos_por_semana en config.yaml.
 on:
   schedule:
     - cron: "1 2,3 * * 1"   # lunes 02:01 y 03:01 UTC: solo sigue la que son las 04:01 en Madrid (invierno/verano)
   workflow_dispatch: {}
 
-env:
-  TQDM_DISABLE: "1"
-
 permissions:
-  contents: write
+  contents: read
   actions: write
 
 jobs:
@@ -275,32 +272,15 @@ jobs:
     needs: hora
     if: needs.hora.outputs.seguir == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-      - run: pip install -r requirements.txt
-""" + RID_WEEK + TRENDS + """      - name: Plan de la semana (ideas y piezas nuevas)
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          FASE: plan
-        run: python pipeline/scripts.py
-      - name: Guardar el plan
-        run: |
-          git config user.name "shorts-bot"
-          git config user.email "shorts-bot@users.noreply.github.com"
-          git add data/planes data/gasto 2>/dev/null || git add data/planes
-          git commit -m "Plan de la semana $RUN_ID" || echo "sin cambios"
-          for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
-      - name: Si no falta ninguna pieza, montar ya
+      - name: Escribir los guiones de los vídeos largos de la semana (tema elegido por la IA)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          N=$(python -c "import json;print(len(json.load(open('data/planes/'+'$RUN_ID'+'.json'))['piezas_nuevas']))")
-          if [ "$N" = "0" ]; then gh workflow run semanal_montar.yml -f rid="$RUN_ID"; echo "Sin piezas nuevas: montaje lanzado"; else echo "Faltan $N piezas: las prepara Claude"; fi
+          N=$(python3 -c "import yaml;print((yaml.safe_load(open('config.yaml')).get('generacion') or {}).get('largos_por_semana', 2))")
+          echo "Vídeos largos esta semana: $N"
+          for i in $(seq 1 "$N"); do gh workflow run largo.yml -f a_medida=true; sleep 20; done
 """
 open(f"{out}/semanal.yml", "w").write(PLAN)
 
@@ -319,10 +299,11 @@ open(f"{out}/semanal_montar.yml", "w").write(workflow(
 
 open(f"{out}/semanal_respaldo.yml", "w").write("""name: Respaldo del montaje semanal
 
-# Red de seguridad: si el lunes a media mañana el plan sigue sin montarse (la sesión de Claude no lo lanzó), lo monta.
+# Red de seguridad: si el martes por la mañana un guion largo de la semana sigue sin montarse (Claude no llegó a dibujar
+# sus escenas), se monta con las escenas de la biblioteca para que la semana no se quede sin vídeo.
 on:
   schedule:
-    - cron: "41 8 * * 1"    # lunes 08:41 UTC (09:41/10:41 en España)
+    - cron: "41 8 * * 2"    # martes 08:41 UTC (09:41/10:41 en España)
   workflow_dispatch: {}
 
 permissions:
@@ -334,15 +315,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Montar los planes pendientes
+      - name: Montar los guiones largos que se quedaron sin montar
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for f in $(ls data/planes/*.json 2>/dev/null); do
-            EST=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['estado'])" "$f")
-            if [ "$EST" = "pendiente" ] || [ "$EST" = "escenas_listas" ]; then
-              RID=$(basename "$f" .json); echo "Plan $RID sin montar: lo lanzo"; gh workflow run semanal_montar.yml -f rid="$RID"
-            fi
+          for f in $(ls data/guiones/largo-*.json 2>/dev/null); do
+            ID=$(basename "$f" .json)
+            [ -f "data/weeks/$ID.json" ] && continue
+            echo "Guion $ID sin montar: lo lanzo"; gh workflow run largo.yml -f id="$ID" -f a_medida=false; sleep 20
           done
 """)
 
