@@ -17,7 +17,7 @@ import tempfile
 import zlib
 from pathlib import Path
 
-from common import RENDERER, idioma, load_config, read_json, run_id, week_dir, write_json
+from common import ROOT, RENDERER, idioma, load_config, read_json, run_id, week_dir, write_json
 from soundtrack import make_soundtrack
 import sonido
 from voice import synth
@@ -144,7 +144,14 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     else:
         sonido.make_sfx([], [], total, sfx, bed, seed=seed)
     capas = [sfx, bed]
-    if m.get("fondo_musical", False):  # música de fondo opcional (apagada: al dueño no le gusta)
+    pista = m.get("pista_largos") if story.get("formato") == "horizontal" else None
+    if pista and (ROOT / pista).exists():  # vídeos largos: el piano del canal en bucle, bajito y bajando cuando habla la voz
+        music = work / "music.wav"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", str(ROOT / pista), "-t", f"{total:.3f}",
+                        "-af", f"aresample=44100,loudnorm=I={m.get('volumen_largos_lufs', -27)}:TP=-3,afade=t=in:d=2,afade=t=out:st={max(0, total - 3):.3f}:d=3",
+                        "-ac", "1", str(music)], check=True)
+        capas.append(music)
+    elif m.get("fondo_musical", False):  # música generada (apagada: al dueño no le gusta)
         music = work / "music.wav"
         cuts = [b["start"] for b in beats[1:]]
         make_soundtrack(total, cuts, [], music, seed=seed, volume=m.get("volumen_ambiente", 0.1), sfx=False, style=story.get("music", "bright"), loop=not con_tarjeta)

@@ -64,6 +64,8 @@ musica:
   efectos: true                  # efectos sincronizados con lo que pasa (assets/sfx, CC0) + ambiente del lugar
   efectos_db: 0                  # subir/bajar todos los efectos (dB)
   fondo_musical: false           # música de fondo generada: apagada
+  pista_largos: "assets/music/piano_fondo.ogg"   # piano del canal (del dueño) en bucle en los vídeos largos
+  volumen_largos_lufs: -27       # volumen de la música (más negativo = más bajo); además baja sola cuando habla la voz
   volumen_ambiente: 0.1
 
 publicacion:
