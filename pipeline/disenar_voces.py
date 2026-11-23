@@ -14,9 +14,9 @@ import numpy as np
 TEXTO = ("Imagine you could control your luck. Turn it up, turn it down, anytime you want. "
          "Sounds amazing, right? But here's the thing nobody tells you: luck always collects. "
          "And when it does, it never asks for permission.")
-CANDIDATAS = {
-    "voz_h": "A real American man in his late twenties with a moderately deep, clean natural voice (not raspy, not gravelly), relaxed and genuine storyteller talking casually to a friend, natural breathing and small imperfections, warm low tone, unhurried conversational pace, not polished, not announcer-like",
-}
+CANDIDATAS: dict[str, str] = {}
+# Voces de assets/voices/ de las que sacar una muestra leyendo TEXTO (clon con VoxCPM2)
+CLONES = ["narrador_en2"]
 
 
 def main() -> None:
@@ -34,6 +34,16 @@ def main() -> None:
         sf.write(str(out / f"{vid}.wav"), wav, sr)
         (out / f"{vid}.txt").write_text(TEXTO + "\n", encoding="utf-8")
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(out / f"{vid}.wav"), "-b:a", "160k", str(out / f"{vid}.mp3")], check=True)
+        print(f"  {vid}: {len(wav) / sr:.1f} s", flush=True)
+    voces = Path(__file__).resolve().parent.parent / "assets" / "voices"
+    for vid in CLONES:
+        ref = voces / f"{vid}.wav"
+        print(f"muestra de {vid}...", flush=True)
+        wav = model.generate(text=TEXTO, prompt_wav_path=str(ref), prompt_text=(voces / f"{vid}.txt").read_text(encoding="utf-8").strip(),
+                             cfg_value=2.0, inference_timesteps=10, max_len=1200)
+        wav = np.asarray(wav, dtype=np.float32)
+        sf.write(str(out / f"{vid}_muestra.wav"), wav, sr)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(out / f"{vid}_muestra.wav"), "-b:a", "160k", str(out / f"{vid}_muestra.mp3")], check=True)
         print(f"  {vid}: {len(wav) / sr:.1f} s", flush=True)
 
 
