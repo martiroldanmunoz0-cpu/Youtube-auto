@@ -19,42 +19,58 @@
     {
       "capitulo": "Chapter 1 · The Last Proof",
       "text": "If humans vanished, what proves we existed?",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "perro",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "coche_rojo",
-            "pos": "fondo",
-            "tamano": "mediano"
-          },
-          {
-            "pieza": "semaforo",
-            "pos": "derecha",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "perro",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "coche_rojo",
+                "pos": "fondo",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "semaforo",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Times Square, noon. Nobody.",
+            "efecto": "velocidad"
           }
-        ],
-        "label": "Times Square, noon. Nobody.",
-        "efecto": "velocidad"
+        },
+        "label": "Times Square, noon. Nobody."
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "Imagine every human on Earth vanishes at once. No warning, no bodies, nobody left. And you're the only witness.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "dia",
-        "plano": "sin_persona",
+        "archivo": "largo-19-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "Everyone is gone"
+          }
+        },
         "label": "Everyone is gone"
       },
       "camera": "push_in",
@@ -62,24 +78,32 @@
     },
     {
       "text": "We'll jump forward one hour, one day, one year, a hundred years, and ten thousand. Every jump knocks out a suspect.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "reloj_arena",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "girar"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "arriba_derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-19-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "reloj_arena",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "label": "5 jumps, 5 suspects"
           }
-        ],
+        },
         "label": "5 jumps, 5 suspects"
       },
       "camera": "pull_out",
@@ -87,50 +111,66 @@
     },
     {
       "text": "Stay to the end, because the one thing still standing is something you've seen a thousand times, and it's not what you think.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "lupa",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "acercarse"
-          },
-          {
-            "pieza": "estrella",
-            "pos": "arriba_izquierda",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-19-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "lupa",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "acercarse"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "arriba_izquierda",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "label": "The last proof",
+            "efecto": "brillo"
           }
-        ],
-        "label": "The last proof",
-        "efecto": "brillo"
+        },
+        "label": "The last proof"
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "Right now it's noon in Times Square. Taxis sit with their doors wide open, and a coffee still steams on a table.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "cafe",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "coche_rojo",
-            "pos": "fondo",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "cafe",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "coche_rojo",
+                "pos": "fondo",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Coffee still steaming"
           }
-        ],
+        },
         "label": "Coffee still steaming"
       },
       "camera": "tilt_down",
@@ -138,24 +178,32 @@
     },
     {
       "text": "A dog trots into the empty street, ears up, looking for anyone. The crosswalk signal keeps counting for nobody.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "perro",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "semaforo",
-            "pos": "derecha",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "perro",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "semaforo",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Looking for anyone"
           }
-        ],
+        },
         "label": "Looking for anyone"
       },
       "camera": "pan_right",
@@ -163,11 +211,19 @@
     },
     {
       "text": "Out on the highway, cars drift to a stop. No hands on the wheel, no foot on the gas, no one anywhere.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "coche",
-        "hora": "dia",
-        "plano": "sin_persona",
+        "archivo": "largo-19-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "coche",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "Nobody at the wheel"
+          }
+        },
         "label": "Nobody at the wheel"
       },
       "camera": "push_in",
@@ -175,35 +231,51 @@
     },
     {
       "text": "Inside a power plant, the control room sits silent. Screens glow, alarms blink, and nobody is there to answer them.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "ordenador",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "derecha",
-            "tamano": "grande"
+        "archivo": "largo-19-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "ordenador",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "edificio",
+                "pos": "derecha",
+                "tamano": "grande"
+              }
+            ],
+            "label": "Alarms nobody answers",
+            "efecto": "brillo"
           }
-        ],
-        "label": "Alarms nobody answers",
-        "efecto": "brillo"
+        },
+        "label": "Alarms nobody answers"
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "One hour later. The first suspect for last proof is the city lights. Let's see how long they last.",
-      "scene": "year_jump",
+      "scene": "medida",
       "params": {
-        "from": "Now",
-        "to": "1 hour",
+        "archivo": "largo-19-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": "Now",
+            "to": "1 hour",
+            "label": "1 hour later"
+          }
+        },
         "label": "1 hour later"
       },
       "camera": "static",
@@ -211,24 +283,32 @@
     },
     {
       "text": "Power plants depend on constant human attention: fuel deliveries, maintenance, repairs. Without crews, the grid starts to stumble.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "edificio",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "bombilla",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "largo-19-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "edificio",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "bombilla",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "label": "The grid starts to fail"
           }
-        ],
+        },
         "label": "The grid starts to fail"
       },
       "camera": "push_in",
@@ -236,11 +316,19 @@
     },
     {
       "text": "A transformer overloads and bursts in a shower of sparks. Then another. Whole neighborhoods go dark in a ripple.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "explosion",
-        "lugar": "ciudad",
-        "hora": "atardecer",
+        "archivo": "largo-19-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "explosion",
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "label": "Transformer bursts"
+          }
+        },
         "label": "Transformer bursts"
       },
       "camera": "shake",
@@ -248,18 +336,26 @@
     },
     {
       "text": "At a nuclear plant, sensors notice the trouble and drop the control rods automatically. The reactor shuts itself down. It's called a SCRAM.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "edificio",
-            "pos": "centro",
-            "tamano": "gigante"
+        "archivo": "largo-19-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "edificio",
+                "pos": "centro",
+                "tamano": "gigante"
+              }
+            ],
+            "label": "SCRAM: automatic shutdown"
           }
-        ],
+        },
         "label": "SCRAM: automatic shutdown"
       },
       "camera": "pull_out",
@@ -267,23 +363,31 @@
     },
     {
       "text": "Good news. But the spent fuel stored in cooling pools still needs pumps, and pumps need power.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "gota",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "latir"
-          },
-          {
-            "pieza": "reloj_digital",
-            "pos": "arriba_derecha",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "latir"
+              },
+              {
+                "pieza": "reloj_digital",
+                "pos": "arriba_derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Cooling pools need pumps"
           }
-        ],
+        },
         "label": "Cooling pools need pumps"
       },
       "camera": "push_in",
@@ -291,25 +395,33 @@
     },
     {
       "text": "Backup diesel generators kick in. They hold for days, maybe a couple of weeks, but nobody is coming to refuel them.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "noche",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "reloj_arena",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "girar"
-          },
-          {
-            "pieza": "fuego",
-            "pos": "izquierda",
-            "tamano": "pequeno",
-            "anim": "temblar"
+        "archivo": "largo-19-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "noche",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "reloj_arena",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "fuego",
+                "pos": "izquierda",
+                "tamano": "pequeno",
+                "anim": "temblar"
+              }
+            ],
+            "label": "Diesel running out"
           }
-        ],
+        },
         "label": "Diesel running out"
       },
       "camera": "static",
@@ -317,19 +429,27 @@
     },
     {
       "text": "Traffic lights flicker and die, one block after another, until the whole city is lit only by the sun.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "semaforo",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "temblar"
+        "archivo": "largo-19-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "semaforo",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              }
+            ],
+            "label": "Lights out"
           }
-        ],
+        },
         "label": "Lights out"
       },
       "camera": "tilt_up",
@@ -337,18 +457,26 @@
     },
     {
       "text": "Suspect number one, the electric glow of civilization, is already crossed out. Next stop, one day later.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "bombilla",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "largo-19-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "bombilla",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "label": "Suspect 1: city lights. X"
           }
-        ],
+        },
         "label": "Suspect 1: city lights. X"
       },
       "camera": "slam",
@@ -357,11 +485,19 @@
     {
       "capitulo": "Chapter 2 · The City Underneath",
       "text": "Twenty-four hours in. Beneath New York, there's a hidden crew that never sleeps, and it's made of pumps.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "atardecer",
-        "plano": "sin_persona",
+        "archivo": "largo-19-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "plano": "sin_persona",
+            "label": "New York, 24 hours in"
+          }
+        },
         "label": "New York, 24 hours in"
       },
       "camera": "pull_out",
@@ -369,35 +505,51 @@
     },
     {
       "text": "The subway sits below the water table. Every single day, pumps remove about thirteen million gallons of groundwater.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "13M GALLONS",
-        "label": "pumped out every day",
-        "lugar": "ciudad",
-        "color": "#2a9df4"
+        "archivo": "largo-19-01",
+        "plano": 17,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "13M GALLONS",
+            "label": "pumped out every day",
+            "lugar": "ciudad",
+            "color": "#2a9df4"
+          }
+        },
+        "label": "pumped out every day"
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "That's almost twenty Olympic swimming pools, every single day, just to keep the trains running dry.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "gota",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "vaso_agua",
-            "pos": "derecha",
-            "tamano": "pequeno"
+        "archivo": "largo-19-01",
+        "plano": 18,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "vaso_agua",
+                "pos": "derecha",
+                "tamano": "pequeno"
+              }
+            ],
+            "label": "Almost 20 Olympic pools"
           }
-        ],
+        },
         "label": "Almost 20 Olympic pools"
       },
       "camera": "push_in",
@@ -405,18 +557,26 @@
     },
     {
       "text": "Now the pumps are off. Water seeps up through the tunnel walls, trickling across the rails.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "tren",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-19-01",
+        "plano": 19,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "tren",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ],
+            "label": "Water seeps up"
           }
-        ],
+        },
         "label": "Water seeps up"
       },
       "camera": "tilt_down",
@@ -424,40 +584,55 @@
     },
     {
       "text": "According to author Alan Weisman in The World Without Us, some stations could begin flooding within about thirty-six hours.",
-      "scene": "document",
+      "scene": "medida",
       "params": {
-        "title": "The World Without Us",
-        "lines": [
-          "Author: Alan Weisman",
-          "Subway pumps: OFF",
-          "Flooding begins: ~36 hours",
-          "Water rising"
-        ],
-        "highlight": 2,
-        "stamp": "FLOODING"
+        "archivo": "largo-19-01",
+        "plano": 20,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "The World Without Us",
+            "lines": [
+              "Author: Alan Weisman",
+              "Subway pumps: OFF",
+              "Flooding begins: ~36 hours",
+              "Water rising"
+            ],
+            "highlight": 2,
+            "stamp": "FLOODING"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Down on the platform, an empty train waits with its doors open as the water climbs past the tracks.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "tren",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "gota",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "caer"
+        "archivo": "largo-19-01",
+        "plano": 21,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "tren",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "gota",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "caer"
+              }
+            ],
+            "label": "Empty train, rising water"
           }
-        ],
+        },
         "label": "Empty train, rising water"
       },
       "camera": "pan_left",
@@ -465,19 +640,27 @@
     },
     {
       "text": "And below the city, ants and other insects pour out of the tunnels, fleeing the rising water.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "hormiga",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "entrar_izq"
+        "archivo": "largo-19-01",
+        "plano": 22,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "hormiga",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              }
+            ],
+            "label": "Fleeing the water"
           }
-        ],
+        },
         "label": "Fleeing the water"
       },
       "camera": "shake",
@@ -485,11 +668,19 @@
     },
     {
       "text": "Above ground, entire cities are in blackout. Refrigerators warm up, and food quietly starts to spoil in every kitchen.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "cocina",
-        "hora": "noche",
-        "plano": "sin_persona",
+        "archivo": "largo-19-01",
+        "plano": 23,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "cocina",
+            "hora": "noche",
+            "plano": "sin_persona",
+            "label": "Fridge warming up"
+          }
+        },
         "label": "Fridge warming up"
       },
       "camera": "push_in",
@@ -497,20 +688,27 @@
     },
     {
       "text": "Supermarkets, hospitals, offices, all dark. A phone buzzes in an abandoned apartment, then its screen goes black.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "notification",
-        "notification": {
-          "time": "03:12",
-          "date": "Day 2",
-          "notifications": [
-            {
-              "app": "News",
-              "title": "No signal",
-              "text": "Battery 1%",
-              "alert": true
+        "archivo": "largo-19-01",
+        "plano": 24,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "notification",
+            "notification": {
+              "time": "03:12",
+              "date": "Day 2",
+              "notifications": [
+                {
+                  "app": "News",
+                  "title": "No signal",
+                  "text": "Battery 1%",
+                  "alert": true
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "camera": "static",
@@ -518,24 +716,32 @@
     },
     {
       "text": "Outside, pets are confused. Dogs wait by doors. Cats stare out windows, wondering where dinner went.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "noche",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "perro",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "gato",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "largo-19-01",
+        "plano": 25,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "salon",
+            "hora": "noche",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "perro",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "gato",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "label": "Waiting by the door"
           }
-        ],
+        },
         "label": "Waiting by the door"
       },
       "camera": "pan_right",
@@ -543,23 +749,31 @@
     },
     {
       "text": "Around the world, the same thing happens in mines, tunnels, and basements, all slowly filling with water.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "gota",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "casa",
-            "pos": "derecha",
-            "tamano": "pequeno"
+        "archivo": "largo-19-01",
+        "plano": 26,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "casa",
+                "pos": "derecha",
+                "tamano": "pequeno"
+              }
+            ],
+            "label": "Basements filling"
           }
-        ],
+        },
         "label": "Basements filling"
       },
       "camera": "tilt_down",
@@ -567,17 +781,25 @@
     },
     {
       "text": "Suspect number two, the great underground network, is nothing but a river in the dark. Crossed out. Now, a full year.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "tren",
-            "pos": "centro",
-            "tamano": "grande"
+        "archivo": "largo-19-01",
+        "plano": 27,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "tren",
+                "pos": "centro",
+                "tamano": "grande"
+              }
+            ],
+            "label": "Suspect 2: the subway. X"
           }
-        ],
+        },
         "label": "Suspect 2: the subway. X"
       },
       "camera": "slam",
@@ -586,10 +808,18 @@
     {
       "capitulo": "Chapter 3 · The Wild Takes Over",
       "text": "One year later. Nature doesn't wait. It starts moving back in, and we have a real-world preview of how.",
-      "scene": "year_jump",
+      "scene": "medida",
       "params": {
-        "from": "1 day",
-        "to": "1 year",
+        "archivo": "largo-19-01",
+        "plano": 28,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": "1 day",
+            "to": "1 year",
+            "label": "One year later"
+          }
+        },
         "label": "One year later"
       },
       "camera": "static",
@@ -597,50 +827,72 @@
     },
     {
       "text": "In 1986, the Chernobyl disaster forced everyone out of a huge zone in Ukraine. People left, and the wild came back.",
-      "scene": "map_pin",
+      "scene": "medida",
       "params": {
-        "place": "Chernobyl, Ukraine",
-        "detail": "Evacuated in 1986",
-        "style": "globo"
+        "archivo": "largo-19-01",
+        "plano": 29,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Chernobyl, Ukraine",
+            "detail": "Evacuated in 1986",
+            "style": "globo"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "Today, wolves, wild boar, deer, and even wild horses roam the abandoned towns of the exclusion zone.",
-      "scene": "forest",
+      "scene": "medida",
       "params": {
-        "kind": "jungle",
-        "river": false
+        "archivo": "largo-19-01",
+        "plano": 30,
+        "respaldo": {
+          "scene": "forest",
+          "params": {
+            "kind": "jungle",
+            "river": false
+          }
+        }
       },
       "camera": "pan_right",
       "transition": "fade"
     },
     {
       "text": "Picture it: a wolf pack slips between Soviet-era apartment blocks while horses graze where a parking lot used to be.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "selva",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "perro",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "vaca",
-            "pos": "derecha",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "fondo",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 31,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "perro",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "vaca",
+                "pos": "derecha",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "edificio",
+                "pos": "fondo",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Chernobyl exclusion zone"
           }
-        ],
+        },
         "label": "Chernobyl exclusion zone"
       },
       "camera": "push_in",
@@ -648,24 +900,32 @@
     },
     {
       "text": "Back in our empty world, house cats and dogs go feral. Small breeds struggle, but big dogs form packs.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "perro",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "gato",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "temblar"
+        "archivo": "largo-19-01",
+        "plano": 32,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "perro",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "gato",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "label": "Pets go feral"
           }
-        ],
+        },
         "label": "Pets go feral"
       },
       "camera": "pan_left",
@@ -673,25 +933,33 @@
     },
     {
       "text": "Meanwhile, farm animals break through broken fences and wander into open fields, free for the first time.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "vaca",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "pajaro",
-            "pos": "arriba_derecha",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-19-01",
+        "plano": 33,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "vaca",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "pajaro",
+                "pos": "arriba_derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Free at last"
           }
-        ],
+        },
         "label": "Free at last"
       },
       "camera": "pan_right",
@@ -699,11 +967,19 @@
     },
     {
       "text": "In the cities, weeds push through cracks in the sidewalk. A crack becomes a gap. A gap becomes a garden.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "crecer",
-        "lugar": "ciudad",
-        "hora": "dia",
+        "archivo": "largo-19-01",
+        "plano": 34,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "crecer",
+            "lugar": "ciudad",
+            "hora": "dia",
+            "label": "Weeds crack the sidewalk"
+          }
+        },
         "label": "Weeds crack the sidewalk"
       },
       "camera": "tilt_up",
@@ -711,25 +987,33 @@
     },
     {
       "text": "Lawns turn into meadows. Without mowing, grass grows waist high, and seeds ride the wind into every empty lot.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "arbol",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "viento",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "flotar"
+        "archivo": "largo-19-01",
+        "plano": 35,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "arbol",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "viento",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Lawns become meadows"
           }
-        ],
+        },
         "label": "Lawns become meadows"
       },
       "camera": "pan_right",
@@ -737,24 +1021,32 @@
     },
     {
       "text": "Rain washes dirt into the gutters, and seeds find it. By next spring, storm drains are clogged and streets turn into shallow streams.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "nube",
-            "pos": "arriba",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "gota",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "caer"
+        "archivo": "largo-19-01",
+        "plano": 36,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "nube",
+                "pos": "arriba",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "gota",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "caer"
+              }
+            ],
+            "label": "Clogged storm drains"
           }
-        ],
+        },
         "label": "Clogged storm drains"
       },
       "camera": "tilt_down",
@@ -762,19 +1054,27 @@
     },
     {
       "text": "Insects, which were here long before us, swarm into every open window. Spiders spin webs across storefronts.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "hormiga",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "entrar_der"
+        "archivo": "largo-19-01",
+        "plano": 37,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "salon",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "hormiga",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "entrar_der"
+              }
+            ],
+            "label": "Insects move in"
           }
-        ],
+        },
         "label": "Insects move in"
       },
       "camera": "push_in",
@@ -782,12 +1082,20 @@
     },
     {
       "text": "Rain pours through broken windows into offices. Paper swells, carpets rot, and mold starts blooming across the walls.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "dia",
-        "plano": "sin_persona",
-        "mood": "neutral",
+        "archivo": "largo-19-01",
+        "plano": 38,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "oficina",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "mood": "neutral",
+            "label": "Rain through broken windows"
+          }
+        },
         "label": "Rain through broken windows"
       },
       "camera": "push_in",
@@ -795,24 +1103,32 @@
     },
     {
       "text": "The cars on the freeway? They're still there. But vines are already climbing the bumpers.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "coche_rojo",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-19-01",
+        "plano": 39,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "coche_rojo",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ],
+            "label": "Vines on the bumpers"
           }
-        ],
+        },
         "label": "Vines on the bumpers"
       },
       "camera": "pan_left",
@@ -820,24 +1136,32 @@
     },
     {
       "text": "Without pumps, the water in those nuclear cooling pools slowly heats up and starts to evaporate.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "noche",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "edificio",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "gota",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "latir"
+        "archivo": "largo-19-01",
+        "plano": 40,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "noche",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "edificio",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "gota",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "latir"
+              }
+            ],
+            "label": "Cooling pool heating up"
           }
-        ],
+        },
         "label": "Cooling pool heating up"
       },
       "camera": "push_in",
@@ -845,34 +1169,49 @@
     },
     {
       "text": "Scientists warn that some of those sites could cause local damage. Nature would have to handle the rest.",
-      "scene": "forest",
+      "scene": "medida",
       "params": {
-        "kind": "jungle",
-        "river": true
+        "archivo": "largo-19-01",
+        "plano": 41,
+        "respaldo": {
+          "scene": "forest",
+          "params": {
+            "kind": "jungle",
+            "river": true
+          }
+        }
       },
       "camera": "pull_out",
       "transition": "fade"
     },
     {
       "text": "Even so, in places like Chernobyl, life comes back faster than anyone expected. Wildlife isn't waiting for permission.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "selva",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "perro",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "pajaro",
-            "pos": "arriba_derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-19-01",
+        "plano": 42,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "perro",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "pajaro",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Life finds a way"
           }
-        ],
+        },
         "label": "Life finds a way"
       },
       "camera": "static",
@@ -880,11 +1219,19 @@
     },
     {
       "text": "One year in, the world has already changed. But nothing we built has truly fallen yet. Give it a century.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "atardecer",
-        "plano": "sin_persona",
+        "archivo": "largo-19-01",
+        "plano": 43,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "plano": "sin_persona",
+            "label": "Year one: still standing"
+          }
+        },
         "label": "Year one: still standing"
       },
       "camera": "pull_out",
@@ -893,10 +1240,18 @@
     {
       "capitulo": "Chapter 4 · A Century Without Us",
       "text": "One hundred years later. Everything made of steel faces its worst enemy: water and air.",
-      "scene": "year_jump",
+      "scene": "medida",
       "params": {
-        "from": "1 year",
-        "to": "100 years",
+        "archivo": "largo-19-01",
+        "plano": 44,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": "1 year",
+            "to": "100 years",
+            "label": "A century later"
+          }
+        },
         "label": "A century later"
       },
       "camera": "static",
@@ -904,18 +1259,26 @@
     },
     {
       "text": "Steel bridges need fresh paint constantly. Without it, rust eats through the metal, bolt by bolt.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "escombros",
-            "pos": "centro",
-            "tamano": "gigante"
+        "archivo": "largo-19-01",
+        "plano": 45,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "escombros",
+                "pos": "centro",
+                "tamano": "gigante"
+              }
+            ],
+            "label": "Rust never sleeps"
           }
-        ],
+        },
         "label": "Rust never sleeps"
       },
       "camera": "push_in",
@@ -923,12 +1286,20 @@
     },
     {
       "text": "Then one winter, a rusted bridge groans, sags, and finally snaps. Tons of metal plunge into the river.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "caer_romper",
-        "objeto": "puente_oxidado",
-        "lugar": "ciudad",
-        "hora": "atardecer",
+        "archivo": "largo-19-01",
+        "plano": 46,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "caer_romper",
+            "objeto": "puente_oxidado",
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "label": "Snap"
+          }
+        },
         "label": "Snap"
       },
       "camera": "slam",
@@ -936,30 +1307,38 @@
     },
     {
       "text": "Many other bridges follow, one by one. Rivers that were once tamed return to their old paths.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "escombros",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "escombros",
-            "pos": "centro",
-            "tamano": "mediano"
-          },
-          {
-            "pieza": "gota",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-19-01",
+        "plano": 47,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "escombros",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "escombros",
+                "pos": "centro",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "gota",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ],
+            "label": "Bridges fall, one by one"
           }
-        ],
+        },
         "label": "Bridges fall, one by one"
       },
       "camera": "pan_right",
@@ -967,12 +1346,20 @@
     },
     {
       "text": "Wooden houses go next. Rain soaks the beams, termites move in, and roofs cave into living rooms.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "caer_romper",
-        "objeto": "casa",
-        "lugar": "campo",
-        "hora": "dia",
+        "archivo": "largo-19-01",
+        "plano": 48,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "caer_romper",
+            "objeto": "casa",
+            "lugar": "campo",
+            "hora": "dia",
+            "label": "Roofs cave in"
+          }
+        },
         "label": "Roofs cave in"
       },
       "camera": "shake",
@@ -980,29 +1367,37 @@
     },
     {
       "text": "Whole suburbs collapse into piles of timber, and ferns grow out of old couches.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "escombros",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "casa",
-            "pos": "fondo",
-            "tamano": "pequeno"
+        "archivo": "largo-19-01",
+        "plano": 49,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "escombros",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "casa",
+                "pos": "fondo",
+                "tamano": "pequeno"
+              }
+            ],
+            "label": "Suburbs collapse"
           }
-        ],
+        },
         "label": "Suburbs collapse"
       },
       "camera": "pan_left",
@@ -1010,11 +1405,19 @@
     },
     {
       "text": "Trees burst through asphalt. Roots lift entire roads like slabs of chocolate.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "crecer",
-        "lugar": "calle",
-        "hora": "dia",
+        "archivo": "largo-19-01",
+        "plano": 50,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "crecer",
+            "lugar": "calle",
+            "hora": "dia",
+            "label": "Trees burst through asphalt"
+          }
+        },
         "label": "Trees burst through asphalt"
       },
       "camera": "tilt_up",
@@ -1022,30 +1425,38 @@
     },
     {
       "text": "Forests swallow the suburbs. Deer sleep in backyards, and foxes raise their pups in garages.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "arbol",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "casa",
-            "pos": "fondo",
-            "tamano": "pequeno"
-          },
-          {
-            "pieza": "pajaro",
-            "pos": "arriba_izquierda",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-19-01",
+        "plano": 51,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "arbol",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "casa",
+                "pos": "fondo",
+                "tamano": "pequeno"
+              },
+              {
+                "pieza": "pajaro",
+                "pos": "arriba_izquierda",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "label": "The forest swallows the suburbs"
           }
-        ],
+        },
         "label": "The forest swallows the suburbs"
       },
       "camera": "pull_out",
@@ -1053,24 +1464,32 @@
     },
     {
       "text": "Rivers flood old highways. Beavers return and build dams in the drainage ditches.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "gota",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "coche_rojo",
-            "pos": "derecha",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 52,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "coche_rojo",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Rivers retake the highways"
           }
-        ],
+        },
         "label": "Rivers retake the highways"
       },
       "camera": "pan_right",
@@ -1078,24 +1497,32 @@
     },
     {
       "text": "Concrete, our favorite material, cracks as water seeps in and freezes, again and again, every winter.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "edificio",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "hielo",
-            "pos": "arriba_derecha",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 53,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "edificio",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "hielo",
+                "pos": "arriba_derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Water freezes in the cracks"
           }
-        ],
+        },
         "label": "Water freezes in the cracks"
       },
       "camera": "push_in",
@@ -1103,11 +1530,19 @@
     },
     {
       "text": "Skyscrapers are tougher, but wind, rain, and freezing winters crack their windows. Plants take root on their ledges.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "plano": "sin_persona",
+        "archivo": "largo-19-01",
+        "plano": 54,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "Plants on the ledges"
+          }
+        },
         "label": "Plants on the ledges"
       },
       "camera": "tilt_up",
@@ -1115,24 +1550,32 @@
     },
     {
       "text": "Wild animals take over the high-rises: peregrine falcons nest on old towers, and raccoons own the lobbies.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "pajaro",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "fondo",
-            "tamano": "gigante"
+        "archivo": "largo-19-01",
+        "plano": 55,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "pajaro",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "edificio",
+                "pos": "fondo",
+                "tamano": "gigante"
+              }
+            ],
+            "label": "Falcons nest on towers"
           }
-        ],
+        },
         "label": "Falcons nest on towers"
       },
       "camera": "pan_left",
@@ -1140,24 +1583,32 @@
     },
     {
       "text": "Meanwhile, deep in the oceans, whales can finally hear each other again. Ship noise is gone.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "ballena",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "pez",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-19-01",
+        "plano": 56,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "ballena",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "pez",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Whales hear each other again"
           }
-        ],
+        },
         "label": "Whales hear each other again"
       },
       "camera": "pan_right",
@@ -1165,58 +1616,74 @@
     },
     {
       "text": "At night, the sky looks like something we haven't seen in generations: no light pollution, just millions of stars.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "noche",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "estrella",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "luna",
-            "pos": "arriba_derecha",
-            "tamano": "mediano"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "izquierda",
-            "tamano": "grande"
+        "archivo": "largo-19-01",
+        "plano": 57,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "noche",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "estrella",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "luna",
+                "pos": "arriba_derecha",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "izquierda",
+                "tamano": "grande"
+              }
+            ],
+            "label": "No light pollution",
+            "efecto": "brillo"
           }
-        ],
-        "label": "No light pollution",
-        "efecto": "brillo"
+        },
+        "label": "No light pollution"
       },
       "camera": "tilt_up",
       "transition": "fade"
     },
     {
       "text": "Suspect number three, our bridges, our houses, our suburbs, all crossed out. But the biggest structures are still holding on.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "escombros",
-            "pos": "izquierda",
-            "tamano": "mediano"
-          },
-          {
-            "pieza": "casa",
-            "pos": "centro",
-            "tamano": "mediano"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "derecha",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 58,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "escombros",
+                "pos": "izquierda",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "casa",
+                "pos": "centro",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "edificio",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Suspect 3: X X X"
           }
-        ],
+        },
         "label": "Suspect 3: X X X"
       },
       "camera": "slam",
@@ -1224,23 +1691,31 @@
     },
     {
       "text": "Plastic is still out there too, broken into tiny pieces, drifting in rivers and soil for centuries.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "vaso_agua",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "girar"
-          },
-          {
-            "pieza": "pez",
-            "pos": "derecha",
-            "tamano": "pequeno"
+        "archivo": "largo-19-01",
+        "plano": 59,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "vaso_agua",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "girar"
+              },
+              {
+                "pieza": "pez",
+                "pos": "derecha",
+                "tamano": "pequeno"
+              }
+            ],
+            "label": "Plastic lingers"
           }
-        ],
+        },
         "label": "Plastic lingers"
       },
       "camera": "push_in",
@@ -1248,18 +1723,26 @@
     },
     {
       "text": "So the question gets harder. Is there anything built to last longer than all this?",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "lupa",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "acercarse"
+        "archivo": "largo-19-01",
+        "plano": 60,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "lupa",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "acercarse"
+              }
+            ],
+            "label": "Anything built to last?"
           }
-        ],
+        },
         "label": "Anything built to last?"
       },
       "camera": "push_in",
@@ -1268,10 +1751,18 @@
     {
       "capitulo": "Chapter 5 · Ten Thousand Years",
       "text": "Ten thousand years later. Longer than all of recorded history. Writing was invented only about five thousand years ago.",
-      "scene": "year_jump",
+      "scene": "medida",
       "params": {
-        "from": "100 years",
-        "to": "10,000 years",
+        "archivo": "largo-19-01",
+        "plano": 61,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": "100 years",
+            "to": "10,000 years",
+            "label": "Ten thousand years later"
+          }
+        },
         "label": "Ten thousand years later"
       },
       "camera": "static",
@@ -1279,23 +1770,31 @@
     },
     {
       "text": "The cities are green mounds. Rain, roots, and ice have ground glass, steel, and concrete back into soil.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "montana_pieza",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "izquierda",
-            "tamano": "grande"
+        "archivo": "largo-19-01",
+        "plano": 62,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "montana_pieza",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "izquierda",
+                "tamano": "grande"
+              }
+            ],
+            "label": "Cities become green mounds"
           }
-        ],
+        },
         "label": "Cities become green mounds"
       },
       "camera": "pull_out",
@@ -1303,11 +1802,19 @@
     },
     {
       "text": "Rivers have changed course, burying old foundations under mud, sand, and stones.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "plano": "sin_persona",
+        "archivo": "largo-19-01",
+        "plano": 63,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "campo",
+            "hora": "atardecer",
+            "plano": "sin_persona",
+            "label": "Rivers change course"
+          }
+        },
         "label": "Rivers change course"
       },
       "camera": "pan_left",
@@ -1315,24 +1822,32 @@
     },
     {
       "text": "Even the Great Pyramid, now about forty-five hundred years old, would look very different from today.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "desierto",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "piramide",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "viento",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-19-01",
+        "plano": 64,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "desierto",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "piramide",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "viento",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Even the pyramids wear down"
           }
-        ],
+        },
         "label": "Even the pyramids wear down"
       },
       "camera": "push_in",
@@ -1340,23 +1855,31 @@
     },
     {
       "text": "Glass, plastic, and nuclear waste remain, buried deep in the soil. Traces, but nothing anyone would call a monument.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "escombros",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "vaso_agua",
-            "pos": "derecha",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 65,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "escombros",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "vaso_agua",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Just traces underground"
           }
-        ],
+        },
         "label": "Just traces underground"
       },
       "camera": "tilt_down",
@@ -1364,23 +1887,31 @@
     },
     {
       "text": "Far beyond Earth, the Voyager probes keep drifting, carrying a golden record. But they're out in space, not here.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "cohete",
-            "pos": "izquierda",
-            "tamano": "pequeno",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "derecha",
-            "tamano": "grande"
+        "archivo": "largo-19-01",
+        "plano": 66,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "cohete",
+                "pos": "izquierda",
+                "tamano": "pequeno",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "derecha",
+                "tamano": "grande"
+              }
+            ],
+            "label": "Voyager: out in space"
           }
-        ],
+        },
         "label": "Voyager: out in space"
       },
       "camera": "pan_right",
@@ -1388,24 +1919,32 @@
     },
     {
       "text": "Where Central Park used to be, a forest older than any we've known grows. Nobody remembers it was ever a park.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "arbol",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "fondo",
-            "tamano": "pequeno"
+        "archivo": "largo-19-01",
+        "plano": 67,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "arbol",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "edificio",
+                "pos": "fondo",
+                "tamano": "pequeno"
+              }
+            ],
+            "label": "Where Central Park was"
           }
-        ],
+        },
         "label": "Where Central Park was"
       },
       "camera": "pull_out",
@@ -1413,24 +1952,32 @@
     },
     {
       "text": "An explorer from another world would walk through endless wild forest, finding almost nothing that says we were here.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "selva",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "ovni",
-            "pos": "arriba",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "centro",
-            "tamano": "grande"
+        "archivo": "largo-19-01",
+        "plano": 68,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "ovni",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "centro",
+                "tamano": "grande"
+              }
+            ],
+            "label": "Nothing but forest"
           }
-        ],
+        },
         "label": "Nothing but forest"
       },
       "camera": "push_in",
@@ -1438,95 +1985,133 @@
     },
     {
       "text": "Then, in the middle of the Black Hills of South Dakota, something catches the light.",
-      "scene": "map_pin",
+      "scene": "medida",
       "params": {
-        "place": "Black Hills, South Dakota",
-        "detail": "Something still stands",
-        "style": "relieve"
+        "archivo": "largo-19-01",
+        "plano": 69,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Black Hills, South Dakota",
+            "detail": "Something still stands",
+            "style": "relieve"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "Four enormous faces, sixty feet tall, are still staring out at the horizon.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "montana",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "montana_pieza",
-            "pos": "centro",
-            "tamano": "gigante"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "derecha",
-            "tamano": "grande",
-            "espejo": true
+        "archivo": "largo-19-01",
+        "plano": 70,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "montana",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "montana_pieza",
+                "pos": "centro",
+                "tamano": "gigante"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "derecha",
+                "tamano": "grande",
+                "espejo": true
+              }
+            ],
+            "label": "Mount Rushmore",
+            "efecto": "brillo"
           }
-        ],
-        "label": "Mount Rushmore",
-        "efecto": "brillo"
+        },
+        "label": "Mount Rushmore"
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "Mount Rushmore. Carved between 1927 and 1941 into solid granite, one of the most durable rocks on Earth.",
-      "scene": "document",
+      "scene": "medida",
       "params": {
-        "title": "Mount Rushmore",
-        "lines": [
-          "Carved: 1927 to 1941",
-          "Rock: granite",
-          "Faces: about 60 ft tall",
-          "Location: South Dakota"
-        ],
-        "highlight": 1,
-        "stamp": "STILL HERE"
+        "archivo": "largo-19-01",
+        "plano": 71,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "Mount Rushmore",
+            "lines": [
+              "Carved: 1927 to 1941",
+              "Rock: granite",
+              "Faces: about 60 ft tall",
+              "Location: South Dakota"
+            ],
+            "highlight": 1,
+            "stamp": "STILL HERE"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "The National Park Service estimates the granite there erodes only about one inch every ten thousand years.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "1 INCH",
-        "label": "of erosion per 10,000 years",
-        "lugar": "montana",
-        "color": "#f5b700"
+        "archivo": "largo-19-01",
+        "plano": 72,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "1 INCH",
+            "label": "of erosion per 10,000 years",
+            "lugar": "montana",
+            "color": "#f5b700"
+          }
+        },
+        "label": "of erosion per 10,000 years"
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "One inch. After ten thousand years of wind, rain, and ice, those faces have lost barely a fingertip's width.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "montana",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "montana_pieza",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "mano",
-            "pos": "izquierda",
-            "tamano": "pequeno",
-            "anim": "acercarse"
+        "archivo": "largo-19-01",
+        "plano": 73,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "montana",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "montana_pieza",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "mano",
+                "pos": "izquierda",
+                "tamano": "pequeno",
+                "anim": "acercarse"
+              }
+            ],
+            "label": "Barely a fingertip"
           }
-        ],
+        },
         "label": "Barely a fingertip"
       },
       "camera": "push_in",
@@ -1534,29 +2119,37 @@
     },
     {
       "text": "So Washington, Jefferson, Roosevelt, and Lincoln are still there, waiting for someone to ask who they were.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "montana",
-        "hora": "noche",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "montana_pieza",
-            "pos": "centro",
-            "tamano": "gigante"
-          },
-          {
-            "pieza": "estrella",
-            "pos": "arriba_izquierda",
-            "tamano": "pequeno",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "luna",
-            "pos": "arriba_derecha",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 74,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "montana",
+            "hora": "noche",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "montana_pieza",
+                "pos": "centro",
+                "tamano": "gigante"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "arriba_izquierda",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "luna",
+                "pos": "arriba_derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Washington, Jefferson, Roosevelt, Lincoln"
           }
-        ],
+        },
         "label": "Washington, Jefferson, Roosevelt, Lincoln"
       },
       "camera": "tilt_up",
@@ -1564,30 +2157,38 @@
     },
     {
       "text": "Our skyscrapers, our subways, our bridges, even our power plants, all gone. But four stone faces remain.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "edificio",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "caer"
-          },
-          {
-            "pieza": "escombros",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "caer"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "caer"
+        "archivo": "largo-19-01",
+        "plano": 75,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "edificio",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "caer"
+              },
+              {
+                "pieza": "escombros",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "caer"
+              },
+              {
+                "pieza": "edificio",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "caer"
+              }
+            ],
+            "label": "Everything else: gone"
           }
-        ],
+        },
         "label": "Everything else: gone"
       },
       "camera": "static",
@@ -1595,29 +2196,37 @@
     },
     {
       "text": "And here's the irony: nature, which erased everything else, ended up leaving us the one thing we carved into it.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "selva",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "montana_pieza",
-            "pos": "centro",
-            "tamano": "mediano"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "pajaro",
-            "pos": "arriba_derecha",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-19-01",
+        "plano": 76,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "montana_pieza",
+                "pos": "centro",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "pajaro",
+                "pos": "arriba_derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Nature erased the rest"
           }
-        ],
+        },
         "label": "Nature erased the rest"
       },
       "camera": "pull_out",
@@ -1625,33 +2234,49 @@
     },
     {
       "text": "That's the answer to our mystery. The last thing proving we were ever here is a mountain that looks like us.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "montana",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "montana_pieza",
-            "pos": "centro",
-            "tamano": "gigante"
+        "archivo": "largo-19-01",
+        "plano": 77,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "montana",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "montana_pieza",
+                "pos": "centro",
+                "tamano": "gigante"
+              }
+            ],
+            "label": "The last proof we were here",
+            "efecto": "brillo"
           }
-        ],
-        "label": "The last proof we were here",
-        "efecto": "brillo"
+        },
+        "label": "The last proof we were here"
       },
       "camera": "pull_out",
       "transition": "flash"
     },
     {
       "text": "Now it's your turn. If you could leave one thing behind to last ten thousand years, what would it be?",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "dia",
-        "plano": "medio",
-        "mood": "happy",
-        "objeto": "libro",
+        "archivo": "largo-19-01",
+        "plano": 78,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "salon",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "happy",
+            "objeto": "libro",
+            "label": "Your turn"
+          }
+        },
         "label": "Your turn"
       },
       "camera": "push_in",
@@ -1659,23 +2284,31 @@
     },
     {
       "text": "Tell us in the comments. And if you liked this one, watch our next video: what if you dug straight down?",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "girar"
-          },
-          {
-            "pieza": "lupa",
-            "pos": "derecha",
-            "tamano": "mediano"
+        "archivo": "largo-19-01",
+        "plano": 79,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "lupa",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Next: What If You Dug Straight Down?"
           }
-        ],
+        },
         "label": "Next: What If You Dug Straight Down?"
       },
       "camera": "push_in",
@@ -1748,6 +2381,6 @@
       "motivo": "Direct challenge question, concrete, with a clear topic."
     }
   ],
-  "medida_estado": "esperando",
+  "medida_estado": "lista",
   "tanda": "largo-19"
 }
