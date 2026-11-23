@@ -1,1715 +1,1714 @@
 {
- "title": "The Girl Who Survived a 2-Mile Fall: Juliane Koepcke's True Story",
- "description": "Would you have followed the water? 👇\n\nJuliane Koepcke survived a two-mile fall from an exploding plane and walked out of the Amazon alone. This is the true story of LANSA Flight 508.\nShe was the only survivor of 92 people, and her story has a twist involving filmmaker Werner Herzog and a jungle research station.\n#truestory #survival #amazon #planecrash #JulianeKoepcke",
- "tags": [
-  "Juliane Koepcke",
-  "LANSA Flight 508",
-  "plane crash survivor",
-  "survived a two mile fall",
-  "Amazon rainforest survival",
-  "true survival story",
-  "Werner Herzog Wings of Hope",
-  "only survivor plane crash",
-  "incredible true stories",
-  "Christmas Eve 1971",
-  "survival in the jungle",
-  "Panguana"
- ],
- "beats": [
-  {
-   "capitulo": "Chapter 1 · How do you survive a two-mile fall?",
-   "text": "Could you survive a two-mile fall?",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "piezas": [
-       {
-        "pieza": "coche_rojo",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "girar"
-       },
-       {
-        "pieza": "avion",
-        "pos": "arriba",
-        "tamano": "mediano",
-        "anim": "temblar"
-       }
-      ],
-      "persona": "no",
-      "efecto": "velocidad"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "On Christmas Eve, 1971, a seventeen-year-old girl had to find out. And by the end, you'll know exactly how she did it.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 1,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "ciudad",
-      "hora": "dia",
-      "plano": "sin_persona",
-      "label": "Lima, Peru · Dec 24, 1971"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "You're seventeen. It's December twenty-fourth, and you're boarding a flight from Lima, Peru, with your mother. You just graduated from high school.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 2,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "ciudad",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "happy",
-      "objeto": "llaves"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Flight 508 is packed. Ninety-two people, all heading home for Christmas, with presents in the overhead bins and kids pressing their faces to the windows.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 3,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "piezas": [
-       {
-        "pieza": "regalo",
-        "pos": "izquierda",
-        "tamano": "mediano",
-        "anim": "flotar"
-       },
-       {
-        "pieza": "avion",
-        "pos": "derecha",
-        "tamano": "grande",
-        "anim": "entrar_izq"
-       }
-      ],
-      "persona": "no",
-      "label": "92 people on board"
-     }
-    }
-   },
-   "camera": "pan_right",
-   "transition": "whip"
-  },
-  {
-   "text": "It's a Lockheed Electra flying from Lima to Pucallpa, over the Andes and into the Amazon. A short, ordinary hop of about an hour.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 4,
-    "respaldo": {
-     "scene": "map_pin",
-     "params": {
-      "place": "Lima to Pucallpa",
-      "detail": "Peru · about 1 hour",
-      "style": "relieve"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Your mother takes the window seat. You're in the middle, in a row of three. Nothing about this flight feels strange.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 5,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "coche",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "neutral",
-      "objeto": "libro"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Then the sky outside turns black. The plane flies into a towering thunderstorm, and the whole cabin starts to shake like a truck on gravel.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 6,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "tormenta_mar",
-      "hora": "noche",
-      "label": "Thunderstorm"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "Bags tumble out of the bins. Your mother grabs your hand and whispers that this doesn't feel right.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 7,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "coche",
-      "hora": "noche",
-      "plano": "medio",
-      "mood": "worried",
-      "objeto": "none"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "Then a blinding flash. Lightning hits the plane. And in a heartbeat, something in the sky snaps.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 8,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "rayo",
-      "hora": "noche"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "The aircraft breaks apart about two miles up. Seats, bags and passengers scatter across the sky, and your mother's hand slips away from yours.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 9,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "piezas": [
-       {
-        "pieza": "avion",
-        "pos": "centro",
-        "tamano": "gigante",
-        "anim": "temblar"
-       },
-       {
-        "pieza": "nube",
-        "pos": "arriba",
-        "tamano": "grande",
-        "anim": "flotar"
-       }
-      ],
-      "persona": "no"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "red"
-  },
-  {
-   "text": "Ten thousand feet. Almost two miles. No parachute, no oxygen, and no plan. That's how far you're about to fall.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 10,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "10,000 FEET",
-      "label": "No parachute",
-      "color": "#ff3b30",
-      "lugar": "espacio"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Then you're outside. Still strapped into your row of seats, spinning through the storm with the whole sky falling around you.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 11,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "piezas": [
-       {
-        "pieza": "coche_rojo",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "girar"
-       },
-       {
-        "pieza": "rayo",
-        "pos": "arriba_derecha",
-        "tamano": "mediano",
-        "anim": "temblar"
-       }
-      ],
-      "persona": "no",
-      "efecto": "velocidad"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "So here's the first question. How does anyone live through that? A few things have to go right, and somehow they all do.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 12,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "dudar",
-      "lugar": "espacio",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "First, the seats. A row of three can spin like a helicopter blade as it falls, and that spinning slows the descent a little.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 13,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "piezas": [
-       {
-        "pieza": "coche_rojo",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "girar"
-       },
-       {
-        "pieza": "helicoptero",
-        "pos": "arriba_derecha",
-        "tamano": "mediano",
-        "anim": "flotar"
-       }
-      ],
-      "persona": "no",
-      "label": "Spinning like a rotor"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "whip"
-  },
-  {
-   "text": "Second, the storm itself. Some scientists think the powerful updrafts inside thunderclouds may have cushioned her, like a giant invisible hand.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 14,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "piezas": [
-       {
-        "pieza": "nube",
-        "pos": "fondo",
-        "tamano": "gigante",
-        "anim": "temblar"
-       },
-       {
-        "pieza": "mano",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "crecer"
-       },
-       {
-        "pieza": "viento",
-        "pos": "derecha",
-        "tamano": "mediano",
-        "anim": "entrar_der"
-       }
-      ],
-      "persona": "no",
-      "label": "Updrafts"
-     }
-    }
-   },
-   "camera": "tilt_up",
-   "transition": "fade"
-  },
-  {
-   "text": "Third, the trees. The Amazon canopy is thick, tangled and springy. It works like a giant net, spreading out the force of the impact.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 15,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "arbol",
-        "pos": "centro",
-        "tamano": "gigante",
-        "anim": "temblar"
-       },
-       {
-        "pieza": "coche_rojo",
-        "pos": "arriba",
-        "tamano": "mediano",
-        "anim": "caer"
-       }
-      ],
-      "persona": "no",
-      "label": "The canopy brake"
-     }
-    }
-   },
-   "camera": "tilt_down",
-   "transition": "cut"
-  },
-  {
-   "text": "You crash through the branches, and the ground rushes up. Then everything goes black.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 16,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "caer_romper",
-      "lugar": "selva",
-      "hora": "dia",
-      "objeto": "fila_asientos_girando"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "black"
-  },
-  {
-   "text": "You've just survived something that killed ninety-one other people. But your nightmare is only beginning, and the next question is even harder.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 17,
-    "respaldo": {
-     "scene": "forest",
-     "params": {
-      "kind": "jungle"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "capitulo": "Chapter 2 · How do you find your way out?",
-   "text": "You wake up the next day, still strapped to the seat. Rain drips from the leaves, and you can barely move.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 18,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "vista_nublada",
-      "lugar": "selva",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Your collarbone is broken. One eye is swollen shut, and there's a deep cut on your leg. Your glasses are gone, and so is one sandal.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 19,
-    "respaldo": {
-     "scene": "person",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "mood": "sad",
-      "highlight": "legs",
-      "label": "Broken collarbone · cut leg"
-     }
-    }
-   },
-   "camera": "tilt_down",
-   "transition": "cut"
-  },
-  {
-   "text": "You call for your mother. Nothing answers but birds and insects. The jungle is the loudest place you've ever been.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 20,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "gritar",
-      "lugar": "selva",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "You search for her for a while. Nothing. And you don't yet know that you might be the only one left.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 21,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "plano": "entero",
-      "mood": "worried",
-      "arms": "normal"
-     }
-    }
-   },
-   "camera": "pan_left",
-   "transition": "fade"
-  },
-  {
-   "text": "Here is where we meet her. Her name is Juliane Koepcke. And what her parents did for a living is the reason she's still alive.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 22,
-    "respaldo": {
-     "scene": "quote",
-     "params": {
-      "author": "Juliane Koepcke",
-      "text": "Seventeen. A broken collarbone. Alone in the Amazon."
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "whip"
-  },
-  {
-   "text": "Her mother, Maria, was a famous ornithologist, a bird scientist. Her father, Hans-Wilhelm, was a zoologist. They studied the Peruvian rainforest for a living.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 23,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "pajaro",
-        "pos": "izquierda",
-        "tamano": "mediano",
-        "anim": "flotar"
-       },
-       {
-        "pieza": "lupa",
-        "pos": "derecha",
-        "tamano": "mediano",
-        "anim": "girar"
-       }
-      ],
-      "persona": "medio",
-      "who": "madre",
-      "mood": "happy",
-      "objeto": "libro"
-     }
+  "title": "The Girl Who Survived a 2-Mile Fall: Juliane Koepcke's True Story",
+  "description": "Would you have followed the water? 👇\n\nJuliane Koepcke survived a two-mile fall from an exploding plane and walked out of the Amazon alone. This is the true story of LANSA Flight 508.\nShe was the only survivor of 92 people, and her story has a twist involving filmmaker Werner Herzog and a jungle research station.\n#truestory #survival #amazon #planecrash #JulianeKoepcke",
+  "tags": [
+    "Juliane Koepcke",
+    "LANSA Flight 508",
+    "plane crash survivor",
+    "survived a two mile fall",
+    "Amazon rainforest survival",
+    "true survival story",
+    "Werner Herzog Wings of Hope",
+    "only survivor plane crash",
+    "incredible true stories",
+    "Christmas Eve 1971",
+    "survival in the jungle",
+    "Panguana"
+  ],
+  "beats": [
+    {
+      "capitulo": "Chapter 1 · How do you survive a two-mile fall?",
+      "text": "Could you survive a two-mile fall?",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "coche_rojo",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "avion",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "no",
+            "efecto": "velocidad"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
     },
-    "who": "madre"
-   },
-   "camera": "static",
-   "transition": "fade"
-  },
-  {
-   "text": "Juliane had spent time at their research station deep in the jungle. She knew how to read that world better than most adults.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 24,
-    "respaldo": {
-     "scene": "year_jump",
-     "params": {
-      "from": "1960s",
-      "to": "1971",
-      "label": "Raised in the rainforest"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "That makes her one of the most prepared teenagers on Earth for this. But preparation can't fix a broken collarbone.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 25,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "worried",
-      "objeto": "none"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Alone now, she remembers her father's advice: water always leads somewhere. Follow a small stream, and it becomes a river.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 26,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "gota",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "caer"
-       },
-       {
-        "pieza": "hormiga",
-        "pos": "derecha",
-        "tamano": "pequeno",
-        "anim": "entrar_der"
-       }
-      ],
-      "persona": "medio",
-      "who": "protagonista",
-      "mood": "neutral",
-      "label": "Water leads somewhere"
-     }
+    {
+      "text": "On Christmas Eve, 1971, a seventeen-year-old girl had to find out. And by the end, you'll know exactly how she did it.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "Lima, Peru · Dec 24, 1971"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
     },
-    "who": "protagonista"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "And rivers lead to people. So she finds a tiny creek and starts wading downstream, feeling ahead with her feet.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 27,
-    "respaldo": {
-     "scene": "forest",
-     "params": {
-      "kind": "jungle",
-      "river": true
-     }
-    }
-   },
-   "camera": "pan_right",
-   "transition": "whip"
-  },
-  {
-   "text": "Why feel ahead with her feet? Because stingrays and snakes hide in murky water, and shuffling gives them a warning to move.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 28,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "plano": "entero",
-      "mood": "worried",
-      "highlight": "legs",
-      "arms": "normal"
-     }
-    }
-   },
-   "camera": "tilt_down",
-   "transition": "cut"
-  },
-  {
-   "text": "Night falls, and the rainforest wakes up. Frogs, insects, rustling in the dark. She curls up beside a fallen tree, soaked and shivering.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 29,
-    "respaldo": {
-     "scene": "eyes_dark",
-     "params": {
-      "color": "#ffcc00",
-      "count": 4
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "black"
-  },
-  {
-   "text": "Then she hears a sound overhead. Planes! Search planes are circling. She waves and screams, but they can't see through the canopy.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 30,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "gritar",
-      "lugar": "selva",
-      "hora": "dia",
-      "efecto": "velocidad"
-     }
-    }
-   },
-   "camera": "tilt_up",
-   "transition": "cut"
-  },
-  {
-   "text": "The same thick canopy that saved her life now hides her from the rescuers. That's the cruel trick of the jungle.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 31,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "arbol",
-        "pos": "arriba",
-        "tamano": "gigante",
-        "anim": "flotar"
-       },
-       {
-        "pieza": "avion",
-        "pos": "arriba_derecha",
-        "tamano": "pequeno",
-        "anim": "entrar_der"
-       }
-      ],
-      "persona": "medio",
-      "mood": "sad"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "But the next problem isn't water. It's food. And it's about to get harder.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 32,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "atardecer",
-      "plano": "medio",
-      "mood": "worried",
-      "objeto": "none"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "capitulo": "Chapter 3 · What do you eat when nothing is safe?",
-   "text": "What do you eat when nothing around you is safe? That's the question Juliane faces now, with an empty stomach and a long way to go.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 33,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "dudar",
-      "lugar": "selva",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "She has one thing: a small bag of candy she found near the crash site. That's it. That's her entire food supply.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 34,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "bolsa_dinero",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "crecer"
-       }
-      ],
-      "persona": "medio",
-      "mood": "neutral",
-      "label": "One bag of candy"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "She nibbles one piece at a time. The sugar keeps her moving, but sugar doesn't last long when you're walking all day.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 35,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "comer",
-      "objeto": "chocolate",
-      "lugar": "selva",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Fruit hangs all around her. Bright, juicy, tempting. But she doesn't know which ones are safe, so she touches none of them.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 36,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "manzana",
-        "pos": "arriba_izquierda",
-        "tamano": "mediano",
-        "anim": "flotar"
-       },
-       {
-        "pieza": "platano",
-        "pos": "arriba_derecha",
-        "tamano": "mediano",
-        "anim": "flotar"
-       }
-      ],
-      "persona": "medio",
-      "mood": "worried",
-      "label": "Not worth the risk"
-     }
-    }
-   },
-   "camera": "tilt_up",
-   "transition": "whip"
-  },
-  {
-   "text": "That discipline mattered. In the Amazon, many plants and fruits are toxic, and one wrong bite could mean cramps, vomiting, or worse.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 37,
-    "respaldo": {
-     "scene": "doctor",
-     "params": {
-      "label": "Toxic plants",
-      "say": "One wrong bite can be deadly.",
-      "mood": "worried",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Without her glasses, the world is a blur. Every shadow in the stream could be a snake, or just a floating log.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 38,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "vista_nublada",
-      "lugar": "selva",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Every night is cold and wet. She sleeps sitting up, hugging her knees, listening to the jungle breathe around her.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 39,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "congelarse",
-      "lugar": "selva",
-      "hora": "noche"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "black"
-  },
-  {
-   "text": "She has no phone, no map, no lighter. Just a father's lesson and her own stubborn legs. And she keeps walking.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 40,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "plano": "entero",
-      "mood": "neutral",
-      "arms": "normal",
-      "highlight": "legs"
-     }
-    }
-   },
-   "camera": "pan_right",
-   "transition": "whip"
-  },
-  {
-   "text": "The days blur together. She wades, rests, wades again, fighting hunger, fever and fear. And then she finds out something is wrong with her arm.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 41,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "contar_dias",
-      "numero": 5,
-      "lugar": "selva",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "capitulo": "Chapter 4 · What's worse than being lost?",
-   "text": "Around day five, she faces something worse than hunger. An infection. And this one is alive.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 42,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "piezas": [
-       {
-        "pieza": "herida",
-        "pos": "centro",
-        "tamano": "gigante",
-        "anim": "latir"
-       }
-      ],
-      "persona": "no",
-      "label": "Day 5"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "red"
-  },
-  {
-   "text": "Flies have laid eggs in the deep wound on her arm. Maggots are now living inside it.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 43,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "herida",
-        "pos": "derecha",
-        "tamano": "grande",
-        "anim": "temblar"
-       }
-      ],
-      "persona": "medio",
-      "mood": "shocked"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "She can't see it clearly. She can only feel it. Every step, something wriggles under her skin.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 44,
-    "respaldo": {
-     "scene": "character",
-     "params": {
-      "bg": "cold",
-      "mood": "shocked"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "And she can't just pull them out. She has no tweezers, no medicine, no doctor. Just a river and a lot of pain.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 45,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "atardecer",
-      "plano": "medio",
-      "mood": "sad",
-      "objeto": "none"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Fever, hunger, blurry vision, and now infection. Each problem alone could end her. She faces all of them at once.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 46,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "marearse",
-      "lugar": "selva",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "cut"
-  },
-  {
-   "text": "On about day ten, through the blur, she spots something that doesn't belong to the jungle. A small hut on the riverbank, with a boat tied beside it.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 47,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "casa",
-        "pos": "centro",
-        "tamano": "gigante",
-        "anim": "crecer"
-       }
-      ],
-      "persona": "no",
-      "label": "Day 10"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "flash"
-  },
-  {
-   "text": "Nobody's inside. But there's a boat motor, and a can of gasoline. And inside that can, the answer to her problem.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 48,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "bomba",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "acercarse"
-       }
-      ],
-      "persona": "medio",
-      "mood": "neutral",
-      "label": "Gasoline"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "She remembers a trick from life in the jungle: gasoline can drive maggots out of a wound. It's a terrible idea, and her only one.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 49,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "idea",
-      "lugar": "selva",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "She pours it on the wound. It burns like fire. She screams. But the maggots wriggle out, dozens of them, around thirty.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 50,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "gritar",
-      "lugar": "selva",
-      "hora": "dia",
-      "efecto": "impacto"
-     }
-    }
-   },
-   "camera": "shake",
-   "transition": "red"
-  },
-  {
-   "text": "Then she lies down in the hut, completely exhausted, wrapped in the sound of the river. She's safe now, but she doesn't know it yet.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 51,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "dormir",
-      "lugar": "selva",
-      "hora": "noche"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "black"
-  },
-  {
-   "capitulo": "Chapter 5 · Who finds a girl in the jungle?",
-   "text": "The next morning, she hears voices. Three men walk out of the trees: forest workers heading to the very same hut.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 52,
-    "respaldo": {
-     "scene": "group",
-     "params": {
-      "count": 3,
-      "lugar": "selva",
-      "hora": "dia",
-      "mood": "neutral",
-      "people": [
-       "trabajador",
-       "trabajador"
-      ],
-      "label": "Forest workers"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "They see a thin, battered girl with a swollen eye, and at first they can hardly believe she's real.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 53,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "who": "trabajador",
-      "lugar": "selva",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "shocked",
-      "objeto": "none"
-     }
+    {
+      "text": "You're seventeen. It's December twenty-fourth, and you're boarding a flight from Lima, Peru, with your mother. You just graduated from high school.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "happy",
+            "objeto": "llaves"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
     },
-    "who": "trabajador"
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "She tells them in Spanish that she was on the plane that crashed. The men stare. A plane crash, ten days ago, and she's alive?",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 54,
-    "respaldo": {
-     "scene": "quote",
-     "params": {
-      "author": "Juliane Koepcke",
-      "text": "I was on the plane that crashed."
-     }
+    {
+      "text": "Flight 508 is packed. Ninety-two people, all heading home for Christmas, with presents in the overhead bins and kids pressing their faces to the windows.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "regalo",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "avion",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              }
+            ],
+            "persona": "no",
+            "label": "92 people on board"
+          }
+        }
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "It's a Lockheed Electra flying from Lima to Pucallpa, over the Andes and into the Amazon. A short, ordinary hop of about an hour.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Lima to Pucallpa",
+            "detail": "Peru · about 1 hour",
+            "style": "relieve"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Your mother takes the window seat. You're in the middle, in a row of three. Nothing about this flight feels strange.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "coche",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "neutral",
+            "objeto": "libro"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Then the sky outside turns black. The plane flies into a towering thunderstorm, and the whole cabin starts to shake like a truck on gravel.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "tormenta_mar",
+            "hora": "noche",
+            "label": "Thunderstorm"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Bags tumble out of the bins. Your mother grabs your hand and whispers that this doesn't feel right.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "coche",
+            "hora": "noche",
+            "plano": "medio",
+            "mood": "worried",
+            "objeto": "none"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Then a blinding flash. Lightning hits the plane. And in a heartbeat, something in the sky snaps.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "rayo",
+            "hora": "noche"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "The aircraft breaks apart about two miles up. Seats, bags and passengers scatter across the sky, and your mother's hand slips away from yours.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "avion",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "nube",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "no"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "Ten thousand feet. Almost two miles. No parachute, no oxygen, and no plan. That's how far you're about to fall.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "10,000 FEET",
+            "label": "No parachute",
+            "color": "#ff3b30",
+            "lugar": "espacio"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Then you're outside. Still strapped into your row of seats, spinning through the storm with the whole sky falling around you.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "coche_rojo",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "rayo",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "no",
+            "efecto": "velocidad"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "So here's the first question. How does anyone live through that? A few things have to go right, and somehow they all do.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "espacio",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "First, the seats. A row of three can spin like a helicopter blade as it falls, and that spinning slows the descent a little.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "coche_rojo",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "helicoptero",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "no",
+            "label": "Spinning like a rotor"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Second, the storm itself. Some scientists think the powerful updrafts inside thunderclouds may have cushioned her, like a giant invisible hand.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "nube",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "mano",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "viento",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              }
+            ],
+            "persona": "no",
+            "label": "Updrafts"
+          }
+        }
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Third, the trees. The Amazon canopy is thick, tangled and springy. It works like a giant net, spreading out the force of the impact.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "arbol",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "coche_rojo",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "caer"
+              }
+            ],
+            "persona": "no",
+            "label": "The canopy brake"
+          }
+        }
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "You crash through the branches, and the ground rushes up. Then everything goes black.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "caer_romper",
+            "lugar": "selva",
+            "hora": "dia",
+            "objeto": "fila_asientos_girando"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "black"
+    },
+    {
+      "text": "You've just survived something that killed ninety-one other people. But your nightmare is only beginning, and the next question is even harder.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 17,
+        "respaldo": {
+          "scene": "forest",
+          "params": {
+            "kind": "jungle"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "capitulo": "Chapter 2 · How do you find your way out?",
+      "text": "You wake up the next day, still strapped to the seat. Rain drips from the leaves, and you can barely move.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 18,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "vista_nublada",
+            "lugar": "selva",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Your collarbone is broken. One eye is swollen shut, and there's a deep cut on your leg. Your glasses are gone, and so is one sandal.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 19,
+        "respaldo": {
+          "scene": "person",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "mood": "sad",
+            "highlight": "legs",
+            "label": "Broken collarbone · cut leg"
+          }
+        }
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "You call for your mother. Nothing answers but birds and insects. The jungle is the loudest place you've ever been.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 20,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "gritar",
+            "lugar": "selva",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "You search for her for a while. Nothing. And you don't yet know that you might be the only one left.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 21,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "plano": "entero",
+            "mood": "worried",
+            "arms": "normal"
+          }
+        }
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "Here is where we meet her. Her name is Juliane Koepcke. And what her parents did for a living is the reason she's still alive.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 22,
+        "respaldo": {
+          "scene": "quote",
+          "params": {
+            "author": "Juliane Koepcke",
+            "text": "Seventeen. A broken collarbone. Alone in the Amazon."
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Her mother, Maria, was a famous ornithologist, a bird scientist. Her father, Hans-Wilhelm, was a zoologist. They studied the Peruvian rainforest for a living.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 23,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "pajaro",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "lupa",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "girar"
+              }
+            ],
+            "persona": "medio",
+            "who": "madre",
+            "mood": "happy",
+            "objeto": "libro"
+          }
+        },
+        "who": "madre"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Juliane had spent time at their research station deep in the jungle. She knew how to read that world better than most adults.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 24,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": "1960s",
+            "to": "1971",
+            "label": "Raised in the rainforest"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "That makes her one of the most prepared teenagers on Earth for this. But preparation can't fix a broken collarbone.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 25,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "worried",
+            "objeto": "none"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Alone now, she remembers her father's advice: water always leads somewhere. Follow a small stream, and it becomes a river.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 26,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "caer"
+              },
+              {
+                "pieza": "hormiga",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "entrar_der"
+              }
+            ],
+            "persona": "medio",
+            "who": "protagonista",
+            "mood": "neutral",
+            "label": "Water leads somewhere"
+          }
+        },
+        "who": "protagonista"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "And rivers lead to people. So she finds a tiny creek and starts wading downstream, feeling ahead with her feet.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 27,
+        "respaldo": {
+          "scene": "forest",
+          "params": {
+            "kind": "jungle",
+            "river": true
+          }
+        }
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "Why feel ahead with her feet? Because stingrays and snakes hide in murky water, and shuffling gives them a warning to move.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 28,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "plano": "entero",
+            "mood": "worried",
+            "highlight": "legs",
+            "arms": "normal"
+          }
+        }
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "Night falls, and the rainforest wakes up. Frogs, insects, rustling in the dark. She curls up beside a fallen tree, soaked and shivering.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 29,
+        "respaldo": {
+          "scene": "eyes_dark",
+          "params": {
+            "color": "#ffcc00",
+            "count": 4
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "black"
+    },
+    {
+      "text": "Then she hears a sound overhead. Planes! Search planes are circling. She waves and screams, but they can't see through the canopy.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 30,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "gritar",
+            "lugar": "selva",
+            "hora": "dia",
+            "efecto": "velocidad"
+          }
+        }
+      },
+      "camera": "tilt_up",
+      "transition": "cut"
+    },
+    {
+      "text": "The same thick canopy that saved her life now hides her from the rescuers. That's the cruel trick of the jungle.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 31,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "arbol",
+                "pos": "arriba",
+                "tamano": "gigante",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "avion",
+                "pos": "arriba_derecha",
+                "tamano": "pequeno",
+                "anim": "entrar_der"
+              }
+            ],
+            "persona": "medio",
+            "mood": "sad"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "But the next problem isn't water. It's food. And it's about to get harder.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 32,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "atardecer",
+            "plano": "medio",
+            "mood": "worried",
+            "objeto": "none"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "capitulo": "Chapter 3 · What do you eat when nothing is safe?",
+      "text": "What do you eat when nothing around you is safe? That's the question Juliane faces now, with an empty stomach and a long way to go.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 33,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "selva",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "She has one thing: a small bag of candy she found near the crash site. That's it. That's her entire food supply.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 34,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "bolsa_dinero",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ],
+            "persona": "medio",
+            "mood": "neutral",
+            "label": "One bag of candy"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "She nibbles one piece at a time. The sugar keeps her moving, but sugar doesn't last long when you're walking all day.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 35,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "comer",
+            "objeto": "chocolate",
+            "lugar": "selva",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Fruit hangs all around her. Bright, juicy, tempting. But she doesn't know which ones are safe, so she touches none of them.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 36,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "manzana",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "platano",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "medio",
+            "mood": "worried",
+            "label": "Not worth the risk"
+          }
+        }
+      },
+      "camera": "tilt_up",
+      "transition": "whip"
+    },
+    {
+      "text": "That discipline mattered. In the Amazon, many plants and fruits are toxic, and one wrong bite could mean cramps, vomiting, or worse.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 37,
+        "respaldo": {
+          "scene": "doctor",
+          "params": {
+            "label": "Toxic plants",
+            "say": "One wrong bite can be deadly.",
+            "mood": "worried",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Without her glasses, the world is a blur. Every shadow in the stream could be a snake, or just a floating log.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 38,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "vista_nublada",
+            "lugar": "selva",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Every night is cold and wet. She sleeps sitting up, hugging her knees, listening to the jungle breathe around her.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 39,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "congelarse",
+            "lugar": "selva",
+            "hora": "noche"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "black"
+    },
+    {
+      "text": "She has no phone, no map, no lighter. Just a father's lesson and her own stubborn legs. And she keeps walking.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 40,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "plano": "entero",
+            "mood": "neutral",
+            "arms": "normal",
+            "highlight": "legs"
+          }
+        }
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "The days blur together. She wades, rests, wades again, fighting hunger, fever and fear. And then she finds out something is wrong with her arm.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 41,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "contar_dias",
+            "numero": 5,
+            "lugar": "selva",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "capitulo": "Chapter 4 · What's worse than being lost?",
+      "text": "Around day five, she faces something worse than hunger. An infection. And this one is alive.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 42,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "herida",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "latir"
+              }
+            ],
+            "persona": "no",
+            "label": "Day 5"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "Flies have laid eggs in the deep wound on her arm. Maggots are now living inside it.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 43,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "herida",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "medio",
+            "mood": "shocked"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "She can't see it clearly. She can only feel it. Every step, something wriggles under her skin.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 44,
+        "respaldo": {
+          "scene": "character",
+          "params": {
+            "bg": "cold",
+            "mood": "shocked"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "And she can't just pull them out. She has no tweezers, no medicine, no doctor. Just a river and a lot of pain.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 45,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "atardecer",
+            "plano": "medio",
+            "mood": "sad",
+            "objeto": "none"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Fever, hunger, blurry vision, and now infection. Each problem alone could end her. She faces all of them at once.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 46,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "marearse",
+            "lugar": "selva",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "On about day ten, through the blur, she spots something that doesn't belong to the jungle. A small hut on the riverbank, with a boat tied beside it.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 47,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "casa",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              }
+            ],
+            "persona": "no",
+            "label": "Day 10"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "flash"
+    },
+    {
+      "text": "Nobody's inside. But there's a boat motor, and a can of gasoline. And inside that can, the answer to her problem.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 48,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "bomba",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "acercarse"
+              }
+            ],
+            "persona": "medio",
+            "mood": "neutral",
+            "label": "Gasoline"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "She remembers a trick from life in the jungle: gasoline can drive maggots out of a wound. It's a terrible idea, and her only one.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 49,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "idea",
+            "lugar": "selva",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "She pours it on the wound. It burns like fire. She screams. But the maggots wriggle out, dozens of them, around thirty.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 50,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "gritar",
+            "lugar": "selva",
+            "hora": "dia",
+            "efecto": "impacto"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "Then she lies down in the hut, completely exhausted, wrapped in the sound of the river. She's safe now, but she doesn't know it yet.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 51,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dormir",
+            "lugar": "selva",
+            "hora": "noche"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "black"
+    },
+    {
+      "capitulo": "Chapter 5 · Who finds a girl in the jungle?",
+      "text": "The next morning, she hears voices. Three men walk out of the trees: forest workers heading to the very same hut.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 52,
+        "respaldo": {
+          "scene": "group",
+          "params": {
+            "count": 3,
+            "lugar": "selva",
+            "hora": "dia",
+            "mood": "neutral",
+            "people": [
+              "trabajador",
+              "trabajador"
+            ],
+            "label": "Forest workers"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "They see a thin, battered girl with a swollen eye, and at first they can hardly believe she's real.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 53,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "who": "trabajador",
+            "lugar": "selva",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "shocked",
+            "objeto": "none"
+          }
+        },
+        "who": "trabajador"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "She tells them in Spanish that she was on the plane that crashed. The men stare. A plane crash, ten days ago, and she's alive?",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 54,
+        "respaldo": {
+          "scene": "quote",
+          "params": {
+            "author": "Juliane Koepcke",
+            "text": "I was on the plane that crashed."
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "They clean her wounds, give her food, and carry her down the river by canoe for hours, all the way to a village.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 55,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "barca",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              }
+            ],
+            "persona": "no",
+            "label": "Down the river"
+          }
+        }
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "A small plane flies her to a hospital in Pucallpa, where her father is waiting. The first familiar face in more than a week.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 56,
+        "respaldo": {
+          "scene": "hospital",
+          "params": {
+            "state": "awake",
+            "mood": "happy",
+            "monitor": "normal",
+            "hora": "dia",
+            "label": "Pucallpa"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Later, she learns her mother also survived the fall, but she was badly hurt and died before help could reach her.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 57,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "hospital",
+            "hora": "atardecer",
+            "plano": "medio",
+            "mood": "sad",
+            "objeto": "none"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "The news explodes. Only one person out of ninety-two lived through it, and she walked out of the Amazon on her own two feet.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 58,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "style": "papel",
+            "headline": "ONLY SURVIVOR FOUND IN JUNGLE",
+            "kicker": "The Daily Courier",
+            "date": "January 1972"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "One out of ninety-two. About eleven days from the moment the sky fell on her to the moment someone found her.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 59,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "1 OF 92",
+            "label": "The only survivor",
+            "color": "#ffcc00",
+            "lugar": "selva"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "But here's what almost nobody knows. This story has two endings, and the first one involves a famous filmmaker.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 60,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "oficina",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "German director Werner Herzog had booked a seat on that exact flight while scouting locations for a movie.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 61,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "Flight 508 · Reservation",
+            "lines": [
+              "Passenger: W. Herzog",
+              "Lima to Pucallpa",
+              "Dec 24, 1971",
+              "Seat: booked"
+            ],
+            "highlight": 0,
+            "stamp": "BOOKED"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "At the last minute, his plans changed and he never boarded. A tiny scheduling shift that may have saved his life.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 62,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "ciudad",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Decades later, he tracked down Juliane. In 2000, he made a documentary about her story, called Wings of Hope.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 63,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": "1971",
+            "to": "2000",
+            "label": "Wings of Hope"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "He flew her back to the crash site. She stood in the same jungle and retraced her steps, with a camera rolling.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 64,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "plano": "entero",
+            "mood": "sad",
+            "arms": "normal",
+            "edad": "adulto"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "That should be where the story ends. But the second ending is better, and it's the one that gives me chills.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 65,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Panguana, Peru",
+            "detail": "Rainforest research station",
+            "style": "globo"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "She didn't run from the jungle that almost killed her. She became a biologist and studied the wildlife of the Amazon, just like her parents.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 66,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "Doctorate · Biology",
+            "lines": [
+              "Dr. Juliane Diller",
+              "Zoologist",
+              "Rainforest research"
+            ],
+            "highlight": 0,
+            "stamp": "DOCTOR"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Today, Dr. Juliane Diller helps run Panguana, the rainforest research station her parents founded in Peru, the same place she grew up studying.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 67,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "casa",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "pajaro",
+                "pos": "arriba_derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "no",
+            "label": "Panguana"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "The jungle tried to kill her. So she spent her life protecting it.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 68,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "happy",
+            "edad": "adulto",
+            "objeto": "libro"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "So tell me in the comments: would you have followed the water, or stayed by the wreck waiting for help?",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 69,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "selva",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "If you liked this, watch our next video: what really happens if you jump out of a plane without a parachute?",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-12-01",
+        "plano": 70,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "avion",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "nube",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "entero",
+            "mood": "shocked",
+            "label": "Next video"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
     }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "They clean her wounds, give her food, and carry her down the river by canoe for hours, all the way to a village.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 55,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "barca",
-        "pos": "centro",
-        "tamano": "grande",
-        "anim": "entrar_izq"
-       }
-      ],
-      "persona": "no",
-      "label": "Down the river"
-     }
-    }
-   },
-   "camera": "pan_right",
-   "transition": "whip"
-  },
-  {
-   "text": "A small plane flies her to a hospital in Pucallpa, where her father is waiting. The first familiar face in more than a week.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 56,
-    "respaldo": {
-     "scene": "hospital",
-     "params": {
-      "state": "awake",
-      "mood": "happy",
-      "monitor": "normal",
-      "hora": "dia",
-      "label": "Pucallpa"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "Later, she learns her mother also survived the fall, but she was badly hurt and died before help could reach her.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 57,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "hospital",
-      "hora": "atardecer",
-      "plano": "medio",
-      "mood": "sad",
-      "objeto": "none"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "fade"
-  },
-  {
-   "text": "The news explodes. Only one person out of ninety-two lived through it, and she walked out of the Amazon on her own two feet.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 58,
-    "respaldo": {
-     "scene": "newspaper",
-     "params": {
-      "style": "papel",
-      "headline": "ONLY SURVIVOR FOUND IN JUNGLE",
-      "kicker": "The Daily Courier",
-      "date": "January 1972"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "One out of ninety-two. About eleven days from the moment the sky fell on her to the moment someone found her.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 59,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "1 OF 92",
-      "label": "The only survivor",
-      "color": "#ffcc00",
-      "lugar": "selva"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "But here's what almost nobody knows. This story has two endings, and the first one involves a famous filmmaker.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 60,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "sorpresa",
-      "lugar": "oficina",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "German director Werner Herzog had booked a seat on that exact flight while scouting locations for a movie.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 61,
-    "respaldo": {
-     "scene": "document",
-     "params": {
-      "title": "Flight 508 · Reservation",
-      "lines": [
-       "Passenger: W. Herzog",
-       "Lima to Pucallpa",
-       "Dec 24, 1971",
-       "Seat: booked"
-      ],
-      "highlight": 0,
-      "stamp": "BOOKED"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "At the last minute, his plans changed and he never boarded. A tiny scheduling shift that may have saved his life.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 62,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "sorpresa",
-      "lugar": "ciudad",
-      "hora": "dia"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "flash"
-  },
-  {
-   "text": "Decades later, he tracked down Juliane. In 2000, he made a documentary about her story, called Wings of Hope.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 63,
-    "respaldo": {
-     "scene": "year_jump",
-     "params": {
-      "from": "1971",
-      "to": "2000",
-      "label": "Wings of Hope"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "fade"
-  },
-  {
-   "text": "He flew her back to the crash site. She stood in the same jungle and retraced her steps, with a camera rolling.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 64,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "plano": "entero",
-      "mood": "sad",
-      "arms": "normal",
-      "edad": "adulto"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "That should be where the story ends. But the second ending is better, and it's the one that gives me chills.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 65,
-    "respaldo": {
-     "scene": "map_pin",
-     "params": {
-      "place": "Panguana, Peru",
-      "detail": "Rainforest research station",
-      "style": "globo"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "whip"
-  },
-  {
-   "text": "She didn't run from the jungle that almost killed her. She became a biologist and studied the wildlife of the Amazon, just like her parents.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 66,
-    "respaldo": {
-     "scene": "document",
-     "params": {
-      "title": "Doctorate · Biology",
-      "lines": [
-       "Dr. Juliane Diller",
-       "Zoologist",
-       "Rainforest research"
-      ],
-      "highlight": 0,
-      "stamp": "DOCTOR"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "fade"
-  },
-  {
-   "text": "Today, Dr. Juliane Diller helps run Panguana, the rainforest research station her parents founded in Peru, the same place she grew up studying.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 67,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "piezas": [
-       {
-        "pieza": "casa",
-        "pos": "centro",
-        "tamano": "gigante",
-        "anim": "crecer"
-       },
-       {
-        "pieza": "pajaro",
-        "pos": "arriba_derecha",
-        "tamano": "pequeno",
-        "anim": "flotar"
-       }
-      ],
-      "persona": "no",
-      "label": "Panguana"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  },
-  {
-   "text": "The jungle tried to kill her. So she spent her life protecting it.",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 68,
-    "respaldo": {
-     "scene": "escena",
-     "params": {
-      "lugar": "selva",
-      "hora": "dia",
-      "plano": "medio",
-      "mood": "happy",
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "mujer",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "largo",
+      "color_pelo": "rubio_oscuro",
+      "barba": "no",
+      "gafas": true,
+      "ropa": "blanco"
+    },
+    "madre": {
+      "genero": "mujer",
       "edad": "adulto",
-      "objeto": "libro"
-     }
+      "piel": "clara",
+      "pelo": "moño",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    },
+    "trabajador": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "morena",
+      "pelo": "corto",
+      "color_pelo": "negro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "verde"
     }
-   },
-   "camera": "push_in",
-   "transition": "fade"
   },
-  {
-   "text": "So tell me in the comments: would you have followed the water, or stayed by the wreck waiting for help?",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 69,
-    "respaldo": {
-     "scene": "accion",
-     "params": {
-      "tipo": "dudar",
-      "lugar": "selva",
-      "hora": "dia"
-     }
+  "cover_text": "1 OF 92",
+  "comment_q": "Would you have followed the water?",
+  "lista": "Incredible True Stories",
+  "formato": "horizontal",
+  "question": "How did a 17-year-old girl survive a two-mile fall from an exploding plane and escape the Amazon alone?",
+  "piezas_pendientes": [
+    "fila_asientos_girando",
+    "avion_electra_desintegrandose",
+    "dosel_selva_amazonica",
+    "bolsa_caramelos",
+    "herida_con_gusanos",
+    "cabana_rio_con_bote",
+    "lata_gasolina",
+    "estacion_panguana"
+  ],
+  "id": "largo-12-01",
+  "idea": {
+    "tipo": "caso_real",
+    "premisa": "Historia real de Juliane Koepcke, contada como documental-misterio en 5 capítulos. 24 de diciembre de 1971: vuelo LANSA 508 de Lima a Pucallpa (Perú), un Lockheed Electra con 92 personas a bordo. Una tormenta, un rayo y el avión se desintegra en el aire. Juliane, 17 años, cae unos 10,000 pies (3 km) todavía atada a su fila de asientos y despierta en la selva amazónica: clavícula rota, un corte profundo en la pierna, conmoción, sin gafas y con una sola sandalia. Su madre, sentada a su lado, ha desaparecido. Estructura en capítulos-pregunta (no cuenta atrás día a día): 1) 'How do you survive a two-mile fall?' (la fila de asientos girando como hélice, la frenada de las copas de los árboles, la tormenta). 2) 'How do you find your way out of the Amazon?' (el consejo de su padre biólogo: sigue el agua corriente abajo, los ríos llevan a la gente). 3) 'What do you eat when there's nothing safe to eat?' (una bolsa de caramelos; no tocó frutos que no conocía). 4) 'What's worse than being lost?' (gusanos en la herida del brazo; encuentra una cabaña con un motor y gasolina y se la echa en la herida para sacarlos). 5) Rescate: tras unos 10 días caminando y vadeando ríos, unos trabajadores forestales la encuentran en la cabaña. Única superviviente de 92. Narración en segunda persona al principio ('You're 17. It's Christmas Eve…') que pasa a tercera persona cuando se revela su nombre, para dar efecto documental.",
+    "gancho": "Could you survive falling two miles from the sky… with no parachute? On Christmas Eve, 1971, a 17-year-old girl had to find out.",
+    "giro_final": "Two endings almost nobody knows. First: filmmaker Werner Herzog had a reservation on that same flight while scouting a movie, and a last-minute change of plans kept him off it. Decades later he flew Juliane back to the crash site to film the documentary 'Wings of Hope'. Second: she didn't run from the jungle that almost killed her. She became a biologist, Dr. Juliane Diller, and runs Panguana, the rainforest research station her parents founded in Peru. Closing line in a loop: 'The jungle tried to kill her… so she spent her life protecting it.'",
+    "estilo_visual": "Apertura: 'escena' interior de avión luminoso (pasajeros, ventanilla, Navidad) que se oscurece; 'accion' rayo + 'accion' tormenta_mar adaptada a nubes; 'big_text' '10,000 FEET' con la persona reaccionando. Caída: 'composicion' fila de asientos girando sobre el dosel de la selva y 'accion' caer_romper. Selva: 'forest' kind 'jungle' domina el vídeo (rayos de sol, ríos), alternada con 'escena' de la protagonista vadeando un arroyo. Ciencia de cada capítulo con 'composicion' (copa de árbol frenando la caída, río con flecha corriente abajo, bolsa de caramelos, primer plano de la herida con gusanos y una lata de gasolina). Contexto: 'map_pin' mapa de relieve de Perú con la ruta Lima→Pucallpa; 'newspaper' recorte antiguo 'ONLY SURVIVOR FOUND IN JUNGLE'; 'big_text' '1 OF 92' y '11 DAYS' (una sola vez, sin estructura de diario). Rescate: 'group' con los trabajadores forestales y 'hospital'. Giro: 'year_jump' 1971 → 1998 (documental de Herzog) → hoy, 'document' con su título de doctora y 'escena' en la estación Panguana a plena luz. Nada de escenas del estilo oscuro salvo un instante de 'eyes_dark' en la primera noche en la selva.",
+    "por_que_funcionara": "Combina las dos cosas que el canal ya ha demostrado que funcionan: la caída imposible con física real (como el Grand Canyon) y el superviviente real con nombre y final sorprendente (como Yamaguchi). Da para 8-10 minutos sin relleno porque cada capítulo es un misterio nuevo con su propia respuesta científica, lo que mantiene la retención. Además, el doble giro final (Herzog y su regreso a la selva) es compartible y genera comentarios del tipo 'I had no idea'. Todos los datos están bien documentados en su libro 'When I Fell From the Sky' (2011) y en el documental de Herzog.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "avion_electra_desintegrandose",
+      "fila_asientos_girando",
+      "dosel_selva_amazonica",
+      "herida_con_gusanos",
+      "lata_gasolina",
+      "bolsa_caramelos",
+      "cabana_rio_con_bote",
+      "estacion_panguana"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "Could you survive a two-mile fall?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Pregunta imposible en segunda persona. Deja claro el tema en menos de 2 segundos y tiene 7 palabras."
+    },
+    {
+      "texto": "Could you survive falling two miles without a parachute?",
+      "tipo": "b",
+      "puntuacion": 7,
+      "motivo": "Muy clara y con reto, pero se pasa de 8 palabras."
+    },
+    {
+      "texto": "Ninety-two people fell. One walked out alive.",
+      "tipo": "c",
+      "puntuacion": 8,
+      "motivo": "Cifra brutal que choca, pero destripa que hay una superviviente."
+    },
+    {
+      "texto": "You're seventeen. Your plane just exploded.",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Inmersivo y con tensión, pero el tema queda menos claro a primera escucha."
+    },
+    {
+      "texto": "Nobody survives a fall like that. She did.",
+      "tipo": "e",
+      "puntuacion": 6,
+      "motivo": "Contradicción que engancha, pero destripa el final y no dice cómo."
     }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "If you liked this, watch our next video: what really happens if you jump out of a plane without a parachute?",
-   "scene": "medida",
-   "params": {
-    "archivo": "largo-12-01",
-    "plano": 70,
-    "respaldo": {
-     "scene": "composicion",
-     "params": {
-      "lugar": "fondo",
-      "piezas": [
-       {
-        "pieza": "avion",
-        "pos": "arriba",
-        "tamano": "grande",
-        "anim": "entrar_izq"
-       },
-       {
-        "pieza": "nube",
-        "pos": "izquierda",
-        "tamano": "grande",
-        "anim": "flotar"
-       }
-      ],
-      "persona": "entero",
-      "mood": "shocked",
-      "label": "Next video"
-     }
-    }
-   },
-   "camera": "pull_out",
-   "transition": "fade"
-  }
- ],
- "looks": {
-  "protagonista": {
-   "genero": "mujer",
-   "edad": "joven",
-   "piel": "clara",
-   "pelo": "largo",
-   "color_pelo": "rubio_oscuro",
-   "barba": "no",
-   "gafas": true,
-   "ropa": "blanco"
-  },
-  "madre": {
-   "genero": "mujer",
-   "edad": "adulto",
-   "piel": "clara",
-   "pelo": "moño",
-   "color_pelo": "castaño_oscuro",
-   "barba": "no",
-   "gafas": false,
-   "ropa": "azul"
-  },
-  "trabajador": {
-   "genero": "hombre",
-   "edad": "adulto",
-   "piel": "morena",
-   "pelo": "corto",
-   "color_pelo": "negro",
-   "barba": "no",
-   "gafas": false,
-   "ropa": "verde"
-  }
- },
- "cover_text": "1 OF 92",
- "comment_q": "Would you have followed the water?",
- "lista": "Incredible True Stories",
- "formato": "horizontal",
- "question": "How did a 17-year-old girl survive a two-mile fall from an exploding plane and escape the Amazon alone?",
- "piezas_pendientes": [
-  "fila_asientos_girando",
-  "avion_electra_desintegrandose",
-  "dosel_selva_amazonica",
-  "bolsa_caramelos",
-  "herida_con_gusanos",
-  "cabana_rio_con_bote",
-  "lata_gasolina",
-  "estacion_panguana"
- ],
- "id": "largo-12-01",
- "idea": {
-  "tipo": "caso_real",
-  "premisa": "Historia real de Juliane Koepcke, contada como documental-misterio en 5 capítulos. 24 de diciembre de 1971: vuelo LANSA 508 de Lima a Pucallpa (Perú), un Lockheed Electra con 92 personas a bordo. Una tormenta, un rayo y el avión se desintegra en el aire. Juliane, 17 años, cae unos 10,000 pies (3 km) todavía atada a su fila de asientos y despierta en la selva amazónica: clavícula rota, un corte profundo en la pierna, conmoción, sin gafas y con una sola sandalia. Su madre, sentada a su lado, ha desaparecido. Estructura en capítulos-pregunta (no cuenta atrás día a día): 1) 'How do you survive a two-mile fall?' (la fila de asientos girando como hélice, la frenada de las copas de los árboles, la tormenta). 2) 'How do you find your way out of the Amazon?' (el consejo de su padre biólogo: sigue el agua corriente abajo, los ríos llevan a la gente). 3) 'What do you eat when there's nothing safe to eat?' (una bolsa de caramelos; no tocó frutos que no conocía). 4) 'What's worse than being lost?' (gusanos en la herida del brazo; encuentra una cabaña con un motor y gasolina y se la echa en la herida para sacarlos). 5) Rescate: tras unos 10 días caminando y vadeando ríos, unos trabajadores forestales la encuentran en la cabaña. Única superviviente de 92. Narración en segunda persona al principio ('You're 17. It's Christmas Eve…') que pasa a tercera persona cuando se revela su nombre, para dar efecto documental.",
-  "gancho": "Could you survive falling two miles from the sky… with no parachute? On Christmas Eve, 1971, a 17-year-old girl had to find out.",
-  "giro_final": "Two endings almost nobody knows. First: filmmaker Werner Herzog had a reservation on that same flight while scouting a movie, and a last-minute change of plans kept him off it. Decades later he flew Juliane back to the crash site to film the documentary 'Wings of Hope'. Second: she didn't run from the jungle that almost killed her. She became a biologist, Dr. Juliane Diller, and runs Panguana, the rainforest research station her parents founded in Peru. Closing line in a loop: 'The jungle tried to kill her… so she spent her life protecting it.'",
-  "estilo_visual": "Apertura: 'escena' interior de avión luminoso (pasajeros, ventanilla, Navidad) que se oscurece; 'accion' rayo + 'accion' tormenta_mar adaptada a nubes; 'big_text' '10,000 FEET' con la persona reaccionando. Caída: 'composicion' fila de asientos girando sobre el dosel de la selva y 'accion' caer_romper. Selva: 'forest' kind 'jungle' domina el vídeo (rayos de sol, ríos), alternada con 'escena' de la protagonista vadeando un arroyo. Ciencia de cada capítulo con 'composicion' (copa de árbol frenando la caída, río con flecha corriente abajo, bolsa de caramelos, primer plano de la herida con gusanos y una lata de gasolina). Contexto: 'map_pin' mapa de relieve de Perú con la ruta Lima→Pucallpa; 'newspaper' recorte antiguo 'ONLY SURVIVOR FOUND IN JUNGLE'; 'big_text' '1 OF 92' y '11 DAYS' (una sola vez, sin estructura de diario). Rescate: 'group' con los trabajadores forestales y 'hospital'. Giro: 'year_jump' 1971 → 1998 (documental de Herzog) → hoy, 'document' con su título de doctora y 'escena' en la estación Panguana a plena luz. Nada de escenas del estilo oscuro salvo un instante de 'eyes_dark' en la primera noche en la selva.",
-  "por_que_funcionara": "Combina las dos cosas que el canal ya ha demostrado que funcionan: la caída imposible con física real (como el Grand Canyon) y el superviviente real con nombre y final sorprendente (como Yamaguchi). Da para 8-10 minutos sin relleno porque cada capítulo es un misterio nuevo con su propia respuesta científica, lo que mantiene la retención. Además, el doble giro final (Herzog y su regreso a la selva) es compartible y genera comentarios del tipo 'I had no idea'. Todos los datos están bien documentados en su libro 'When I Fell From the Sky' (2011) y en el documental de Herzog.",
-  "inspirado_en": [],
-  "piezas_nuevas": [
-   "avion_electra_desintegrandose",
-   "fila_asientos_girando",
-   "dosel_selva_amazonica",
-   "herida_con_gusanos",
-   "lata_gasolina",
-   "bolsa_caramelos",
-   "cabana_rio_con_bote",
-   "estacion_panguana"
-  ]
- },
- "ganchos": [
-  {
-   "texto": "Could you survive a two-mile fall?",
-   "tipo": "a",
-   "puntuacion": 9,
-   "motivo": "Pregunta imposible en segunda persona. Deja claro el tema en menos de 2 segundos y tiene 7 palabras."
-  },
-  {
-   "texto": "Could you survive falling two miles without a parachute?",
-   "tipo": "b",
-   "puntuacion": 7,
-   "motivo": "Muy clara y con reto, pero se pasa de 8 palabras."
-  },
-  {
-   "texto": "Ninety-two people fell. One walked out alive.",
-   "tipo": "c",
-   "puntuacion": 8,
-   "motivo": "Cifra brutal que choca, pero destripa que hay una superviviente."
-  },
-  {
-   "texto": "You're seventeen. Your plane just exploded.",
-   "tipo": "d",
-   "puntuacion": 7,
-   "motivo": "Inmersivo y con tensión, pero el tema queda menos claro a primera escucha."
-  },
-  {
-   "texto": "Nobody survives a fall like that. She did.",
-   "tipo": "e",
-   "puntuacion": 6,
-   "motivo": "Contradicción que engancha, pero destripa el final y no dice cómo."
-  }
- ],
- "medida_estado": "lista",
- "tanda": "largo-12"
+  ],
+  "portada_ia": true
 }
