@@ -115,7 +115,7 @@
   {
     "id": "pedido-25-01-r1",
     "title": "What Happens If You Stop Sleeping? The 11-Day Record #shorts",
-    "description": "How long can you go without sleep? 👇\n\nWhat happens to your body if you stop sleeping? The true story of Randy Gardner, who stayed awake 264 hours in 1964.\nGuinness stopped tracking sleep-deprivation records because they were too dangerous.\n#sleepdeprivation #whathappensifyoustopsleeping #randygardner #truestory #facts",
+    "description": "How long can you go without sleep? 👇\n\nWhat happens to your body if you stop sleeping? The true story of Randy Gardner, who stayed awake 264 hours in 1964.\nGuinness stopped tracking sleep-deprivation records because they were too dangerous.\n#sleepdeprivation #whathappensifyoustopsleeping #randygardner #truestory #facts\n\n▶️ More «Human Body»: https://www.youtube.com/playlist?list=PLDdE1HFoB5ZA",
     "tags": [
       "what happens if you stop sleeping",
       "sleep deprivation",
@@ -135,13 +135,16 @@
     "lista": "Human Body",
     "tag": "pedido-25",
     "issue": null,
-    "estado": "pendiente",
-    "publish_at": "2026-11-24T17:00:00Z"
+    "estado": "programado",
+    "publish_at": "2026-11-24T17:00:00Z",
+    "youtube_id": "GggCgUVPdwU",
+    "lista_ok": true,
+    "portada_ok": true
   },
   {
     "id": "largo-12-01-r1",
     "title": "The Girl Who Survived a 2-Mile Fall: Juliane Koepcke's True Story",
-    "description": "Would you have followed the water? 👇\n\nJuliane Koepcke survived a two-mile fall from an exploding plane and walked out of the Amazon alone. This is the true story of LANSA Flight 508.\nShe was the only survivor of 92 people, and her story has a twist involving filmmaker Werner Herzog and a jungle research station.\n#truestory #survival #amazon #planecrash #JulianeKoepcke",
+    "description": "Would you have followed the water? 👇\n\nJuliane Koepcke survived a two-mile fall from an exploding plane and walked out of the Amazon alone. This is the true story of LANSA Flight 508.\nShe was the only survivor of 92 people, and her story has a twist involving filmmaker Werner Herzog and a jungle research station.\n#truestory #survival #amazon #planecrash #JulianeKoepcke\n\n▶️ More «Incredible True Stories»: https://www.youtube.com/playlist?list=PLaAKt3Q4VRis",
     "tags": [
       "Juliane Koepcke",
       "LANSA Flight 508",
@@ -161,7 +164,10 @@
     "lista": "Incredible True Stories",
     "tag": "largo-15",
     "issue": null,
-    "estado": "pendiente",
-    "publish_at": "2026-11-24T23:00:00Z"
+    "estado": "programado",
+    "publish_at": "2026-11-24T23:00:00Z",
+    "youtube_id": "Bsw4Bhw-UoE",
+    "lista_ok": true,
+    "portada_ok": true
   }
 ]
