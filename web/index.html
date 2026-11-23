@@ -346,9 +346,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   }
   const fmtDay = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ, weekday: "long", day: "numeric", month: "long"}).format(d);
   const hhmm = (d, tz) => new Intl.DateTimeFormat("es-ES", {timeZone: tz, hour: "2-digit", minute: "2-digit"}).format(d);
-  const dayNum = (d, tz) => new Intl.DateTimeFormat("es-ES", {timeZone: tz, day: "numeric"}).format(d);
-  // En España suele ser ya el día siguiente (6 h más): se indica para que no confunda
-  const fmtTime = d => `${hhmm(d, TZ)} 🇺🇸 · ${hhmm(d, TZ_ES)} 🇪🇸` + (dayNum(d, TZ) !== dayNum(d, TZ_ES) ? ` (día ${dayNum(d, TZ_ES)} en España)` : "");
+  const fmtTime = d => `${hhmm(d, TZ)} 🇺🇸 · ${hhmm(d, TZ_ES)} 🇪🇸`;
   const fmtShort = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ_ES, day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"}).format(d);
   const dayKey = d => new Intl.DateTimeFormat("en-CA", {timeZone: TZ}).format(d);
   const mins = ms => { const m = Math.round(ms / 60000); return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${m % 60} min`; };
