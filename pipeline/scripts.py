@@ -203,6 +203,13 @@ La gente ve el vídeo SIN título ni descripción: solo oye la voz. Si en los 3 
   e) contradicción / "lo que nadie te cuenta" sobre el tema ("Todos creen que el fondo del mar está vacío. No lo está.")
 Puntúa cada uno de 1 a 10. PRUEBA DEL DESCONOCIDO (si no la pasa, máximo 3 puntos): alguien que solo oye esa frase, sin ver nada más, ¿sabe de qué va el vídeo y quiere saber la respuesta? Además: se entiende en menos de 2 segundos; es concreto; no destripa el final; MÁXIMO 8 PALABRAS. Copia el mejor en "gancho_elegido" y úsalo LITERALMENTE como texto del plano 1.
 PROHIBIDO empezar a mitad de la historia sin presentar el tema (MAL: "Día uno: bajas diez metros." BIEN: "¿Y si cada día bajaras más hondo en el mar?"). Si el gancho es una afirmación, la pregunta central va en el plano 2.
+EMPIEZA POR EL MOMENTO MÁS FUERTE (datos reales del canal: más de la mitad desliza en el primer segundo).
+- El plano 1 cuenta el momento MÁS impactante de toda la historia (el clímax, la cifra brutal, el peligro), NUNCA \
+el contexto. PROHIBIDO abrir con fechas, lugares, "En 1971…", "Esta es la historia de…", "Imagina que…" o presentar \
+al personaje. MAL: "En 1971, un avión despegó de Lima." BIEN: "Cayó 3 kilómetros del cielo… y vivió."
+- Da prioridad a los ganchos de tipo c) y a las afirmaciones de impacto; puntúa con máximo 5 cualquier gancho que \
+sea introducción o contexto. El contexto llega después (plano 2-3), contado deprisa.
+- Planos 1-3: frases muy cortas (máx 8-10 palabras), una idea por plano y cambio de imagen en cada uno.
 
 TÉCNICAS DE RETENCIÓN (caja de herramientas: elige las que mejor encajen con ESTE vídeo y combínalas)
 - Bucle abierto desde el principio: una promesa o duda que solo se resuelve al final ("Pero lo que le pasó \
