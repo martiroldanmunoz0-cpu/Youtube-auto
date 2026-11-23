@@ -15,7 +15,7 @@ TEXTO = ("Imagine you could control your luck. Turn it up, turn it down, anytime
          "Sounds amazing, right? But here's the thing nobody tells you: luck always collects. "
          "And when it does, it never asks for permission.")
 CANDIDATAS = {
-    "voz_h": "A real American man in his late twenties with a deep, slightly husky natural voice, relaxed and genuine storyteller talking casually to a friend, natural breathing and small imperfections, warm low tone, unhurried conversational pace, not polished, not announcer-like",
+    "voz_h": "A real American man in his late twenties with a moderately deep, clean natural voice (not raspy, not gravelly), relaxed and genuine storyteller talking casually to a friend, natural breathing and small imperfections, warm low tone, unhurried conversational pace, not polished, not announcer-like",
 }
 
 
