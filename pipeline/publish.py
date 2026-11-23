@@ -80,8 +80,13 @@ def _far(h: tuple[int, int], used: set[tuple[int, int]], gap_min: int = 120) -> 
     return all(abs(m - (u[0] * 60 + u[1])) >= gap_min for u in used)
 
 
-def plan_slots(n: int, cfg: dict, queue: list[dict]) -> list[dt.datetime]:
-    """Reparte n vídeos nuevos entre los días, respetando los que ya están programados.
+def es_largo(v: dict) -> bool:
+    return str(v.get("id", "")).startswith("largo-")
+
+
+def plan_slots(n: int, cfg: dict, queue: list[dict], largo: bool = False) -> list[dt.datetime]:
+    """Vídeos largos (largo=True): como máximo UNO al día (petición del dueño), en días sin otro largo.
+Reparte n vídeos nuevos entre los días, respetando los que ya están programados.
 
     - Llena cada día hasta 2 vídeos antes de pasar al siguiente. Cuando los días del horizonte (7) tienen 2,
       añade un 3.º a cada uno. Si aún sobran, sigue por los días siguientes con 2 al día.
@@ -100,6 +105,22 @@ def plan_slots(n: int, cfg: dict, queue: list[dict]) -> list[dt.datetime]:
             d = _parse(q["publish_at"]).astimezone(tz)
             if d.date() >= first_day:
                 taken.setdefault(d.date(), set()).add((d.hour, d.minute))
+
+    if largo:
+        dias_largo = {_parse(q["publish_at"]).astimezone(tz).date() for q in queue
+                      if es_largo(q) and q.get("estado") in ("programado", "pendiente", "manual") and q.get("publish_at")}
+        out: list[dt.datetime] = []
+        day = first_day
+        while len(out) < n:
+            if day not in dias_largo:
+                used = taken.setdefault(day, set())
+                for h in _hours_for(p, day, 1) + _all_hours(p, day, max_day):
+                    if h not in used and _far(h, used):
+                        used.add(h); dias_largo.add(day)
+                        out.append(dt.datetime.combine(day, dt.time(*h), tz))
+                        break
+            day += dt.timedelta(days=1)
+        return out
 
     slots: list[dt.datetime] = []
 
@@ -317,7 +338,7 @@ def process_queue(cfg: dict) -> list[str]:
         # Si la hora ya pasó (p. ej. por cuota agotada varios días), se mueve al primer hueco libre.
         if dt.datetime.fromisoformat(q["publish_at"].replace("Z", "+00:00")) < dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=1):
             others = [x for x in queue if x is not q]
-            q["publish_at"] = _iso(plan_slots(1, cfg, others)[0])
+            q["publish_at"] = _iso(plan_slots(1, cfg, others, largo=es_largo(q))[0])
         path = tmp / q["video"]
         if not path.exists():
             gh("release", "download", q["tag"], "--pattern", q["video"], "--dir", str(tmp), "--clobber")
@@ -417,7 +438,8 @@ def main():
         if not chosen:
             gh("issue", "comment", str(args.issue), "--body", "🗑️ Descartado (o ya estaba programado). Si querías publicarlo, pulsa **Reopen issue**, marca la casilla y vuelve a cerrarlo.")
             return
-        for v, slot in zip(chosen, plan_slots(len(chosen), cfg, queue)):
+        for v in chosen:  # uno a uno: así los largos nunca caen dos el mismo día
+            slot = plan_slots(1, cfg, queue, largo=es_largo(v))[0]
             queue.append({**v, "tag": week["tag"], "issue": args.issue, "estado": "pendiente", "publish_at": _iso(slot)})
         write_json(QUEUE, queue)
 
