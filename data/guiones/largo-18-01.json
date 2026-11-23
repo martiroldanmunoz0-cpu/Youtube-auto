@@ -19,81 +19,110 @@
     {
       "capitulo": "Chapter 1 · The Pink Numbers",
       "text": "What if you could see who likes you?",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba",
-            "tamano": "gigante",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba",
+                "tamano": "gigante",
+                "anim": "flotar"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "You wake up, and a glowing pink number floats above every head. It counts the people secretly crushing on them.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "sorpresa",
-        "lugar": "dormitorio",
-        "hora": "dia"
+        "archivo": "largo-18-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "dormitorio",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Thin pink threads link every admirer to their crush. Only you can see them. Stay until the end, because there's a twist.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "pluma",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba_izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba_derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "pluma",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pan_right",
       "transition": "fade"
     },
     {
       "text": "You stumble to the bathroom mirror and look up. Your own reflection has no number. Remember that, because it comes back later.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "medio",
-        "mood": "worried",
-        "piezas": [
-          {
-            "pieza": "telefono_antiguo",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "largo-18-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "telefono_antiguo",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "label": "No number"
           }
-        ],
+        },
         "label": "No number"
       },
       "camera": "push_in",
@@ -101,12 +130,20 @@
     },
     {
       "text": "On the street, a jogger runs past with a pink two above her. Two strangers are quietly hoping she notices them.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "dia",
-        "plano": "entero",
-        "mood": "shocked",
+        "archivo": "largo-18-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "plano": "entero",
+            "mood": "shocked",
+            "label": "Her number: 2"
+          }
+        },
         "label": "Her number: 2"
       },
       "camera": "pan_left",
@@ -114,25 +151,33 @@
     },
     {
       "text": "A man in a suit has a seven. Seven people think about him constantly, and he's yelling at a parking meter.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "senal_trafico",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "temblar"
+        "archivo": "largo-18-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "senal_trafico",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "label": "7 admirers"
           }
-        ],
+        },
         "label": "7 admirers"
       },
       "camera": "push_in",
@@ -140,84 +185,112 @@
     },
     {
       "text": "An old lady feeding pigeons has a one. A thin thread drifts across the park to a man on a bench.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba_izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "pluma",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "atardecer",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "pluma",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pan_right",
       "transition": "fade"
     },
     {
       "text": "She doesn't know. He doesn't know. And you're the only person on Earth who knows, which feels like a heavy secret.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "dudar",
-        "lugar": "campo",
-        "hora": "atardecer"
+        "archivo": "largo-18-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "campo",
+            "hora": "atardecer"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "Your heart pounds. You can't stop staring. Hundreds of threads cross the city like pink spiderwebs, tying everyone together.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "pluma",
-            "pos": "izquierda",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "pluma",
-            "pos": "derecha",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "fondo",
-            "tamano": "grande",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "pluma",
+                "pos": "izquierda",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "pluma",
+                "pos": "derecha",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "edificio",
+                "pos": "fondo",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pull_out",
       "transition": "fade"
     },
     {
       "text": "So what happens when one ordinary person knows everyone's secret feelings? Let's follow it through school, work, friendship, and the whole world.",
-      "scene": "map_pin",
+      "scene": "medida",
       "params": {
-        "place": "The whole world",
-        "detail": "Everyone's secret feelings",
-        "style": "globo"
+        "archivo": "largo-18-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "The whole world",
+            "detail": "Everyone's secret feelings",
+            "style": "globo"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
@@ -225,88 +298,126 @@
     {
       "capitulo": "Chapter 2 · High School Secrets",
       "text": "Your high school hallway lights up like a pink fireworks show. Numbers everywhere, and threads crisscrossing the lockers.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba_izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "pluma",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-18-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "aula",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "pluma",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pan_left",
       "transition": "whip"
     },
     {
       "text": "The most popular guy in your class, the quarterback everybody worships, has a big fat zero. Nobody likes him that way.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "0",
-        "color": "#ff4d8d",
-        "label": "The popular guy",
-        "lugar": "aula"
+        "archivo": "largo-18-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "0",
+            "color": "#ff4d8d",
+            "label": "The popular guy",
+            "lugar": "aula"
+          }
+        },
+        "label": "The popular guy"
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "His smile looks confident, but you realize something sad. Being popular and being liked are two completely different things.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "dia",
-        "plano": "medio",
-        "mood": "worried",
-        "objeto": "none"
+        "archivo": "largo-18-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "aula",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "worried",
+            "objeto": "none"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "Then you spot the quiet kid who eats lunch alone every day. Above his head glows a seven.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "7",
-        "color": "#ff4d8d",
-        "label": "The quiet kid",
-        "lugar": "aula"
+        "archivo": "largo-18-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "7",
+            "color": "#ff4d8d",
+            "label": "The quiet kid",
+            "lugar": "aula"
+          }
+        },
+        "label": "The quiet kid"
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "Seven people secretly adore him. He has no idea, and he thinks nobody would ever notice him.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "latir"
-          },
-          {
-            "pieza": "corazon",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "latir"
+        "archivo": "largo-18-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "aula",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "latir"
+              },
+              {
+                "pieza": "corazon",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "latir"
+              }
+            ],
+            "label": "He has no idea"
           }
-        ],
+        },
         "label": "He has no idea"
       },
       "camera": "tilt_down",
@@ -314,31 +425,39 @@
     },
     {
       "text": "A thread from a cheerleader, one from a band girl, and one from the guy who runs the school paper.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "pluma",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "pluma",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "entrar_der"
-          },
-          {
-            "pieza": "pluma",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-18-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "aula",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "pluma",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "pluma",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "entrar_der"
+              },
+              {
+                "pieza": "pluma",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ],
+            "label": "3 of 7 threads"
           }
-        ],
+        },
         "label": "3 of 7 threads"
       },
       "camera": "static",
@@ -346,55 +465,84 @@
     },
     {
       "text": "You almost walk over and tell him. But you freeze. How do you explain something this impossible to a stranger?",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "dudar",
-        "lugar": "aula",
-        "hora": "dia"
+        "archivo": "largo-18-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "aula",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "Then you see your crush walking toward class. Your heart starts racing as you search for the thread leading to you.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "latido",
-        "lugar": "aula",
-        "hora": "dia"
+        "archivo": "largo-18-01",
+        "plano": 17,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "latido",
+            "lugar": "aula",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "shake",
       "transition": "whip"
     },
     {
       "text": "You follow the pink line from your crush's head. It stretches across the room, over desks, past the windows.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "worried",
-        "piezas": [
-          {
-            "pieza": "pluma",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "entrar_izq"
+        "archivo": "largo-18-01",
+        "plano": 18,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "aula",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "pluma",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "entrar_izq"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pan_right",
       "transition": "fade"
     },
     {
       "text": "It doesn't point at you. It points straight to your lab partner, the one who borrowed your pencil yesterday.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "dia",
-        "plano": "medio",
-        "mood": "shocked",
-        "objeto": "papel",
+        "archivo": "largo-18-01",
+        "plano": 19,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "aula",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "shocked",
+            "objeto": "papel",
+            "label": "Your lab partner"
+          }
+        },
         "label": "Your lab partner"
       },
       "camera": "slam",
@@ -402,72 +550,101 @@
     },
     {
       "text": "Your stomach drops. Your crush likes your lab partner, and you're the only person in the room who knows.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "sorpresa",
-        "lugar": "aula",
-        "hora": "dia"
+        "archivo": "largo-18-01",
+        "plano": 20,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "aula",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "shake",
       "transition": "flash"
     },
     {
       "text": "Do you tell them? Do you sabotage it? Or do you just sit there, holding the biggest secret in school?",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "atardecer",
-        "plano": "entero",
-        "mood": "worried",
-        "highlight": "heart",
-        "arms": "cross"
+        "archivo": "largo-18-01",
+        "plano": 21,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "aula",
+            "hora": "atardecer",
+            "plano": "entero",
+            "mood": "worried",
+            "highlight": "heart",
+            "arms": "cross"
+          }
+        }
       },
       "camera": "tilt_up",
       "transition": "fade"
     },
     {
       "text": "You decide to stay quiet. But all day, the threads keep tugging at you, and every glance feels like a tiny movie.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "atardecer",
-        "persona": "entero",
-        "mood": "neutral",
-        "piezas": [
-          {
-            "pieza": "pluma",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba_derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 22,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "aula",
+            "hora": "atardecer",
+            "persona": "entero",
+            "mood": "neutral",
+            "piezas": [
+              {
+                "pieza": "pluma",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pan_left",
       "transition": "fade"
     },
     {
       "text": "By lunch, you've learned more about your classmates than a hundred diaries could ever tell you.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "happy",
-        "objeto": "libro",
-        "piezas": [
-          {
-            "pieza": "lupa",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "acercarse"
+        "archivo": "largo-18-01",
+        "plano": 23,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "aula",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "happy",
+            "objeto": "libro",
+            "piezas": [
+              {
+                "pieza": "lupa",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "acercarse"
+              }
+            ],
+            "label": "Everyone's secrets"
           }
-        ],
+        },
         "label": "Everyone's secrets"
       },
       "camera": "push_in",
@@ -475,11 +652,19 @@
     },
     {
       "text": "And you start noticing the quiet kid. Seven threads. Every one of them stuck in silence, waiting for someone to be brave.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "aula",
-        "hora": "dia",
-        "plano": "sin_persona",
+        "archivo": "largo-18-01",
+        "plano": 24,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "aula",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "Seven threads, zero words"
+          }
+        },
         "label": "Seven threads, zero words"
       },
       "camera": "static",
@@ -487,23 +672,30 @@
     },
     {
       "text": "So you do something small. You tell the band girl, \"Hey, he likes music too.\" Just a nudge. That's all.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "chat",
-        "chat": {
-          "contact": "Band girl",
-          "status": "online",
-          "typing": false,
-          "messages": [
-            {
-              "from": "me",
-              "text": "Hey, he likes music too."
-            },
-            {
-              "from": "them",
-              "text": "Wait, really?!"
+        "archivo": "largo-18-01",
+        "plano": 25,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "chat",
+            "chat": {
+              "contact": "Band girl",
+              "status": "online",
+              "typing": false,
+              "messages": [
+                {
+                  "from": "me",
+                  "text": "Hey, he likes music too."
+                },
+                {
+                  "from": "them",
+                  "text": "Wait, really?!"
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "camera": "push_in",
@@ -511,12 +703,20 @@
     },
     {
       "text": "By Friday, they're sitting together. Out of nowhere, your little nudge sparked something. That felt amazing. But it was only the beginning.",
-      "scene": "group",
+      "scene": "medida",
       "params": {
-        "count": 3,
-        "hora": "dia",
-        "lugar": "aula",
-        "mood": "happy",
+        "archivo": "largo-18-01",
+        "plano": 26,
+        "respaldo": {
+          "scene": "group",
+          "params": {
+            "count": 3,
+            "hora": "dia",
+            "lugar": "aula",
+            "mood": "happy",
+            "label": "Friday lunch"
+          }
+        },
         "label": "Friday lunch"
       },
       "camera": "pull_out",
@@ -525,32 +725,47 @@
     {
       "capitulo": "Chapter 3 · The Boss and the Intern",
       "text": "Monday morning, you walk into the office, and suddenly the coffee machine feels like the least interesting thing there.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "dia",
-        "plano": "medio",
-        "mood": "happy",
-        "objeto": "taza"
+        "archivo": "largo-18-01",
+        "plano": 27,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "oficina",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "happy",
+            "objeto": "taza"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "whip"
     },
     {
       "text": "Your boss, a stern manager who never smiles, has a three above her head. Three quiet admirers, and she has no clue.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 28,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "oficina",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "label": "The boss: 3"
           }
-        ],
+        },
         "label": "The boss: 3"
       },
       "camera": "tilt_down",
@@ -558,26 +773,34 @@
     },
     {
       "text": "Then you notice her own thread, going out. It stretches across the office and lands on the new intern, twenty-two years old.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "pluma",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "ordenador",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 29,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "oficina",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "pluma",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "ordenador",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "label": "The new intern"
           }
-        ],
+        },
         "label": "The new intern"
       },
       "camera": "pan_right",
@@ -585,31 +808,46 @@
     },
     {
       "text": "Your boss is crushing on a twenty-two-year-old who reports to her. That's a lawsuit waiting to happen.",
-      "scene": "document",
+      "scene": "medida",
       "params": {
-        "title": "Workplace Policy",
-        "lines": [
-          "No relationships with",
-          "direct reports",
-          "Boss: Intern",
-          "Conflict of interest"
-        ],
-        "highlight": 2,
-        "stamp": "RISK"
+        "archivo": "largo-18-01",
+        "plano": 30,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "Workplace Policy",
+            "lines": [
+              "No relationships with",
+              "direct reports",
+              "Boss: Intern",
+              "Conflict of interest"
+            ],
+            "highlight": 2,
+            "stamp": "RISK"
+          }
+        }
       },
       "camera": "static",
       "transition": "flash"
     },
     {
       "text": "Over the next week you watch her hover near his desk. She's giving him the best projects, and the whole team notices.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "dia",
-        "plano": "medio",
-        "mood": "happy",
-        "objeto": "papel",
-        "who": "jefa",
+        "archivo": "largo-18-01",
+        "plano": 31,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "oficina",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "happy",
+            "objeto": "papel",
+            "who": "jefa",
+            "label": "Best projects"
+          }
+        },
         "label": "Best projects"
       },
       "camera": "push_in",
@@ -617,11 +855,19 @@
     },
     {
       "text": "You can't ignore it any longer. You walk into the HR office, close the door, and say, \"We need to talk.\"",
-      "scene": "person",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "dia",
-        "mood": "worried",
+        "archivo": "largo-18-01",
+        "plano": 32,
+        "respaldo": {
+          "scene": "person",
+          "params": {
+            "lugar": "oficina",
+            "hora": "dia",
+            "mood": "worried",
+            "label": "HR office"
+          }
+        },
         "label": "HR office"
       },
       "camera": "slam",
@@ -629,53 +875,83 @@
     },
     {
       "text": "HR investigates quietly. Within a month, your boss is moved to another department, and the intern is safe.",
-      "scene": "document",
+      "scene": "medida",
       "params": {
-        "title": "HR Report",
-        "lines": [
-          "Case opened",
-          "Interviews done",
-          "Boss transferred",
-          "Intern protected"
-        ],
-        "highlight": 2,
-        "stamp": "RESOLVED"
+        "archivo": "largo-18-01",
+        "plano": 33,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "HR Report",
+            "lines": [
+              "Case opened",
+              "Interviews done",
+              "Boss transferred",
+              "Intern protected"
+            ],
+            "highlight": 2,
+            "stamp": "RESOLVED"
+          }
+        }
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "Your company is stunned, because you stopped a problem before anyone filed a complaint. Nobody even knew there was one.",
-      "scene": "newspaper",
+      "scene": "medida",
       "params": {
-        "style": "web",
-        "headline": "Quiet Fix Saves Company",
-        "kicker": "Office Daily",
-        "date": "Last Friday"
+        "archivo": "largo-18-01",
+        "plano": 34,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "style": "web",
+            "headline": "Quiet Fix Saves Company",
+            "kicker": "Office Daily",
+            "date": "Last Friday"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Next thing you know, you're called into the director's office. A shiny new title, a raise, and a corner desk.",
-      "scene": "money",
+      "scene": "medida",
       "params": {
-        "amount": "$15,000 raise",
-        "label": "Your promotion",
-        "rain": true,
-        "stack": true
+        "archivo": "largo-18-01",
+        "plano": 35,
+        "respaldo": {
+          "scene": "money",
+          "params": {
+            "amount": "$15,000 raise",
+            "label": "Your promotion",
+            "rain": true,
+            "stack": true
+          }
+        },
+        "label": "Your promotion"
       },
       "camera": "pull_out",
       "transition": "flash"
     },
     {
       "text": "You're promoted. Confetti, cupcakes, and a standing ovation in the break room. But then someone whispers, \"How did you always know?\"",
-      "scene": "group",
+      "scene": "medida",
       "params": {
-        "count": 4,
-        "hora": "dia",
-        "lugar": "oficina",
-        "mood": "happy",
+        "archivo": "largo-18-01",
+        "plano": 36,
+        "respaldo": {
+          "scene": "group",
+          "params": {
+            "count": 4,
+            "hora": "dia",
+            "lugar": "oficina",
+            "mood": "happy",
+            "label": "Promotion party"
+          }
+        },
         "label": "Promotion party"
       },
       "camera": "pan_left",
@@ -683,26 +959,34 @@
     },
     {
       "text": "Suddenly every coworker looks at you differently. Some admire you. Some are scared. And a few are asking too many questions.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "worried",
-        "piezas": [
-          {
-            "pieza": "ojo",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "acercarse"
-          },
-          {
-            "pieza": "ojo",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "acercarse"
+        "archivo": "largo-18-01",
+        "plano": 37,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "oficina",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "ojo",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "acercarse"
+              },
+              {
+                "pieza": "ojo",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "acercarse"
+              }
+            ],
+            "label": "Everyone's watching"
           }
-        ],
+        },
         "label": "Everyone's watching"
       },
       "camera": "push_in",
@@ -710,24 +994,38 @@
     },
     {
       "text": "Someone in the cafeteria asks, \"Okay, seriously, do you read minds?\" You laugh, but your hands sweat under the table.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "reir",
-        "lugar": "oficina",
-        "hora": "dia"
+        "archivo": "largo-18-01",
+        "plano": 38,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "reir",
+            "lugar": "oficina",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "shake",
       "transition": "fade"
     },
     {
       "text": "And you realize something unsettling. A power that helps people can also make them afraid of you.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "atardecer",
-        "plano": "medio",
-        "mood": "sad",
-        "objeto": "none"
+        "archivo": "largo-18-01",
+        "plano": 39,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "oficina",
+            "hora": "atardecer",
+            "plano": "medio",
+            "mood": "sad",
+            "objeto": "none"
+          }
+        }
       },
       "camera": "static",
       "transition": "black"
@@ -735,32 +1033,47 @@
     {
       "capitulo": "Chapter 4 · The Engagement",
       "text": "Your best friend since third grade calls, screaming with joy. Her boyfriend is about to propose, and she wants you at dinner.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "gritar",
-        "lugar": "salon",
-        "hora": "atardecer",
-        "who": "protagonista"
+        "archivo": "largo-18-01",
+        "plano": 40,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "gritar",
+            "lugar": "salon",
+            "hora": "atardecer",
+            "who": "protagonista"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "You hug her in the living room, and she's glowing. Above her head is a four, and she's never looked happier.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "atardecer",
-        "persona": "medio",
-        "mood": "happy",
-        "piezas": [
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba_derecha",
-            "tamano": "grande",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 41,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "salon",
+            "hora": "atardecer",
+            "persona": "medio",
+            "mood": "happy",
+            "piezas": [
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba_derecha",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Her number: 4"
           }
-        ],
+        },
         "label": "Her number: 4"
       },
       "camera": "pan_right",
@@ -768,78 +1081,107 @@
     },
     {
       "text": "Then her boyfriend walks in with flowers. His number is a two. But the thread he sends out doesn't point at her.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "noche",
-        "persona": "medio",
-        "mood": "worried",
-        "piezas": [
-          {
-            "pieza": "regalo",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "pluma",
-            "pos": "derecha",
-            "tamano": "gigante",
-            "anim": "entrar_der"
-          },
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 42,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "salon",
+            "hora": "noche",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "regalo",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "pluma",
+                "pos": "derecha",
+                "tamano": "gigante",
+                "anim": "entrar_der"
+              },
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "It stretches out the window, down the street, and loops all the way to a coworker named Jessica.",
-      "scene": "map_pin",
+      "scene": "medida",
       "params": {
-        "place": "Jessica's office",
-        "detail": "The thread ends here",
-        "style": "calles"
+        "archivo": "largo-18-01",
+        "plano": 43,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Jessica's office",
+            "detail": "The thread ends here",
+            "style": "calles"
+          }
+        }
       },
       "camera": "pan_left",
       "transition": "whip"
     },
     {
       "text": "Your stomach twists. He's about to promise forever to your best friend while his heart is pointing somewhere else.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "marearse",
-        "lugar": "salon",
-        "hora": "noche"
+        "archivo": "largo-18-01",
+        "plano": 44,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "marearse",
+            "lugar": "salon",
+            "hora": "noche"
+          }
+        }
       },
       "camera": "shake",
       "transition": "fade"
     },
     {
       "text": "You could stay silent and let the wedding happen. Or you could break the happiest moment of her life.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "reloj_arena",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "girar"
-          },
-          {
-            "pieza": "corazon",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "latir"
+        "archivo": "largo-18-01",
+        "plano": 45,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "reloj_arena",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "corazon",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "latir"
+              }
+            ],
+            "label": "Tell her?"
           }
-        ],
+        },
         "label": "Tell her?"
       },
       "camera": "push_in",
@@ -847,90 +1189,125 @@
     },
     {
       "text": "That night, you can't sleep. You stare at the ceiling, counting every memory you've shared with her.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "dormitorio",
-        "hora": "noche",
-        "plano": "medio",
-        "mood": "worried",
-        "objeto": "movil"
+        "archivo": "largo-18-01",
+        "plano": 46,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "dormitorio",
+            "hora": "noche",
+            "plano": "medio",
+            "mood": "worried",
+            "objeto": "movil"
+          }
+        }
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "The next day, you ask her to meet at the park. Your voice shakes. \"I have to tell you something awful.\"",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "plano": "medio",
-        "mood": "worried",
-        "objeto": "none"
+        "archivo": "largo-18-01",
+        "plano": 47,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "plano": "medio",
+            "mood": "worried",
+            "objeto": "none"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "You explain everything: the threads, the numbers, and the one that leads to Jessica. She just stares at you.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "entero",
-        "mood": "shocked",
-        "who": "amiga",
-        "piezas": [
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba_izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "pluma",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-18-01",
+        "plano": 48,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "entero",
+            "mood": "shocked",
+            "who": "amiga",
+            "piezas": [
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "pluma",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pan_right",
       "transition": "fade"
     },
     {
       "text": "\"That's insane,\" she whispers. \"You expect me to believe this?\" Her eyes fill with tears, and she steps away.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "llorar",
-        "lugar": "campo",
-        "hora": "dia",
-        "who": "amiga"
+        "archivo": "largo-18-01",
+        "plano": 49,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "llorar",
+            "lugar": "campo",
+            "hora": "dia",
+            "who": "amiga"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "She confronts her boyfriend that same night. He denies it, then goes quiet, and finally admits he's been texting Jessica.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "chat",
-        "chat": {
-          "contact": "Jessica",
-          "status": "online",
-          "typing": true,
-          "messages": [
-            {
-              "from": "them",
-              "text": "Can't wait to see you tomorrow",
-              "alert": true
-            },
-            {
-              "from": "them",
-              "text": "Don't tell anyone",
-              "alert": true
+        "archivo": "largo-18-01",
+        "plano": 50,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "chat",
+            "chat": {
+              "contact": "Jessica",
+              "status": "online",
+              "typing": true,
+              "messages": [
+                {
+                  "from": "them",
+                  "text": "Can't wait to see you tomorrow",
+                  "alert": true
+                },
+                {
+                  "from": "them",
+                  "text": "Don't tell anyone",
+                  "alert": true
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "camera": "slam",
@@ -938,24 +1315,31 @@
     },
     {
       "text": "The engagement is canceled. But instead of thanking you, your best friend blocks your number.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "chat",
-        "chat": {
-          "contact": "Mia",
-          "status": "Blocked",
-          "typing": false,
-          "messages": [
-            {
-              "from": "me",
-              "text": "Please talk to me."
-            },
-            {
-              "from": "them",
-              "text": "Message not delivered",
-              "alert": true
+        "archivo": "largo-18-01",
+        "plano": 51,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "chat",
+            "chat": {
+              "contact": "Mia",
+              "status": "Blocked",
+              "typing": false,
+              "messages": [
+                {
+                  "from": "me",
+                  "text": "Please talk to me."
+                },
+                {
+                  "from": "them",
+                  "text": "Message not delivered",
+                  "alert": true
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "camera": "push_in",
@@ -963,49 +1347,71 @@
     },
     {
       "text": "Mia says you ruined her life. She says she'd rather have been happy and wrong than hurt and right.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "noche",
-        "plano": "medio",
-        "mood": "angry",
-        "who": "amiga",
-        "objeto": "none"
+        "archivo": "largo-18-01",
+        "plano": 52,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "salon",
+            "hora": "noche",
+            "plano": "medio",
+            "mood": "angry",
+            "who": "amiga",
+            "objeto": "none"
+          }
+        }
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "You sit alone on the couch, tears running down your face. You told the truth, and it cost you your best friend.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "llorar",
-        "lugar": "salon",
-        "hora": "noche"
+        "archivo": "largo-18-01",
+        "plano": 53,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "llorar",
+            "lugar": "salon",
+            "hora": "noche"
+          }
+        }
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "That's the cruel part of this power. Truth doesn't always feel like a gift. Sometimes it feels like a weapon.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "espada",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "girar"
-          },
-          {
-            "pieza": "corazon",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "largo-18-01",
+        "plano": 54,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "espada",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "corazon",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "label": "The truth hurts"
           }
-        ],
+        },
         "label": "The truth hurts"
       },
       "camera": "push_in",
@@ -1013,11 +1419,19 @@
     },
     {
       "text": "So you stop warning people and watch in silence. But the power is too tempting, and you start thinking bigger.",
-      "scene": "calendar",
+      "scene": "medida",
       "params": {
-        "style": "pared",
-        "month": "Weeks",
-        "day": "21",
+        "archivo": "largo-18-01",
+        "plano": 55,
+        "respaldo": {
+          "scene": "calendar",
+          "params": {
+            "style": "pared",
+            "month": "Weeks",
+            "day": "21",
+            "label": "Weeks of silence"
+          }
+        },
         "label": "Weeks of silence"
       },
       "camera": "static",
@@ -1026,27 +1440,41 @@
     {
       "capitulo": "Chapter 5 · The Love Oracle",
       "text": "One night you have an idea. If you can't say it out loud, maybe you can build something that does.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "idea",
-        "lugar": "dormitorio",
-        "hora": "noche"
+        "archivo": "largo-18-01",
+        "plano": 56,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "idea",
+            "lugar": "dormitorio",
+            "hora": "noche"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "flash"
     },
     {
       "text": "You build a matchmaking app. You call it Pink, and the home screen asks, \"Who likes you? One hundred percent accurate.\"",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "search",
-        "search": {
-          "query": "Who likes you?",
-          "results": [
-            "Pink: 100% accurate",
-            "Find your secret admirers",
-            "Download free"
-          ]
+        "archivo": "largo-18-01",
+        "plano": 57,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "search",
+            "search": {
+              "query": "Who likes you?",
+              "results": [
+                "Pink: 100% accurate",
+                "Find your secret admirers",
+                "Download free"
+              ]
+            }
+          }
         }
       },
       "camera": "push_in",
@@ -1054,26 +1482,34 @@
     },
     {
       "text": "The app guesses who likes you, and it's never wrong, because you secretly feed it everything you see.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "noche",
-        "persona": "medio",
-        "mood": "happy",
-        "piezas": [
-          {
-            "pieza": "ordenador",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba_izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 58,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "oficina",
+            "hora": "noche",
+            "persona": "medio",
+            "mood": "happy",
+            "piezas": [
+              {
+                "pieza": "ordenador",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Always right"
           }
-        ],
+        },
         "label": "Always right"
       },
       "camera": "pan_right",
@@ -1081,24 +1517,31 @@
     },
     {
       "text": "The first hundred users are the testers. They log in, see the names, and send shaky texts. Every single guess is right.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "notification",
-        "notification": {
-          "time": "09:41",
-          "date": "Launch day",
-          "notifications": [
-            {
-              "app": "Pink",
-              "title": "New match",
-              "text": "Someone likes you!"
-            },
-            {
-              "app": "Pink",
-              "title": "It's mutual",
-              "text": "Say hello"
+        "archivo": "largo-18-01",
+        "plano": 59,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "notification",
+            "notification": {
+              "time": "09:41",
+              "date": "Launch day",
+              "notifications": [
+                {
+                  "app": "Pink",
+                  "title": "New match",
+                  "text": "Someone likes you!"
+                },
+                {
+                  "app": "Pink",
+                  "title": "It's mutual",
+                  "text": "Say hello"
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "camera": "push_in",
@@ -1106,37 +1549,53 @@
     },
     {
       "text": "Within a week, ten thousand people. Within a month, ten million. Your phone buzzes nonstop with news alerts.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "10 million",
-        "color": "#ff4d8d",
-        "label": "Users in one month",
-        "lugar": "ciudad"
+        "archivo": "largo-18-01",
+        "plano": 60,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "10 million",
+            "color": "#ff4d8d",
+            "label": "Users in one month",
+            "lugar": "ciudad"
+          }
+        },
+        "label": "Users in one month"
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "Dating apps start to collapse. Swiping suddenly feels pointless when a machine tells you exactly who's secretly into you.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "edificio",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "escombros",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "caer"
+        "archivo": "largo-18-01",
+        "plano": 61,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "edificio",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "escombros",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "caer"
+              }
+            ],
+            "label": "Dating apps crash"
           }
-        ],
+        },
         "label": "Dating apps crash"
       },
       "camera": "shake",
@@ -1144,36 +1603,59 @@
     },
     {
       "text": "Investors line up outside your door. Your company's worth over a billion dollars, and you're not even thirty yet.",
-      "scene": "money",
+      "scene": "medida",
       "params": {
-        "amount": "$1,000,000,000",
-        "label": "Company value",
-        "rain": true,
-        "stack": true
+        "archivo": "largo-18-01",
+        "plano": 62,
+        "respaldo": {
+          "scene": "money",
+          "params": {
+            "amount": "$1,000,000,000",
+            "label": "Company value",
+            "rain": true,
+            "stack": true
+          }
+        },
+        "label": "Company value"
       },
       "camera": "pull_out",
       "transition": "fade"
     },
     {
       "text": "One headline reads, \"Dating Apps Collapse: Meet the Love Oracle.\" Suddenly, your face is on every screen in America.",
-      "scene": "newspaper",
+      "scene": "medida",
       "params": {
-        "style": "web",
-        "headline": "Dating Apps Collapse: Meet the Love Oracle",
-        "kicker": "Daily Tech News",
-        "date": "Breaking"
+        "archivo": "largo-18-01",
+        "plano": 63,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "style": "web",
+            "headline": "Dating Apps Collapse: Meet the Love Oracle",
+            "kicker": "Daily Tech News",
+            "date": "Breaking"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Strangers thank you in coffee shops. Couples credit you at their weddings. Someone even names a puppy after you.",
-      "scene": "group",
+      "scene": "medida",
       "params": {
-        "count": 3,
-        "hora": "dia",
-        "lugar": "calle",
-        "mood": "happy",
+        "archivo": "largo-18-01",
+        "plano": 64,
+        "respaldo": {
+          "scene": "group",
+          "params": {
+            "count": 3,
+            "hora": "dia",
+            "lugar": "calle",
+            "mood": "happy",
+            "label": "Thank you!"
+          }
+        },
         "label": "Thank you!"
       },
       "camera": "pan_left",
@@ -1181,12 +1663,20 @@
     },
     {
       "text": "Plenty of people hate you too. They say you killed romance, that love should be a mystery, not a spreadsheet.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "atardecer",
-        "plano": "entero",
-        "mood": "sad",
+        "archivo": "largo-18-01",
+        "plano": 65,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "calle",
+            "hora": "atardecer",
+            "plano": "entero",
+            "mood": "sad",
+            "label": "You killed romance"
+          }
+        },
         "label": "You killed romance"
       },
       "camera": "push_in",
@@ -1194,20 +1684,28 @@
     },
     {
       "text": "But at night, alone in your penthouse, one detail keeps bugging you. You look in the mirror, and above your head: nothing.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "noche",
-        "persona": "entero",
-        "mood": "worried",
-        "piezas": [
-          {
-            "pieza": "telefono_antiguo",
-            "pos": "derecha",
-            "tamano": "gigante",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 66,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "salon",
+            "hora": "noche",
+            "persona": "entero",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "telefono_antiguo",
+                "pos": "derecha",
+                "tamano": "gigante",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Nothing above you"
           }
-        ],
+        },
         "label": "Nothing above you"
       },
       "camera": "tilt_up",
@@ -1215,37 +1713,52 @@
     },
     {
       "text": "You've told millions of people who loves them. You've never once found out who loves you.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "noche",
-        "plano": "medio",
-        "mood": "sad",
-        "objeto": "movil"
+        "archivo": "largo-18-01",
+        "plano": 67,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "salon",
+            "hora": "noche",
+            "plano": "medio",
+            "mood": "sad",
+            "objeto": "movil"
+          }
+        }
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "You search the empty air above your reflection. Maybe zero? Maybe a hundred? There's no way to know.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "telefono_antiguo",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "flotar"
+        "archivo": "largo-18-01",
+        "plano": 68,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "telefono_antiguo",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "label": "?"
           }
-        ],
+        },
         "label": "?"
       },
       "camera": "push_in",
@@ -1253,13 +1766,20 @@
     },
     {
       "text": "And the more famous you get, the more you wonder if anyone is crushing on you for the real you.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "noche",
-        "plano": "entero",
-        "mood": "sad",
-        "highlight": "heart"
+        "archivo": "largo-18-01",
+        "plano": 69,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "oficina",
+            "hora": "noche",
+            "plano": "entero",
+            "mood": "sad",
+            "highlight": "heart"
+          }
+        }
       },
       "camera": "tilt_down",
       "transition": "black"
@@ -1267,122 +1787,186 @@
     {
       "capitulo": "Chapter 6 · The Last Train",
       "text": "It's past midnight. You leave a gala downtown, skip the limo, and walk toward the subway alone.",
-      "scene": "city_street",
+      "scene": "medida",
       "params": {
-        "fog": true,
-        "figure": false,
-        "rain": false
+        "archivo": "largo-18-01",
+        "plano": 70,
+        "respaldo": {
+          "scene": "city_street",
+          "params": {
+            "fog": true,
+            "figure": false,
+            "rain": false
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "The street is empty. Your footsteps echo. Somewhere behind you, another set of footsteps matches your rhythm.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "correr",
-        "lugar": "calle",
-        "hora": "noche"
+        "archivo": "largo-18-01",
+        "plano": 71,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "correr",
+            "lugar": "calle",
+            "hora": "noche"
+          }
+        }
       },
       "camera": "shake",
       "transition": "cut"
     },
     {
       "text": "You push through the turnstile and step into an almost empty subway car, flickering with tired yellow light.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "hora": "noche",
-        "persona": "medio",
-        "mood": "worried",
-        "piezas": [
-          {
-            "pieza": "tren",
-            "pos": "fondo",
-            "tamano": "gigante",
-            "anim": "temblar"
+        "archivo": "largo-18-01",
+        "plano": 72,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "noche",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "tren",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "temblar"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pan_right",
       "transition": "fade"
     },
     {
       "text": "At the far end, a man sits in a hood, eyes locked on you. He isn't looking at your face.",
-      "scene": "silhouette",
+      "scene": "medida",
       "params": {
-        "color": "#ff4d8d",
-        "eyes": true,
-        "hood": true
+        "archivo": "largo-18-01",
+        "plano": 73,
+        "respaldo": {
+          "scene": "silhouette",
+          "params": {
+            "color": "#ff4d8d",
+            "eyes": true,
+            "hood": true
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "He's staring at the empty space above your head. Slowly he stands up, and the train screeches around a curve.",
-      "scene": "rearview_eyes",
+      "scene": "medida",
       "params": {
-        "mood": "suspicious",
-        "glance": true,
-        "glow": false
+        "archivo": "largo-18-01",
+        "plano": 74,
+        "respaldo": {
+          "scene": "rearview_eyes",
+          "params": {
+            "mood": "suspicious",
+            "glance": true,
+            "glow": false
+          }
+        }
       },
       "camera": "shake",
       "transition": "cut"
     },
     {
       "text": "He sits across from you and whispers, \"You see them too, don't you?\" Your blood goes cold.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "congelarse",
-        "lugar": "fondo",
-        "hora": "noche"
+        "archivo": "largo-18-01",
+        "plano": 75,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "congelarse",
+            "lugar": "fondo",
+            "hora": "noche"
+          }
+        }
       },
       "camera": "slam",
       "transition": "red"
     },
     {
       "text": "You can't answer. For the first time, you realize you aren't the only one with this power.",
-      "scene": "character",
+      "scene": "medida",
       "params": {
-        "bg": "cold",
-        "mood": "shocked",
-        "prop": "none"
+        "archivo": "largo-18-01",
+        "plano": 76,
+        "respaldo": {
+          "scene": "character",
+          "params": {
+            "bg": "cold",
+            "mood": "shocked",
+            "prop": "none"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "He smiles gently. \"I've watched you for months. I saw every interview. Every launch. I knew you'd figure it out.\"",
-      "scene": "silhouette",
+      "scene": "medida",
       "params": {
-        "color": "#8844ff",
-        "eyes": false,
-        "hood": true
+        "archivo": "largo-18-01",
+        "plano": 77,
+        "respaldo": {
+          "scene": "silhouette",
+          "params": {
+            "color": "#8844ff",
+            "eyes": false,
+            "hood": true
+          }
+        }
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "\"Your number is something you can never see,\" he says. \"But I can. And it isn't zero.\"",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "hora": "noche",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "telefono_antiguo",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba",
-            "tamano": "mediano",
-            "anim": "acercarse"
+        "archivo": "largo-18-01",
+        "plano": 78,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "noche",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "telefono_antiguo",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "acercarse"
+              }
+            ],
+            "label": "Invisible to you"
           }
-        ],
+        },
         "label": "Invisible to you"
       },
       "camera": "push_in",
@@ -1390,63 +1974,86 @@
     },
     {
       "text": "He leans closer. \"Yours says one. And the thread goes to me.\"",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "1",
-        "color": "#ff4d8d",
-        "label": "Your number",
-        "lugar": "fondo"
+        "archivo": "largo-18-01",
+        "plano": 79,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "1",
+            "color": "#ff4d8d",
+            "label": "Your number",
+            "lugar": "fondo"
+          }
+        },
+        "label": "Your number"
       },
       "camera": "slam",
       "transition": "red"
     },
     {
       "text": "The lights flicker. A thin pink line glows in the air, running from his chest straight to you.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "hora": "noche",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "tren",
-            "pos": "fondo",
-            "tamano": "gigante",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "pluma",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "entrar_izq"
+        "archivo": "largo-18-01",
+        "plano": 80,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "noche",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "tren",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "pluma",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "entrar_izq"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pull_out",
       "transition": "flash"
     },
     {
       "text": "Now you know two things: who likes everyone, and that someone's been watching who likes you.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "entero",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "pluma",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "tarta_cumpleanos",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "latir"
+        "archivo": "largo-18-01",
+        "plano": 81,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "entero",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "pluma",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "tarta_cumpleanos",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "latir"
+              }
+            ],
+            "label": "Someone's watching"
           }
-        ],
+        },
         "label": "Someone's watching"
       },
       "camera": "slam",
@@ -1454,11 +2061,19 @@
     },
     {
       "text": "Would you want to see your own number? Tell me in the comments, and watch our next What If video.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "noche",
-        "plano": "sin_persona",
+        "archivo": "largo-18-01",
+        "plano": 82,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "noche",
+            "plano": "sin_persona",
+            "label": "Would you look?"
+          }
+        },
         "label": "Would you look?"
       },
       "camera": "pull_out",
@@ -1566,6 +2181,6 @@
       "motivo": "Contradiction that hints at consequences, but it is less visual."
     }
   ],
-  "medida_estado": "esperando",
+  "medida_estado": "lista",
   "tanda": "largo-18"
 }
