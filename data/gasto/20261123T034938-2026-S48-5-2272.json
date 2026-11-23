@@ -1,0 +1,16 @@
+{
+ "fecha": "2026-11-23T03:52:21.881570+00:00",
+ "tanda": "2026-S48-5",
+ "total_usd": {
+  "anthropic": 0.217186,
+  "openai": 0
+ },
+ "llamadas": [
+  {
+   "servicio": "anthropic",
+   "modelo": "claude-opus-5-5",
+   "usd": 0.217186,
+   "que": "lote"
+  }
+ ]
+}
