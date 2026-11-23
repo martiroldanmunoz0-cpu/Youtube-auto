@@ -94,6 +94,7 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "shorts-bot@users.noreply.github.com"
+          git config merge.cola.driver "python3 pipeline/fusionar_cola.py %O %A %B"
           git add data/gasto 2>/dev/null || exit 0
           git commit -m "Gasto de API: $RUN_ID" || exit 0
           for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
@@ -105,6 +106,7 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "shorts-bot@users.noreply.github.com"
+          git config merge.cola.driver "python3 pipeline/fusionar_cola.py %O %A %B"
           python pipeline/medida.py guardar
           git add data/guiones
           git commit -m "Guiones a la espera de escenas a medida: $RUN_ID" || echo "sin cambios"
@@ -115,6 +117,7 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "shorts-bot@users.noreply.github.com"
+          git config merge.cola.driver "python3 pipeline/fusionar_cola.py %O %A %B"
           git add data/planes data/gasto 2>/dev/null || git add data/planes
           git commit -m "Plan $RUN_ID: montando" || echo "sin cambios"
           for i in 1 2 3 4 5; do git pull --rebase && git push && break; sleep $((i * 7)); done
@@ -178,6 +181,7 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "shorts-bot@users.noreply.github.com"
+          git config merge.cola.driver "python3 pipeline/fusionar_cola.py %O %A %B"
           if [ "${{ inputs.prueba }}" = "true" ]; then python pipeline/build.py --parte ${{ matrix.parte }} --partes 1; else python pipeline/build.py --parte ${{ matrix.parte }} --partes 1 --revisar; fi
 
       - name: (Prueba) Dejar el vídeo para descargar

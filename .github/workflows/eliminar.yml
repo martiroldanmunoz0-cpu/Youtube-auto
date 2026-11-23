@@ -35,6 +35,7 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "shorts-bot@users.noreply.github.com"
+          git config merge.cola.driver "python3 pipeline/fusionar_cola.py %O %A %B"
           git add data/queue.json data/eliminados.json
           git commit -m "Vídeo eliminado: ${{ inputs.id }}" || echo "sin cambios"
           for i in 1 2 3 4 5; do git pull --rebase && git push && break; echo "reintento $i"; sleep $((i * 7)); done

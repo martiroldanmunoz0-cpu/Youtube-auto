@@ -103,7 +103,7 @@ def plan_slots(n: int, cfg: dict, queue: list[dict], largo: bool = False) -> lis
     shorts: dict[dt.date, int] = {}
     dias_largo: set[dt.date] = set()
     for q in queue:
-        if q.get("estado") in ("programado", "pendiente", "manual") and q.get("publish_at"):
+        if q.get("estado") in ("programado", "pendiente", "manual", "publicado") and q.get("publish_at"):
             d = _parse(q["publish_at"]).astimezone(tz)
             if d.date() >= first_day:
                 taken.setdefault(d.date(), set()).add((d.hour, d.minute))
