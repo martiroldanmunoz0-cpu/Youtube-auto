@@ -1,9 +1,9 @@
 """Música de fondo de los vídeos largos: pieza ORIGINAL de piano solo (sin viento ni efectos), compuesta aquí y tocada
 con muestras de un piano de cola real (Salamander Grand Piano V3, de Alexander Holm, CC-BY 3.0; empaquetado MIT por
-@audio-samples). Lenta (54 pulsaciones), en La menor, emotiva, de ~1 minuto y en bucle perfecto (el final enlaza con el
+@audio-samples). Lenta (54 pulsaciones), en La menor con color de Si bemol, notas separadas en arpegio, de ~1 minuto y en bucle perfecto (el final enlaza con el
 principio sin corte).
 
-Uso: python pipeline/musica_piano.py  ->  assets/music/piano_curio.ogg
+Uso: python pipeline/musica_piano.py  ->  assets/music/piano_fondo.ogg
 """
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
 SAMPLES = ROOT / "assets" / "music" / "piano_samples"
-OUT = ROOT / "assets" / "music" / "piano_curio.ogg"
+OUT = ROOT / "assets" / "music" / "piano_fondo.ogg"
 SR = 44100
 BPM = 54
 BEAT = 60 / BPM
@@ -56,24 +56,19 @@ def m(n: str) -> int:  # "A3" -> 57
     return NAMES.index(k) + (o + 1) * 12
 
 
-# Progresión (un acorde por compás de 4 tiempos): La m – Fa – Do – Sol ×2, La m – Fa – Re m – Mi (tensión que vuelve a La m)
-CHORDS = [("A2", ["A3", "C4", "E4"]), ("F2", ["F3", "A3", "C4"]), ("C3", ["G3", "C4", "E4"]), ("G2", ["G3", "B3", "D4"])] * 2 + \
-         [("A2", ["A3", "C4", "E4"]), ("F2", ["F3", "A3", "C4"]), ("D3", ["F3", "A3", "D4"]), ("E2", ["E3", "G#3", "B3"])]
-# Melodía (nota, tiempo de inicio dentro del compás, duración en tiempos) por compás
-MELODY = [
-    [("E5", 0, 1.5), ("D5", 1.5, 0.5), ("C5", 2, 2)],
-    [("C5", 0, 1), ("A4", 1, 1), ("C5", 2, 1), ("F5", 3, 1)],
-    [("E5", 0, 3), ("G5", 3, 1)],
-    [("D5", 0, 2), ("B4", 2, 2)],
-    [("A5", 0, 1.5), ("G5", 1.5, 0.5), ("E5", 2, 2)],
-    [("F5", 0, 1), ("E5", 1, 1), ("C5", 2, 2)],
-    [("G5", 0, 1), ("E5", 1, 1), ("C5", 2, 1), ("E5", 3, 1)],
-    [("D5", 0, 4)],
-    [("C5", 0, 1), ("E5", 1, 1), ("A5", 2, 2)],
-    [("A5", 0, 1), ("G5", 1, 1), ("F5", 2, 1), ("C5", 3, 1)],
-    [("D5", 0, 2), ("F5", 2, 1), ("E5", 3, 1)],
-    [("E5", 0, 2), ("G#4", 2, 1), ("B4", 3, 1)],
-]
+# Estilo pedido por el dueño: notas SEPARADAS y claras que fluyen en arpegio (semicorcheas), registro medio, La menor
+# con color de Si bemol. Progresión (un acorde por compás): Lam Fa Do Sol | Lam Fa Sib Sol | Rem Sib Fa Mi
+CHORDS = [("A2", "A"), ("F2", "F"), ("C3", "C"), ("G2", "G"),
+          ("A2", "A"), ("F2", "F"), ("A#2", "Bb"), ("G2", "G"),
+          ("D3", "Dm"), ("A#2", "Bb"), ("F2", "F"), ("E2", "E")]
+SHAPES = {"A": ["A3", "E4", "A4", "C5", "E5", "C5", "A4", "E4"], "F": ["F3", "C4", "F4", "A4", "C5", "A4", "F4", "C4"],
+          "C": ["C4", "G4", "C5", "E5", "G5", "E5", "C5", "G4"], "G": ["G3", "D4", "G4", "B4", "D5", "B4", "G4", "D4"],
+          "Bb": ["A#3", "F4", "A#4", "D5", "F5", "D5", "A#4", "F4"], "Dm": ["D4", "A4", "D5", "F5", "A5", "F5", "D5", "A4"],
+          "E": ["E3", "B3", "E4", "G#4", "B4", "G#4", "E4", "B3"]}
+# Melodía muy sencilla por encima (notas largas, solo en algunos compases): (nota, tiempo, duración)
+MELODY = [[("E5", 0, 2)], [], [("G5", 0, 2), ("E5", 2, 2)], [("D5", 0, 4)],
+          [("A5", 0, 2)], [("C6", 0, 1), ("A5", 1, 3)], [("A#5", 0, 2), ("F5", 2, 2)], [("D5", 0, 4)],
+          [("F5", 0, 2), ("A5", 2, 2)], [("A#5", 0, 4)], [("A5", 0, 2), ("C6", 2, 2)], [("B5", 0, 2), ("G#5", 2, 2)]]
 
 
 def render(cycles: int = 2) -> np.ndarray:
@@ -84,28 +79,28 @@ def render(cycles: int = 2) -> np.ndarray:
 
     def put(midi, t, dur, vel, gain):
         x = note(midi, vel)
-        L = min(len(x), int((dur + 1.2) * SR))  # pedal: suena un poco más de lo escrito y se apaga suave
-        x = x[:L].copy(); rel = min(L, int(0.9 * SR)); x[L - rel:] *= np.linspace(1, 0, rel) ** 2
+        L = min(len(x), int((dur + 0.45) * SR))  # poco pedal: cada nota se oye separada y se apaga suave
+        x = x[:L].copy(); rel = min(L, int(0.35 * SR)); x[L - rel:] *= np.linspace(1, 0, rel) ** 2
         i0 = int(t * SR)
         out[i0:i0 + L] += x[:max(0, min(L, n - i0))] * gain
 
     rng = np.random.default_rng(7)
     for c in range(cycles):
-        for b, ((bass, chord), mel) in enumerate(zip(CHORDS, MELODY)):
+        for b, ((bass, shape), mel) in enumerate(zip(CHORDS, MELODY)):
             t0 = c * loop + b * bar
-            put(m(bass), t0, 4 * BEAT, 8, 0.38)                       # bajo grave
-            put(m(bass) + 12, t0 + 2 * BEAT, 2 * BEAT, 4, 0.25)
-            arp = [chord[0], chord[1], chord[2], chord[1]] * 2           # arpegio suave en corcheas
+            put(m(bass), t0, 2 * BEAT, 4, 0.30)                          # bajo suave al empezar el compás
+            arp = SHAPES[shape] * 2                                      # 16 notas separadas (semicorcheas)
             for k, nn in enumerate(arp):
-                put(m(nn), t0 + k * BEAT / 2 + rng.uniform(0, 0.012), BEAT, 4, 0.22)
-            for nn, st, du in mel:                                       # melodía
-                put(m(nn), t0 + st * BEAT + rng.uniform(0, 0.01), du * BEAT, 8, 0.42)
+                acc = 0.30 if k % 4 == 0 else 0.22                        # leve acento en cada tiempo
+                put(m(nn), t0 + k * BEAT / 4 + rng.uniform(0, 0.008), BEAT / 4, 8, acc)
+            for nn, st, du in mel:                                       # melodía en notas largas
+                put(m(nn), t0 + st * BEAT + rng.uniform(0, 0.01), du * BEAT, 8, 0.30)
     # Sala: reverberación suave (respuesta al impulso sintética, decae en ~2,5 s)
     ir_len = int(2.6 * SR)
     ir = np.random.default_rng(3).standard_normal(ir_len) * np.exp(-np.arange(ir_len) / (0.55 * SR))
     ir[0] = 0
     wet = np.fft.irfft(np.fft.rfft(out, n + ir_len) * np.fft.rfft(ir, n + ir_len))[:n]
-    mix = out + 0.12 * wet / (np.max(np.abs(wet)) + 1e-9) * np.max(np.abs(out))
+    mix = out + 0.08 * wet / (np.max(np.abs(wet)) + 1e-9) * np.max(np.abs(out))
     # Bucle perfecto: el último ciclo incluye la cola del anterior al empezar, así al repetirse no hay corte
     seg = mix[int((cycles - 1) * loop * SR):int(cycles * loop * SR)]
     return seg / (np.max(np.abs(seg)) + 1e-9) * 0.9
@@ -117,7 +112,7 @@ def main() -> None:
     with wave.open(str(wav), "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
         w.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-af", "highpass=f=55,equalizer=f=180:t=q:w=1:g=-3", "-c:a", "libvorbis", "-q:a", "6", str(OUT)], check=True)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav), "-af", "highpass=f=55,equalizer=f=180:t=q:w=1:g=-2,treble=g=-5:f=1800", "-c:a", "libvorbis", "-q:a", "6", str(OUT)], check=True)
     wav.unlink()
     print(f"{OUT} ({len(y) / SR:.1f} s, bucle)")
 
