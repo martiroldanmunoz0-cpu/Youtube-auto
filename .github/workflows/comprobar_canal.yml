@@ -30,4 +30,11 @@ jobs:
               print(f"CANAL: {s['title']} | {s.get('customUrl', '')} | vídeos: {c['statistics'].get('videoCount')}")
           if not r.get("items"):
               print("CANAL: ninguno (la cuenta no tiene canal)")
+          yt = youtube_client()
+          for c in r.get("items", []):
+              up = yt.channels().list(part="contentDetails", id=c["id"]).execute()["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+              ids = [i["contentDetails"]["videoId"] for i in yt.playlistItems().list(part="contentDetails", playlistId=up, maxResults=50).execute().get("items", [])]
+              for v in (yt.videos().list(part="snippet,status,contentDetails", id=",".join(ids)).execute().get("items", []) if ids else []):
+                  st = v["status"]
+                  print(f"VIDEO: {v['id']} | {st.get('privacyStatus')} | publishAt={st.get('publishAt', '')} | {v['contentDetails']['duration']} | {v['snippet']['publishedAt']} | {v['snippet']['title']}")
           PY
