@@ -1,0 +1,458 @@
+{
+  "title": "What If You Fell Into the Grand Canyon? Movies vs Reality #shorts",
+  "description": "Would you ever hike the inner canyon? 👇\n\nWhat happens if you fall into the Grand Canyon? Movies vs reality: fall time, heat and rescue cost.\nThe canyon is a staircase of ledges, so most falls are far shorter than a mile.\n#grandcanyon #whatif #facts #science #shorts",
+  "tags": [
+    "what if you fell into the grand canyon",
+    "grand canyon",
+    "grand canyon fall",
+    "grand canyon facts",
+    "what if",
+    "phantom ranch heat",
+    "grand canyon rescue",
+    "helicopter rescue cost",
+    "movies vs reality",
+    "curiosities",
+    "science facts",
+    "national parks"
+  ],
+  "beats": [
+    {
+      "text": "What if you fell into the Grand Canyon?",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "montana",
+            "hora": "atardecer"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Forget the movies. Here's the truth.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "montana",
+            "hora": "atardecer",
+            "objeto": "movil",
+            "mood": "happy",
+            "plano": "medio"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Your foot slips.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "caer_romper",
+            "objeto": "vaso_agua",
+            "lugar": "montana",
+            "hora": "atardecer"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Movie version: you plunge a full mile, nonstop.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "montana",
+            "hora": "dia",
+            "label": "MOVIE",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "montana_pieza",
+                "pos": "fondo",
+                "tamano": "gigante"
+              },
+              {
+                "pieza": "astronauta",
+                "pos": "arriba",
+                "tamano": "pequeno",
+                "anim": "caer"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "tilt_down",
+      "transition": "whip"
+    },
+    {
+      "text": "Reality: the canyon is about a mile deep.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "1 MILE",
+            "label": "deepest point",
+            "lugar": "montana",
+            "color": "#ffcc00"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "You'd hit about one hundred twenty miles per hour.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "120 MPH",
+            "label": "after 12 seconds",
+            "lugar": "montana",
+            "color": "#ff4444"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Movie: you land in a cool, calm river.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "label": "MOVIE",
+            "persona": "medio",
+            "mood": "happy",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "whip"
+    },
+    {
+      "text": "Reality: the inner canyon runs twenty degrees hotter than the rim.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "quemarse",
+            "lugar": "desierto",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "At Phantom Ranch, summer days pass 110 degrees.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "vista_nublada",
+            "lugar": "desierto",
+            "hora": "dia",
+            "label": "110°F"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Movie: a helicopter scoops you up for free.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "montana",
+            "hora": "dia",
+            "label": "MOVIE",
+            "persona": "medio",
+            "mood": "happy",
+            "piezas": [
+              {
+                "pieza": "helicoptero",
+                "pos": "arriba_derecha",
+                "tamano": "grande",
+                "anim": "entrar_der"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Reality: rangers run hundreds of rescues every year.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "montana",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "montana_pieza",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "izquierda",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "helicoptero",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "But an air ambulance can cost tens of thousands of dollars.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "money",
+          "params": {
+            "amount": "$30,000+",
+            "label": "air ambulance bill",
+            "rain": true,
+            "stack": true
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "Now, here's what almost nobody knows.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "idea",
+            "lugar": "montana",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "The canyon isn't one sheer wall. It's a giant staircase of ledges.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "label": "A STAIRCASE",
+            "piezas": [
+              {
+                "pieza": "montana_pieza",
+                "pos": "centro",
+                "tamano": "gigante"
+              },
+              {
+                "pieza": "montana_pieza",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "You land on a ledge. That's why some survive.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "hospital",
+          "params": {
+            "state": "awake",
+            "mood": "happy",
+            "monitor": "normal",
+            "hora": "dia"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "The same canyon that pulls you in is built to catch you.",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "montana",
+            "hora": "atardecer",
+            "plano": "sin_persona"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "So step back from that edge, and don't ask yourself…",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-23-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "montana",
+            "hora": "atardecer"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {},
+  "cover_text": "FALL INTO THE CANYON?",
+  "comment_q": "Would you ever hike the inner canyon?",
+  "lista": "What If...?",
+  "question": "What really happens if you fall into the Grand Canyon, and can you survive?",
+  "piezas_pendientes": [
+    "cañon_corte_lateral",
+    "cornisa_roca",
+    "guardabosques"
+  ],
+  "id": "pedido-23-01-r1",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "You slip at a Grand Canyon overlook. The video shows the fall you have seen in movies, then corrects each part. MOVIE: you drop a full mile in a straight line. REALITY: the deepest point is about a mile down (roughly 6,000 feet), and a fall that long would take around 20 seconds, hitting about 120 mph after roughly 12. MOVIE: the bottom is a cool river. REALITY: the inner canyon runs about 20°F hotter than the rim, and summer days at Phantom Ranch often pass 110°F. With no shade and no water, the heat becomes a second enemy. MOVIE: a helicopter scoops you up for free. REALITY: park rangers run rescues hundreds of times a year, but an air ambulance flight to a hospital can cost tens of thousands of dollars. Narration stays short and punchy, with tension building at each 'reality' beat until the twist.",
+    "gancho": "What if you fell into the Grand Canyon? Forget the movies. Here's what really happens.",
+    "giro_final": "Here's what almost nobody knows. The Grand Canyon isn't one sheer wall. It's a giant staircase of rock layers, ledges and slopes. Most people who fall don't drop a mile. They drop tens or hundreds of feet and land on a ledge. That's why some survive, and why rangers can reach them. The same canyon that pulls you in is built to catch you. Then comes the last line, which loops back to the start: 'So next time you're at the edge, step back. Because the fall isn't the only thing down there that can get you.'",
+    "estilo_visual": "Each myth and reality pair gets the same visual contrast. 'Escena' with the Grand Canyon rim at golden hour opens on you taking a selfie at the edge. 'Accion caer_romper' shows the slip. Each MOVIE beat uses an exaggerated 'composicion' with a straight vertical drop and a 'MOVIE' label. Each REALITY beat switches to 'big_text' with the numbers ('1 MILE', '120 MPH', '110°F') above the canyon, with you reacting below. 'Map_pin' in relief-map style shows how deep the canyon goes. For the heat, use 'accion quemarse' followed by 'accion vista_nublada'. 'Money' counts up to '$30,000+' as a hypothetical air ambulance bill, and 'composicion' shows the rescue helicopter hovering over a ledge with a ranger. For the twist, a side-view 'composicion' cross-section of the canyon shows the staircase of ledges, with the fall cut short on a shelf. It closes on 'hospital' (you waking up) and returns to the opening 'escena' for the loop.",
+    "por_que_funcionara": "The question names the topic instantly, and 'forget the movies' promises an answer the viewer doesn't know. The myth-vs-reality structure creates a mini payoff every 8-10 seconds, which keeps retention high without falling back on a timeline countdown. The twist is simple, visual and easy to share ('the canyon is a staircase'). It is also true and counterintuitive, so it invites comments like 'I didn't know that' and debate about rescue costs.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "helicoptero",
+      "cañon_corte_lateral",
+      "cornisa_roca",
+      "botella_agua",
+      "guardabosques"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "What if you fell into the Grand Canyon?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Names the topic instantly, is concrete, and promises a surprising answer in 8 words."
+    },
+    {
+      "texto": "How far could you fall before the Canyon wins?",
+      "tipo": "b",
+      "puntuacion": 6,
+      "motivo": "Has a threat and a topic, but it is vaguer than the direct question."
+    },
+    {
+      "texto": "A mile down. Twenty seconds. Would you survive?",
+      "tipo": "c",
+      "puntuacion": 7,
+      "motivo": "Shocking numbers plus a question, but the topic is only implied."
+    },
+    {
+      "texto": "You slip at the Grand Canyon's edge. Now what?",
+      "tipo": "d",
+      "puntuacion": 8,
+      "motivo": "Second person, topic named, immersive."
+    },
+    {
+      "texto": "Movies lie about falling into the Grand Canyon.",
+      "tipo": "e",
+      "puntuacion": 8,
+      "motivo": "Myth vs reality contradiction that names the topic."
+    }
+  ]
+}
