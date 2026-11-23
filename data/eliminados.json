@@ -146,5 +146,35 @@
     "lista_ok": true,
     "portada_ok": true,
     "eliminado": "2026-11-23T16:04:08Z"
+  },
+  {
+    "id": "largo-11-01",
+    "title": "What If You Landed on Every Planet Without a Spacesuit?",
+    "description": "Would you go to Titan just to fly? 👇\n\nWhat would happen if you landed on every planet without a spacesuit? We rank the Sun, Jupiter, Venus, Mercury, the Moon, Mars and Titan from deadliest to most survivable.\nIncluding the true story of NASA technician Jim LeBlanc, who was exposed to near vacuum in 1965 and survived.\n#whatif #solarsystem #space #nasa #science\n\n▶️ More «What If...?»: https://www.youtube.com/playlist?list=PLDcwZJpfCQbc",
+    "tags": [
+      "what if",
+      "no spacesuit",
+      "solar system",
+      "what happens in space without a spacesuit",
+      "vacuum of space",
+      "Jim LeBlanc",
+      "Titan Saturn moon",
+      "Venus temperature",
+      "Mars atmosphere",
+      "Jupiter storms",
+      "NASA",
+      "space facts"
+    ],
+    "video": "largo-11-01.mp4",
+    "portada": "largo-11-01_portada.jpg",
+    "lista": "What If...?",
+    "tag": "largo-13",
+    "issue": 72,
+    "estado": "programado",
+    "publish_at": "2026-11-25T23:00:00Z",
+    "youtube_id": "tSCfor1JhKY",
+    "lista_ok": true,
+    "portada_ok": true,
+    "eliminado": "2026-11-23T16:05:27Z"
   }
 ]
