@@ -19,23 +19,31 @@
     {
       "capitulo": "Chapter 1 · The Moon Is Gone",
       "text": "What if the Moon vanished tonight?",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "luna",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "temblar"
+        "archivo": "largo-20-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "luna",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "efecto": "impacto",
+            "label": "THE MOON VANISHES"
           }
-        ],
-        "efecto": "impacto",
+        },
         "label": "THE MOON VANISHES"
       },
       "camera": "slam",
@@ -43,92 +51,136 @@
     },
     {
       "text": "Would Earth fly out of orbit? Would the oceans go crazy? Stick around, because we're busting five myths, and the last one is the scariest.",
-      "scene": "space",
+      "scene": "medida",
       "params": {
-        "object": "planet",
-        "color": "#2e86de"
+        "archivo": "largo-20-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "space",
+          "params": {
+            "object": "planet",
+            "color": "#2e86de"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "You're standing on a beach at midnight, flashlight in hand, staring up at a full Moon glowing over the waves.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "noche",
-        "objeto": "linterna",
-        "mood": "happy",
-        "plano": "medio"
+        "archivo": "largo-20-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "noche",
+            "objeto": "linterna",
+            "mood": "happy",
+            "plano": "medio"
+          }
+        }
       },
       "camera": "static",
       "transition": "whip"
     },
     {
       "text": "Now it blinks out. No explosion, no warning. Just a dark patch of sky where the Moon used to be.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "luna",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "largo-20-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "medio",
+            "mood": "shocked",
+            "efecto": "brillo"
           }
-        ],
-        "persona": "medio",
-        "mood": "shocked",
-        "efecto": "brillo"
+        }
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "Our Moon sits about two hundred thirty nine thousand miles away, and it holds one eightieth of Earth's mass. That's a lot to lose overnight.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "239,000 miles",
-        "color": "#f5c542",
-        "label": "Earth to Moon",
-        "lugar": "espacio"
+        "archivo": "largo-20-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "239,000 miles",
+            "color": "#f5c542",
+            "label": "Earth to Moon",
+            "lugar": "espacio"
+          }
+        },
+        "label": "Earth to Moon"
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "First, you'd notice the dark. A full Moon is the brightest thing in the night sky, and suddenly your shadow is gone.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "noche",
-        "plano": "entero",
-        "mood": "worried",
-        "highlight": "none"
+        "archivo": "largo-20-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "calle",
+            "hora": "noche",
+            "plano": "entero",
+            "mood": "worried",
+            "highlight": "none"
+          }
+        }
       },
       "camera": "pull_out",
       "transition": "fade"
     },
     {
       "text": "Moonlight is just sunlight bouncing off gray rock. The Moon never made its own light. It borrowed it, and passed it along.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "latir"
-          },
-          {
-            "pieza": "luna",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-20-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "latir"
+              },
+              {
+                "pieza": "luna",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "label": "BORROWED LIGHT"
           }
-        ],
+        },
         "label": "BORROWED LIGHT"
       },
       "camera": "pan_right",
@@ -136,11 +188,19 @@
     },
     {
       "text": "Without it, stars would rule the night. Your eyes would need many minutes to adjust, and on cloudy nights you could barely see your hand.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "vista_nublada",
-        "lugar": "campo",
-        "hora": "noche",
+        "archivo": "largo-20-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "vista_nublada",
+            "lugar": "campo",
+            "hora": "noche",
+            "label": "Eyes adjusting"
+          }
+        },
         "label": "Eyes adjusting"
       },
       "camera": "push_in",
@@ -148,17 +208,25 @@
     },
     {
       "text": "Here's the plan. Five myths, five realities, moving from tonight to millions of years from now. Some of them will genuinely surprise you.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "carta",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-20-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "carta",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ],
+            "label": "5 MYTHS"
           }
-        ],
+        },
         "label": "5 MYTHS"
       },
       "camera": "push_in",
@@ -166,16 +234,23 @@
     },
     {
       "text": "And at the very end, I'll show you why this isn't just a thought experiment. It's already happening. Let's start with the biggest fear.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "search",
-        "search": {
-          "query": "what if the Moon vanished",
-          "results": [
-            "Earth flies out of orbit?",
-            "Tides stop?",
-            "What really happens"
-          ]
+        "archivo": "largo-20-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "search",
+            "search": {
+              "query": "what if the Moon vanished",
+              "results": [
+                "Earth flies out of orbit?",
+                "Tides stop?",
+                "What really happens"
+              ]
+            }
+          }
         }
       },
       "camera": "static",
@@ -184,22 +259,30 @@
     {
       "capitulo": "Chapter 2 · Myth 1: Flying Away",
       "text": "Myth number one. Earth flies out of orbit and goes spinning off into the dark, empty void of space.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "carta",
-            "pos": "arriba",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "girar"
+        "archivo": "largo-20-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "carta",
+                "pos": "arriba",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "girar"
+              }
+            ],
+            "label": "MYTH: EARTH FLIES AWAY"
           }
-        ],
+        },
         "label": "MYTH: EARTH FLIES AWAY"
       },
       "camera": "slam",
@@ -207,22 +290,30 @@
     },
     {
       "text": "Reality: nothing happens to our orbit. Earth circles the Sun, not the Moon, and the Sun's gravity keeps a firm grip on us.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "izquierda",
-            "tamano": "gigante"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-20-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "izquierda",
+                "tamano": "gigante"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "label": "REALITY: THE SUN HOLDS US"
           }
-        ],
+        },
         "label": "REALITY: THE SUN HOLDS US"
       },
       "camera": "pull_out",
@@ -230,35 +321,51 @@
     },
     {
       "text": "The Sun holds about three hundred thirty thousand times the mass of Earth. Next to that, the Moon is a tiny tug on a giant leash.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "333,000 Earths",
-        "color": "#ffb300",
-        "label": "The Sun's mass",
-        "lugar": "espacio"
+        "archivo": "largo-20-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "333,000 Earths",
+            "color": "#ffb300",
+            "label": "The Sun's mass",
+            "lugar": "espacio"
+          }
+        },
+        "label": "The Sun's mass"
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Right now, Earth and Moon circle a shared point about a thousand miles beneath your feet. Remove the Moon, and Earth just keeps walking its path.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "luna",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "girar"
+        "archivo": "largo-20-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "luna",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "girar"
+              }
+            ],
+            "label": "SHARED CENTER 1,000 MILES DOWN"
           }
-        ],
+        },
         "label": "SHARED CENTER 1,000 MILES DOWN"
       },
       "camera": "pan_left",
@@ -266,31 +373,46 @@
     },
     {
       "text": "So your first night isn't a disaster movie. The ground doesn't shake. The sky doesn't fall. It just gets very, very dark.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "noche",
-        "objeto": "linterna",
-        "mood": "neutral",
-        "plano": "medio"
+        "archivo": "largo-20-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "campo",
+            "hora": "noche",
+            "objeto": "linterna",
+            "mood": "neutral",
+            "plano": "medio"
+          }
+        }
       },
       "camera": "static",
       "transition": "whip"
     },
     {
       "text": "And darkness changes who wins. Studies of lions in Tanzania show they hunt more successfully on moonless nights, when prey can't see them coming.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "leon",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "acercarse"
+        "archivo": "largo-20-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "leon",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "acercarse"
+              }
+            ],
+            "label": "Lions win in the dark"
           }
-        ],
+        },
         "label": "Lions win in the dark"
       },
       "camera": "push_in",
@@ -298,42 +420,57 @@
     },
     {
       "text": "People would feel it, too. Night hikes, beach walks, and old sailors who steered by moonlit seas would all find nights far more serious.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "montana",
-        "hora": "noche",
-        "objeto": "linterna",
-        "mood": "worried",
-        "plano": "entero"
+        "archivo": "largo-20-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "montana",
+            "hora": "noche",
+            "objeto": "linterna",
+            "mood": "worried",
+            "plano": "entero"
+          }
+        }
       },
       "camera": "tilt_up",
       "transition": "fade"
     },
     {
       "text": "What about the weather? Clouds, wind, and storms mostly run on the Sun's heat, so your forecast wouldn't change overnight.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "arriba_derecha",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "nube",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "viento",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "entrar_izq"
+        "archivo": "largo-20-01",
+        "plano": 17,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "arriba_derecha",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "nube",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "viento",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "entrar_izq"
+              }
+            ],
+            "label": "Weather = the Sun's job"
           }
-        ],
+        },
         "label": "Weather = the Sun's job"
       },
       "camera": "pan_right",
@@ -341,33 +478,48 @@
     },
     {
       "text": "So myth one is busted. Earth stays right where it is. But here's the catch: your oceans are about to notice.",
-      "scene": "tv",
+      "scene": "medida",
       "params": {
-        "text": "MYTH 1: BUSTED",
-        "hora": "noche"
+        "archivo": "largo-20-01",
+        "plano": 18,
+        "respaldo": {
+          "scene": "tv",
+          "params": {
+            "text": "MYTH 1: BUSTED",
+            "hora": "noche"
+          }
+        }
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "Because the Moon's biggest superpower isn't light. It's gravity, pulling on enormous amounts of water. And that brings us to myth number two.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "piezas": [
-          {
-            "pieza": "luna",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "ola_gigante",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-20-01",
+        "plano": 19,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "ola_gigante",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ],
+            "label": "GRAVITY ON WATER"
           }
-        ],
+        },
         "label": "GRAVITY ON WATER"
       },
       "camera": "tilt_down",
@@ -376,22 +528,30 @@
     {
       "capitulo": "Chapter 3 · Myth 2: The Tides",
       "text": "Myth number two. Without the Moon, the tides would stop completely, and the sea would go flat like a bathtub.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "carta",
-            "pos": "arriba",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "ola_gigante",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "largo-20-01",
+        "plano": 20,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "carta",
+                "pos": "arriba",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "ola_gigante",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "label": "MYTH: TIDES STOP"
           }
-        ],
+        },
         "label": "MYTH: TIDES STOP"
       },
       "camera": "slam",
@@ -399,23 +559,31 @@
     },
     {
       "text": "Reality: the Sun still pulls on the oceans, so tides keep going. But they'd shrink to roughly a third of their usual height.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "arriba",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "ola_gigante",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "entrar_der"
+        "archivo": "largo-20-01",
+        "plano": 21,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "arriba",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "ola_gigante",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "entrar_der"
+              }
+            ],
+            "label": "REALITY: ONE THIRD"
           }
-        ],
+        },
         "label": "REALITY: ONE THIRD"
       },
       "camera": "push_in",
@@ -423,22 +591,30 @@
     },
     {
       "text": "The Moon is much smaller than the Sun, but it's so much closer that its pull on our oceans is more than twice as strong.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "izquierda",
-            "tamano": "gigante"
-          },
-          {
-            "pieza": "luna",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "acercarse"
+        "archivo": "largo-20-01",
+        "plano": 22,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "izquierda",
+                "tamano": "gigante"
+              },
+              {
+                "pieza": "luna",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "acercarse"
+              }
+            ],
+            "label": "CLOSER = STRONGER"
           }
-        ],
+        },
         "label": "CLOSER = STRONGER"
       },
       "camera": "pan_right",
@@ -446,55 +622,78 @@
     },
     {
       "text": "Solar tides are about forty six percent as strong as lunar tides. Lose the Moon, and the Sun is left doing the job alone.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "46%",
-        "color": "#3ddc84",
-        "label": "Sun's tide vs Moon's",
-        "lugar": "playa"
+        "archivo": "largo-20-01",
+        "plano": 23,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "46%",
+            "color": "#3ddc84",
+            "label": "Sun's tide vs Moon's",
+            "lugar": "playa"
+          }
+        },
+        "label": "Sun's tide vs Moon's"
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "Picture the Bay of Fundy in Canada, where the water can rise more than fifty feet. That giant swing would shrink to something like a third.",
-      "scene": "map_pin",
+      "scene": "medida",
       "params": {
-        "place": "Bay of Fundy, Canada",
-        "detail": "Tides over 50 feet",
-        "style": "globo"
+        "archivo": "largo-20-01",
+        "plano": 24,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Bay of Fundy, Canada",
+            "detail": "Tides over 50 feet",
+            "style": "globo"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "whip"
     },
     {
       "text": "Now picture a tide pool on the Oregon coast, packed with starfish, anemones, and crabs that all depend on the water going in and out.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "pulpo",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "pez",
-            "pos": "centro",
-            "tamano": "pequeno",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "gota",
-            "pos": "arriba_derecha",
-            "tamano": "pequeno",
-            "anim": "caer"
+        "archivo": "largo-20-01",
+        "plano": 25,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "pulpo",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "pez",
+                "pos": "centro",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "gota",
+                "pos": "arriba_derecha",
+                "tamano": "pequeno",
+                "anim": "caer"
+              }
+            ],
+            "persona": "medio",
+            "mood": "happy",
+            "label": "Oregon tide pool"
           }
-        ],
-        "persona": "medio",
-        "mood": "happy",
+        },
         "label": "Oregon tide pool"
       },
       "camera": "static",
@@ -502,23 +701,31 @@
     },
     {
       "text": "Twice a day, the tide floods those pools, delivering fresh food and cooler water, then drains away again. That rhythm is life's clock on the shore.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "piezas": [
-          {
-            "pieza": "ola_gigante",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "pez",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "largo-20-01",
+        "plano": 26,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "piezas": [
+              {
+                "pieza": "ola_gigante",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "pez",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Twice a day"
           }
-        ],
+        },
         "label": "Twice a day"
       },
       "camera": "pan_left",
@@ -526,11 +733,19 @@
     },
     {
       "text": "With weaker tides, the band of shore that gets covered and uncovered shrinks. Species built for one zone suddenly find themselves in the wrong one.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "dia",
-        "plano": "sin_persona",
+        "archivo": "largo-20-01",
+        "plano": 27,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "A smaller tide zone"
+          }
+        },
         "label": "A smaller tide zone"
       },
       "camera": "pull_out",
@@ -538,29 +753,37 @@
     },
     {
       "text": "Mangroves, salt marshes, and mudflats also depend on that daily flood. They're nurseries for countless young fish, and they'd all be squeezed.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "selva",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "arbol",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "pez",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "gota",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "caer"
+        "archivo": "largo-20-01",
+        "plano": 28,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "selva",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "arbol",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "pez",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "gota",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "caer"
+              }
+            ],
+            "label": "Mangrove nursery"
           }
-        ],
+        },
         "label": "Mangrove nursery"
       },
       "camera": "tilt_up",
@@ -568,25 +791,33 @@
     },
     {
       "text": "Shorebirds that fly thousands of miles each year count on exposed mudflats at low tide for meals. Fewer flats means fewer refueling stops.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "atardecer",
-        "piezas": [
-          {
-            "pieza": "pajaro",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "pajaro",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "entrar_der",
-            "espejo": true
+        "archivo": "largo-20-01",
+        "plano": 29,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "atardecer",
+            "piezas": [
+              {
+                "pieza": "pajaro",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "pajaro",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der",
+                "espejo": true
+              }
+            ],
+            "label": "Refueling stop"
           }
-        ],
+        },
         "label": "Refueling stop"
       },
       "camera": "pan_right",
@@ -594,25 +825,39 @@
     },
     {
       "text": "Tides also stir the oceans, mixing nutrients and heat from the surface to the depths. Weaker tides mean slower mixing, and subtle shifts in climate.",
-      "scene": "newspaper",
+      "scene": "medida",
       "params": {
-        "headline": "Weaker tides, slower ocean mixing",
-        "kicker": "The Ocean Daily",
-        "date": "Moonless Year 1",
-        "style": "web"
+        "archivo": "largo-20-01",
+        "plano": 30,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "headline": "Weaker tides, slower ocean mixing",
+            "kicker": "The Ocean Daily",
+            "date": "Moonless Year 1",
+            "style": "web"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "So the sea wouldn't stop. It would calm down, and coastal food chains would be thrown out of rhythm. Myth two, busted. But it gets stranger.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "atardecer",
-        "objeto": "none",
-        "mood": "worried",
-        "plano": "medio"
+        "archivo": "largo-20-01",
+        "plano": 31,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "atardecer",
+            "objeto": "none",
+            "mood": "worried",
+            "plano": "medio"
+          }
+        }
       },
       "camera": "slam",
       "transition": "flash"
@@ -620,26 +865,34 @@
     {
       "capitulo": "Chapter 4 · Myth 3: The Moonlight Clock",
       "text": "Myth number three. Animals don't care about the Moon. It's just a light in the sky, and they have better things to do.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "carta",
-            "pos": "arriba",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "leon",
-            "pos": "izquierda",
-            "tamano": "mediano"
-          },
-          {
-            "pieza": "pajaro",
-            "pos": "derecha",
-            "tamano": "mediano"
+        "archivo": "largo-20-01",
+        "plano": 32,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "carta",
+                "pos": "arriba",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "leon",
+                "pos": "izquierda",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "pajaro",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "MYTH: ANIMALS DON'T CARE"
           }
-        ],
+        },
         "label": "MYTH: ANIMALS DON'T CARE"
       },
       "camera": "slam",
@@ -647,24 +900,32 @@
     },
     {
       "text": "Reality: thousands of species run on a moonlight clock. Once the Moon is gone, their alarms stop ringing.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "luna",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "reloj_arena",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "girar"
+        "archivo": "largo-20-01",
+        "plano": 33,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "reloj_arena",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "girar"
+              }
+            ],
+            "label": "REALITY: A MOONLIGHT CLOCK"
           }
-        ],
+        },
         "label": "REALITY: A MOONLIGHT CLOCK"
       },
       "camera": "push_in",
@@ -672,22 +933,30 @@
     },
     {
       "text": "Dive down to the Great Barrier Reef on a warm night in late spring, a few days after the full Moon. Everything is calm, and then it begins.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "pulpo",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "luna",
-            "pos": "arriba_derecha",
-            "tamano": "mediano"
+        "archivo": "largo-20-01",
+        "plano": 34,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "pulpo",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "luna",
+                "pos": "arriba_derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Great Barrier Reef"
           }
-        ],
+        },
         "label": "Great Barrier Reef"
       },
       "camera": "tilt_down",
@@ -695,19 +964,27 @@
     },
     {
       "text": "Corals release millions of tiny pink egg and sperm bundles at once, like an underwater snowstorm in reverse. It's one of the biggest spawning events on Earth.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "pulpo",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
+        "archivo": "largo-20-01",
+        "plano": 35,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "pulpo",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              }
+            ],
+            "efecto": "brillo",
+            "label": "Mass spawning"
           }
-        ],
-        "efecto": "brillo",
+        },
         "label": "Mass spawning"
       },
       "camera": "push_in",
@@ -715,22 +992,30 @@
     },
     {
       "text": "Scientists think corals sense the changing moonlight, along with temperature and other cues, to sync up. If they spawn on different nights, eggs and sperm never meet.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "microscopio",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "luna",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "latir"
+        "archivo": "largo-20-01",
+        "plano": 36,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "microscopio",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "luna",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "latir"
+              }
+            ],
+            "label": "Moonlight cue"
           }
-        ],
+        },
         "label": "Moonlight cue"
       },
       "camera": "pan_left",
@@ -738,36 +1023,52 @@
     },
     {
       "text": "Fewer baby corals means reefs that already struggle to recover would struggle even more. And reefs shelter roughly a quarter of all marine species.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "25%",
-        "color": "#ff6b6b",
-        "label": "of marine species live on reefs",
-        "lugar": "bajo_el_mar"
+        "archivo": "largo-20-01",
+        "plano": 37,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "25%",
+            "color": "#ff6b6b",
+            "label": "of marine species live on reefs",
+            "lugar": "bajo_el_mar"
+          }
+        },
+        "label": "of marine species live on reefs"
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "Now jump to an African savanna at night, where a dung beetle rolls a ball of dung nearly as big as itself, racing away from rivals.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "bomba",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "estrella",
-            "pos": "arriba_izquierda",
-            "tamano": "pequeno",
-            "anim": "brillo"
+        "archivo": "largo-20-01",
+        "plano": 38,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "bomba",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "arriba_izquierda",
+                "tamano": "pequeno",
+                "anim": "brillo"
+              }
+            ],
+            "label": "Dung beetle"
           }
-        ],
+        },
         "label": "Dung beetle"
       },
       "camera": "pan_right",
@@ -775,24 +1076,32 @@
     },
     {
       "text": "To roll in a straight line, it needs a compass in the sky. Experiments show these beetles use the polarized light pattern around the Moon.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "desierto",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "bomba",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "acercarse"
-          },
-          {
-            "pieza": "luna",
-            "pos": "arriba_derecha",
-            "tamano": "grande",
-            "anim": "flotar"
+        "archivo": "largo-20-01",
+        "plano": 39,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "desierto",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "bomba",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "acercarse"
+              },
+              {
+                "pieza": "luna",
+                "pos": "arriba_derecha",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Moon compass"
           }
-        ],
+        },
         "label": "Moon compass"
       },
       "camera": "tilt_up",
@@ -800,23 +1109,31 @@
     },
     {
       "text": "On moonless nights they switch to the glow of the Milky Way. Clever, but it's a weaker signal, and clouds can still ruin everything.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "estrella",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "nube",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "entrar_der"
+        "archivo": "largo-20-01",
+        "plano": 40,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "estrella",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "nube",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "entrar_der"
+              }
+            ],
+            "label": "Milky Way backup"
           }
-        ],
+        },
         "label": "Milky Way backup"
       },
       "camera": "static",
@@ -824,23 +1141,31 @@
     },
     {
       "text": "Next, a quiet beach in Florida. A baby sea turtle cracks out of its egg and has only minutes to reach the water before predators find it.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "tortuga",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "ola_gigante",
-            "pos": "derecha",
-            "tamano": "pequeno"
+        "archivo": "largo-20-01",
+        "plano": 41,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "tortuga",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "ola_gigante",
+                "pos": "derecha",
+                "tamano": "pequeno"
+              }
+            ],
+            "label": "Baby sea turtle"
           }
-        ],
+        },
         "label": "Baby sea turtle"
       },
       "camera": "push_in",
@@ -848,23 +1173,31 @@
     },
     {
       "text": "Hatchlings crawl toward the brightest horizon, and that's usually the open sea, where the sky and the water reflect starlight and moonlight.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "tortuga",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "luna",
-            "pos": "arriba",
-            "tamano": "grande"
+        "archivo": "largo-20-01",
+        "plano": 42,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "tortuga",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "luna",
+                "pos": "arriba",
+                "tamano": "grande"
+              }
+            ],
+            "label": "Brightest horizon = the sea"
           }
-        ],
+        },
         "label": "Brightest horizon = the sea"
       },
       "camera": "pan_right",
@@ -872,24 +1205,32 @@
     },
     {
       "text": "Streetlights and hotels already trick them into crawling the wrong way. Without moonlight, the ocean would lose that contest even more often.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "tortuga",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "derecha",
-            "tamano": "grande"
+        "archivo": "largo-20-01",
+        "plano": 43,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "tortuga",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "edificio",
+                "pos": "derecha",
+                "tamano": "grande"
+              }
+            ],
+            "efecto": "brillo",
+            "label": "Wrong way: hotel lights"
           }
-        ],
-        "efecto": "brillo",
+        },
         "label": "Wrong way: hotel lights"
       },
       "camera": "shake",
@@ -897,29 +1238,37 @@
     },
     {
       "text": "Plankton are in on it, too. Some tiny creatures rise and sink with the Moon's brightness, and the fish above them feed on that schedule.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "gota",
-            "pos": "abajo",
-            "tamano": "pequeno",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "pez",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "entrar_der"
-          },
-          {
-            "pieza": "luna",
-            "pos": "arriba_izquierda",
-            "tamano": "mediano"
+        "archivo": "largo-20-01",
+        "plano": 44,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "abajo",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "pez",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              },
+              {
+                "pieza": "luna",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Plankton and the Moon"
           }
-        ],
+        },
         "label": "Plankton and the Moon"
       },
       "camera": "tilt_down",
@@ -927,23 +1276,31 @@
     },
     {
       "text": "Owls, bats, and moths all adjust how they hunt and hide based on how bright the night is. Their whole game of hide and seek would change.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "pajaro",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "luna",
-            "pos": "arriba_derecha",
-            "tamano": "mediano"
+        "archivo": "largo-20-01",
+        "plano": 45,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "pajaro",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "luna",
+                "pos": "arriba_derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Owls, bats, moths"
           }
-        ],
+        },
         "label": "Owls, bats, moths"
       },
       "camera": "pan_left",
@@ -951,27 +1308,35 @@
     },
     {
       "text": "So myth three is wrong. Animals care a lot. Their clocks would break, and nature would need thousands of generations to find a new rhythm.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "reloj_digital",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "tortuga",
-            "pos": "izquierda",
-            "tamano": "mediano"
-          },
-          {
-            "pieza": "pulpo",
-            "pos": "derecha",
-            "tamano": "mediano"
+        "archivo": "largo-20-01",
+        "plano": 46,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "reloj_digital",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "tortuga",
+                "pos": "izquierda",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "pulpo",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Broken clocks"
           }
-        ],
+        },
         "label": "Broken clocks"
       },
       "camera": "slam",
@@ -980,21 +1345,29 @@
     {
       "capitulo": "Chapter 5 · Myth 4: The Wobbling Planet",
       "text": "Myth number four. Our seasons would stay exactly the same, because they come from the Sun, not the Moon.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "carta",
-            "pos": "arriba",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "centro",
-            "tamano": "grande"
+        "archivo": "largo-20-01",
+        "plano": 47,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "carta",
+                "pos": "arriba",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "centro",
+                "tamano": "grande"
+              }
+            ],
+            "label": "MYTH: SEASONS STAY THE SAME"
           }
-        ],
+        },
         "label": "MYTH: SEASONS STAY THE SAME"
       },
       "camera": "slam",
@@ -1002,22 +1375,30 @@
     },
     {
       "text": "Reality: the Moon acts like a steadying hand on Earth's tilt. Without it, the seasons could go wild over millions of years.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "luna",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "girar"
+        "archivo": "largo-20-01",
+        "plano": 48,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "luna",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "girar"
+              }
+            ],
+            "label": "REALITY: THE MOON STEADIES THE TILT"
           }
-        ],
+        },
         "label": "REALITY: THE MOON STEADIES THE TILT"
       },
       "camera": "push_in",
@@ -1025,23 +1406,39 @@
     },
     {
       "text": "Earth spins tilted about twenty three and a half degrees. That tilt is the reason you get summer heat and snow in December.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "23.5°",
-        "color": "#3ddc84",
-        "label": "Earth's tilt",
-        "lugar": "espacio"
+        "archivo": "largo-20-01",
+        "plano": 49,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "23.5°",
+            "color": "#3ddc84",
+            "label": "Earth's tilt",
+            "lugar": "espacio"
+          }
+        },
+        "label": "Earth's tilt"
       },
       "camera": "pull_out",
       "transition": "cut"
     },
     {
       "text": "Think of a spinning top with a slightly wobbly base. If nothing steadies it, the lean can grow, and the whole thing starts to wander.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "marearse",
-        "lugar": "salon",
-        "hora": "dia",
+        "archivo": "largo-20-01",
+        "plano": 50,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "marearse",
+            "lugar": "salon",
+            "hora": "dia",
+            "label": "A wobbling top"
+          }
+        },
         "label": "A wobbling top"
       },
       "camera": "shake",
@@ -1049,44 +1446,59 @@
     },
     {
       "text": "Today the Moon's gravity keeps Earth's tilt wobbling only a couple of degrees, over cycles lasting tens of thousands of years.",
-      "scene": "document",
+      "scene": "medida",
       "params": {
-        "title": "Earth's tilt WITH the Moon",
-        "lines": [
-          "Range: about 22° to 24.5°",
-          "Cycle: ~41,000 years",
-          "Seasons: stable"
-        ],
-        "highlight": 0,
-        "stamp": "STABLE"
+        "archivo": "largo-20-01",
+        "plano": 51,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "Earth's tilt WITH the Moon",
+            "lines": [
+              "Range: about 22° to 24.5°",
+              "Cycle: ~41,000 years",
+              "Seasons: stable"
+            ],
+            "highlight": 0,
+            "stamp": "STABLE"
+          }
+        }
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "Take the Moon away, and the pull of the Sun and the other planets could slowly shove that tilt around, possibly by tens of degrees.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "planeta",
-            "pos": "arriba_izquierda",
-            "tamano": "mediano",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "sol",
-            "pos": "derecha",
-            "tamano": "grande"
+        "archivo": "largo-20-01",
+        "plano": 52,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "planeta",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "sol",
+                "pos": "derecha",
+                "tamano": "grande"
+              }
+            ],
+            "label": "The tilt gets shoved"
           }
-        ],
+        },
         "label": "The tilt gets shoved"
       },
       "camera": "shake",
@@ -1094,11 +1506,19 @@
     },
     {
       "text": "Relax, this is slow. We're talking millions of years, not next week. But slow doesn't mean harmless. Let's fast forward and see what a big tilt feels like.",
-      "scene": "calendar",
+      "scene": "medida",
       "params": {
-        "style": "taco",
-        "month": "Years",
-        "day": "1,000,000",
+        "archivo": "largo-20-01",
+        "plano": 53,
+        "respaldo": {
+          "scene": "calendar",
+          "params": {
+            "style": "taco",
+            "month": "Years",
+            "day": "1,000,000",
+            "label": "Slow, but not harmless"
+          }
+        },
         "label": "Slow, but not harmless"
       },
       "camera": "push_in",
@@ -1106,11 +1526,19 @@
     },
     {
       "text": "Say Earth leans over sixty degrees. In summer, your hemisphere points almost straight at the Sun, and the Sun barely sets for months.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "quemarse",
-        "lugar": "desierto",
-        "hora": "dia",
+        "archivo": "largo-20-01",
+        "plano": 54,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "quemarse",
+            "lugar": "desierto",
+            "hora": "dia",
+            "label": "Summer: no night to cool down"
+          }
+        },
         "label": "Summer: no night to cool down"
       },
       "camera": "push_in",
@@ -1118,11 +1546,19 @@
     },
     {
       "text": "Then comes winter. Your home tips away from the Sun, and months of darkness settle in, with bitter cold that freezes everything solid.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "congelarse",
-        "lugar": "montana",
-        "hora": "noche",
+        "archivo": "largo-20-01",
+        "plano": 55,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "congelarse",
+            "lugar": "montana",
+            "hora": "noche",
+            "label": "Winter: months of darkness"
+          }
+        },
         "label": "Winter: months of darkness"
       },
       "camera": "static",
@@ -1130,30 +1566,38 @@
     },
     {
       "text": "Forests, farms, and cities were all built for gentle seasons. Brutal swings like that would make most of today's farmland nearly useless.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "arbol",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "sol",
-            "pos": "arriba_derecha",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "hielo",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "crecer"
+        "archivo": "largo-20-01",
+        "plano": 56,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "arbol",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "sol",
+                "pos": "arriba_derecha",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "hielo",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "crecer"
+              }
+            ],
+            "persona": "medio",
+            "mood": "sad",
+            "label": "Farms built for gentle seasons"
           }
-        ],
-        "persona": "medio",
-        "mood": "sad",
+        },
         "label": "Farms built for gentle seasons"
       },
       "camera": "pan_left",
@@ -1161,46 +1605,69 @@
     },
     {
       "text": "Scientists still debate how extreme it would get, since other forces help steady things. But they agree the Moon is the reason things stay calm.",
-      "scene": "doctor",
+      "scene": "medida",
       "params": {
-        "label": "Scientists",
-        "mood": "neutral",
-        "say": "The Moon keeps things calm",
-        "hora": "dia",
-        "who": "cientifica"
+        "archivo": "largo-20-01",
+        "plano": 57,
+        "respaldo": {
+          "scene": "doctor",
+          "params": {
+            "label": "Scientists",
+            "mood": "neutral",
+            "say": "The Moon keeps things calm",
+            "hora": "dia",
+            "who": "cientifica"
+          }
+        },
+        "label": "Scientists"
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "Mars is the cautionary tale. It has only two tiny moons, and its tilt has swung wildly over millions of years.",
-      "scene": "space",
+      "scene": "medida",
       "params": {
-        "object": "planet",
-        "color": "#c1440e"
+        "archivo": "largo-20-01",
+        "plano": 58,
+        "respaldo": {
+          "scene": "space",
+          "params": {
+            "object": "planet",
+            "color": "#c1440e"
+          }
+        }
       },
       "camera": "pull_out",
       "transition": "whip"
     },
     {
       "text": "And there's a bonus loss: no more solar eclipses, ever. The Moon covers the Sun only by cosmic coincidence, and no Moon means no eclipse.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "centro",
-            "tamano": "gigante"
-          },
-          {
-            "pieza": "luna",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "entrar_izq"
+        "archivo": "largo-20-01",
+        "plano": 59,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "centro",
+                "tamano": "gigante"
+              },
+              {
+                "pieza": "luna",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              }
+            ],
+            "efecto": "brillo",
+            "label": "No more eclipses"
           }
-        ],
-        "efecto": "brillo",
+        },
         "label": "No more eclipses"
       },
       "camera": "push_in",
@@ -1209,22 +1676,30 @@
     {
       "capitulo": "Chapter 6 · Myth 5: The Slow-Motion Twist",
       "text": "Myth number five, the biggest one of all. The Moon will always be there. This could never really happen to us.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "carta",
-            "pos": "arriba",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "luna",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "flotar"
+        "archivo": "largo-20-01",
+        "plano": 60,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "carta",
+                "pos": "arriba",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "luna",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "label": "MYTH: IT'S ALWAYS THERE"
           }
-        ],
+        },
         "label": "MYTH: IT'S ALWAYS THERE"
       },
       "camera": "slam",
@@ -1232,22 +1707,30 @@
     },
     {
       "text": "Reality: the Moon is already leaving. It's drifting away from Earth right now. That's not fiction, it's a measurement.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "luna",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-20-01",
+        "plano": 61,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "luna",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "label": "REALITY: IT'S LEAVING"
           }
-        ],
+        },
         "label": "REALITY: IT'S LEAVING"
       },
       "camera": "pull_out",
@@ -1255,28 +1738,36 @@
     },
     {
       "text": "Apollo astronauts left mirrors on the surface, and scientists still bounce lasers off them, timing the trip to measure the distance precisely.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "luna",
-            "pos": "fondo",
-            "tamano": "gigante"
-          },
-          {
-            "pieza": "astronauta",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "rayo",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "entrar_der"
+        "archivo": "largo-20-01",
+        "plano": 62,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "fondo",
+                "tamano": "gigante"
+              },
+              {
+                "pieza": "astronauta",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "rayo",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              }
+            ],
+            "label": "Laser mirrors on the Moon"
           }
-        ],
+        },
         "label": "Laser mirrors on the Moon"
       },
       "camera": "pan_right",
@@ -1284,40 +1775,56 @@
     },
     {
       "text": "Every year, the Moon drifts about one and a half inches farther away, roughly as fast as your fingernails grow.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "1.5 in / year",
-        "color": "#ff5252",
-        "label": "The Moon drifts away",
-        "lugar": "espacio"
+        "archivo": "largo-20-01",
+        "plano": 63,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "1.5 in / year",
+            "color": "#ff5252",
+            "label": "The Moon drifts away",
+            "lugar": "espacio"
+          }
+        },
+        "label": "The Moon drifts away"
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "The cause is tides. Earth's oceans drag a bulge ahead of the Moon, and that bulge tugs the Moon forward, slinging it outward.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "izquierda",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "ola_gigante",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "acercarse"
-          },
-          {
-            "pieza": "luna",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "entrar_der"
+        "archivo": "largo-20-01",
+        "plano": 64,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "izquierda",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "ola_gigante",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "acercarse"
+              },
+              {
+                "pieza": "luna",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              }
+            ],
+            "label": "The tidal bulge tugs the Moon"
           }
-        ],
+        },
         "label": "The tidal bulge tugs the Moon"
       },
       "camera": "pan_right",
@@ -1325,23 +1832,31 @@
     },
     {
       "text": "Earth pays the price. Its spin slowly brakes, so our days are getting longer, by about two milliseconds every century.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "girar"
-          },
-          {
-            "pieza": "reloj_digital",
-            "pos": "arriba_derecha",
-            "tamano": "mediano",
-            "anim": "latir"
+        "archivo": "largo-20-01",
+        "plano": 65,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "reloj_digital",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "latir"
+              }
+            ],
+            "label": "+2 ms every century"
           }
-        ],
+        },
         "label": "+2 ms every century"
       },
       "camera": "push_in",
@@ -1349,23 +1864,31 @@
     },
     {
       "text": "Go back far enough and it's dramatic. When dinosaurs roamed, a day lasted around twenty three and a half hours.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "piezas": [
-          {
-            "pieza": "dinosaurio",
-            "pos": "izquierda",
-            "tamano": "gigante",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "reloj_digital",
-            "pos": "arriba_derecha",
-            "tamano": "mediano"
+        "archivo": "largo-20-01",
+        "plano": 66,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "atardecer",
+            "piezas": [
+              {
+                "pieza": "dinosaurio",
+                "pos": "izquierda",
+                "tamano": "gigante",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "reloj_digital",
+                "pos": "arriba_derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "A 23.5-hour day"
           }
-        ],
+        },
         "label": "A 23.5-hour day"
       },
       "camera": "pan_left",
@@ -1373,23 +1896,31 @@
     },
     {
       "text": "Billions of years ago, the Moon hung much closer, looking enormous in the sky and raising monstrous tides across the young Earth.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "luna",
-            "pos": "fondo",
-            "tamano": "gigante",
-            "anim": "acercarse"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "abajo",
-            "tamano": "pequeno"
+        "archivo": "largo-20-01",
+        "plano": 67,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "acercarse"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "abajo",
+                "tamano": "pequeno"
+              }
+            ],
+            "label": "Billions of years ago"
           }
-        ],
+        },
         "label": "Billions of years ago"
       },
       "camera": "tilt_up",
@@ -1397,45 +1928,67 @@
     },
     {
       "text": "And here's the last twist. In roughly six hundred million years, the Moon will look too small to cover the Sun. The final total eclipse will happen.",
-      "scene": "newspaper",
+      "scene": "medida",
       "params": {
-        "headline": "The Last Total Solar Eclipse",
-        "kicker": "The Cosmic Times",
-        "date": "In ~600 million years",
-        "style": "portada"
+        "archivo": "largo-20-01",
+        "plano": 68,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "headline": "The Last Total Solar Eclipse",
+            "kicker": "The Cosmic Times",
+            "date": "In ~600 million years",
+            "style": "portada"
+          }
+        }
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "So you're not imagining a Moon-less Earth. You're watching the slow-motion version of it, year by year, while you live your life.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "noche",
-        "plano": "entero",
-        "mood": "happy",
-        "arms": "up"
+        "archivo": "largo-20-01",
+        "plano": 69,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "noche",
+            "plano": "entero",
+            "mood": "happy",
+            "arms": "up"
+          }
+        }
       },
       "camera": "pull_out",
       "transition": "fade"
     },
     {
       "text": "So the next time the Moon is up, give it a long look. Notice how bright your shadow is, and how the tide is leaning in.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "luna",
-            "pos": "arriba",
-            "tamano": "gigante",
-            "anim": "flotar"
+        "archivo": "largo-20-01",
+        "plano": 70,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "arriba",
+                "tamano": "gigante",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "medio",
+            "mood": "happy",
+            "label": "Look up tonight"
           }
-        ],
-        "persona": "medio",
-        "mood": "happy",
+        },
         "label": "Look up tonight"
       },
       "camera": "tilt_up",
@@ -1443,23 +1996,30 @@
     },
     {
       "text": "Here's my question for you: if you could keep one thing about the Moon forever, would it be the tides, the nights, or the eclipses?",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "chat",
-        "chat": {
-          "contact": "The Curio Lab",
-          "status": "online",
-          "typing": true,
-          "messages": [
-            {
-              "from": "them",
-              "text": "Keep one thing forever?"
-            },
-            {
-              "from": "them",
-              "text": "Tides, nights, or eclipses?"
+        "archivo": "largo-20-01",
+        "plano": 71,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "chat",
+            "chat": {
+              "contact": "The Curio Lab",
+              "status": "online",
+              "typing": true,
+              "messages": [
+                {
+                  "from": "them",
+                  "text": "Keep one thing forever?"
+                },
+                {
+                  "from": "them",
+                  "text": "Tides, nights, or eclipses?"
+                }
+              ]
             }
-          ]
+          }
         }
       },
       "camera": "static",
@@ -1467,10 +2027,17 @@
     },
     {
       "text": "If you liked this one, watch our next video, where we ask what would happen if the Sun suddenly went dark. See you there.",
-      "scene": "space",
+      "scene": "medida",
       "params": {
-        "object": "sun",
-        "color": "#ffb300"
+        "archivo": "largo-20-01",
+        "plano": 72,
+        "respaldo": {
+          "scene": "space",
+          "params": {
+            "object": "sun",
+            "color": "#ffb300"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
@@ -1560,6 +2127,6 @@
       "motivo": "Myth contradiction that names the topic and teases the real answer."
     }
   ],
-  "medida_estado": "esperando",
+  "medida_estado": "lista",
   "tanda": "largo-20"
 }
