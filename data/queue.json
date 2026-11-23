@@ -21,10 +21,11 @@
     "tag": "pedido-24",
     "issue": 73,
     "estado": "programado",
-    "publish_at": "2026-11-24T00:00:00Z",
+    "publish_at": "2026-11-24T01:30:00Z",
     "youtube_id": "pts49XLGjNM",
     "lista_ok": true,
-    "portada_ok": true
+    "portada_ok": true,
+    "reprogramado": true
   },
   {
     "id": "largo-11-01-r1",
