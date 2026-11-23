@@ -8,6 +8,11 @@ on:
         description: "Número de la ejecución de Prueba"
         required: true
         type: string
+      artefacto:
+        description: "Nombre del artefacto con el vídeo"
+        required: false
+        default: "video-prueba"
+        type: string
 
 permissions:
   contents: write
@@ -23,7 +28,7 @@ jobs:
           RID: ${{ inputs.run_id }}
           REPO: ${{ github.repository }}
         run: |
-          gh run download "$RID" -R "$REPO" -n video-prueba -D v
+          gh run download "$RID" -R "$REPO" -n "${{ inputs.artefacto }}" -D v
           gh release view prueba -R "$REPO" >/dev/null 2>&1 || gh release create prueba -R "$REPO" --title "Pruebas" --notes "Vídeos de prueba (no se publican)" --prerelease
-          for f in v/*.mp4; do cp "$f" "v/prueba-$RID.mp4"; done
+          f=$(find v -name "*.mp4" | head -1); cp "$f" "v/prueba-$RID.mp4"
           gh release upload prueba "v/prueba-$RID.mp4" -R "$REPO" --clobber
