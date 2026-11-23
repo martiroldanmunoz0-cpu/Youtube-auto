@@ -16,7 +16,7 @@ TEXTO = ("Imagine you could control your luck. Turn it up, turn it down, anytime
          "And when it does, it never asks for permission.")
 CANDIDATAS: dict[str, str] = {}
 # Voces de assets/voices/ de las que sacar una muestra leyendo TEXTO (clon con VoxCPM2)
-CLONES = ["narrador_en2"]
+CLONES = ["narrador_en3"]
 
 
 def main() -> None:
