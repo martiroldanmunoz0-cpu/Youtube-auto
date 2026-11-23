@@ -1,0 +1,1888 @@
+{
+  "title": "What If You Landed on Every Planet Without a Spacesuit?",
+  "description": "Would you go to Titan just to fly? 👇\n\nWhat would happen if you landed on every planet without a spacesuit? We rank the Sun, Jupiter, Venus, Mercury, the Moon, Mars and Titan from deadliest to most survivable.\nIncluding the true story of NASA technician Jim LeBlanc, who was exposed to near vacuum in 1965 and survived.\n#whatif #solarsystem #space #nasa #science",
+  "tags": [
+    "what if",
+    "no spacesuit",
+    "solar system",
+    "what happens in space without a spacesuit",
+    "vacuum of space",
+    "Jim LeBlanc",
+    "Titan Saturn moon",
+    "Venus temperature",
+    "Mars atmosphere",
+    "Jupiter storms",
+    "NASA",
+    "space facts"
+  ],
+  "beats": [
+    {
+      "capitulo": "Chapter 1 · The Challenge",
+      "text": "How long would you survive on every planet?",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "latir"
+              },
+              {
+                "pieza": "planeta",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "girar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Today we teleport you to every world in the Solar System, no spacesuit, and rank them from deadliest to most survivable.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "space",
+          "params": {
+            "object": "planet",
+            "color": "#e0a050",
+            "ring": true
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "On one of them, you'd last less than a second. And the number one spot is not where you think it is.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "espacio",
+            "label": "Less than 1 second"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Stay until the end, because there's a place where you'd only need a mask and a warm coat. And it gets stranger.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "label": "Number 1",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "planeta",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "girar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Chapter 2 · The Hellish Worlds",
+      "text": "Number seven: the Sun. You appear right at its surface, where the temperature is about ten thousand degrees Fahrenheit.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "entero",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "latir"
+              },
+              {
+                "pieza": "fuego",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "flash"
+    },
+    {
+      "text": "That's about five times hotter than lava pouring out of a volcano. Your body doesn't burn. It simply stops being a body.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "10,000°F",
+            "label": "Surface of the Sun",
+            "color": "#ff5a1f",
+            "lugar": "espacio"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Within a fraction of a second, you're vaporized, turned into a puff of hot gas before you can even blink or feel pain.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "quemarse",
+            "lugar": "espacio",
+            "label": "Vaporized"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "And the heat isn't even the only problem. The Sun's gravity at its surface is about twenty-eight times stronger than Earth's.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "arriba",
+                "tamano": "gigante",
+                "anim": "acercarse"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "label": "28x gravity"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Good news: you didn't feel a thing. Bad news: we have six more worlds to go, and they're not much kinder.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "flotar_espacio",
+            "lugar": "espacio"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "whip"
+    },
+    {
+      "text": "Number six: Jupiter. The biggest planet in the Solar System. More than one thousand Earths could fit inside it.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "no",
+            "label": "1,000+ Earths fit inside",
+            "piezas": [
+              {
+                "pieza": "planeta",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "girar"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "arriba_izquierda",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "But Jupiter has no ground. It's a giant ball of gas and liquid, so there's nothing to stand on. You just fall.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "caer_romper",
+            "lugar": "espacio",
+            "objeto": "vaso_agua",
+            "label": "No ground"
+          }
+        }
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "You tumble through freezing clouds, caught in winds that blow at more than four hundred miles per hour.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "entero",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "nube",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "viento",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "entrar_der"
+              }
+            ],
+            "efecto": "velocidad"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "That's faster than any hurricane on Earth. And the Great Red Spot, a storm about as wide as our whole planet, has raged for centuries.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "no",
+            "label": "Great Red Spot",
+            "piezas": [
+              {
+                "pieza": "planeta",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "girar"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "arriba_derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Meanwhile, Jupiter's gravity pulls you two and a half times harder than Earth's. A one hundred eighty pound person would weigh four hundred fifty.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "2.5x gravity",
+            "label": "180 lb becomes 450 lb",
+            "color": "#ffb347",
+            "lugar": "espacio"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Dizzy, heavy, and falling deeper, you're now in the dark. The pressure climbs with every mile, and the air around you keeps heating up.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "marearse",
+            "lugar": "fondo",
+            "label": "Falling deeper"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "fade"
+    },
+    {
+      "text": "Deep down, the pressure becomes thousands of times greater than at sea level, then millions. You never hit bottom. There is no bottom.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "hundirse",
+            "lugar": "fondo",
+            "label": "Crushing pressure"
+          }
+        }
+      },
+      "camera": "tilt_down",
+      "transition": "red"
+    },
+    {
+      "text": "Long before that, the pressure and heat end it. Number six: gone within minutes, falling through a sky with no floor.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "desmayarse",
+            "lugar": "fondo"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "black"
+    },
+    {
+      "text": "Number five: Venus. Earth's evil twin. It's almost the same size as our planet, so you'd think it would be friendly.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 17,
+        "respaldo": {
+          "scene": "space",
+          "params": {
+            "object": "planet",
+            "color": "#e8c15a"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "It isn't. The surface sits at about nine hundred degrees Fahrenheit, hot enough to melt lead like butter in a skillet.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 18,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "desierto",
+            "hora": "atardecer",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "planeta",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "girar"
+              },
+              {
+                "pieza": "fuego",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "label": "900°F"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "And the air presses on you ninety times harder than on Earth. That's like diving nearly three thousand feet under the ocean.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 19,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "90x pressure",
+            "label": "Like 3,000 ft underwater",
+            "color": "#ffd34d",
+            "lugar": "bajo_el_mar"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "fade"
+    },
+    {
+      "text": "Picture a submarine at that depth. Now picture yourself without one. The pressure squeezes from every side while you cook at the same time.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 20,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "submarino",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "ola_gigante",
+                "pos": "fondo",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "Above you, thick yellow clouds of sulfuric acid drift by. Not exactly the place for a relaxing walk or a deep breath.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 21,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "entero",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "nube",
+                "pos": "arriba",
+                "tamano": "gigante",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "gota",
+                "pos": "arriba_izquierda",
+                "tamano": "pequeno",
+                "anim": "caer"
+              }
+            ],
+            "label": "Sulfuric acid clouds"
+          }
+        }
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Here's the weird part: Venus is hotter than Mercury, even though it's almost twice as far from the Sun. The reason is a runaway greenhouse effect.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 22,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "no",
+            "label": "Hotter than Mercury",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "latir"
+              },
+              {
+                "pieza": "planeta",
+                "pos": "centro",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "planeta",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "pan_right",
+      "transition": "cut"
+    },
+    {
+      "text": "Its thick carbon dioxide air traps heat like a blanket. You'd last a few seconds before the heat and pressure finish the job.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 23,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "quemarse",
+            "lugar": "desierto",
+            "hora": "atardecer",
+            "label": "Cooked and crushed"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "Even the best Soviet Venera probe, built like a tank, lasted only about two hours on the surface before it died.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 24,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "style": "papel",
+            "headline": "Probe lands on Venus",
+            "kicker": "Space Weekly",
+            "date": "1982"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "You, meanwhile, have no tank. So let's leave this oven behind and head to the planet closest to the Sun.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 25,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "flotar_espacio",
+            "lugar": "espacio"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Chapter 3 · Fire, Ice and Vacuum",
+      "text": "Number four: Mercury. The smallest planet, and the closest to the Sun. You'd think it would be the hottest. Well, not exactly.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 26,
+        "respaldo": {
+          "scene": "space",
+          "params": {
+            "object": "sun",
+            "color": "#9a8f85"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "On the sunny side, it's about eight hundred degrees Fahrenheit. That's as hot as a pizza oven, and you're standing right inside it.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 27,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "800°F",
+            "label": "Day side",
+            "color": "#ff7a2f",
+            "lugar": "desierto"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Your skin starts to burn in seconds. And with almost no air, there's nothing to breathe and nothing to carry the heat away.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 28,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "quemarse",
+            "lugar": "desierto",
+            "hora": "dia",
+            "label": "Mercury, day side"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "flash"
+    },
+    {
+      "text": "But here's the twist. Mercury barely has an atmosphere, so all that heat escapes into space the moment the Sun goes down.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 29,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "desierto",
+            "hora": "noche",
+            "persona": "entero",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "planeta",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "arriba_izquierda",
+                "tamano": "pequeno",
+                "anim": "latir"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "At night, it plunges to about minus two hundred ninety degrees Fahrenheit. That's a swing of more than one thousand degrees in a single day.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 30,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "-290°F",
+            "label": "Night side",
+            "color": "#6ec6ff",
+            "lugar": "desierto"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Frozen solid, in a vacuum, on a world where one full day lasts about one hundred seventy-six Earth days.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 31,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "congelarse",
+            "lugar": "desierto",
+            "hora": "noche",
+            "label": "Frozen"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Either way, you're done within seconds. Mercury burns you or freezes you, depending on where you land. Now, the Moon.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 32,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "espacio",
+            "plano": "entero",
+            "mood": "worried",
+            "arms": "cross",
+            "label": "Next stop: the Moon"
+          }
+        }
+      },
+      "camera": "pan_left",
+      "transition": "whip"
+    },
+    {
+      "text": "Number three: the Moon. And here we have to bust a myth you've seen in a hundred movies.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 33,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "no",
+            "label": "Myth vs. Fact",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "arriba_izquierda",
+                "tamano": "pequeno",
+                "anim": "latir"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "In the movies, someone gets pushed out of an airlock and explodes like a balloon. Dramatic, right? It's also completely wrong.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 34,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "explosion",
+            "lugar": "espacio",
+            "label": "MYTH: you explode"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "flash"
+    },
+    {
+      "text": "So what really happens? The first rule: don't hold your breath. The air in your lungs would expand and tear them, so you must exhale.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 35,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "soltar_aire",
+            "lugar": "espacio",
+            "label": "Breathe out!"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Next, the moisture on your tongue starts to bubble. Not from heat, but because without pressure, liquids boil at low temperatures.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 36,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "saliva_hierve",
+            "label": "No pressure, no liquid"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Your body swells as water vapor forms inside your tissues. You could grow to about twice your size, but your skin is tough enough to hold.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 37,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "hincharse",
+            "label": "Swelling"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "No explosion. Your skin is strong and stretchy. But the oxygen in your blood runs out, and you have about fifteen seconds of consciousness.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 38,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "15 SECONDS",
+            "label": "Until you pass out",
+            "color": "#ffffff",
+            "lugar": "espacio"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Then you black out. Your blood doesn't boil either, because your blood vessels hold the pressure. But your brain is starved of oxygen.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 39,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "desmayarse",
+            "lugar": "espacio",
+            "label": "Blackout"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "black"
+    },
+    {
+      "text": "Death comes in about one or two minutes. And the Moon adds insult to injury: roughly 250 degrees in sunlight, around minus 200 at night.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 40,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "entero",
+            "mood": "sad",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "reloj_digital",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "latir"
+              }
+            ],
+            "label": "1 to 2 minutes"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "But wait. Has anyone really tested this on a human? Yes. One man actually lived through it, and his story is wild. Stay with me.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 41,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "search",
+            "search": {
+              "query": "Jim LeBlanc NASA vacuum",
+              "results": [
+                "1965 test accident",
+                "Survived near vacuum"
+              ]
+            }
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Chapter 4 · The Man Who Lived It",
+      "text": "Houston, Texas, 1965. The space race is in full swing, and NASA is testing spacesuits for astronauts heading to space.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 42,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": "1961",
+            "to": "1965",
+            "label": "Houston, NASA"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Meet Jim LeBlanc, a NASA technician. His job: wear a spacesuit inside a giant vacuum chamber to make sure it works.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 43,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "who": "leblanc",
+            "lugar": "oficina",
+            "hora": "dia",
+            "objeto": "papel",
+            "mood": "happy",
+            "label": "Jim LeBlanc, NASA"
+          }
+        },
+        "who": "leblanc"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "The chamber pumped out the air to copy conditions at around one hundred twenty thousand feet, where the air is far too thin to breathe.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 44,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "label": "120,000 feet",
+            "piezas": [
+              {
+                "pieza": "bombilla",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "astronauta",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "entrar_izq"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Then, in the middle of the test, a hose came loose from his suit. The air began rushing out, and the suit started to lose pressure fast.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 45,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "efecto": "impacto",
+            "piezas": [
+              {
+                "pieza": "astronauta",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "serpiente",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "He knew right away that something was terribly wrong. The suit went slack, and around him, the chamber was nearly airless.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 46,
+        "respaldo": {
+          "scene": "character",
+          "params": {
+            "who": "leblanc",
+            "bg": "red",
+            "mood": "shocked"
+          }
+        },
+        "who": "leblanc"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "His last memory was a strange feeling: the saliva on his tongue starting to bubble, and then to boil. Then everything faded.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 47,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "saliva_hierve",
+            "who": "protagonista"
+          }
+        },
+        "who": "protagonista"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "About fourteen seconds later, he lost consciousness. The same clock you'd have on the Moon. Same science, but now it was real.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 48,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "14 SECONDS",
+            "label": "Until he passed out",
+            "color": "#ffffff",
+            "lugar": "fondo"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Outside the chamber, his coworkers saw it all happen. Without hesitating, they started letting air back in. Every second counted.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 49,
+        "respaldo": {
+          "scene": "group",
+          "params": {
+            "count": 3,
+            "lugar": "oficina",
+            "mood": "worried",
+            "people": [
+              "tecnico",
+              "tecnico"
+            ],
+            "label": "The rescue"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "In under half a minute, the air was back. As the pressure rose, Jim woke up, and he walked away with no lasting damage.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 50,
+        "respaldo": {
+          "scene": "hospital",
+          "params": {
+            "who": "leblanc",
+            "state": "awake",
+            "mood": "happy",
+            "monitor": "normal",
+            "label": "Fully recovered"
+          }
+        },
+        "who": "leblanc"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "The accident gave scientists rare real data: a person can survive a brief exposure to near vacuum, as long as someone rescues them fast.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 51,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "NASA Report",
+            "lines": [
+              "Suit hose detached",
+              "Consciousness: 14 s",
+              "Rescue: under 30 s",
+              "No lasting injury"
+            ],
+            "highlight": 1,
+            "stamp": "SURVIVED"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "So back to our Moon scenario: you wouldn't explode, but you'd have less than half a minute to be saved. And nobody's coming. Next: Mars.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 52,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "espacio",
+            "plano": "entero",
+            "mood": "worried",
+            "arms": "normal",
+            "label": "Nobody is coming"
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Chapter 5 · Earth's Fake Twin",
+      "text": "Number two: Mars. The planet everyone wants to colonize, and the one that looks most like Earth. Surely we can survive there?",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 53,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "desierto",
+            "hora": "atardecer",
+            "persona": "entero",
+            "mood": "happy",
+            "piezas": [
+              {
+                "pieza": "planeta",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "Not even close. The air pressure on Mars is less than one percent of Earth's. That's like standing about twenty miles above our planet.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 54,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "Under 1%",
+            "label": "Earth's air pressure",
+            "color": "#ff6a4d",
+            "lugar": "desierto"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "That's far below the Armstrong limit, where your saliva boils at body temperature. Just like on the Moon, you swell up and pass out.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 55,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "saliva_hierve",
+            "label": "Below the Armstrong limit"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "The average temperature is about minus eighty degrees Fahrenheit, as cold as the coldest day ever recorded in Alaska.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 56,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "congelarse",
+            "lugar": "desierto",
+            "hora": "dia",
+            "label": "-80°F average"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "And the thin air is about ninety-five percent carbon dioxide. So even if you could hold your breath, there's no oxygen to breathe.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 57,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "desierto",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "nube",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "planeta",
+                "pos": "arriba_derecha",
+                "tamano": "pequeno",
+                "anim": "girar"
+              }
+            ],
+            "label": "95% CO2"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Dust storms can swallow the entire planet and last for weeks, blocking the sunlight. And the radiation is far stronger than on Earth.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 58,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "desierto",
+            "hora": "atardecer",
+            "persona": "entero",
+            "mood": "shocked",
+            "efecto": "velocidad",
+            "piezas": [
+              {
+                "pieza": "viento",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "entrar_izq"
+              }
+            ],
+            "label": "Planet-wide dust storm"
+          }
+        }
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "On Mars, you'd last about the same as on the Moon, a couple of minutes at most. Less deadly than Venus, but only just.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 59,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "desmayarse",
+            "lugar": "desierto",
+            "hora": "dia",
+            "label": "A couple of minutes"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "black"
+    },
+    {
+      "text": "So Mars, Earth's twin? Not really. But there's one world where the air is thick, the pressure is friendly, and you'd survive. Any guesses?",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 60,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "espacio",
+            "label": "Which world?"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "capitulo": "Chapter 6 · Number One",
+      "text": "Number one is not Mars, not the Moon, and not even a planet. It's Titan, Saturn's biggest moon, more than seven hundred million miles away.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 61,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Titan",
+            "detail": "Saturn's biggest moon",
+            "style": "globo"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Titan is bigger than the planet Mercury. And it's the only moon in the Solar System with a thick atmosphere, mostly nitrogen, just like ours.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 62,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "persona": "no",
+            "label": "Bigger than Mercury",
+            "piezas": [
+              {
+                "pieza": "planeta",
+                "pos": "arriba_derecha",
+                "tamano": "grande",
+                "anim": "girar"
+              },
+              {
+                "pieza": "luna",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "planeta",
+                "pos": "izquierda",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "The air pressure on its surface is about one and a half times Earth's. That's like diving about fifteen feet down in a swimming pool.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 63,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "1.5x",
+            "label": "Earth's air pressure",
+            "color": "#ffb84d",
+            "lugar": "playa"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "That means no boiling saliva, no swelling body, and no need for a pressure suit. The thick air pushes back and keeps you together.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 64,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "entero",
+            "mood": "happy",
+            "piezas": [
+              {
+                "pieza": "luna",
+                "pos": "arriba_derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "label": "No pressure suit needed"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "But don't take off your coat. It's about minus two hundred ninety degrees Fahrenheit, and the air has no oxygen, so you'd need a mask.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 65,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "congelarse",
+            "lugar": "fondo",
+            "label": "-290°F"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Overhead, an orange sky. Around you, rivers and lakes of liquid methane and ethane. Real rain, but made of fuel instead of water.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 66,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "atardecer",
+            "persona": "medio",
+            "mood": "happy",
+            "objeto": "none",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "gota",
+                "pos": "arriba",
+                "tamano": "pequeno",
+                "anim": "caer"
+              }
+            ],
+            "label": "Methane lakes"
+          }
+        }
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "So all you really need is an insanely warm coat and an oxygen mask. Nothing else on Titan would hurt you right away.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 67,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "entero",
+            "mood": "neutral",
+            "piezas": [
+              {
+                "pieza": "corona",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "astronauta",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              }
+            ],
+            "label": "Coat + mask"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "And now the best part. Titan's gravity is only about one seventh of Earth's. You'd feel feather-light, and every step would turn into a leap.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 68,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "1/7 gravity",
+            "label": "Feather-light",
+            "color": "#9be564",
+            "lugar": "fondo"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Thick air plus low gravity makes something amazing possible. Scientists say a human with wings strapped to their arms could actually fly by flapping.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 69,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "atardecer",
+            "persona": "entero",
+            "mood": "happy",
+            "piezas": [
+              {
+                "pieza": "pluma",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "gota",
+                "pos": "fondo",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Human-powered flight"
+          }
+        }
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "So yes, the most survivable place in the entire Solar System is also the only place where you could fly like a bird.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 70,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "atardecer",
+            "persona": "entero",
+            "mood": "happy",
+            "efecto": "brillo",
+            "piezas": [
+              {
+                "pieza": "pluma",
+                "pos": "arriba",
+                "tamano": "gigante",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "planeta",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "girar"
+              },
+              {
+                "pieza": "gota",
+                "pos": "fondo",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ]
+          }
+        }
+      },
+      "camera": "pull_out",
+      "transition": "flash"
+    },
+    {
+      "text": "That's the ranking: from vaporized in a blink to flapping your arms above a methane lake. Not a bad trip, right?",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 71,
+        "respaldo": {
+          "scene": "person",
+          "params": {
+            "arms": "up",
+            "lugar": "campo",
+            "hora": "atardecer",
+            "mood": "happy",
+            "label": "Titan: #1"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Now tell me: would you go to Titan just to fly, or is Mars still your pick? Let me know in the comments.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 72,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "chat",
+            "chat": {
+              "contact": "Comments",
+              "status": "online",
+              "typing": true,
+              "messages": [
+                {
+                  "from": "them",
+                  "text": "I'd go to Titan just to fly!"
+                },
+                {
+                  "from": "me",
+                  "text": "Would you go to Titan?"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "If you liked this, watch our next video, where we find out what would happen if you fell into a black hole. See you there.",
+      "scene": "medida",
+      "params": {
+        "archivo": "largo-11-01",
+        "plano": 73,
+        "respaldo": {
+          "scene": "space",
+          "params": {
+            "object": "blackhole",
+            "color": "#331155"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "fade"
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "naranja"
+    },
+    "leblanc": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "blanco"
+    },
+    "tecnico": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": true,
+      "ropa": "gris"
+    }
+  },
+  "cover_text": "ONE LETS YOU FLY",
+  "comment_q": "Would you go to Titan just to fly?",
+  "lista": "What If...?",
+  "formato": "horizontal",
+  "question": "How long would you survive on every planet of the Solar System without a spacesuit?",
+  "piezas_pendientes": [
+    "jupiter",
+    "titan",
+    "venus",
+    "mercurio",
+    "camara_vacio",
+    "manguera",
+    "lago_metano",
+    "casco",
+    "alas"
+  ],
+  "id": "largo-11-01-r1",
+  "idea": {
+    "tipo": "que_pasaria_si",
+    "premisa": "Ranking de 8 capítulos (8-10 min): te teletransportan sin traje a cada mundo del Sistema Solar y medimos cuánto aguantas, del peor al mejor. Capítulo 1, el Sol: la superficie está a unos 10,000°F y te vaporizas al instante. Capítulo 2, Júpiter: no tiene suelo, así que caes entre nubes, con vientos de más de 400 mph y una gravedad 2.5 veces la de la Tierra, hasta que la presión y el calor te aplastan. Capítulo 3, Venus: unos 900°F y una presión 90 veces la terrestre, como estar a 3,000 pies bajo el mar, así que te aplasta y te cuece a la vez. Capítulo 4, Mercurio: 800°F de día y -290°F de noche, en el vacío. Capítulo 5, la Luna, con un mito contra realidad: no explotas. Exhalas de golpe para no reventar los pulmones, la saliva hierve, el cuerpo se hincha pero la piel aguanta, tienes unos 15 segundos de consciencia y la muerte llega en uno o dos minutos. Capítulo 6, la historia real: en diciembre de 1966, en Houston, el técnico de la NASA Jim LeBlanc prueba un traje dentro de una cámara de vacío y se le suelta una manguera. Pierde el conocimiento en unos 14 segundos, recuerda la saliva burbujeando en la lengua, sus compañeros devuelven el aire a la cámara en menos de medio minuto y sobrevive sin secuelas. Capítulo 7, Marte: el planeta 'parecido a la Tierra' es casi igual de mortal, con menos del 1% de nuestra presión y una media de -80°F. Capítulo 8, el número 1 sorpresa.",
+    "gancho": "How long would you survive on every planet without a spacesuit? On one of them… you'd last less than a second.",
+    "giro_final": "Number one isn't Mars. It's Titan, Saturn's biggest moon, 800 million miles away. The air pressure is about 1.5 times Earth's, so it won't boil your blood or swell your body. You wouldn't even need a pressure suit, just an oxygen mask and an insanely warm coat for the -290°F cold. And because the air is so thick and gravity is about 1/7 of Earth's, scientists say you could strap wings to your arms… and fly. The most survivable place in the Solar System is also the only one where you could fly like a bird.",
+    "estilo_visual": "Dominan 'space' con un astro distinto en cada capítulo (Sol, Venus, Júpiter, Luna, Marte, Titán) y 'composicion' con la persona plantada en cada superficie: lava y nubes amarillas en Venus, tormenta gigante en Júpiter, cráteres en la Luna, lagos de metano en Titán. Cada muerte se cuenta con 'accion': quemarse en Mercurio y Venus, congelarse en el lado nocturno, soltar_aire, saliva_hierve, hincharse y desmayarse en la Luna, y flotar_espacio en las transiciones entre mundos. 'big_text' entra solo para las cifras clave (10,000°F, 90x, 15 SECONDS, -290°F, 1/7). En el capítulo de LeBlanc el tono pasa a documental con 'year_jump' (1966), 'newspaper' (recorte antiguo), 'composicion' de la cámara de vacío, 'quote' con su frase documentada sobre la saliva burbujeando y 'group' con los técnicos rescatándolo. El final es una 'composicion' luminosa en Titán, con la persona con alas en los brazos despegando sobre un lago de metano, y la persona en 'person' con los brazos en alto.",
+    "por_que_funcionara": "Combina los tres formatos que el dueño ha aprobado: el 'qué pasaría si' inmersivo, el mito contra realidad ('¿explotas en el espacio?') y una historia real con protagonista con nombre, como Yamaguchi. Además no repite ninguno de los temas ya hechos. El formato ranking hace que cada capítulo sea un mini-gancho ('¿cuál será el número 1?') y sostiene la retención durante 8-10 minutos. La historia de LeBlanc reengancha en la mitad, justo cuando suele caer la audiencia. El giro de Titán es sorprendente, verificable y muy comentable ('I'd go to Titan just to fly'). Todos los datos están bien documentados por la NASA.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "sol",
+      "venus",
+      "jupiter",
+      "mercurio",
+      "luna",
+      "marte",
+      "titan",
+      "saturno",
+      "camara_vacio",
+      "traje_espacial",
+      "casco",
+      "manguera",
+      "lago_metano",
+      "alas"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "How long would you survive on every planet?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Pregunta directa en segunda persona, tema claro al instante y 8 palabras. Pasa la prueba del desconocido."
+    },
+    {
+      "texto": "Drop naked onto Jupiter. How long do you last?",
+      "tipo": "b",
+      "puntuacion": 7,
+      "motivo": "Reto concreto, pero solo habla de un planeta y no cubre el ranking completo."
+    },
+    {
+      "texto": "One planet kills you in under a second. Which?",
+      "tipo": "c",
+      "puntuacion": 8,
+      "motivo": "Cifra imposible y pregunta, aunque el tema (planetas sin traje) queda menos claro."
+    },
+    {
+      "texto": "You're about to visit every planet. No spacesuit.",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Segunda persona inmersiva con el tema dicho, pero sin pregunta que pida respuesta."
+    },
+    {
+      "texto": "Everyone says Mars is deadliest. They're wrong.",
+      "tipo": "e",
+      "puntuacion": 6,
+      "motivo": "Contradicción atractiva, pero el tema del ranking sin traje no queda claro solo con la frase."
+    }
+  ],
+  "portada_ia": true
+}
