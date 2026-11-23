@@ -54,9 +54,13 @@ giro final) cuando no exista ya una acción que lo muestre, y las añade al cat�
 
 - Se lanzan con `largo.yml` (pestaña «Crear vídeos largos» del panel). Con `a_medida` (por defecto) solo escribe el
   guion y lo deja en `data/guiones/largo-N-01.json` (planos con `capitulo` en el primero de cada capítulo).
-- Son 100-160 planos: NO hace falta dibujarlos todos. Dibuja a medida los **momentos clave** (15-30 planos): el gancho
-  (plano 1), el primer plano de cada capítulo, cada mini-gancho, el giro y el final. El resto se queda con su escena
-  de la biblioteca (ya animada). `pipeline/aplicar_medida.py` solo cambia los planos que tengan función en el archivo.
+- **Regla del dueño (23-11-2026): en los vídeos largos se dibujan TODOS los planos (70-100), cada uno con una escena
+  única.** Nunca dos planos con la misma escena ni el mismo dibujo con otro texto: cada plano muestra literalmente su
+  frase, con su propio fondo, personajes, objetos y movimiento. Se pueden compartir funciones de ayuda (lugares,
+  personajes), pero la composición y la animación de cada plano son distintas.
+- La tanda semanal (lunes 04:01) escribe `generacion.largos_por_semana` guiones largos con `a_medida`. La sesión del
+  lunes (tarea programada) los dibuja enteros y lanza el montaje de cada uno. Respaldo: el martes 08:41 UTC se monta
+  lo que siga sin montar.
 - Las escenas se dibujan en vertical (1080×1920) como siempre; el motor las coloca en horizontal: se ve la franja
   central (y ≈ 430-1610), así que pon lo importante ahí y no en los bordes de arriba y abajo.
 - Montaje (voz repartida en 8 máquinas + vídeo + Revisar, sin gastar API):
