@@ -86,8 +86,8 @@ publicacion:
       1: ["11:00"]
       2: ["10:30", "17:00"]
       3: ["10:00", "14:00", "18:30"]
-  max_por_dia: 3                 # cada día se llena con 2 antes de pasar al siguiente; el 3.º solo cuando toda la semana tiene 2
-  dias_horizonte: 7              # se intenta repartir lo pendiente en los próximos 7 días
+  max_por_dia: 2                 # como máximo 2 shorts al día (+ 1 vídeo largo al día aparte)
+  margen_minutos: 45             # se puede programar para HOY si la hora queda al menos 45 min por delante
   categoria_id: "24"             # 24 = Entretenimiento
   # true = el sistema sube y programa los vídeos. false = no los sube y te deja en el issue todo listo para subirlos a mano
   # (úsalo solo si YouTube bloqueara como privados los vídeos subidos por la API).

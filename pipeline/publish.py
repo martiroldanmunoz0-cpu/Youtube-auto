@@ -5,7 +5,7 @@ Se ejecuta:
   - cada día, para terminar subidas pendientes si ayer se agotó la cuota de la API
 
 Reparto: 1 vídeo al día a la primera hora configurada. Si apruebas más de 7, los días
-necesarios llevan 2 (máximo `max_por_dia`). Empieza al día siguiente del último vídeo ya programado.
+necesarios llevan 2 (máximo `max_por_dia`). Empieza hoy mismo si aún queda una hora buena (hora de Nueva York).
 """
 from __future__ import annotations
 
@@ -85,72 +85,56 @@ def es_largo(v: dict) -> bool:
 
 
 def plan_slots(n: int, cfg: dict, queue: list[dict], largo: bool = False) -> list[dt.datetime]:
-    """Vídeos largos (largo=True): como máximo UNO al día (petición del dueño), en días sin otro largo.
-Reparte n vídeos nuevos entre los días, respetando los que ya están programados.
+    """Reparte n vídeos nuevos entre los días (hora de Nueva York), respetando los ya programados.
 
-    - Llena cada día hasta 2 vídeos antes de pasar al siguiente. Cuando los días del horizonte (7) tienen 2,
-      añade un 3.º a cada uno. Si aún sobran, sigue por los días siguientes con 2 al día.
-    - Las horas dependen del día (laborable / fin de semana) y de cuántos vídeos salen ese día.
-    - Nunca más de `max_por_dia` (3) en un día, y separados al menos 2 horas entre sí.
+    Reglas del dueño:
+    - Como máximo 2 shorts al día y 1 vídeo largo al día (el largo no cuenta para los 2 shorts).
+    - Se empieza por HOY si aún queda alguna hora buena por delante (con un margen para subirlo).
+    - Las horas dependen del día (laborable / fin de semana) y todos los vídeos de un día van separados 2 h.
     """
     p = cfg["publicacion"]
     tz = ZoneInfo(p["zona_horaria"])
-    max_day = min(3, int(p.get("max_por_dia", 3)))
-    horizon = int(p.get("dias_horizonte", 7))
-    first_day = dt.datetime.now(tz).date() + dt.timedelta(days=1)
+    max_shorts = min(2, int(p.get("max_por_dia", 2)))
+    margen = dt.timedelta(minutes=int(p.get("margen_minutos", 45)))
+    ahora = dt.datetime.now(tz)
+    first_day = ahora.date()
 
     taken: dict[dt.date, set[tuple[int, int]]] = {}
+    shorts: dict[dt.date, int] = {}
+    dias_largo: set[dt.date] = set()
     for q in queue:
         if q.get("estado") in ("programado", "pendiente", "manual") and q.get("publish_at"):
             d = _parse(q["publish_at"]).astimezone(tz)
             if d.date() >= first_day:
                 taken.setdefault(d.date(), set()).add((d.hour, d.minute))
+                if es_largo(q):
+                    dias_largo.add(d.date())
+                else:
+                    shorts[d.date()] = shorts.get(d.date(), 0) + 1
 
-    if largo:
-        dias_largo = {_parse(q["publish_at"]).astimezone(tz).date() for q in queue
-                      if es_largo(q) and q.get("estado") in ("programado", "pendiente", "manual") and q.get("publish_at")}
-        out: list[dt.datetime] = []
-        day = first_day
-        while len(out) < n:
+    def libre(day: dt.date, h: tuple[int, int]) -> bool:
+        used = taken.setdefault(day, set())
+        return h not in used and _far(h, used) and dt.datetime.combine(day, dt.time(*h), tz) > ahora + margen
+
+    out: list[dt.datetime] = []
+    day = first_day
+    while len(out) < n:
+        if largo:
             if day not in dias_largo:
-                used = taken.setdefault(day, set())
-                for h in _hours_for(p, day, 1) + _all_hours(p, day, max_day):
-                    if h not in used and _far(h, used):
-                        used.add(h); dias_largo.add(day)
+                for h in _hours_for(p, day, 1) + _all_hours(p, day, 3):
+                    if libre(day, h):
+                        taken[day].add(h); dias_largo.add(day)
                         out.append(dt.datetime.combine(day, dt.time(*h), tz))
                         break
-            day += dt.timedelta(days=1)
-        return out
-
-    slots: list[dt.datetime] = []
-
-    def fill(day: dt.date, cap: int) -> None:
-        used = taken.setdefault(day, set())
-        # Primero las horas ideales para "cap" vídeos ese día; si chocan con uno ya programado, otras horas buenas
-        for h in _hours_for(p, day, cap) + _all_hours(p, day, max_day):
-            if len(used) >= cap or len(slots) == n:
-                return
-            if h not in used and _far(h, used):
-                used.add(h)
-                slots.append(dt.datetime.combine(day, dt.time(*h), tz))
-
-    # Orden de llenado: cada día hasta 2 vídeos antes de pasar al siguiente; cuando TODOS los días de la
-    # semana tienen 2, se añade un 3.º a cada día (empezando por el más cercano). Si aún sobran, días siguientes a 2.
-    days = [first_day + dt.timedelta(days=i) for i in range(horizon)]
-    for day in days:
-        if len(slots) == n:
-            break
-        fill(day, min(2, max_day))
-    if max_day >= 3:
-        for day in days:
-            if len(slots) == n:
-                break
-            fill(day, 3)
-    day = first_day + dt.timedelta(days=horizon)
-    while len(slots) < n:
-        fill(day, min(2, max_day))
+        else:
+            for h in _hours_for(p, day, max_shorts) + _all_hours(p, day, 3):
+                if shorts.get(day, 0) >= max_shorts or len(out) == n:
+                    break
+                if libre(day, h):
+                    taken[day].add(h); shorts[day] = shorts.get(day, 0) + 1
+                    out.append(dt.datetime.combine(day, dt.time(*h), tz))
         day += dt.timedelta(days=1)
-    return sorted(slots)
+    return sorted(out)
 
 
 def upload(yt, item: dict, video_path: Path, cfg: dict) -> str:
