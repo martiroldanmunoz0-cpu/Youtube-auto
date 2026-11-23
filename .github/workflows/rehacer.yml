@@ -15,6 +15,11 @@ on:
         description: "Tanda del vídeo (p. ej. pedido-10)"
         required: true
         type: string
+      prueba:
+        description: "Solo prueba: montar y dejar el vídeo para descargar (no se publica ni se programa)"
+        required: false
+        default: false
+        type: boolean
 
 env:
   TQDM_DISABLE: "1"
@@ -173,7 +178,15 @@ jobs:
         run: |
           git config user.name "shorts-bot"
           git config user.email "shorts-bot@users.noreply.github.com"
-          python pipeline/build.py --parte ${{ matrix.parte }} --partes 1 --revisar
+          if [ "${{ inputs.prueba }}" = "true" ]; then python pipeline/build.py --parte ${{ matrix.parte }} --partes 1; else python pipeline/build.py --parte ${{ matrix.parte }} --partes 1 --revisar; fi
+
+      - name: (Prueba) Dejar el vídeo para descargar
+        if: inputs.prueba
+        uses: actions/upload-artifact@v4
+        with:
+          name: prueba-video
+          path: out/**/*.mp4
+          retention-days: 3
 
   aviso:
     needs: [turno, guiones, montar]
