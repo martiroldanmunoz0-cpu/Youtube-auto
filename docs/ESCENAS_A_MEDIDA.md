@@ -114,3 +114,12 @@ varios personajes que interactúan** (no solo 1-2): charlan, se dan la mano, se 
 - Los personajes antiguos (`drawFullBody`, `persona.mjs`) NO se borran: siguen sirviendo para los vídeos ya hechos y
   para quien se quiera.
 - Muestra de cómo se ven: la genera `node` con `K.reparto` + `K.multitud` (ver commit).
+
+### Estilo «limpio» y escenarios llenos de gente (24-11-2026)
+- `K.tipo(seed, { estilo: 'limpio' })`: cabeza grande casi tan ancha como el cuerpo, cuerpo cápsula/judía, brazos y piernas finos sin manos, cara mínima. `estilo: 'gordito'` es el de antes. `K.reparto` mezcla los dos.
+- `K.publico(ctx, a, { x0, x1, y0, y1, filas, tam, reaccion: 'quieto'|'vitorea'|'mezcla', seed })`: gradas llenas de cabezas y hombros (auditorio, subasta, estadio, junta de accionistas). Poner a los protagonistas delante.
+- `K.cartel(ctx, a, 'NEVER', x, y, { tipo: 'madera'|'verde'|'rojo'|'papel'|'amarillo', colgado, rot, p0 })`, `K.etiqueta(ctx, a, '$33', x, y, { cx, cy })` (etiqueta de precio con cordel atado a una mano o un objeto).
+- `K.paneles(ctx, a, [fn1, fn2, fn3])`: pantalla partida en viñetas que entran una tras otra (comparar, «mientras tanto…»).
+- `K.caraObjeto(ctx, a, x, y, r, { mood })`: los objetos también hablan y reaccionan (un chip, una moneda, un edificio).
+- `K.mesa(ctx, x, gy, w)`: mesa de frente; dibujar después de los personajes `pose: 'sentado'`.
+- Regla: los fondos tienen sitio reconocible (casa con valla, ciudad al atardecer, sala de servidores, restaurante) y casi siempre hay carteles, precios o cifras escritos dentro de la escena, en inglés.

@@ -34,7 +34,11 @@ export function tipo(seed, o = {}) {
     corbata: r() < 0.2 ? pick(ROPA) : null, cejas: r() < 0.5, pecas: r() < 0.12, mejillas: r() < 0.5,
   };
   if (p.sombrero === 'casco' || p.pelo === 'casco') p.sombrero = p.sombrero === 'casco' ? 'obra' : p.sombrero;
-  return { ...p, ...o, id: o.id ?? String(seed) };
+  // estilo 'limpio': cabeza grande casi tan ancha como el cuerpo, cuerpo cápsula/judía, brazos y piernas finos sin manos,
+  // cara mínima (puntos y una raya). 'gordito': el de antes. Por defecto mitad y mitad.
+  const estilo = o.estilo || (r() < 0.55 ? 'limpio' : 'gordito');
+  if (estilo === 'limpio') Object.assign(p, { forma: pick(['capsula', 'capsula', 'judia', 'huevo']), ancho: 0.8 + r() * 0.35, alto: 0.9 + r() * 0.3, cabeza: 1.15 + r() * 0.2, nariz: 'nada', pecas: false, mejillas: r() < 0.25 });
+  return { ...p, estilo, ...o, id: o.id ?? String(seed) };
 }
 // n personajes distintos para un vídeo (variados a propósito: al menos un calvo, uno con sombrero, uno con pelo)
 export function reparto(seed, n = 4, fijos = []) {
@@ -97,6 +101,8 @@ function cuerpo(ctx, p, bw, bh, by) {
   const f = p.forma;
   if (f === 'pera') { ctx.moveTo(0, by - bh / 2); ctx.bezierCurveTo(bw * 0.55, by - bh / 2, bw * 0.62, by + bh * 0.5, 0, by + bh / 2); ctx.bezierCurveTo(-bw * 0.62, by + bh * 0.5, -bw * 0.55, by - bh / 2, 0, by - bh / 2); }
   else if (f === 'barril') { ctx.roundRect(-bw / 2, by - bh / 2, bw, bh, bw * 0.38); }
+  else if (f === 'capsula') { ctx.roundRect(-bw / 2, by - bh / 2, bw, bh, [bw * 0.5, bw * 0.5, bw * 0.42, bw * 0.42]); }
+  else if (f === 'judia') { ctx.moveTo(0, by - bh / 2); ctx.bezierCurveTo(bw * 0.5, by - bh / 2, bw * 0.62, by + bh * 0.1, bw * 0.48, by + bh * 0.4); ctx.quadraticCurveTo(bw * 0.3, by + bh / 2, 0, by + bh / 2); ctx.quadraticCurveTo(-bw * 0.42, by + bh / 2, -bw * 0.5, by + bh * 0.2); ctx.bezierCurveTo(-bw * 0.58, by - bh * 0.2, -bw * 0.45, by - bh / 2, 0, by - bh / 2); }
   else if (f === 'bola') { ctx.ellipse(0, by, bw * 0.55, bh * 0.5, 0, 0, 7); }
   else { ctx.moveTo(0, by - bh / 2); ctx.bezierCurveTo(bw * 0.62, by - bh / 2, bw * 0.56, by + bh / 2, 0, by + bh / 2); ctx.bezierCurveTo(-bw * 0.56, by + bh / 2, -bw * 0.62, by - bh / 2, 0, by - bh / 2); }
   ctx.closePath();
@@ -112,6 +118,7 @@ function cara(ctx, p, hx, hy, hr, o) {
     if (parp || mood === 'dormido') linea(ctx, [[ex - hr * 0.1, ey], [ex + hr * 0.1, ey]], hr * 0.06);
     else if (mood === 'sorpresa' || mood === 'miedo') { elipse(ctx, ex, ey, hr * 0.15, hr * 0.17, '#fff', hr * 0.045); elipse(ctx, ex + m * hr * 0.04, ey, hr * 0.06, hr * 0.06, INK); }
     else if (mood === 'feliz' || mood === 'risa') { ctx.strokeStyle = INK; ctx.lineWidth = hr * 0.07; ctx.lineCap = 'round'; ctx.beginPath(); ctx.arc(ex, ey + hr * 0.04, hr * 0.1, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke(); }
+    else if (p.estilo === 'limpio') elipse(ctx, ex, ey, hr * 0.055, hr * 0.065, INK);
     else elipse(ctx, ex, ey, hr * 0.075, hr * 0.1, INK);
   }
   if (p.gafas) { ctx.lineWidth = hr * 0.05; ctx.strokeStyle = INK; for (const ex of ojos) { ctx.beginPath(); ctx.arc(ex, ey, hr * 0.2, 0, 7); ctx.stroke(); } linea(ctx, [[ojos[0] + hr * 0.2, ey], [ojos[1] - hr * 0.2, ey]], hr * 0.05); }
@@ -193,7 +200,8 @@ export function dibuja(ctx, p, x, gy, esc = 1, o = {}) {
   const t = o.t || 0, mira = o.mira ?? 0;
   let [h1, c1, h2, c2, l1, k1, l2, k2, sy] = Array.isArray(o.pose) ? o.pose : pose(o.pose || 'quieto', t + (p.id.length % 7) * 0.31, mira);
   if (mira < 0) [h1, c1, h2, c2] = [h2, c2, h1, c1]; // mirando a la izquierda: el brazo que actúa es el izquierdo
-  const legL = 105 * (o.pose === 'sentado' ? 0.85 : 1), bw = 150 * p.ancho, bh = 175 * p.alto, hr = 60 * p.cabeza, lw = 9;
+  const L = p.estilo === 'limpio';
+  const legL = (L ? 118 : 105) * (o.pose === 'sentado' ? 0.85 : 1), bw = (L ? 118 : 150) * p.ancho, bh = (L ? 165 : 175) * p.alto, hr = (L ? 66 : 60) * p.cabeza, lw = L ? 7 : 9;
   const resp = 1 + Math.sin(t * 2.4 + p.id.length) * 0.015;
   ctx.save(); ctx.translate(x, gy); ctx.scale(esc, esc);
   if (o.sombra !== false) { ctx.globalAlpha = 0.18 * (o.alpha ?? 1); elipse(ctx, 0, 0, bw * 0.55, 12, '#000'); }
@@ -206,11 +214,11 @@ export function dibuja(ctx, p, x, gy, esc = 1, o = {}) {
     const pts = o.pose === 'sentado' ? [[hip[0], hip[1]], [hip[0] + mira * 0 + lado * 10 + 60 * (mira || 1), hip[1]], [hip[0] + 60 * (mira || 1) + lado * 10, 0]] : extremidad(hip[0], hip[1], lado, a, b, legL * 0.55, legL * 0.5);
     linea(ctx, pts, lw, INK);
     const [fx, fy] = pts[2], d = mira || lado;
-    elipse(ctx, fx + d * 14, fy - 4, 24, 12, '#2a2233', 0);
+    if (L) elipse(ctx, fx + d * 8, fy - 3, 13, 6, INK); else elipse(ctx, fx + d * 14, fy - 4, 24, 12, '#2a2233', 0);
   }
   // brazo de atrás (si mira de lado, el del lado contrario va detrás del cuerpo)
   const hy0 = topB + bh * 0.3, sx = bw * 0.44;
-  const brazo = (lado, a, b) => { const pts = extremidad(lado * sx, hy0, lado, a, b, 72, 68); linea(ctx, pts, lw, INK); const [mx, my] = pts[2]; elipse(ctx, mx, my, 15, 15, p.piel, 5); return [mx, my]; };
+  const brazo = (lado, a, b) => { const pts = extremidad(lado * sx, hy0, lado, a, b, 72, 68); linea(ctx, pts, lw, INK); const [mx, my] = pts[2]; if (L) elipse(ctx, mx, my, 6, 6, INK); else elipse(ctx, mx, my, 15, 15, p.piel, 5); return [mx, my]; };
   let manoD = null, manoI = null;
   if (mira === 1) manoI = brazo(-1, h1, c1); if (mira === -1) manoD = brazo(1, h2, c2);
   // cuerpo
@@ -227,10 +235,10 @@ export function dibuja(ctx, p, x, gy, esc = 1, o = {}) {
   if (mira !== 1) manoI = brazo(-1, h1, c1); if (mira !== -1) manoD = brazo(1, h2, c2);
   if (o.objeto && manoD) o.objeto(ctx, manoD[0], manoD[1], 1, manoI);
   // cabeza
-  const hx = mira * 6, hyC = topB - hr * 0.62;
+  const hx = mira * 6, hyC = topB - hr * (L ? 0.78 : 0.62);
   peloAtras(ctx, p, hx, hyC, hr);
   elipse(ctx, hx, hyC, hr, hr * 0.98, p.piel, lw);
-  if (p.sombrero !== 'chistera' && p.sombrero !== 'vaquero' && p.sombrero !== 'bombin') elipse(ctx, hx - mira * hr * 0.92, hyC + hr * 0.05, hr * 0.14, hr * 0.2, p.piel, 5); // oreja
+  if (!L && p.sombrero !== 'chistera' && p.sombrero !== 'vaquero' && p.sombrero !== 'bombin') elipse(ctx, hx - mira * hr * 0.92, hyC + hr * 0.05, hr * 0.14, hr * 0.2, p.piel, 5); // oreja
   cara(ctx, p, hx, hyC, hr, { ...o, mira, t });
   if (!p.sombrero || ['coleta', 'melena'].includes(p.pelo)) peloDelante(ctx, p, hx, hyC, hr, t);
   else if (p.barba) peloDelante(ctx, { ...p, pelo: 'calvo_' }, hx, hyC, hr, t);
@@ -291,4 +299,81 @@ export function mareo(ctx, a, cabeza, hr) { for (let i = 0; i < 3; i++) { const 
 // Símbolo sobre la cabeza: '!' '?' '♥' '💤' (dibujado) que rebota
 export function simbolo(ctx, a, cabeza, hr, s = '!', p0 = 0) { const k = clamp((a.t / (a.d || 3) - p0) / 0.08); if (k <= 0) return; const y = cabeza[1] - hr * 1.9 - Math.abs(Math.sin(a.t * 6)) * hr * 0.2; ctx.save(); ctx.translate(cabeza[0] + hr * 0.6, y); ctx.scale(k, k); ctx.font = `${Math.round(hr * 1.1)}px Anton`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineWidth = hr * 0.18; ctx.strokeStyle = INK; ctx.strokeText(s, 0, 0); ctx.fillStyle = s === '♥' ? '#ff5d73' : '#ffd93d'; ctx.fillText(s, 0, 0); ctx.restore(); }
 
-export const GENTE = { tipo, reparto, monigote, dibuja, anda, globo, multitud, apreton, mareo, simbolo };
+
+// ---------- Escenarios con mucha gente y atrezo de "explicador" (ideas de estilo, diseño propio) ----------
+
+// Público en gradas: filas apretadas de cabezas + hombros que llenan una zona (auditorio, estadio, subasta, junta).
+// Las filas de atrás más pequeñas. reaccion: 'quieto' | 'vitorea' (brazos arriba y botan) | 'mezcla'. mira: 0 o 'centro'
+export function publico(ctx, a, { x0 = 0, x1 = 1920, y0 = 500, y1 = 1080, filas = 5, seed = 'gradas', reaccion = 'mezcla', tam = 70, mood = null } = {}) {
+  const r = rng(`pub-${seed}`); const moods = ['neutral', 'feliz', 'neutral', 'sorpresa'];
+  for (let f = 0; f < filas; f++) {
+    const k = f / Math.max(1, filas - 1), hr = tam * (0.6 + 0.4 * k), y = y0 + (y1 - y0) * k, paso = hr * 2.15;
+    const n = Math.ceil((x1 - x0) / paso) + 1;
+    for (let i = 0; i < n; i++) {
+      const p = tipo(`${seed}-${f}-${i}`, { estilo: r() < 0.7 ? 'limpio' : 'gordito', sombrero: r() < 0.12 ? 'gorra' : null });
+      const viva = reaccion === 'vitorea' || (reaccion === 'mezcla' && r() < 0.3);
+      const bote = viva ? Math.abs(Math.sin(a.t * 7 + i * 1.3 + f)) * hr * 0.25 : Math.sin(a.t * 2 + i) * hr * 0.03;
+      const x = x0 + (i + (f % 2) * 0.5 + (r() - 0.5) * 0.3) * paso, hy = y - hr * 1.1 - bote;
+      ctx.save();
+      if (viva) for (const l of [-1, 1]) linea(ctx, [[x + l * hr * 0.7, y - hr * 0.2 - bote], [x + l * hr * 1.05, hy - hr * 0.3], [x + l * hr * 0.95, hy - hr * 1.1 - Math.sin(a.t * 9 + i) * hr * 0.15]], hr * 0.1);
+      ctx.beginPath(); ctx.roundRect(x - hr * 0.95, y - hr * 0.35 - bote, hr * 1.9, hr * 2, hr * 0.8); ctx.fillStyle = p.ropa; ctx.fill(); ctx.lineWidth = hr * 0.1; ctx.strokeStyle = INK; ctx.stroke();
+      peloAtras(ctx, p, x, hy, hr); elipse(ctx, x, hy, hr, hr * 0.98, p.piel, hr * 0.1);
+      cara(ctx, p, x, hy, hr, { t: a.t + i, mood: mood || (viva ? 'risa' : moods[r.int(0, 3)]), mira: 0 });
+      if (!p.sombrero) peloDelante(ctx, p, x, hy, hr, a.t); else sombrero(ctx, p, x, hy, hr);
+      ctx.restore();
+    }
+  }
+}
+
+// Cartel / letrero con texto (madera colgada, señal de tráfico verde, sello rojo, papel). Aparece en p0 con un pequeño rebote.
+export function cartel(ctx, a, txt, x, y, { tipo: tp = 'madera', size = 60, rot = 0, p0 = 0, colgado = false } = {}) {
+  const k = clamp((a.t / (a.d || 3) - p0) / 0.08); if (k <= 0) return;
+  const C = { madera: ['#c98b4a', '#3b2416', '#7a4b23'], verde: ['#1f7a3a', '#ffffff', '#ffffff'], rojo: ['#e63946', '#ffffff', '#7d0f17'], papel: ['#fffdf5', INK, '#c9c2b0'], amarillo: ['#ffd93d', INK, INK] }[tp] || ['#fff', INK, INK];
+  ctx.save(); ctx.font = `800 ${size}px Poppins`; const w = ctx.measureText(txt).width + size * 1.1, h = size * 1.6;
+  const s = k < 1 ? 0.7 + 0.3 * k + Math.sin(k * Math.PI) * 0.15 : 1; ctx.translate(x, y); ctx.rotate(rot + (colgado ? Math.sin(a.t * 2) * 0.03 : 0)); ctx.scale(s, s);
+  if (colgado) linea(ctx, [[-w * 0.3, -h / 2], [0, -h * 1.1], [w * 0.3, -h / 2]], 5);
+  ctx.beginPath(); ctx.roundRect(-w / 2, -h / 2, w, h, tp === 'verde' ? 16 : 10); ctx.fillStyle = C[0]; ctx.fill(); ctx.lineWidth = 7; ctx.strokeStyle = INK; ctx.stroke();
+  if (tp === 'verde' || tp === 'rojo') { ctx.beginPath(); ctx.roundRect(-w / 2 + 10, -h / 2 + 10, w - 20, h - 20, 8); ctx.lineWidth = 4; ctx.strokeStyle = C[1]; ctx.stroke(); }
+  if (tp === 'madera') { ctx.strokeStyle = C[2]; ctx.lineWidth = 3; for (const yy of [-h * 0.22, h * 0.2]) { ctx.beginPath(); ctx.moveTo(-w / 2 + 14, yy); ctx.lineTo(w / 2 - 14, yy + 4); ctx.stroke(); } }
+  ctx.fillStyle = C[1]; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 0, size * 0.06);
+  ctx.restore();
+}
+
+// Etiqueta de precio con agujero y cordel (p. ej. '$33', '-$9.1B'). (cx, cy) = punto donde se ata el cordel.
+export function etiqueta(ctx, a, txt, x, y, { size = 44, rot = -0.15, col = '#fff6c2', cx = null, cy = null, p0 = 0 } = {}) {
+  const k = clamp((a.t / (a.d || 3) - p0) / 0.08); if (k <= 0) return;
+  ctx.save(); ctx.font = `800 ${size}px Poppins`; const w = ctx.measureText(txt).width + size * 1.4, h = size * 1.5;
+  if (cx != null) linea(ctx, [[cx, cy], [x - Math.cos(rot) * w * 0.4, y - Math.sin(rot) * w * 0.4]], 3);
+  ctx.translate(x, y); ctx.rotate(rot + Math.sin(a.t * 2.5) * 0.04); ctx.scale(k, k);
+  ctx.beginPath(); ctx.moveTo(-w / 2, 0); ctx.lineTo(-w / 2 + h * 0.4, -h / 2); ctx.lineTo(w / 2, -h / 2); ctx.lineTo(w / 2, h / 2); ctx.lineTo(-w / 2 + h * 0.4, h / 2); ctx.closePath();
+  ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = INK; ctx.stroke(); elipse(ctx, -w / 2 + h * 0.32, 0, 7, 7, '#fff', 4);
+  ctx.fillStyle = INK; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, h * 0.2, size * 0.06);
+  ctx.restore();
+}
+
+// Pantalla partida: fns = [(ctx, {x, w, h, i}) => ...] cada una dibuja SU viñeta en coordenadas locales (0..w, 0..h).
+// Las viñetas entran una tras otra (escalonado 'paso' en fase del plano). Separadores negros como en un cómic.
+export function paneles(ctx, a, fns, { W = 1920, H = 1080, borde = 10, paso = 0.15 } = {}) {
+  const n = fns.length, w = W / n;
+  fns.forEach((fn, i) => {
+    const k = clamp((a.t / (a.d || 3) - i * paso) / 0.08); if (k <= 0) return;
+    ctx.save(); ctx.beginPath(); ctx.rect(i * w, 0, w, H); ctx.clip(); ctx.translate(i * w, (1 - k) * 60); ctx.globalAlpha = k;
+    fn(ctx, { x: i * w, w, h: H, i }); ctx.restore();
+  });
+  ctx.fillStyle = INK; for (let i = 1; i < n; i++) ctx.fillRect(i * w - borde / 2, 0, borde, H);
+}
+
+// Cara en un objeto (un chip, una manzana, un edificio, una moneda...): los objetos también son personajes.
+export function caraObjeto(ctx, a, x, y, r, { mood = 'feliz', mira = 0, habla = false, cejas = true } = {}) {
+  cara(ctx, { id: `obj${Math.round(x)}`, piel: '#ffffff', cejas, nariz: 'nada', estilo: 'gordito' }, x, y, r, { t: a.t, mood, mira, habla });
+}
+
+// Mesa vista de frente (cena, reunión, mostrador). Dibujar DESPUÉS de los personajes sentados detrás.
+export function mesa(ctx, x, gy, w, { alto = 180, mantel = '#f4efe6', col = '#8a5a35' } = {}) {
+  ctx.save(); ctx.lineWidth = 7; ctx.strokeStyle = INK;
+  for (const l of [-1, 1]) { ctx.fillStyle = col; ctx.fillRect(x + l * w * 0.38 - 10, gy - alto, 20, alto); ctx.strokeRect(x + l * w * 0.38 - 10, gy - alto, 20, alto); }
+  ctx.beginPath(); ctx.moveTo(x - w / 2, gy - alto - 20); ctx.lineTo(x + w / 2, gy - alto - 20); ctx.lineTo(x + w / 2 + 20, gy - alto + 70); ctx.quadraticCurveTo(x, gy - alto + 90, x - w / 2 - 20, gy - alto + 70); ctx.closePath();
+  ctx.fillStyle = mantel; ctx.fill(); ctx.stroke(); ctx.restore();
+}
+
+export const GENTE = { tipo, reparto, monigote, dibuja, anda, globo, multitud, apreton, mareo, simbolo, publico, cartel, etiqueta, paneles, caraObjeto, mesa };
