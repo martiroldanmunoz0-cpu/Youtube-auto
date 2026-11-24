@@ -182,6 +182,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
         f"▶️ **Verlo:** {page or dl}",
         f"⬇️ [Descargar]({dl})",
         "",
+        *([f"🖼️ **Miniatura de YouTube:**", "", f"![Miniatura](https://github.com/{repo}/releases/download/{tag}/{st['portada']})", ""] if st.get("portada") and (wd / st["portada"]).exists() else []),
         qa,
         "",
         "**Para publicarlo:** marca la casilla y cierra el issue. **Para descartarlo:** ciérralo sin marcar.",
