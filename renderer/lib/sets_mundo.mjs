@@ -145,4 +145,54 @@ Object.assign(SET, {
     for (let i = 0; i < 10; i++) tree(ctx, hash(i + 40) * WW, 700 + hash(i + 41) * 300, 0.3 + hash(i + 42) * 0.3, t); return { gy: 1000 };
   },
 });
+
+Object.assign(SET, {
+  // Sabana africana (de noche por defecto): hierba alta, acacias, colinas
+  sabana(ctx, t, { hora = 'noche' } = {}) {
+    sky(ctx, hora, 640, t); hills(ctx, 640, hora === 'noche' ? '#1a1d3a' : '#c9a86a', 50, 0.003, 6); grad(ctx, hora === 'noche' ? '#2a2a3a' : '#d9b86a', hora === 'noche' ? '#1e1e2a' : '#b8964a', 640, WH);
+    for (const [x, y, s] of [[300, 700, 1], [1500, 680, 1.3], [1100, 660, 0.6]]) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); R(ctx, -10, -200, 20, 210, 6, hora === 'noche' ? '#1a1410' : '#6b4a2b', 3); E(ctx, 0, -210, 180, 40, hora === 'noche' ? '#141a14' : '#5f7a3a', 0, 4); ctx.restore(); }
+    for (let i = 0; i < 120; i++) { const x = hash(i + 3) * WW, y = 700 + hash(i + 4) * 380, h = 30 + hash(i) * 50; ctx.strokeStyle = hora === 'noche' ? '#3a3a4a' : '#c9a84a'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.sin(t + i) * 6, y - h); ctx.stroke(); }
+    return { gy: 1000 };
+  },
+  // Costa rocosa con charcas de marea; marea 0..1 sube el agua
+  rocas(ctx, t, { hora = 'dia', marea = 0.3 } = {}) {
+    sky(ctx, hora, 520, t); grad(ctx, '#3a8fd6', '#2f6fa6', 500, WH);
+    for (let i = 0; i < 9; i++) { const x = i * 240 - 60 + hash(i) * 60, y = 760 + hash(i + 1) * 160; E(ctx, x, y, 200 + hash(i + 2) * 80, 110, ['#6a5a4a', '#7a6a58', '#5a4a3a'][i % 3], 0, 6); }
+    for (const [x, y, w] of [[520, 860, 220], [1240, 900, 260], [900, 1000, 180]]) { E(ctx, x, y, w, 50, '#2f8fb0', 0, 5); E(ctx, x - w * 0.3, y, 16, 10, '#ff8a65', 0, 0); for (let k = 0; k < 5; k++) { const an = k / 5 * 6.28; C(ctx, x + w * 0.35 + Math.cos(an) * 14, y + Math.sin(an) * 8, 6, '#ff5c8a', 0); } }
+    const wy = 560 + marea * 380 + Math.sin(t * 1.2) * 12; ctx.save(); ctx.globalAlpha = 0.65; ctx.fillStyle = '#3a8fd6'; ctx.beginPath(); ctx.moveTo(0, wy); for (let x = 0; x <= WW; x += 40) ctx.lineTo(x, wy + Math.sin(x / 90 + t * 2) * 8); ctx.lineTo(WW, 480); ctx.lineTo(0, 480); ctx.fill(); ctx.restore();
+    grad(ctx, SKY[hora]?.[0] || '#7cc8ff', SKY[hora]?.[1] || '#d8f0ff', 0, 480); R(ctx, 0, 476, WW, 14, 0, '#2f6fa6', 0);
+    return { gy: 1000 };
+  },
+  // Marisma con llanuras de barro, juncos y manglares
+  marisma(ctx, t, { hora = 'atardecer', agua = 0.3 } = {}) {
+    sky(ctx, hora, 560, t); hills(ctx, 560, '#5f7a5a', 30, 0.004, 3); grad(ctx, '#8a7a5a', '#6a5a3a', 580, WH);
+    for (let i = 0; i < 6; i++) { ctx.save(); ctx.globalAlpha = 0.5 + agua * 0.4; E(ctx, hash(i) * WW, 700 + i * 60, 300 + hash(i + 1) * 300, 30 + agua * 30, '#5a8aa8', 0, 0); ctx.restore(); }
+    for (let i = 0; i < 80; i++) { const x = hash(i + 9) * WW, y = 640 + hash(i + 10) * 120; ctx.strokeStyle = '#6a8a4a'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 6, y - 50 - hash(i) * 40); ctx.stroke(); }
+    for (const x of [200, 1700]) { ctx.save(); ctx.translate(x, 700); for (let r = -3; r <= 3; r++) { ctx.strokeStyle = '#5a3a22'; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(0, -60); ctx.quadraticCurveTo(r * 30, 0, r * 50, 60); ctx.stroke(); } C(ctx, 0, -140, 120, '#3f7a45', 5); ctx.restore(); }
+    return { gy: 1000 };
+  },
+  // Paisaje nevado de invierno con casas con luz y pinos
+  nieve(ctx, t, { hora = 'noche' } = {}) {
+    sky(ctx, hora, 620, t); hills(ctx, 640, '#dfe8f2', 60, 0.003, 2); grad(ctx, '#eef4fa', '#cfdbe8', 660, WH);
+    for (let i = 0; i < 4; i++) { const x = 200 + i * 460; R(ctx, x, 560, 260, 200, 4, '#8a5a3a', 6); P(ctx, [[x - 30, 570], [x + 130, 440], [x + 290, 570]], '#f6faff', 6); R(ctx, x + 40, 610, 70, 60, 4, hora === 'noche' ? '#ffd98a' : '#bfe6ff', 4); if (hora === 'noche') glow(ctx, x + 75, 640, 140, '#ffd98a', 0.4); }
+    for (let i = 0; i < 10; i++) pine(ctx, i * 210 + 60, 900 + (i % 2) * 60, 0.9, '#2f5a45');
+    ctx.fillStyle = 'rgba(255,255,255,0.85)'; for (let i = 0; i < 90; i++) { ctx.beginPath(); ctx.arc((hash(i) * WW + t * 30) % WW, (hash(i + 5) * WH + t * 80) % WH, 2 + (i % 3), 0, 7); ctx.fill(); }
+    return { gy: 1000 };
+  },
+  // Superficie de Marte: desierto rojo, rocas, cielo polvoriento
+  marte(ctx, t) { grad(ctx, '#d99a6a', '#f2c9a0', 0, 600); C(ctx, 1500, 200, 30, '#fff3e0', 0); hills(ctx, 620, '#b5582a', 80, 0.003, 4); grad(ctx, '#c9683a', '#9a4a22', 640, WH); for (let i = 0; i < 30; i++) E(ctx, hash(i) * WW, 700 + hash(i + 1) * 360, 20 + hash(i + 2) * 50, 10 + hash(i + 3) * 20, '#7a3a1a', 0, 3); return { gy: 1000 }; },
+  // Observatorio: cúpula abierta al cielo nocturno con un telescopio que dispara un láser
+  observatorio(ctx, t, { laser = 1 } = {}) {
+    grad(ctx, '#05071a', '#1a1d4a', 0, WH); for (let i = 0; i < 200; i++) C(ctx, hash(i + 2) * WW, hash(i + 3) * 700, 1.4, '#ffffff', 0);
+    hills(ctx, 860, '#0e1026', 40, 0.004, 3); ctx.fillStyle = '#c9ced6'; ctx.beginPath(); ctx.arc(960, 860, 320, Math.PI, 0); ctx.fill(); ctx.fillStyle = '#05071a'; ctx.fillRect(900, 540, 120, 320); R(ctx, 620, 860, 680, 240, 0, '#9aa4b5', 6);
+    if (laser) { ctx.save(); ctx.globalCompositeOperation = 'screen'; ctx.strokeStyle = '#4cff7a'; ctx.lineWidth = 8; ctx.shadowColor = '#4cff7a'; ctx.shadowBlur = 30; ctx.beginPath(); ctx.moveTo(960, 640); ctx.lineTo(1500, -20); ctx.stroke(); ctx.restore(); }
+    return { gy: 1060 };
+  },
+  // Arrecife de coral bajo el agua
+  arrecife(ctx, t) {
+    SET.oceano(ctx, t); grad(ctx, '#2a4a6a', '#1a2a4a', 820, WH);
+    for (let i = 0; i < 16; i++) { const x = i * 130 + hash(i) * 40, y = 860 + hash(i + 1) * 120, c = ['#ff8a65', '#ff5c8a', '#ffd166', '#b67bff', '#4cc9f0'][i % 5]; if (i % 3 === 0) for (let b = 0; b < 5; b++) { ctx.strokeStyle = c; ctx.lineWidth = 16; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x + (b - 2) * 30, y - 80, x + (b - 2) * 50 + Math.sin(t + b) * 6, y - 160 - (b % 2) * 40); ctx.stroke(); } else if (i % 3 === 1) { E(ctx, x, y - 40, 80, 60, c, 0, 5); for (let k = 0; k < 6; k++) C(ctx, x - 50 + k * 20, y - 60 + (k % 2) * 20, 8, 'rgba(0,0,0,0.15)', 0); } else { for (let k = 0; k < 8; k++) { ctx.strokeStyle = c; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.sin(t * 2 + k) * 20 + (k - 4) * 10, y - 100); ctx.stroke(); } } }
+    return { gy: 1000 };
+  },
+});
 export { maleza as _maleza };

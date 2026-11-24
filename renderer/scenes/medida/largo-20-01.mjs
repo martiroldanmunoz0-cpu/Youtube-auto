@@ -187,3 +187,164 @@ export default {
 };
 function cross(ctx, K, x, y, r, k) { if (k <= 0) return; ctx.lineWidth = 34; ctx.strokeStyle = '#ff3b30'; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x - r, y - r); ctx.lineTo(x - r + 2 * r * K.clamp(k * 2), y - r + 2 * r * K.clamp(k * 2)); ctx.stroke(); if (k > 0.5) { const q = K.clamp(k * 2 - 1); ctx.beginPath(); ctx.moveTo(x + r, y - r); ctx.lineTo(x + r - 2 * r * q, y - r + 2 * r * q); ctx.stroke(); } }
 function tree(ctx, K, x, y) { K.R(ctx, x - 25, y - 300, 50, 300, 10, '#3a2a1a', 7); for (let j = 0; j < 3; j++) K.C(ctx, x + (j - 1) * 80, y - 360 - (j % 2) * 60, 120, '#1f3a2a', 7); }
+
+// ---------------- HORIZONTAL «CINE» (lib/cine.mjs): playa de noche, costa, arrecife, sabana, observatorio... a la altura de los ojos ----------------
+import { plano, etiqueta, pastilla, cifra, panel, motas, bocadillo } from '../../lib/cine.mjs';
+import { fg, SET, glow } from '../../lib/sets.mjs';
+const Y = (a) => a.who;
+function escarabajo(ctx, K, x, y, s, t) { glow(ctx, x - 60 * s, y - 40 * s, 260 * s, '#c8d0ff', 0.35); beetle(ctx, K, x, y, s, t); }
+const L = (a, p0, p1) => Math.max(0, Math.min(1, (a.t / a.d - p0) / (p1 - p0)));
+// Sello «BUSTED» rojo
+function sello(ctx, K, x, y, k, txt = 'BUSTED') { if (k <= 0) return; const s = 1.6 - 0.6 * K.ease.out(K.clamp(k)); ctx.save(); ctx.globalAlpha = K.clamp(k * 2); ctx.translate(x, y); ctx.rotate(-0.16); ctx.scale(s, s); ctx.lineWidth = 10; ctx.strokeStyle = '#ff4a3a'; ctx.beginPath(); ctx.roundRect(-230, -70, 460, 140, 18); ctx.stroke(); K.text(ctx, txt, 0, -6, { size: 92, color: '#ff4a3a' }); ctx.restore(); }
+// Tarjeta de mito: número y frase
+const MITO = (n, txt, set, o = {}, look = 'noche') => plano.dato({ set, o, look, titulo: `Myth #${n}`, dibuja: (ctx, a) => bocadillo(ctx, a, txt, 960, 520, { size: 52, max: 1100, p0: 0.05 }) });
+const REAL = (txt) => (ctx, a) => pastilla(ctx, a, 'Reality: ' + txt, 960, 170, { size: 38 });
+const lunaCielo = (x = 1400, y = 230, r = 90) => (ctx, a, K) => moon(ctx, K, x, y, r, 1);
+export const ancho = {
+  // 0 ¿Y si la Luna desapareciera esta noche? Tú en la playa mirando la Luna llena
+  0: plano.primer({ set: 'playa', o: { hora: 'noche' }, look: 'noche', q: Y, mood: 'shocked', lado: 'izq', antes: (ctx, a, K) => moon(ctx, K, 1400, 260, 120, 1 - L(a, 0.6, 0.75)) }),
+  // 1 ¿Saldría la Tierra de su órbita? ¿Se volverían locos los océanos? Cinco mitos
+  1: plano.dato({ set: 'playa', o: { hora: 'noche' }, look: 'noche', titulo: 'Five myths', dibuja: (ctx, a) => ['Orbit?', 'Tides?', 'Animals?', 'Seasons?', 'Forever?'].forEach((w, i) => pastilla(ctx, a, w, 330 + i * 315, 540, { size: 42, k: L(a, 0.1 + i * 0.14, 0.2 + i * 0.14) })) }),
+  // 2 Estás en la playa a medianoche, linterna en mano, mirando la Luna llena sobre las olas
+  2: plano.general({ set: 'playa', o: { hora: 'noche' }, look: 'noche', z: [1, 1.06], f: [960, 600], antes: lunaCielo(1450, 220, 110), actores: [{ q: Y, x: 700, esc: 1.15, mood: 'happy' }], despues: (ctx, a, K, { A }) => { ctx.save(); ctx.globalCompositeOperation = 'screen'; const g = ctx.createLinearGradient(780, 0, 1300, 0); g.addColorStop(0, 'rgba(255,240,190,0.5)'); g.addColorStop(1, 'rgba(255,240,190,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(780, A[0].chest); ctx.lineTo(1300, A[0].chest + 160); ctx.lineTo(1300, A[0].chest + 360); ctx.closePath(); ctx.fill(); ctx.restore(); ctx.fillStyle = 'rgba(255,246,216,0.35)'; for (let i = 0; i < 8; i++) ctx.fillRect(1380 + Math.sin(a.t * 2 + i) * 30, 560 + i * 30, 140 - i * 10, 6); } }),
+  // 3 Se apaga: sin explosión, sin aviso. Una mancha oscura donde estaba
+  3: plano.general({ set: 'playa', o: { hora: 'noche' }, look: 'noche', z: [1.2, 1.3], f: [1450, 260], antes: (ctx, a, K) => { const k = 1 - L(a, 0.25, 0.32); moon(ctx, K, 1450, 220, 110, k); if (k < 1) { ctx.save(); ctx.globalAlpha = 0.6; ctx.setLineDash([10, 12]); ctx.lineWidth = 4; ctx.strokeStyle = '#8a90b0'; ctx.beginPath(); ctx.arc(1450, 220, 110, 0, 7); ctx.stroke(); ctx.restore(); } } }),
+  // 4 A 239.000 millas, con 1/80 de la masa de la Tierra
+  4: plano.dato({ set: 'espacio', look: 'espacio', titulo: 'The Moon', dibuja: (ctx, a, K) => { earth(ctx, K, 360, 560, 160, a.t); moon(ctx, K, 1560, 560, 44, 1, false); ctx.strokeStyle = 'rgba(255,230,194,0.6)'; ctx.setLineDash([12, 12]); ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(540, 560); ctx.lineTo(1500, 560); ctx.stroke(); ctx.setLineDash([]); pastilla(ctx, a, '239,000 miles', 1020, 500); pastilla(ctx, a, '1/80 of Earth\'s mass', 1020, 660, { k: L(a, 0.4, 0.5) }); } }),
+  // 5 Lo primero: la oscuridad. Tu sombra desaparece
+  5: plano.general({ set: 'playa', o: { hora: 'noche' }, look: 'noche', actores: [{ q: Y, x: 960, esc: 1.15, mood: 'worried' }], despues: (ctx, a, K, { A }) => { const k = 1 - L(a, 0.3, 0.6); ctx.save(); ctx.globalAlpha = 0.45 * k; ctx.fillStyle = '#05061a'; ctx.beginPath(); ctx.moveTo(930, A[0].feet); ctx.lineTo(990, A[0].feet); ctx.lineTo(700, A[0].feet + 70); ctx.lineTo(560, A[0].feet + 70); ctx.fill(); ctx.restore(); ctx.fillStyle = `rgba(2,3,12,${(1 - k) * 0.45})`; ctx.fillRect(0, 0, 1920, 1080); } }),
+  // 6 La luz de la Luna es luz del Sol rebotando en roca gris
+  6: plano.general({ set: 'espacio', look: 'espacio', despues: (ctx, a, K) => { sun(ctx, K, 160, 540, 140); moon(ctx, K, 1100, 360, 110, 1, false); earth(ctx, K, 1700, 820, 130, a.t); const k = L(a, 0.1, 0.5), k2 = L(a, 0.5, 0.9); ctx.strokeStyle = '#ffd166'; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(300, 520); ctx.lineTo(300 + 700 * k, 520 - 140 * k); ctx.stroke(); if (k2 > 0) { ctx.beginPath(); ctx.moveTo(1150, 440); ctx.lineTo(1150 + 450 * k2, 440 + 300 * k2); ctx.stroke(); } pastilla(ctx, a, 'Borrowed light', 1100, 170, { k: L(a, 0.6, 0.7) }); } }),
+  // 7 Sin ella mandan las estrellas; en noches nubladas apenas ves tu mano
+  7: plano.primer({ set: 'cielo', look: 'noche', q: Y, mood: 'worried', lado: 'izq', despues: (ctx, a, K, { B }) => { ctx.fillStyle = `rgba(2,3,12,${L(a, 0.4, 0.8) * 0.5})`; ctx.fillRect(0, 0, 1920, 1080); } }),
+  // 8 El plan: cinco mitos, cinco realidades, de esta noche a millones de años
+  8: plano.dato({ set: 'cielo', look: 'noche', titulo: 'Tonight  ·  millions of years', dibuja: (ctx, a, K) => { const k = L(a, 0.1, 0.9); ctx.fillStyle = 'rgba(255,230,194,0.25)'; ctx.fillRect(360, 540, 1200, 8); for (let i = 0; i < 5; i++) { const on = k > i / 5; K.C(ctx, 360 + i * 300, 544, 22, on ? '#ffd166' : '#3a3550', 3); etiqueta(ctx, a, 'Myth ' + (i + 1), 360 + i * 300, 610, { align: 'center', size: 24, k: on ? 1 : 0.3 }); } } }),
+  // 9 Y al final: no es un experimento mental. Ya está pasando
+  9: plano.primer({ set: 'playa', o: { hora: 'noche' }, look: 'noche', q: Y, mood: 'shocked', antes: lunaCielo(500, 260, 90), texto: { pastilla: ["It's already happening", 640, 560] } }),
+  // 10 Mito 1: la Tierra sale disparada de su órbita
+  10: MITO(1, 'Earth flies out of orbit into the void.', 'espacio', {}, 'espacio'),
+  // 11 Realidad: la Tierra gira alrededor del Sol, no de la Luna
+  11: plano.general({ set: 'espacio', look: 'espacio', despues: (ctx, a, K) => { sun(ctx, K, 960, 560, 120); ctx.save(); ctx.strokeStyle = 'rgba(255,230,194,0.35)'; ctx.lineWidth = 4; ctx.setLineDash([10, 12]); ctx.beginPath(); ctx.ellipse(960, 560, 640, 300, 0, 0, 7); ctx.stroke(); ctx.restore(); const an = a.t * 0.3; earth(ctx, K, 960 + Math.cos(an) * 640, 560 + Math.sin(an) * 300, 60, a.t); REAL('Earth orbits the Sun')(ctx, a); } }),
+  // 12 El Sol tiene 330.000 veces la masa de la Tierra
+  12: plano.dato({ set: 'espacio', look: 'espacio', titulo: "The Sun's mass", valor: '330,000×'.replace('×', 'x'), sub: "Earth's mass · the Moon is a tiny tug" }),
+  // 13 Tierra y Luna giran en torno a un punto bajo tus pies; sin Luna, la Tierra sigue su camino
+  13: plano.general({ set: 'espacio', look: 'espacio', despues: (ctx, a, K) => { const an = a.t * 0.8, k = 1 - L(a, 0.55, 0.65); earth(ctx, K, 900 + Math.cos(an) * 30, 560 + Math.sin(an) * 30, 200, a.t); K.C(ctx, 960, 560, 10, '#ff4a3a', 0); pastilla(ctx, a, '~1,000 miles below your feet', 960, 250, { size: 32 }); moon(ctx, K, 960 - Math.cos(an) * 620, 560 - Math.sin(an) * 620, 54, k, false); } }),
+  // 14 Tu primera noche no es una película de catástrofes: solo muy oscura
+  14: plano.general({ set: 'calle', o: { hora: 'noche' }, look: 'noche', actores: [{ q: Y, x: 960, esc: 1.1, mood: 'neutral' }], delante: (ctx, a) => fg.farola(ctx, 1800, a.t, true), texto: { etiqueta: 'Just very, very dark' } }),
+  // 15 Los leones de Tanzania cazan mejor en noches sin luna
+  15: plano.general({ set: 'sabana', look: 'noche', despues: (ctx, a, K) => { ctx.save(); ctx.translate(500 + K.ph(a.t, a.d, 0, 1) * 300, 900); K.E(ctx, 0, 0, 170, 60, '#c9963a', 0, 3); K.C(ctx, 170, -50, 70, '#8a5a2a', 3); K.C(ctx, 175, -45, 48, '#d9a64a', 0); K.C(ctx, 200, -55, 6, '#1a1a1a', 0); for (let i = 0; i < 4; i++) K.R(ctx, -110 + i * 70, 30, 26, 80, 10, '#c9963a', 0); ctx.restore(); for (let i = 0; i < 3; i++) { ctx.save(); ctx.translate(1350 + i * 140, 880 - (i % 2) * 20); K.E(ctx, 0, 0, 90, 40, '#8a7a6a', 0, 3); K.C(ctx, 90, -40, 30, '#8a7a6a', 3); for (let l = 0; l < 4; l++) K.R(ctx, -60 + l * 40, 20, 12, 70, 5, '#6a5a4a', 0); ctx.restore(); } }, texto: { etiqueta: 'Lions · Tanzania' } }),
+  // 16 La gente también lo notaría: paseos nocturnos, marineros...
+  16: plano.general({ set: 'playa', o: { hora: 'noche' }, look: 'noche', actores: [{ q: Y, anda: [300, 1100], esc: 1, mood: 'worried' }], despues: (ctx, a, K) => { ctx.save(); ctx.translate(1550, 560); K.P(ctx, [[-160, 0], [160, 0], [120, 50], [-120, 50]], '#6b4a2b', 3); K.R(ctx, -4, -200, 8, 200, 2, '#c9ced6', 0); K.P(ctx, [[4, -190], [110, -20], [4, -20]], '#e6e0cf', 3); ctx.restore(); } }),
+  // 17 ¿Y el tiempo? Nubes y viento dependen del calor del Sol
+  17: plano.general({ set: 'avenida', o: { hora: 'dia' }, look: 'dia', despues: (ctx, a, K) => { sun(ctx, K, 1500, 160, 80); for (let i = 0; i < 4; i++) { const x = ((a.t * 30 + i * 500) % 2200) - 150; K.E(ctx, x, 180 + (i % 2) * 70, 140, 50, '#ffffff', 0, 0); K.E(ctx, x + 70, 160 + (i % 2) * 70, 90, 50, '#ffffff', 0, 0); } pastilla(ctx, a, 'Same forecast', 960, 380); } }),
+  // 18 Mito 1 desmentido. Pero los océanos lo van a notar
+  18: plano.general({ set: 'espacio', look: 'espacio', despues: (ctx, a, K) => { earth(ctx, K, 960, 560, 220, a.t); sello(ctx, K, 960, 560, L(a, 0.1, 0.3)); } }),
+  // 19 El gran poder de la Luna no es la luz: es la gravedad tirando del agua
+  19: plano.general({ set: 'playa', o: { hora: 'noche' }, look: 'noche', antes: lunaCielo(960, 200, 100), despues: (ctx, a) => { ctx.save(); ctx.strokeStyle = 'rgba(255,246,216,0.4)'; ctx.lineWidth = 6; for (let i = 0; i < 5; i++) { const k = ((a.t * 0.5 + i * 0.2) % 1); ctx.globalAlpha = 1 - k; ctx.beginPath(); ctx.moveTo(760 + i * 100, 620); ctx.lineTo(760 + i * 100, 620 - 300 * k); ctx.stroke(); } ctx.restore(); }, texto: { etiqueta: 'Gravity' } }),
+  // 20 Mito 2: sin Luna, las mareas se paran y el mar queda plano
+  20: MITO(2, 'The tides stop and the sea goes flat.', 'playa', { hora: 'dia' }, 'dia'),
+  // 21 Realidad: el Sol sigue tirando; las mareas bajan a un tercio
+  21: plano.general({ set: 'rocas', o: { marea: 0.5 }, look: 'dia', despues: (ctx, a, K) => { REAL('tides shrink to about 1/3')(ctx, a); const k = L(a, 0.2, 0.8); ctx.fillStyle = 'rgba(255,230,194,0.9)'; ctx.fillRect(1650, 300, 60, 480); ctx.fillStyle = '#3a8fd6'; const h = 420 * (1 - k * 0.66); ctx.fillRect(1656, 774 - h, 48, h); } }),
+  // 22 La Luna es pequeña pero está tan cerca que su tirón es más del doble
+  22: plano.dato({ set: 'espacio', look: 'espacio', titulo: 'Pull on our oceans', dibuja: (ctx, a, K) => { moon(ctx, K, 640, 520, 70, 1, false); sun(ctx, K, 1280, 520, 110); const k = L(a, 0.2, 0.7); ctx.fillStyle = '#4cc9f0'; ctx.fillRect(520, 720, 240 * k, 30); ctx.fillStyle = '#ffd166'; ctx.fillRect(1160, 720, 110 * k, 30); etiqueta(ctx, a, 'Moon', 640, 800, { align: 'center' }); etiqueta(ctx, a, 'Sun', 1280, 800, { align: 'center' }); } }),
+  // 23 Las mareas solares son un 46% de las lunares
+  23: plano.dato({ set: 'rocas', o: { marea: 0.3 }, look: 'dia', titulo: 'Solar tides vs lunar tides', valor: '46%' }),
+  // 24 La bahía de Fundy: el agua sube más de 50 pies; quedaría en un tercio
+  24: plano.general({ set: 'rocas', o: { marea: 0.9 }, look: 'atardecer', despues: (ctx, a, K) => { K.R(ctx, 1600, 200, 22, 700, 4, '#e6e0cf', 3); for (let i = 0; i <= 5; i++) K.R(ctx, 1600, 200 + i * 140, 50, 6, 2, '#e6e0cf', 0); pastilla(ctx, a, '50+ ft', 1611, 160); }, texto: { etiqueta: 'Bay of Fundy · Canada' } }),
+  // 25 Una charca de marea en Oregón: estrellas de mar, anémonas, cangrejos
+  25: plano.detalle({ set: 'rocas', o: { marea: 0.2 }, look: 'dia', dibuja: (ctx, a, K) => { K.E(ctx, 960, 620, 700, 260, '#2f8fb0', 0, 6); for (let i = 0; i < 3; i++) { ctx.save(); ctx.translate(600 + i * 360, 640 + (i % 2) * 60); ctx.rotate(a.t * 0.1 + i); for (let k = 0; k < 5; k++) { ctx.rotate(1.2566); K.E(ctx, 0, -40, 22, 50, '#ff8a65', 0, 0); } ctx.restore(); } for (let i = 0; i < 2; i++) { const x = 800 + i * 420; for (let k = 0; k < 10; k++) { ctx.strokeStyle = '#ff5c8a'; ctx.lineWidth = 10; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x, 560); ctx.lineTo(x + (k - 5) * 12 + Math.sin(a.t * 2 + k) * 8, 480); ctx.stroke(); } } ctx.save(); ctx.translate(1300 + Math.sin(a.t) * 40, 720); K.E(ctx, 0, 0, 60, 36, '#e05a4a', 0, 3); for (const d of [-1, 1]) K.C(ctx, d * 70, -30, 20, '#e05a4a', 3); ctx.restore(); }, texto: { etiqueta: 'Tide pool · Oregon' } }),
+  // 26 Dos veces al día la marea llena las charcas: el reloj de la vida en la costa
+  26: plano.general({ set: (ctx, t, o) => SET.rocas(ctx, t, { marea: 0.5 + 0.45 * Math.sin((o.a?.t || 0) * 0.9) }), look: 'dia', despues: (ctx, a, K) => dayClock(ctx, K, 1650, 240, 110, 24, a.t) }),
+  // 27 Con mareas débiles, la franja que se cubre y descubre encoge
+  27: plano.general({ set: (ctx, t, o) => SET.rocas(ctx, t, { marea: 0.45 + 0.12 * Math.sin((o.a?.t || 0) * 0.9) }), look: 'atardecer', texto: { pastilla: ['A thinner tidal zone', 960, 200] } }),
+  // 28 Manglares, marismas y llanuras de barro: guarderías de peces
+  28: plano.general({ set: 'marisma', look: 'atardecer', despues: (ctx, a, K) => { for (let i = 0; i < 12; i++) { const x = 400 + ((a.t * 40 + i * 120) % 1200), y = 820 + (i % 3) * 50; K.E(ctx, x, y, 20, 8, '#c9ced6', 0, 0); K.P(ctx, [[x - 20, y], [x - 34, y - 8], [x - 34, y + 8]], '#c9ced6', 0); } }, texto: { etiqueta: 'Nurseries for young fish' } }),
+  // 29 Aves que vuelan miles de millas cuentan con el barro de la marea baja
+  29: plano.general({ set: 'marisma', o: { agua: 0.1 }, look: 'atardecer', despues: (ctx, a, K) => { for (let i = 0; i < 9; i++) bird(ctx, K, 200 + i * 190 + Math.sin(a.t + i) * 20, 200 + (i % 3) * 60, 0.45, a.t + i, '#3a3050'); for (let i = 0; i < 5; i++) { const x = 500 + i * 220; K.E(ctx, x, 860, 36, 22, '#e6e0cf', 0, 3); K.C(ctx, x + 34, 836, 14, '#e6e0cf', 3); K.P(ctx, [[x + 46, 836], [x + 80, 846], [x + 46, 842]], '#3a3050', 0); K.R(ctx, x - 4, 880, 4, 40, 2, '#3a3050', 0); } } }),
+  // 30 Las mareas mezclan el océano: nutrientes y calor hacia el fondo
+  30: plano.general({ set: 'oceano', look: 'frio', despues: (ctx, a, K) => { for (let i = 0; i < 4; i++) { ctx.save(); ctx.strokeStyle = 'rgba(255,214,160,0.6)'; ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(400 + i * 380, 560, 120, 300, 0, a.t * 0.8 + i, a.t * 0.8 + i + 4.5); ctx.stroke(); ctx.restore(); } pastilla(ctx, a, 'Weaker tides = slower mixing', 960, 160, { size: 34 }); } }),
+  // 31 El mar no se para, se calma. Mito 2 desmentido
+  31: plano.general({ set: 'rocas', o: { marea: 0.3 }, look: 'atardecer', despues: (ctx, a, K) => sello(ctx, K, 960, 400, L(a, 0.3, 0.5)) }),
+  // 32 Mito 3: a los animales no les importa la Luna
+  32: MITO(3, "Animals don't care about the Moon.", 'sabana'),
+  // 33 Realidad: miles de especies funcionan con un reloj de luz de luna
+  33: plano.general({ set: 'bosque', o: { hora: 'noche' }, look: 'noche', antes: lunaCielo(1500, 180, 70), despues: (ctx, a, K) => { REAL('a moonlight clock')(ctx, a); for (let i = 0; i < 4; i++) dayClock(ctx, K, 400 + i * 380, 560, 70, 24, a.t + i); } }),
+  // 34 La Gran Barrera de Coral, una noche cálida de finales de primavera
+  34: plano.general({ set: 'arrecife', look: 'frio', z: [1, 1.08], antes: (ctx, a, K) => { ctx.save(); ctx.globalAlpha = 0.5; moon(ctx, K, 1500, 120, 60, 1); ctx.restore(); }, texto: { etiqueta: 'Great Barrier Reef' } }),
+  // 35 Los corales sueltan millones de paquetitos rosas a la vez: una nevada al revés
+  35: plano.general({ set: 'arrecife', look: 'frio', despues: (ctx, a, K) => { const k = L(a, 0.1, 0.3); for (let i = 0; i < 160 * k; i++) { const x = (i * 97) % 1920, y = 900 - ((a.t * (60 + (i % 7) * 15) + i * 13) % 900); K.C(ctx, x + Math.sin(a.t + i) * 10, y, 5 + (i % 3) * 2, '#ffb8d8', 0); } } }),
+  // 36 Sincronizan con la luz de la luna; si desovan en noches distintas, no se encuentran
+  36: plano.detalle({ set: 'arrecife', look: 'frio', dibuja: (ctx, a, K) => { moon(ctx, K, 960, 380, 120, 1); for (let i = 0; i < 4; i++) { K.E(ctx, 600 + i * 240, 820, 90, 50, ['#ff8a65', '#ff5c8a', '#ffd166', '#b67bff'][i], 0, 4); ctx.strokeStyle = 'rgba(255,246,216,0.5)'; ctx.setLineDash([8, 10]); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(600 + i * 240, 780); ctx.lineTo(960, 500); ctx.stroke(); ctx.setLineDash([]); } } }),
+  // 37 Menos corales nuevos; los arrecifes dan cobijo a un cuarto de las especies marinas
+  37: plano.dato({ set: 'arrecife', look: 'frio', titulo: 'Reefs shelter', valor: '1/4', sub: 'of all marine species' }),
+  // 38 Sabana africana de noche: un escarabajo pelotero rueda su bola
+  38: plano.general({ set: 'sabana', look: 'noche', z: [1.1, 1.2], f: [900, 900], despues: (ctx, a, K) => escarabajo(ctx, K, 700 + K.ph(a.t, a.d, 0, 1) * 500, 900, 2.2, a.t), texto: { etiqueta: 'African savanna' } }),
+  // 39 Para ir recto usa una brújula en el cielo: la luz polarizada de la Luna
+  39: plano.general({ set: 'sabana', look: 'noche', antes: lunaCielo(1400, 200, 80), despues: (ctx, a, K) => { escarabajo(ctx, K, 700 + K.ph(a.t, a.d, 0, 1) * 300, 920, 1.5, a.t); ctx.save(); ctx.strokeStyle = 'rgba(255,246,216,0.35)'; ctx.lineWidth = 3; for (let i = 0; i < 6; i++) { ctx.beginPath(); ctx.arc(1400, 200, 140 + i * 60, 0, 7); ctx.stroke(); } ctx.restore(); ctx.save(); ctx.strokeStyle = '#ffd166'; ctx.setLineDash([12, 10]); ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(300, 960); ctx.lineTo(1700, 960); ctx.stroke(); ctx.restore(); } }),
+  // 40 Sin luna usan la Vía Láctea: más débil, y las nubes lo estropean
+  40: plano.general({ set: 'cielo', look: 'noche', despues: (ctx, a, K) => { escarabajo(ctx, K, 800 + Math.sin(a.t) * 100, 940, 1.3, a.t); for (let i = 0; i < 3; i++) K.E(ctx, ((a.t * 40 + i * 600) % 2200) - 150, 300 + i * 60, 220, 50, 'rgba(60,64,100,0.85)', 0, 0); }, texto: { etiqueta: 'The Milky Way' } }),
+  // 41 Una playa de Florida: una tortuguita sale del huevo
+  41: plano.detalle({ set: 'playa', o: { hora: 'noche' }, look: 'noche', dibuja: (ctx, a, K) => { K.E(ctx, 900, 720, 120, 140, '#f6efe2', 0, 4); for (let i = 0; i < 5; i++) K.P(ctx, [[790 + i * 45, 640], [810 + i * 45, 600 + (i % 2) * 20], [830 + i * 45, 640]], '#e6dcc8', 3); turtle(ctx, K, 1100 + K.ph(a.t, a.d, 0.3, 1) * 200, 720, 0.9, a.t, -0.4); }, texto: { etiqueta: 'Florida' } }),
+  // 42 Las crías van hacia el horizonte más brillante: el mar
+  42: plano.general({ set: 'playa', o: { hora: 'noche' }, look: 'noche', antes: lunaCielo(1400, 220, 80), despues: (ctx, a, K) => { for (let i = 0; i < 6; i++) turtle(ctx, K, 400 + i * 220 + K.ph(a.t, a.d, 0, 1) * 60, 1000 - K.ph(a.t, a.d, 0, 1) * 120 - (i % 2) * 30, 0.35, a.t + i, -1.4); } }),
+  // 43 Las farolas y los hoteles ya las engañan; sin luna, aún más
+  43: plano.general({ set: 'playa', o: { hora: 'noche' }, look: 'noche', antes: (ctx, a, K) => { for (let i = 0; i < 4; i++) { K.R(ctx, 120 + i * 120, 400, 90, 420, 4, '#2a2f55', 4); for (let r = 0; r < 6; r++) K.R(ctx, 140 + i * 120, 430 + r * 60, 50, 30, 2, '#ffd98a', 0); } glow(ctx, 300, 600, 600, '#ffd98a', 0.4); }, despues: (ctx, a, K) => { for (let i = 0; i < 5; i++) turtle(ctx, K, 1000 - K.ph(a.t, a.d, 0, 1) * 300 - i * 120, 960 - (i % 2) * 40, 0.35, a.t + i, Math.PI + 0.2); }, delante: (ctx, a) => fg.farola(ctx, 600, a.t, true) }),
+  // 44 El plancton sube y baja con el brillo de la Luna
+  44: plano.general({ set: 'oceano', look: 'frio', despues: (ctx, a, K) => { const y = 500 + Math.sin(a.t * 0.7) * 200; for (let i = 0; i < 90; i++) K.C(ctx, (i * 97) % 1920, y + ((i * 53) % 200) - 100, 4, 'rgba(190,255,220,0.8)', 0); for (let i = 0; i < 5; i++) { const x = ((a.t * 80 + i * 400) % 2200) - 150, yy = y - 160 + (i % 2) * 50; K.E(ctx, x, yy, 50, 20, '#c9ced6', 0, 3); K.P(ctx, [[x - 50, yy], [x - 80, yy - 20], [x - 80, yy + 20]], '#c9ced6', 3); } } }),
+  // 45 Búhos, murciélagos y polillas: el escondite entero cambiaría
+  45: plano.general({ set: 'bosque', o: { hora: 'noche' }, look: 'noche', antes: lunaCielo(1500, 180, 70), despues: (ctx, a, K) => { ctx.save(); ctx.translate(600, 420); K.E(ctx, 0, 0, 60, 80, '#8a6a4a', 0, 3); K.C(ctx, -22, -30, 20, '#ffd166', 3); K.C(ctx, 22, -30, 20, '#ffd166', 3); K.C(ctx, -22, -30, 8, '#1a1a1a', 0); K.C(ctx, 22, -30, 8, '#1a1a1a', 0); ctx.restore(); for (let i = 0; i < 4; i++) bird(ctx, K, 1000 + i * 180 + Math.sin(a.t * 2 + i) * 40, 300 + Math.cos(a.t * 3 + i) * 50, 0.5, a.t * 2 + i, '#1a1a2a'); for (let i = 0; i < 8; i++) K.C(ctx, 1300 + Math.sin(a.t * 4 + i) * 60, 600 + Math.cos(a.t * 3 + i * 2) * 60, 6, '#f6efe2', 0); } }),
+  // 46 Mito 3 desmentido: los relojes se romperían
+  46: plano.general({ set: 'arrecife', look: 'frio', despues: (ctx, a, K) => sello(ctx, K, 960, 420, L(a, 0.1, 0.3)) }),
+  // 47 Mito 4: las estaciones seguirían igual
+  47: MITO(4, 'Our seasons would stay exactly the same.', 'nieve', { hora: 'dia' }, 'frio'),
+  // 48 Realidad: la Luna sujeta la inclinación de la Tierra
+  48: plano.general({ set: 'espacio', look: 'espacio', despues: (ctx, a, K) => { tiltEarth(ctx, K, 820, 560, 200, a.t, 23.5); moon(ctx, K, 1450, 400, 60, 1, false); REAL('the Moon steadies the tilt')(ctx, a); } }),
+  // 49 La Tierra gira inclinada 23,5 grados: por eso hay verano y nieve en diciembre
+  49: plano.dato({ set: 'nieve', o: { hora: 'dia' }, look: 'frio', titulo: "Earth's tilt", valor: '23.5°', sub: 'summer heat · December snow' }),
+  // 50 Como una peonza con la base algo floja
+  50: plano.detalle({ set: 'salon', look: 'interior', dibuja: (ctx, a, K) => top(ctx, K, 960, 820, 1.2, a.t, Math.sin(a.t * 0.7) * 0.3 * L(a, 0.2, 1), 0.08) }),
+  // 51 Hoy la Luna mantiene el bamboleo en un par de grados
+  51: plano.general({ set: 'espacio', look: 'espacio', despues: (ctx, a, K) => { tiltEarth(ctx, K, 960, 560, 220, a.t, 23.5 + Math.sin(a.t) * 1.2); moon(ctx, K, 1560, 380, 60, 1, false); pastilla(ctx, a, '± 2°'.replace('±', '+/-'), 960, 170); } }),
+  // 52 Sin Luna, el Sol y los planetas podrían empujarla decenas de grados
+  52: plano.general({ set: 'espacio', look: 'espacio', despues: (ctx, a, K) => { tiltEarth(ctx, K, 960, 560, 220, a.t, 23.5 + L(a, 0.1, 0.9) * 40 * Math.sin(a.t * 0.6)); pastilla(ctx, a, 'Tens of degrees', 960, 170); } }),
+  // 53 Tranquilo: millones de años, no la semana que viene
+  53: plano.dato({ set: 'espacio', look: 'espacio', titulo: 'Slow', valor: 'MILLIONS', sub: 'of years · not next week' }),
+  // 54 Inclinación de 60 grados: en verano el Sol casi no se pone en meses
+  54: plano.general({ set: 'granja', o: { hora: 'dia' }, look: 'dia', antes: (ctx, a, K) => sun(ctx, K, 960, 160 + Math.sin(a.t * 0.5) * 30, 110), actores: [{ q: Y, x: 600, esc: 1, mood: 'worried' }], texto: { pastilla: ['60° tilt · endless summer days', 1250, 380] } }),
+  // 55 Luego el invierno: meses de oscuridad y un frío que lo congela todo
+  55: plano.general({ set: 'nieve', o: { hora: 'noche' }, look: 'frio', actores: [{ q: (a) => ({ ...a.who, outfit: '#2b3a66' }), x: 960, esc: 1.05, mood: 'sad' }], texto: { etiqueta: 'Months of darkness' } }),
+  // 56 Bosques, granjas y ciudades están hechos para estaciones suaves
+  56: plano.general({ set: 'granja', o: { valla: 0.3 }, look: 'frio', despues: (ctx, a, K) => { ctx.fillStyle = 'rgba(240,246,255,0.55)'; ctx.fillRect(0, 600, 1920 * L(a, 0, 0.8), 480); }, texto: { pastilla: ['Farmland nearly useless', 960, 200] } }),
+  // 57 Se debate cuánto, pero la Luna es la razón de que todo sea tranquilo
+  57: plano.primer({ set: 'observatorio', o: { laser: 0 }, look: 'espacio', q: Y, mood: 'neutral', lado: 'izq', antes: lunaCielo(1400, 220, 80) }),
+  // 58 Marte: solo dos lunas diminutas, y su inclinación ha oscilado mucho
+  58: plano.general({ set: 'marte', look: 'atardecer', despues: (ctx, a, K) => { K.C(ctx, 300, 160, 14, '#c9b8a8', 2); K.C(ctx, 520, 110, 9, '#c9b8a8', 2); tiltEarth(ctx, K, 1500, 380, 0, a.t, 25 + Math.sin(a.t) * 30); pastilla(ctx, a, 'Mars · 2 tiny moons', 960, 300); } }),
+  // 59 Extra: nunca más eclipses solares
+  59: plano.general({ set: 'playa', o: { hora: 'dia' }, look: 'dia', despues: (ctx, a, K) => { const k = L(a, 0.1, 0.6); sun(ctx, K, 960, 300, 110); ctx.fillStyle = '#1a1d3a'; ctx.beginPath(); ctx.arc(700 + 260 * k, 300, 108, 0, 7); ctx.fill(); if (a.t / a.d > 0.7) { ctx.strokeStyle = '#ff3b30'; ctx.lineWidth = 16; ctx.beginPath(); ctx.moveTo(800, 140); ctx.lineTo(1120, 460); ctx.stroke(); } }, texto: { etiqueta: 'No more eclipses' } }),
+  // 60 Mito 5, el más grande: la Luna siempre estará ahí
+  60: MITO(5, 'The Moon will always be there.', 'playa', { hora: 'noche' }),
+  // 61 Realidad: la Luna ya se está alejando
+  61: plano.general({ set: 'espacio', look: 'espacio', despues: (ctx, a, K) => { earth(ctx, K, 500, 560, 180, a.t); moon(ctx, K, 1200 + L(a, 0, 1) * 300, 560, 60, 1, false); REAL("it's already leaving")(ctx, a); } }),
+  // 62 Los astronautas dejaron espejos; los científicos les disparan láseres
+  62: plano.general({ set: 'observatorio', look: 'espacio', despues: (ctx, a, K) => { moon(ctx, K, 1540, 40, 120, 1); }, texto: { etiqueta: 'Lunar laser ranging' } }),
+  // 63 Cada año se aleja pulgada y media: lo que crecen tus uñas
+  63: plano.dato({ set: 'observatorio', look: 'espacio', titulo: 'Every year the Moon drifts', valor: '1.5 INCHES', sub: 'about as fast as your fingernails grow' }),
+  // 64 La causa son las mareas: el bulto del océano tira de la Luna hacia delante
+  64: plano.general({ set: 'espacio', look: 'espacio', despues: (ctx, a, K) => { ctx.save(); ctx.translate(800, 560); ctx.rotate(a.t * 0.2); K.E(ctx, 0, 0, 250, 200, 'rgba(76,201,240,0.35)', 0.3, 0); ctx.restore(); earth(ctx, K, 800, 560, 190, a.t); const an = a.t * 0.2 + 0.3; moon(ctx, K, 800 + Math.cos(an) * 620, 560 + Math.sin(an) * 380, 50, 1, false); } }),
+  // 65 La Tierra frena: los días se alargan 2 milisegundos por siglo
+  65: plano.dato({ set: 'espacio', look: 'espacio', titulo: 'Days get longer by', valor: '2 ms', sub: 'every century', dibuja: (ctx, a, K) => dayClock(ctx, K, 1600, 760, 90, 24, a.t) }),
+  // 66 Con los dinosaurios, un día duraba unas 23,5 horas
+  66: plano.general({ set: 'bosque', o: { hora: 'atardecer' }, look: 'atardecer', despues: (ctx, a, K) => { ctx.save(); ctx.translate(800 + Math.sin(a.t * 0.5) * 40, 880); K.E(ctx, 0, 0, 220, 90, '#5f8f4a', 0, 4); K.R(ctx, 140, -320, 70, 300, 30, '#5f8f4a', 4); K.E(ctx, 190, -330, 80, 40, '#5f8f4a', 0, 4); for (let i = 0; i < 4; i++) K.R(ctx, -150 + i * 90, 50, 50, 130, 20, '#4f7f3a', 3); ctx.beginPath(); ctx.moveTo(-200, 0); ctx.quadraticCurveTo(-400, 40, -480, -20); ctx.lineWidth = 50; ctx.strokeStyle = '#5f8f4a'; ctx.lineCap = 'round'; ctx.stroke(); ctx.restore(); pastilla(ctx, a, 'A day: ~23.5 hours', 1400, 240); } }),
+  // 67 Hace miles de millones de años la Luna estaba mucho más cerca: enorme
+  67: plano.general({ set: 'playa', o: { hora: 'atardecer' }, look: 'atardecer', antes: (ctx, a, K) => moon(ctx, K, 960, 300, 360, 1), texto: { etiqueta: 'Billions of years ago' } }),
+  // 68 En unos 600 millones de años ya no tapará el Sol: el último eclipse total
+  68: plano.dato({ set: 'espacio', look: 'espacio', titulo: 'The final total eclipse', valor: '~600 MILLION', sub: 'years from now', dibuja: (ctx, a, K) => { sun(ctx, K, 960, 860, 90); ctx.fillStyle = '#1a1d3a'; ctx.beginPath(); ctx.arc(960 + Math.sin(a.t) * 10, 860, 70, 0, 7); ctx.fill(); } }),
+  // 69 No es imaginar: lo ves pasar a cámara lenta, año a año
+  69: plano.primer({ set: 'playa', o: { hora: 'noche' }, look: 'noche', q: Y, mood: 'neutral', lado: 'izq', antes: (ctx, a, K) => moon(ctx, K, 1400, 260, 100 - L(a, 0, 1) * 10, 1) }),
+  // 70 La próxima vez que salga la Luna, mírala bien: tu sombra, la marea
+  70: plano.general({ set: 'playa', o: { hora: 'noche' }, look: 'noche', antes: lunaCielo(1450, 220, 110), actores: [{ q: Y, x: 700, esc: 1.15, mood: 'happy' }], despues: (ctx, a, K, { A }) => { ctx.save(); ctx.globalAlpha = 0.4; ctx.fillStyle = '#05061a'; ctx.beginPath(); ctx.moveTo(670, A[0].feet); ctx.lineTo(730, A[0].feet); ctx.lineTo(450, A[0].feet + 70); ctx.lineTo(330, A[0].feet + 70); ctx.fill(); ctx.restore(); } }),
+  // 71 ¿Qué guardarías para siempre: las mareas, las noches o los eclipses?
+  71: plano.dato({ set: 'playa', o: { hora: 'noche' }, look: 'noche', titulo: 'Keep one forever', dibuja: (ctx, a) => ['The tides', 'The nights', 'The eclipses'].forEach((w, i) => pastilla(ctx, a, w, 520 + i * 440, 540, { size: 46, k: L(a, 0.1 + i * 0.2, 0.2 + i * 0.2) })) }),
+  // 72 Próximo vídeo: ¿y si el Sol se apagara de golpe?
+  72: plano.general({ set: 'playa', o: { hora: 'atardecer' }, look: 'atardecer', actores: [{ q: Y, x: 960, esc: 1.1, mood: 'happy', arms: 'up' }], antes: (ctx, a, K) => { sun(ctx, K, 1500, 300, 90); ctx.fillStyle = `rgba(4,4,16,${L(a, 0.5, 0.9) * 0.6})`; ctx.fillRect(0, 0, 1920, 1080); }, texto: { pastilla: ['Next: what if the Sun went dark?', 960, 200] } }),
+};
