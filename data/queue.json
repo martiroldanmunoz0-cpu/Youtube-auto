@@ -286,10 +286,11 @@
     "tag": "largo-25",
     "issue": 95,
     "estado": "programado",
-    "publish_at": "2026-11-25T23:00:00Z",
+    "publish_at": "2026-11-25T21:00:00Z",
     "youtube_id": "UOZfTFW1ONQ",
     "lista_ok": true,
-    "portada_ok": true
+    "portada_ok": true,
+    "reprogramado": true
   },
   {
     "id": "largo-20-01-r1",
