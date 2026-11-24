@@ -13,6 +13,7 @@
 import { createCanvas } from '@napi-rs/canvas';
 import { SET, WW, WH, glow, people } from './sets.mjs';
 import { STYLE } from './props.mjs';
+import { maleza } from './sets_mundo.mjs';
 import { drawFullBody } from './persona.mjs';
 
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
@@ -55,7 +56,7 @@ export function camara(ctx, a, z0 = 1, z1 = 1.06, fx = WW / 2, fy = WH / 2, dx =
 // Dibuja un decorado (nombre de SET o función propia (ctx,t,o)=>info) nítido o desenfocado; zoom > 1 lo acerca hacia (fx,fy)
 export function fondo(ctx, a, set, o = {}, { blur = 0, zoom = 1, fx = WW / 2, fy = WH / 2, oscuro = 0 } = {}) {
   const fn = typeof set === 'function' ? set : SET[set];
-  const draw = (c) => { c.save(); if (zoom !== 1) { c.translate(fx, fy); c.scale(zoom, zoom); c.translate(-fx, -fy); } const r = fn(c, a.t, { a, ...o }) || {}; c.restore(); return r; };
+  const draw = (c) => { c.save(); if (zoom !== 1) { c.translate(fx, fy); c.scale(zoom, zoom); c.translate(-fx, -fy); } const r = fn(c, a.t, { a, ...o }) || {}; if (o.maleza) maleza(c, a.t, o.maleza, r.gy ?? 960, 4); c.restore(); return r; };
   let info;
   if (!blur) info = draw(ctx);
   else { // a media resolución y desenfocado (rápido y suave): la profundidad de campo de una cámara de verdad
@@ -212,4 +213,4 @@ export const plano = {
     dibuja?.(ctx, a, K, info); rotulos(ctx, a, texto);
   },
 };
-export { glow, people, sm, clamp };
+export { glow, people, sm, clamp, maleza };
