@@ -61,8 +61,24 @@ giro final) cuando no exista ya una acción que lo muestre, y las añade al cat�
 - La tanda semanal (lunes 04:01) escribe `generacion.largos_por_semana` guiones largos con `a_medida`. La sesión del
   lunes (tarea programada) los dibuja enteros y lanza el montaje de cada uno. Respaldo: el martes 08:41 UTC se monta
   lo que siga sin montar.
-- Las escenas se dibujan en vertical (1080×1920) como siempre; el motor las coloca en horizontal: se ve la franja
-  central (y ≈ 430-1610), así que pon lo importante ahí y no en los bordes de arriba y abajo.
+- **Estilo «cine» (por defecto desde el 24-11-2026, pedido del dueño):** cada plano se dibuja DIRECTAMENTE en
+  horizontal con `export const ancho = { n: ... }` usando `renderer/lib/cine.mjs` (ver largo-18/19/20 de ejemplo).
+  Lo que se aprendió mirando vídeos de animación muy detallados (solo el lenguaje visual, nunca sus dibujos ni guiones):
+  - El personaje está DENTRO del lugar y a escala (puertas, muebles, gente al fondo), con la cámara a su altura.
+  - Variar el tipo de plano: `plano.general` (lugar nítido y personajes), `plano.primer` (busto grande con el fondo
+    desenfocado), `plano.hombro` (alguien de espaldas borroso delante), `plano.detalle` (un objeto o un móvil llenando
+    la pantalla), `plano.dato` (cifra o lista elegante sobre el lugar desenfocado). Más o menos: 45 % generales,
+    25 % primeros/hombro, 15 % detalles, 15 % datos. Nunca dos planos seguidos iguales.
+  - Luz con intención: `look` atardecer, interior, dia, noche, tension, frio, espacio (tiñe, apaga colores, viñeta).
+  - Rótulos pequeños y elegantes dentro del plano: `etiqueta` (letras espaciadas), `pastilla` (cifra con borde
+    dorado), `cifra`, `bocadillo` (diálogo). Nada de pantallas de texto aparte.
+  - Decorados listos en `SET` (lib/sets.mjs + lib/sets_mundo.mjs): calle, avenida, plaza, pasillo, aula, oficina,
+    despacho, cafeteria, salon, dormitorio, bano, atico, cocina, metro, anden, noticias, parque, playa, autopista,
+    control, bloques, suburbio, puente, bosque, oceano, arrecife, cielo, espacio, montes, granja, monticulos, sabana,
+    rocas, marisma, nieve, marte, observatorio. `{ maleza: 0..1 }` llena cualquiera de plantas y grietas. Si hace falta
+    un sitio nuevo, se añade allí (reutilizable) en vez de dibujarlo dentro del plano.
+  - Prueba rápida antes de montar: renderiza un fotograma de cada plano y míralos en una hoja (todos sin errores).
+- Si un plano no tiene versión `ancho`, el motor usa la vertical (1080×1920) en la franja central (y ≈ 430-1610).
 - Montaje (voz repartida en 8 máquinas + vídeo + Revisar, sin gastar API):
   `gh api -X POST repos/martiroldanmunoz0-cpu/Youtube-auto/actions/workflows/largo.yml/dispatches -f ref=main -f 'inputs[id]=<id>'`
 
