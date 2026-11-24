@@ -176,5 +176,36 @@
     "lista_ok": true,
     "portada_ok": true,
     "eliminado": "2026-11-23T16:05:27Z"
+  },
+  {
+    "id": "largo-18-01",
+    "title": "What If You Could See Who Has a Crush on You?",
+    "description": "Would you want to see your own number? 👇\n\nWhat if you could see who has a crush on you? A pink number floats above every head and thin threads show who likes whom. Follow the consequences through high school, work, friendship and the whole world, until a stranger on the subway changes everything.\nFun fact: studies suggest most people underestimate how much others like them, a gap psychologists call the liking gap.\n#whatif #crush #psychology #storytime #thecuriolab\n\n▶️ More «What If...?»: https://www.youtube.com/playlist?list=PLDcwZJpfCQbc",
+    "tags": [
+      "what if",
+      "what if you could see who likes you",
+      "who has a crush on you",
+      "crush",
+      "love",
+      "dating apps",
+      "psychology",
+      "what would happen if",
+      "thought experiment",
+      "liking gap",
+      "the curio lab",
+      "storytime"
+    ],
+    "video": "largo-18-01.mp4",
+    "portada": "largo-18-01_portada.jpg",
+    "lista": "What If...?",
+    "tag": "largo-21",
+    "issue": 89,
+    "estado": "programado",
+    "publish_at": "2026-11-25T20:00:00Z",
+    "youtube_id": "QESapel42X0",
+    "lista_ok": true,
+    "portada_ok": true,
+    "reprogramado": true,
+    "eliminado": "2026-11-24T06:43:32Z"
   }
 ]
