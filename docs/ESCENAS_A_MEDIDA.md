@@ -92,3 +92,25 @@ Si en una escena a medida pasa algo que debe sonar en un instante concreto, aña
 `t` en segundos desde el inicio del plano (o fracción de su duración si `"k": true`). Nombres válidos: las claves de CUES en sonido.py
 (whoosh, whip, hit, hit_hard, boom, explosion, thud, pop, ding, sparkle, money, tick, heartbeat, thunder, rain, wind, wave, splash,
 bubbles, fire, glass, door, steps, run, fall, rise, mystery, rumble, boing, arrow, metal, paper, camera, scare, laser...).
+
+## Personajes «gorditos» y escenas con mucha gente (regla del dueño, 24-11-2026)
+
+Idea de estilo tomada de canales grandes de animación explicativa (sin copiar sus diseños): personajes MUY básicos
+—cuerpo redondo y grande, brazos y piernas de palo, cabeza redonda, calvos / con pelo / con sombrero— y **escenas con
+varios personajes que interactúan** (no solo 1-2): charlan, se dan la mano, se señalan, se persiguen, reacciona el público.
+
+- Módulo: `renderer/lib/gente.mjs`, disponible en `K`:
+  - `K.reparto(semilla, n, fijos)` → n personajes distintos (usa la misma semilla en todo el vídeo para que sean los mismos).
+  - `K.tipo(semilla, {pelo, sombrero, ropa, bigote, corbata, ancho...})` → un personaje suelto (extras, público).
+  - `K.monigote(ctx, a, p, x, sueloY, esc, {pose, mira: -1|0|1, mood, habla, objeto})` → devuelve `{cabeza, hr, manoD, manoI, top}`.
+    Poses: quieto saluda habla senala vitorea encoge miedo piensa brazos sostiene levanta empuja aplaude llora sentado salta
+    manos anda corre (o un array de 9 ángulos; `K.apreton(a, fase)` = dar la mano).
+    Moods: neutral feliz risa triste enfadado sorpresa miedo duda dormido.
+  - `K.anda(a, x0, x1, f0, f1, corre)` → mover a alguien de un sitio a otro dentro del plano.
+  - `K.globo(ctx, a, 'TEXT', x, y, {tx, ty, grito, p0})`, `K.simbolo(ctx, a, cabeza, hr, '!'|'?'|'♥')`, `K.mareo(...)`.
+  - `K.multitud(ctx, a, {n, x0, x1, gy, esc, filas, reaccion, seed, mood})` → público / calle / cola de gente.
+- **En los vídeos nuevos, usar este reparto por defecto**: 3-6 personajes con nombre que se repiten en todo el vídeo +
+  extras/multitud de fondo, y en la mayoría de planos alguna interacción entre ellos. Textos en inglés (canal en EE. UU.).
+- Los personajes antiguos (`drawFullBody`, `persona.mjs`) NO se borran: siguen sirviendo para los vídeos ya hechos y
+  para quien se quiera.
+- Muestra de cómo se ven: la genera `node` con `K.reparto` + `K.multitud` (ver commit).

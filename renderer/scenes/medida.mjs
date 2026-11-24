@@ -13,6 +13,7 @@ import { drawPlace, midShot, grade } from './bright.mjs';
 import { personaWho, drawHead, drawFullBody } from '../lib/persona.mjs';
 import { INK, brightBg } from '../lib/brightbg.mjs';
 import { comicWord, speedLines, sparkles, smoke, flash, shakeAt, starBurst, drawEffect } from '../lib/impact.mjs';
+import { GENTE } from '../lib/gente.mjs';
 import { accion } from './actions.mjs';
 import { composicion } from './compose.mjs';
 import { escena } from './bright.mjs';
@@ -42,7 +43,7 @@ const text = (ctx, str, x, y, { size = 110, color = '#ffffff', rot = 0, k = 1 } 
 };
 export const KIT = { X0: 0, XW: 1080, W, H, INK, clamp, ease, lerp, seg, ph, radial, noise1, rr, ...DRAW, PROPS, prop, face, text,
   drawPlace, midShot, grade, brightBg, drawHead, drawFullBody, personaWho,
-  comicWord, speedLines, sparkles, smoke, flash, shakeAt, starBurst, drawEffect };
+  comicWord, speedLines, sparkles, smoke, flash, shakeAt, starBurst, drawEffect, ...GENTE };
 
 const FALLBACK = { accion, composicion, escena };
 export function medidaFn(params) { const fn = LOADED[String(params?.archivo || '')]?.[params?.plano]; return typeof fn === 'function' ? fn : null; }
