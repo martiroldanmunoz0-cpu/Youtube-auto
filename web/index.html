@@ -156,6 +156,7 @@ nav .n.bad{background:var(--bad);color:#fff}
     <button data-t="crear">Crear Shorts</button>
     <button data-t="largos">Crear vídeos largos</button>
     <button data-t="historial">Historial</button>
+    <button data-t="ideas">💡 Ideas</button>
     <button data-t="problemas">Problemas<span class="n bad" id="n-problemas" hidden></span></button>
   </nav>
 </header>
@@ -235,6 +236,14 @@ nav .n.bad{background:var(--bad);color:#fff}
     </form>
     <h3 style="margin-top:22px">Vídeos largos en marcha</h3>
     <div class="list" id="largos-list"><p class="hint">Cargando…</p></div>
+  </section>
+
+  <!-- TEMPORAL: pestaña Ideas (quitar cuando el usuario lo diga) -->
+  <section id="ideas">
+    <h2>💡 Ideas (temporal)</h2>
+    <p class="hint">Elige los vídeos de referencia. El panel saca fotogramas <b>en tu propio móvil u ordenador</b>: el vídeo no se sube a ningún sitio. Luego descarga las láminas y pégalas en el chat con Claude.</p>
+    <input type="file" id="ideas-in" accept="video/*" multiple>
+    <div id="ideas-out" style="margin-top:14px"></div>
   </section>
 
   <section id="problemas">
@@ -1053,6 +1062,37 @@ nav .n.bad{background:var(--bad);color:#fff}
     const b = w.querySelector(".tokfix"); if (b) b.onclick = openSettings;
   }
   const fmtDayShort = d => new Intl.DateTimeFormat("es-ES", {timeZone: TZ, day: "numeric", month: "long", year: "numeric"}).format(d);
+
+  // ---------- TEMPORAL: Ideas (fotogramas locales de vídeos de referencia; quitar cuando se diga) ----------
+  $("#ideas-in").onchange = async e => {
+    const out = $("#ideas-out"); out.innerHTML = "";
+    for (const [i, f] of [...e.target.files].entries()) {
+      const p = document.createElement("p"); p.className = "hint"; p.textContent = `Vídeo ${i + 1}: preparando…`; out.append(p);
+      try {
+        const v = document.createElement("video"); v.muted = true; v.playsInline = true; v.preload = "auto"; v.src = URL.createObjectURL(f);
+        await new Promise((ok, ko) => { v.onloadedmetadata = ok; v.onerror = () => ko(new Error("no se puede leer ese vídeo")); });
+        const N = 16, SHEETS = 3, W = 480, H = Math.round(W * ((v.videoHeight / v.videoWidth) || 9 / 16));
+        const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+        for (let sh = 0; sh < SHEETS; sh++) {
+          const c = document.createElement("canvas"); c.width = W * 4; c.height = H * 4; const g = c.getContext("2d");
+          for (let k = 0; k < N; k++) {
+            const idx = sh * N + k, t = v.duration * (0.02 + 0.96 * idx / (N * SHEETS - 1));
+            p.textContent = `Vídeo ${i + 1}: fotograma ${idx + 1}/${N * SHEETS}…`;
+            await new Promise(ok => { v.onseeked = ok; v.currentTime = t; });
+            const x = (k % 4) * W, y = Math.floor(k / 4) * H;
+            g.drawImage(v, x, y, W, H);
+            g.fillStyle = "rgba(0,0,0,.6)"; g.fillRect(x, y, 70, 26); g.fillStyle = "#fff"; g.font = "bold 18px sans-serif"; g.fillText(fmt(t), x + 6, y + 19);
+          }
+          const blob = await new Promise(ok => c.toBlob(ok, "image/jpeg", 0.85));
+          const name = `ideas_video${i + 1}_lamina${sh + 1}.jpg`, url = URL.createObjectURL(blob);
+          const fig = document.createElement("figure"); fig.style.margin = "0 0 14px";
+          fig.innerHTML = `<img src="${url}" alt="" style="width:100%;border-radius:10px"><figcaption style="margin-top:6px"><a class="btn" download="${name}" href="${url}">⬇️ Descargar lámina ${sh + 1}</a></figcaption>`;
+          out.append(fig);
+        }
+        p.textContent = `Vídeo ${i + 1}: listo (${SHEETS} láminas).`;
+      } catch (err) { p.textContent = `Vídeo ${i + 1}: ✕ ${err.message}`; }
+    }
+  };
 
   // ---------- Arranque ----------
   async function refreshAll() {
