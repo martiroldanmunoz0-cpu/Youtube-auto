@@ -226,7 +226,7 @@ export function dibuja(ctx, p, x, gy, esc = 1, o = {}) {
   ctx.translate(0, by * (1 / resp - 1));
   cuerpo(ctx, p, bw, bh, by); ctx.fillStyle = p.ropa; ctx.fill();
   ctx.save(); ctx.clip(); elipse(ctx, bw * 0.35 * (mira >= 0 ? 1 : -1) + bw * 0.1, by + bh * 0.25, bw * 0.55, bh * 0.6, 'rgba(0,0,0,0.12)'); elipse(ctx, -bw * 0.22, by - bh * 0.25, bw * 0.15, bh * 0.1, 'rgba(255,255,255,0.25)', 0, -0.5);
-  if (p.corbata) { ctx.fillStyle = p.corbata; ctx.beginPath(); ctx.moveTo(mira * 10 - 10, topB + 8); ctx.lineTo(mira * 10 + 10, topB + 8); ctx.lineTo(mira * 10 + 16, topB + bh * 0.5); ctx.lineTo(mira * 10, topB + bh * 0.6); ctx.lineTo(mira * 10 - 16, topB + bh * 0.5); ctx.closePath(); ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = INK; ctx.stroke(); }
+  if (p.corbata && !o.espalda) { ctx.fillStyle = p.corbata; ctx.beginPath(); ctx.moveTo(mira * 10 - 10, topB + 8); ctx.lineTo(mira * 10 + 10, topB + 8); ctx.lineTo(mira * 10 + 16, topB + bh * 0.5); ctx.lineTo(mira * 10, topB + bh * 0.6); ctx.lineTo(mira * 10 - 16, topB + bh * 0.5); ctx.closePath(); ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = INK; ctx.stroke(); }
   ctx.fillStyle = p.pantalon; ctx.fillRect(-bw, by + bh * 0.32, bw * 2, bh);
   ctx.restore();
   cuerpo(ctx, p, bw, bh, by); ctx.lineWidth = lw; ctx.strokeStyle = INK; ctx.stroke();
@@ -239,10 +239,15 @@ export function dibuja(ctx, p, x, gy, esc = 1, o = {}) {
   peloAtras(ctx, p, hx, hyC, hr);
   elipse(ctx, hx, hyC, hr, hr * 0.98, p.piel, lw);
   if (!L && p.sombrero !== 'chistera' && p.sombrero !== 'vaquero' && p.sombrero !== 'bombin') elipse(ctx, hx - mira * hr * 0.92, hyC + hr * 0.05, hr * 0.14, hr * 0.2, p.piel, 5); // oreja
+  if (o.espalda) { // de espaldas: sin cara; el pelo cubre la parte de atrás de la cabeza
+    if (!['calvo', 'coronilla'].includes(p.pelo)) { ctx.save(); ctx.beginPath(); ctx.arc(hx, hyC, hr * 0.98, 0, 7); ctx.clip(); ctx.fillStyle = p.peloCol; ctx.fillRect(hx - hr * 1.2, hyC - hr * 1.2, hr * 2.4, hr * (['melena', 'coleta', 'rizos'].includes(p.pelo) ? 2.4 : 1.55)); ctx.restore(); elipse(ctx, hx, hyC, hr, hr * 0.98, null, lw); }
+    if (p.sombrero) sombrero(ctx, p, hx, hyC, hr);
+  } else {
   cara(ctx, p, hx, hyC, hr, { ...o, mira, t });
   if (!p.sombrero || ['coleta', 'melena'].includes(p.pelo)) peloDelante(ctx, p, hx, hyC, hr, t);
   else if (p.barba) peloDelante(ctx, { ...p, pelo: 'calvo_' }, hx, hyC, hr, t);
   if (p.sombrero) sombrero(ctx, p, hx, hyC, hr);
+  }
   ctx.restore();
   const k = esc, top = gy - (sy + legL + bh + hr * 1.6) * k;
   return { x, gy, top, cabeza: [x + hx * k, gy + (hyC - sy) * k], hr: hr * k,

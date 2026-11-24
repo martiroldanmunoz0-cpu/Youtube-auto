@@ -123,3 +123,12 @@ varios personajes que interactúan** (no solo 1-2): charlan, se dan la mano, se 
 - `K.caraObjeto(ctx, a, x, y, r, { mood })`: los objetos también hablan y reaccionan (un chip, una moneda, un edificio).
 - `K.mesa(ctx, x, gy, w)`: mesa de frente; dibujar después de los personajes `pose: 'sentado'`.
 - Regla: los fondos tienen sitio reconocible (casa con valla, ciudad al atardecer, sala de servidores, restaurante) y casi siempre hay carteles, precios o cifras escritos dentro de la escena, en inglés.
+
+### Escenas de cine con varios personajes: `escenario.mjs` (24-11-2026)
+Ideas de estilo (no copia): luz de cine, primeros planos por encima del hombro, sitios reconocibles y rótulos en pantalla. Todo acepta `{ W, H }` (vertical u horizontal).
+- **Decorados:** `K.pasillo` (taquillas en perspectiva), `K.calle` (casas con valla y farola; `hora: 'dia'|'atardecer'|'noche'`, `coche: true`), `K.ciudad` (rascacielos con ventanas), `K.interior(ctx, a, { tipo: 'aula'|'dormitorio'|'restaurante'|'oficina'|'servidores', texto })`, `K.puerta` (pared oscura y una puerta iluminada; devuelve `{x, y, w, h, gy}` para poner a alguien dentro).
+- **Luz:** `K.luz(ctx, a, { tono: 'noche'|'atardecer'|'interior'|'dia'|'tension', foco: [x, y] })`. Va DESPUÉS de los personajes y ANTES de los rótulos. Casi todos los planos llevan una.
+- **Cámara:** `K.camara(ctx, a, () => {...escena...}, { de: 1, a: 1.15, foco: [x, y], temblor })` para acercarse despacio a quien habla.
+- **Encuadre:** `K.hombro(ctx, a, p, { lado: -1|1 })` pone a un personaje enorme, de espaldas y desenfocado en primer plano, y se dibuja al final. `K.desenfocado(ctx, px, fn)`. Los personajes aceptan `espalda: true`.
+- **Rótulos:** `K.contador(ctx, a, '3:00', x, y, { icono: 'reloj'|'loop'|'rec'|'dinero' })`, `K.rotulo(ctx, a, 'YOU', x, y)` y `K.fila(ctx, a, personas, { nombres: ['YOU', 'MAYA', ...] })`. `fila` presenta a los personajes uno a uno con su nombre.
+- **Regla por plano:** usar un decorado reconocible, 2–5 personajes que reaccionan entre sí, una luz y, cuando cuadre, un contador, rótulo o cartel. Alternar planos generales, por encima del hombro, de la puerta y en pantalla partida, y no repetir dos veces seguidas el mismo tipo de plano.
