@@ -165,10 +165,11 @@
     "tag": "largo-15",
     "issue": null,
     "estado": "programado",
-    "publish_at": "2026-11-24T23:00:00Z",
+    "publish_at": "2026-11-28T23:00:00Z",
     "youtube_id": "Bsw4Bhw-UoE",
     "lista_ok": true,
-    "portada_ok": true
+    "portada_ok": true,
+    "reprogramado": true
   },
   {
     "id": "largo-20-01",
