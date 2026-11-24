@@ -2,6 +2,8 @@
 // Historia inventada (idea propia del canal): personajes genéricos, sin marcas. Números rosas y hilos que solo ve el protagonista.
 // Horizontal: se ve x ≈ -860…1940 e y ≈ 230…1810 (los subtítulos tapan abajo: lo importante en y 350-1350).
 
+import { SET, fig, cam, fg, glow, shade } from '../../lib/sets.mjs';
+
 const PINK = '#ff4fa3', PINK2 = '#ffc2e0';
 const SK = [
   { light: '#f6d3b3', dark: '#d29a72', ear: '#d9a07a', neck: '#c98e66' },
@@ -702,5 +704,55 @@ export default {
     bg(ctx, K, '#ffe6f2', '#ff9ccf'); K.midShot(ctx, you(a), { x: 540, y: 920, s: 0.65, mood: 'happy', t: a.t }); tag(ctx, K, 540, 360, '?', K.ph(a.t, a.d, 0.05, 0.25), a.t, 1.3);
     const k = K.ph(a.t, a.d, 0.35, 0.55); if (k > 0) { ctx.save(); ctx.translate(-430, 820); ctx.scale(K.ease.outBack(k), K.ease.outBack(k)); K.R(ctx, -330, -200, 660, 400, 40, '#ffffff', 9); K.R(ctx, -280, -140, 560, 90, 20, '#f2f2f6', 4); K.R(ctx, -280, -20, 420, 90, 20, '#ffe6f2', 4); K.text(ctx, 'YES / NO?', 0, 130, { size: 70, color: PINK }); ctx.restore(); }
     const k2 = K.ph(a.t, a.d, 0.6, 0.8); if (k2 > 0) { ctx.save(); ctx.translate(1500, 820); ctx.scale(K.ease.outBack(k2), K.ease.outBack(k2)); K.R(ctx, -300, -170, 600, 340, 40, '#ff3b30', 9); K.P(ctx, [[-50, -70], [-50, 70], [70, 0]], '#ffffff', 6); K.text(ctx, 'NEXT WHAT IF', 0, 120, { size: 52, color: '#ffffff' }); ctx.restore(); }
+  },
+};
+
+// ---------- Versión en ancho (1920×1080) con decorados detallados: el personaje está DENTRO del sitio ----------
+export const ancho = {
+  // 4 Una corredora pasa por la acera con un 2 rosa; dos desconocidos (en la puerta del café y en la parada) esperan que se fije
+  4: (ctx, a, K) => {
+    cam(ctx, a, 1.02, 1.08, 960, 600); const { gy } = SET.calle(ctx, a.t, { hora: 'dia', a, gente: 5 });
+    const x = -200 + K.ph(a.t, a.d, 0, 1) * 2300; const j = fig(ctx, a, pp(a, 'jogger'), x, gy, 1, 'happy', { still: true });
+    for (let i = 0; i < 5; i++) { ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(x - 120 - i * 25, j.head + 80 + i * 40); ctx.lineTo(x - 260 - i * 25, j.head + 80 + i * 40); ctx.stroke(); }
+    tag(ctx, K, x, j.top - 60, 2, K.ph(a.t, a.d, 0.05, 0.2), a.t, 0.75);
+    const s1 = fig(ctx, a, pp(a, 'x3'), 310, gy - 20, 0.92, 'happy'); const s2 = fig(ctx, a, pp(a, 'x1'), 1660, gy - 20, 0.92, 'happy');
+    thread(ctx, K, 310, s1.chest, x, j.chest, K.ph(a.t, a.d, 0.25, 0.6), a.t, -160); thread(ctx, K, 1660, s2.chest, x, j.chest, K.ph(a.t, a.d, 0.35, 0.7), a.t, -160);
+    fg.farola(ctx, 1830, a.t); ctx.restore();
+  },
+  // 6 Una anciana da de comer a las palomas en el camino; un hilo cruza el parque hasta un hombre en el banco
+  6: (ctx, a, K) => {
+    cam(ctx, a, 1, 1.07, 900, 650); const st = SET.parque(ctx, a.t, { hora: 'dia' });
+    const b = fig(ctx, a, pp(a, 'bench'), st.banco.x, st.banco.y + 40, 0.8, 'neutral', { still: true });
+    const g = fig(ctx, a, pp(a, 'granny'), 1180, st.gy + 40, 1.05, 'happy'); tag(ctx, K, 1180, g.top - 70, 1, K.ph(a.t, a.d, 0.05, 0.2), a.t, 0.75);
+    for (let i = 0; i < 7; i++) { const px = 1300 + i * 70 + Math.sin(a.t * 3 + i) * 10, py = 1010 + (i % 2) * 30; K.E(ctx, px, py, 30, 22, '#9aa0ad', 0, 5); K.C(ctx, px + 24, py - 18, 15, '#8a909c', 4); K.P(ctx, [[px + 36, py - 20], [px + 52, py - 15], [px + 36, py - 10]], '#ffb347', 3); }
+    for (let i = 0; i < 5; i++) { const q = (a.t * 0.9 + i * 0.2) % 1; K.C(ctx, 1260 + q * 160 + i * 10, g.chest + 40 + q * 200, 6, '#e8d3a2', 0); }
+    thread(ctx, K, 1180, g.chest, st.banco.x, b.chest, K.ph(a.t, a.d, 0.3, 0.85), a.t, -300); fg.arbol(ctx, -120, a.t); ctx.restore();
+  },
+  // 10 El pasillo del instituto se ilumina: números rosas sobre cada alumno e hilos cruzando las taquillas
+  10: (ctx, a, K) => {
+    cam(ctx, a, 1, 1.06, 960, 520); const { gy } = SET.pasillo(ctx, a.t, { a, gente: 6 }); const xs = [180, 520, 860, 1200, 1520, 1800], ns = [2, 0, 5, 1, 9, 3]; const P = [];
+    xs.forEach((x, i) => { const f = fig(ctx, a, pp(a, EXTRAS[i]), x, gy - (i % 2) * 40, 1 - (i % 2) * 0.08, ['happy', 'neutral', 'happy', 'shocked', 'happy', 'neutral'][i]); P.push(f); tag(ctx, K, x, f.top - 55, ns[i], K.ph(a.t, a.d, i * 0.05, 0.15 + i * 0.05), a.t, 0.6); });
+    [[0, 2], [5, 2], [3, 4], [1, 4]].forEach(([f, to], j) => thread(ctx, K, xs[f], P[f].chest, xs[to], P[to].chest, K.ph(a.t, a.d, 0.3 + j * 0.1, 0.6 + j * 0.1), a.t, -200));
+    for (let i = 0; i < 4; i++) { const q = K.ph(a.t, a.d, 0.25 + i * 0.15, 0.55 + i * 0.15); if (q > 0 && q < 1) K.starBurst(ctx, 300 + i * 450, 120 + (i % 2) * 60, 90 * q, PINK, 1 - q); } ctx.restore();
+  },
+  // 18 Sigues la línea rosa desde tu crush: cruza el aula por encima de los pupitres, junto a las ventanas
+  18: (ctx, a, K) => {
+    cam(ctx, a, 1.08, 1.02, 960, 540); const { gy } = SET.aula(ctx, a.t);
+    const c = fig(ctx, a, pp(a, 'crush'), 260, gy, 1.05, 'happy'); const y = fig(ctx, a, you(a), 1000, gy + 10, 1.05, 'shocked');
+    const [ex, ey] = thread(ctx, K, 260, c.top + 60, 1700, 380, K.ph(a.t, a.d, 0.05, 0.95), a.t, -260); K.C(ctx, ex, ey, 22, '#ffffff', 5);
+    fg.pupitres(ctx); ctx.restore();
+  },
+  // 41 La abrazas en el salón: brilla, tiene un 4 encima y nunca ha estado tan feliz
+  41: (ctx, a, K) => {
+    cam(ctx, a, 1, 1.1, 960, 520); const { gy } = SET.salon(ctx, a.t); const k = K.ease.out(K.ph(a.t, a.d, 0, 0.3));
+    fig(ctx, a, you(a), 720 + k * 110, gy, 1.2, 'happy', { arms: 'up' }); const m = fig(ctx, a, pp(a, 'mia'), 1200 - k * 110, gy, 1.2, 'happy', { arms: 'up' });
+    tag(ctx, K, 1200 - k * 110, m.top - 80, 4, K.ph(a.t, a.d, 0.3, 0.5), a.t, 0.9); K.sparkles(ctx, 960, m.head, a.t, 12, 360);
+    for (let i = 0; i < 6; i++) heart(ctx, K, 880 + i * 40, 560 - ((a.t * 120 + i * 60) % 400), 18, PINK2, 4); ctx.restore();
+  },
+  // 72 Pasas el torniquete y entras en un vagón casi vacío con luz amarilla que parpadea
+  72: (ctx, a, K) => {
+    cam(ctx, a, 1, 1.05, 960, 540); const st = SET.metro(ctx, a.t, { parpadeo: 1 }); const x = -200 + K.ease.out(K.ph(a.t, a.d, 0, 0.7)) * 1050;
+    fig(ctx, a, you(a, { outfit: '#1f1f26' }), x, st.gy, 1.15, 'neutral'); fig(ctx, a, pp(a, 'hood'), 1650, st.asiento + 330, 0.85, 'neutral', { still: true });
+    fg.barra(ctx, 1320); ctx.restore();
   },
 };
