@@ -2,12 +2,14 @@
 // arriba; mide ~400 px de alto a escala 1. La escena "composicion" las coloca, escala y anima.
 import { INK } from './brightbg.mjs';
 
-const O = (ctx, w = 9) => { ctx.lineWidth = w; ctx.strokeStyle = INK; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke(); };
+// Contorno: los planos «cine» (vídeos largos) lo afinan y lo tiñen; los Shorts lo dejan como siempre
+export const STYLE = { ink: INK, k: 1 };
+const O = (ctx, w = 9) => { ctx.lineWidth = w * STYLE.k; ctx.strokeStyle = STYLE.ink; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke(); };
 const E = (ctx, x, y, rx, ry, c, rot = 0, w = 9) => { ctx.beginPath(); ctx.ellipse(x, y, rx, ry, rot, 0, 7); ctx.fillStyle = c; ctx.fill(); if (w) O(ctx, w); };
 const C = (ctx, x, y, r, c, w = 9) => E(ctx, x, y, r, r, c, 0, w);
 const R = (ctx, x, y, w, h, r, c, lw = 9) => { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); ctx.fillStyle = c; ctx.fill(); if (lw) O(ctx, lw); };
 const P = (ctx, pts, c, w = 9) => { ctx.beginPath(); pts.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.closePath(); ctx.fillStyle = c; ctx.fill(); if (w) O(ctx, w); };
-const L = (ctx, pts, c, w) => { for (const [lw, col] of [[w + 16, INK], [w, c]]) { ctx.lineWidth = lw; ctx.strokeStyle = col; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); pts.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.stroke(); } };
+const L = (ctx, pts, c, w) => { for (const [lw, col] of [[w + 16 * STYLE.k, STYLE.ink], [w, c]]) { ctx.lineWidth = lw; ctx.strokeStyle = col; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); pts.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.stroke(); } };
 const EYE = (ctx, x, y, r = 16, look = 0) => { C(ctx, x, y, r, '#fff', 5); C(ctx, x + look * r * 0.3, y, r * 0.5, INK, 0); };
 const MOUTH = (ctx, x, y, w, happy = true) => { ctx.beginPath(); happy ? ctx.arc(x, y, w, 0.2, Math.PI - 0.2) : ctx.arc(x, y + w, w, Math.PI + 0.3, -0.3); O(ctx, 7); };
 

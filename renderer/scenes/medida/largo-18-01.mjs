@@ -3,6 +3,7 @@
 // Horizontal: se ve x ≈ -860…1940 e y ≈ 230…1810 (los subtítulos tapan abajo: lo importante en y 350-1350).
 
 import { SET, fig, cam, fg, glow, shade } from '../../lib/sets.mjs';
+import { plano, actor, etiqueta, pastilla, panel, cifra, bocadillo, confeti, motas } from '../../lib/cine.mjs';
 
 const PINK = '#ff4fa3', PINK2 = '#ffc2e0';
 const SK = [
@@ -708,51 +709,240 @@ export default {
 };
 
 // ---------- Versión en ancho (1920×1080) con decorados detallados: el personaje está DENTRO del sitio ----------
+// ---------------- HORIZONTAL «CINE» (lib/cine.mjs): personajes dentro del lugar, planos variados, luz de atardecer ----------------
+const Q = (a, n) => (n === 'you' ? you(a) : pp(a, n));
+const T = (ctx, K, a, x, y, n, p0 = 0.05, sz = 0.7) => tag(ctx, K, x, y, n, K.ph(a.t, a.d, p0, p0 + 0.15), a.t, sz);
+// bokeh rosa (números lejanos desenfocados)
+function bokeh(ctx, K, a, n = 14, seed = 3) { for (let i = 0; i < n; i++) { const x = (Math.abs(Math.sin((i + seed) * 77.1)) * 1900) | 0, y = 160 + (Math.abs(Math.sin((i + seed) * 31.7)) * 420) | 0; ctx.globalAlpha = 0.25 + 0.2 * Math.sin(a.t * 2 + i); K.radial(ctx, x, y + Math.sin(a.t + i) * 8, 40 + (i % 3) * 18, PINK, 0.9); } ctx.globalAlpha = 1; }
+const B = (txt, x, y, o = {}) => (ctx, a) => bocadillo(ctx, a, txt, x, y, o);
+const movil = (ctx, a, K, y, lines, head = 'Pink') => { panel(ctx, 960, y, 440, 780, 54); heart(ctx, K, 960, y - 240, 56, PINK, 0); K.text(ctx, head, 960, y - 150, { size: 52, color: '#ffffff' }); lines.forEach((l, i) => { const k = K.ph(a.t, a.d, 0.15 + i * 0.12, 0.3 + i * 0.12); if (k <= 0) return; ctx.globalAlpha = k; ctx.fillStyle = 'rgba(255,255,255,0.1)'; ctx.beginPath(); ctx.roundRect(780, y - 70 + i * 100, 360, 80, 20); ctx.fill(); K.text(ctx, l, 960, y - 30 + i * 100, { size: 30, color: PINK2 }); ctx.globalAlpha = 1; }); };
+const rise = (K, a, p0 = 0, p1 = 0.3) => (1 - K.ease.out(K.ph(a.t, a.d, p0, p1))) * 320;
+const fan = (ctx, K, a, tx, ty, n, x0 = -100, x1 = 2000, y0 = 300, bend = -150) => { for (let i = 0; i < n; i++) thread(ctx, K, x0 + (x1 - x0) * (i / Math.max(1, n - 1)), y0 + (i % 3) * 90, tx, ty, K.ph(a.t, a.d, 0.1 + i * 0.06, 0.45 + i * 0.06), a.t, bend + (i % 2) * 80); };
 export const ancho = {
-  // 4 Una corredora pasa por la acera con un 2 rosa; dos desconocidos (en la puerta del café y en la parada) esperan que se fije
-  4: (ctx, a, K) => {
-    cam(ctx, a, 1.02, 1.08, 960, 600); const { gy } = SET.calle(ctx, a.t, { hora: 'dia', a, gente: 5 });
-    const x = -200 + K.ph(a.t, a.d, 0, 1) * 2300; const j = fig(ctx, a, pp(a, 'jogger'), x, gy, 1, 'happy', { still: true });
-    for (let i = 0; i < 5; i++) { ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(x - 120 - i * 25, j.head + 80 + i * 40); ctx.lineTo(x - 260 - i * 25, j.head + 80 + i * 40); ctx.stroke(); }
-    tag(ctx, K, x, j.top - 60, 2, K.ph(a.t, a.d, 0.05, 0.2), a.t, 0.75);
-    const s1 = fig(ctx, a, pp(a, 'x3'), 310, gy - 20, 0.92, 'happy'); const s2 = fig(ctx, a, pp(a, 'x1'), 1660, gy - 20, 0.92, 'happy');
-    thread(ctx, K, 310, s1.chest, x, j.chest, K.ph(a.t, a.d, 0.25, 0.6), a.t, -160); thread(ctx, K, 1660, s2.chest, x, j.chest, K.ph(a.t, a.d, 0.35, 0.7), a.t, -160);
-    fg.farola(ctx, 1830, a.t); ctx.restore();
-  },
-  // 6 Una anciana da de comer a las palomas en el camino; un hilo cruza el parque hasta un hombre en el banco
-  6: (ctx, a, K) => {
-    cam(ctx, a, 1, 1.07, 900, 650); const st = SET.parque(ctx, a.t, { hora: 'dia' });
-    const b = fig(ctx, a, pp(a, 'bench'), st.banco.x, st.banco.y + 40, 0.8, 'neutral', { still: true });
-    const g = fig(ctx, a, pp(a, 'granny'), 1180, st.gy + 40, 1.05, 'happy'); tag(ctx, K, 1180, g.top - 70, 1, K.ph(a.t, a.d, 0.05, 0.2), a.t, 0.75);
-    for (let i = 0; i < 7; i++) { const px = 1300 + i * 70 + Math.sin(a.t * 3 + i) * 10, py = 1010 + (i % 2) * 30; K.E(ctx, px, py, 30, 22, '#9aa0ad', 0, 5); K.C(ctx, px + 24, py - 18, 15, '#8a909c', 4); K.P(ctx, [[px + 36, py - 20], [px + 52, py - 15], [px + 36, py - 10]], '#ffb347', 3); }
-    for (let i = 0; i < 5; i++) { const q = (a.t * 0.9 + i * 0.2) % 1; K.C(ctx, 1260 + q * 160 + i * 10, g.chest + 40 + q * 200, 6, '#e8d3a2', 0); }
-    thread(ctx, K, 1180, g.chest, st.banco.x, b.chest, K.ph(a.t, a.d, 0.3, 0.85), a.t, -300); fg.arbol(ctx, -120, a.t); ctx.restore();
-  },
-  // 10 El pasillo del instituto se ilumina: números rosas sobre cada alumno e hilos cruzando las taquillas
-  10: (ctx, a, K) => {
-    cam(ctx, a, 1, 1.06, 960, 520); const { gy } = SET.pasillo(ctx, a.t, { a, gente: 6 }); const xs = [180, 520, 860, 1200, 1520, 1800], ns = [2, 0, 5, 1, 9, 3]; const P = [];
-    xs.forEach((x, i) => { const f = fig(ctx, a, pp(a, EXTRAS[i]), x, gy - (i % 2) * 40, 1 - (i % 2) * 0.08, ['happy', 'neutral', 'happy', 'shocked', 'happy', 'neutral'][i]); P.push(f); tag(ctx, K, x, f.top - 55, ns[i], K.ph(a.t, a.d, i * 0.05, 0.15 + i * 0.05), a.t, 0.6); });
-    [[0, 2], [5, 2], [3, 4], [1, 4]].forEach(([f, to], j) => thread(ctx, K, xs[f], P[f].chest, xs[to], P[to].chest, K.ph(a.t, a.d, 0.3 + j * 0.1, 0.6 + j * 0.1), a.t, -200));
-    for (let i = 0; i < 4; i++) { const q = K.ph(a.t, a.d, 0.25 + i * 0.15, 0.55 + i * 0.15); if (q > 0 && q < 1) K.starBurst(ctx, 300 + i * 450, 120 + (i % 2) * 60, 90 * q, PINK, 1 - q); } ctx.restore();
-  },
-  // 18 Sigues la línea rosa desde tu crush: cruza el aula por encima de los pupitres, junto a las ventanas
-  18: (ctx, a, K) => {
-    cam(ctx, a, 1.08, 1.02, 960, 540); const { gy } = SET.aula(ctx, a.t);
-    const c = fig(ctx, a, pp(a, 'crush'), 260, gy, 1.05, 'happy'); const y = fig(ctx, a, you(a), 1000, gy + 10, 1.05, 'shocked');
-    const [ex, ey] = thread(ctx, K, 260, c.top + 60, 1700, 380, K.ph(a.t, a.d, 0.05, 0.95), a.t, -260); K.C(ctx, ex, ey, 22, '#ffffff', 5);
-    fg.pupitres(ctx); ctx.restore();
-  },
-  // 41 La abrazas en el salón: brilla, tiene un 4 encima y nunca ha estado tan feliz
-  41: (ctx, a, K) => {
-    cam(ctx, a, 1, 1.1, 960, 520); const { gy } = SET.salon(ctx, a.t); const k = K.ease.out(K.ph(a.t, a.d, 0, 0.3));
-    fig(ctx, a, you(a), 720 + k * 110, gy, 1.2, 'happy', { arms: 'up' }); const m = fig(ctx, a, pp(a, 'mia'), 1200 - k * 110, gy, 1.2, 'happy', { arms: 'up' });
-    tag(ctx, K, 1200 - k * 110, m.top - 80, 4, K.ph(a.t, a.d, 0.3, 0.5), a.t, 0.9); K.sparkles(ctx, 960, m.head, a.t, 12, 360);
-    for (let i = 0; i < 6; i++) heart(ctx, K, 880 + i * 40, 560 - ((a.t * 120 + i * 60) % 400), 18, PINK2, 4); ctx.restore();
-  },
-  // 72 Pasas el torniquete y entras en un vagón casi vacío con luz amarilla que parpadea
-  72: (ctx, a, K) => {
-    cam(ctx, a, 1, 1.05, 960, 540); const st = SET.metro(ctx, a.t, { parpadeo: 1 }); const x = -200 + K.ease.out(K.ph(a.t, a.d, 0, 0.7)) * 1050;
-    fig(ctx, a, you(a, { outfit: '#1f1f26' }), x, st.gy, 1.15, 'neutral'); fig(ctx, a, pp(a, 'hood'), 1650, st.asiento + 330, 0.85, 'neutral', { still: true });
-    fg.barra(ctx, 1320); ctx.restore();
-  },
+  // 0 ¿Y si pudieras ver quién te quiere? Tú en primer plano en la calle; detrás, números rosas sobre la gente
+  0: plano.primer({ set: 'calle', o: { hora: 'atardecer', gente: 8 }, q: 'you', mood: 'shocked', lado: 'izq', quien: Q,
+    antes: (ctx, a, K) => { bokeh(ctx, K, a, 16); [[1250, 300, 3], [1560, 340, 1], [1780, 280, 5]].forEach(([x, y, n], i) => T(ctx, K, a, x, y, n, 0.1 + i * 0.1, 0.45)); } }),
+  // 1 Te despiertas: por la ventana, números flotando sobre la gente de la calle
+  1: plano.general({ set: 'dormitorio', o: { hora: 'dia' }, look: 'interior', z: [1, 1.08], f: [1400, 420], quien: Q,
+    actores: [{ q: 'you', x: 760, mood: 'shocked', esc: 1.15 }],
+    despues: (ctx, a, K) => { [[1380, 330, 2], [1480, 380, 0], [1580, 320, 4]].forEach(([x, y, n], i) => T(ctx, K, a, x, y, n, 0.15 + i * 0.12, 0.35)); } }),
+  // 2 Hilos rosas unen a cada admirador con su crush; solo tú los ves
+  2: plano.general({ set: 'calle', o: { hora: 'atardecer', gente: 3 }, quien: Q, z: [1.04, 1],
+    actores: [{ q: 'x2', x: 260, esc: 0.95, mood: 'happy' }, { q: 'x3', x: 720, esc: 1.05 }, { q: 'x4', x: 1180, esc: 0.95, mood: 'happy' }, { q: 'x1', x: 1660, esc: 1.05 }],
+    despues: (ctx, a, K, { A }) => { [[0, 1], [2, 1], [3, 2]].forEach(([p, q], j) => thread(ctx, K, A[p].x, A[p].chest, A[q].x, A[q].chest, K.ph(a.t, a.d, 0.1 + j * 0.15, 0.45 + j * 0.15), a.t, -200)); A.forEach((f, i) => T(ctx, K, a, f.x, f.top - 50, [0, 2, 1, 0][i], 0.05 + i * 0.05, 0.55)); },
+    texto: { etiqueta: 'Only you can see them' } }),
+  // 3 El espejo del baño: tu reflejo no tiene número
+  3: plano.hombro({ set: 'bano', look: 'interior', q: 'you', de: 'you', mood: 'worried', quien: Q,
+    despues: (ctx, a, K, info) => { const k = K.ph(a.t, a.d, 0.3, 0.6); ctx.save(); ctx.globalAlpha = k; ctx.setLineDash([14, 14]); ctx.lineWidth = 6; ctx.strokeStyle = PINK2; heartPath(ctx, 1240, info.B.head - 260, 70); ctx.stroke(); ctx.restore(); },
+    texto: { pastilla: ['?', 1240, 170] } }),
+  // 4 Una corredora con un 2; dos desconocidos la miran
+  4: plano.general({ set: 'calle', o: { hora: 'atardecer', gente: 4 }, f: [960, 560], quien: Q,
+    actores: [{ q: 'x3', x: 300, gy: 860, esc: 0.95, mood: 'happy' }, { q: 'x1', x: 1640, gy: 860, esc: 0.95, mood: 'happy' }, { q: 'jogger', anda: [-150, 2100], mood: 'happy' }],
+    despues: (ctx, a, K, { A }) => { const j = A[2]; T(ctx, K, a, j.x, j.top - 60, 2); thread(ctx, K, 300, A[0].chest, j.x, j.chest, K.ph(a.t, a.d, 0.25, 0.6), a.t, -160); thread(ctx, K, 1640, A[1].chest, j.x, j.chest, K.ph(a.t, a.d, 0.35, 0.7), a.t, -160); },
+    delante: (ctx, a) => fg.farola(ctx, 1830, a.t, true) }),
+  // 5 Un hombre de traje con un 7 grita a un parquímetro
+  5: plano.general({ set: 'calle', o: { hora: 'atardecer' }, quien: Q, z: [1, 1.1], f: [1000, 560],
+    antes: (ctx, a, K) => { K.R(ctx, 1240, 620, 24, 260, 6, '#5b5f6b', 5); K.R(ctx, 1200, 520, 104, 120, 18, '#9aa4b5', 6); K.R(ctx, 1222, 545, 60, 40, 6, '#1f3a2a', 3); },
+    actores: [{ q: 'suit', x: 980, mood: 'angry', arms: 'up', esc: 1.1 }],
+    despues: (ctx, a, K, { A }) => { T(ctx, K, a, 980, A[0].top - 70, 7, 0.1, 0.8); bocadillo(ctx, a, '!!!', 1250, 380, { size: 56 }); } }),
+  // 6 Anciana con las palomas (un 1) y un hilo hasta el hombre del banco
+  6: plano.general({ set: 'parque', o: { hora: 'atardecer' }, quien: Q, f: [900, 650],
+    actores: [{ q: 'bench', x: 570, gy: 886, esc: 0.8, still: true }, { q: 'granny', x: 1180, dy: 40, esc: 1.05, mood: 'happy' }],
+    despues: (ctx, a, K, { A }) => { const g = A[1]; T(ctx, K, a, 1180, g.top - 70, 1, 0.05, 0.75); for (let i = 0; i < 7; i++) { const px = 1300 + i * 70 + Math.sin(a.t * 3 + i) * 10, py = 1010 + (i % 2) * 30; K.E(ctx, px, py, 30, 22, '#9aa0ad', 0, 3); K.C(ctx, px + 24, py - 18, 15, '#8a909c', 3); } thread(ctx, K, 1180, g.chest, 570, A[0].chest, K.ph(a.t, a.d, 0.3, 0.85), a.t, -300); },
+    delante: (ctx, a) => fg.arbol(ctx, -120, a.t) }),
+  // 7 Ella no lo sabe, él tampoco; solo tú
+  7: plano.primer({ set: 'parque', o: { hora: 'atardecer' }, q: 'you', mood: 'worried', lado: 'der', quien: Q, antes: (ctx, a, K) => bokeh(ctx, K, a, 6, 9), texto: { etiqueta: 'Only you know' } }),
+  // 8 Cientos de hilos cruzan la ciudad como telarañas rosas
+  8: plano.general({ set: 'avenida', o: { hora: 'noche' }, look: 'noche', z: [1, 1.12], f: [960, 480], quien: Q,
+    despues: (ctx, a, K) => { for (let i = 0; i < 16; i++) { const x1 = (i * 263) % 1920, x2 = (i * 617 + 400) % 1920; thread(ctx, K, x1, 500 + (i % 4) * 60, x2, 420 + (i % 3) * 80, K.ph(a.t, a.d, i * 0.03, 0.3 + i * 0.04), a.t, -180 - (i % 3) * 60, PINK, 5); } } }),
+  // 9 Lo seguimos por el instituto, el trabajo, la amistad y el mundo entero
+  9: plano.dato({ set: 'calle', o: { hora: 'atardecer' }, titulo: 'What happens next',
+    dibuja: (ctx, a) => ['School', 'Work', 'Friendship', 'The world'].forEach((w, i) => pastilla(ctx, a, w, 420 + i * 360, 560, { size: 44, k: Math.max(0, Math.min(1, (a.t / a.d - 0.1 - i * 0.15) / 0.1)) })) }),
+  // 10 Pasillo del instituto lleno de números e hilos
+  10: plano.general({ set: 'pasillo', o: { gente: 6 }, look: 'interior', quien: Q,
+    actores: [180, 520, 860, 1200, 1520, 1800].map((x, i) => ({ q: EXTRAS[i], x, dy: -(i % 2) * 40, esc: 1 - (i % 2) * 0.08, mood: ['happy', 'neutral', 'happy', 'shocked', 'happy', 'neutral'][i] })),
+    despues: (ctx, a, K, { A }) => { const ns = [2, 0, 5, 1, 9, 3]; A.forEach((f, i) => T(ctx, K, a, f.x, f.top - 55, ns[i], i * 0.05, 0.6)); [[0, 2], [5, 2], [3, 4], [1, 4]].forEach(([p, q], j) => thread(ctx, K, A[p].x, A[p].chest, A[q].x, A[q].chest, K.ph(a.t, a.d, 0.3 + j * 0.1, 0.6 + j * 0.1), a.t, -200)); } }),
+  // 11 El quarterback: un cero enorme
+  11: plano.primer({ set: 'pasillo', o: { gente: 5 }, look: 'interior', q: 'qb', mood: 'happy', quien: Q,
+    despues: (ctx, a, K, { B }) => T(ctx, K, a, 1280, B.head - 300, 0, 0.15, 1.1), texto: { etiqueta: 'The most popular guy' } }),
+  // 12 Popular no es lo mismo que querido
+  12: plano.primer({ set: 'pasillo', o: { gente: 5 }, look: 'interior', q: 'qb', mood: 'worried', lado: 'izq', quien: Q, z: [1.08, 1.14],
+    despues: (ctx, a, K, { B }) => T(ctx, K, a, 640, B.head - 300, 0, 0, 0.9), texto: { pastilla: ['Popular  ≠  liked', 1330, 300] } }),
+  // 13 El chico callado que come solo: un siete
+  13: plano.general({ set: 'cafeteria', look: 'interior', z: [1.12, 1.04], f: [1380, 600], quien: Q,
+    actores: [{ q: 'quiet', x: 1380, mood: 'sad', esc: 1.1 }],
+    despues: (ctx, a, K, { A }) => T(ctx, K, a, 1380, A[0].top - 70, 7, 0.3, 0.9), delante: (ctx) => fg.mesa(ctx, 1380, 860, 620), texto: { etiqueta: 'Eats lunch alone' } }),
+  // 14 Siete personas le adoran en secreto; él no tiene ni idea
+  14: plano.primer({ set: 'cafeteria', look: 'interior', q: 'quiet', mood: 'sad', quien: Q,
+    despues: (ctx, a, K, { B }) => { T(ctx, K, a, 1280, B.head - 300, 7, 0.05, 1); fan(ctx, K, a, 1280, B.chest, 7, -100, 700, 200); } }),
+  // 15 Un hilo de una animadora, otro de una chica de la banda y otro del chico del periódico
+  15: plano.general({ set: 'cafeteria', look: 'interior', quien: Q,
+    actores: [{ q: 'cheer', x: 260, mood: 'happy' }, { q: 'band', x: 640, mood: 'happy' }, { q: 'paper', x: 1700, mood: 'happy' }, { q: 'quiet', x: 1200, esc: 1.08 }],
+    despues: (ctx, a, K, { A }) => { [0, 1, 2].forEach((i) => thread(ctx, K, A[i].x, A[i].chest, A[3].x, A[3].chest, K.ph(a.t, a.d, 0.1 + i * 0.22, 0.4 + i * 0.22), a.t, -180)); T(ctx, K, a, A[3].x, A[3].top - 60, 7, 0, 0.7); } }),
+  // 16 Casi vas a decírselo, pero te quedas helado
+  16: plano.primer({ set: 'cafeteria', look: 'interior', q: 'you', mood: 'worried', lado: 'izq', quien: Q, otro: 'quiet', texto: { pastilla: ['How do you explain this?', 1300, 260, { size: 36 }] } }),
+  // 17 Tu crush se acerca por el pasillo
+  17: plano.hombro({ set: 'pasillo', o: { gente: 4 }, look: 'interior', q: 'crush', de: 'you', mood: 'happy', quien: Q,
+    despues: (ctx, a, K) => { for (let i = 0; i < 4; i++) heart(ctx, K, 420 + i * 40, 560 - ((a.t * 140 + i * 70) % 320), 16, PINK, 0); } }),
+  // 18 Sigues la línea rosa: cruza el aula por encima de los pupitres
+  18: plano.general({ set: 'aula', look: 'interior', z: [1.08, 1.02], quien: Q,
+    actores: [{ q: 'crush', x: 260, esc: 1.05, mood: 'happy' }, { q: 'you', x: 1000, dy: 10, esc: 1.05, mood: 'shocked' }],
+    despues: (ctx, a, K, { A }) => { const [ex, ey] = thread(ctx, K, 260, A[0].top + 60, 1700, 380, K.ph(a.t, a.d, 0.05, 0.95), a.t, -260); K.C(ctx, ex, ey, 18, '#ffffff', 0); },
+    delante: (ctx) => fg.pupitres(ctx) }),
+  // 19 No te apunta a ti: va a tu compañero de laboratorio
+  19: plano.general({ set: 'aula', look: 'interior', z: [1, 1.1], f: [1350, 560], quien: Q,
+    actores: [{ q: 'you', x: 700, mood: 'shocked' }, { q: 'lab', x: 1350 }],
+    despues: (ctx, a, K, { A }) => thread(ctx, K, -200, 200, 1350, A[1].chest, K.ph(a.t, a.d, 0, 0.6), a.t, -100), delante: (ctx) => fg.pupitres(ctx) }),
+  // 20 Se te cae el alma a los pies
+  20: plano.primer({ set: 'aula', look: 'interior', q: 'you', mood: 'sad', quien: Q, z: [1.02, 1.14], antes: (ctx, a, K) => thread(ctx, K, 100, 380, 600, 520, 1, a.t, -60, PINK, 6) }),
+  // 21 ¿Se lo dices? ¿Lo saboteas? ¿O te callas?
+  21: plano.dato({ set: 'aula', look: 'interior', titulo: 'What do you do?',
+    dibuja: (ctx, a) => ['Tell them?', 'Sabotage it?', 'Stay quiet?'].forEach((w, i) => pastilla(ctx, a, w, 520 + i * 440, 540, { size: 46, k: Math.max(0, Math.min(1, (a.t / a.d - 0.1 - i * 0.2) / 0.1)) })) }),
+  // 22 Te callas, pero los hilos tiran de ti todo el día
+  22: plano.general({ set: 'aula', look: 'interior', quien: Q, z: [1, 1.08], f: [960, 560],
+    actores: [{ q: 'x1', x: 250 }, { q: 'x4', x: 560, mood: 'happy' }, { q: 'you', x: 960, mood: 'worried', esc: 1.1 }, { q: 'x2', x: 1380 }, { q: 'x3', x: 1700, mood: 'happy' }],
+    despues: (ctx, a, K, { A }) => { thread(ctx, K, A[0].x, A[0].chest, A[3].x, A[3].chest, K.ph(a.t, a.d, 0.1, 0.5), a.t, -260); thread(ctx, K, A[4].x, A[4].chest, A[1].x, A[1].chest, K.ph(a.t, a.d, 0.3, 0.7), a.t, -320); }, delante: (ctx) => fg.pupitres(ctx) }),
+  // 23 A la hora de comer sabes más que cien diarios
+  23: plano.general({ set: 'cafeteria', look: 'interior', quien: Q,
+    actores: [{ q: 'x2', x: 220, mood: 'happy' }, { q: 'cheer', x: 520 }, { q: 'you', x: 960, esc: 1.1, mood: 'happy' }, { q: 'paper', x: 1400, mood: 'happy' }, { q: 'x4', x: 1720 }],
+    despues: (ctx, a, K, { A }) => A.forEach((f, i) => i !== 2 && T(ctx, K, a, f.x, f.top - 50, [3, 1, 0, 2, 6][i], 0.05 + i * 0.07, 0.5)), texto: { pastilla: ['100 diaries', 960, 180] } }),
+  // 24 Siete hilos atascados en silencio
+  24: plano.primer({ set: 'cafeteria', look: 'interior', q: 'quiet', mood: 'neutral', lado: 'izq', quien: Q, despues: (ctx, a, K, { B }) => fan(ctx, K, a, 640, B.chest, 7, 1200, 2000, 200, -120) }),
+  // 25 Le das un empujoncito a la chica de la banda
+  25: plano.hombro({ set: 'pasillo', o: { gente: 3 }, look: 'interior', q: 'band', de: 'you', mood: 'happy', quien: Q, despues: B('"Hey, he likes music too."', 1240, 170) }),
+  // 26 El viernes ya se sientan juntos
+  26: plano.general({ set: 'cafeteria', look: 'interior', quien: Q, z: [1, 1.08], f: [1350, 600],
+    actores: [{ q: 'quiet', x: 1220, mood: 'happy' }, { q: 'band', x: 1500, mood: 'happy' }],
+    despues: (ctx, a, K) => { for (let i = 0; i < 6; i++) heart(ctx, K, 1260 + i * 50, 520 - ((a.t * 120 + i * 60) % 360), 16, PINK, 0); }, delante: (ctx) => fg.mesa(ctx, 1360, 860, 640), texto: { pastilla: ['FRIDAY', 1360, 200] } }),
+  // 27 El lunes llegas a la oficina
+  27: plano.general({ set: 'oficina', o: { hora: 'dia' }, look: 'dia', quien: Q, actores: [{ q: 'x3', x: 400 }, { q: 'x2', x: 1500 }, { q: 'you', anda: [-100, 960, 0, 0.7], mood: 'neutral', esc: 1.05 }], texto: { etiqueta: 'Monday' } }),
+  // 28 Tu jefa, seria, tiene un 3
+  28: plano.primer({ set: 'oficina', o: { hora: 'dia' }, look: 'dia', q: 'boss', mood: 'angry', quien: Q, despues: (ctx, a, K, { B }) => T(ctx, K, a, 1280, B.head - 300, 3, 0.15, 1) }),
+  // 29 Su propio hilo cruza la oficina hasta el becario
+  29: plano.general({ set: 'oficina', o: { hora: 'dia' }, look: 'dia', quien: Q, actores: [{ q: 'boss', x: 360, mood: 'happy' }, { q: 'intern', x: 1550 }],
+    despues: (ctx, a, K, { A }) => { thread(ctx, K, A[0].x, A[0].chest, A[1].x, A[1].chest, K.ph(a.t, a.d, 0.1, 0.7), a.t, -280); pastilla(ctx, a, '22', A[1].x, A[1].top - 50); } }),
+  // 30 Dato: el becario tiene 22 años y depende de ella
+  30: plano.dato({ set: 'oficina', look: 'tension', titulo: 'Your boss  ·  the intern', valor: '22', sub: 'years old · reports to her' }),
+  // 31 Ella ronda su mesa; el equipo se da cuenta
+  31: plano.general({ set: 'oficina', o: { hora: 'dia' }, look: 'dia', quien: Q, z: [1, 1.07], f: [1300, 560],
+    actores: [{ q: 'x1', x: 250, mood: 'shocked' }, { q: 'x4', x: 560, mood: 'worried' }, { q: 'intern', x: 1200 }, { q: 'boss', x: 1480, mood: 'happy' }],
+    despues: (ctx, a, K, { A }) => thread(ctx, K, A[3].x, A[3].chest, A[2].x, A[2].chest, 1, a.t, -120), delante: (ctx) => fg.mesa(ctx, 1260, 870, 700) }),
+  // 32 Entras en Recursos Humanos: «Tenemos que hablar»
+  32: plano.general({ set: 'despacho', look: 'interior', quien: Q, actores: [{ q: 'you', x: 560, mood: 'worried' }, { q: 'hr', x: 1500, mood: 'neutral' }], despues: B('"We need to talk."', 560, 230), texto: { etiqueta: 'HR office' } }),
+  // 33 Trasladan a la jefa: sale con su caja
+  33: plano.general({ set: 'oficina', o: { hora: 'dia' }, look: 'dia', quien: Q, actores: [{ q: 'intern', x: 400, mood: 'happy' }, { q: 'boss', anda: [1200, 2200, 0.1, 0.9], mood: 'sad' }],
+    despues: (ctx, a, K, { A }) => K.R(ctx, A[1].x - 120, A[1].chest - 10, 240, 150, 8, '#c9a36a', 4), texto: { etiqueta: 'One month later' } }),
+  // 34 La empresa se queda de piedra
+  34: plano.general({ set: 'oficina', o: { hora: 'dia' }, look: 'dia', quien: Q, actores: [{ q: 'x2', x: 280, mood: 'shocked' }, { q: 'x1', x: 620, mood: 'shocked' }, { q: 'you', x: 960, esc: 1.1, mood: 'happy' }, { q: 'x3', x: 1300, mood: 'shocked' }, { q: 'x4', x: 1640, mood: 'shocked' }] }),
+  // 35 El director te llama: ascenso
+  35: plano.general({ set: 'despacho', look: 'interior', quien: Q, actores: [{ q: 'director', x: 1450, mood: 'happy' }, { q: 'you', x: 620, mood: 'happy' }], texto: { pastilla: ['PROMOTED', 960, 240] } }),
+  // 36 Confeti, magdalenas y aplausos en la sala de descanso
+  36: plano.general({ set: 'cafeteria', look: 'interior', quien: Q, actores: [{ q: 'x1', x: 250, arms: 'up', mood: 'happy' }, { q: 'x2', x: 600, arms: 'up', mood: 'happy' }, { q: 'you', x: 960, esc: 1.1, mood: 'happy' }, { q: 'x3', x: 1320, arms: 'up', mood: 'happy' }, { q: 'x4', x: 1680, mood: 'worried' }],
+    despues: (ctx, a, K) => { confeti(ctx, a); if (a.t / a.d > 0.6) bocadillo(ctx, a, '"How did you always know?"', 1560, 220, { size: 34, p0: 0.6 }); } }),
+  // 37 Todos te miran distinto
+  37: plano.general({ set: 'oficina', o: { hora: 'dia' }, look: 'tension', quien: Q, z: [1.06, 1], actores: [{ q: 'x1', x: 260, mood: 'happy' }, { q: 'x2', x: 600, mood: 'worried' }, { q: 'you', x: 960, esc: 1.1, mood: 'worried' }, { q: 'x3', x: 1320, mood: 'shocked' }, { q: 'x4', x: 1660, mood: 'angry' }] }),
+  // 38 En la cafetería: «¿lees mentes?»
+  38: plano.hombro({ set: 'cafeteria', look: 'interior', q: 'x2', de: 'you', mood: 'happy', quien: Q, despues: B('"Okay, seriously, do you read minds?"', 1240, 180, { size: 36 }) }),
+  // 39 Un poder que ayuda también puede asustar
+  39: plano.primer({ set: 'cafeteria', look: 'tension', q: 'you', mood: 'worried', lado: 'centro', quien: Q, z: [1.02, 1.16] }),
+  // 40 Te llama tu mejor amiga gritando de alegría
+  40: plano.detalle({ set: 'salon', look: 'interior', dibuja: (ctx, a, K) => { const y = 560 + rise(K, a); panel(ctx, 960, y, 440, 780, 54); K.C(ctx, 960, y - 170, 90, '#ff6fa3', 0); K.text(ctx, 'Mia', 960, y - 20, { size: 64, color: '#ffffff' }); K.text(ctx, 'calling...', 960, y + 60, { size: 34, color: PINK2 }); for (const d of [-1, 1]) K.C(ctx, 960 + d * 110, y + 240, 50, d < 0 ? '#e05a4a' : '#2ec27e', 0); } }),
+  // 41 La abrazas en el salón: un 4 y nunca ha estado tan feliz
+  41: plano.general({ set: 'salon', look: 'interior', z: [1, 1.1], f: [960, 520], quien: Q,
+    actores: [{ q: 'you', x: 830, esc: 1.2, mood: 'happy', arms: 'up' }, { q: 'mia', x: 1090, esc: 1.2, mood: 'happy', arms: 'up' }],
+    despues: (ctx, a, K, { A }) => { T(ctx, K, a, 1090, A[1].top - 80, 4, 0.3, 0.9); for (let i = 0; i < 6; i++) heart(ctx, K, 880 + i * 40, 560 - ((a.t * 120 + i * 60) % 400), 18, PINK2, 0); } }),
+  // 42 Entra el novio con flores: un 2, pero su hilo no va hacia ella
+  42: plano.general({ set: 'salon', look: 'interior', quien: Q, actores: [{ q: 'mia', x: 520, mood: 'happy' }, { q: 'bf', anda: [2100, 1250, 0, 0.4] }],
+    despues: (ctx, a, K, { A }) => { const b = A[1]; K.E(ctx, b.x - 140, b.chest, 60, 40, '#ff6fa3', 0, 3); T(ctx, K, a, b.x, b.top - 60, 2, 0.35, 0.7); thread(ctx, K, b.x, b.chest, 1460, 300, K.ph(a.t, a.d, 0.5, 0.95), a.t, -150); } }),
+  // 43 Sale por la ventana, baja la calle y llega a una compañera, Jessica
+  43: plano.general({ set: 'avenida', o: { hora: 'noche' }, look: 'noche', z: [1, 1.12], f: [960, 520], quien: Q, actores: [{ q: 'jess', x: 1120, gy: 760, esc: 0.55, mood: 'happy' }],
+    despues: (ctx, a, K, { A }) => { thread(ctx, K, -100, 200, A[0].x, A[0].chest, K.ph(a.t, a.d, 0, 0.8), a.t, 120); if (a.t / a.d > 0.7) pastilla(ctx, a, 'Jessica', A[0].x, A[0].top - 40, { k: (a.t / a.d - 0.7) / 0.1 }); } }),
+  // 44 Va a prometerle «para siempre» con el corazón en otra parte
+  44: plano.primer({ set: 'salon', look: 'tension', q: 'you', mood: 'worried', lado: 'izq', otro: 'mia', quien: Q }),
+  // 45 Callar o romperle el momento más feliz
+  45: plano.dato({ set: 'salon', look: 'tension', titulo: 'Your choice',
+    dibuja: (ctx, a) => { pastilla(ctx, a, 'Stay silent', 640, 540, { size: 48 }); pastilla(ctx, a, 'Break her heart', 1300, 540, { size: 48, k: Math.max(0, (a.t / a.d - 0.4) / 0.1) }); } }),
+  // 46 Esa noche no duermes
+  46: plano.general({ set: 'dormitorio', o: { hora: 'noche' }, look: 'noche', quien: Q, z: [1.06, 1.12], f: [760, 560], actores: [{ q: 'you', x: 760, mood: 'sad', esc: 1.1 }], despues: (ctx, a) => motas(ctx, a, 18, '#bcd0ff') }),
+  // 47 Quedáis en el parque: «Tengo que contarte algo horrible»
+  47: plano.general({ set: 'parque', o: { hora: 'atardecer' }, quien: Q, actores: [{ q: 'you', x: 760, mood: 'worried' }, { q: 'mia', x: 1180, mood: 'happy' }], despues: B('"I have to tell you something awful."', 760, 230, { size: 36 }), delante: (ctx, a) => fg.arbol(ctx, 1950, a.t) }),
+  // 48 Se lo cuentas todo: ella solo te mira
+  48: plano.hombro({ set: 'parque', o: { hora: 'atardecer' }, q: 'mia', de: 'you', mood: 'shocked', quien: Q, despues: (ctx, a, K) => thread(ctx, K, 300, 150, 1100, 300, K.ph(a.t, a.d, 0.2, 0.7), a.t, -80, PINK, 6) }),
+  // 49 «Es una locura», susurra, y se aparta llorando
+  49: plano.primer({ set: 'parque', o: { hora: 'atardecer' }, q: 'mia', mood: 'sad', quien: Q, despues: B('"That\'s insane."', 640, 300) }),
+  // 50 Se enfrenta a su novio esa noche
+  50: plano.general({ set: 'salon', o: { hora: 'noche' }, look: 'noche', quien: Q, actores: [{ q: 'mia', x: 700, mood: 'angry', arms: 'up' }, { q: 'bf', x: 1250, mood: 'worried' }], despues: (ctx, a, K, { A }) => { if (a.t / a.d > 0.6) pastilla(ctx, a, 'texting Jessica', 1250, A[1].top - 50, { k: (a.t / a.d - 0.6) / 0.1 }); } }),
+  // 51 Se cancela la boda... y te bloquea
+  51: plano.detalle({ set: 'salon', o: { hora: 'noche' }, look: 'noche', dibuja: (ctx, a, K) => { const y = 560 + rise(K, a); panel(ctx, 960, y, 440, 780, 54); K.C(ctx, 960, y - 170, 90, '#ff6fa3', 0); K.text(ctx, 'Mia', 960, y - 20, { size: 64, color: '#ffffff' }); if (a.t / a.d > 0.4) pastilla(ctx, a, 'BLOCKED', 960, y + 120, { color: '#ff8a8a', k: (a.t / a.d - 0.4) / 0.1 }); } }),
+  // 52 «Prefería ser feliz y equivocada»
+  52: plano.primer({ set: 'salon', o: { hora: 'noche' }, look: 'noche', q: 'mia', mood: 'angry', quien: Q, despues: B('"I\'d rather be happy and wrong."', 640, 300, { size: 38 }) }),
+  // 53 Sola en el sofá, llorando
+  53: plano.general({ set: 'salon', o: { hora: 'noche' }, look: 'noche', quien: Q, z: [1.1, 1.18], f: [960, 620], actores: [{ q: 'you', x: 960, gy: 900, esc: 1, mood: 'sad' }],
+    despues: (ctx, a, K, { A }) => { for (const d of [-1, 1]) { const q = (a.t * 0.6 + (d > 0 ? 0.5 : 0)) % 1; K.E(ctx, 960 + d * 30, A[0].head + 40 + q * 120, 7, 11, '#9fd8ff', 0, 0); } } }),
+  // 54 La verdad no siempre es un regalo: a veces es un arma
+  54: plano.dato({ set: 'salon', o: { hora: 'noche' }, look: 'noche', titulo: 'The truth', dibuja: (ctx, a) => { pastilla(ctx, a, 'a gift', 700, 540, { size: 54 }); pastilla(ctx, a, 'a weapon', 1220, 540, { size: 54, color: '#ff8a8a', k: Math.max(0, (a.t / a.d - 0.45) / 0.1) }); } }),
+  // 55 Dejas de avisar y miras en silencio
+  55: plano.general({ set: 'calle', o: { hora: 'noche', gente: 6 }, look: 'noche', quien: Q, actores: [{ q: 'x1', x: 300 }, { q: 'x4', x: 620 }, { q: 'you', x: 1300, esc: 1.15, mood: 'neutral' }],
+    despues: (ctx, a, K, { A }) => { T(ctx, K, a, 300, A[0].top - 50, 2, 0.1, 0.5); T(ctx, K, a, 620, A[1].top - 50, 1, 0.2, 0.5); thread(ctx, K, 300, A[0].chest, 620, A[1].chest, 1, a.t, -150); }, delante: (ctx, a) => fg.farola(ctx, 1800, a.t, true) }),
+  // 56 Una noche tienes una idea
+  56: plano.general({ set: 'dormitorio', o: { hora: 'noche' }, look: 'noche', quien: Q, z: [1, 1.08], f: [900, 560], actores: [{ q: 'you', x: 900, mood: 'happy', esc: 1.1 }],
+    despues: (ctx, a, K, { A }) => { const k = K.ph(a.t, a.d, 0.2, 0.4); if (k > 0) { glow(ctx, 900, A[0].top - 90, 200, '#ffe08a', 0.6 * k); K.C(ctx, 900, A[0].top - 100, 46 * k, '#ffe08a', 0); } }, delante: (ctx) => fg.mesa(ctx, 900, 880, 700) }),
+  // 57 Tu app «Pink»
+  57: plano.detalle({ set: 'dormitorio', o: { hora: 'noche' }, look: 'noche',
+    dibuja: (ctx, a, K) => { const y = 560 + rise(K, a); panel(ctx, 960, y, 420, 760, 50); heart(ctx, K, 960, y - 180, 90, PINK, 0); K.text(ctx, 'Pink', 960, y - 20, { size: 70, color: '#ffffff' }); K.text(ctx, 'Who likes you?', 960, y + 80, { size: 34, color: PINK2 }); pastilla(ctx, a, '100% accurate', 960, y + 200, { size: 30 }); } }),
+  // 58 Adivina quién te quiere y nunca falla
+  58: plano.detalle({ set: 'dormitorio', o: { hora: 'noche' }, look: 'noche', dibuja: (ctx, a, K) => movil(ctx, a, K, 560, ['Sam  ·  likes you', 'Alex  ·  likes you', 'Jo  ·  likes you'], 'Pink') }),
+  // 59 Los primeros cien usuarios: todo acierto
+  59: plano.general({ set: 'cafeteria', look: 'interior', quien: Q, actores: ['x1', 'x2', 'x3', 'x4', 'cheer'].map((q, i) => ({ q, x: 200 + i * 380, mood: i % 2 ? 'shocked' : 'happy' })),
+    despues: (ctx, a, K, { A }) => A.forEach((f, i) => { K.R(ctx, f.x + 30, f.chest - 20, 40, 70, 8, '#1c1a2b', 0); K.R(ctx, f.x + 34, f.chest - 14, 32, 54, 5, PINK2, 0); if (K.ph(a.t, a.d, 0.2 + i * 0.1, 0.3 + i * 0.1) >= 1) { ctx.lineWidth = 12; ctx.strokeStyle = '#2ec27e'; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(f.x - 24, f.top - 50); ctx.lineTo(f.x - 6, f.top - 30); ctx.lineTo(f.x + 28, f.top - 72); ctx.stroke(); } }), texto: { pastilla: ['First 100 users', 960, 170] } }),
+  // 60 En una semana diez mil; en un mes, diez millones
+  60: plano.dato({ set: 'atico', look: 'noche', titulo: 'Users', dibuja: (ctx, a, K) => { const k = K.ease.inOut(K.ph(a.t, a.d, 0.05, 0.85)), v = Math.round(10 ** (4 + 3 * k)); cifra(ctx, a, v.toLocaleString('en-US'), 960, 520, { size: 150 }); etiqueta(ctx, a, k < 0.5 ? 'in a week' : 'in a month', 960, 660, { align: 'center', size: 30 }); } }),
+  // 61 Las apps de citas se hunden
+  61: plano.dato({ set: 'noticias', look: 'noche', titulo: 'Dating apps', dibuja: (ctx, a, K) => { const k = K.ease.inOut(K.ph(a.t, a.d, 0.1, 0.9)); ctx.lineWidth = 10; ctx.strokeStyle = '#ff6a6a'; ctx.lineCap = 'round'; ctx.beginPath(); for (let i = 0; i <= 40 * k; i++) { const x = 560 + i * 20, y = 420 + (i / 40) ** 2 * 300 + Math.sin(i) * 12; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); pastilla(ctx, a, '-90%', 1450, 720, { color: '#ff8a8a', k: Math.max(0, (a.t / a.d - 0.8) / 0.1) }); } }),
+  // 62 Los inversores hacen cola: más de mil millones
+  62: plano.general({ set: 'calle', o: { hora: 'atardecer' }, quien: Q, actores: [0, 1, 2, 3, 4].map((i) => ({ q: pp({ who: {} }, 'suit', { outfit: ['#2f2f36', '#1f1f26', '#2b3a66', '#2f2f36', '#3a3f4a'][i], hair: ['side', 'bald', 'short', 'buzz', 'side'][i] }), x: 1700 - i * 250, esc: 1 - i * 0.04, mood: 'happy' })), texto: { pastilla: ['$1,000,000,000', 960, 190, { size: 50 }] } }),
+  // 63 Titular: «Conoce al Oráculo del Amor». Tu cara en todas las pantallas
+  63: plano.general({ set: 'noticias', look: 'noche', quien: Q, despues: (ctx, a, K) => { for (let i = 0; i < 3; i++) for (let j = 0; j < 2; j++) K.face(ctx, a.who, 380 + i * 580, 250 + j * 330, 0.28, { mood: 'happy', t: a.t }); }, texto: { pastilla: ['"Meet the Love Oracle"', 960, 960, { size: 44 }] } }),
+  // 64 Desconocidos te dan las gracias; parejas te nombran en sus bodas
+  64: plano.general({ set: 'calle', o: { hora: 'atardecer', gente: 5 }, quien: Q, actores: [{ q: 'x4', x: 500, mood: 'happy', arms: 'up' }, { q: 'you', x: 960, esc: 1.1, mood: 'happy' }, { q: 'x1', x: 1400, mood: 'happy' }, { q: 'x2', x: 1600, mood: 'happy' }],
+    despues: (ctx, a, K) => { for (let i = 0; i < 8; i++) heart(ctx, K, 300 + i * 190, 400 - ((a.t * 100 + i * 50) % 260), 20, PINK, 0); } }),
+  // 65 Mucha gente te odia: dicen que mataste el romance
+  65: plano.general({ set: 'calle', o: { hora: 'noche' }, look: 'tension', quien: Q, actores: ['x1', 'x3', 'x2', 'x4'].map((q, i) => ({ q, x: 360 + i * 400, mood: 'angry', arms: 'up' })),
+    despues: (ctx, a, K, { A }) => A.forEach((f, i) => { K.R(ctx, f.x - 150, f.top - 230, 300, 150, 10, '#fffaf3', 4); K.text(ctx, ['LOVE IS A', 'NO MORE', 'BRING BACK', 'NOT A'][i], f.x, f.top - 180, { size: 30, color: '#c0392b' }); K.text(ctx, ['MYSTERY', 'PINK', 'ROMANCE', 'SPREADSHEET'][i], f.x, f.top - 130, { size: 30, color: '#c0392b' }); }) }),
+  // 66 De noche, solo en tu ático: encima de tu cabeza, nada
+  66: plano.general({ set: 'atico', look: 'noche', quien: Q, z: [1, 1.1], f: [960, 560], actores: [{ q: 'you', x: 960, mood: 'sad', esc: 1.15 }],
+    despues: (ctx, a, K, { A }) => { ctx.save(); ctx.globalAlpha = K.ph(a.t, a.d, 0.4, 0.6); ctx.setLineDash([12, 12]); ctx.lineWidth = 5; ctx.strokeStyle = PINK2; heartPath(ctx, 960, A[0].top - 90, 60); ctx.stroke(); ctx.restore(); } }),
+  // 67 Has dicho a millones quién les quiere; nunca a ti
+  67: plano.primer({ set: 'atico', look: 'noche', q: 'you', mood: 'sad', quien: Q, antes: (ctx, a, K) => bokeh(ctx, K, a, 10, 5) }),
+  // 68 Buscas en el aire vacío sobre tu reflejo
+  68: plano.hombro({ set: 'bano', look: 'noche', q: 'you', de: 'you', mood: 'worried', quien: Q, despues: (ctx, a, K) => ['0?', '100?', '?'].forEach((w, i) => pastilla(ctx, a, w, 1000 + i * 220, 200 + (i % 2) * 70, { k: Math.max(0, (a.t / a.d - 0.15 - i * 0.2) / 0.1) })) }),
+  // 69 ¿Alguien te quiere de verdad?
+  69: plano.primer({ set: 'atico', look: 'noche', q: 'you', mood: 'worried', lado: 'izq', quien: Q, z: [1.04, 1.16] }),
+  // 70 Pasada la medianoche sales de una gala y vas andando al metro
+  70: plano.general({ set: 'calle', o: { hora: 'noche' }, look: 'noche', quien: Q, actores: [{ q: you({ who: {} }, {}), x: 0 }].slice(0, 0).concat([{ q: (a) => you(a, { outfit: '#1f1f26' }), anda: [300, 1500] }]), delante: (ctx, a) => fg.farola(ctx, 1840, a.t, true), texto: { etiqueta: 'Past midnight' } }),
+  // 71 La calle vacía; unos pasos detrás siguen tu ritmo
+  71: plano.general({ set: 'avenida', o: { hora: 'noche' }, look: 'noche', quien: Q, z: [1, 1.1], f: [960, 600], actores: [{ q: (a) => you(a, { outfit: '#1f1f26' }), x: 1100, esc: 1.2, mood: 'worried' }, { q: 'hood', x: 820, gy: 700, esc: 0.45 }] }),
+  // 72 Entras en un vagón casi vacío con luz amarilla
+  72: plano.general({ set: 'metro', o: { parpadeo: 1 }, look: 'noche', quien: Q, actores: [{ q: (a) => you(a, { outfit: '#1f1f26' }), anda: [-200, 600, 0, 0.6], esc: 1.15 }, { q: 'hood', x: 1650, gy: 860, esc: 0.9, still: true }], delante: (ctx) => fg.barra(ctx, 1320) }),
+  // 73 Al fondo, un hombre con capucha te mira
+  73: plano.hombro({ set: 'metro', o: { parpadeo: 1 }, look: 'noche', q: 'hood', de: 'you', quien: Q }),
+  // 74 Mira el espacio vacío sobre tu cabeza
+  74: plano.primer({ set: 'metro', o: { parpadeo: 1 }, look: 'noche', q: 'hood', mood: 'neutral', quien: Q, despues: (ctx, a, K) => { ctx.save(); ctx.globalAlpha = 0.5; ctx.setLineDash([10, 14]); ctx.lineWidth = 4; ctx.strokeStyle = PINK2; ctx.beginPath(); ctx.moveTo(1200, 360); ctx.lineTo(500, 150); ctx.stroke(); ctx.restore(); } }),
+  // 75 Se sienta enfrente: «Tú también los ves, ¿verdad?»
+  75: plano.hombro({ set: 'metro', o: { parpadeo: 1 }, look: 'noche', q: 'hood', de: 'you', quien: Q, despues: B('"You see them too, don\'t you?"', 1240, 170, { size: 38 }) }),
+  // 76 No eres el único con este poder
+  76: plano.primer({ set: 'metro', o: { parpadeo: 1 }, look: 'tension', q: 'you', mood: 'shocked', lado: 'izq', quien: Q, z: [1.02, 1.18] }),
+  // 77 «Te he observado durante meses»
+  77: plano.primer({ set: 'metro', o: { parpadeo: 1 }, look: 'noche', q: 'hood', mood: 'happy', quien: Q, despues: B('"I\'ve watched you for months."', 640, 300, { size: 38 }) }),
+  // 78 «Tu número no es cero»
+  78: plano.hombro({ set: 'metro', o: { parpadeo: 1 }, look: 'noche', q: 'hood', de: 'you', mood: 'happy', quien: Q, despues: B('"And it isn\'t zero."', 1240, 170) }),
+  // 79 «El tuyo dice uno. Y el hilo va hacia mí»
+  79: plano.primer({ set: 'metro', o: { parpadeo: 1 }, look: 'tension', q: 'you', mood: 'shocked', lado: 'izq', quien: Q, despues: (ctx, a, K, { B: b }) => T(ctx, K, a, 640, b.head - 300, 1, 0.3, 1.1) }),
+  // 80 Una línea rosa va de su pecho al tuyo
+  80: plano.general({ set: 'metro', o: { parpadeo: 1 }, look: 'noche', quien: Q, actores: [{ q: (a) => you(a, { outfit: '#1f1f26' }), x: 520, gy: 1010, esc: 1.1, mood: 'shocked' }, { q: 'hood', x: 1420, esc: 1.1, mood: 'happy' }],
+    despues: (ctx, a, K, { A }) => { thread(ctx, K, A[1].x, A[1].chest, A[0].x, A[0].chest, K.ph(a.t, a.d, 0.1, 0.7), a.t, -120, PINK, 12); T(ctx, K, a, A[0].x, A[0].top - 60, 1, 0.05, 0.7); } }),
+  // 81 Ahora sabes dos cosas
+  81: plano.dato({ set: 'metro', look: 'noche', titulo: 'Now you know', dibuja: (ctx, a) => { pastilla(ctx, a, 'who likes everyone', 960, 470, { size: 44 }); pastilla(ctx, a, 'who has been watching you', 960, 600, { size: 44, k: Math.max(0, (a.t / a.d - 0.4) / 0.1) }); } }),
+  // 82 ¿Querrías ver tu propio número? Cuéntamelo en los comentarios
+  82: plano.primer({ set: 'calle', o: { hora: 'atardecer', gente: 6 }, q: 'you', mood: 'happy', lado: 'izq', quien: Q, antes: (ctx, a, K) => bokeh(ctx, K, a, 14, 2), despues: (ctx, a, K, { B: b }) => { ctx.save(); ctx.globalAlpha = 0.8; ctx.setLineDash([12, 12]); ctx.lineWidth = 6; ctx.strokeStyle = PINK2; heartPath(ctx, 640, b.head - 300, 70); ctx.stroke(); ctx.restore(); pastilla(ctx, a, '?', 640, b.head - 310, { size: 50 }); }, texto: { pastilla: ['Would you want to see your number?', 1300, 300, { size: 38 }] } }),
 };

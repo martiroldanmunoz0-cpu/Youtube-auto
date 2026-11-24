@@ -17,11 +17,11 @@ import { preloadMedida } from './scenes/medida.mjs';
 import { setLooks } from './lib/persona.mjs';
 import { drawEffect, comicGate } from './lib/impact.mjs';
 import { drawPlace as drawPlaceWide } from './scenes/bright.mjs';
-import { BG_CONTEXT } from './lib/brightbg.mjs';
+import { BG_CONTEXT, INK as INK_BASE } from './lib/brightbg.mjs';
 import { medidaWide, medidaFn, KIT } from './scenes/medida.mjs';
 import { personaWho } from './lib/persona.mjs';
 import { lifeOverlay } from './lib/ambient.mjs';
-import { propName } from './lib/props.mjs';
+import { propName, STYLE } from './lib/props.mjs';
 import { T, LANG } from './lib/lang.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -470,7 +470,7 @@ export class WideRenderer extends Renderer {
     const wideFn = b.scene_name === 'medida' ? medidaWide(b.params) : null;
     if (wideFn) { // escena a medida dibujada directamente en horizontal
       const who = personaWho(this.tl.persona || this.tl.seed, b.params);
-      ctx.save(); try { wideFn(ctx, { t: local, d: dur, params: b.params, who, WW, WH }, KIT); } catch (e) { console.error('AVISO escena con error: ' + e.message); } ctx.restore();
+      ctx.save(); try { wideFn(ctx, { t: local, d: dur, params: b.params, who, WW, WH }, KIT); } catch (e) { console.error('AVISO escena con error: ' + e.message); } ctx.restore(); STYLE.k = 1; STYLE.ink = INK_BASE;
       return;
     }
     const cr = this.cropOf(b);

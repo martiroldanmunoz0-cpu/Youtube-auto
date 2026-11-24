@@ -151,6 +151,42 @@ export const SET = {
     grad(ctx, '#e8cf8f', '#c9ad6a', 830, WH); for (let i = 0; i < 40; i++) C(ctx, hash(i) * WW, 860 + hash(i + 3) * 200, 3, 'rgba(0,0,0,0.15)', 0);
     return { gy: 990, mar: 520 };
   },
+  // Despacho: mesa grande con ordenador, ventanal con la ciudad, estantería, planta, diploma
+  despacho(ctx, t, { hora = 'atardecer' } = {}) {
+    grad(ctx, '#e9dccb', '#d8c6ae', 0, 820); window_(ctx, 1080, 120, 640, 440, hora, t, '#8a6a9a');
+    R(ctx, 120, 140, 330, 620, 8, '#7a4f2e', 8); for (let sh = 0; sh < 4; sh++) { R(ctx, 130, 280 + sh * 140, 310, 12, 3, '#5a3a22', 0); for (let b = 0; b < 7; b++) R(ctx, 140 + b * 42, 200 + sh * 140 + (b % 3) * 6, 34, 76 - (b % 3) * 6, 3, ['#c0392b', '#2b3a66', '#d9a066', '#1f5c4a', '#8c3a6b'][(b + sh) % 5], 3); }
+    R(ctx, 560, 220, 180, 130, 6, '#f6efe2', 6); R(ctx, 585, 245, 130, 80, 3, '#ffffff', 3); plant(ctx, 1840, 830, 1.2, t);
+    grad(ctx, '#8a5a3a', '#6b4429', 820, WH); R(ctx, 520, 640, 880, 40, 10, '#5a3a22', 8); R(ctx, 560, 680, 800, 170, 8, '#6b4429', 8);
+    R(ctx, 820, 470, 260, 170, 12, '#2f2f36', 6); R(ctx, 834, 484, 232, 140, 6, '#4a6fa5', 0); R(ctx, 930, 636, 40, 10, 2, '#2f2f36', 0); R(ctx, 600, 600, 120, 40, 6, '#f2f2f2', 4); lamp(ctx, 1300, 640, 60, true, t);
+    return { gy: 1000 };
+  },
+  // Sala de descanso / cafetería de empresa: barra con cafetera, nevera, mesas redondas, ventanas, carteles
+  cafeteria(ctx, t, { hora = 'dia' } = {}) {
+    grad(ctx, '#f3e3cc', '#ead2b0', 0, 820); for (let i = 0; i < 3; i++) window_(ctx, 980 + i * 300, 150, 230, 300, hora, t, '#e07a5f');
+    R(ctx, 60, 520, 760, 300, 10, '#c9b79c', 8); R(ctx, 40, 500, 800, 30, 8, '#efe6d6', 6); R(ctx, 120, 380, 150, 120, 14, '#2f2f36', 6); C(ctx, 195, 440, 22, '#c0392b', 3); R(ctx, 320, 410, 90, 90, 10, '#f2f2f2', 5);
+    R(ctx, 860, 260, 100, 560, 12, '#dfe6ee', 7); R(ctx, 870, 460, 80, 6, 2, '#9aa4b5', 0); for (let k = 0; k < 4; k++) R(ctx, 100 + k * 170, 160, 120, 160, 6, ['#ffd166', '#4cc9f0', '#ff8ab8', '#2ec27e'][k], 4);
+    grad(ctx, '#b89b78', '#9c7f5e', 820, WH); for (const x of [1150, 1600]) { E(ctx, x, 760, 170, 30, '#efe6d6', 0, 6); R(ctx, x - 10, 780, 20, 140, 4, '#5b5f6b', 3); E(ctx, x, 920, 70, 14, '#5b5f6b', 0, 3); C(ctx, x - 50, 735, 22, '#ffffff', 4); }
+    return { gy: 1000 };
+  },
+  // Baño: espejo grande sobre el lavabo, azulejos, toalla
+  bano(ctx, t) {
+    ctx.fillStyle = '#dfeef0'; ctx.fillRect(0, 0, WW, WH); for (let x = 0; x < WW; x += 90) for (let y = 0; y < 820; y += 90) R(ctx, x + 3, y + 3, 84, 84, 6, (x / 90 + y / 90) % 2 ? '#d2e6e9' : '#e6f3f4', 2);
+    R(ctx, 560, 120, 800, 520, 24, '#b9cfd6', 10); R(ctx, 590, 150, 740, 460, 14, '#e9f6fb', 4); for (let i = 0; i < 3; i++) P(ctx, [[700 + i * 160, 160], [780 + i * 160, 160], [640 + i * 160, 600], [560 + i * 160, 600]], 'rgba(255,255,255,0.45)', 0);
+    R(ctx, 600, 680, 720, 60, 14, '#f6f6f6', 7); R(ctx, 700, 740, 520, 180, 10, '#efefef', 6); R(ctx, 930, 620, 40, 70, 8, '#c0c4cc', 4); R(ctx, 1500, 300, 160, 400, 20, '#ff8ab8', 6);
+    grad(ctx, '#c9d6d9', '#aebec2', 820, WH); return { gy: 1000, espejo: { x: 960, y: 380 } };
+  },
+  // Ático de lujo de noche: ventanal enorme con rascacielos iluminados, sofá blanco, lámpara de arco
+  atico(ctx, t) {
+    grad(ctx, '#1a1d3e', '#2c2452', 0, 860); for (let i = 0; i < 26; i++) { const x = i * 78, h = 220 + hash(i + 4) * 420; R(ctx, x, 760 - h, 70, h, 2, i % 2 ? '#262a55' : '#30346a', 0); for (let r = 0; r < h / 40 - 1; r++) for (let q = 0; q < 3; q++) if (hash(i * 31 + r * 7 + q) > 0.55) (ctx.fillStyle = '#ffd98a', ctx.fillRect(x + 8 + q * 20, 770 - h + r * 40, 10, 16)); }
+    for (let i = 0; i <= 6; i++) R(ctx, i * 320 - 10, 60, 20, 800, 0, '#15172e', 0); R(ctx, 0, 40, WW, 30, 0, '#15172e', 0);
+    grad(ctx, '#3a3352', '#2a2440', 860, WH); R(ctx, 600, 760, 760, 120, 50, '#e9e4f2', 8); R(ctx, 560, 820, 840, 120, 40, '#d9d2e6', 8); lamp(ctx, 1560, 900, 520, true, t); glow(ctx, 960, 400, 900, '#ffd98a', 0.08);
+    return { gy: 1010 };
+  },
+  // Sala de redacción / plató de noticias: pantallas con titulares
+  noticias(ctx, t) {
+    grad(ctx, '#20223f', '#2a2c52', 0, WH); for (let i = 0; i < 3; i++) for (let j = 0; j < 2; j++) { const x = 120 + i * 580, y = 120 + j * 330; R(ctx, x, y, 520, 290, 10, '#0e1024', 8); R(ctx, x + 14, y + 14, 492, 262, 4, ['#3b5bdb', '#c0392b', '#2b8a8a'][(i + j) % 3], 0); R(ctx, x + 14, y + 220, 492, 56, 0, '#ffd166', 0); }
+    return { gy: 1060 };
+  },
 };
 
 // ---------------- PRIMER TÉRMINO (dibujar DESPUÉS de los personajes: da profundidad) ----------------
