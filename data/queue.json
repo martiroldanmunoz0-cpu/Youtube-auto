@@ -223,10 +223,11 @@
     "tag": "largo-21",
     "issue": 89,
     "estado": "programado",
-    "publish_at": "2026-11-25T23:00:00Z",
+    "publish_at": "2026-11-25T20:00:00Z",
     "youtube_id": "QESapel42X0",
     "lista_ok": true,
-    "portada_ok": true
+    "portada_ok": true,
+    "reprogramado": true
   },
   {
     "id": "largo-19-01",
