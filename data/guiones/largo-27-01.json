@@ -1,0 +1,1534 @@
+{
+  "title": "What If You Had to Spend $1 Billion in 30 Days?",
+  "description": "Hospital or private island: what would you build? 👇\n\nWhat if you had to spend $1 billion in 30 days or lose it all? We break down the real prices, the interest trap and the twist nobody sees coming.\nA billion dollars at 5% interest earns about $137,000 every single day, and that is exactly why spending it is so hard.\n#whatif #billion #money #curiosity #thecurioLab",
+  "tags": [
+    "what if you had to spend a billion dollars",
+    "spend 1 billion in 30 days",
+    "how to spend a billion dollars",
+    "billionaire challenge",
+    "what if you were a billionaire",
+    "how much is a billion dollars",
+    "interest on a billion dollars",
+    "bugatti chiron price",
+    "how much does a hospital cost",
+    "money facts",
+    "what if videos",
+    "the curio lab"
+  ],
+  "beats": [
+    {
+      "capitulo": "Chapter 1 · The Rule",
+      "text": "Spend $1 billion in 30 days… or else.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "bolsa_dinero",
+            "pos": "arriba",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "bolsa_dinero",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "caer"
+          }
+        ],
+        "label": "$1,000,000,000"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Could you spend $1 billion in 30 days if one leftover dollar means losing everything?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "bolsa_dinero",
+            "pos": "arriba",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "bolsa_dinero",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "caer"
+          }
+        ],
+        "label": "$1,000,000,000"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Here's the rule: if even one single dollar is left at midnight on day thirty, you lose every last cent.",
+      "scene": "big_text",
+      "params": {
+        "text": "30 DAYS",
+        "label": "one dollar left = you lose it all",
+        "color": "#ff3b30",
+        "lugar": "oficina"
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    },
+    {
+      "text": "No giving it away. No burning it. And stay with me, because the ending of this challenge is not what you expect.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "dinero_billete",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "fuego",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ],
+        "label": "NO BURNING"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "It starts in a lawyer's office. He slides a folder across the desk: your great-aunt Vivian, a woman you met twice, left you everything.",
+      "scene": "escena",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "plano": "medio",
+        "who": "abogado",
+        "objeto": "papel",
+        "mood": "neutral",
+        "label": "THE LAWYER"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "One billion dollars. Cash, stocks, accounts, all of it. But Vivian was a strange woman, and she attached one very strange condition.",
+      "scene": "document",
+      "params": {
+        "title": "LAST WILL",
+        "lines": [
+          "Heir: you",
+          "Amount: $1,000,000,000",
+          "Time limit: 30 days",
+          "Spend it ALL",
+          "No gifts. No burning."
+        ],
+        "highlight": 4,
+        "stamp": "BINDING"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "You have thirty days. Every dollar must be gone by midnight on the last day, and a giant counter will track every cent.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "bolsa_dinero",
+            "pos": "arriba",
+            "tamano": "gigante",
+            "anim": "latir"
+          },
+          {
+            "pieza": "reloj_arena",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "You laugh out loud. Spending money is easy, right? Anyone could burn through a billion dollars in a month. Right?",
+      "scene": "accion",
+      "params": {
+        "tipo": "reir",
+        "lugar": "oficina",
+        "hora": "dia"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Wrong. By the end of this video you'll understand why this may be the hardest challenge in the world, and why the last dollar is the worst.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "salon",
+        "hora": "noche"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "To feel how big a billion is: spend one thousand dollars every single day, and it would take you over two thousand seven hundred years.",
+      "scene": "calendar",
+      "params": {
+        "style": "taco",
+        "day": "2,740",
+        "month": "Years",
+        "label": "$1,000 a day"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Or try this. One million seconds is about eleven days. One billion seconds is more than thirty-one years. That's the gap you're dealing with.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "reloj_arena",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "girar"
+          },
+          {
+            "pieza": "reloj_digital",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "latir"
+          }
+        ],
+        "label": "31 years"
+      },
+      "camera": "tilt_up",
+      "transition": "whip"
+    },
+    {
+      "text": "Okay, challenge accepted. You sign the papers, and the counter above the lawyer's desk lights up. The thirty days start right now.",
+      "scene": "escena",
+      "params": {
+        "lugar": "oficina",
+        "hora": "atardecer",
+        "plano": "sin_persona",
+        "label": "DAY 1 · The clock starts"
+      },
+      "camera": "pull_out",
+      "transition": "flash"
+    },
+    {
+      "capitulo": "Chapter 2 · The Spending Spree",
+      "text": "Day one. You start the way anyone would: big. Your first stop is a ten million dollar mansion with a pool and a private movie theater.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "entero",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "casa",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "crecer"
+          }
+        ],
+        "label": "$10 MILLION"
+      },
+      "camera": "tilt_up",
+      "transition": "whip"
+    },
+    {
+      "text": "Next, the garage. A Bugatti Chiron costs about three million dollars. You buy one. Then you buy a red one, just because.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "coche_rojo",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "entrar_der"
+          }
+        ],
+        "label": "$3M EACH"
+      },
+      "camera": "pan_left",
+      "transition": "cut"
+    },
+    {
+      "text": "Five supercars later, the dealership manager is crying happy tears. You've spent about fifteen million dollars, and it's not even lunchtime.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "ciudad",
+        "hora": "dia"
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "Now the sky. You buy a used private jet for roughly twelve million dollars, and you name her Vivian.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "avion",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "entrar_izq"
+          }
+        ],
+        "label": "JET: $12M"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "You sit in a leather seat, order champagne at thirty-five thousand feet, and look down at tiny clouds. This is the life.",
+      "scene": "accion",
+      "params": {
+        "tipo": "beber",
+        "lugar": "fondo",
+        "hora": "atardecer",
+        "objeto": "vaso_agua"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "That night you check the counter. Mansion, cars, jet… about thirty million dollars gone in a single day.",
+      "scene": "money",
+      "params": {
+        "amount": "-$30,000,000",
+        "label": "Mansion, cars and jet",
+        "rain": true,
+        "stack": true
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Thirty million sounds like a lot. But it's three percent of your billion. Ninety-seven percent is still sitting right there.",
+      "scene": "big_text",
+      "params": {
+        "text": "ONLY 3%",
+        "label": "97% still left",
+        "color": "#ffd60a",
+        "lugar": "salon"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "You spent a whole day living like a movie star, and the counter barely moved. That's the first lesson of a billion.",
+      "scene": "person",
+      "params": {
+        "lugar": "salon",
+        "hora": "noche",
+        "mood": "shocked",
+        "label": "Still 97% left"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Day three. You get bolder. Designer clothes, diamond watches, front-row seats at every game, and dinner for an entire restaurant.",
+      "scene": "escena",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "happy",
+        "objeto": "dinero",
+        "arms": "up"
+      },
+      "camera": "tilt_down",
+      "transition": "whip"
+    },
+    {
+      "text": "Day five. A yacht, a penthouse, a stadium suite. The news picks it up. Everyone wants to know who the mystery heir is.",
+      "scene": "newspaper",
+      "params": {
+        "style": "web",
+        "headline": "Mystery heir spends $100M",
+        "kicker": "Daily Wire",
+        "date": "Day 5"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Then your phone starts buzzing. Your three oldest friends, Maya, Deon and Priya, have seen the headlines. They want dinner. Tonight.",
+      "scene": "phone",
+      "params": {
+        "screen": "chat",
+        "chat": {
+          "contact": "Maya, Deon, Priya",
+          "status": "group chat",
+          "typing": true,
+          "messages": [
+            {
+              "from": "them",
+              "text": "Is it TRUE?!"
+            },
+            {
+              "from": "them",
+              "text": "Dinner. Tonight."
+            },
+            {
+              "from": "me",
+              "text": "Okay, okay!"
+            }
+          ]
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Chapter 3 · Three Friends, Three Plans",
+      "text": "Day seven. A rooftop restaurant. Maya, Deon and Priya have known you since college, and tonight each of them has a plan for your money.",
+      "scene": "group",
+      "params": {
+        "count": 4,
+        "lugar": "ciudad",
+        "hora": "noche",
+        "mood": "happy",
+        "people": [
+          "maya",
+          "deon",
+          "priya"
+        ],
+        "label": "MAYA · DEON · PRIYA"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Maya goes first. She's a chef, and her dream is a food truck empire: a thousand trucks across America.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "calle",
+        "hora": "dia",
+        "who": "maya",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "entrar_der"
+          },
+          {
+            "pieza": "hamburguesa",
+            "pos": "arriba_izquierda",
+            "tamano": "mediano",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "carta",
+            "pos": "arriba_derecha",
+            "tamano": "pequeno",
+            "anim": "crecer"
+          }
+        ],
+        "label": "MAYA · Food trucks"
+      },
+      "camera": "pan_right",
+      "transition": "cut"
+    },
+    {
+      "text": "She has spreadsheets and everything. A thousand trucks would cost around forty million dollars. A good idea, but a drop in your bucket.",
+      "scene": "big_text",
+      "params": {
+        "text": "$40 MILLION",
+        "label": "1,000 food trucks",
+        "color": "#34c759",
+        "lugar": "cocina"
+      },
+      "camera": "slam",
+      "transition": "whip"
+    },
+    {
+      "text": "Deon laughs and shakes his head. He's a huge sports fan, and he wants something bigger: a brand new stadium.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "atardecer",
+        "who": "deon",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "carta",
+            "pos": "arriba_derecha",
+            "tamano": "pequeno",
+            "anim": "crecer"
+          }
+        ],
+        "label": "DEON · Stadium"
+      },
+      "camera": "tilt_up",
+      "transition": "cut"
+    },
+    {
+      "text": "He says a modern stadium can cost billions. He's right: SoFi Stadium in Los Angeles cost about five billion dollars to build.",
+      "scene": "money",
+      "params": {
+        "amount": "$5,000,000,000",
+        "label": "SoFi Stadium, Los Angeles",
+        "rain": false,
+        "stack": true
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    },
+    {
+      "text": "Then Priya leans in. She's an engineer, and her pitch is wild: build your own rocket company and launch your own satellites.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "hora": "noche",
+        "who": "priya",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "cohete",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "carta",
+            "pos": "arriba_izquierda",
+            "tamano": "pequeno",
+            "anim": "crecer"
+          }
+        ],
+        "label": "PRIYA · Rockets"
+      },
+      "camera": "tilt_up",
+      "transition": "whip"
+    },
+    {
+      "text": "A rocket startup can swallow hundreds of millions of dollars. And she says, with a completely straight face, that it could one day take you to space.",
+      "scene": "accion",
+      "params": {
+        "tipo": "flotar_espacio",
+        "lugar": "espacio",
+        "hora": "noche"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "You nod at all three of them. Honestly? You love every single idea. But something about this dinner keeps nagging at you.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "ciudad",
+        "hora": "noche"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Quietly, you mention a hospital. Deon rolls his eyes and says, 'Boring.' Everybody laughs. You laugh too. For now.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "noche",
+        "who": "deon",
+        "persona": "medio",
+        "mood": "angry",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "label": "'Boring.'"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "So you split the money three ways: food trucks, a stadium deal and a rocket startup. You feel smart. Hold that thought.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "hamburguesa",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "edificio",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "cohete",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Three ideas, one billion"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "You're spending hundreds of millions now. Surely the counter is finally plunging. You pull out your phone and check it. And your stomach drops.",
+      "scene": "phone",
+      "params": {
+        "screen": "bank",
+        "bank": {
+          "balance": "$968,000,000",
+          "label": "Main account",
+          "status": "alert",
+          "transactions": [
+            {
+              "text": "Food trucks",
+              "amount": "-$40,000,000"
+            },
+            {
+              "text": "Rocket deposit",
+              "amount": "-$60,000,000"
+            }
+          ]
+        }
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    },
+    {
+      "capitulo": "Chapter 4 · The Counter Goes UP",
+      "text": "Day fifteen. You go even bigger. You buy a company. Then another. Soon you own a whole handful of businesses across the country.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "izquierda",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "edificio",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "edificio",
+            "pos": "derecha",
+            "tamano": "gigante",
+            "anim": "crecer"
+          }
+        ],
+        "label": "3 NEW COMPANIES"
+      },
+      "camera": "tilt_up",
+      "transition": "whip"
+    },
+    {
+      "text": "You buy a pro sports team, too. A recent Major League Soccer expansion fee was about half a billion dollars.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "trofeo",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ],
+        "label": "PRO TEAM · ~$500M"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Half a billion on one team! You feel invincible. Surely now, the counter has to be falling like a rock.",
+      "scene": "money",
+      "params": {
+        "amount": "-$500,000,000",
+        "label": "One team",
+        "rain": true,
+        "stack": false
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Then you buy a private island in the Caribbean. Palm trees, a runway, your own beach. It costs tens of millions.",
+      "scene": "map_pin",
+      "params": {
+        "style": "islas",
+        "place": "Your private island",
+        "detail": "Caribbean"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "You fly there on Vivian and walk the sand barefoot, sipping from a coconut. This is it. This is what rich feels like.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "persona": "entero",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "montana_pieza",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "avion",
+            "pos": "arriba_derecha",
+            "tamano": "mediano",
+            "anim": "entrar_der"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "But then your phone buzzes. You open the banking app, and the balance isn't down. It went up.",
+      "scene": "phone",
+      "params": {
+        "screen": "bank",
+        "bank": {
+          "balance": "$971,000,000",
+          "label": "Balance",
+          "status": "ok",
+          "transactions": [
+            {
+              "text": "Company profits",
+              "amount": "+$2,300,000"
+            },
+            {
+              "text": "Ticket sales",
+              "amount": "+$900,000"
+            },
+            {
+              "text": "Interest",
+              "amount": "+$137,000"
+            }
+          ]
+        }
+      },
+      "camera": "push_in",
+      "transition": "red"
+    },
+    {
+      "text": "Here's the problem. Your businesses make a profit. Your team sells tickets. Your money is out there earning more money while you sleep.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "playa",
+        "hora": "atardecer"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Remember this number. A billion dollars at five percent interest earns about fifty million dollars every year.",
+      "scene": "big_text",
+      "params": {
+        "text": "5% INTEREST",
+        "label": "$50 million a year",
+        "color": "#34c759",
+        "lugar": "oficina"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "That's about one hundred thirty-seven thousand dollars every single day. Doing absolutely nothing. You can't turn it off.",
+      "scene": "money",
+      "params": {
+        "amount": "+$137,000",
+        "label": "every day, doing nothing",
+        "rain": true,
+        "stack": true
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "That's one extra Bugatti every three weeks, appearing out of thin air, just because you own the money.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "reloj_arena",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ],
+        "label": "1 Bugatti / 3 weeks"
+      },
+      "camera": "pull_out",
+      "transition": "cut"
+    },
+    {
+      "text": "Back in the office, the lawyer shows you the giant counter. It flickers green and climbs, up, up, up, as you stare in disbelief.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "who": "abogado",
+        "persona": "medio",
+        "mood": "neutral",
+        "piezas": [
+          {
+            "pieza": "bolsa_dinero",
+            "pos": "arriba",
+            "tamano": "gigante",
+            "anim": "latir"
+          }
+        ],
+        "label": "COUNTER: GREEN ▲"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "You panic. Every time you spend, the money fights back. The room spins. Winning is the worst thing that could happen.",
+      "scene": "accion",
+      "params": {
+        "tipo": "marearse",
+        "lugar": "oficina",
+        "hora": "dia"
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "Day twenty. New strategy: spend faster. Private chefs, giant concerts, a ski resort in the mountains, a thousand new employees.",
+      "scene": "escena",
+      "params": {
+        "lugar": "montana",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "worried",
+        "objeto": "dinero",
+        "arms": "up"
+      },
+      "camera": "pan_left",
+      "transition": "cut"
+    },
+    {
+      "text": "But those thousand jobs earn money back, and they make your businesses more valuable. You're stuck in a trap where spending makes you richer.",
+      "scene": "calendar",
+      "params": {
+        "style": "pared",
+        "day": 20,
+        "month": "Day",
+        "label": "10 days left"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "And the lawyer keeps repeating the same thing every morning, in the same calm voice: 'Ten days. Any plans?'",
+      "scene": "doctor",
+      "params": {
+        "who": "abogado",
+        "hora": "dia",
+        "mood": "neutral",
+        "say": "Ten days. Any plans?",
+        "label": "THE LAWYER"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "capitulo": "Chapter 5 · Panic",
+      "text": "Day twenty-five. You wake up at three in the morning, drenched in sweat. The counter says four hundred million dollars.",
+      "scene": "clock",
+      "params": {
+        "time": "03:00"
+      },
+      "camera": "push_in",
+      "transition": "black"
+    },
+    {
+      "text": "Four hundred million, five days left. That's eighty million dollars a day, every day, with nothing left over. It's night, and you can't breathe.",
+      "scene": "city_street",
+      "params": {
+        "fog": true,
+        "rain": true,
+        "figure": true
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "The counter turns red. Not green. Red. Danger. Your heart races as you read the number over and over again.",
+      "scene": "money",
+      "params": {
+        "amount": "$400,000,000",
+        "label": "5 days left",
+        "rain": false,
+        "stack": false
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "Your heart pounds like a drum. Imagine losing everything because of a few dollars you couldn't get rid of.",
+      "scene": "accion",
+      "params": {
+        "tipo": "latido",
+        "lugar": "dormitorio",
+        "hora": "noche"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Priya calls at midnight. She's found a data center for sale. Racks and racks of servers, blinking under cold blue light.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "noche",
+        "who": "priya",
+        "persona": "medio",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "ordenador",
+            "pos": "izquierda",
+            "tamano": "gigante",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "ordenador",
+            "pos": "derecha",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ],
+        "label": "DATA CENTER"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "You sign. The counter falls by a hundred million. But the servers start earning money the same day. You're running in circles.",
+      "scene": "hallway",
+      "params": {
+        "color": "cold",
+        "doors": true,
+        "figure": true,
+        "flicker": 0.6
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "Maya texts: 'Where are you? You sound awful.' You don't answer. How do you explain to anyone that you can't get rid of a billion dollars?",
+      "scene": "phone",
+      "params": {
+        "screen": "chat",
+        "chat": {
+          "contact": "Maya",
+          "status": "online",
+          "typing": true,
+          "messages": [
+            {
+              "from": "them",
+              "text": "Where are you?",
+              "alert": false
+            },
+            {
+              "from": "them",
+              "text": "You sound awful.",
+              "alert": true
+            }
+          ]
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Day twenty-seven. The counter reads two hundred million, and every dollar you spend seems to come back with interest.",
+      "scene": "character",
+      "params": {
+        "bg": "red",
+        "mood": "worried",
+        "prop": "money"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "You pace the empty corridor of the lawyer's building at night. 'Think,' you whisper. 'What costs this much and never pays you back?'",
+      "scene": "escena",
+      "params": {
+        "lugar": "oficina",
+        "hora": "noche",
+        "plano": "entero",
+        "mood": "worried",
+        "arms": "cross"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Then you remember Deon's word. 'Boring.' A hospital. Not a stock, not a yacht. A hospital costs a fortune and pays almost nothing back.",
+      "scene": "accion",
+      "params": {
+        "tipo": "idea",
+        "lugar": "oficina",
+        "hora": "noche"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "capitulo": "Chapter 6 · The Last Dollar",
+      "text": "A modern hospital can easily cost four hundred million dollars or more. Land, steel, wiring, beds, a thousand tiny details.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "atardecer",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          }
+        ],
+        "label": "HOSPITAL · $400M+"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "You call a construction firm at dawn. 'Can you start today?' The foreman laughs. Then he sees the number, and he stops laughing.",
+      "scene": "escena",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "plano": "medio",
+        "objeto": "papel",
+        "mood": "neutral",
+        "label": "DAY 28 · 6 AM"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Cranes rise over the site. Hundreds of workers pour in at sunrise. It's a race, twenty-four hours a day, and nobody sleeps.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "escombros",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "caer"
+          }
+        ],
+        "label": "DAY 28"
+      },
+      "camera": "pan_right",
+      "transition": "cut"
+    },
+    {
+      "text": "Inside, every room costs a fortune. Operating rooms, an emergency wing, a helipad on the roof, and miles of cables.",
+      "scene": "surgery",
+      "params": {
+        "intensity": "calm",
+        "label": "OPERATING ROOM · EMPTY",
+        "team": 2
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "And the equipment! A single MRI machine costs about three million dollars, and a hospital needs several of them.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "hospital",
+        "hora": "dia",
+        "who": "medico",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "telescopio",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "entrar_izq"
+          }
+        ],
+        "label": "MRI · ~$3M"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "You sell the jet to pay for it. Vivian takes off one last time, and you watch her shrink into the clouds.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "atardecer",
+        "persona": "entero",
+        "mood": "sad",
+        "piezas": [
+          {
+            "pieza": "avion",
+            "pos": "arriba_derecha",
+            "tamano": "grande",
+            "anim": "entrar_der"
+          }
+        ],
+        "label": "SOLD"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "The mansion goes next. Then the supercars, the island, the team. The counter finally drops faster than it climbs.",
+      "scene": "money",
+      "params": {
+        "amount": "$12,000,000",
+        "label": "Day 30 · 10 PM",
+        "rain": false,
+        "stack": true
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Day thirty, ten at night. Twelve million left. Priya is crying. Maya is hugging you. The hospital's lights switch on, one floor at a time.",
+      "scene": "accion",
+      "params": {
+        "tipo": "llorar",
+        "lugar": "ciudad",
+        "hora": "noche",
+        "who": "protagonista"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Eleven fifteen. Three million dollars left, exactly one MRI machine. But the final delivery is late, and the clock is not on your side.",
+      "scene": "clock",
+      "params": {
+        "time": "11:15"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Eleven fifty-eight. A bank error freezes your final payment. You're short by a few thousand dollars. Two minutes. You run.",
+      "scene": "accion",
+      "params": {
+        "tipo": "correr",
+        "lugar": "ciudad",
+        "hora": "noche"
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "You burst into the lawyer's office and pay the installation fee with your very last account, as the seconds melt away.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "oficina",
+        "hora": "noche",
+        "who": "abogado",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "bolsa_dinero",
+            "pos": "arriba",
+            "tamano": "gigante",
+            "anim": "latir"
+          },
+          {
+            "pieza": "telescopio",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "label": "COUNTER: RED"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Eleven fifty-nine. The counter flickers. One thousand. One hundred. Ten. One. And then… zero.",
+      "scene": "money",
+      "params": {
+        "amount": "$0",
+        "label": "11:59 PM",
+        "rain": false,
+        "stack": false
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "The lawyer stands, looks at the screen, and for the first time in thirty days, he smiles. You did it. You actually did it.",
+      "scene": "escena",
+      "params": {
+        "lugar": "oficina",
+        "hora": "noche",
+        "plano": "medio",
+        "who": "abogado",
+        "mood": "happy",
+        "objeto": "papel"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "You won, and you own nothing. No jet, no mansion, no island. Just a pair of old sneakers and a very light wallet.",
+      "scene": "person",
+      "params": {
+        "lugar": "calle",
+        "hora": "noche",
+        "mood": "happy",
+        "arms": "up",
+        "label": "$0"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "You walk outside at sunrise. The hospital glows against the sky, and nurses in scrubs line up for their very first day.",
+      "scene": "escena",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "atardecer",
+        "plano": "sin_persona",
+        "label": "THE HOSPITAL OPENS"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Then an ambulance pulls up. The first patient is wheeled in under the lights. You step closer, and your heart skips a beat.",
+      "scene": "hospital",
+      "params": {
+        "who": "deon",
+        "state": "awake",
+        "monitor": "normal",
+        "mood": "worried",
+        "hora": "dia",
+        "label": "FIRST PATIENT"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "It's Deon. The friend who called the hospital idea boring. He grabs your hand and whispers, 'Okay. Not boring.'",
+      "scene": "quote",
+      "params": {
+        "author": "Deon",
+        "text": "Okay. Not boring."
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "So here's the truth. The hardest part of a billion dollars isn't getting it. It's spending it on something that actually matters, down to the last dollar.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "hospital",
+        "hora": "dia",
+        "who": "medico",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "corazon",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "latir"
+          },
+          {
+            "pieza": "edificio",
+            "pos": "fondo",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Now tell me in the comments: would you build the hospital, or buy the island? Be honest.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "salon",
+        "hora": "dia",
+        "label": "Hospital or island?"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "If you liked this one, watch our next video: what would really happen if you never slept for thirty days? See you there.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "cama",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "reloj_digital",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "latir"
+          }
+        ],
+        "label": "NEXT: 30 days awake"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "media",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    },
+    "abogado": {
+      "genero": "hombre",
+      "edad": "mayor",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "canoso",
+      "barba": "no",
+      "gafas": true,
+      "ropa": "gris"
+    },
+    "maya": {
+      "genero": "mujer",
+      "edad": "joven",
+      "piel": "morena",
+      "pelo": "largo",
+      "color_pelo": "negro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "rojo"
+    },
+    "deon": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "oscura",
+      "pelo": "rapado",
+      "color_pelo": "negro",
+      "barba": "corta",
+      "gafas": false,
+      "ropa": "verde"
+    },
+    "priya": {
+      "genero": "mujer",
+      "edad": "joven",
+      "piel": "media",
+      "pelo": "coleta",
+      "color_pelo": "negro",
+      "barba": "no",
+      "gafas": true,
+      "ropa": "morado"
+    },
+    "medico": {
+      "genero": "mujer",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "moño",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "blanco"
+    }
+  },
+  "cover_text": "THE LAST DOLLAR",
+  "comment_q": "Hospital or private island: what would you build?",
+  "lista": "What If...?",
+  "formato": "horizontal",
+  "question": "Could you spend $1 billion in 30 days if one leftover dollar means losing everything?",
+  "piezas_pendientes": [
+    "contador_dinero_gigante",
+    "mansion",
+    "coche_deportivo",
+    "jet_privado",
+    "etiqueta_nombre",
+    "estadio",
+    "hospital_en_construccion",
+    "isla_privada",
+    "rack_servidores",
+    "maquina_resonancia"
+  ],
+  "id": "largo-27-01",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "You inherit $1 billion in a lawyer's office under one rule: if even $1 is left at midnight on day 30, you lose everything, and you can't give it away or burn it. You go on a reckless spending spree: mansion, cars and jet. Then your friends Maya, Deon and Priya each pitch an idea. You buy companies, a pro sports team and an island, but every investment pays back, so the counter goes UP. Real numbers keep the scale honest: $1 billion at 5% interest earns about $137,000 a day doing nothing. A Bugatti Chiron costs about $3 million. A 2023 MLS expansion fee was $500 million. On day 25 you still have $400 million, it's night and the counter turns red. The only way out is to build something that truly costs that much: a full hospital.",
+    "gancho": "Could you spend $1 BILLION in 30 days… if one dollar left means you lose it ALL?",
+    "giro_final": "At 11:58 PM you're still short. The hospital needs one last MRI machine, and the counter hits $0 at exactly 11:59 PM. You've won, but you own nothing, not even the jet, which you sold to pay for the hospital. Then the camera pulls back: the first patient being wheeled in is Deon, the friend who called the hospital idea 'boring'. Loop line: 'And that's why the hardest part of a billion… is the last dollar.'",
+    "estilo_visual": "Day 1: 'escena' in a lawyer's office with warm window light and an over-the-shoulder shot past the lawyer toward you, then 'big_text' with $1,000,000,000 above your stunned face. Day 2: 'composicion' with the mansion, a Bugatti and a jet, cut to 'money' with a counter that barely drops and a 3% label to show the scale. Day 7: 'group' in a restaurant with name tags reading MAYA, DEON and PRIYA, then a split-screen 'composicion' with each person's idea (food truck empire, stadium, rocket). Day 15: 'map_pin' on a private island and 'composicion' with a stadium and company buildings, then 'phone' with a banking app where the balance goes UP (+$137,000 a day in interest) and 'accion' of type sorpresa. Day 25 switches to a dark style: 'city_street' at night, a server room via 'composicion' lit in blue, and 'money' with a RED counter at $400,000,000 plus 'accion' of type latido. Ending: 'escena' of a hospital under construction at sunrise, 'clock' at 11:59 and a 'money' counter that hits $0, closing on 'hospital' with the first patient. Sparing use of 'calendar' for the day markers.",
+    "por_que_funcionara": "It repeats what works on your approved videos: a 'What If You…' hook in second person, real numbers that make the viewer feel the scale (the 3% on day 2, $137K a day in interest), and an escalation that turns the dream into a nightmare. The counter going UP is a counterintuitive twist people comment on and argue about. The named friends give it a character story, and the hospital ending gives the twist emotional meaning instead of the empty survival feel of the rejected 'last person' video.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "contador_dinero_gigante (switchable color: white/green/red)",
+      "etiqueta_nombre (name tag)",
+      "jet_privado",
+      "coche_deportivo",
+      "mansion",
+      "isla_privada",
+      "estadio",
+      "rack_servidores (server room)",
+      "hospital_en_construccion con grua",
+      "maquina_resonancia (MRI)"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "Spend $1 billion in 30 days… or else.",
+      "tipo": "b",
+      "puntuacion": 9,
+      "motivo": "Challenge plus a brutal rule. The topic is clear in two seconds and the answer isn't spoiled."
+    },
+    {
+      "texto": "What if you had to spend $1 billion in a month?",
+      "tipo": "a",
+      "puntuacion": 8,
+      "motivo": "Direct what-if question with a concrete number, but it leaves out the brutal rule."
+    },
+    {
+      "texto": "A billion dollars is harder to spend than you think.",
+      "tipo": "e",
+      "puntuacion": 7,
+      "motivo": "Paradox hook that contradicts a common belief, but less urgent than a challenge."
+    },
+    {
+      "texto": "Spending a billion dollars would take you 2,740 years.",
+      "tipo": "c",
+      "puntuacion": 7,
+      "motivo": "Shocking number that sets the scale, but the rule and the challenge come later."
+    },
+    {
+      "texto": "You inherit a billion. Spend it all, or lose it.",
+      "tipo": "d",
+      "puntuacion": 8,
+      "motivo": "Second person with the topic and the threat stated up front."
+    }
+  ],
+  "medida_estado": "esperando",
+  "tanda": "largo-27"
+}
