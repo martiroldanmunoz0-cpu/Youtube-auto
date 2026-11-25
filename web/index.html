@@ -859,7 +859,7 @@ nav .n.bad{background:var(--bad);color:#fff}
       const files = (await gh("/contents/data/planes")).filter(f => f.name.endsWith(".json")).map(f => f.name).sort().reverse();
       if (!files.length) { el.innerHTML = ""; return; }
       const plan = await ghFile("data/planes/" + files[0]);
-      if (!plan) { el.innerHTML = ""; return; }
+      if (!plan || plan.estado === "cancelado") { el.innerHTML = ""; return; }
       const [txt, cls] = PLAN_EST[plan.estado] || [plan.estado, ""];
       const ideas = (plan.ideas || []).map(i => `<li>${esc(i.gancho || i.premisa)}${(i.piezas_nuevas || []).length ? ` <span class="pill wait">+ ${esc(i.piezas_nuevas.join(", "))}</span>` : ""}</li>`).join("");
       const nuevas = (plan.piezas_nuevas || []).length ? `<p class="meta" style="margin:6px 0">Piezas nuevas: <b>${esc(plan.piezas_nuevas.join(", "))}</b></p>` : "";
