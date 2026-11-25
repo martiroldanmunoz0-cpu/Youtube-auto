@@ -213,12 +213,6 @@ nav .n.bad{background:var(--bad);color:#fff}
         <select name="cantidad" id="hc"><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
         <button class="btn main" type="submit">Buscar y crear</button></div>
     </form>
-    <form class="form" id="f-semanal">
-      <h3>Tanda semanal</h3>
-      <div class="countdown"><span>Próxima automática</span><b class="cd-left">—</b><small class="cd-when"></small></div>
-      <p>Analiza lo que funciona en YouTube y genera la tanda de curiosidades (se lanza sola cada lunes).</p>
-      <button class="btn main" type="submit">Lanzar tanda semanal</button>
-    </form>
   </section>
 
   <section id="largos">
@@ -232,6 +226,12 @@ nav .n.bad{background:var(--bad);color:#fff}
         <span><b>Escenas a medida</b> (recomendado): Claude dibuja los momentos clave antes de montarlo. Después dile a Claude «haz las escenas del vídeo largo».</span></label>
       <button class="btn main" type="submit">Crear vídeo largo</button>
       <p class="hint" style="margin-top:10px">⏱️ El guion tarda unos 10 min; la voz se reparte entre 8 máquinas y el montaje lleva 2-4 horas. 💶 Unos 40-60 céntimos de API por vídeo.</p>
+    </form>
+    <form class="form" id="f-semanal">
+      <h3>Tanda semanal</h3>
+      <div class="countdown"><span>Próxima automática</span><b class="cd-left">—</b><small class="cd-when"></small></div>
+      <p>Escribe los guiones de los 2 vídeos largos de la semana, con escenas a medida (se lanza sola cada lunes; si la lanzas ahora, el lunes saldrá otra).</p>
+      <button class="btn main" type="submit">Lanzar tanda semanal</button>
     </form>
     <h3 style="margin-top:22px">Vídeos largos en marcha</h3>
     <div class="list" id="largos-list"><p class="hint">Cargando…</p></div>
@@ -990,7 +990,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   });
   $("#f-semanal").addEventListener("submit", e => {
     e.preventDefault();
-    if (confirm("¿Lanzar ahora la tanda semanal? (cuesta lo mismo que la del lunes)")) dispatch(WF.semanal, {}, e.target.querySelector("button"));
+    if (confirm("¿Lanzar ahora la tanda semanal de 2 vídeos largos? (cuesta lo mismo que la del lunes, y el lunes saldrá otra)")) dispatch(WF.semanal, {}, e.target.querySelector("button"));
   });
 
   // ---------- Historial ----------
