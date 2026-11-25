@@ -149,6 +149,23 @@ def git_save(msg: str):
     _retry(go)
 
 
+
+def _cerrar_sustituidos(vid: str, nueva: str) -> None:
+    """Al rehacer un vídeo, cierra su issue de revisión anterior (sin contarlo como descarte)."""
+    try:
+        abiertos = json.loads(gh("issue", "list", "--label", "revision", "--state", "open",
+                                 "--json", "number,body,url", "--limit", "100"))
+        for i in abiertos:
+            if i["url"] == nueva.strip() or f"<!-- semana:{vid} -->" not in (i.get("body") or ""):
+                continue
+            n = str(i["number"])
+            gh("issue", "comment", n, "--body", f"♻️ Sustituido por la versión nueva: {nueva.strip()}")
+            gh("issue", "edit", n, "--remove-label", "revision")  # así publicar.yml lo ignora
+            gh("issue", "close", n, "--reason", "not planned")
+            print("Cerrado el issue antiguo", n)
+    except Exception as e:  # noqa: BLE001
+        print("No pude cerrar issues antiguos:", e)
+
 def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     """Publica UN vídeo para revisión: release + página + issue propio con su casilla."""
     import pages  # noqa: PLC0415
@@ -211,6 +228,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     url = _retry(lambda: gh("issue", "create", "--title", f"🎬 Revisar: {st['title'].replace(' #shorts', '')}"[:120],
                             "--label", "revision", "--body-file", "-", input_text="\n".join(lines)))
     print("Issue de revisión:", url)
+    _cerrar_sustituidos(vid, url)
     if st.get("qa"):  # bandeja de problemas para que Claude lo revise
         import problemas  # noqa: PLC0415
 
