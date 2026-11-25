@@ -1,0 +1,372 @@
+{
+  "title": "The Bloop: The Ocean Sound Nobody Could Explain #shorts",
+  "description": "Did you believe it was a monster? 👇\n\nThe Bloop: the mysterious ocean sound recorded by NOAA in 1997, and what it really was.\nIt was heard by sensors more than 3,000 miles apart, and it turned out to be icebergs cracking off Antarctica.\n#bloop #oceanmystery #noaa #mystery #science",
+  "tags": [
+    "the bloop",
+    "bloop sound",
+    "ocean mystery",
+    "unexplained ocean sound",
+    "NOAA",
+    "icequake",
+    "Antarctica icebergs",
+    "Cthulhu bloop",
+    "sea monster",
+    "ocean sounds explained"
+  ],
+  "beats": [
+    {
+      "text": "The ocean made a sound no animal could.",
+      "scene": "ocean",
+      "params": {
+        "storm": false,
+        "ship": false
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "What made the mysterious Bloop sound in the ocean in 1997?",
+      "scene": "ocean",
+      "params": {
+        "storm": false,
+        "ship": false
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "1997. You're a NOAA analyst, listening for Soviet submarines.",
+      "scene": "hallway",
+      "params": {
+        "color": "cold",
+        "doors": true,
+        "flicker": 0.4
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "One night, a deep roar hits your headphones.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "ordenador",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "microscopio",
+            "pos": "arriba_izquierda",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "You jump.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "oficina",
+        "hora": "noche"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Sensors over three thousand miles apart heard it.",
+      "scene": "big_text",
+      "params": {
+        "text": "3,000+ MILES",
+        "label": "between sensors",
+        "color": "#ff3b3b",
+        "lugar": "bajo_el_mar"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "It came from the South Pacific, off Chile.",
+      "scene": "map_pin",
+      "params": {
+        "place": "South Pacific",
+        "detail": "Off southern Chile",
+        "style": "globo"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Maybe a blue whale? Not loud enough.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Blue whale: NO",
+        "piezas": [
+          {
+            "pieza": "ballena",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "pan_right",
+      "transition": "cut"
+    },
+    {
+      "text": "Not a sub, not a bomb. It rises like an animal's call.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "noche",
+        "persona": "no",
+        "label": "Submarine: NO",
+        "piezas": [
+          {
+            "pieza": "submarino",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "viento",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "The internet calls it the Bloop.",
+      "scene": "newspaper",
+      "params": {
+        "headline": "MYSTERY SOUND BAFFLES SCIENTISTS",
+        "kicker": "The Daily Wave",
+        "date": "1997",
+        "style": "papel"
+      },
+      "camera": "static",
+      "transition": "flash"
+    },
+    {
+      "text": "Some say it's a giant creature, near where Lovecraft hid Cthulhu's sunken city.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "bajo_el_mar",
+        "hora": "noche",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "pulpo",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "barco",
+            "pos": "abajo",
+            "tamano": "pequeno",
+            "anim": "flotar"
+          }
+        ]
+      },
+      "camera": "tilt_up",
+      "transition": "red"
+    },
+    {
+      "text": "An animal that loud would dwarf any whale.",
+      "scene": "eyes_dark",
+      "params": {
+        "color": "#ff3030",
+        "count": 2
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Then, years later, NOAA put microphones near Antarctica.",
+      "scene": "year_jump",
+      "params": {
+        "from": 1997,
+        "to": 2012,
+        "label": "Years later"
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    },
+    {
+      "text": "Same sound. Again and again.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "objeto": "none",
+        "piezas": [
+          {
+            "pieza": "microscopio",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "viento",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Icequakes: icebergs the size of cities cracking off the ice.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "label": "Icequake",
+        "piezas": [
+          {
+            "pieza": "hielo",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "hielo",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "viento",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "The monster was real, but it wasn't alive.",
+      "scene": "accion",
+      "params": {
+        "tipo": "caer_romper",
+        "objeto": "hielo",
+        "lugar": "fondo",
+        "hora": "dia"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "And that's how, when ice that big breaks apart, in 1997…",
+      "scene": "ocean",
+      "params": {
+        "storm": false,
+        "ship": false
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": true,
+      "ropa": "azul"
+    }
+  },
+  "cover_text": "THE BLOOP MYSTERY",
+  "comment_q": "Did you believe it was a monster?",
+  "lista": "Weird Science",
+  "question": "What made the mysterious Bloop sound in the ocean in 1997?",
+  "piezas_pendientes": [
+    "pantalla_sonograma",
+    "hidrofono",
+    "ballena_azul",
+    "ondas_sonido",
+    "tentaculos",
+    "plataforma_hielo",
+    "iceberg"
+  ],
+  "id": "pedido-28-01",
+  "idea": {
+    "tipo": "misterio",
+    "premisa": "Second-person story. You're an analyst at a NOAA station in 1997, listening to underwater microphones built during the Cold War to track Soviet submarines. One summer night, a sound comes in that's so deep and so powerful that sensors more than 3,000 miles apart catch it. Its source is a remote stretch of the South Pacific off southern Chile. You try to explain it like a detective. Could it be a blue whale, the loudest animal on Earth? Not loud enough. A submarine or an explosion? The signal pattern doesn't fit, because it rises in pitch the way animal sounds do. The internet names it 'The Bloop' and runs wild. People say it's a giant creature nobody has ever seen, and they point out it came from roughly the same remote patch of ocean where H.P. Lovecraft hid Cthulhu's sunken city. Tension builds: if it's an animal, it would have to be far bigger than any whale. Then comes the reveal. Years later, NOAA put microphones near Antarctica and heard the same kind of sound again and again. It was icequakes, made by enormous icebergs cracking and breaking away from the ice. Narration runs about 45-55 seconds, with short, spoken sentences.",
+    "gancho": "In 1997, the ocean made a sound louder than any animal alive. So what made the Bloop?",
+    "giro_final": "The 'monster' was real, but it wasn't alive. It was an iceberg the size of a city cracking apart off Antarctica. Closing loop line: 'The scariest sound in the ocean wasn't a creature... it was the planet itself breaking.' Comment question: 'Did you believe it was a monster?'",
+    "estilo_visual": "Act 1 (mystery) uses dark scenes. It opens on 'ocean' at night with sound waves crossing the frame, then cuts to 'hallway' as the corridor of the listening station. A 'composicion' shows you wearing headphones in front of a screen with a spike on the sonogram (pieces: hidrofono, pantalla_sonograma). An 'accion' sorpresa plays as you jump at the boom. 'map_pin' on the globe style drops a pin off southern Chile, with a ring showing the sensors far apart. 'big_text' shows '3,000+ MILES'. Act 2 (suspects) uses a 'composicion' of a blue whale under the sea with a red X, then a submarine with a red X. A vintage 'newspaper' clipping reads 'MYSTERY SOUND BAFFLES SCIENTISTS'. 'eyes_dark' and 'silhouette' build tension, and a 'composicion' shows giant tentacles rising from the dark sea next to a tiny boat for the Lovecraft rumor. Act 3 (reveal) switches to bright 'escena' shots set in Antarctica during the day. 'year_jump' runs 1997 → 2012. A 'composicion' shows a giant iceberg cracking off an ice shelf with sound waves coming out of it and the person on a ship looking shocked. The ending is 'accion' caer_romper with the ice breaking into the water. The transitions from dark to bright tell the story: darkness for the mystery, light for the truth.",
+    "por_que_funcionara": "It matches what the owner approves most: you live the situation in second person, the mystery escalates, and the twist turns a monster into science. The structure is a mystery solved by eliminating suspects, not a day-by-day countdown. Every fact is well documented: NOAA 1997, sensors thousands of miles apart, the South Pacific off South America, the Lovecraft coincidence, and the icequake explanation from NOAA researchers. The hook names the topic and asks a question in under 2 seconds, and the closing line loops back to the start.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "hidrofono",
+      "pantalla_sonograma",
+      "ballena_azul",
+      "submarino",
+      "tentaculos",
+      "iceberg",
+      "plataforma_hielo",
+      "ondas_sonido"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "The ocean made a sound no animal could.",
+      "tipo": "c",
+      "puntuacion": 9,
+      "motivo": "Shocking claim that names the topic (an ocean sound). Under 8 words, makes you want the answer, and loops into the closing line."
+    },
+    {
+      "texto": "What made the ocean's loudest sound ever?",
+      "tipo": "a",
+      "puntuacion": 7,
+      "motivo": "Direct question that names the topic, but it is less shocking and less concrete."
+    },
+    {
+      "texto": "Could you survive hearing the ocean scream?",
+      "tipo": "b",
+      "puntuacion": 5,
+      "motivo": "Threat plus question, but it is vague about the real topic."
+    },
+    {
+      "texto": "You're hearing something huge. Deep under the ocean.",
+      "tipo": "d",
+      "puntuacion": 6,
+      "motivo": "Second-person immersion, but it doesn't say what the mystery is."
+    },
+    {
+      "texto": "Everyone thinks it was a sea monster. Wrong.",
+      "tipo": "e",
+      "puntuacion": 6,
+      "motivo": "Contradiction, but it spoils the twist and gives no context."
+    }
+  ]
+}
