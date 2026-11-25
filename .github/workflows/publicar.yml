@@ -65,7 +65,7 @@ jobs:
           git config merge.cola.driver "python3 pipeline/fusionar_cola.py %O %A %B"
           git add -A data || true
           git commit -m "Cola de publicación actualizada" || echo "sin cambios"
-          for i in 1 2 3 4 5; do git pull --rebase && git push && break; echo "reintento $i"; sleep $((i * 7)); done
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; git rebase --abort 2>/dev/null; echo "reintento $i"; sleep $((i * 7)); done
 
       - name: Avisar al móvil si algo ha fallado
         if: failure()

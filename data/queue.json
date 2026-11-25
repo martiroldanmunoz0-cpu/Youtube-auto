@@ -439,5 +439,32 @@
     "youtube_id": "oIastgbx2rs",
     "lista_ok": true,
     "portada_ok": true
+  },
+  {
+    "id": "pedido-27-01",
+    "title": "What Actually Happens If You Step in Quicksand? #shorts",
+    "description": "Would you have panicked and pulled? 👇\n\nWhat actually happens if you step in quicksand? Hollywood got it wrong, and here is how to survive.\nQuicksand is about twice as dense as your body, so you float. The real danger is being stuck while the tide comes in.\n#quicksand #mythsvsfacts #survival #science #shorts",
+    "tags": [
+      "quicksand",
+      "what happens if you step in quicksand",
+      "quicksand myth",
+      "how to escape quicksand",
+      "movie myths",
+      "survival tips",
+      "myths vs facts",
+      "quicksand science",
+      "tide danger",
+      "curiosities"
+    ],
+    "video": "pedido-27-01.mp4",
+    "portada": "pedido-27-01_portada.jpg",
+    "lista": "Myths vs Facts",
+    "tag": "pedido-27",
+    "issue": 105,
+    "estado": "programado",
+    "publish_at": "2026-11-26T00:00:00Z",
+    "youtube_id": "-nfEN6PTy8o",
+    "lista_ok": false,
+    "portada_ok": true
   }
 ]

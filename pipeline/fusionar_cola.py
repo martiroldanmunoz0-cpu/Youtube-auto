@@ -10,12 +10,15 @@ import sys
 def _load(p):
     try:
         with open(p, encoding="utf-8") as f:
-            return json.load(f) or []
+            return json.load(f)
     except Exception:
         return []
 
 
 def merge(base, cur, other):
+    if isinstance(cur, dict) or isinstance(other, dict):  # p. ej. data/playlists.json: une las dos versiones
+        cur, other = cur if isinstance(cur, dict) else {}, other if isinstance(other, dict) else {}
+        return {**other, **cur}
     b = {q["id"]: q for q in base}
     res = {q["id"]: q for q in cur}
     order = [q["id"] for q in cur]
