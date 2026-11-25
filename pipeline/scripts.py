@@ -541,7 +541,17 @@ def taste_block(history: list[dict], cfg: dict) -> str:
     if razones:
         out += ("Motivos por los que más descarta vídeos (CORRÍGELOS, son su feedback directo): "
                 + ", ".join(f"{k} ({v})" for k, v in razones.most_common(6)) + "\n\n")
+    out += retention_block()
     return out
+
+
+def retention_block() -> str:
+    """Lecciones sacadas de la retención REAL de los vídeos publicados (pipeline/retencion.py)."""
+    lec = read_json(DATA / "retencion" / "lecciones.json") or {}
+    if not lec.get("texto"):
+        return ""
+    return ("LO QUE DICE LA RETENCIÓN REAL DEL CANAL (en qué frases se va la gente y qué aguanta; aplícalo al gancho, "
+            f"al ritmo y a cada frase):\n{lec['texto']}\n\n")
 
 
 def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
@@ -653,6 +663,7 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
         f"Patrones de gancho que funcionan ahora:\n{json.dumps(analysis['patrones_gancho'], ensure_ascii=False)}\n\n"
         + (f"Pedido original del dueño del canal (respétalo): \"{pedido()}\"\n\n" if pedido() else "")
         + (f"Estilo que prefiere el dueño del canal:\n{style}\n\n" if style else "")
+        + retention_block()
         + f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
         + (f"Para este vídeo se han añadido a la biblioteca estas piezas (úsalas en 'composicion'): {', '.join(idea['piezas_nuevas'])}\n\n" if idea.get("piezas_nuevas") else "")
         + (LONG_RULES.format(lo_min=lo // 60, hi_min=hi // 60, lo_w=int(lo * 2.9), hi_w=int(hi * 2.9)) + "\n" if largo else "")

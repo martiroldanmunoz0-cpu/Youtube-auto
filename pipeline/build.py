@@ -188,6 +188,9 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     }
     tl_path = out_dir / f"{sid}.timeline.json"
     write_json(tl_path, timeline)
+    # Tiempos de cada plano (para recortar Shorts de los largos y cruzar la retención de YouTube con el guion)
+    write_json(ROOT / "data" / "tiempos" / f"{sid}.json",
+               [{"start": round(b["start"], 2), "end": round(b["end"], 2), "text": b.get("text", "")} for b in beats])
     mp4 = out_dir / f"{sid}.mp4"
     r = subprocess.run(["node", str(RENDERER / "render.mjs"), str(tl_path), str(mp4), "--audio", str(audio)], capture_output=True, text=True)
     print(r.stdout[-2000:], end="")

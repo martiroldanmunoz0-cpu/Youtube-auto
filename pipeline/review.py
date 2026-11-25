@@ -38,6 +38,8 @@ def tanda_titulo(wid: str, cfg: dict) -> str:
         return f"Comedia: {pedido() or cfg.get('comedia', {}).get('tema', '')}"
     if formato() == "historia_real":
         return "Historia real" + (f": {pedido()}" if pedido() else "")
+    if wid.startswith("cortos-"):
+        return f"Short recortado del vídeo largo {wid[7:]}"
     return f"Pedido: {pedido()}" if pedido() else f"Vídeos de la semana {wid}"
 
 
@@ -47,7 +49,7 @@ def release_url(wid: str, name: str) -> str:
 
 
 def release_tag(wid: str) -> str:
-    return wid if wid.startswith(("pedido", "comedia", "historia", "largo")) else f"semana-{wid}"
+    return wid if wid.startswith(("pedido", "comedia", "historia", "largo", "cortos")) else f"semana-{wid}"
 
 
 def build_site(wid: str, stories: list[dict], analysis: dict, wd: Path, cfg: dict) -> Path:
