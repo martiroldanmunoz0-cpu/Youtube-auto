@@ -1,0 +1,382 @@
+{
+  "title": "The Tunguska Explosion: What Blew Up Over Siberia? #shorts",
+  "description": "Could it happen again over a city? 👇\n\nThe Tunguska event of 1908: what exploded over Siberia and left no crater?\nIt flattened about 80 million trees, yet no meteorite was ever found. The answer is an airburst.\n#tunguska #siberia #mystery #space #shorts",
+  "tags": [
+    "tunguska event",
+    "what happened in tunguska",
+    "siberia explosion 1908",
+    "airburst",
+    "asteroid explosion",
+    "no crater mystery",
+    "chelyabinsk meteor",
+    "unsolved mysteries",
+    "space mysteries",
+    "leonid kulik"
+  ],
+  "beats": [
+    {
+      "text": "Nobody found what blew up over Siberia.",
+      "scene": "accion",
+      "params": {
+        "tipo": "explosion",
+        "lugar": "campo",
+        "hora": "dia"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "What exploded over Siberia in 1908 with no crater and no meteorite?",
+      "scene": "escena",
+      "params": {
+        "lugar": "campo",
+        "plano": "medio",
+        "mood": "shocked",
+        "efecto": "wow"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "A thousand Hiroshimas of power.",
+      "scene": "big_text",
+      "params": {
+        "text": "1,000x HIROSHIMA",
+        "label": "the blast's power",
+        "color": "#ff4d2e",
+        "lugar": "campo"
+      },
+      "camera": "shake",
+      "transition": "flash"
+    },
+    {
+      "text": "June 1908. You're Semyon, sitting on a porch.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "happy",
+        "objeto": "taza",
+        "piezas": [
+          {
+            "pieza": "casa",
+            "pos": "fondo",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "cafe",
+            "pos": "derecha",
+            "tamano": "pequeno",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Siberia, 7:15 a.m."
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "The sky splits. Your shirt feels on fire.",
+      "scene": "accion",
+      "params": {
+        "tipo": "quemarse",
+        "lugar": "campo",
+        "hora": "dia"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "The shockwave throws you off your chair.",
+      "scene": "accion",
+      "params": {
+        "tipo": "caer_romper",
+        "objeto": "taza_te",
+        "lugar": "campo",
+        "hora": "dia"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Eighty million trees, flattened like matchsticks.",
+      "scene": "big_text",
+      "params": {
+        "text": "80,000,000 TREES",
+        "label": "830 square miles",
+        "color": "#ffc400",
+        "lugar": "selva"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "That night, London reads newspapers at midnight.",
+      "scene": "newspaper",
+      "params": {
+        "style": "papel",
+        "headline": "SKY GLOWS AT MIDNIGHT OVER LONDON",
+        "kicker": "The London Daily",
+        "date": "July 1908"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Nobody visits for nineteen years.",
+      "scene": "year_jump",
+      "params": {
+        "from": 1908,
+        "to": 1927,
+        "label": "19 years later"
+      },
+      "camera": "static",
+      "transition": "black"
+    },
+    {
+      "text": "Then Leonid Kulik hunts the meteorite.",
+      "scene": "forest",
+      "params": {
+        "kind": "jungle"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "Clue one: no crater.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "medio",
+        "who": "kulik",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "arbol",
+            "pos": "fondo",
+            "tamano": "mediano"
+          }
+        ],
+        "label": "Clue 1: no hole"
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "Clue two: no space rock.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "espada",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ],
+        "label": "Clue 2: nothing"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Clue three: trees at the center still stand, stripped bare.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "arbol",
+            "pos": "centro",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "izquierda",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "espejo": true
+          }
+        ],
+        "label": "Clue 3: bare poles"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Only a blast from straight above does that.",
+      "scene": "accion",
+      "params": {
+        "tipo": "idea",
+        "lugar": "campo",
+        "hora": "dia",
+        "who": "kulik"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "A building-sized rock exploded miles up. Nothing hit the ground.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "meteorito",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "caer"
+          },
+          {
+            "pieza": "bomba",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "derecha",
+            "tamano": "mediano"
+          }
+        ],
+        "label": "Airburst, 3 to 6 miles up",
+        "efecto": "impacto"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "In 2013, another blast over Chelyabinsk injured fifteen hundred people.",
+      "scene": "newspaper",
+      "params": {
+        "style": "web",
+        "headline": "Meteor explodes over Chelyabinsk",
+        "kicker": "Breaking News",
+        "date": "2013"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Different timing, and it hits a major city.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "ciudad",
+        "hora": "dia"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "And that's why, after the biggest blast in recorded history,…",
+      "scene": "accion",
+      "params": {
+        "tipo": "explosion",
+        "lugar": "campo",
+        "hora": "dia"
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "corta",
+      "gafas": false,
+      "ropa": "marrón"
+    },
+    "kulik": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "bigote",
+      "gafas": false,
+      "ropa": "verde"
+    }
+  },
+  "cover_text": "NO CRATER. NO ROCK.",
+  "comment_q": "Could it happen again over a city?",
+  "lista": "Weird Science",
+  "question": "What exploded over Siberia in 1908 with no crater and no meteorite?",
+  "piezas_pendientes": [
+    "porche_madera",
+    "taza_te",
+    "arbol_caido",
+    "pala",
+    "arbol_pelado",
+    "onda_expansiva"
+  ],
+  "id": "pedido-29-01",
+  "idea": {
+    "tipo": "misterio",
+    "premisa": "Told as a cold-case investigation. Act 1, the witness: June 30, 1908, about 7:15 a.m. You are Semyon Semenov, sitting on the porch of the Vanavara trading post in Siberia. The sky splits, a heat hits you like your shirt is on fire, and the shockwave throws you off your chair. You are about 40 miles from the center. Act 2, the impossible evidence: 830 square miles of forest are knocked flat, about 80 million trees, all pointing outward like matchsticks. That night the sky over Europe glows so bright people in London read the newspaper at midnight. Yet nobody goes there for 19 years. Act 3, the detective: in 1927 Leonid Kulik leads an expedition to find the giant meteorite. Clue 1: no crater. Clue 2: no space rock, not even a fragment worth digging up. Clue 3, the key one: at dead center the trees are still standing, upright but stripped bare, like telegraph poles. Reveal: that only makes sense if the blast came from straight above. A space rock about the size of a 15-story building exploded in mid-air, roughly 3 to 6 miles up. The shockwave hit the trees at the center from above and left them standing, while it knocked down everything around them. There was nothing left to hit the ground, so there was no crater.",
+    "gancho": "What blew up over Siberia with the power of 1,000 Hiroshimas… and left no crater? Nobody ever found what hit.",
+    "giro_final": "The strangest part is not that it left no crater. It is that it happened again. In 2013 a smaller space rock exploded over Chelyabinsk, Russia, shattered windows across the city and injured about 1,500 people. If Tunguska had happened just a few hours later, Earth's rotation could have put a major city right underneath it. Loop sentence: '…and that's why, after the biggest explosion in recorded history, nobody found what hit.'",
+    "estilo_visual": "Opening: 'accion' type 'explosion' over a Siberian taiga, then 'big_text' with '1,000x HIROSHIMA' and the person reacting underneath. Act 1: 'escena' with lugar Siberian trading post, hora morning, the protagonist on a porch with a cup of tea, followed by 'accion' type 'caer_romper' (thrown off the chair) and 'accion' type 'quemarse' (wave of heat). Act 2: 'map_pin' in globe style dropping on central Siberia, 'big_text' '80,000,000 TREES' and later '830 SQ MILES', and 'newspaper' as an old clipping that says 'SKY GLOWS AT MIDNIGHT OVER LONDON'. Act 3: 'year_jump' 1908 → 1927, then 'forest' with kind 'jungle' for Kulik's expedition. Three 'composicion' scenes are the clues: an empty clearing with no hole and the person in 'dudar' mode; a shovel finding nothing; and the key clue, standing bare trunks at the center with flattened trees radiating outward around them. Reveal: a 'composicion' in profile view, with an asteroid entering, a glow, and a burst high in the sky, plus downward arrows of the shockwave hitting the trees. Ending: 'newspaper' as a web article on a tablet 'Chelyabinsk 2013' and 'accion' type 'sorpresa'. The dark style is used only briefly in the night-sky glow scene; the rest stays bright and detailed.",
+    "por_que_funcionara": "It repeats what the owner approved: a real story with a protagonist who has a name (as in Yamaguchi), second-person immersion (as in the 'What If…' videos) and a reveal that is solved with logic, not just stated. The detective structure with 3 numbered clues keeps people watching until the last clue, and the upright trees at the center are a visual detail few people know about that 'proves' the airburst. The twist (Chelyabinsk 2013, and the city that could have been destroyed) turns a 1908 story into something relevant today and drives comments. All of the data is well documented: Semenov's account, Kulik's 1927 expedition, the 'telegraph pole' trees, the glowing skies over Europe, and the Chelyabinsk event.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "asteroide",
+      "arbol_caido",
+      "arbol_pelado",
+      "pala",
+      "onda_expansiva",
+      "porche_madera",
+      "taza_te"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "What blew up over Siberia and left no crater?",
+      "tipo": "a",
+      "puntuacion": 7,
+      "motivo": "Direct question that states the topic and the contradiction, but it has no shocking number."
+    },
+    {
+      "texto": "Could you survive an explosion of 1,000 Hiroshimas?",
+      "tipo": "b",
+      "puntuacion": 6,
+      "motivo": "Challenge with a shocking scale, but it does not say what the video is about."
+    },
+    {
+      "texto": "A thousand Hiroshimas exploded. Nothing hit the ground.",
+      "tipo": "c",
+      "puntuacion": 8,
+      "motivo": "Scale comparison plus a contradiction, understood at once, but 8 words with no clear place."
+    },
+    {
+      "texto": "You're sitting outside when the sky splits open.",
+      "tipo": "d",
+      "puntuacion": 5,
+      "motivo": "Second-person immersion, but the topic is not stated for a stranger."
+    },
+    {
+      "texto": "Nobody found what blew up over Siberia.",
+      "tipo": "e",
+      "puntuacion": 9,
+      "motivo": "Passes the stranger test, opens a loop, is only 7 words, and works as the start of the loop sentence."
+    }
+  ]
+}
