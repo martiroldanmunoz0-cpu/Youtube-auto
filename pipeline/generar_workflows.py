@@ -545,7 +545,6 @@ jobs:
           git config user.email "shorts-bot@users.noreply.github.com"
           python pipeline/build.py --parte 0 --partes 1 --revisar
           # Shorts recortados del largo (casi gratis): se preparan solos y van a Revisar
-          if [ -n "$REHACER_ID" ]; then gh workflow run recortes.yml -f id="$REHACER_ID" || echo "aviso: no se pudieron lanzar los recortes"; fi
 
   aviso:
     needs: [turno, guiones, voces, montar]

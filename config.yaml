@@ -32,7 +32,6 @@ analisis:
 
 generacion:
   largos_por_semana: 2           # la tanda de los lunes son VÍDEOS LARGOS (cada plano con su escena a medida). Los Shorts, solo por pedido
-  shorts_por_largo: 3            # Shorts recortados de cada vídeo largo al terminar su montaje (casi gratis; van a Revisar)
   videos_por_semana: 8           # (antiguo: Shorts por semana; ya no se usa en la tanda semanal)
   no_repetir_ultimos: 150        # no repite ningún tema de los últimos 150 vídeos generados
   # Análisis de tendencias e ideas (1 petición/semana): el modelo más listo, decide la estrategia y los ganchos.

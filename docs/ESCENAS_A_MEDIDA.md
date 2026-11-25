@@ -139,8 +139,6 @@ Ideas de estilo (no copia): luz de cine, primeros planos por encima del hombro, 
 - **Rótulos:** `K.contador(ctx, a, '3:00', x, y, { icono: 'reloj'|'loop'|'rec'|'dinero' })`, `K.rotulo(ctx, a, 'YOU', x, y)` y `K.fila(ctx, a, personas, { nombres: ['YOU', 'MAYA', ...] })`. `fila` presenta a los personajes uno a uno con su nombre.
 - **Regla por plano:** usar un decorado reconocible, 2–5 personajes que reaccionan entre sí, una luz y, cuando cuadre, un contador, rótulo o cartel. Alternar planos generales, por encima del hombro, de la puerta y en pantalla partida, y no repetir dos veces seguidas el mismo tipo de plano.
 
-## Shorts recortados y retención (25-11-2026)
-- **Recortes**: al terminar un largo, `recortes.yml` corta 3 Shorts (`generacion.shorts_por_largo`) de sus mejores tramos
-  (`pipeline/recortes.py`, modelo barato). Van a «Revisar» como cualquier Short. Tiempos de planos: `data/tiempos/<id>.json`.
+## Retención (25-11-2026)
 - **Retención**: `retencion.yml` (lunes) lee de YouTube Analytics en qué frase se va la gente de cada vídeo publicado,
   lo guarda en `data/retencion/` y resume lecciones en `lecciones.json`, que `scripts.py` mete en cada guion nuevo.
