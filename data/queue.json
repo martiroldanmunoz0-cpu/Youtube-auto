@@ -354,5 +354,34 @@
     "lista_ok": true,
     "portada_ok": true,
     "reprogramado": true
+  },
+  {
+    "id": "largo-29-01",
+    "title": "Last Person on Earth: 5 Movie Myths That Would Get You Killed",
+    "description": "Which myth surprised you most? Ferrari or bicycle? 👇\n\nWhat would really happen if you were the last person on Earth? We break down 5 Hollywood myths about the end of the world, from the power grid to the subway floods to the twist no movie shows you.\nThe New York subway pumps remove about 13 million gallons of water a day, and without them the tunnels could flood in roughly 36 hours.\n#whatif #lastpersonalive #movievsreality #thecurilab #facts\n\n▶️ More «What If...?»: https://www.youtube.com/playlist?list=PLDcwZJpfCQbc",
+    "tags": [
+      "last person on earth",
+      "what if you were the last person alive",
+      "movies vs reality",
+      "what would happen if everyone disappeared",
+      "post apocalyptic myths",
+      "power grid failure",
+      "new york subway flooding",
+      "how long does gasoline last",
+      "does honey ever spoil",
+      "loneliness health risks",
+      "international space station",
+      "the world without us"
+    ],
+    "video": "largo-29-01.mp4",
+    "portada": "largo-29-01_portada.jpg",
+    "lista": "What If...?",
+    "tag": "largo-30",
+    "issue": 100,
+    "estado": "programado",
+    "publish_at": "2026-11-26T23:00:00Z",
+    "youtube_id": "_RzT4HXd2MQ",
+    "lista_ok": true,
+    "portada_ok": true
   }
 ]
