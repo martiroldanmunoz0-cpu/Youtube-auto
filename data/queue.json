@@ -286,12 +286,13 @@
     "lista": "What If...?",
     "tag": "largo-25",
     "issue": 95,
-    "estado": "programado",
-    "publish_at": "2026-11-25T21:00:00Z",
+    "estado": "no_encontrado",
+    "publish_at": "2026-11-25T12:17:20.757547Z",
     "youtube_id": "UOZfTFW1ONQ",
     "lista_ok": true,
     "portada_ok": true,
-    "reprogramado": true
+    "reprogramado": true,
+    "fecha_prevista": "2026-11-25T21:00:00Z"
   },
   {
     "id": "largo-20-01-r1",
@@ -316,12 +317,13 @@
     "lista": "What If...?",
     "tag": "largo-26",
     "issue": 96,
-    "estado": "programado",
-    "publish_at": "2026-11-26T20:30:00Z",
+    "estado": "no_encontrado",
+    "publish_at": "2026-11-25T12:17:20.757547Z",
     "youtube_id": "kfWWU_9IZIs",
     "lista_ok": true,
     "portada_ok": true,
-    "reprogramado": true
+    "reprogramado": true,
+    "fecha_prevista": "2026-11-26T20:30:00Z"
   },
   {
     "id": "largo-27-01",
