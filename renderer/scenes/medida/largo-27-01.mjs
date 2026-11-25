@@ -822,3 +822,40 @@ Object.assign(A, {
     K.cartel(ctx, a, 'NEXT VIDEO', 1400, 560, { tipo: 'amarillo', size: 60, p0: 0.15 }); K.text(ctx, 'NEVER SLEEPING FOR 30 DAYS', 1360, 760, { size: 64, color: '#fff', k: K.clamp((fase(a) - 0.3) / 0.1) });
     K.luz(ctx, a, { tono: 'noche', foco: [1100, 500], vineta: 0.8 }); },
 });
+
+// ===================== PORTADA (miniatura de YouTube, 1920×1080 → 1280×720) =====================
+// Un único foco: tú, en pánico, en una explosión de billetes; arriba el marcador de $1.000 millones que SUBE (el gancho)
+// y a la izquierda tres palabras enormes. Contraste máximo: fondo morado oscuro en los bordes, centro dorado.
+export function portada(ctx, K) {
+  const { YOU } = cast(K), a = { t: 1.3, d: 4, params: {}, WW: W, WH: H };
+  const g = ctx.createRadialGradient(1300, 560, 50, 1300, 560, 1500); g.addColorStop(0, '#ffe27a'); g.addColorStop(0.28, '#ff9a1f'); g.addColorStop(0.6, '#8a1fa8'); g.addColorStop(1, '#1a0838'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.save(); ctx.translate(1300, 560); for (let i = 0; i < 28; i++) { ctx.rotate(Math.PI * 2 / 28); ctx.fillStyle = i % 2 ? 'rgba(255,255,255,0.13)' : 'rgba(255,220,80,0.08)'; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(2000, -150); ctx.lineTo(2000, 150); ctx.fill(); } ctx.restore();
+  // oscurecer la izquierda para el texto
+  const gl = ctx.createLinearGradient(0, 0, 900, 0); gl.addColorStop(0, 'rgba(20,6,45,0.92)'); gl.addColorStop(0.75, 'rgba(20,6,45,0.55)'); gl.addColorStop(1, 'rgba(20,6,45,0)'); ctx.fillStyle = gl; ctx.fillRect(0, 0, 900, H);
+  // billetes que salen disparados desde detrás del personaje
+  for (let i = 0; i < 26; i++) { const an = i * 2.39996, r = 260 + ((i * 137) % 620), x = 1320 + Math.cos(an) * r * 1.15, y = 600 + Math.sin(an) * r * 0.75; if (x < 820) continue; billete(K, ctx, x, y, 0.9 + (r / 900) * 1.3, an); }
+  // personaje enorme, con brillo de contorno
+  ctx.save(); ctx.shadowColor = 'rgba(255,255,255,0.95)'; ctx.shadowBlur = 40;
+  const y = D(K, ctx, a, YOU, 1330, 1560, 3.0, { pose: 'miedo', mira: -1, mood: 'miedo' }); ctx.restore();
+  D(K, ctx, a, YOU, 1330, 1560, 3.0, { pose: 'miedo', mira: -1, mood: 'miedo' });
+  for (let i = 0; i < 3; i++) K.E(ctx, y.cabeza[0] + 150 + i * 30, y.cabeza[1] - 90 + i * 70, 18, 30, '#7cd3ff', 0.2, 5);
+  K.E(ctx, y.cabeza[0] - 175, y.cabeza[1] - 60, 16, 26, '#7cd3ff', -0.2, 5);
+  // boca de grito (exagerada, se lee en el móvil)
+  { const mx = y.cabeza[0] - 30, my = y.cabeza[1] + y.hr * 0.5, rw = y.hr * 0.36, rh = y.hr * 0.34; K.E(ctx, mx, my, rw, rh, '#5a0f1e', 0, 9); ctx.save(); ctx.beginPath(); ctx.ellipse(mx, my, rw, rh, 0, 0, 7); ctx.clip(); K.R(ctx, mx - rw, my - rh - 4, rw * 2, rh * 0.38, 0, '#fff', 0); K.E(ctx, mx, my + rh * 0.8, rw * 0.7, rh * 0.45, '#ff6b81', 0, 0); ctx.restore(); ctx.lineWidth = 9; ctx.strokeStyle = '#1b1530'; ctx.beginPath(); ctx.ellipse(mx, my, rw, rh, 0, 0, 7); ctx.stroke();
+    for (const sx of [-1, 1]) { ctx.beginPath(); ctx.moveTo(mx + sx * y.hr * 0.55, y.cabeza[1] - y.hr * 0.12); ctx.lineTo(mx + sx * y.hr * 0.15, y.cabeza[1] - y.hr * 0.27); ctx.lineWidth = 12; ctx.stroke(); } }
+  // montaña de dinero delante
+  for (let i = 0; i < 9; i++) fajo(K, ctx, 860 + i * 140, 1110 - Math.sin(i * 0.4 + 0.3) * 40, 1.5, 3 + (i % 3));
+  for (let i = 0; i < 6; i++) billete(K, ctx, 1000 + i * 170, 1000 + (i % 2) * 40, 1.6, -0.3 + i * 0.15);
+  // marcador gigante que SUBE
+  ctx.save(); ctx.shadowColor = '#4dff88'; ctx.shadowBlur = 50; marcador(K, ctx, a, 1000000000, 1230, 125, { w: 1040, size: 120, col: '#4dff88', marco: '#14092a' }); ctx.restore();
+  ctx.save(); ctx.translate(1820, 140); ctx.fillStyle = '#4dff88'; ctx.strokeStyle = '#0b2a14'; ctx.lineWidth = 10; ctx.beginPath(); ctx.moveTo(0, -95); ctx.lineTo(62, 0); ctx.lineTo(24, 0); ctx.lineTo(24, 80); ctx.lineTo(-24, 80); ctx.lineTo(-24, 0); ctx.lineTo(-62, 0); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
+  // texto
+  ctx.save(); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
+  const lt = (s, x, yy, size, col, rot = 0) => { ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.font = `${size}px Anton`; ctx.lineWidth = size * 0.2; ctx.strokeStyle = '#0a0418'; ctx.strokeText(s, 0, 0); ctx.fillStyle = col; ctx.fillText(s, 0, 0); ctx.restore(); };
+  lt('SPEND', 60, 470, 250, '#ffffff', -0.04); lt('IT ALL', 60, 740, 250, '#ffd93d', -0.04);
+  ctx.restore();
+  // cuenta atrás roja
+  ctx.save(); ctx.translate(90, 820); ctx.rotate(-0.04); K.R(ctx, 0, 0, 600, 150, 75, '#e8132b', 10); K.C(ctx, 80, 75, 46, '#fff', 8); ctx.strokeStyle = INK; ctx.lineWidth = 9; ctx.beginPath(); ctx.moveTo(80, 75); ctx.lineTo(80, 44); ctx.moveTo(80, 75); ctx.lineTo(104, 88); ctx.stroke();
+  ctx.font = '108px Anton'; ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left'; ctx.fillText('30 DAYS', 150, 80); ctx.restore();
+  const v = ctx.createRadialGradient(W / 2, H / 2, 700, W / 2, H / 2, 1250); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.45)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+}
