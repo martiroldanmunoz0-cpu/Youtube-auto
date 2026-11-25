@@ -347,9 +347,10 @@
     "tag": "largo-28",
     "issue": 98,
     "estado": "programado",
-    "publish_at": "2026-11-27T23:00:00Z",
+    "publish_at": "2026-11-25T21:00:00Z",
     "youtube_id": "PVv4gw50eLU",
     "lista_ok": true,
-    "portada_ok": true
+    "portada_ok": true,
+    "reprogramado": true
   }
 ]
