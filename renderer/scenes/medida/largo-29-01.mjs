@@ -580,3 +580,32 @@ Object.assign(A, {
       suelo(ctx, 900, '#1a1830', '#0a0918'); D(K, ctx, a, YOU, 560, 1000, 1.0, { pose: 'miedo', mood: 'sorpresa', mira: 1 }); }, { de: 1, a: 1.08 });
     K.rotulo(ctx, a, 'Next: What if the Moon disappeared?', W / 2, 140, { size: 50, p0: 0.15 }); },
 });
+
+// ===================== PORTADA (miniatura de YouTube, 1920×1080 → 1280×720) =====================
+// Un único foco: tú, solo en una ciudad apagada, mirando al cielo, donde brilla la estación espacial (el giro del vídeo).
+// A la izquierda "LOOK UP" enorme con flecha; contraste: ciudad negra abajo, cielo azul noche con halo arriba a la derecha.
+export function portada(ctx, K) {
+  const { YOU } = cast(K), a = { t: 1.2, d: 4, params: {}, WW: W, WH: H };
+  nocheCielo(ctx, a, H, 7);
+  const g = ctx.createRadialGradient(1560, 210, 20, 1560, 210, 650); g.addColorStop(0, 'rgba(140,200,255,0.75)'); g.addColorStop(0.35, 'rgba(80,120,255,0.3)'); g.addColorStop(1, 'rgba(40,40,120,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.save(); ctx.translate(1560, 210); for (let i = 0; i < 20; i++) { ctx.rotate(Math.PI * 2 / 20); ctx.fillStyle = 'rgba(200,230,255,0.07)'; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(1400, -90); ctx.lineTo(1400, 90); ctx.fill(); } ctx.restore();
+  ctx.save(); ctx.shadowColor = '#bfe4ff'; ctx.shadowBlur = 60; estacion(K, ctx, 1560, 210, 0.7, -0.12); ctx.restore();
+  brillo(ctx, 1330, 120, 34, '#fff', 0.9); brillo(ctx, 1820, 380, 26, '#fff', 0.8);
+  skyline(K, ctx, a, 1000, 0, 5);
+  const sc = ctx.createLinearGradient(0, 500, 0, H); sc.addColorStop(0, 'rgba(5,6,20,0)'); sc.addColorStop(1, 'rgba(5,6,20,0.75)'); ctx.fillStyle = sc; ctx.fillRect(0, 500, W, H - 500);
+  suelo(ctx, 1000, '#23243a', '#121222');
+  // personaje grande, de espaldas a la ciudad, mirando arriba a la derecha, con contorno brillante
+  ctx.save(); ctx.shadowColor = 'rgba(255,255,255,0.9)'; ctx.shadowBlur = 36; D(K, ctx, a, YOU, 1180, 1120, 1.55, { pose: 'sorpresa', mira: 1, mood: 'sorpresa' }); ctx.restore();
+  const y = D(K, ctx, a, YOU, 1180, 1120, 1.55, { pose: 'sorpresa', mira: 1, mood: 'sorpresa' });
+  // texto
+  ctx.save(); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
+  const lt = (s, x, yy, size, col, rot = 0) => { ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.font = `${size}px Anton`; ctx.lineWidth = size * 0.2; ctx.strokeStyle = '#05040f'; ctx.strokeText(s, 0, 0); ctx.fillStyle = col; ctx.fillText(s, 0, 0); ctx.restore(); };
+  lt('LOOK', 70, 400, 280, '#ffffff', -0.04); lt('UP', 70, 690, 280, '#ffd93d', -0.04);
+  ctx.restore();
+  // flecha curva de "UP" hacia la estación
+  ctx.save(); ctx.strokeStyle = '#05040f'; ctx.lineWidth = 46; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(560, 560); ctx.quadraticCurveTo(820, 120, 1300, 190); ctx.stroke(); ctx.strokeStyle = '#ff3b4e'; ctx.lineWidth = 28; ctx.stroke();
+  ctx.translate(1325, 195); ctx.rotate(0.1); ctx.fillStyle = '#ff3b4e'; ctx.strokeStyle = '#05040f'; ctx.lineWidth = 9; ctx.beginPath(); ctx.moveTo(40, 0); ctx.lineTo(-40, -50); ctx.lineTo(-40, 50); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
+  // etiqueta roja "LAST HUMAN?"
+  ctx.save(); ctx.translate(80, 760); ctx.rotate(-0.04); K.R(ctx, 0, 0, 640, 140, 70, '#e8132b', 10); ctx.font = '100px Anton'; ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.textAlign = 'center'; ctx.fillText('LAST HUMAN?', 320, 76); ctx.restore();
+  const v = ctx.createRadialGradient(W / 2, H / 2, 700, W / 2, H / 2, 1250); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.5)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+}

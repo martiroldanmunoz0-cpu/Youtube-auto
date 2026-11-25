@@ -58,6 +58,12 @@ giro final) cuando no exista ya una acción que lo muestre, y las añade al cat�
   única.** Nunca dos planos con la misma escena ni el mismo dibujo con otro texto: cada plano muestra literalmente su
   frase, con su propio fondo, personajes, objetos y movimiento. Se pueden compartir funciones de ayuda (lugares,
   personajes), pero la composición y la animación de cada plano son distintas.
+- **Portada OBLIGATORIA (regla del dueño, 25-11-2026):** cada vídeo largo lleva `export function portada(ctx, K)`
+  en su archivo a medida (1920×1080, se reduce a 1280×720), dibujada con NUESTROS personajes del reparto, como
+  largo-27-01 y largo-29-01: un único foco (el protagonista grande con contorno brillante), 2-3 palabras ENORMES en
+  Anton (blanco + amarillo, borde negro grueso) a la izquierda, una etiqueta roja y fondo de mucho contraste. Nada de
+  miniaturas con IA (`miniaturas_ia.activo: false`). El montaje la usa sola; probarla antes con
+  `node renderer/tools/portada_medida.mjs <id> /tmp/p.jpg`. Para cambiarla en un vídeo ya montado: `portada.yml`.
 - La tanda semanal (lunes 04:01) escribe `generacion.largos_por_semana` guiones largos con `a_medida`. La sesión del
   lunes (tarea programada) los dibuja enteros y lanza el montaje de cada uno. Respaldo: el martes 08:41 UTC se monta
   lo que siga sin montar.

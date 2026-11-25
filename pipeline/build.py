@@ -10,6 +10,7 @@ import argparse
 import os
 import shutil
 import json
+import re
 import hashlib
 import subprocess
 import sys
@@ -198,14 +199,26 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     # Portada propia (se sube a YouTube como miniatura) y versión pequeña para la página de revisión
     portada = out_dir / f"{sid}_portada.jpg"
     rc = subprocess.run(["node", str(RENDERER / "render.mjs"), str(tl_path), str(portada), "--cover"], capture_output=True, text=True)
-    if story.get("formato") == "horizontal":  # vídeos largos: miniatura con IA (Gemini) si hay clave; si no, la de siempre
+    medida_mod = RENDERER / "scenes" / "medida" / f"{sid}.mjs"
+    portada_propia = False
+    if medida_mod.exists() and re.search(r"export\s+function\s+portada\b", medida_mod.read_text()):
+        # Portada dibujada por Claude con nuestros personajes (export portada() del archivo a medida): siempre manda
+        rp = subprocess.run(["node", str(RENDERER / "tools" / "portada_medida.mjs"), sid, str(portada)], capture_output=True, text=True, cwd=RENDERER)
+        portada_propia = rp.returncode == 0 and portada.exists()
+        if portada_propia:
+            story["portada_medida"] = True
+            print("  portada dibujada con nuestros personajes")
+        else:
+            print(f"  aviso: la portada a medida falló ({rp.stderr[-300:]})")
+    if (story.get("formato") == "horizontal" and not portada_propia
+            and (load_config().get("miniaturas_ia") or {}).get("activo", False)):  # miniatura con IA solo si se activa en config
         try:
             import miniatura_ia  # noqa: PLC0415
             if miniatura_ia.generate(story, out_dir):
                 story["portada_ia"] = True
         except Exception as e:  # noqa: BLE001
             print(f"  aviso: miniatura con IA: {e}")
-    if rc.returncode == 0 and portada.exists():
+    if (rc.returncode == 0 or portada_propia) and portada.exists():
         story["portada"] = portada.name
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(portada), "-vf", "scale=540:-1", str(out_dir / f"{sid}.jpg")], check=True)
     else:
