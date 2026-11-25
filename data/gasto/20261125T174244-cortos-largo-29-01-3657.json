@@ -1,0 +1,16 @@
+{
+ "fecha": "2026-11-25T17:44:43.842467+00:00",
+ "tanda": "cortos-largo-29-01",
+ "total_usd": {
+  "anthropic": 0.000741,
+  "openai": 0
+ },
+ "llamadas": [
+  {
+   "servicio": "anthropic",
+   "modelo": "claude-haiku-5-5",
+   "usd": 0.000741,
+   "que": "elegir Shorts del largo"
+  }
+ ]
+}
