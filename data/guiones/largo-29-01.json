@@ -1,0 +1,1572 @@
+{
+  "title": "Last Person on Earth: 5 Movie Myths That Would Get You Killed",
+  "description": "Which myth surprised you most? Ferrari or bicycle? 👇\n\nWhat would really happen if you were the last person on Earth? We break down 5 Hollywood myths about the end of the world, from the power grid to the subway floods to the twist no movie shows you.\nThe New York subway pumps remove about 13 million gallons of water a day, and without them the tunnels could flood in roughly 36 hours.\n#whatif #lastpersonalive #movievsreality #thecurilab #facts",
+  "tags": [
+    "last person on earth",
+    "what if you were the last person alive",
+    "movies vs reality",
+    "what would happen if everyone disappeared",
+    "post apocalyptic myths",
+    "power grid failure",
+    "new york subway flooding",
+    "how long does gasoline last",
+    "does honey ever spoil",
+    "loneliness health risks",
+    "international space station",
+    "the world without us"
+  ],
+  "beats": [
+    {
+      "capitulo": "Chapter 1 · The Hollywood Dream",
+      "text": "What if you were the last person alive?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "persona": "entero",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ],
+        "label": "LAST PERSON ALIVE"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Hollywood loves this fantasy: empty cities, free cars, nobody giving orders. But Hollywood got almost everything wrong, and some of it could get you killed.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "edificio",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "label": "HOLLYWOOD"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Today I'll break five myths about being the last person alive. Every one of them feels true, and every one falls apart fast.",
+      "scene": "newspaper",
+      "params": {
+        "style": "portada",
+        "headline": "5 Movie Myths, Busted",
+        "kicker": "The Curio Times",
+        "date": "Today"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "Stick around until the end, because the final twist changes the whole question. No movie ever shows you this part.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "lupa",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "reloj_arena",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ],
+        "label": "THE FINAL TWIST"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "So wake up. No alarm rings. Your phone says no signal, no messages, nothing. You step outside, and the whole street is silent.",
+      "scene": "escena",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "dia",
+        "mood": "worried",
+        "objeto": "movil",
+        "label": "NO SIGNAL"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "No cars. No voices. Not even a barking dog. Just you, and an entire planet with nobody left to share it.",
+      "scene": "escena",
+      "params": {
+        "lugar": "calle",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "worried",
+        "arms": "normal",
+        "label": "Total silence"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "Let's start with the fantasy every movie sells you first. The one about electricity. Myth number one.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "bombilla",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "latir"
+          }
+        ],
+        "label": "MYTH #1"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "capitulo": "Chapter 2 · Power and Wheels",
+      "text": "Myth one: you'd have free electricity forever. Every light on, air conditioning blasting, every screen in the city glowing just for you.",
+      "scene": "escena",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "mood": "happy",
+        "objeto": "taza",
+        "label": "Free power forever"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "In the movies, the hero flips one switch and a whole skyscraper lights up like a Christmas tree. Easy, right?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "derecha",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "bombilla",
+            "pos": "arriba_derecha",
+            "tamano": "mediano",
+            "anim": "latir"
+          }
+        ],
+        "label": "The Hollywood version"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Here's the reality. Power plants need people. Operators and engineers adjust the output and balance the grid every single minute of the day.",
+      "scene": "document",
+      "params": {
+        "title": "Grid Manual",
+        "lines": [
+          "Balance supply",
+          "Adjust output",
+          "Check the lines",
+          "Staff on duty: 0"
+        ],
+        "highlight": 3,
+        "stamp": "NO STAFF"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Without them, supply and demand drift apart. Safety systems trip, lines disconnect, and whole sections of the grid shut down automatically.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "calle",
+        "hora": "noche",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "semaforo",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "rayo",
+            "pos": "arriba_derecha",
+            "tamano": "mediano",
+            "anim": "temblar"
+          }
+        ],
+        "label": "Safety systems trip"
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "Within hours to a few days, most of the grid goes dark. City by city, block by block, light by light.",
+      "scene": "escena",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "noche",
+        "plano": "sin_persona",
+        "label": "Lights out, block by block"
+      },
+      "camera": "pull_out",
+      "transition": "black"
+    },
+    {
+      "text": "Nuclear reactors shut themselves down safely, but they still need power for cooling. Gas and coal plants run out of fuel deliveries.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "fuego",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Plants shut down"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Only a few sources could last longer, like dams. At Hoover Dam in Nevada, falling water keeps spinning giant turbines, at least for a while.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "montana_pieza",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "gota",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "caer"
+          }
+        ],
+        "label": "Hoover Dam"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "But with no grid to carry that power and nobody to control it, even those turbines would eventually trip and fall silent.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "noche",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "montana_pieza",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "rayo",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "temblar"
+          }
+        ],
+        "label": "No grid. No control."
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "So your first night alone, the city is black. Stars fill the sky like you've never seen them. Beautiful, and a little terrifying.",
+      "scene": "escena",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "noche",
+        "plano": "medio",
+        "mood": "shocked",
+        "objeto": "linterna",
+        "label": "Stars everywhere"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Your freezer warms up. Your phone dies by tomorrow. The dream of free electricity lasts about as long as a long weekend.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "sad",
+        "piezas": [
+          {
+            "pieza": "hielo",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "reloj_digital",
+            "pos": "arriba_derecha",
+            "tamano": "mediano",
+            "anim": "latir"
+          }
+        ],
+        "label": "Freezer warming up"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Myth two: you'd drive any Ferrari you want. Every showroom is open, every key is on the desk, and no speed limits exist anymore.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "acercarse"
+          }
+        ],
+        "label": "MYTH #2"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "You'd grab a red sports car, floor it down an empty highway, and feel like the king of the world.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          }
+        ],
+        "label": "Open road"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "Reality check. Gasoline goes stale. In roughly six to twelve months, it starts to break down, leaving gummy deposits that clog engines.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "bomba",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "gota",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "caer"
+          }
+        ],
+        "label": "Stale gas: 6 to 12 months"
+      },
+      "camera": "push_in",
+      "transition": "red"
+    },
+    {
+      "text": "Worse, gas stations need electricity to pump fuel. No power means no pumps. You'd be stuck siphoning fuel by hand, one tank at a time.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "calle",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "bomba",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "mano",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "entrar_der"
+          }
+        ],
+        "label": "No power, no pumps"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Batteries go dead after a few months of sitting. Tires slowly go flat. Rust creeps in. Even the fanciest car becomes a very expensive statue.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "escombros",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "caer"
+          }
+        ],
+        "label": "Rust creeps in"
+      },
+      "camera": "tilt_down",
+      "transition": "fade"
+    },
+    {
+      "text": "And the roads? Crashed cars from the last day, fallen trees, and weeds cracking the pavement would block your path within a couple of years.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "calle",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "caer"
+          },
+          {
+            "pieza": "escombros",
+            "pos": "derecha",
+            "tamano": "mediano"
+          }
+        ],
+        "label": "Roads blocked"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "So after a brief joyride, you end up on a bicycle. No fuel, no mechanic, no repair shop. Just your own legs.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "neutral",
+        "piezas": [
+          {
+            "pieza": "bicicleta",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "entrar_der"
+          }
+        ],
+        "label": "Your new ride"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Honestly, a bike might be the best vehicle left. It never runs out of gas, and you can fix it yourself with a few tools.",
+      "scene": "accion",
+      "params": {
+        "tipo": "correr",
+        "lugar": "montana",
+        "hora": "dia",
+        "label": "Pedal power"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Chapter 3 · The Supermarket",
+      "text": "Myth three: supermarkets are endless food. Walk the aisles, grab whatever you want, and never pay a cent again.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "pizza",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "hamburguesa",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "manzana",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ],
+        "label": "MYTH #3"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "In the movies, the shelves stay perfect forever. Every apple is shiny, every steak is cold, and every bottle is full.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "manzana",
+            "pos": "izquierda",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "vaso_agua",
+            "pos": "centro",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "platano",
+            "pos": "derecha",
+            "tamano": "mediano"
+          }
+        ],
+        "label": "Perfect shelves"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Reality: refrigeration stops within a day or two. Meat and dairy spoil first, and soon the whole building smells like something you'd never forget.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "hamburguesa",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "bacteria",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "crecer"
+          }
+        ],
+        "label": "Fridges off. Meat spoils."
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "Fresh fruit and vegetables rot within weeks. Bread grows mold. Flies arrive, then rats and insects, and the store becomes their kingdom.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "manzana",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "hormiga",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "bacteria",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "crecer"
+          }
+        ],
+        "label": "Rotting in weeks"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "But here's the good news. Canned food can last for years, often well past the printed date, as long as the can isn't damaged.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "vaso_agua",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "vaso_agua",
+            "pos": "izquierda",
+            "tamano": "mediano"
+          },
+          {
+            "pieza": "vaso_agua",
+            "pos": "derecha",
+            "tamano": "mediano"
+          }
+        ],
+        "label": "Canned: years"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Dry rice, pasta, and beans last even longer if you keep them dry. A smart survivor raids the canned aisle first, not the bakery.",
+      "scene": "accion",
+      "params": {
+        "tipo": "comer",
+        "objeto": "lata_conserva",
+        "lugar": "cocina",
+        "hora": "dia",
+        "label": "Cans first"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "And then there's honey. Because it's so low in moisture and naturally acidic, honey basically never spoils. Jars from ancient Egyptian tombs were reportedly still edible.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "vaso_agua",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "piramide",
+            "pos": "fondo",
+            "tamano": "grande"
+          }
+        ],
+        "label": "Honey never spoils"
+      },
+      "camera": "pull_out",
+      "transition": "flash"
+    },
+    {
+      "text": "So you wouldn't starve right away. But the clock is ticking, because every can you open is one you can never replace.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "reloj_arena",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "girar"
+          },
+          {
+            "pieza": "vaso_agua",
+            "pos": "izquierda",
+            "tamano": "mediano"
+          }
+        ],
+        "label": "Cans run out"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Eventually you'd have to farm, fish, or forage. And a person raised on delivery apps has never done that alone.",
+      "scene": "accion",
+      "params": {
+        "tipo": "crecer",
+        "lugar": "campo",
+        "hora": "dia",
+        "label": "Grow it yourself"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "But if you think food is hard, wait until you see what happens to the city itself. That's the next myth.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "ciudad",
+        "hora": "atardecer",
+        "label": "Next: the city"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "capitulo": "Chapter 4 · The Intact City",
+      "text": "Myth four: cities would look just like the movie, intact. Gleaming skyscrapers, clean streets, everything waiting for you to explore.",
+      "scene": "escena",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "happy",
+        "arms": "up",
+        "label": "Empty Times Square"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Picture yourself alone in Times Square, spinning in the middle of the road with every billboard towering over you.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "persona": "entero",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "izquierda",
+            "tamano": "gigante"
+          },
+          {
+            "pieza": "edificio",
+            "pos": "derecha",
+            "tamano": "gigante"
+          }
+        ],
+        "label": "Gleaming skyline"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Reality: a city is a machine that only works because thousands of people fix it every day. Stop, and nature takes over.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "edificio",
+            "pos": "izquierda",
+            "tamano": "grande"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "hormiga",
+            "pos": "derecha",
+            "tamano": "pequeno",
+            "anim": "entrar_der"
+          }
+        ],
+        "label": "Nature takes over"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Take New York. Its subway runs below the water table, and pumps remove about thirteen million gallons of water every single day.",
+      "scene": "map_pin",
+      "params": {
+        "style": "calles",
+        "place": "New York City",
+        "detail": "About 13 million gallons pumped daily"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Those pumps need electricity. When the grid dies, the water starts to rise, quietly, in the dark, under your feet.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "ola_gigante",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "gota",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "caer"
+          }
+        ],
+        "label": "Pumps need power"
+      },
+      "camera": "tilt_down",
+      "transition": "fade"
+    },
+    {
+      "text": "Some estimates say that parts of the tunnels could flood in about thirty-six hours. A day and a half, and the subway becomes a river.",
+      "scene": "calendar",
+      "params": {
+        "style": "pared",
+        "month": "Hour",
+        "day": "36",
+        "label": "Tunnels flooding"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Think about that. Thirty-six hours from silence to a flooded underground. And the ground above would start to weaken.",
+      "scene": "big_text",
+      "params": {
+        "text": "36 HOURS",
+        "color": "#ff4d4d",
+        "label": "From silence to flooded",
+        "lugar": "ciudad"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "Above the surface, rain does the rest. Gutters clog, roofs leak, and plants push up through every tiny crack in the pavement.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "calle",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "nube",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "gota",
+            "pos": "centro",
+            "tamano": "mediano",
+            "anim": "caer"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "crecer"
+          }
+        ],
+        "label": "Rain does the rest"
+      },
+      "camera": "tilt_down",
+      "transition": "fade"
+    },
+    {
+      "text": "Within a few years, trees grow through sidewalks. Within decades, bridges rust and many buildings begin to collapse. Within centuries, a forest.",
+      "scene": "year_jump",
+      "params": {
+        "from": "2025",
+        "to": "2525",
+        "label": "Centuries later"
+      },
+      "camera": "pull_out",
+      "transition": "black"
+    },
+    {
+      "text": "Writer Alan Weisman explored this in his book The World Without Us. His conclusion: cities decay much faster than anyone expects.",
+      "scene": "document",
+      "params": {
+        "title": "The World Without Us",
+        "lines": [
+          "By Alan Weisman",
+          "Cities decay fast",
+          "Nature takes over"
+        ],
+        "highlight": 1,
+        "stamp": "BOOK"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "So that perfect, intact skyline from the movies? It's a snapshot. It lasts for days, not for years.",
+      "scene": "newspaper",
+      "params": {
+        "style": "papel",
+        "headline": "Perfect Skyline Lasts Days",
+        "kicker": "Hollywood Daily",
+        "date": "Never"
+      },
+      "camera": "pan_left",
+      "transition": "whip"
+    },
+    {
+      "text": "And yet, none of this is the biggest danger. The next myth is the one most people get completely backwards.",
+      "scene": "escena",
+      "params": {
+        "lugar": "calle",
+        "hora": "atardecer",
+        "plano": "entero",
+        "mood": "worried",
+        "arms": "cross",
+        "label": "Next: the real danger"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "capitulo": "Chapter 5 · The Real Danger",
+      "text": "Myth five: the real danger is wild animals. Lions, wolves, maybe a bear wandering through an empty shopping mall.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "leon",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "oso",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "acercarse"
+          }
+        ],
+        "label": "MYTH #5"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Hollywood loves this one. Zoo animals escape, predators roam downtown, and you spend the whole movie hiding in a locked car.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "coche",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "leon",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "acercarse"
+          }
+        ],
+        "label": "Hiding in a car"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Reality: many pets and zoo animals wouldn't survive long. And most wild animals avoid humans anyway. They aren't hunting you.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "perro",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "pajaro",
+            "pos": "arriba",
+            "tamano": "pequeno",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "gato",
+            "pos": "derecha",
+            "tamano": "mediano"
+          }
+        ],
+        "label": "Most animals avoid you"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "The real hazards are boring ones. An infected cut, food poisoning, a broken ankle with no doctor for a thousand miles.",
+      "scene": "escena",
+      "params": {
+        "lugar": "montana",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "sad",
+        "highlight": "legs",
+        "label": "Broken ankle, no doctor"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "One small injury could be deadly. No ambulance, no hospital, no phone number to call. Every decision is entirely yours.",
+      "scene": "escena",
+      "params": {
+        "lugar": "hospital",
+        "hora": "noche",
+        "plano": "sin_persona",
+        "label": "Empty hospital"
+      },
+      "camera": "pull_out",
+      "transition": "black"
+    },
+    {
+      "text": "But the biggest threat of all isn't a lion. It's the silence. It's loneliness.",
+      "scene": "accion",
+      "params": {
+        "tipo": "llorar",
+        "lugar": "calle",
+        "hora": "atardecer",
+        "label": "Loneliness"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Humans are social animals. Our brains evolved to live in groups, and long-term isolation changes how our bodies actually work.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "cerebro",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "latir"
+          },
+          {
+            "pieza": "corazon",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "latir"
+          }
+        ],
+        "label": "Built for company"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Studies link chronic social isolation to health risks comparable to smoking fifteen cigarettes a day. Fifteen. Every day.",
+      "scene": "big_text",
+      "params": {
+        "text": "15 CIGARETTES",
+        "color": "#ffd400",
+        "label": "A DAY",
+        "lugar": "salon"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "That means higher risk of heart disease, depression, bad sleep, and early death. Loneliness isn't just sad. It's measurable.",
+      "scene": "accion",
+      "params": {
+        "tipo": "latido",
+        "label": "Higher health risks"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Remember Tom Hanks talking to a volleyball in Cast Away? That wasn't a joke. It's what a lonely brain does to survive.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "sad",
+        "piezas": [
+          {
+            "pieza": "barca",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Talking to a volleyball"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "So you'd need routines. Wake at the same hour, keep a journal, exercise, read, build something every single day.",
+      "scene": "escena",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "happy",
+        "objeto": "libro",
+        "label": "Routine: journal and exercise"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Because surviving isn't just food and water. It's staying human when nobody is left to remind you what that means.",
+      "scene": "escena",
+      "params": {
+        "lugar": "campo",
+        "hora": "atardecer",
+        "plano": "entero",
+        "mood": "neutral",
+        "arms": "normal",
+        "label": "Stay human"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Some nights you'd probably scream into an empty plaza. And the only answer would be your own echo.",
+      "scene": "accion",
+      "params": {
+        "tipo": "gritar",
+        "lugar": "ciudad",
+        "hora": "noche",
+        "label": "Only your echo"
+      },
+      "camera": "push_in",
+      "transition": "black"
+    },
+    {
+      "capitulo": "Chapter 6 · The Twist",
+      "text": "Now let's go back to the question, because I've been tricking you this whole video. Here's what no movie tells you.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "girar"
+          }
+        ],
+        "label": "Wait..."
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "You pictured being the last human. But the question was the last person ON Earth. That's not the same thing.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "noche",
+        "persona": "entero",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "tierra",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ],
+        "label": "ON Earth, not the last human"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Right now, there are usually around ten people orbiting above you, aboard the International Space Station and China's Tiangong station.",
+      "scene": "space",
+      "params": {
+        "object": "planet",
+        "color": "#2f6fdb",
+        "ring": false
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "They float roughly two hundred fifty miles up, circling the planet every ninety minutes. They would watch every city go dark from above.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "telescopio",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "entrar_der"
+          },
+          {
+            "pieza": "tierra",
+            "pos": "izquierda",
+            "tamano": "gigante",
+            "anim": "girar"
+          }
+        ],
+        "label": "About 10 people in orbit"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "And here's the best part. Their capsules are built to bring them home. Soyuz, Dragon, and Shenzhou can all carry crews back to Earth.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "cohete",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "tierra",
+            "pos": "izquierda",
+            "tamano": "grande"
+          }
+        ],
+        "label": "Soyuz, Dragon, Shenzhou"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Even with mission control silent, those capsules can in principle fly largely on their own, with parachutes doing the final braking.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "astronauta",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "caer"
+          },
+          {
+            "pieza": "nube",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Parachutes slow the landing"
+      },
+      "camera": "tilt_down",
+      "transition": "fade"
+    },
+    {
+      "text": "Meanwhile, down here, you sit under a black sky. Then one night, you notice a bright dot gliding across the stars.",
+      "scene": "escena",
+      "params": {
+        "lugar": "montana",
+        "hora": "noche",
+        "plano": "medio",
+        "mood": "worried",
+        "objeto": "linterna",
+        "label": "A bright dot"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "It doesn't blink like an airplane. It moves fast and steady. The space station is one of the brightest objects in the night sky.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "hora": "noche",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "estrella",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "latir"
+          },
+          {
+            "pieza": "telescopio",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "avion",
+            "pos": "derecha",
+            "tamano": "pequeno",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Steady, not blinking"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "Imagine realizing that dot isn't a satellite. It's people. Someone looking back at you. Someone who might be coming home.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "campo",
+        "hora": "noche",
+        "label": "That's people up there"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "So the truth is, the last person on Earth might not be alone for long. Hollywood forgot about everyone looking down.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "noche",
+        "persona": "entero",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "telescopio",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Someone coming home"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "So tonight, when the sky gets dark, look up. Someone might be landing to find you.",
+      "scene": "escena",
+      "params": {
+        "lugar": "campo",
+        "hora": "noche",
+        "plano": "entero",
+        "mood": "happy",
+        "arms": "up",
+        "label": "Look up"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Tell me in the comments: which myth surprised you most? And would you have picked the Ferrari or the bicycle?",
+      "scene": "phone",
+      "params": {
+        "screen": "chat",
+        "chat": {
+          "contact": "The Curio Lab",
+          "status": "online",
+          "typing": true,
+          "messages": [
+            {
+              "from": "them",
+              "text": "Which myth surprised you most?"
+            },
+            {
+              "from": "them",
+              "text": "Ferrari or bicycle?"
+            }
+          ]
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "If you enjoyed this, watch our next video, where we ask what would happen if the Moon suddenly disappeared tomorrow.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "espacio",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "luna",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "estrella",
+            "pos": "arriba_derecha",
+            "tamano": "mediano",
+            "anim": "latir"
+          }
+        ],
+        "label": "NEXT: No Moon?"
+      },
+      "camera": "slam",
+      "transition": "fade"
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "joven",
+      "piel": "media",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    }
+  },
+  "cover_text": "LOOK UP",
+  "comment_q": "Which myth surprised you most? Ferrari or bicycle?",
+  "lista": "What If...?",
+  "formato": "horizontal",
+  "question": "What would really happen to you and the planet if you were the last person alive, and what do the movies get wrong?",
+  "piezas_pendientes": [
+    "deportivo",
+    "presa_hoover",
+    "surtidor_gasolina",
+    "lata_conserva",
+    "tarro_miel",
+    "tunel_metro_inundado",
+    "estacion_espacial"
+  ],
+  "id": "largo-29-01",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Movies vs Reality, 5 myths about being the last person on Earth, narrated in second person. The structure is myth, then reality, instead of a time countdown. Myth 1: 'You'd have free electricity forever.' Reality: most of the grid goes dark within hours to days with no one running the plants; only dams like Hoover could keep producing longer. Myth 2: 'You'd drive any Ferrari you want.' Reality: gasoline goes stale in roughly 6 to 12 months, so you end up on a bicycle. Myth 3: 'Supermarkets are endless food.' Reality: fresh food rots in weeks; canned food lasts for years, and honey basically never spoils. Myth 4: 'Cities would look like the movie, intact.' Reality: New York's subway pumps remove about 13 million gallons of water a day, and without them the tunnels could flood in about 36 hours. Myth 5: 'The real danger is wild animals.' Reality: the worst threat is loneliness; studies link chronic social isolation to health risks comparable to smoking 15 cigarettes a day. Finally, the twist.",
+    "gancho": "What if you were the last person on Earth? Hollywood got almost everything wrong. Here are 5 myths that would get you killed.",
+    "giro_final": "But here's the thing no movie tells you. You're the last person ON Earth, not the last human. Right now there are usually around 10 people orbiting above you on the International Space Station and China's Tiangong station. And their capsules can bring them home. So look up. Someone might be landing to find you.",
+    "estilo_visual": "Dominated by 'composicion', with a myth/reality pattern in every block. Each myth opens with a sunny 'escena' in the style of a Hollywood dream: you in an empty Times Square, then you behind the wheel of a sports car. The reality then lands with an 'accion' or a 'composicion' that breaks it. A city street with a power pole and lights shutting off one by one. The 'deportivo' piece with a gas pump and the person pedaling a bicycle. A supermarket with rotting fruit next to stacked cans and a honey jar. A subway tunnel with water rising. Use 'big_text' only for '36 HOURS' and '15 CIGARETTES A DAY'. Show loneliness with 'accion' (llorar, gritar) in an empty plaza. For the twist, cut to 'space' with the ISS crossing over Earth, then 'accion' sorpresa as the person looks at the sky at night.",
+    "por_que_funcionara": "It copies the formula of two approved videos ('Movies vs Reality' and '5 Myths vs Reality'). It also avoids the timeline that made the owner reject the 1,000-year version. Each myth feeds a fantasy the viewer has had (free mansions, free cars) and then destroys it with a surprising, verifiable fact, which keeps people watching to the next myth. The ISS twist challenges the title itself and invites comments ('I never thought of that'). It also creates a natural loop: the last line, 'look up', ties back to the opening question.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "estacion_espacial",
+      "presa_hoover",
+      "deportivo",
+      "surtidor_gasolina",
+      "bicicleta",
+      "lata_conserva",
+      "tarro_miel",
+      "tunel_metro_inundado"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "What if you were the last person alive?",
+      "tipo": "a",
+      "puntuacion": 9,
+      "motivo": "Names the topic in under two seconds, second person, and anyone who hears it wants the answer."
+    },
+    {
+      "texto": "Hollywood lied about being the last person alive.",
+      "tipo": "e",
+      "puntuacion": 8,
+      "motivo": "Contradicts the movie fantasy and makes the topic clear."
+    },
+    {
+      "texto": "Being the last person alive would kill you. Here's how.",
+      "tipo": "b",
+      "puntuacion": 8,
+      "motivo": "Threat plus topic, concrete and urgent."
+    },
+    {
+      "texto": "You wake up. Everyone on Earth is gone.",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Immersive second person, but the myth-vs-reality promise only arrives later."
+    },
+    {
+      "texto": "Power gone in hours. Subways flooded in 36.",
+      "tipo": "c",
+      "puntuacion": 6,
+      "motivo": "Shocking facts, but the topic is less obvious without context."
+    }
+  ],
+  "medida_estado": "esperando",
+  "tanda": "largo-29"
+}
