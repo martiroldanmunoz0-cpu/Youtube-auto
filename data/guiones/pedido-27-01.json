@@ -16,109 +16,160 @@
   "beats": [
     {
       "text": "Movies lied about quicksand. It can't swallow you.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "reloj_arena",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "mano",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "crecer"
+        "archivo": "pedido-27-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "reloj_arena",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "mano",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "crecer"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "What actually happens if you step in quicksand, and how do you survive it?",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "reloj_arena",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "mano",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "crecer"
+        "archivo": "pedido-27-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "reloj_arena",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "mano",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "crecer"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "But it can still kill you.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "dudar",
-        "lugar": "playa",
-        "hora": "dia"
+        "archivo": "pedido-27-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "playa",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "flash"
     },
     {
       "text": "You step onto wet, shiny sand.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "dia",
-        "plano": "entero",
-        "mood": "neutral"
+        "archivo": "pedido-27-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "plano": "entero",
+            "mood": "neutral"
+          }
+        }
       },
       "camera": "tilt_down",
       "transition": "cut"
     },
     {
       "text": "Your foot sinks. Then the other.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "hundirse",
-        "lugar": "playa",
-        "hora": "dia"
+        "archivo": "pedido-27-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "hundirse",
+            "lugar": "playa",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "shake",
       "transition": "whip"
     },
     {
       "text": "In real life, quicksand is twice as dense as you.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "2x DENSER",
-        "label": "than your body",
-        "lugar": "playa",
-        "color": "#ffcc00"
+        "archivo": "pedido-27-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "2x DENSER",
+            "label": "than your body",
+            "lugar": "playa",
+            "color": "#ffcc00"
+          }
+        },
+        "label": "than your body"
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "So you float, waist-deep. Then you stop.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "dudar",
-        "lugar": "playa",
-        "hora": "dia",
+        "archivo": "pedido-27-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "playa",
+            "hora": "dia",
+            "label": "Waist-deep"
+          }
+        },
         "label": "Waist-deep"
       },
       "camera": "static",
@@ -126,18 +177,26 @@
     },
     {
       "text": "The water drains out. The sand locks around your legs.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "hueso",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "temblar"
+        "archivo": "pedido-27-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "hueso",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              }
+            ],
+            "label": "Like wet concrete"
           }
-        ],
+        },
         "label": "Like wet concrete"
       },
       "camera": "push_in",
@@ -145,127 +204,191 @@
     },
     {
       "text": "Yanking a foot out takes car-lifting force.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "worried",
-        "piezas": [
-          {
-            "pieza": "coche_rojo",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "rayo",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "pedido-27-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "coche_rojo",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "rayo",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "pull_out",
       "transition": "cut"
     },
     {
       "text": "The sun beats down. You're thirsty. Your legs cramp.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "quemarse",
-        "lugar": "playa",
-        "hora": "dia"
+        "archivo": "pedido-27-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "quemarse",
+            "lugar": "playa",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "whip"
     },
     {
       "text": "Your heart pounds. Behind you, the tide returns.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "latido",
-        "hora": "atardecer"
+        "archivo": "pedido-27-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "latido",
+            "hora": "atardecer"
+          }
+        }
       },
       "camera": "shake",
       "transition": "fade"
     },
     {
       "text": "That's what kills people. Not the sand. The water.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "atardecer",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "ola_gigante",
-            "pos": "fondo",
-            "tamano": "gigante",
-            "anim": "acercarse"
+        "archivo": "pedido-27-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "atardecer",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "ola_gigante",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "acercarse"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "slam",
       "transition": "red"
     },
     {
       "text": "So how do you escape? Don't pull.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "idea",
-        "lugar": "playa",
-        "hora": "atardecer"
+        "archivo": "pedido-27-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "idea",
+            "lugar": "playa",
+            "hora": "atardecer"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Lean back and spread your arms like floating in a pool.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "flotar_espacio",
-        "lugar": "playa",
-        "hora": "atardecer",
-        "who": "protagonista"
+        "archivo": "pedido-27-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "flotar_espacio",
+            "lugar": "playa",
+            "hora": "atardecer",
+            "who": "protagonista"
+          }
+        }
       },
       "camera": "pull_out",
       "transition": "fade"
     },
     {
       "text": "Wiggle your legs in slow, tiny circles.",
-      "scene": "person",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "atardecer",
-        "highlight": "legs",
-        "mood": "worried"
+        "archivo": "pedido-27-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "person",
+          "params": {
+            "lugar": "playa",
+            "hora": "atardecer",
+            "highlight": "legs",
+            "mood": "worried"
+          }
+        }
       },
       "camera": "static",
       "transition": "cut"
     },
     {
       "text": "Water seeps in, sand loosens, roll to solid ground.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "atardecer",
-        "plano": "entero",
-        "arms": "up",
-        "mood": "happy"
+        "archivo": "pedido-27-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "atardecer",
+            "plano": "entero",
+            "arms": "up",
+            "mood": "happy"
+          }
+        }
       },
       "camera": "tilt_up",
       "transition": "flash"
     },
     {
       "text": "Panic is the real trap.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "atardecer",
-        "plano": "medio",
-        "mood": "worried",
+        "archivo": "pedido-27-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "playa",
+            "hora": "atardecer",
+            "plano": "medio",
+            "mood": "worried",
+            "label": "Stay calm"
+          }
+        },
         "label": "Stay calm"
       },
       "camera": "slam",
@@ -273,26 +396,33 @@
     },
     {
       "text": "So next time a movie swallows someone, remember:…",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "playa",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "reloj_arena",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "mano",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "crecer"
+        "archivo": "pedido-27-01",
+        "plano": 17,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "playa",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "reloj_arena",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "mano",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "crecer"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "static",
       "transition": "cut",
@@ -357,5 +487,7 @@
       "puntuacion": 7,
       "motivo": "Reto con amenaza, pero destripa parte de la historia."
     }
-  ]
+  ],
+  "medida_estado": "lista",
+  "tanda": "pedido-27"
 }

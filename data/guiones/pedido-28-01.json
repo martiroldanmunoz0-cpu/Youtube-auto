@@ -16,194 +16,289 @@
   "beats": [
     {
       "text": "The ocean made a sound no animal could.",
-      "scene": "ocean",
+      "scene": "medida",
       "params": {
-        "storm": false,
-        "ship": false
+        "archivo": "pedido-28-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "ocean",
+          "params": {
+            "storm": false,
+            "ship": false
+          }
+        }
       },
       "camera": "shake",
       "transition": "cut"
     },
     {
       "text": "What made the mysterious Bloop sound in the ocean in 1997?",
-      "scene": "ocean",
+      "scene": "medida",
       "params": {
-        "storm": false,
-        "ship": false
+        "archivo": "pedido-28-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "ocean",
+          "params": {
+            "storm": false,
+            "ship": false
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "1997. You're a NOAA analyst, listening for Soviet submarines.",
-      "scene": "hallway",
+      "scene": "medida",
       "params": {
-        "color": "cold",
-        "doors": true,
-        "flicker": 0.4
+        "archivo": "pedido-28-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "hallway",
+          "params": {
+            "color": "cold",
+            "doors": true,
+            "flicker": 0.4
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "One night, a deep roar hits your headphones.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "hora": "noche",
-        "persona": "medio",
-        "mood": "shocked",
-        "piezas": [
-          {
-            "pieza": "ordenador",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "microscopio",
-            "pos": "arriba_izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
+        "archivo": "pedido-28-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "noche",
+            "persona": "medio",
+            "mood": "shocked",
+            "piezas": [
+              {
+                "pieza": "ordenador",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "microscopio",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "You jump.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "sorpresa",
-        "lugar": "oficina",
-        "hora": "noche"
+        "archivo": "pedido-28-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "oficina",
+            "hora": "noche"
+          }
+        }
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "Sensors over three thousand miles apart heard it.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "3,000+ MILES",
-        "label": "between sensors",
-        "color": "#ff3b3b",
-        "lugar": "bajo_el_mar"
+        "archivo": "pedido-28-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "3,000+ MILES",
+            "label": "between sensors",
+            "color": "#ff3b3b",
+            "lugar": "bajo_el_mar"
+          }
+        },
+        "label": "between sensors"
       },
       "camera": "push_in",
       "transition": "whip"
     },
     {
       "text": "It came from the South Pacific, off Chile.",
-      "scene": "map_pin",
+      "scene": "medida",
       "params": {
-        "place": "South Pacific",
-        "detail": "Off southern Chile",
-        "style": "globo"
+        "archivo": "pedido-28-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "South Pacific",
+            "detail": "Off southern Chile",
+            "style": "globo"
+          }
+        }
       },
       "camera": "pull_out",
       "transition": "fade"
     },
     {
       "text": "Maybe a blue whale? Not loud enough.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "hora": "dia",
-        "persona": "no",
-        "label": "Blue whale: NO",
-        "piezas": [
-          {
-            "pieza": "ballena",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "flotar"
+        "archivo": "pedido-28-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "dia",
+            "persona": "no",
+            "label": "Blue whale: NO",
+            "piezas": [
+              {
+                "pieza": "ballena",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "flotar"
+              }
+            ]
           }
-        ]
+        },
+        "label": "Blue whale: NO"
       },
       "camera": "pan_right",
       "transition": "cut"
     },
     {
       "text": "Not a sub, not a bomb. It rises like an animal's call.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "hora": "noche",
-        "persona": "no",
-        "label": "Submarine: NO",
-        "piezas": [
-          {
-            "pieza": "submarino",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "entrar_izq"
-          },
-          {
-            "pieza": "viento",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "crecer"
+        "archivo": "pedido-28-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "noche",
+            "persona": "no",
+            "label": "Submarine: NO",
+            "piezas": [
+              {
+                "pieza": "submarino",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              },
+              {
+                "pieza": "viento",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "crecer"
+              }
+            ]
           }
-        ]
+        },
+        "label": "Submarine: NO"
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "The internet calls it the Bloop.",
-      "scene": "newspaper",
+      "scene": "medida",
       "params": {
-        "headline": "MYSTERY SOUND BAFFLES SCIENTISTS",
-        "kicker": "The Daily Wave",
-        "date": "1997",
-        "style": "papel"
+        "archivo": "pedido-28-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "headline": "MYSTERY SOUND BAFFLES SCIENTISTS",
+            "kicker": "The Daily Wave",
+            "date": "1997",
+            "style": "papel"
+          }
+        }
       },
       "camera": "static",
       "transition": "flash"
     },
     {
       "text": "Some say it's a giant creature, near where Lovecraft hid Cthulhu's sunken city.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "bajo_el_mar",
-        "hora": "noche",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "pulpo",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "barco",
-            "pos": "abajo",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "pedido-28-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "bajo_el_mar",
+            "hora": "noche",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "pulpo",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "barco",
+                "pos": "abajo",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "tilt_up",
       "transition": "red"
     },
     {
       "text": "An animal that loud would dwarf any whale.",
-      "scene": "eyes_dark",
+      "scene": "medida",
       "params": {
-        "color": "#ff3030",
-        "count": 2
+        "archivo": "pedido-28-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "eyes_dark",
+          "params": {
+            "color": "#ff3030",
+            "count": 2
+          }
+        }
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "Then, years later, NOAA put microphones near Antarctica.",
-      "scene": "year_jump",
+      "scene": "medida",
       "params": {
-        "from": 1997,
-        "to": 2012,
+        "archivo": "pedido-28-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": 1997,
+            "to": 2012,
+            "label": "Years later"
+          }
+        },
         "label": "Years later"
       },
       "camera": "push_in",
@@ -211,81 +306,110 @@
     },
     {
       "text": "Same sound. Again and again.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "shocked",
-        "objeto": "none",
-        "piezas": [
-          {
-            "pieza": "microscopio",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "viento",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "pedido-28-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "shocked",
+            "objeto": "none",
+            "piezas": [
+              {
+                "pieza": "microscopio",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "viento",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ]
           }
-        ]
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Icequakes: icebergs the size of cities cracking off the ice.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "hora": "dia",
-        "persona": "no",
-        "label": "Icequake",
-        "piezas": [
-          {
-            "pieza": "hielo",
-            "pos": "fondo",
-            "tamano": "gigante",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "hielo",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "viento",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "pedido-28-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "dia",
+            "persona": "no",
+            "label": "Icequake",
+            "piezas": [
+              {
+                "pieza": "hielo",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "hielo",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "viento",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ]
           }
-        ]
+        },
+        "label": "Icequake"
       },
       "camera": "pull_out",
       "transition": "fade"
     },
     {
       "text": "The monster was real, but it wasn't alive.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "caer_romper",
-        "objeto": "hielo",
-        "lugar": "fondo",
-        "hora": "dia"
+        "archivo": "pedido-28-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "caer_romper",
+            "objeto": "hielo",
+            "lugar": "fondo",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "And that's how, when ice that big breaks apart, in 1997…",
-      "scene": "ocean",
+      "scene": "medida",
       "params": {
-        "storm": false,
-        "ship": false
+        "archivo": "pedido-28-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "ocean",
+          "params": {
+            "storm": false,
+            "ship": false
+          }
+        }
       },
       "camera": "static",
       "transition": "cut",
@@ -368,5 +492,7 @@
       "puntuacion": 6,
       "motivo": "Contradiction, but it spoils the twist and gives no context."
     }
-  ]
+  ],
+  "medida_estado": "lista",
+  "tanda": "pedido-28"
 }

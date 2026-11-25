@@ -16,61 +16,91 @@
   "beats": [
     {
       "text": "Nobody found what blew up over Siberia.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "explosion",
-        "lugar": "campo",
-        "hora": "dia"
+        "archivo": "pedido-29-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "explosion",
+            "lugar": "campo",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "What exploded over Siberia in 1908 with no crater and no meteorite?",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "plano": "medio",
-        "mood": "shocked",
-        "efecto": "wow"
+        "archivo": "pedido-29-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "campo",
+            "plano": "medio",
+            "mood": "shocked",
+            "efecto": "wow"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "A thousand Hiroshimas of power.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "1,000x HIROSHIMA",
-        "label": "the blast's power",
-        "color": "#ff4d2e",
-        "lugar": "campo"
+        "archivo": "pedido-29-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "1,000x HIROSHIMA",
+            "label": "the blast's power",
+            "color": "#ff4d2e",
+            "lugar": "campo"
+          }
+        },
+        "label": "the blast's power"
       },
       "camera": "shake",
       "transition": "flash"
     },
     {
       "text": "June 1908. You're Semyon, sitting on a porch.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "medio",
-        "mood": "happy",
-        "objeto": "taza",
-        "piezas": [
-          {
-            "pieza": "casa",
-            "pos": "fondo",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "cafe",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "pedido-29-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "medio",
+            "mood": "happy",
+            "objeto": "taza",
+            "piezas": [
+              {
+                "pieza": "casa",
+                "pos": "fondo",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "cafe",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "label": "Siberia, 7:15 a.m."
           }
-        ],
+        },
         "label": "Siberia, 7:15 a.m."
       },
       "camera": "push_in",
@@ -78,57 +108,94 @@
     },
     {
       "text": "The sky splits. Your shirt feels on fire.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "quemarse",
-        "lugar": "campo",
-        "hora": "dia"
+        "archivo": "pedido-29-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "quemarse",
+            "lugar": "campo",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "shake",
       "transition": "cut"
     },
     {
       "text": "The shockwave throws you off your chair.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "caer_romper",
-        "objeto": "taza_te",
-        "lugar": "campo",
-        "hora": "dia"
+        "archivo": "pedido-29-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "caer_romper",
+            "objeto": "taza_te",
+            "lugar": "campo",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "Eighty million trees, flattened like matchsticks.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "80,000,000 TREES",
-        "label": "830 square miles",
-        "color": "#ffc400",
-        "lugar": "selva"
+        "archivo": "pedido-29-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "80,000,000 TREES",
+            "label": "830 square miles",
+            "color": "#ffc400",
+            "lugar": "selva"
+          }
+        },
+        "label": "830 square miles"
       },
       "camera": "pull_out",
       "transition": "whip"
     },
     {
       "text": "That night, London reads newspapers at midnight.",
-      "scene": "newspaper",
+      "scene": "medida",
       "params": {
-        "style": "papel",
-        "headline": "SKY GLOWS AT MIDNIGHT OVER LONDON",
-        "kicker": "The London Daily",
-        "date": "July 1908"
+        "archivo": "pedido-29-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "style": "papel",
+            "headline": "SKY GLOWS AT MIDNIGHT OVER LONDON",
+            "kicker": "The London Daily",
+            "date": "July 1908"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "Nobody visits for nineteen years.",
-      "scene": "year_jump",
+      "scene": "medida",
       "params": {
-        "from": 1908,
-        "to": 1927,
+        "archivo": "pedido-29-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": 1908,
+            "to": 1927,
+            "label": "19 years later"
+          }
+        },
         "label": "19 years later"
       },
       "camera": "static",
@@ -136,29 +203,44 @@
     },
     {
       "text": "Then Leonid Kulik hunts the meteorite.",
-      "scene": "forest",
+      "scene": "medida",
       "params": {
-        "kind": "jungle"
+        "archivo": "pedido-29-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "forest",
+          "params": {
+            "kind": "jungle"
+          }
+        }
       },
       "camera": "pan_right",
       "transition": "whip"
     },
     {
       "text": "Clue one: no crater.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "medio",
-        "who": "kulik",
-        "mood": "worried",
-        "piezas": [
-          {
-            "pieza": "arbol",
-            "pos": "fondo",
-            "tamano": "mediano"
+        "archivo": "pedido-29-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "medio",
+            "who": "kulik",
+            "mood": "worried",
+            "piezas": [
+              {
+                "pieza": "arbol",
+                "pos": "fondo",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Clue 1: no hole"
           }
-        ],
+        },
         "label": "Clue 1: no hole"
       },
       "camera": "tilt_down",
@@ -166,19 +248,27 @@
     },
     {
       "text": "Clue two: no space rock.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "espada",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "pedido-29-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "espada",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "label": "Clue 2: nothing"
           }
-        ],
+        },
         "label": "Clue 2: nothing"
       },
       "camera": "push_in",
@@ -186,29 +276,37 @@
     },
     {
       "text": "Clue three: trees at the center still stand, stripped bare.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "arbol",
-            "pos": "centro",
-            "tamano": "grande"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "izquierda",
-            "tamano": "mediano"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "espejo": true
+        "archivo": "pedido-29-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "arbol",
+                "pos": "centro",
+                "tamano": "grande"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "izquierda",
+                "tamano": "mediano"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "espejo": true
+              }
+            ],
+            "label": "Clue 3: bare poles"
           }
-        ],
+        },
         "label": "Clue 3: bare poles"
       },
       "camera": "slam",
@@ -216,78 +314,114 @@
     },
     {
       "text": "Only a blast from straight above does that.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "idea",
-        "lugar": "campo",
-        "hora": "dia",
-        "who": "kulik"
+        "archivo": "pedido-29-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "idea",
+            "lugar": "campo",
+            "hora": "dia",
+            "who": "kulik"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "A building-sized rock exploded miles up. Nothing hit the ground.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "hora": "dia",
-        "persona": "no",
-        "piezas": [
-          {
-            "pieza": "meteorito",
-            "pos": "arriba",
-            "tamano": "mediano",
-            "anim": "caer"
-          },
-          {
-            "pieza": "bomba",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "arbol",
-            "pos": "derecha",
-            "tamano": "mediano"
+        "archivo": "pedido-29-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "hora": "dia",
+            "persona": "no",
+            "piezas": [
+              {
+                "pieza": "meteorito",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "caer"
+              },
+              {
+                "pieza": "bomba",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "arbol",
+                "pos": "derecha",
+                "tamano": "mediano"
+              }
+            ],
+            "label": "Airburst, 3 to 6 miles up",
+            "efecto": "impacto"
           }
-        ],
-        "label": "Airburst, 3 to 6 miles up",
-        "efecto": "impacto"
+        },
+        "label": "Airburst, 3 to 6 miles up"
       },
       "camera": "slam",
       "transition": "red"
     },
     {
       "text": "In 2013, another blast over Chelyabinsk injured fifteen hundred people.",
-      "scene": "newspaper",
+      "scene": "medida",
       "params": {
-        "style": "web",
-        "headline": "Meteor explodes over Chelyabinsk",
-        "kicker": "Breaking News",
-        "date": "2013"
+        "archivo": "pedido-29-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "style": "web",
+            "headline": "Meteor explodes over Chelyabinsk",
+            "kicker": "Breaking News",
+            "date": "2013"
+          }
+        }
       },
       "camera": "push_in",
       "transition": "whip"
     },
     {
       "text": "Different timing, and it hits a major city.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "sorpresa",
-        "lugar": "ciudad",
-        "hora": "dia"
+        "archivo": "pedido-29-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "sorpresa",
+            "lugar": "ciudad",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "And that's why, after the biggest blast in recorded history,…",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "explosion",
-        "lugar": "campo",
-        "hora": "dia"
+        "archivo": "pedido-29-01",
+        "plano": 17,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "explosion",
+            "lugar": "campo",
+            "hora": "dia"
+          }
+        }
       },
       "camera": "static",
       "transition": "cut",
@@ -378,5 +512,7 @@
       "puntuacion": 9,
       "motivo": "Passes the stranger test, opens a loop, is only 7 words, and works as the start of the loop sentence."
     }
-  ]
+  ],
+  "medida_estado": "lista",
+  "tanda": "pedido-29"
 }
