@@ -383,5 +383,32 @@
     "youtube_id": "_RzT4HXd2MQ",
     "lista_ok": true,
     "portada_ok": true
+  },
+  {
+    "id": "pedido-28-01",
+    "title": "The Bloop: The Ocean Sound Nobody Could Explain #shorts",
+    "description": "Did you believe it was a monster? 👇\n\nThe Bloop: the mysterious ocean sound recorded by NOAA in 1997, and what it really was.\nIt was heard by sensors more than 3,000 miles apart, and it turned out to be icebergs cracking off Antarctica.\n#bloop #oceanmystery #noaa #mystery #science\n\n▶️ More «Weird Science»: https://www.youtube.com/playlist?list=PLQeECnT3Qn-U",
+    "tags": [
+      "the bloop",
+      "bloop sound",
+      "ocean mystery",
+      "unexplained ocean sound",
+      "NOAA",
+      "icequake",
+      "Antarctica icebergs",
+      "Cthulhu bloop",
+      "sea monster",
+      "ocean sounds explained"
+    ],
+    "video": "pedido-28-01.mp4",
+    "portada": "pedido-28-01_portada.jpg",
+    "lista": "Weird Science",
+    "tag": "pedido-28",
+    "issue": 107,
+    "estado": "programado",
+    "publish_at": "2026-11-26T00:00:00Z",
+    "youtube_id": "txUQ6PUNiqc",
+    "lista_ok": true,
+    "portada_ok": true
   }
 ]
