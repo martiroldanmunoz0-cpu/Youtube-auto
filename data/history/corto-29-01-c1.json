@@ -5,6 +5,8 @@
     "tipo": "recorte",
     "ts": "2026-11-25T17:44:40.703300+00:00",
     "premisa": "",
-    "gancho": "TEN PEOPLE ARE ABOVE YOU"
+    "gancho": "TEN PEOPLE ARE ABOVE YOU",
+    "aprobado": false,
+    "motivo": "sin motivo"
   }
 ]
