@@ -1,0 +1,361 @@
+{
+  "title": "What Actually Happens If You Step in Quicksand? #shorts",
+  "description": "Would you have panicked and pulled? 👇\n\nWhat actually happens if you step in quicksand? Hollywood got it wrong, and here is how to survive.\nQuicksand is about twice as dense as your body, so you float. The real danger is being stuck while the tide comes in.\n#quicksand #mythsvsfacts #survival #science #shorts",
+  "tags": [
+    "quicksand",
+    "what happens if you step in quicksand",
+    "quicksand myth",
+    "how to escape quicksand",
+    "movie myths",
+    "survival tips",
+    "myths vs facts",
+    "quicksand science",
+    "tide danger",
+    "curiosities"
+  ],
+  "beats": [
+    {
+      "text": "Movies lied about quicksand. It can't swallow you.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "reloj_arena",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "mano",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "What actually happens if you step in quicksand, and how do you survive it?",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "reloj_arena",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "mano",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "But it can still kill you.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "playa",
+        "hora": "dia"
+      },
+      "camera": "push_in",
+      "transition": "flash"
+    },
+    {
+      "text": "You step onto wet, shiny sand.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "plano": "entero",
+        "mood": "neutral"
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "Your foot sinks. Then the other.",
+      "scene": "accion",
+      "params": {
+        "tipo": "hundirse",
+        "lugar": "playa",
+        "hora": "dia"
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "In real life, quicksand is twice as dense as you.",
+      "scene": "big_text",
+      "params": {
+        "text": "2x DENSER",
+        "label": "than your body",
+        "lugar": "playa",
+        "color": "#ffcc00"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "So you float, waist-deep. Then you stop.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "playa",
+        "hora": "dia",
+        "label": "Waist-deep"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "The water drains out. The sand locks around your legs.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "hueso",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "temblar"
+          }
+        ],
+        "label": "Like wet concrete"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Yanking a foot out takes car-lifting force.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "rayo",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "pull_out",
+      "transition": "cut"
+    },
+    {
+      "text": "The sun beats down. You're thirsty. Your legs cramp.",
+      "scene": "accion",
+      "params": {
+        "tipo": "quemarse",
+        "lugar": "playa",
+        "hora": "dia"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Your heart pounds. Behind you, the tide returns.",
+      "scene": "accion",
+      "params": {
+        "tipo": "latido",
+        "hora": "atardecer"
+      },
+      "camera": "shake",
+      "transition": "fade"
+    },
+    {
+      "text": "That's what kills people. Not the sand. The water.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "ola_gigante",
+            "pos": "fondo",
+            "tamano": "gigante",
+            "anim": "acercarse"
+          }
+        ]
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "So how do you escape? Don't pull.",
+      "scene": "accion",
+      "params": {
+        "tipo": "idea",
+        "lugar": "playa",
+        "hora": "atardecer"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Lean back and spread your arms like floating in a pool.",
+      "scene": "accion",
+      "params": {
+        "tipo": "flotar_espacio",
+        "lugar": "playa",
+        "hora": "atardecer",
+        "who": "protagonista"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "Wiggle your legs in slow, tiny circles.",
+      "scene": "person",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "highlight": "legs",
+        "mood": "worried"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Water seeps in, sand loosens, roll to solid ground.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "plano": "entero",
+        "arms": "up",
+        "mood": "happy"
+      },
+      "camera": "tilt_up",
+      "transition": "flash"
+    },
+    {
+      "text": "Panic is the real trap.",
+      "scene": "escena",
+      "params": {
+        "lugar": "playa",
+        "hora": "atardecer",
+        "plano": "medio",
+        "mood": "worried",
+        "label": "Stay calm"
+      },
+      "camera": "slam",
+      "transition": "fade"
+    },
+    {
+      "text": "So next time a movie swallows someone, remember:…",
+      "scene": "composicion",
+      "params": {
+        "lugar": "playa",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "reloj_arena",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "mano",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "crecer"
+          }
+        ]
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {},
+  "cover_text": "QUICKSAND MYTH?",
+  "comment_q": "Would you have panicked and pulled?",
+  "lista": "Myths vs Facts",
+  "question": "What actually happens if you step in quicksand, and how do you survive it?",
+  "piezas_pendientes": [
+    "arena_movediza",
+    "corte_transversal_piernas",
+    "flecha_fuerza",
+    "marea"
+  ],
+  "id": "pedido-27-01",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Mito contra realidad en segunda persona. Paseas por una llanura de arena con la marea baja, pisas una zona brillante y húmeda y tu pie se hunde. Bloque 1 (el mito): en las películas desapareces bajo la arena con la mano asomando; la realidad es que la arena movediza es arena saturada de agua, unas dos veces más densa que tu cuerpo, así que no puede tragarte: te quedas flotando más o menos hasta la cintura. Bloque 2 (lo que nadie te cuenta): al moverte, la arena se licúa; cuando paras, el agua se escurre, la arena se compacta alrededor de tus piernas y te aprisiona. Investigadores que la estudiaron en laboratorio (estudio publicado en Nature en 2005) calcularon que sacar un pie de golpe exige una fuerza comparable a levantar un coche. Bloque 3 (escalada de tensión): no puedes salir, el sol pega, tienes sed, te cansas, y entonces el agua empieza a subir: la marea vuelve y tú sigues clavado. Ese es el peligro real. Bloque 4 (escape): no pelees, échate hacia atrás para repartir el peso, abre los brazos como si flotaras en una piscina y mueve las piernas en círculos pequeños y lentos para que entre agua alrededor y se suelten, luego avanza tumbado hacia tierra firme. Narración sugerida (inglés, frases cortas): 'Movies lied. Quicksand cannot swallow you. But it can still kill you. You step onto wet, shiny sand. Your foot sinks. Then the other. In the movies, this is the end. In real life? Quicksand is about twice as dense as your body. You float. Waist-deep, you stop. Good news, right? Not really. The moment you stop moving, the water drains out and the sand locks around your legs like wet concrete. Scientists found that yanking your foot out fast takes about the force needed to lift a car. So you're stuck. The sun is beating down. You're thirsty. Your legs are cramping. And far behind you, the tide starts coming back in. That's what actually kills people. Not the sand. The water. Here's how you get out. Don't pull. Lean back. Spread your arms like you're floating in a pool. Wiggle your legs in slow, tiny circles to let water seep back in. Then roll toward solid ground.'",
+    "gancho": "Movies lied. Quicksand cannot swallow you, but it can still kill you. So what actually happens if you step in it?",
+    "giro_final": "Every instinct screams 'pull your leg out!', and that's the one move that keeps you trapped. The way out is to lie down and go slow. Because quicksand never wanted to swallow you... it just wants you to panic while the tide does the rest. Frase de loop: 'And that's why the movies lied.' (enlaza con el inicio).",
+    "estilo_visual": "Dominan 'escena' y 'composicion' luminosas de playa/llanura mareal para mantener el tono de explicación aventurera, sin estilo oscuro. 1) Gancho: 'composicion' en la playa con una mano saliendo de la arena tipo película y la persona asustada; corte a la misma persona hundida solo hasta la cintura, con cara de duda (accion 'dudar'). 2) Mito: 'escena' en llanura de arena de día, la persona pisa y se hunde el pie. 3) Dato de densidad: 'big_text' con '2x DENSER' sobre la playa y la persona flotando a la altura de la cintura debajo. 4) Arena que atrapa: 'composicion' con corte transversal de las piernas y la arena compactándose; luego 'composicion' con un coche junto a la persona y una flecha de fuerza para el dato de 'lift a car'. 5) Escalada: accion 'quemarse' (sol y ondas de calor), accion 'latido' (cansancio y pánico) y 'composicion' con el mar acercándose al fondo mientras la persona sigue clavada. 6) Escape: 'person' de cuerpo entero inclinada hacia atrás con brazos abiertos y las piernas resaltadas en rojo moviéndose en círculos; cierre en 'escena' con la persona rodando hasta arena firme y brazos en alto. Subtítulos palabra a palabra resaltando 'LIED', 'FLOAT', 'STUCK' y 'TIDE'.",
+    "por_que_funcionara": "Copia la fórmula de sus aprobados 'What If the Moon Disappeared? 5 Myths vs Reality' y 'Last Person on Earth: 5 Movie Myths That Would Get You Killed': un mito de Hollywood que todos conocen, desmentido con un dato sorprendente y aplicado a 'qué te mataría de verdad'. La segunda persona hace que el espectador sienta el atrapamiento, el giro (tu instinto es lo que te mata) da valor práctico para compartir y comentar, y el loop final empuja a la re-reproducción. Los datos usados (densidad, licuación y compactación, fuerza comparable a levantar un coche, peligro de marea) están bien documentados.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "arena_movediza (charco de arena brillante y húmeda con ondas)",
+      "corte_transversal_piernas (vista en sección de piernas atrapadas en arena compactada)",
+      "marea (línea de agua que avanza por la llanura de arena)",
+      "flecha_fuerza (flecha grande hacia arriba indicando tirón)"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "Movies lied about quicksand. It can't swallow you.",
+      "tipo": "e",
+      "puntuacion": 9,
+      "motivo": "Desmiente un mito conocido, deja claro el tema al instante y se completa con la frase del bucle."
+    },
+    {
+      "texto": "What happens if you step in quicksand?",
+      "tipo": "a",
+      "puntuacion": 7,
+      "motivo": "Pregunta directa y concreta, pero no tiene tensión añadida."
+    },
+    {
+      "texto": "Quicksand can't swallow you. It can still kill you.",
+      "tipo": "c",
+      "puntuacion": 9,
+      "motivo": "Dato que choca con amenaza real, y el tema queda claro desde el principio."
+    },
+    {
+      "texto": "You step on wet sand. Your foot sinks.",
+      "tipo": "d",
+      "puntuacion": 5,
+      "motivo": "Inmersivo, pero empieza con contexto y no presenta del todo el tema."
+    },
+    {
+      "texto": "Could you escape quicksand before the tide arrives?",
+      "tipo": "b",
+      "puntuacion": 7,
+      "motivo": "Reto con amenaza, pero destripa parte de la historia."
+    }
+  ]
+}
