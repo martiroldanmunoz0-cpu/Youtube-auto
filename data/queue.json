@@ -414,33 +414,6 @@
     "reprogramado": true
   },
   {
-    "id": "pedido-29-01",
-    "title": "The Tunguska Explosion: What Blew Up Over Siberia? #shorts",
-    "description": "Could it happen again over a city? 👇\n\nThe Tunguska event of 1908: what exploded over Siberia and left no crater?\nIt flattened about 80 million trees, yet no meteorite was ever found. The answer is an airburst.\n#tunguska #siberia #mystery #space #shorts\n\n▶️ More «Weird Science»: https://www.youtube.com/playlist?list=PLQeECnT3Qn-U",
-    "tags": [
-      "tunguska event",
-      "what happened in tunguska",
-      "siberia explosion 1908",
-      "airburst",
-      "asteroid explosion",
-      "no crater mystery",
-      "chelyabinsk meteor",
-      "unsolved mysteries",
-      "space mysteries",
-      "leonid kulik"
-    ],
-    "video": "pedido-29-01.mp4",
-    "portada": "pedido-29-01_portada.jpg",
-    "lista": "Weird Science",
-    "tag": "pedido-29",
-    "issue": 103,
-    "estado": "no_encontrado",
-    "publish_at": "2026-11-25T20:05:37Z",
-    "youtube_id": "oIastgbx2rs",
-    "lista_ok": true,
-    "portada_ok": true
-  },
-  {
     "id": "pedido-27-01",
     "title": "What Actually Happens If You Step in Quicksand? #shorts",
     "description": "Would you have panicked and pulled? 👇\n\nWhat actually happens if you step in quicksand? Hollywood got it wrong, and here is how to survive.\nQuicksand is about twice as dense as your body, so you float. The real danger is being stuck while the tide comes in.\n#quicksand #mythsvsfacts #survival #science #shorts",
@@ -464,7 +437,34 @@
     "estado": "programado",
     "publish_at": "2026-11-26T00:00:00Z",
     "youtube_id": "-nfEN6PTy8o",
-    "lista_ok": false,
+    "lista_ok": true,
+    "portada_ok": true
+  },
+  {
+    "id": "pedido-29-01",
+    "title": "The Tunguska Explosion: What Blew Up Over Siberia? #shorts",
+    "description": "Could it happen again over a city? 👇\n\nThe Tunguska event of 1908: what exploded over Siberia and left no crater?\nIt flattened about 80 million trees, yet no meteorite was ever found. The answer is an airburst.\n#tunguska #siberia #mystery #space #shorts\n\n▶️ More «Weird Science»: https://www.youtube.com/playlist?list=PLQeECnT3Qn-U",
+    "tags": [
+      "tunguska event",
+      "what happened in tunguska",
+      "siberia explosion 1908",
+      "airburst",
+      "asteroid explosion",
+      "no crater mystery",
+      "chelyabinsk meteor",
+      "unsolved mysteries",
+      "space mysteries",
+      "leonid kulik"
+    ],
+    "video": "pedido-29-01.mp4",
+    "portada": "pedido-29-01_portada.jpg",
+    "lista": "Weird Science",
+    "tag": "pedido-29",
+    "issue": 108,
+    "estado": "programado",
+    "publish_at": "2026-11-26T17:00:00Z",
+    "youtube_id": "cqDG-YcTPjA",
+    "lista_ok": true,
     "portada_ok": true
   }
 ]
