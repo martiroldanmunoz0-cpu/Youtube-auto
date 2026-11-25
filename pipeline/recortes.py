@@ -140,7 +140,7 @@ def _partir(s: str, n: int) -> list[str]:
 
 def main(vid: str) -> None:
     cfg = load_config()
-    n = int((cfg.get("generacion") or {}).get("shorts_por_largo", 3))
+    n = int(os.environ.get("CUANTOS") or (cfg.get("generacion") or {}).get("shorts_por_largo", 3))
     story = read_json(DATA / "guiones" / f"{vid}.json")
     week = read_json(DATA / "weeks" / f"{vid}.json")
     if not story or not week:
