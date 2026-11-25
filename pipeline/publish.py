@@ -405,6 +405,10 @@ def main():
         if not week:
             sys.exit(f"No encuentro los datos de la semana {wid}")
         motivos = motivos_descarte(args.issue)
+        # Versión rehecha de un vídeo cuya versión antigua ya no está en YouTube: deja sitio a la nueva
+        queue[:] = [q for q in queue if not (q["id"] in ids and q.get("estado") == "no_encontrado"
+                                             and q.get("issue") != args.issue)]
+        viejos = [q for q in queue if q["id"] in ids and q.get("issue") not in (None, args.issue)]
         already = {q["id"] for q in queue}
         chosen = [v for v in week["videos"] if v["id"] in ids and v["id"] not in already]
         # Aprende de la revisión: marca en el historial qué vídeos aprobaste y cuáles no
@@ -419,6 +423,11 @@ def main():
                     if h["id"] in motivos and not h["aprobado"]:
                         h["motivo"] = motivos[h["id"]]
             write_json(path, hist)
+        if not chosen and viejos:
+            gh("issue", "comment", str(args.issue), "--body", "⚠️ No se ha programado: la versión antigua de este vídeo "
+               f"(issue #{viejos[0]['issue']}) sigue programada en YouTube. Elimínala desde el Calendario del panel y "
+               "luego pulsa **Reopen issue** y vuelve a cerrar este.")
+            return
         if not chosen:
             gh("issue", "comment", str(args.issue), "--body", "🗑️ Descartado (o ya estaba programado). Si querías publicarlo, pulsa **Reopen issue**, marca la casilla y vuelve a cerrarlo.")
             return
