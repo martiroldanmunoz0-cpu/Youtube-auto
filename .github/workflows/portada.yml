@@ -1,0 +1,38 @@
+name: Cambiar portada
+
+# Dibuja la portada de un vídeo con nuestros personajes (export portada() de renderer/scenes/medida/<id>.mjs)
+# y sustituye la miniatura en su publicación. No gasta nada.
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "Id del vídeo (p. ej. largo-27-01)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  portada:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: renderer/package-lock.json
+      - run: npm ci --prefix renderer
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          ID: ${{ inputs.id }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -e
+          TAG=$(jq -r .tag "data/weeks/$ID.json")
+          NAME=$(jq -r '.portada // empty' "data/weeks/$ID.json"); NAME=${NAME:-${ID}_portada.jpg}
+          (cd renderer && node tools/portada_medida.mjs "$ID" "../$NAME")
+          gh release upload "$TAG" "$NAME" -R "$REPO" --clobber
+          echo "Portada cambiada: $TAG / $NAME"
