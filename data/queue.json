@@ -164,12 +164,13 @@
     "lista": "Incredible True Stories",
     "tag": "largo-15",
     "issue": null,
-    "estado": "programado",
-    "publish_at": "2026-11-28T23:00:00Z",
+    "estado": "publicado",
+    "publish_at": "2026-11-25T06:18:01.187984Z",
     "youtube_id": "Bsw4Bhw-UoE",
     "lista_ok": true,
     "portada_ok": true,
-    "reprogramado": true
+    "reprogramado": true,
+    "fecha_prevista": "2026-11-28T23:00:00Z"
   },
   {
     "id": "largo-20-01",
@@ -321,5 +322,34 @@
     "lista_ok": true,
     "portada_ok": true,
     "reprogramado": true
+  },
+  {
+    "id": "largo-27-01",
+    "title": "What If You Had to Spend $1 Billion in 30 Days?",
+    "description": "Hospital or private island: what would you build? 👇\n\nWhat if you had to spend $1 billion in 30 days or lose it all? We break down the real prices, the interest trap and the twist nobody sees coming.\nA billion dollars at 5% interest earns about $137,000 every single day, and that is exactly why spending it is so hard.\n#whatif #billion #money #curiosity #thecurioLab\n\n▶️ More «What If...?»: https://www.youtube.com/playlist?list=PLDcwZJpfCQbc",
+    "tags": [
+      "what if you had to spend a billion dollars",
+      "spend 1 billion in 30 days",
+      "how to spend a billion dollars",
+      "billionaire challenge",
+      "what if you were a billionaire",
+      "how much is a billion dollars",
+      "interest on a billion dollars",
+      "bugatti chiron price",
+      "how much does a hospital cost",
+      "money facts",
+      "what if videos",
+      "the curio lab"
+    ],
+    "video": "largo-27-01.mp4",
+    "portada": "largo-27-01_portada.jpg",
+    "lista": "What If...?",
+    "tag": "largo-28",
+    "issue": 98,
+    "estado": "programado",
+    "publish_at": "2026-11-27T23:00:00Z",
+    "youtube_id": "PVv4gw50eLU",
+    "lista_ok": true,
+    "portada_ok": true
   }
 ]
