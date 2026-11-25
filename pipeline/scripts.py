@@ -548,10 +548,11 @@ def taste_block(history: list[dict], cfg: dict) -> str:
 def retention_block() -> str:
     """Lecciones sacadas de la retención REAL de los vídeos publicados (pipeline/retencion.py)."""
     lec = read_json(DATA / "retencion" / "lecciones.json") or {}
-    if not lec.get("texto"):
+    texto = lec.get("largos" if formato() == "largo" else "shorts") or lec.get("texto")
+    if not texto:
         return ""
-    return ("LO QUE DICE LA RETENCIÓN REAL DEL CANAL (en qué frases se va la gente y qué aguanta; aplícalo al gancho, "
-            f"al ritmo y a cada frase):\n{lec['texto']}\n\n")
+    return ("MEJORAS SACADAS DE LA RETENCIÓN REAL DEL CANAL (en qué frases se va la gente y qué aguanta; aplícalas al "
+            f"gancho, al ritmo, a las escenas y a cada frase):\n{texto}\n\n")
 
 
 def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:

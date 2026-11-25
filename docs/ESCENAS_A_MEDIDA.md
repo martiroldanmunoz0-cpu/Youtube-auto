@@ -140,5 +140,6 @@ Ideas de estilo (no copia): luz de cine, primeros planos por encima del hombro, 
 - **Regla por plano:** usar un decorado reconocible, 2–5 personajes que reaccionan entre sí, una luz y, cuando cuadre, un contador, rótulo o cartel. Alternar planos generales, por encima del hombro, de la puerta y en pantalla partida, y no repetir dos veces seguidas el mismo tipo de plano.
 
 ## Retención (25-11-2026)
-- **Retención**: `retencion.yml` (lunes) lee de YouTube Analytics en qué frase se va la gente de cada vídeo publicado,
-  lo guarda en `data/retencion/` y resume lecciones en `lecciones.json`, que `scripts.py` mete en cada guion nuevo.
+- **Retención**: `retencion.yml` (cada día) lee de YouTube Analytics en qué frase se va la gente de cada largo y Short
+  publicado; si hay datos nuevos, Claude actualiza las mejoras (separadas para largos y Shorts) en `lecciones.json`, que
+  `scripts.py` mete en cada guion nuevo de ese tipo. No rehace vídeos.

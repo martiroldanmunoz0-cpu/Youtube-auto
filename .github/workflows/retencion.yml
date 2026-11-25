@@ -1,7 +1,7 @@
 name: Retención (aprender de los vídeos publicados)
 on:
   schedule:
-    - cron: "17 5 * * 1"
+    - cron: "17 5 * * *"
   workflow_dispatch:
 permissions:
   contents: write

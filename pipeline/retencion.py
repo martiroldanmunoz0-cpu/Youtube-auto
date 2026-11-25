@@ -1,4 +1,4 @@
-"""Retención de cada vídeo publicado (YouTube Analytics) cruzada con su guion, y lecciones para los próximos guiones.
+"""Retención de cada vídeo publicado (YouTube Analytics) cruzada con su guion, y mejoras para los próximos guiones (largos y Shorts por separado).
 
 Uso: python pipeline/retencion.py
 - Para cada vídeo publicado hace más de 2 días: curva de retención (qué % sigue viendo en cada punto del vídeo),
@@ -78,29 +78,49 @@ def analizar(yta, yid: str, vid: str, dur: float, desde: str, hasta: str) -> dic
 
 
 def lecciones(datos: list[dict], cfg: dict) -> None:
+    """Mejoras para los PRÓXIMOS vídeos (no rehace ninguno), separadas para largos y Shorts. Solo llama a Claude si hay datos nuevos."""
     import anthropic  # noqa: PLC0415
 
     import gasto  # noqa: PLC0415
 
+    previo = read_json(OUT / "lecciones.json") or {}
+    huella = {d["id"]: d["vistas"] for d in datos}
+    if previo.get("huella") == huella:
+        print("Sin datos nuevos: mantengo las mejoras de la última vez")
+        return
     resumen = [{k: d.get(k) for k in ("id", "titulo", "duracion", "vistas", "pct_visto", "media_vista_s", "vs_parecidos", "gancho",
                                       "peores_frases", "mejores_frases")} for d in datos]
+    tipos = [t for t, ok in (("largos", any(d["id"].startswith("largo-") for d in datos)),
+                             ("shorts", any(not d["id"].startswith("largo-") for d in datos))) if ok]
+    antes = {t: previo.get(t) for t in ("largos", "shorts") if previo.get(t)}
     prompt = (
         "Eres analista de retención de un canal de YouTube de curiosidades animadas (inglés, EE. UU.). Ids 'largo-' son "
         "vídeos de 8-10 min; el resto son Shorts. Estos son los datos REALES de retención de sus vídeos, con las frases "
         "del guion en las que más gente se fue (pierde = fracción de audiencia perdida en esa frase) y en las que no se fue nadie:\n"
         f"{json.dumps(resumen, ensure_ascii=False)}\n\n"
-        "Saca como máximo 8 lecciones CONCRETAS y accionables para el guionista (qué tipo de frase hace que se vayan, qué "
-        "aguanta, cómo debe ser el gancho de los primeros 30 s, ritmo, cuándo meter mini-ganchos). Cada una en una línea, "
-        "en español, citando un ejemplo real entre comillas. Separa 'LARGOS:' y 'SHORTS:' si hay datos de ambos. "
-        "Si hay pocos datos, dilo y da solo lo que esté claro. Sin introducción."
+        + (f"Mejoras que ya se estaban aplicando (mantén las que los datos confirman, corrige o quita las que no):\n"
+           f"{json.dumps(antes, ensure_ascii=False)}\n\n" if antes else "")
+        + "No hay que rehacer ningún vídeo: escribe MEJORAS para los próximos guiones. Como máximo 8 por tipo, CONCRETAS "
+        "(qué tipo de frase hace que se vayan y cómo evitarlo, qué aguanta y hacer más, cómo debe ser el gancho, ritmo, "
+        "cuándo meter mini-ganchos o cambiar de escena). Cada una en una línea, en español, citando un ejemplo real entre "
+        "comillas. Si hay pocos datos, dilo y da solo lo que esté claro. Sin introducción.\n"
+        f"Responde SOLO un JSON con las claves {json.dumps(tipos)} (texto con una mejora por línea)."
     )
     model = (cfg.get("generacion") or {}).get("modelo_analisis", "claude-opus-5-5")
-    r = anthropic.Anthropic().messages.create(model=model, max_tokens=2500, messages=[{"role": "user", "content": prompt}],
+    r = anthropic.Anthropic().messages.create(model=model, max_tokens=3000, messages=[{"role": "user", "content": prompt}],
                                               output_config={"effort": "low"})
-    gasto.anthropic(r.model, r.usage, que="lecciones de retención")
+    gasto.anthropic(r.model, r.usage, que="mejoras por retención")
     texto = "".join(b.text for b in r.content if b.type == "text").strip()
-    write_json(OUT / "lecciones.json", {"actualizado": dt.date.today().isoformat(), "videos": len(datos), "texto": texto})
-    print("\nLecciones:\n" + texto)
+    m = re.search(r"\{.*\}", texto, re.S)
+    nuevas = json.loads(m.group(0)) if m else {tipos[0]: texto}
+    out = {"actualizado": dt.date.today().isoformat(), "videos": len(datos), "huella": huella,
+           "largos": previo.get("largos", ""), "shorts": previo.get("shorts", "")}
+    for t in tipos:
+        if nuevas.get(t):
+            out[t] = nuevas[t] if isinstance(nuevas[t], str) else "\n".join(nuevas[t])
+    write_json(OUT / "lecciones.json", out)
+    for t in tipos:
+        print(f"\nMejoras {t}:\n{out[t]}")
 
 
 def main() -> None:
