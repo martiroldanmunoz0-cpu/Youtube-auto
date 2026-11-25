@@ -1,0 +1,28 @@
+{
+ "fecha": "2026-11-25T12:24:30.148425+00:00",
+ "tanda": "largo-29",
+ "total_usd": {
+  "anthropic": 0.234088,
+  "openai": 0
+ },
+ "llamadas": [
+  {
+   "servicio": "anthropic",
+   "modelo": "claude-opus-5-5",
+   "usd": 0.0397,
+   "que": "lote"
+  },
+  {
+   "servicio": "anthropic",
+   "modelo": "claude-sonnet-5-5",
+   "usd": 0.194163,
+   "que": "lote"
+  },
+  {
+   "servicio": "anthropic",
+   "modelo": "claude-haiku-5-5",
+   "usd": 0.000225,
+   "que": ""
+  }
+ ]
+}
