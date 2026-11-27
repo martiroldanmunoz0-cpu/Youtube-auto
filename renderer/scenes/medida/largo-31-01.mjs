@@ -696,15 +696,45 @@ Object.assign(A, {
 // ===================== PORTADA =====================
 export function portada(ctx, K) {
   const { YOU } = cast(K), a = { t: 1.2, d: 4, params: {}, WW: W, WH: H };
-  sky(ctx, '#1a0f33', '#3a1a5a'); K.radial(ctx, 1300, 520, 900, '#ffb347', 0.55);
-  ctx.save(); ctx.translate(1300, 520); for (let i = 0; i < 22; i++) { ctx.rotate(Math.PI * 2 / 22); ctx.fillStyle = 'rgba(255,220,150,0.08)'; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(1400, -80); ctx.lineTo(1400, 80); ctx.fill(); } ctx.restore();
-  tarta(K, ctx, 1560, 1080, 1.05, 60, 1.2);
-  ctx.save(); ctx.shadowColor = 'rgba(255,255,255,0.9)'; ctx.shadowBlur = 36; D(K, ctx, a, YOU, 1150, 1180, 1.75, { pose: 'sorpresa', mira: -1, mood: 'sorpresa' }); ctx.restore();
-  D(K, ctx, a, YOU, 1150, 1180, 1.75, { pose: 'sorpresa', mira: -1, mood: 'sorpresa' });
-  ctx.save(); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
-  const lt = (s, x, yy, size, col, rot = 0) => { ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.font = `${size}px Anton`; ctx.lineWidth = size * 0.2; ctx.strokeStyle = '#05040f'; ctx.strokeText(s, 0, 0); ctx.fillStyle = col; ctx.fillText(s, 0, 0); ctx.restore(); };
-  lt('AGE', 70, 360, 260, '#ffffff', -0.04); lt('1,000', 60, 650, 300, '#ffd93d', -0.04);
-  ctx.restore();
-  ctx.save(); ctx.translate(80, 740); ctx.rotate(-0.04); K.R(ctx, 0, 0, 640, 140, 70, '#e8132b', 10); ctx.font = '96px Anton'; ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.textAlign = 'center'; ctx.fillText('WHAT BREAKS?', 320, 76); ctx.restore();
-  const v = ctx.createRadialGradient(W / 2, H / 2, 700, W / 2, H / 2, 1250); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.5)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+  // fondo: de cálido (joven) a cósmico (milenario)
+  const g = ctx.createLinearGradient(0, 0, W, 0); g.addColorStop(0, '#ffb347'); g.addColorStop(0.45, '#c2417a'); g.addColorStop(0.8, '#3a1670'); g.addColorStop(1, '#0d0626'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.save(); for (let i = 0; i < 120; i++) { const x = 900 + hs(i + 40) * 1020, y = hs(i + 90) * 820; ctx.globalAlpha = 0.3 + hs(i) * 0.7 * ((x - 900) / 1020); ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(x, y, 1.5 + hs(i + 3) * 3, 0, 7); ctx.fill(); } ctx.restore();
+  K.radial(ctx, 1700, 700, 520, '#b98cff', 0.7);
+  // suelo
+  const sg = ctx.createLinearGradient(0, 900, 0, H); sg.addColorStop(0, '#2a1240'); sg.addColorStop(1, '#0b0518'); ctx.fillStyle = sg; ctx.fillRect(0, 905, W, H - 905);
+  ctx.strokeStyle = INK; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(0, 905); ctx.lineTo(W, 905); ctx.stroke();
+  const baston = (gr) => (ctx, mx, my) => { const ex = mx + 34, ey = -ex * Math.tan(gr); ctx.save(); ctx.strokeStyle = '#6b4a2b'; ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(mx - 18, my - 10); ctx.quadraticCurveTo(mx, my - 34, mx + 6, my - 6); ctx.lineTo(ex, ey); ctx.stroke(); ctx.strokeStyle = INK; ctx.lineWidth = 3; ctx.stroke(); ctx.restore(); };
+  const etapas = [
+    { x: 200, esc: 1.15, edad: '20', p: { ...YOU }, o: { pose: 'saluda', mood: 'feliz' } },
+    { x: 560, esc: 1.15, edad: '100', p: { ...YOU, pelo: 'raya', peloCol: '#8d8d8d', bigote: true, gafas: true }, o: { pose: 'quieto', mood: 'neutral', giro: 0.04 } },
+    { x: 900, esc: 1.13, edad: '300', p: { ...YOU, pelo: 'coronilla', peloCol: '#d9d9d9', barba: true, gafas: true, ropa: '#7a6cff' }, o: { pose: 'sostiene', mood: 'duda', giro: 0.12, objeto: baston(0.12) } },
+    { x: 1250, esc: 1.1, edad: '600', p: { ...YOU, pelo: 'coronilla', peloCol: '#f4f4f4', barba: true, gafas: true, ropa: '#5a3e9a' }, o: { pose: 'sostiene', mood: 'dormido', giro: 0.22, objeto: baston(0.22) }, barba: 1.7 },
+    { x: 1600, esc: 1.25, edad: '1,000', p: { ...YOU, pelo: 'calvo', peloCol: '#ffffff', barba: true, gafas: false, ropa: '#3b2a6e' }, o: { pose: 'sostiene', mood: 'sorpresa', giro: 0.3, objeto: baston(0.3) }, barba: 2.8, glow: true },
+  ];
+  // flechas de evolución
+  for (let i = 0; i < 4; i++) { const x0 = etapas[i].x + 110, x1 = etapas[i + 1].x - 110, y = 965; ctx.save(); ctx.strokeStyle = '#fff'; ctx.fillStyle = '#fff'; ctx.lineWidth = 10; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1 - 20, y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x1 - 34, y - 22); ctx.lineTo(x1 - 34, y + 22); ctx.fill(); ctx.restore(); }
+  for (const e of etapas) {
+    const gy = 905;
+    if (e.glow) { K.radial(ctx, e.x, gy - 300, 420, '#e6d4ff', 0.85); ctx.save(); ctx.shadowColor = 'rgba(230,210,255,1)'; ctx.shadowBlur = 50; D(K, ctx, a, e.p, e.x, gy, e.esc, { mira: 1, ...e.o }); ctx.restore(); }
+    const info = D(K, ctx, a, e.p, e.x, gy, e.esc, { mira: 1, ...e.o });
+    if (e.barba) { // barba larga girada con el cuerpo
+      const k = e.esc, gr = e.o.giro || 0, dx = info.cabeza[0] - e.x, dy = info.cabeza[1] - gy, c = Math.cos(gr), s = Math.sin(gr);
+      const hx = e.x + dx * c - dy * s, hy = gy + dx * s + dy * c, hr = info.hr, L = hr * e.barba;
+      ctx.save(); ctx.translate(hx, hy); ctx.rotate(gr); ctx.fillStyle = '#f7f7fb'; ctx.strokeStyle = INK; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(-hr * 0.85, hr * 0.15);
+      ctx.quadraticCurveTo(-hr * 0.9, hr * 0.5 + L * 0.5, -hr * 0.1, hr * 0.4 + L); ctx.lineTo(0, hr * 0.25 + L * 0.9); ctx.lineTo(hr * 0.15, hr * 0.45 + L); ctx.quadraticCurveTo(hr * 0.9, hr * 0.5 + L * 0.5, hr * 0.85, hr * 0.15);
+      ctx.quadraticCurveTo(hr * 0.4, hr * 0.55, 0, hr * 0.5); ctx.quadraticCurveTo(-hr * 0.4, hr * 0.55, -hr * 0.85, hr * 0.15); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = 'rgba(27,21,48,0.25)'; ctx.lineWidth = 3; for (let j = -2; j <= 2; j++) { ctx.beginPath(); ctx.moveTo(j * hr * 0.25, hr * 0.7); ctx.lineTo(j * hr * 0.12, hr * 0.3 + L * 0.85); ctx.stroke(); }
+      ctx.fillStyle = INK; ctx.beginPath(); ctx.ellipse(0, hr * 0.45, hr * 0.16, hr * 0.1, 0, 0, 7); ctx.fill(); ctx.restore();
+    }
+    // etiqueta de edad
+    const big1 = e.edad === '1,000', w = big1 ? 230 : 150, h = big1 ? 96 : 76;
+    K.R(ctx, e.x - w / 2, 1010 - h / 2 + 10, w, h, h / 2, big1 ? '#ffd93d' : '#ffffff', 8);
+    ctx.save(); ctx.font = `${big1 ? 70 : 54}px Anton`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = INK; ctx.fillText(e.edad, e.x, 1023); ctx.restore();
+  }
+  // título
+  const lt = (s, x, yy, size, fill, rot = 0) => { ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.font = `${size}px Anton`; ctx.textAlign = 'left'; ctx.lineJoin = 'round'; ctx.lineWidth = size * 0.2; ctx.strokeStyle = '#0b0818'; ctx.strokeText(s, 0, 0); ctx.fillStyle = fill; ctx.fillText(s, 0, 0); ctx.restore(); };
+  ctx.save(); ctx.shadowColor = 'rgba(0,0,0,0.6)'; ctx.shadowBlur = 24;
+  lt('AGE', 60, 250, 230, '#ffffff', -0.03); lt('1,000', 520, 260, 260, '#ffd93d', -0.03); ctx.restore();
+  ctx.save(); ctx.translate(1340, 110); ctx.rotate(0.05); K.R(ctx, 0, 0, 520, 120, 60, '#e8132b', 10); ctx.font = '80px Anton'; ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.textAlign = 'center'; ctx.fillText('WHAT BREAKS?', 260, 66); ctx.restore();
+  const v = ctx.createRadialGradient(W / 2, H / 2, 700, W / 2, H / 2, 1250); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.45)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
 }

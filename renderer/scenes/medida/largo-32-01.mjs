@@ -629,15 +629,42 @@ Object.assign(A, {
 // ===================== PORTADA =====================
 export function portada(ctx, K) {
   const { YOU } = cast(K), a = { t: 1.4, d: 4, params: {}, WW: W, WH: H };
-  sky(ctx, '#05030f', '#2a0a1a'); aurora(ctx, a, 0, 900, ['#4dffb0', '#ff4d8a', '#9a6bff'], 0.75);
-  sol(K, ctx, a, 1650, 230, 210, 0.9);
-  for (let i = 0; i < 12; i++) { const w = 140 + hs(i + 2) * 90, h = 200 + hs(i * 5 + 2) * 300; K.R(ctx, 700 + i * 110, 1080 - h, w, h, 4, '#0b0b14', 6); }
-  ctx.save(); ctx.shadowColor = 'rgba(255,200,255,0.9)'; ctx.shadowBlur = 36; D(K, ctx, a, YOU, 1220, 1180, 1.7, { pose: 'miedo', mira: -1, mood: 'shocked' }); ctx.restore();
-  D(K, ctx, a, YOU, 1220, 1180, 1.7, { pose: 'miedo', mira: -1, mood: 'shocked' });
-  ctx.save(); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.lineJoin = 'round';
-  const lt = (s, x, yy, size, col, rot = 0) => { ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.font = `${size}px Anton`; ctx.lineWidth = size * 0.2; ctx.strokeStyle = '#05040f'; ctx.strokeText(s, 0, 0); ctx.fillStyle = col; ctx.fillText(s, 0, 0); ctx.restore(); };
-  lt('SKY ON', 70, 360, 250, '#ffffff', -0.04); lt('FIRE', 70, 640, 290, '#ffd93d', -0.04);
+  // cielo ardiendo
+  const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#1a0003'); g.addColorStop(0.35, '#7a0a05'); g.addColorStop(0.62, '#ff4a00'); g.addColorStop(0.8, '#ffb000'); g.addColorStop(1, '#3a0a00'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // cortinas de fuego que caen del cielo
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  const cols = ['#ff2a00', '#ff7a00', '#ffcc33'];
+  for (let L = 0; L < 3; L++) for (let i = 0; i < 26; i++) {
+    const x = (i / 25) * (W + 200) - 100 + hs(i * 7 + L) * 60, w = 70 + hs(i + L * 31) * 90, len = 380 + hs(i * 3 + L * 5) * 380 - L * 90;
+    const fg = ctx.createLinearGradient(0, 0, 0, len); fg.addColorStop(0, 'rgba(0,0,0,0)'); fg.addColorStop(0.35, cols[L]); fg.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = fg; ctx.globalAlpha = 0.55; ctx.beginPath(); ctx.moveTo(x - w, 0);
+    for (let y = 0; y <= len; y += 30) ctx.lineTo(x - w * (1 - y / len) + Math.sin(y * 0.03 + i) * 30, y);
+    for (let y = len; y >= 0; y -= 30) ctx.lineTo(x + w * (1 - y / len) + Math.sin(y * 0.03 + i + 1) * 30, y);
+    ctx.closePath(); ctx.fill();
+  }
   ctx.restore();
-  ctx.save(); ctx.translate(80, 730); ctx.rotate(-0.04); K.R(ctx, 0, 0, 760, 140, 70, '#e8132b', 10); ctx.font = '92px Anton'; ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.textAlign = 'center'; ctx.fillText('IT ALMOST HAPPENED', 380, 76); ctx.restore();
-  const v = ctx.createRadialGradient(W / 2, H / 2, 700, W / 2, H / 2, 1250); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.5)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+  K.radial(ctx, 1480, 230, 520, '#ffdd55', 0.75); circ(ctx, 1480, 230, 170, '#fff1a8', 10, '#a83000'); K.radial(ctx, 1480, 230, 200, '#ffffff', 0.6);
+  ctx.save(); ctx.translate(1480, 230); for (let i = 0; i < 18; i++) { ctx.rotate(Math.PI * 2 / 18); ctx.fillStyle = i % 2 ? '#ff8a00' : '#ffd23a'; ctx.beginPath(); ctx.moveTo(150, -26); ctx.quadraticCurveTo(260 + hs(i) * 120, 0, 150, 26); ctx.fill(); } ctx.restore(); circ(ctx, 1480, 230, 150, '#fff6c8', 8, '#ff7a00');
+  // brasas
+  ctx.save(); for (let i = 0; i < 160; i++) { const x = hs(i + 300) * W, y = hs(i + 700) * 900, r = 2 + hs(i + 11) * 6; ctx.fillStyle = hs(i) > 0.5 ? '#ffe38a' : '#ff6a00'; ctx.globalAlpha = 0.5 + hs(i + 5) * 0.5; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); } ctx.restore();
+  // ciudad en silueta con ventanas y fuego
+  for (let i = 0; i < 16; i++) { const w = 110 + hs(i + 2) * 90, h = 220 + hs(i * 5 + 2) * 330, x = -40 + i * 125; K.R(ctx, x, 860 - h, w, h + 300, 3, '#1a0606', 0);
+    for (let wy = 860 - h + 30; wy < 840; wy += 46) for (let wx = x + 16; wx < x + w - 24; wx += 34) if (hs(wx * 3 + wy) > 0.72) { ctx.fillStyle = hs(wx + wy) > 0.5 ? '#ffcf3a' : '#ff5a1a'; ctx.fillRect(wx, wy, 16, 22); } }
+  for (const fx of [180, 760, 1380, 1780]) { K.radial(ctx, fx, 640, 220, '#ff5a00', 0.7); }
+  postes(K, ctx, a, 980, 6, 1.4);
+  // suelo
+  const sg = ctx.createLinearGradient(0, 900, 0, H); sg.addColorStop(0, '#2a0a06'); sg.addColorStop(1, '#0a0202'); ctx.fillStyle = sg; ctx.fillRect(0, 900, W, H - 900);
+  // multitud aterrada
+  K.multitud(ctx, a, { n: 16, x0: 820, x1: 1960, gy: 1120, esc: 0.95, filas: 2, reaccion: 'miedo', mood: 'miedo', seed: 'fire-crowd', mira: -1 });
+  K.multitud(ctx, a, { n: 6, x0: 900, x1: 1900, gy: 1200, esc: 1.05, filas: 1, reaccion: 'senala', mood: 'sorpresa', seed: 'fire-point', mira: 1 });
+  // TÚ en primer plano
+  ctx.save(); ctx.shadowColor = 'rgba(255,190,80,0.95)'; ctx.shadowBlur = 40; D(K, ctx, a, YOU, 1300, 1260, 1.75, { pose: 'miedo', mira: 1, mood: 'miedo' }); ctx.restore();
+  D(K, ctx, a, YOU, 1300, 1260, 1.75, { pose: 'miedo', mira: 1, mood: 'miedo' });
+  // texto
+  const lt = (s, x, yy, size, fill, rot = 0) => { ctx.save(); ctx.translate(x, yy); ctx.rotate(rot); ctx.font = `${size}px Anton`; ctx.textAlign = 'left'; ctx.lineJoin = 'round'; ctx.lineWidth = size * 0.2; ctx.strokeStyle = '#0a0002'; ctx.strokeText(s, 0, 0); ctx.fillStyle = fill; ctx.fillText(s, 0, 0); ctx.restore(); };
+  const fuego = ctx.createLinearGradient(0, -250, 0, 0); fuego.addColorStop(0, '#ffe600'); fuego.addColorStop(0.55, '#ff8a00'); fuego.addColorStop(1, '#ff2a00');
+  ctx.save(); ctx.shadowColor = 'rgba(0,0,0,0.8)'; ctx.shadowBlur = 30;
+  lt('SKY ON', 60, 300, 230, '#ffffff', -0.04); lt('FIRE', 60, 610, 340, fuego, -0.04); ctx.restore();
+  ctx.save(); ctx.translate(70, 690); ctx.rotate(-0.04); K.R(ctx, 0, 0, 600, 120, 60, '#ffffff', 10); ctx.font = '84px Anton'; ctx.fillStyle = '#d10f1f'; ctx.textBaseline = 'middle'; ctx.textAlign = 'center'; ctx.fillText('IT HAPPENED.', 300, 66); ctx.restore();
+  const v = ctx.createRadialGradient(W / 2, H / 2, 650, W / 2, H / 2, 1250); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,0.55)'); ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
 }
