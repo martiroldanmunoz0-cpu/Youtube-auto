@@ -9,6 +9,11 @@ on:
         description: "Vídeo (p. ej. historia-1-01)"
         required: true
         type: string
+      aunque_publico:
+        description: "Borrarlo aunque ya sea público (para sustituirlo por una versión rehecha)"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -30,7 +35,7 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           ID: ${{ inputs.id }}
-        run: python pipeline/eliminar.py --id "$ID"
+        run: python pipeline/eliminar.py --id "$ID" $([ "${{ inputs.aunque_publico }}" = "true" ] && echo --aunque_publico)
       - name: Guardar cola
         run: |
           git config user.name "shorts-bot"

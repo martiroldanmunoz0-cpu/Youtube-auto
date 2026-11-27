@@ -20,13 +20,14 @@ LOG = DATA / "eliminados.json"
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--id", required=True)
+    ap.add_argument("--aunque_publico", action="store_true", help="borrarlo aunque ya sea público (solo si el dueño lo pide, p. ej. al sustituirlo por una versión rehecha)")
     a = ap.parse_args()
     queue = read_json(QUEUE, [])
     item = next((q for q in queue if q["id"] == a.id), None)
     if not item:
         sys.exit(f"No encuentro el vídeo {a.id} en la cola")
     now = dt.datetime.now(dt.timezone.utc)
-    if item.get("estado") == "publicado" or (item.get("publish_at") and item.get("youtube_id")
+    if not a.aunque_publico and item.get("estado") == "publicado" or not a.aunque_publico and (item.get("publish_at") and item.get("youtube_id")
                                              and dt.datetime.fromisoformat(item["publish_at"].replace("Z", "+00:00")) <= now):
         sys.exit("Ese vídeo ya se ha publicado: no se elimina desde aquí (bórralo en YouTube Studio si de verdad quieres)")
     if item.get("youtube_id"):
@@ -34,7 +35,7 @@ def main() -> None:
 
         yt = youtube_client()
         info = yt.videos().list(part="status", id=item["youtube_id"]).execute().get("items", [])
-        if info and info[0]["status"].get("privacyStatus") in ("public", "unlisted"):
+        if info and not a.aunque_publico and info[0]["status"].get("privacyStatus") in ("public", "unlisted"):
             item["estado"] = "publicado"
             write_json(QUEUE, queue)
             sys.exit("En YouTube ya es público: no se elimina (por seguridad). Se marca como publicado.")
