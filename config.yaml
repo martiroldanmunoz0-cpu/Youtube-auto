@@ -40,8 +40,8 @@ generacion:
   modelo_guiones: "claude-sonnet-5-5"
   usar_lotes: true               # lote de Claude (Batch API): -50% de coste, tarda unos minutos más
   esfuerzo_guiones: "medium"     # cuánto "piensa" el guionista: low | medium | high (high = mejor pero más caro)
-  duracion_objetivo_seg: [40, 60]   # entre 40 s y 1 minuto
-  duracion_caso_real_seg: [45, 60]    # historias reales: máximo 60 s
+  duracion_objetivo_seg: [28, 38]   # ~30 s: más % visto y más repeticiones
+  duracion_caso_real_seg: [32, 42]    # historias reales: algo más de margen
   duracion_largo_seg: [480, 600]       # vídeos largos (horizontal): 8-10 minutos
   mezcla: "auto"                 # auto = la IA decide según tendencias (historias, datos, casos reales...)
   # Lo que más te gusta (se tiene en cuenta en ideas y guiones). Edítalo cuando quieras.

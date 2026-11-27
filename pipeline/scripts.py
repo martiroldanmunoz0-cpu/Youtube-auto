@@ -139,8 +139,10 @@ LONG_RULES = """VÍDEO LARGO (NO es un Short): formato horizontal de {lo_min}-{h
   label) para que el dibujante sepa qué animar.
 - CAPÍTULOS: 4-6 capítulos. En el primer plano de cada capítulo pon "capitulo" con un título corto y llamativo
   ("Capítulo 2 · Lo que encontraron"); en el resto de planos, "capitulo": "". El plano 1 también abre capítulo.
-- LOS PRIMEROS 30 SEGUNDOS deciden todo: gancho fuerte en el plano 1, la pregunta central en el plano 2 y una
-  PROMESA clara de lo que va a ver ("y al final te cuento lo más increíble de todo").
+- LOS PRIMEROS 30 SEGUNDOS deciden todo: gancho fuerte en el plano 1 (sin destripar la respuesta), la pregunta
+  central dicha en pocas palabras en el plano 2 (nunca una copia del título) y una PROMESA concreta de lo que va a
+  ver ("y al final te cuento lo más increíble de todo"). Cada frase de la entrada tiene que pasar la PRUEBA DEL OÍDO:
+  sin siglas ni nombres sin explicar, una cifra por frase como mucho.
 - RETENCIÓN: cada 45-60 segundos un mini-gancho que obligue a seguir ("pero eso no es lo peor", "aquí es donde la
   historia se vuelve rara", "en un minuto vas a entender por qué"). Guarda la mayor sorpresa para el último capítulo.
 - Ritmo: cambia de escena en cada plano; usa mucho "accion" y "composicion".
@@ -183,7 +185,7 @@ real (lo que dicen los expertos), sin inventar cifras. Si un dato es dudoso, des
 Un dibujante las añadirá a la biblioteca antes de montar los vídeos."""
 
 SYSTEM_WRITER = """Eres guionista de YouTube Shorts narrados en español neutro (comprensible en España y Latinoamérica). \
-Escribes guiones de 40 a 60 segundos (nunca más de 1 minuto ni menos de 40 segundos) que se convierten automáticamente en un vídeo animado.
+Escribes guiones de 28 a 38 segundos (nunca más de 40: los Shorts que más se ven enteros y se repiten duran ~30 s) que se convierten automáticamente en un vídeo animado.
 
 LOS 2 PRIMEROS SEGUNDOS LO SON TODO (dato del canal: casi 4 de cada 10 personas deslizaban al empezar)
 - El vídeo arranca con "texto_portada" ENORME en pantalla sobre la imagen del plano 1, y la voz dice el plano 1 sin pausa.
@@ -202,7 +204,7 @@ La gente ve el vídeo SIN título ni descripción: solo oye la voz. Si en los 3 
   d) segunda persona CON el tema dicho ("Vas a bajar al fondo del océano. Un día, un nivel más.")
   e) contradicción / "lo que nadie te cuenta" sobre el tema ("Todos creen que el fondo del mar está vacío. No lo está.")
 Puntúa cada uno de 1 a 10. PRUEBA DEL DESCONOCIDO (si no la pasa, máximo 3 puntos): alguien que solo oye esa frase, sin ver nada más, ¿sabe de qué va el vídeo y quiere saber la respuesta? Además: se entiende en menos de 2 segundos; es concreto; no destripa el final; MÁXIMO 8 PALABRAS. Copia el mejor en "gancho_elegido" y úsalo LITERALMENTE como texto del plano 1.
-PROHIBIDO empezar a mitad de la historia sin presentar el tema (MAL: "Día uno: bajas diez metros." BIEN: "¿Y si cada día bajaras más hondo en el mar?"). Si el gancho es una afirmación, la pregunta central va en el plano 2.
+PROHIBIDO empezar a mitad de la historia sin presentar el tema (MAL: "Día uno: bajas diez metros." BIEN: "¿Y si cada día bajaras más hondo en el mar?"). El plano 1 tiene que dejar claro el tema POR SÍ SOLO (si no, reescríbelo). NUNCA pongas en el plano 2 la pregunta central larga ni repitas o reformules el título ("What actually happens if you step in quicksand, and how do you survive it?" = el espectador ya se ha ido).
 EMPIEZA POR EL MOMENTO MÁS FUERTE (datos reales del canal: más de la mitad desliza en el primer segundo).
 - El plano 1 cuenta el momento MÁS impactante de toda la historia (el clímax, la cifra brutal, el peligro), NUNCA \
 el contexto. PROHIBIDO abrir con fechas, lugares, "En 1971…", "Esta es la historia de…", "Imagina que…" o presentar \
@@ -216,7 +218,7 @@ TÉCNICAS DE RETENCIÓN (caja de herramientas: elige las que mejor encajen con E
 después es aún más raro.", "Y la respuesta no es la que piensas.").
 - Anticipación: siembra un detalle y avisa de que importará ("Acuérdate de este número, porque al final lo \
 cambia todo."). Luego CÚMPLELO: todo lo que anuncies se resuelve.
-- Mini-giros cada 10-15 segundos: "Pero entonces...", "Y aquí empieza el problema.", un dato que cambia lo que \
+- Mini-giros cada 6-8 segundos (cada 3-4 planos): "Pero entonces...", "Y aquí empieza el problema.", un dato que cambia lo que \
 creías o una amenaza nueva.
 - Concreción: nombres, edades, fechas, cifras y detalles sensoriales hacen que te lo creas y te importe.
 - Emoción: que al espectador le importe lo que pasa (miedo, asombro, ternura, injusticia, alivio).
@@ -224,6 +226,13 @@ creías o una amenaza nueva.
 vídeos; busca la forma propia de cada historia.
 - Cada 2-3 planos, algo nuevo: un dato, un giro pequeño, una amenaza o una pregunta ("Pero había un problema.").
 - Nada de relleno ni frases de transición vacías; si un plano se puede quitar sin perder nada, quítalo.
+- PRUEBA DEL OÍDO (obligatoria en cada frase): se entiende oída UNA vez, sin ver la imagen ni leer nada. Prohibidas \
+siglas y nombres que no se expliquen en la misma frase (MAL: "You're a NOAA analyst." BIEN: "You're a navy sound \
+spy."), frases elípticas que exigen pensar (MAL: "London reads newspapers at midnight." BIEN: "In London, the night \
+sky glowed so bright people read outside.") y más de UNA cifra por frase.
+- NO DESTRIPES: ni el gancho ni los primeros planos dan la respuesta (MAL: "Quicksand can't swallow you."). La \
+respuesta llega en el último tercio; antes, solo pistas y amenazas.
+- La escena manda: cada frase describe algo que SE VE en ese plano (acción, peligro, cambio), no un dato abstracto.
 - "frase_bucle" (OBLIGATORIA): la ÚLTIMA frase del vídeo, escrita para que la PRIMERA frase (plano 1) la complete y
   el espectador no note que el vídeo ha vuelto a empezar. Termina a medias, sin punto final, y el plano 1 es la
   continuación natural. Ejemplos: frase_bucle "Y lo más curioso es que, cada vez que" + plano 1 "te cortas, sanas.";
@@ -234,13 +243,13 @@ vídeos; busca la forma propia de cada historia.
   la dijera en voz alta: frase_bucle "Así que la próxima vez que notes el suelo quieto, piensa" + plano 1 "¿y si la
   Tierra frenara en seco?". PROHIBIDO hablar del vídeo o de la pregunta en sí ("la pregunta sigue en pie", "volvamos
   al principio", "como decíamos", "otra vez"): el espectador NO debe notar el truco. Si no sale natural, cambia el
-  plano 1 por una afirmación que se pueda continuar.
+  plano 1 por una afirmación que se pueda continuar. Léela en voz alta: si suena rara o gramaticalmente rota, reescríbela.
 
 ESTRUCTURA BASE (adáptala: el formato concreto lo decide cada idea; no todos los vídeos son iguales)
 1. GANCHO (plano 1, máx 8 palabras): el gancho elegido, el dato o la pregunta más fuerte. Nada de saludos, "hoy os \
 cuento" ni introducciones. Ejemplos de tono: "¿Y si la Tierra dejara de girar?" / "Cayó 3.000 metros… y sobrevivió."
-   Plano 2: lo que está en juego o la regla del reto, para que quieran quedarse ("Cada día, diez veces más \
-hondo. Y al final hay algo que nadie esperaba.").
+   Plano 2 (MÁXIMO 7 PALABRAS): sube la apuesta o abre la duda que solo se cierra al final, sin repetir el plano 1 \
+ni el título ("Pero no es lo que te mata.", "Y nadie encontró la roca.", "Los científicos tardaron 20 años.").
 2. DESARROLLO: frases cortas, ritmo rápido, un detalle concreto por plano. Cada 2-3 planos, una micro-pregunta o \
 tensión nueva para que nadie deslice.
 3. GIRO / REMATE: el último o penúltimo plano revela algo que cambia todo o deja una pregunta. Mejor si la última \
@@ -261,9 +270,9 @@ Así el dibujo se parece a la persona real. Si no sabes cómo era algún rasgo, 
 - Si no estás muy seguro de un dato concreto (fecha, cifra, nombre), no lo pongas o redondéalo.
 
 REGLAS DE TEXTO
-- 105-145 palabras en total y entre 14 y 20 planos (historias reales: 115-150 palabras y 15-20 planos): un cambio de \
-imagen cada 2-3 segundos. Cada plano, UNA frase corta (6-12 palabras). \
-Cada plano: 1-2 frases, 6-22 palabras.
+- 75-100 palabras en total y entre 10 y 14 planos (historias reales: 85-105 palabras y 11-15 planos): un cambio de \
+imagen cada 2-3 segundos. Cada plano, UNA frase corta (4-12 palabras). Si sobra algo, quítalo: mejor corto y entero \
+que largo y abandonado.
 - Escribe para el oído: sin emojis, sin abreviaturas, números escritos como se dicen si son cortos.
 - Es un canal de CURIOSIDADES: tono divulgativo, cercano y con ritmo, como un amigo que te cuenta algo alucinante.
 - El estilo preferido del dueño (inmersivo, a menudo en segunda persona) es para "qué pasaría si" e "imagina que"; \
@@ -668,8 +677,8 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
         + f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
         + (f"Para este vídeo se han añadido a la biblioteca estas piezas (úsalas en 'composicion'): {', '.join(idea['piezas_nuevas'])}\n\n" if idea.get("piezas_nuevas") else "")
         + (LONG_RULES.format(lo_min=lo // 60, hi_min=hi // 60, lo_w=int(lo * 2.9), hi_w=int(hi * 2.9)) + "\n" if largo else "")
-        + f"Duración objetivo: {lo}-{hi} segundos. LÍMITE DE PALABRAS (la voz lee unas {2.9 if largo else 2.4} palabras por segundo): "
-        f"entre {int(lo * (2.9 if largo else 2.4))} y {int(hi * (2.9 if largo else 2.4))} palabras EN TOTAL sumando todos los planos y la frase_bucle. "
+        + f"Duración objetivo: {lo}-{hi} segundos. LÍMITE DE PALABRAS (la voz lee unas {2.9 if largo else 2.8} palabras por segundo): "
+        f"entre {int(lo * (2.9 if largo else 2.8))} y {int(hi * (2.9 if largo else 2.8))} palabras EN TOTAL sumando todos los planos y la frase_bucle. "
         f"Cuéntalas antes de terminar; si te pasas, quita planos o acorta frases (nunca el gancho). "
         "Escribe los ganchos candidatos y después el guion completo."
     )
@@ -918,7 +927,7 @@ def validate_story(story: dict) -> dict:
     # Red de seguridad: el vídeo tiene que presentar su tema con una pregunta al principio
     # (la gente lo ve sin título ni descripción). Si el guion no la tiene, se añade la pregunta central delante.
     pregunta = re.sub(r"\s+", " ", story.get("pregunta_central") or "").strip()
-    if beats and pregunta.endswith("?") and not any("?" in b["text"] for b in beats[:3]):
+    if beats and pregunta.endswith("?") and len(pregunta.split()) <= 8 and not any("?" in b["text"] for b in beats[:3]):
         pos = 1 if len(beats) > 1 else 0  # el plano 1 queda corto y fuerte; la pregunta, justo después
         base = beats[pos - 1 if pos else 0]
         if base["scene"] == "accion":  # no repetir la acción: la persona reacciona en su sitio
@@ -932,8 +941,10 @@ def validate_story(story: dict) -> dict:
     if beats and n_acc < len(beats) / 3:
         print(f"  aviso: pocas acciones animadas ({n_acc} de {len(beats)} planos)")
     palabras = sum(len(b["text"].split()) for b in beats)
-    if palabras > 150 and not largo:
-        print(f"  aviso: guion largo ({palabras} palabras ≈ {palabras / 2.45:.0f} s)")
+    if palabras > 110 and not largo:
+        print(f"  aviso: guion largo ({palabras} palabras ≈ {palabras / 2.8:.0f} s)")
+    if len(beats) > 1 and not largo and len(beats[1]["text"].split()) > 9:
+        print(f"  aviso: el plano 2 es largo ({len(beats[1]['text'].split())} palabras): ahí se va la gente")
     if beats:
         beats[0]["camera"] = beats[0]["camera"] if beats[0]["camera"] in ("slam", "shake") else "slam"  # movimiento desde el fotograma 0
         if len(beats[0]["text"].split()) > 12:
