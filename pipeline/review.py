@@ -166,6 +166,16 @@ def _cerrar_sustituidos(vid: str, nueva: str) -> None:
     except Exception as e:  # noqa: BLE001
         print("No pude cerrar issues antiguos:", e)
 
+# Avisos LEVES de la revisión automática: no impiden publicar solo (el dueño quiere que si no es grave, se suba).
+_LEVES = (r"^Silencio de [0-9.]+s", r"^Dura \d+s: (menos de los 40 s|más de 1 minuto)", r"^Dura [0-9.]+ min: fuera de",
+          r"^Del segundo \d+ al \d+ casi no hay dibujos", r"^Frase revisable", r"^No se pudo comprobar la narración")
+
+
+def avisos_graves(qa: list[str]) -> list[str]:
+    import re  # noqa: PLC0415
+    return [q for q in qa or [] if not any(re.match(p, q) for p in _LEVES)]
+
+
 def auto_publicar(url: str) -> None:
     """Cierra el issue (casilla ya marcada) y lanza publicar.yml para ese issue. publicar.yml procesa sus ejecuciones
     de una en una y reparte los vídeos en horas distintas, así nunca se suben ni se publican a la vez."""
@@ -204,7 +214,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     owner = os.environ.get("GITHUB_REPOSITORY_OWNER", "")
     origen = tanda_titulo(wid, cfg)
     qa = "✅ Revisión automática: todo correcto" if not st.get("qa") else "⚠️ Revisión automática: " + "; ".join(st["qa"])
-    auto = bool((cfg.get("publicacion") or {}).get("auto_publicar")) and not st.get("qa")
+    auto = bool((cfg.get("publicacion") or {}).get("auto_publicar")) and not avisos_graves(st.get("qa"))
     lines = [
         f"🔔 @{owner} ¡vídeo listo para revisar!" if owner else "",
         "",
