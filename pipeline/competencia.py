@@ -93,6 +93,7 @@ def perfil(yt, cid: str | None = None) -> dict | None:
     lg = [v for v in vids if v["dur"] > 180]
     med = _med([v["vistas"] for v in vids]) or 1
     tot = max(1, sum(v["vistas"] for v in vids))
+    vpd_med = _med([v["vistas"] / v["dias"] for v in vids]) or 1
     tits = [v["titulo"] for v in vids]
     p.update({
         "subidas_por_semana": round(len(vids) / semanas, 1),
@@ -108,6 +109,12 @@ def perfil(yt, cid: str | None = None) -> dict | None:
                     "pct_what_if": round(100 * sum(t.lower().startswith("what if") for t in tits) / len(tits))},
         "se_salen": [{"titulo": v["titulo"], "vistas": v["vistas"], "x_mediana": round(v["vistas"] / med, 1), "dur_s": v["dur"],
                       "tipo": "short" if v["dur"] <= 180 else "largo"} for v in sorted(vids, key=lambda v: -v["vistas"])[:3] if v["vistas"] >= 3 * med],
+        # EN AUGE: vídeos recientes (≤21 días) que van mucho más rápido que lo normal del canal (vistas/día). Sirve para cazar
+        # FORMATOS NUEVOS de contar historias que están empezando a funcionar antes de que se vean en 'se_salen'.
+        "en_auge": [{"titulo": v["titulo"], "vistas": v["vistas"], "dias": round(v["dias"], 1), "dur_s": v["dur"],
+                     "x_ritmo_normal": round((v["vistas"] / v["dias"]) / vpd_med, 1), "tipo": "short" if v["dur"] <= 180 else "largo"}
+                    for v in sorted(vids, key=lambda v: -(v["vistas"] / v["dias"]))[:4]
+                    if v["dias"] <= 21 and (v["vistas"] / v["dias"]) >= 2.5 * vpd_med],
         "flojos": [{"titulo": v["titulo"], "vistas": v["vistas"], "tipo": "short" if v["dur"] <= 180 else "largo"}
                    for v in sorted(vids, key=lambda v: v["vistas"])[:2]],
     })
@@ -123,7 +130,8 @@ def analizar(propio: dict, otros: list[dict], cfg: dict) -> dict:
     prompt = (
         "Eres analista de datos de YouTube. Canal propio (curiosidades animadas en inglés para EE. UU., aún pequeño y sin "
         "vídeos virales) frente a canales del mismo nicho ('parecido' = tamaño pequeño/medio que está creciendo; 'referente' = grande). "
-        "Estadísticas públicas de sus últimos 30 vídeos; 'se_salen' = vídeos con 3x o más vistas que la mediana de su canal.\n"
+        "Estadísticas públicas de sus últimos 30 vídeos; 'se_salen' = vídeos con 3x o más vistas que la mediana de su canal; "
+        "'en_auge' = vídeos de los últimos 21 días que llevan 2,5x o más vistas/día que lo normal en su canal (lo que está empezando a funcionar).\n"
         f"PROPIO: {json.dumps(propio, ensure_ascii=False, default=str)}\n\nOTROS: {json.dumps(otros, ensure_ascii=False, default=str)}\n\n"
         + (f"Conclusiones de la comparación anterior (confírmalas o corrígelas):\n{json.dumps(prev, ensure_ascii=False)}\n\n" if prev else "")
         + "REGLAS: compara cifras y saca PATRONES de formato y empaquetado (frecuencia, duración, Shorts vs largos, cómo se "
@@ -134,7 +142,11 @@ def analizar(propio: dict, otros: list[dict], cfg: dict) -> dict:
         ' "diferencias": [{"metrica": "...", "nosotros": "...", "ellos": "mediana de los parecidos", "que_hacer": "..."}],\n'
         ' "patrones_virales": ["qué tienen en común los vídeos que se salen de la media (formato/empaquetado, no temas concretos)"],\n'
         ' "pruebas": ["máx. 4 pruebas para las próximas semanas, cada una con qué medir para saber si funciona"],\n'
-        ' "para_guiones": {"largos": "máx. 4 líneas", "shorts": "máx. 4 líneas"}}'
+        ' "formatos_emergentes": [{"formato": "FORMATO NUEVO de contar la historia que se repite en los vídeos en_auge de VARIOS canales '
+        '(estructura, tipo de narrador, gancho, ritmo, recurso visual o de montaje); nada de temas", "evidencia": "qué canales/cifras lo muestran", '
+        '"como_aplicarlo": "cómo usarlo con NUESTRA animación de muñecos, con un ejemplo inventado de tema distinto", '
+        '"aplicar": true/false (true solo si hay pruebas en 2+ canales y encaja con nuestro estilo)}],\n'
+        ' "para_guiones": {"largos": "máx. 4 líneas (incluye los formatos_emergentes con aplicar=true)", "shorts": "máx. 4 líneas (ídem)"}}'
     )
     model = (cfg.get("generacion") or {}).get("modelo_analisis", "claude-opus-5-5")
     r = anthropic.Anthropic().messages.create(model=model, max_tokens=4000, messages=[{"role": "user", "content": prompt}],
@@ -159,6 +171,9 @@ def informe_md(propio: dict, otros: list[dict], an: dict) -> str:
     L += ["", "## Posición", an.get("posicion", ""), "", "## Diferencias", "| Métrica | Nosotros | Ellos | Qué hacer |", "|---|---|---|---|"]
     L += [f"| {d.get('metrica')} | {d.get('nosotros')} | {d.get('ellos')} | {d.get('que_hacer')} |" for d in an.get("diferencias", [])]
     L += ["", "## Qué tienen los vídeos que se salen de la media"] + [f"- {x}" for x in an.get("patrones_virales", [])]
+    L += ["", "## Formatos nuevos que están empezando a funcionar"]
+    L += [f"- {'✅ se aplica' if f.get('aplicar') else '👀 en observación'} — **{f.get('formato')}** ({f.get('evidencia')}). "
+          f"Cómo: {f.get('como_aplicarlo')}" for f in an.get("formatos_emergentes", [])] or ["- Ninguno claro esta semana."]
     L += ["", "## Pruebas para las próximas semanas"] + [f"{i}. {x}" for i, x in enumerate(an.get("pruebas", []), 1)]
     L += ["", "_Solo se toman patrones de formato y estilo; nunca temas, títulos ni contenido de otros canales._"]
     return "\n".join(L) + "\n"

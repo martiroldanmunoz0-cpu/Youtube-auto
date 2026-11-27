@@ -565,6 +565,12 @@ def retention_block() -> str:
     nota = "\n".join(nota) if isinstance(nota, list) else nota
     if nota:
         out += f"LO QUE DICE LA ÚLTIMA REVISIÓN DE RENDIMIENTO ({rend.get('revision', '')}: vistas, suscriptores, interacción, tráfico):\n{nota}\n\n"
+    comp = (read_json(DATA / "competencia" / "ultimo.json") or {}).get("analisis") or {}
+    nuevos = [f for f in comp.get("formatos_emergentes") or [] if isinstance(f, dict) and f.get("aplicar")]
+    if nuevos:
+        out += ("FORMATOS NUEVOS QUE ESTÁN EMPEZANDO A FUNCIONAR EN EL NICHO (forma de contar, nunca temas ni títulos de otros; "
+                "aplícalos con nuestro estilo cuando encajen con la idea):\n"
+                + "\n".join(f"- {f.get('formato')} → {f.get('como_aplicarlo')}" for f in nuevos) + "\n\n")
     temas = rend.get("temas") or {}
     if temas.get("mas") or temas.get("menos"):
         out += (f"Temas/ángulos que funcionan: {', '.join(temas.get('mas', [])) or '—'}. "
