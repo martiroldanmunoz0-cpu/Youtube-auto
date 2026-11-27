@@ -5,7 +5,12 @@ on:
     types: [closed]           # al cerrar el issue de revisión
   schedule:
     - cron: "43 */3 * * *"    # cada 3 h: detecta vídeos publicados antes de tiempo y termina subidas pendientes
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: "Número del issue de revisión a publicar (lo pone solo la publicación automática)"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -52,8 +57,9 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: |
-          if [ "${{ github.event_name }}" = "issues" ]; then
-            python pipeline/publish.py --issue ${{ github.event.issue.number }}
+          ISSUE="${{ github.event.issue.number || inputs.issue }}"
+          if [ -n "$ISSUE" ]; then
+            python pipeline/publish.py --issue "$ISSUE"
           else
             python pipeline/publish.py
           fi

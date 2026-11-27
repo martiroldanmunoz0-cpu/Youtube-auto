@@ -99,6 +99,9 @@ publicacion:
   # true = el sistema sube y programa los vídeos. false = no los sube y te deja en el issue todo listo para subirlos a mano
   # (úsalo solo si YouTube bloqueara como privados los vídeos subidos por la API).
   subir_por_api: true
+  # true = cada vídeo se programa solo en YouTube en cuanto termina (sin cerrar el issue a mano). Los que la revisión
+  # automática marque con ⚠️ se quedan esperando tu revisión. Se suben de uno en uno y en horas distintas.
+  auto_publicar: true
 
 # Sketches de comedia (botón "Comedia GTA")
 comedia:

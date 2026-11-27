@@ -166,6 +166,18 @@ def _cerrar_sustituidos(vid: str, nueva: str) -> None:
     except Exception as e:  # noqa: BLE001
         print("No pude cerrar issues antiguos:", e)
 
+def auto_publicar(url: str) -> None:
+    """Cierra el issue (casilla ya marcada) y lanza publicar.yml para ese issue. publicar.yml procesa sus ejecuciones
+    de una en una y reparte los vídeos en horas distintas, así nunca se suben ni se publican a la vez."""
+    n = url.rstrip("/").rsplit("/", 1)[-1]
+    try:
+        gh("issue", "close", n)
+        _retry(lambda: gh("workflow", "run", "publicar.yml", "-f", f"issue={n}"))
+        print("Publicación automática lanzada para el issue", n)
+    except Exception as e:  # noqa: BLE001
+        print("No pude lanzar la publicación automática:", e)
+
+
 def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     """Publica UN vídeo para revisión: release + página + issue propio con su casilla."""
     import pages  # noqa: PLC0415
@@ -192,6 +204,7 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
     owner = os.environ.get("GITHUB_REPOSITORY_OWNER", "")
     origen = tanda_titulo(wid, cfg)
     qa = "✅ Revisión automática: todo correcto" if not st.get("qa") else "⚠️ Revisión automática: " + "; ".join(st["qa"])
+    auto = bool((cfg.get("publicacion") or {}).get("auto_publicar")) and not st.get("qa")
     lines = [
         f"🔔 @{owner} ¡vídeo listo para revisar!" if owner else "",
         "",
@@ -204,9 +217,10 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
         *([f"🖼️ **Miniatura de YouTube:**", "", f"![Miniatura](https://github.com/{repo}/releases/download/{tag}/{st['portada']})", ""] if st.get("portada") and (wd / st["portada"]).exists() else []),
         qa,
         "",
-        "**Para publicarlo:** marca la casilla y cierra el issue. **Para descartarlo:** ciérralo sin marcar.",
+        ("🤖 **Publicación automática:** se programa solo en YouTube en el próximo hueco libre (nunca a la vez que otro)."
+         if auto else "**Para publicarlo:** marca la casilla y cierra el issue. **Para descartarlo:** ciérralo sin marcar."),
         "",
-        f"- [ ] `{vid}` **Publicar este vídeo**",
+        f"- [{'x' if auto else ' '}] `{vid}` **Publicar este vídeo**",
         "",
         "<details><summary>Descripción y guion</summary>\n\n" + st["description"] + "\n\n"
         + "\n".join(f"{i}. {b['text']}" for i, b in enumerate(st["beats"], 1)) + "\n</details>",
@@ -229,6 +243,8 @@ def review_one(st: dict, wid: str, wd: Path, cfg: dict, analysis: dict):
                             "--label", "revision", "--body-file", "-", input_text="\n".join(lines)))
     print("Issue de revisión:", url)
     _cerrar_sustituidos(vid, url)
+    if auto and url:
+        auto_publicar(url.strip().splitlines()[-1])
     if st.get("qa"):  # bandeja de problemas para que Claude lo revise
         import problemas  # noqa: PLC0415
 
