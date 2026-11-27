@@ -558,10 +558,18 @@ def retention_block() -> str:
     """Lecciones sacadas de la retención REAL de los vídeos publicados (pipeline/retencion.py)."""
     lec = read_json(DATA / "retencion" / "lecciones.json") or {}
     texto = lec.get("largos" if formato() == "largo" else "shorts") or lec.get("texto")
-    if not texto:
-        return ""
-    return ("MEJORAS SACADAS DE LA RETENCIÓN REAL DEL CANAL (en qué frases se va la gente y qué aguanta; aplícalas al "
-            f"gancho, al ritmo, a las escenas y a cada frase):\n{texto}\n\n")
+    out = ("MEJORAS SACADAS DE LA RETENCIÓN REAL DEL CANAL (en qué frases se va la gente y qué aguanta; aplícalas al "
+           f"gancho, al ritmo, a las escenas y a cada frase):\n{texto}\n\n") if texto else ""
+    rend = read_json(DATA / "rendimiento" / "para_guiones.json") or {}
+    nota = rend.get("largos" if formato() == "largo" else "shorts")
+    nota = "\n".join(nota) if isinstance(nota, list) else nota
+    if nota:
+        out += f"LO QUE DICE LA ÚLTIMA REVISIÓN DE RENDIMIENTO ({rend.get('revision', '')}: vistas, suscriptores, interacción, tráfico):\n{nota}\n\n"
+    temas = rend.get("temas") or {}
+    if temas.get("mas") or temas.get("menos"):
+        out += (f"Temas/ángulos que funcionan: {', '.join(temas.get('mas', [])) or '—'}. "
+                f"Evitar o enfocar distinto: {', '.join(temas.get('menos', [])) or '—'}.\n\n")
+    return out
 
 
 def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:

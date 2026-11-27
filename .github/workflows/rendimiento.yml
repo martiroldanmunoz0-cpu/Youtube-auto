@@ -1,0 +1,50 @@
+name: Rendimiento (revisión semanal y mensual)
+on:
+  schedule:
+    - cron: "23 7 * * 1"   # lunes: semana anterior
+    - cron: "41 7 3 * *"   # día 3: mes anterior
+  workflow_dispatch:
+    inputs:
+      tipo:
+        description: "semanal o mensual"
+        default: semanal
+        type: choice
+        options: [semanal, mensual]
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: rendimiento
+jobs:
+  revision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Revisar rendimiento
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          TIPO: ${{ inputs.tipo || (github.event.schedule == '41 7 3 * *' && 'mensual' || 'semanal') }}
+        run: cd pipeline && python rendimiento.py "$TIPO"
+      - name: Guardar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/rendimiento data/gasto* 2>/dev/null || true
+          git diff --cached --quiet || { git commit -m "Rendimiento: revisión ${TIPO:-}" && for i in 1 2 3; do git pull --rebase && git push && break; git rebase --abort 2>/dev/null; sleep 5; done; }
+      - name: Publicar informe como issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f data/rendimiento/ultimo.md ] || exit 0
+          T=$(head -1 data/rendimiento/ultimo.md | sed 's/^# //')
+          jq -n --arg t "📊 $T" --rawfile b data/rendimiento/ultimo.md '{title:$t, body:$b, labels:["rendimiento"]}' > /tmp/issue.json
+          gh api "repos/$GITHUB_REPOSITORY/issues" --input /tmp/issue.json --jq .html_url
