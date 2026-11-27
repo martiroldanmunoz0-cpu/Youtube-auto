@@ -202,7 +202,7 @@ nav .n.bad{background:var(--bad);color:#fff}
       <div class="inline"><label for="pc">Versiones</label>
         <select name="cantidad" id="pc"><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
         <button class="btn main" type="submit">Generar</button></div>
-      <label style="display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:14px"><input type="checkbox" name="a_medida" style="margin-top:3px">
+      <label style="display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:14px"><input type="checkbox" name="a_medida" checked style="margin-top:3px">
         <span><b>Escenas a medida</b>: solo se escribe el guion y Claude dibuja una animación propia para cada plano. Después dile a Claude «haz las escenas del pedido». Tarda más, pero no gasta más API.</span></label>
     </form>
     <form class="form" id="f-historia">
@@ -963,8 +963,8 @@ nav .n.bad{background:var(--bad);color:#fff}
     e.preventDefault(); const f = e.target;
     const text = f.pedido.value.trim(); if (!text) return;
     const inputs = {pedido: text, cantidad: f.cantidad.value};
-    if (f.a_medida.checked) inputs.a_medida = "true";
-    if (await dispatch(WF.pedido, inputs, f.querySelector("button"))) { if (inputs.a_medida) toast("✓ Guion en marcha. Cuando esté, dile a Claude: «haz las escenas del pedido»."); f.reset(); }
+    inputs.a_medida = f.a_medida.checked ? "true" : "false";
+    if (await dispatch(WF.pedido, inputs, f.querySelector("button"))) { if (inputs.a_medida === "true") toast("✓ Guion en marcha. Cuando esté, dile a Claude: «haz las escenas del pedido»."); f.reset(); f.a_medida.checked = true; }
   });
   $("#f-largo").addEventListener("submit", async e => {
     e.preventDefault(); const f = e.target;

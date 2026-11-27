@@ -344,7 +344,7 @@ open(f"{out}/pedido.yml", "w").write(workflow(
       a_medida:
         description: "Escenas a medida: solo escribe el guion; Claude dibuja una animación para cada plano y luego se monta"
         required: false
-        default: false
+        default: true
         type: boolean
 """, """  RUN_ID: pedido-${{ github.run_number }}
   PEDIDO: ${{ inputs.pedido }}

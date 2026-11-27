@@ -1,343 +1,453 @@
 {
-  "title": "What Happens If You Stop Eating? The 382-Day Fast #shorts",
-  "description": "Could you last even one week? 👇\n\nWhat happens if you stop eating? The true story of Angus Barbieri's 382-day medically supervised fast.\nHe lost 276 pounds in Dundee, Scotland, and ended with one boiled egg.\n#shorts #fasting #humanbody #truestory #whatif",
-  "tags": [
-    "what happens if you stop eating",
-    "382 day fast",
-    "Angus Barbieri",
-    "longest fast ever",
-    "fasting",
-    "starvation",
-    "human body",
-    "what happens when you stop eating",
-    "medical records",
-    "true story",
-    "ketosis"
-  ],
-  "beats": [
-    {
-      "text": "You stop eating. One man did it 382 days.",
-      "scene": "accion",
-      "params": {
-        "tipo": "comer",
-        "objeto": "hamburguesa",
-        "lugar": "cocina",
-        "hora": "dia",
-        "label": "382 DAYS"
-      },
-      "camera": "slam",
-      "transition": "cut"
+ "title": "What Happens If You Stop Eating? The 382-Day Fast #shorts",
+ "description": "Could you last even one week? 👇\n\nWhat happens if you stop eating? The true story of Angus Barbieri's 382-day medically supervised fast.\nHe lost 276 pounds in Dundee, Scotland, and ended with one boiled egg.\n#shorts #fasting #humanbody #truestory #whatif",
+ "tags": [
+  "what happens if you stop eating",
+  "382 day fast",
+  "Angus Barbieri",
+  "longest fast ever",
+  "fasting",
+  "starvation",
+  "human body",
+  "what happens when you stop eating",
+  "medical records",
+  "true story",
+  "ketosis"
+ ],
+ "beats": [
+  {
+   "text": "You stop eating. One man did it 382 days.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "comer",
+      "objeto": "hamburguesa",
+      "lugar": "cocina",
+      "hora": "dia",
+      "label": "382 DAYS"
+     }
     },
-    {
-      "text": "Doctors let him.",
-      "scene": "doctor",
-      "params": {
-        "say": "Keep going.",
-        "mood": "worried",
-        "hora": "dia"
-      },
-      "camera": "push_in",
-      "transition": "cut"
-    },
-    {
-      "text": "Hour twenty-four: your sugar is gone. You burn fat. On purpose.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "estomago",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "fuego",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "latir"
-          }
-        ],
-        "persona": "no"
-      },
-      "camera": "push_in",
-      "transition": "whip"
-    },
-    {
-      "text": "Day three: your breath turns fruity. Your brain runs on fat.",
-      "scene": "accion",
-      "params": {
-        "tipo": "soltar_aire",
-        "lugar": "cocina",
-        "hora": "dia"
-      },
-      "camera": "push_in",
-      "transition": "cut"
-    },
-    {
-      "text": "Weirdly, the hunger fades.",
-      "scene": "accion",
-      "params": {
-        "tipo": "dudar",
-        "lugar": "salon",
-        "hora": "dia"
-      },
-      "camera": "static",
-      "transition": "fade"
-    },
-    {
-      "text": "Now you're in Dundee, Scotland, 1965. You weigh 456 pounds.",
-      "scene": "big_text",
-      "params": {
-        "text": "456 LBS",
-        "label": "Dundee, 1965",
-        "lugar": "hospital"
-      },
-      "camera": "slam",
-      "transition": "flash"
-    },
-    {
-      "text": "Doctors expect a few days. You keep going.",
-      "scene": "escena",
-      "params": {
-        "lugar": "hospital",
-        "hora": "dia",
-        "mood": "neutral",
-        "objeto": "papel",
-        "plano": "medio"
-      },
-      "camera": "pan_right",
-      "transition": "cut"
-    },
-    {
-      "text": "Tea. Coffee. Sparkling water. Vitamins. Nothing else.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "vaso_agua",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "vaso_agua",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "pastilla",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "flotar"
-          }
-        ],
-        "persona": "no"
-      },
-      "camera": "static",
-      "transition": "whip"
-    },
-    {
-      "text": "You still fry fish and chips at your dad's shop.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "cocina",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "hamburguesa",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "temblar"
-          }
-        ],
-        "persona": "medio",
-        "mood": "worried"
-      },
-      "camera": "push_in",
-      "transition": "cut"
-    },
-    {
-      "text": "You use the bathroom once every forty days.",
-      "scene": "calendar",
-      "params": {
-        "style": "pared",
-        "month": "Days",
-        "day": 40,
-        "label": "Doctors wrote it down"
-      },
-      "camera": "static",
-      "transition": "cut"
-    },
-    {
-      "text": "Without potassium, your heart could stop. So they check. Again.",
-      "scene": "accion",
-      "params": {
-        "tipo": "latido",
-        "hora": "dia"
-      },
-      "camera": "shake",
-      "transition": "red"
-    },
-    {
-      "text": "Month after month, you shrink. 456 pounds, 300, 180.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "hospital",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "reloj_arena",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "temblar"
-          }
-        ],
-        "persona": "medio",
-        "mood": "happy"
-      },
-      "camera": "pull_out",
-      "transition": "fade"
-    },
-    {
-      "text": "Then you eat: one boiled egg, one slice of bread.",
-      "scene": "composicion",
-      "params": {
-        "lugar": "cocina",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "huevo",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "crecer"
-          }
-        ],
-        "persona": "medio",
-        "mood": "happy"
-      },
-      "camera": "slam",
-      "transition": "flash"
-    },
-    {
-      "text": "Total: 382 days. 276 pounds gone. Longest fast on record.",
-      "scene": "document",
-      "params": {
-        "title": "Medical record",
-        "lines": [
-          "382 days",
-          "276 lbs lost",
-          "Longest fast in medical records"
-        ],
-        "highlight": 2,
-        "stamp": "OFFICIAL"
-      },
-      "camera": "push_in",
-      "transition": "cut"
-    },
-    {
-      "text": "And that's the record for anyone who can…",
-      "scene": "accion",
-      "params": {
-        "tipo": "comer",
-        "objeto": "hamburguesa",
-        "lugar": "cocina",
-        "hora": "dia",
-        "label": "382 DAYS"
-      },
-      "camera": "static",
-      "transition": "cut",
-      "bucle": true
-    }
-  ],
-  "looks": {
-    "protagonista": {
-      "genero": "hombre",
-      "edad": "joven",
-      "piel": "clara",
-      "pelo": "corto",
-      "color_pelo": "castaño_oscuro",
-      "barba": "no",
-      "gafas": true,
-      "ropa": "gris"
-    },
-    "medico": {
-      "genero": "hombre",
-      "edad": "adulto",
-      "piel": "clara",
-      "pelo": "corto",
-      "color_pelo": "canoso",
-      "barba": "no",
-      "gafas": true,
-      "ropa": "blanco"
-    }
+    "label": "382 DAYS"
+   },
+   "camera": "slam",
+   "transition": "cut"
   },
-  "cover_text": "382 DAYS NO FOOD",
-  "comment_q": "Could you last even one week?",
-  "lista": "Human Body",
-  "question": "What happens to your body if you stop eating, and how long can a human go?",
-  "piezas_pendientes": [
-    "estomago_vacio",
-    "gota_grasa_llama",
-    "tetera_y_taza",
-    "botella_agua_con_gas",
-    "frasco_vitaminas",
-    "freidora_fish_and_chips",
-    "bascula_vintage",
-    "huevo_cocido_con_tostada"
-  ],
-  "id": "pedido-34-01",
-  "idea": {
-    "tipo": "pedido",
-    "premisa": "Título: 'What Happens If You Stop Eating? The 382-Day Fast' (47 car.). Guion de ~140 palabras, 52-56 s. ESCALADA 1, tu cuerpo: 'You stop eating. One man did it for 382 days — and doctors let him.' → 'Hour 24: your sugar reserves are gone. Your body starts burning fat. On purpose.' → 'Day 3: your breath smells fruity. That's ketones. Your brain is running on fat now.' → 'Here's the weird part: the hunger fades.' ESCALADA 2, entras en la historia sin ficha: 'Now you're in Scotland, 1965. You weigh 456 pounds. You walk into a hospital in Dundee and say: I'm done eating.' → 'Doctors expect a few days. You keep going.' → 'Tea. Coffee. Sparkling water. Vitamins. Nothing else.' ESCALADA 3, lo absurdo: 'You still work at your dad's fish and chip shop. Frying food. All day.' → 'You go to the bathroom once every 40 to 50 days. Doctors wrote that down.' ESCALADA 4, riesgo controlado: 'Without potassium and salt pills, your heart could stop. So they check your blood. Again. And again.' ESCALADA 5, final: 'Month after month, you just shrink. 456 pounds… 300… 180.' → 'Then you eat again: one boiled egg and a slice of bread and butter.' CIERRE: 'Total: 382 days. 276 pounds gone. The longest fast in medical records.' Corte. Todos los datos están documentados en el informe de Stewart y Fleming (Postgraduate Medical Journal, 1973) y en Guinness.",
-    "gancho": "You stop eating. One man did it for 382 days — and doctors let him.",
-    "giro_final": "Tras un año entero friendo pescado sin probarlo, su primera comida fue solo un huevo cocido con una tostada con mantequilla. Corte en seco con el dato oficial: 'Total: 382 days. 276 pounds gone. The longest fast in medical records.' Sin moraleja, para que el bucle enganche con 'You stop eating'.",
-    "estilo_visual": "0-3 s: 'accion' tipo 'comer' invertida (el plato se retira y queda vacío), con big_text '382 DAYS' encima. 3-15 s: la escalada del cuerpo en 'composicion' sobre fondo liso, con pieza de estómago vacío que se encoge y gota de grasa que se 'quema' como llama; 'person' con la zona del abdomen en rojo; 'accion' 'soltar_aire' con nubecita afrutada para el aliento cetónico; 'accion' 'dudar' cuando el hambre desaparece. 15-25 s: 'map_pin' estilo globo terráqueo cayendo en Dundee, Scotland; 'escena' de un hospital de los 60 de día con la persona entrando; big_text '456 LBS'. 25-35 s: 'composicion' con tetera, taza de café, botella de agua con gas y frasco de vitaminas alineados; 'escena' del fish and chip shop con la persona friendo, sudando y mirando la comida (momento cómico); 'calendar' de pared tachando días solo para el chiste del baño 'every 40-50 days' (único uso del recurso temporal). 35-45 s: 'hospital' con analítica y monitor; 'accion' 'latido' con electrocardiograma acelerándose y pastillas de potasio que lo estabilizan; 'doctor' con el bocadillo 'Again.'. 45-52 s: 'person' de cuerpo entero adelgazando en tres pasos con los números 456 → 300 → 180 en pantalla; 'composicion' con un huevo cocido y una tostada en un plato enorme y la persona emocionada. 52-56 s: 'document' estilo récord oficial con las líneas '382 days', '276 lbs lost' y 'Longest fast in medical records' resaltada, más un sello. Corte.",
-    "por_que_funcionara": "Encaja en el ángulo que más convierte del canal: el cuerpo humano en segunda persona (hambre), unido a una historia real con nombre buscable. Sigue al pie de la letra la retención: giro en el segundo 0, primer dato nuevo en el segundo 2, nada de ficha biográfica (el espectador 'es' Barbieri en acción), frases secas con remate ('On purpose.', 'Again. And again.') y cierre con un dato oficial y único, sin 'likely' ni moraleja. El detalle del fish and chip shop y el del baño cada 40-50 días son rarezas memorables que provocan comentarios y compartidos.",
-    "inspirado_en": [],
-    "piezas_nuevas": [
-      "estomago_vacio (estómago que se encoge)",
-      "gota_grasa_llama (grasa quemándose como combustible)",
-      "tetera_y_taza",
-      "botella_agua_con_gas",
-      "frasco_vitaminas / pastillas_potasio",
-      "freidora_fish_and_chips (mostrador con pescado frito)",
-      "huevo_cocido_con_tostada",
-      "bascula_vintage (aguja que baja de 456 a 180)"
-    ]
-  },
-  "ganchos": [
-    {
-      "texto": "One man ate nothing for 382 days.",
-      "tipo": "c",
-      "puntuacion": 8,
-      "motivo": "Dato imposible y tema claro (dejar de comer) en menos de 2 segundos, sin pregunta."
-    },
-    {
-      "texto": "You stop eating. Doctors let you.",
-      "tipo": "d",
-      "puntuacion": 7,
-      "motivo": "Segunda persona con consecuencia y giro, pero sin la cifra que sorprende."
-    },
-    {
-      "texto": "What if you never ate again?",
-      "tipo": "a",
-      "puntuacion": 4,
-      "motivo": "Pregunta genérica tipo What if, que pierde retención en este canal."
-    },
-    {
-      "texto": "Everyone says you'd die in weeks. He didn't.",
-      "tipo": "e",
-      "puntuacion": 6,
-      "motivo": "Contradicción clara, pero el tema queda algo menos explícito."
-    },
-    {
-      "texto": "You stop eating. One man did it 382 days.",
-      "tipo": "c",
-      "puntuacion": 9,
-      "motivo": "Segunda persona, tema explícito y dato que choca. Pasa la prueba del desconocido."
+  {
+   "text": "Doctors let him.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 1,
+    "respaldo": {
+     "scene": "doctor",
+     "params": {
+      "say": "Keep going.",
+      "mood": "worried",
+      "hora": "dia"
+     }
     }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "Hour twenty-four: your sugar is gone. You burn fat. On purpose.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 2,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "fondo",
+      "piezas": [
+       {
+        "pieza": "estomago",
+        "pos": "izquierda",
+        "tamano": "grande",
+        "anim": "temblar"
+       },
+       {
+        "pieza": "fuego",
+        "pos": "derecha",
+        "tamano": "grande",
+        "anim": "latir"
+       }
+      ],
+      "persona": "no"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "whip"
+  },
+  {
+   "text": "Day three: your breath turns fruity. Your brain runs on fat.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 3,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "soltar_aire",
+      "lugar": "cocina",
+      "hora": "dia"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "Weirdly, the hunger fades.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 4,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "dudar",
+      "lugar": "salon",
+      "hora": "dia"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "fade"
+  },
+  {
+   "text": "Now you're in Dundee, Scotland, 1965. You weigh 456 pounds.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 5,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "456 LBS",
+      "label": "Dundee, 1965",
+      "lugar": "hospital"
+     }
+    },
+    "label": "Dundee, 1965"
+   },
+   "camera": "slam",
+   "transition": "flash"
+  },
+  {
+   "text": "Doctors expect a few days. You keep going.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 6,
+    "respaldo": {
+     "scene": "escena",
+     "params": {
+      "lugar": "hospital",
+      "hora": "dia",
+      "mood": "neutral",
+      "objeto": "papel",
+      "plano": "medio"
+     }
+    }
+   },
+   "camera": "pan_right",
+   "transition": "cut"
+  },
+  {
+   "text": "Tea. Coffee. Sparkling water. Vitamins. Nothing else.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 7,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "fondo",
+      "piezas": [
+       {
+        "pieza": "vaso_agua",
+        "pos": "izquierda",
+        "tamano": "mediano",
+        "anim": "flotar"
+       },
+       {
+        "pieza": "vaso_agua",
+        "pos": "centro",
+        "tamano": "mediano",
+        "anim": "flotar"
+       },
+       {
+        "pieza": "pastilla",
+        "pos": "derecha",
+        "tamano": "mediano",
+        "anim": "flotar"
+       }
+      ],
+      "persona": "no"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "whip"
+  },
+  {
+   "text": "You still fry fish and chips at your dad's shop.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 8,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "cocina",
+      "hora": "dia",
+      "piezas": [
+       {
+        "pieza": "hamburguesa",
+        "pos": "derecha",
+        "tamano": "grande",
+        "anim": "temblar"
+       }
+      ],
+      "persona": "medio",
+      "mood": "worried"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "You use the bathroom once every forty days.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 9,
+    "respaldo": {
+     "scene": "calendar",
+     "params": {
+      "style": "pared",
+      "month": "Days",
+      "day": 40,
+      "label": "Doctors wrote it down"
+     }
+    },
+    "label": "Doctors wrote it down"
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Without potassium, your heart could stop. So they check. Again.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 10,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "latido",
+      "hora": "dia"
+     }
+    }
+   },
+   "camera": "shake",
+   "transition": "red"
+  },
+  {
+   "text": "Month after month, you shrink. 456 pounds, 300, 180.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 11,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "hospital",
+      "hora": "dia",
+      "piezas": [
+       {
+        "pieza": "reloj_arena",
+        "pos": "derecha",
+        "tamano": "grande",
+        "anim": "temblar"
+       }
+      ],
+      "persona": "medio",
+      "mood": "happy"
+     }
+    }
+   },
+   "camera": "pull_out",
+   "transition": "fade"
+  },
+  {
+   "text": "Then you eat: one boiled egg, one slice of bread.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 12,
+    "respaldo": {
+     "scene": "composicion",
+     "params": {
+      "lugar": "cocina",
+      "hora": "dia",
+      "piezas": [
+       {
+        "pieza": "huevo",
+        "pos": "centro",
+        "tamano": "grande",
+        "anim": "crecer"
+       }
+      ],
+      "persona": "medio",
+      "mood": "happy"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "flash"
+  },
+  {
+   "text": "Total: 382 days. 276 pounds gone. Longest fast on record.",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 13,
+    "respaldo": {
+     "scene": "document",
+     "params": {
+      "title": "Medical record",
+      "lines": [
+       "382 days",
+       "276 lbs lost",
+       "Longest fast in medical records"
+      ],
+      "highlight": 2,
+      "stamp": "OFFICIAL"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "And that's the record for anyone who can…",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-34-01",
+    "plano": 14,
+    "respaldo": {
+     "scene": "accion",
+     "params": {
+      "tipo": "comer",
+      "objeto": "hamburguesa",
+      "lugar": "cocina",
+      "hora": "dia",
+      "label": "382 DAYS"
+     }
+    },
+    "label": "382 DAYS"
+   },
+   "camera": "static",
+   "transition": "cut",
+   "bucle": true
+  }
+ ],
+ "looks": {
+  "protagonista": {
+   "genero": "hombre",
+   "edad": "joven",
+   "piel": "clara",
+   "pelo": "corto",
+   "color_pelo": "castaño_oscuro",
+   "barba": "no",
+   "gafas": true,
+   "ropa": "gris"
+  },
+  "medico": {
+   "genero": "hombre",
+   "edad": "adulto",
+   "piel": "clara",
+   "pelo": "corto",
+   "color_pelo": "canoso",
+   "barba": "no",
+   "gafas": true,
+   "ropa": "blanco"
+  }
+ },
+ "cover_text": "382 DAYS NO FOOD",
+ "comment_q": "Could you last even one week?",
+ "lista": "Human Body",
+ "question": "What happens to your body if you stop eating, and how long can a human go?",
+ "piezas_pendientes": [
+  "estomago_vacio",
+  "gota_grasa_llama",
+  "tetera_y_taza",
+  "botella_agua_con_gas",
+  "frasco_vitaminas",
+  "freidora_fish_and_chips",
+  "bascula_vintage",
+  "huevo_cocido_con_tostada"
+ ],
+ "id": "pedido-34-01",
+ "idea": {
+  "tipo": "pedido",
+  "premisa": "Título: 'What Happens If You Stop Eating? The 382-Day Fast' (47 car.). Guion de ~140 palabras, 52-56 s. ESCALADA 1, tu cuerpo: 'You stop eating. One man did it for 382 days — and doctors let him.' → 'Hour 24: your sugar reserves are gone. Your body starts burning fat. On purpose.' → 'Day 3: your breath smells fruity. That's ketones. Your brain is running on fat now.' → 'Here's the weird part: the hunger fades.' ESCALADA 2, entras en la historia sin ficha: 'Now you're in Scotland, 1965. You weigh 456 pounds. You walk into a hospital in Dundee and say: I'm done eating.' → 'Doctors expect a few days. You keep going.' → 'Tea. Coffee. Sparkling water. Vitamins. Nothing else.' ESCALADA 3, lo absurdo: 'You still work at your dad's fish and chip shop. Frying food. All day.' → 'You go to the bathroom once every 40 to 50 days. Doctors wrote that down.' ESCALADA 4, riesgo controlado: 'Without potassium and salt pills, your heart could stop. So they check your blood. Again. And again.' ESCALADA 5, final: 'Month after month, you just shrink. 456 pounds… 300… 180.' → 'Then you eat again: one boiled egg and a slice of bread and butter.' CIERRE: 'Total: 382 days. 276 pounds gone. The longest fast in medical records.' Corte. Todos los datos están documentados en el informe de Stewart y Fleming (Postgraduate Medical Journal, 1973) y en Guinness.",
+  "gancho": "You stop eating. One man did it for 382 days — and doctors let him.",
+  "giro_final": "Tras un año entero friendo pescado sin probarlo, su primera comida fue solo un huevo cocido con una tostada con mantequilla. Corte en seco con el dato oficial: 'Total: 382 days. 276 pounds gone. The longest fast in medical records.' Sin moraleja, para que el bucle enganche con 'You stop eating'.",
+  "estilo_visual": "0-3 s: 'accion' tipo 'comer' invertida (el plato se retira y queda vacío), con big_text '382 DAYS' encima. 3-15 s: la escalada del cuerpo en 'composicion' sobre fondo liso, con pieza de estómago vacío que se encoge y gota de grasa que se 'quema' como llama; 'person' con la zona del abdomen en rojo; 'accion' 'soltar_aire' con nubecita afrutada para el aliento cetónico; 'accion' 'dudar' cuando el hambre desaparece. 15-25 s: 'map_pin' estilo globo terráqueo cayendo en Dundee, Scotland; 'escena' de un hospital de los 60 de día con la persona entrando; big_text '456 LBS'. 25-35 s: 'composicion' con tetera, taza de café, botella de agua con gas y frasco de vitaminas alineados; 'escena' del fish and chip shop con la persona friendo, sudando y mirando la comida (momento cómico); 'calendar' de pared tachando días solo para el chiste del baño 'every 40-50 days' (único uso del recurso temporal). 35-45 s: 'hospital' con analítica y monitor; 'accion' 'latido' con electrocardiograma acelerándose y pastillas de potasio que lo estabilizan; 'doctor' con el bocadillo 'Again.'. 45-52 s: 'person' de cuerpo entero adelgazando en tres pasos con los números 456 → 300 → 180 en pantalla; 'composicion' con un huevo cocido y una tostada en un plato enorme y la persona emocionada. 52-56 s: 'document' estilo récord oficial con las líneas '382 days', '276 lbs lost' y 'Longest fast in medical records' resaltada, más un sello. Corte.",
+  "por_que_funcionara": "Encaja en el ángulo que más convierte del canal: el cuerpo humano en segunda persona (hambre), unido a una historia real con nombre buscable. Sigue al pie de la letra la retención: giro en el segundo 0, primer dato nuevo en el segundo 2, nada de ficha biográfica (el espectador 'es' Barbieri en acción), frases secas con remate ('On purpose.', 'Again. And again.') y cierre con un dato oficial y único, sin 'likely' ni moraleja. El detalle del fish and chip shop y el del baño cada 40-50 días son rarezas memorables que provocan comentarios y compartidos.",
+  "inspirado_en": [],
+  "piezas_nuevas": [
+   "estomago_vacio (estómago que se encoge)",
+   "gota_grasa_llama (grasa quemándose como combustible)",
+   "tetera_y_taza",
+   "botella_agua_con_gas",
+   "frasco_vitaminas / pastillas_potasio",
+   "freidora_fish_and_chips (mostrador con pescado frito)",
+   "huevo_cocido_con_tostada",
+   "bascula_vintage (aguja que baja de 456 a 180)"
   ]
+ },
+ "ganchos": [
+  {
+   "texto": "One man ate nothing for 382 days.",
+   "tipo": "c",
+   "puntuacion": 8,
+   "motivo": "Dato imposible y tema claro (dejar de comer) en menos de 2 segundos, sin pregunta."
+  },
+  {
+   "texto": "You stop eating. Doctors let you.",
+   "tipo": "d",
+   "puntuacion": 7,
+   "motivo": "Segunda persona con consecuencia y giro, pero sin la cifra que sorprende."
+  },
+  {
+   "texto": "What if you never ate again?",
+   "tipo": "a",
+   "puntuacion": 4,
+   "motivo": "Pregunta genérica tipo What if, que pierde retención en este canal."
+  },
+  {
+   "texto": "Everyone says you'd die in weeks. He didn't.",
+   "tipo": "e",
+   "puntuacion": 6,
+   "motivo": "Contradicción clara, pero el tema queda algo menos explícito."
+  },
+  {
+   "texto": "You stop eating. One man did it 382 days.",
+   "tipo": "c",
+   "puntuacion": 9,
+   "motivo": "Segunda persona, tema explícito y dato que choca. Pasa la prueba del desconocido."
+  }
+ ],
+ "medida_estado": "lista"
 }
