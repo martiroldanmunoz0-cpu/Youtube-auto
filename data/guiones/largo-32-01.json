@@ -2231,6 +2231,5 @@
       "motivo": "Myth against reality, but less visual than the telegraph."
     }
   ],
-  "medida_estado": "lista",
-  "tanda": "largo-32"
+  "portada_medida": true
 }
