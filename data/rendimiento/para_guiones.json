@@ -1,0 +1,18 @@
+{
+  "actualizado": "2026-11-27",
+  "revision": "semanal 2026-S47",
+  "largos": "Todavía no hay datos de vídeos largos. Como hipótesis, trasladar lo aprendido en los Shorts: abrir con un giro concreto y sin pregunta que repita la título, presentar a los personajes en acción y no con ficha, evitar las frases de 'here's the truth' y cerrar los bloques con frases cortas y rematadas. Hay que validarlo con los primeros datos.",
+  "shorts": "0 s: consecuencia o giro, no 'What if...?' ni pregunta genérica.\n2-10 s: primer dato nuevo; nada de repetir la premisa ni de fichas tipo 'Nombre, edad, profesión'.\nNada de transiciones vacías ('Here's the truth', 'almost nobody knows'): di el dato directamente.\nUsa el ritmo de afirmación seca más remate corto ('Too dangerous.').\nEn Movies vs Reality, el mito y su refutación van en el mismo plano.\nCierra con un dato oficial o exclusivo y corta, sin moraleja ni cifras con 'likely'.",
+  "temas": {
+    "mas": [
+      "Cuerpo humano en segunda persona (sueño, hambre, frío extremo...): el que más convierte",
+      "Movies vs Reality sobre situaciones extremas (mayor visualización: 112%)",
+      "Historias reales con récord o rareza única, contadas en segunda persona (más vistas y búsqueda)"
+    ],
+    "menos": [
+      "'What if' geológicos o abstractos con apertura en forma de pregunta (71,9% de visualización)",
+      "Biografías presentadas con ficha de datos",
+      "Cierres reflexivos del tipo 'the next time you...'"
+    ]
+  }
+}

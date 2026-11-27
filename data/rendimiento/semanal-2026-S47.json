@@ -1,0 +1,386 @@
+{
+  "tipo": "semanal",
+  "periodo": "2026-S47",
+  "desde": "2026-11-19",
+  "hasta": "2026-11-25",
+  "canal": {
+    "views": 3938,
+    "estimatedMinutesWatched": 2148,
+    "subscribersGained": 6,
+    "subscribersLost": 0,
+    "likes": 83,
+    "comments": 1,
+    "shares": 1,
+    "subs_netos": 6,
+    "subs_por_1000": 1.52,
+    "interaccion_pct": 2.16
+  },
+  "canal_anterior": {},
+  "fuentes_canal": {
+    "feed Shorts": 3793,
+    "búsqueda": 107,
+    "sugeridos": 42,
+    "otras páginas YT": 16,
+    "página del canal": 11,
+    "directo/otros": 2,
+    "externo": 1
+  },
+  "ingresos": "no disponible (<HttpError 401 when requesting https://youtubeanalytics.googleapis.com/v2/reports?ids=channel%3D%3DMINE&startDate=2026-1)",
+  "videos": [
+    {
+      "views": 764,
+      "estimatedMinutesWatched": 356,
+      "averageViewDuration": 45,
+      "averageViewPercentage": 77.93,
+      "subscribersGained": 4,
+      "subscribersLost": 0,
+      "likes": 20,
+      "comments": 1,
+      "shares": 1,
+      "subs_netos": 4,
+      "subs_por_1000": 5.24,
+      "interaccion_pct": 2.88,
+      "youtube_id": "GggCgUVPdwU",
+      "id": "pedido-25-01-r1",
+      "titulo": "What Happens If You Stop Sleeping? The 11-Day Record #shorts",
+      "duracion": 58,
+      "tipo": "short",
+      "publicado": "2026-11-24T17:00:00Z",
+      "lista": "Human Body",
+      "retencion": {
+        "vs_parecidos": 0.663,
+        "gancho": {
+          "seg": 14.5,
+          "queda": 0.841
+        },
+        "peores_frases": [
+          {
+            "plano": 1,
+            "texto": "What happens to your body without sleep?",
+            "seg": 2.8,
+            "pierde": 0.228
+          },
+          {
+            "plano": 2,
+            "texto": "Randy Gardner, seventeen, wanted a science fair project.",
+            "seg": 5.6,
+            "pierde": 0.2
+          },
+          {
+            "plano": 0,
+            "texto": "This teenager stayed awake for 11 days.",
+            "seg": 0.0,
+            "pierde": 0.122
+          },
+          {
+            "plano": 3,
+            "texto": "Hour twenty-four: you react like a drunk driver.",
+            "seg": 8.8,
+            "pierde": 0.09
+          },
+          {
+            "plano": 17,
+            "texto": "The boy who refused to sleep... couldn't.",
+            "seg": 49.0,
+            "pierde": 0.039
+          }
+        ]
+      },
+      "nota": 58,
+      "vs_mediana": {
+        "averageViewPercentage": 0.85,
+        "views": 0.79,
+        "subs_por_1000": 4.08,
+        "interaccion_pct": 1.34
+      },
+      "grupo": "top",
+      "fuentes": {
+        "feed Shorts": 748,
+        "búsqueda": 14,
+        "página del canal": 1,
+        "externo": 1,
+        "directo/otros": 0
+      }
+    },
+    {
+      "views": 777,
+      "estimatedMinutesWatched": 275,
+      "averageViewDuration": 38,
+      "averageViewPercentage": 71.9,
+      "subscribersGained": 2,
+      "subscribersLost": 0,
+      "likes": 16,
+      "comments": 0,
+      "shares": 0,
+      "subs_netos": 2,
+      "subs_por_1000": 2.57,
+      "interaccion_pct": 2.06,
+      "youtube_id": "h9V0jVWpuNY",
+      "id": "pedido-26-01-r1",
+      "titulo": "What If You Dug Straight Down? Where You'd Really Come Out #shorts",
+      "duracion": 53,
+      "tipo": "short",
+      "publicado": "2026-11-23T20:30:00Z",
+      "lista": "What If...?",
+      "retencion": {
+        "vs_parecidos": 0.529,
+        "gancho": {
+          "seg": 13.25,
+          "queda": 0.916
+        },
+        "peores_frases": [
+          {
+            "plano": 0,
+            "texto": "What if you dug straight down from Kansas?",
+            "seg": 0.0,
+            "pierde": 0.165
+          },
+          {
+            "plano": 15,
+            "texto": "So the next time you pick up a shovel and wonder,…",
+            "seg": 45.9,
+            "pierde": 0.095
+          },
+          {
+            "plano": 4,
+            "texto": "Two and a half miles down, rock hits 130 degrees.",
+            "seg": 10.5,
+            "pierde": 0.087
+          },
+          {
+            "plano": 1,
+            "texto": "Everyone says you'd pop out in China.",
+            "seg": 3.0,
+            "pierde": 0.081
+          },
+          {
+            "plano": 2,
+            "texto": "Six feet down, you're already exhausted.",
+            "seg": 5.6,
+            "pierde": 0.068
+          }
+        ]
+      },
+      "nota": 53,
+      "vs_mediana": {
+        "averageViewPercentage": 0.78,
+        "views": 0.8,
+        "subs_por_1000": 2.0,
+        "interaccion_pct": 0.96
+      },
+      "grupo": "medio",
+      "fuentes": {
+        "feed Shorts": 761,
+        "búsqueda": 12,
+        "página del canal": 1,
+        "otras páginas YT": 1,
+        "directo/otros": 0
+      }
+    },
+    {
+      "views": 1158,
+      "estimatedMinutesWatched": 594,
+      "averageViewDuration": 58,
+      "averageViewPercentage": 112.05000000000001,
+      "subscribersGained": 0,
+      "subscribersLost": 0,
+      "likes": 26,
+      "comments": 0,
+      "shares": 0,
+      "subs_netos": 0,
+      "subs_por_1000": 0.0,
+      "interaccion_pct": 2.25,
+      "youtube_id": "uA1KcNUGmps",
+      "id": "pedido-23-01-r1",
+      "titulo": "What If You Fell Into the Grand Canyon? Movies vs Reality #shorts",
+      "duracion": 52,
+      "tipo": "short",
+      "publicado": "2026-11-23T20:30:00Z",
+      "lista": "What If...?",
+      "retencion": {
+        "vs_parecidos": 0.681,
+        "gancho": {
+          "seg": 13.0,
+          "queda": 1.332
+        },
+        "peores_frases": [
+          {
+            "plano": 0,
+            "texto": "What if you fell into the Grand Canyon?",
+            "seg": 0.0,
+            "pierde": 0.241
+          },
+          {
+            "plano": 9,
+            "texto": "Movie: a helicopter scoops you up for free.",
+            "seg": 23.3,
+            "pierde": 0.1
+          },
+          {
+            "plano": 1,
+            "texto": "Forget the movies. Here's the truth.",
+            "seg": 2.7,
+            "pierde": 0.091
+          },
+          {
+            "plano": 13,
+            "texto": "The canyon isn't one sheer wall. It's a giant staircase of ledges.",
+            "seg": 34.5,
+            "pierde": 0.083
+          },
+          {
+            "plano": 12,
+            "texto": "Now, here's what almost nobody knows.",
+            "seg": 32.4,
+            "pierde": 0.054
+          }
+        ]
+      },
+      "nota": 47,
+      "vs_mediana": {
+        "averageViewPercentage": 1.22,
+        "views": 1.2,
+        "subs_por_1000": 0.0,
+        "interaccion_pct": 1.04
+      },
+      "grupo": "medio",
+      "fuentes": {
+        "feed Shorts": 1101,
+        "búsqueda": 38,
+        "otras páginas YT": 7,
+        "página del canal": 3,
+        "directo/otros": 0
+      }
+    },
+    {
+      "views": 1239,
+      "estimatedMinutesWatched": 923,
+      "averageViewDuration": 72,
+      "averageViewPercentage": 105.37,
+      "subscribersGained": 0,
+      "subscribersLost": 0,
+      "likes": 21,
+      "comments": 0,
+      "shares": 0,
+      "subs_netos": 0,
+      "subs_por_1000": 0.0,
+      "interaccion_pct": 1.69,
+      "youtube_id": "pts49XLGjNM",
+      "id": "pedido-24-01-r1",
+      "titulo": "The Man Who Survived Two Atomic Bombs: Tsutomu Yamaguchi #shorts",
+      "duracion": 69,
+      "tipo": "short",
+      "publicado": "2026-11-24T01:30:00Z",
+      "lista": "Incredible True Stories",
+      "retencion": {
+        "vs_parecidos": 0.47,
+        "gancho": {
+          "seg": 17.25,
+          "queda": 0.574
+        },
+        "peores_frases": [
+          {
+            "plano": 1,
+            "texto": "How did one man survive both atomic bombs, and what do few people know about his story?",
+            "seg": 2.5,
+            "pierde": 0.324
+          },
+          {
+            "plano": 2,
+            "texto": "Tsutomu Yamaguchi. Twenty-nine-year-old engineer. One business trip to Hiroshima.",
+            "seg": 9.6,
+            "pierde": 0.159
+          },
+          {
+            "plano": 0,
+            "texto": "This man survived two atomic bombs.",
+            "seg": 0.0,
+            "pierde": 0.136
+          },
+          {
+            "plano": 3,
+            "texto": "August sixth, 1945. You're walking to work with a briefcase.",
+            "seg": 13.4,
+            "pierde": 0.057
+          },
+          {
+            "plano": 13,
+            "texto": "Around one hundred sixty people likely lived through both.",
+            "seg": 50.5,
+            "pierde": 0.045
+          }
+        ]
+      },
+      "nota": 44,
+      "vs_mediana": {
+        "averageViewPercentage": 1.15,
+        "views": 1.28,
+        "subs_por_1000": 0.0,
+        "interaccion_pct": 0.78
+      },
+      "grupo": "flojo",
+      "fuentes": {
+        "feed Shorts": 1183,
+        "búsqueda": 43,
+        "otras páginas YT": 7,
+        "directo/otros": 1,
+        "página del canal": 1
+      }
+    }
+  ],
+  "analisis": {
+    "resumen": "No hay datos del periodo anterior (canal_anterior vacío), así que no se puede comparar la evolución. Esta semana el canal suma 3.938 vistas, 2.148 minutos vistos y 6 suscriptores netos (1,52 por cada 1.000 vistas), con una interacción del 2,16%. Todo procede de 4 Shorts publicados el 23 y el 24 de noviembre; no hubo vídeos largos. El 96% de las vistas (3.793) llegó desde el feed de Shorts. La muestra es muy pequeña: las conclusiones son orientativas.",
+    "patrones_exito": [
+      "El único vídeo del grupo 'top' es el del sueño (nota 58). Es el que más suscriptores convierte: 5,24 por cada 1.000 vistas, 4,08 veces la mediana, con la mejor interacción (2,88%) y el único comentario y el único compartido del periodo. Pertenece a la lista Human Body y apela directamente al cuerpo del espectador ('your body').",
+      "Los dos Shorts con más vistas superan el 100% de visualización media gracias al bucle: Grand Canyon con 112% y Yamaguchi con 105%. Ambos cierran con un dato seco, sin moraleja.",
+      "Las duraciones de 52 a 69 s funcionan. El de 69 s (Yamaguchi) logra la mayor duración media (72 s) y la mayor cantidad de minutos vistos (923).",
+      "En la retención retienen al 100% las frases cortas de afirmación más remate, como 'Second bomb. Same distance. Same man. Somehow, he survives again.' y 'Guinness stopped tracking sleep records. Too dangerous.'",
+      "Ninguno supera a vídeos parecidos en retención (vs_parecidos entre 0,47 y 0,68). Incluso los mejores tienen margen claro en los primeros 10 segundos."
+    ],
+    "flojos": [
+      {
+        "id": "pedido-24-01-r1",
+        "titulo": "The Man Who Survived Two Atomic Bombs: Tsutomu Yamaguchi #shorts",
+        "que_falla": "Es el que más vistas tiene (1.239, 1,28 veces la mediana) y un 105% de visualización, pero tiene el peor gancho del periodo: solo el 57,4% sigue viendo a los 17,25 s, y su vs_parecidos es el más bajo (0,47). La pregunta que repite la premisa en el segundo 2,5 pierde el 32,4%, la ficha 'Tsutomu Yamaguchi. Twenty-nine-year-old engineer...' pierde otro 15,9% y la frase inicial, un 13,6%. Además consigue 0 suscriptores y la interacción más baja (1,69%, 0,78 veces la mediana).",
+        "mejora": "En las próximas historias reales: frase inicial con giro y, justo después, el primer dato nuevo, sin preguntas que repitan la premisa. El protagonista debe entrar en acción en segunda persona, con el nombre integrado, nunca con una ficha de datos. Cerrar con el dato oficial y exclusivo ('Japan officially recognized only one') y no con cifras aproximadas ('likely one hundred sixty', que pierde un 4,5%). Añadir un motivo para seguir al canal ligado a la serie Incredible True Stories, porque esta temática atrae vistas pero no suscriptores."
+      },
+      {
+        "id": "pedido-23-01-r1",
+        "titulo": "What If You Fell Into the Grand Canyon? Movies vs Reality #shorts",
+        "que_falla": "Ningún flojo es grave en retención: tiene un 112% de visualización y 1.158 vistas. El problema es la conversión: 0 suscriptores. Además, la pregunta genérica del segundo 0 pierde el 24,1%, 'Forget the movies. Here's the truth.' pierde el 9,1% y 'Movie: a helicopter...', sola en su plano, pierde el 10%.",
+        "mejora": "Mantener el formato Movies vs Reality, pero arrancar con una consecuencia ('You'd probably survive — here's why') y poner cada mito pegado a su refutación en el mismo plano. Eliminar las frases de transición vacías."
+      },
+      {
+        "id": "pedido-26-01-r1",
+        "titulo": "What If You Dug Straight Down? Where You'd Really Come Out #shorts",
+        "que_falla": "Está en el grupo 'medio' con un 71,9% de visualización (0,78 veces la mediana, la más baja) y una duración media de 38 s sobre 53. 'What if you dug straight down from Kansas?' pierde el 16,5% en el segundo 0, y el cierre moralizante 'So the next time you pick up a shovel...' pierde el 9,5% y rompe el bucle. Su gancho, en cambio, es bueno: el 91,6% sigue viendo a los 13 s.",
+        "mejora": "En los próximos 'What if': empezar con la respuesta sorprendente (por ejemplo, 'Dig straight down from Kansas and you come out in the ocean'), escalar con cifras físicas y terminar con el último dato, sin moraleja, para que el bucle funcione."
+      }
+    ],
+    "trafico": "El canal depende casi por completo del feed de Shorts: 3.793 de 3.938 vistas (96%). La búsqueda aporta 107 vistas, sobre todo en Yamaguchi (43) y Grand Canyon (38): los temas con nombre propio o lugar famoso tienen algo de demanda de búsqueda. Los sugeridos se quedan en 42 y lo externo en 1. Qué hacer: (1) seguir optimizando los primeros 3 segundos, porque el feed decide según la retención inicial; (2) incluir en título y descripción los términos que la gente busca (nombre propio, lugar, 'what happens if'); (3) agrupar los vídeos en listas y aprovechar el vídeo relacionado de cada Short para llevar tráfico a otros vídeos de la misma serie. Sin vídeos largos no hay sugeridos de peso: conviene publicar alguno para poder valorarlo.",
+    "suscriptores": "Solo dos vídeos convierten. El del sueño logra 4 suscriptores (5,24 por cada 1.000 vistas) y el de cavar, 2 (2,57 por cada 1.000). Los dos que más vistas tienen (Grand Canyon y Yamaguchi) suman 0. Hipótesis, con pocos datos: convierten los temas que afectan al propio espectador y anticipan una serie ('what happens to YOUR body', 'what if YOU dug'); una anécdota histórica cerrada o un escenario de película entretienen pero no dan motivo para volver. Hay que validarlo con más vídeos.",
+    "acciones": [
+      "Reescribir el arranque de todos los próximos Shorts: frase inicial con consecuencia o giro y, directamente, el primer dato nuevo. Sin pregunta que repita la premisa (pierde entre el 17% y el 32%) ni ficha del protagonista (entre el 16% y el 20%).",
+      "Publicar más Shorts de la lista Human Body en segunda persona ('What happens if you...'), el ángulo que mejor convierte (5,24 suscriptores por cada 1.000 vistas).",
+      "Repetir el formato Movies vs Reality con cierre seco para aprovechar el bucle (112%), con mito y refutación en el mismo plano.",
+      "Eliminar transiciones vacías y moralejas finales; cerrar siempre con un dato exclusivo y concreto.",
+      "Optimizar títulos y descripciones para búsqueda (nombres propios, lugares) y probar al menos un vídeo largo para tener datos de sugeridos."
+    ],
+    "para_guiones": {
+      "largos": "Todavía no hay datos de vídeos largos. Como hipótesis, trasladar lo aprendido en los Shorts: abrir con un giro concreto y sin pregunta que repita la título, presentar a los personajes en acción y no con ficha, evitar las frases de 'here's the truth' y cerrar los bloques con frases cortas y rematadas. Hay que validarlo con los primeros datos.",
+      "shorts": "0 s: consecuencia o giro, no 'What if...?' ni pregunta genérica.\n2-10 s: primer dato nuevo; nada de repetir la premisa ni de fichas tipo 'Nombre, edad, profesión'.\nNada de transiciones vacías ('Here's the truth', 'almost nobody knows'): di el dato directamente.\nUsa el ritmo de afirmación seca más remate corto ('Too dangerous.').\nEn Movies vs Reality, el mito y su refutación van en el mismo plano.\nCierra con un dato oficial o exclusivo y corta, sin moraleja ni cifras con 'likely'."
+    },
+    "temas": {
+      "mas": [
+        "Cuerpo humano en segunda persona (sueño, hambre, frío extremo...): el que más convierte",
+        "Movies vs Reality sobre situaciones extremas (mayor visualización: 112%)",
+        "Historias reales con récord o rareza única, contadas en segunda persona (más vistas y búsqueda)"
+      ],
+      "menos": [
+        "'What if' geológicos o abstractos con apertura en forma de pregunta (71,9% de visualización)",
+        "Biografías presentadas con ficha de datos",
+        "Cierres reflexivos del tipo 'the next time you...'"
+      ]
+    }
+  }
+}
