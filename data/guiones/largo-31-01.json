@@ -1,0 +1,1286 @@
+{
+  "title": "What If You Lived to 1,000? Decade by Decade",
+  "description": "What would break first for you: body, money, or mind? 👇\n\nWhat if you lived to 1,000 years old and stopped aging at thirty? Here is what would break first: your body, your money, your friends, or your mind.\nBen Franklin's 200-year investment, Dunbar's number and the oldest trees on Earth show how a thousand-year life could really play out.\n#whatif #livingforever #science #curiosities #thecuriolab",
+  "tags": [
+    "what if you lived to 1000",
+    "what if you never aged",
+    "living 1000 years",
+    "immortality explained",
+    "what if you lived forever",
+    "Ben Franklin investment",
+    "Dunbar's number",
+    "stop aging at 30",
+    "human body facts",
+    "bristlecone pine",
+    "curiosities",
+    "what if"
+  ],
+  "beats": [
+    {
+      "capitulo": "Chapter 1 · Your 100th Birthday",
+      "text": "Today is your hundredth birthday. Your knees feel thirty, your bank account just doubled, and everyone from your graduation is dead.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "tarta_cumpleanos",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "label": "100th birthday"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "You've got nine hundred years left. So what gives out first: your body, your money, or your mind?",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "salon",
+        "hora": "dia",
+        "label": "Body? Money? Mind?"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Stay with me to the end. You'll find a diary you don't remember writing, and its first line will stop you cold.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "carta",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ],
+        "label": "A diary"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "It starts this morning. You wake up in your own bed, look in the mirror, and see the face you had at thirty.",
+      "scene": "escena",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "happy",
+        "objeto": "none",
+        "label": "Age 100, face of 30"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "No gray hair. No wrinkles. Doctors call it a miracle, and now they want your blood tested every single week.",
+      "scene": "doctor",
+      "params": {
+        "say": "Zero aging. Come back next week.",
+        "mood": "worried",
+        "hora": "dia",
+        "label": "Miracle patient"
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "Your cells stopped aging, so the clock should be frozen. But age was never the only thing that wears you down.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "reloj_arena",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "girar"
+          }
+        ],
+        "label": "Clock frozen"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Think of a car that never rusts. It still drives every day, and every day the tires lose a little rubber.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "calle",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "coche_rojo",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          }
+        ],
+        "label": "Never rusts, still wears"
+      },
+      "camera": "pan_right",
+      "transition": "whip"
+    },
+    {
+      "text": "That's your body now. It never gets old, but damage keeps piling up. And three parts are about to fail.",
+      "scene": "person",
+      "params": {
+        "lugar": "salon",
+        "mood": "worried",
+        "highlight": "head",
+        "label": "3 parts about to fail"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "capitulo": "Chapter 2 · Worn Out",
+      "text": "Year one hundred fifty. You bite into a cold apple and feel a sharp zing shoot through one tooth.",
+      "scene": "accion",
+      "params": {
+        "tipo": "comer",
+        "objeto": "manzana",
+        "lugar": "cocina",
+        "hora": "dia"
+      },
+      "camera": "slam",
+      "transition": "whip"
+    },
+    {
+      "text": "Enamel is the hard shell on your teeth. Once it wears away, your body never grows it back.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "diente",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ],
+        "label": "Enamel: no regrowth"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Every coffee, every crunch, every night of grinding scrapes off a little more. After a century, that shell is paper thin.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "cafe",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "entrar_der"
+          },
+          {
+            "pieza": "diente",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "temblar"
+          }
+        ],
+        "label": "Worn thin"
+      },
+      "camera": "pan_left",
+      "transition": "cut"
+    },
+    {
+      "text": "Then comes the second problem. Remember that loud concert at twenty? Your ears do, and they're still paying for it.",
+      "scene": "accion",
+      "params": {
+        "tipo": "gritar",
+        "lugar": "ciudad",
+        "hora": "noche",
+        "label": "Loud concert"
+      },
+      "camera": "shake",
+      "transition": "whip"
+    },
+    {
+      "text": "Deep inside your ear are tiny hair cells that turn sound into signals. Loud noise kills them, and they never grow back.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "ojo",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "latir"
+          }
+        ],
+        "label": "Hair cells: gone for good"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Year by year, the world gets quieter. By two hundred, you're laughing along at jokes you can't actually hear.",
+      "scene": "escena",
+      "params": {
+        "lugar": "salon",
+        "hora": "atardecer",
+        "plano": "medio",
+        "mood": "sad",
+        "objeto": "taza",
+        "label": "Can't hear the joke"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Now your eyes. The lens inside them never stops growing, layer after layer, like an onion that never gets peeled.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "lupa",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "label": "Lens keeps growing"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "It gets thicker and cloudier, until the whole world looks like you're staring through a foggy window.",
+      "scene": "accion",
+      "params": {
+        "tipo": "vista_nublada",
+        "lugar": "salon",
+        "hora": "dia"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "You pick up a menu at a diner. The words smear, so you hold it farther away, then farther still.",
+      "scene": "escena",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "worried",
+        "objeto": "papel",
+        "label": "The menu"
+      },
+      "camera": "pull_out",
+      "transition": "cut"
+    },
+    {
+      "text": "Teeth, ears, eyes. Three tiny parts, and they steal your senses one by one while the rest of you feels perfect.",
+      "scene": "person",
+      "params": {
+        "lugar": "oficina",
+        "mood": "worried",
+        "highlight": "head",
+        "label": "Teeth, ears, eyes"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Doctors have a name for it: wear, not age. Your heart is strong, but some parts can never be replaced.",
+      "scene": "doctor",
+      "params": {
+        "say": "Wear, not age.",
+        "mood": "neutral",
+        "hora": "dia",
+        "label": "The diagnosis"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Your body isn't old. It's just worn out.",
+      "scene": "accion",
+      "params": {
+        "tipo": "desmayarse",
+        "lugar": "salon",
+        "hora": "atardecer"
+      },
+      "camera": "slam",
+      "transition": "black"
+    },
+    {
+      "capitulo": "Chapter 3 · The Richest Human",
+      "text": "Year two hundred. Your savings have sat in a bank this whole time, and the interest is wild.",
+      "scene": "money",
+      "params": {
+        "amount": "$1,000,000",
+        "label": "Compound interest",
+        "rain": true,
+        "stack": true
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Here's proof it works. In seventeen ninety, Benjamin Franklin left one thousand pounds each to Boston and Philadelphia.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "carta",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Franklin, 1790"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "His one rule was simple: don't touch it for two hundred years, and let it grow.",
+      "scene": "document",
+      "params": {
+        "title": "Franklin's Will",
+        "lines": [
+          "Boston: 1,000 pounds",
+          "Philadelphia: 1,000 pounds",
+          "Wait 200 years",
+          "Do not touch"
+        ],
+        "highlight": 2,
+        "stamp": "1790"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "In nineteen ninety, Boston's fund had grown to roughly five million dollars, from one small gift.",
+      "scene": "money",
+      "params": {
+        "amount": "$5 million",
+        "label": "Boston's fund, 1990",
+        "rain": false,
+        "stack": true
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "You've got a thousand years of compound interest. So you must be the richest human who ever lived, right?",
+      "scene": "escena",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "happy",
+        "objeto": "dinero",
+        "label": "Richest human ever?"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Wrong. The dollar only appeared in seventeen ninety-two, so your oldest savings would have to start in some other currency.",
+      "scene": "newspaper",
+      "params": {
+        "style": "papel",
+        "headline": "Coinage Act Creates the Dollar",
+        "kicker": "Daily Ledger",
+        "date": "1792"
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "Even the British pound, the oldest money still in use today, is only about twelve hundred years old.",
+      "scene": "map_pin",
+      "params": {
+        "style": "globo",
+        "place": "England",
+        "detail": "Pound: about 1,200 years"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Empires print money, and empires collapse. Every few centuries, your fortune turns into paper nobody wants.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "atardecer",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "dinero_billete",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "caer"
+          },
+          {
+            "pieza": "fuego",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "temblar"
+          }
+        ],
+        "label": "Empires fall"
+      },
+      "camera": "shake",
+      "transition": "fade"
+    },
+    {
+      "text": "One morning you wake up with a suitcase of banknotes from a country that no longer exists.",
+      "scene": "escena",
+      "params": {
+        "lugar": "calle",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "worried",
+        "objeto": "dinero",
+        "label": "Old banknotes"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "A bank teller laughs, and you try to explain. She slides your entire life savings back across the counter.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "sad",
+        "objeto": "dinero",
+        "piezas": [
+          {
+            "pieza": "bolsa_dinero",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "entrar_der"
+          }
+        ],
+        "label": "Rejected"
+      },
+      "camera": "pan_left",
+      "transition": "cut"
+    },
+    {
+      "text": "So you start over. Again. Every few hundred years you build a fortune, and history deletes it.",
+      "scene": "year_jump",
+      "params": {
+        "from": 1200,
+        "to": 2000,
+        "label": "Fortune reset"
+      },
+      "camera": "push_in",
+      "transition": "black"
+    },
+    {
+      "text": "You'll outlive the money before the money outlives you.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "sad",
+        "piezas": [
+          {
+            "pieza": "bolsa_dinero",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "temblar"
+          }
+        ],
+        "label": "Money: gone"
+      },
+      "camera": "slam",
+      "transition": "fade"
+    },
+    {
+      "capitulo": "Chapter 4 · The People You Lose",
+      "text": "Year three hundred. Your phone holds a hundred and fifty contacts, about the most friendships one human brain can handle.",
+      "scene": "phone",
+      "params": {
+        "screen": "profile",
+        "profile": {
+          "name": "Contacts",
+          "label": "150 people",
+          "detail": "The most your brain can handle"
+        }
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "Scientists call it Dunbar's number. It's the size of the crowd your brain can truly keep track of.",
+      "scene": "big_text",
+      "params": {
+        "text": "150",
+        "label": "Dunbar's number",
+        "color": "#ffb300",
+        "lugar": "salon"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "But your crowd keeps shrinking. Every few years, you put on the same black suit and walk into another funeral.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "atardecer",
+        "persona": "medio",
+        "mood": "sad",
+        "piezas": [
+          {
+            "pieza": "calavera",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "label": "Another funeral"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "Every few decades, your entire circle of friends is replaced. New faces, new names, new inside jokes to learn.",
+      "scene": "group",
+      "params": {
+        "count": 4,
+        "lugar": "salon",
+        "hora": "dia",
+        "mood": "happy",
+        "label": "New friends, new names"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "And at some point, you stop learning their names. Why bother, when they'll be gone in a blink?",
+      "scene": "phone",
+      "params": {
+        "screen": "chat",
+        "chat": {
+          "contact": "New friend",
+          "status": "online",
+          "typing": true,
+          "messages": [
+            {
+              "from": "them",
+              "text": "Remember me?"
+            },
+            {
+              "from": "me",
+              "text": "Sorry... who?"
+            }
+          ]
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "A girl you loved at two hundred smiles at you from an old photo. You can't remember her last name.",
+      "scene": "escena",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "noche",
+        "plano": "medio",
+        "mood": "sad",
+        "objeto": "papel",
+        "label": "An old photo"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "The sad part is that you're not forgetting out of cruelty. It's self-defense.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dudar",
+        "lugar": "dormitorio",
+        "hora": "noche",
+        "label": "Why bother?"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "Then there's family. Say you have four kids, and each of them has four kids, generation after generation.",
+      "scene": "group",
+      "params": {
+        "count": 3,
+        "kids": true,
+        "lugar": "salon",
+        "hora": "dia",
+        "mood": "happy",
+        "label": "4 kids each"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Ten generations later, on paper, that's more than one million people walking around with your genes.",
+      "scene": "big_text",
+      "params": {
+        "text": "1,000,000+",
+        "label": "descendants",
+        "color": "#ff5252",
+        "lugar": "ciudad"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "A million descendants, scattered across the planet, and you couldn't pick a single one of them out of a crowd.",
+      "scene": "map_pin",
+      "params": {
+        "style": "globo",
+        "place": "Everywhere",
+        "detail": "One million descendants"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "You're the ancestor of an entire town you'll never meet. Somebody in it has your nose, and has no idea.",
+      "scene": "escena",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "plano": "sin_persona",
+        "label": "A town with your nose"
+      },
+      "camera": "pan_left",
+      "transition": "fade"
+    },
+    {
+      "text": "At a coffee shop, a stranger laughs exactly like your late brother. A distant grandson, maybe. You just walk past.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "objeto": "taza",
+        "piezas": [
+          {
+            "pieza": "cafe",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "label": "That laugh"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "You can't tell him. He'd call a doctor. So you carry the whole family tree alone.",
+      "scene": "person",
+      "params": {
+        "lugar": "calle",
+        "hora": "atardecer",
+        "mood": "sad",
+        "arms": "cross",
+        "label": "Walking away"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "text": "A long life gives you a family too big to hold, and too far away to touch.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "sad",
+        "piezas": [
+          {
+            "pieza": "arbol",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "label": "Family tree"
+      },
+      "camera": "pull_out",
+      "transition": "black"
+    },
+    {
+      "capitulo": "Chapter 5 · The Locked House",
+      "text": "Year five hundred. Here's something strange. Most neurons in your cortex, the thinking layer of your brain, are as old as you.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "cerebro",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "latir"
+          }
+        ],
+        "label": "Neurons: your age"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "They're never replaced. So your brain is five hundred years old, and it's running out of room.",
+      "scene": "big_text",
+      "params": {
+        "text": "500 years",
+        "label": "Same neurons",
+        "color": "#8e24aa",
+        "lugar": "fondo"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "The oldest memories go first. Your first century slips away like a dream you can't retell after breakfast.",
+      "scene": "accion",
+      "params": {
+        "tipo": "marearse",
+        "lugar": "salon",
+        "hora": "dia",
+        "label": "Memories fading"
+      },
+      "camera": "shake",
+      "transition": "fade"
+    },
+    {
+      "text": "You try to picture your first love, your first car, your first apartment. All you see is a blur.",
+      "scene": "escena",
+      "params": {
+        "lugar": "coche",
+        "hora": "atardecer",
+        "plano": "medio",
+        "mood": "worried",
+        "objeto": "llaves",
+        "label": "First car?"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "A neighbor asks about your childhood. You answer with a story you've told so often it's no longer a memory.",
+      "scene": "escena",
+      "params": {
+        "lugar": "campo",
+        "hora": "atardecer",
+        "plano": "medio",
+        "mood": "happy",
+        "objeto": "taza",
+        "label": "Neighbor asks"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "But your brain isn't your only problem. If you never age, there's only one thing left that can kill you: accidents.",
+      "scene": "accion",
+      "params": {
+        "tipo": "choque",
+        "lugar": "calle",
+        "hora": "dia"
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "A car crash. A fall. A slip in the shower. Each year, the odds are tiny. Over centuries, they pile up.",
+      "scene": "accion",
+      "params": {
+        "tipo": "caer_romper",
+        "objeto": "vaso_agua",
+        "lugar": "cocina",
+        "hora": "dia",
+        "label": "One slip"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Year six hundred and fifty. You check the stairs twice. You stop driving. You stop swimming. You stop trusting ladders.",
+      "scene": "person",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "mood": "worried",
+        "highlight": "legs",
+        "label": "Checking the stairs twice"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Your heart pounds every time a delivery truck honks outside. Your body wants to live very, very badly.",
+      "scene": "accion",
+      "params": {
+        "tipo": "latido",
+        "lugar": "ciudad",
+        "hora": "dia"
+      },
+      "camera": "shake",
+      "transition": "fade"
+    },
+    {
+      "text": "So you lock the front door and stay inside. For eighty years, you don't step out once.",
+      "scene": "calendar",
+      "params": {
+        "style": "marcas",
+        "day": "80",
+        "month": "Years",
+        "label": "Years inside"
+      },
+      "camera": "push_in",
+      "transition": "black"
+    },
+    {
+      "text": "You've beaten death, and the cure looks exactly like a prison.",
+      "scene": "escena",
+      "params": {
+        "lugar": "salon",
+        "hora": "noche",
+        "plano": "sin_persona",
+        "label": "The cure looks like a prison"
+      },
+      "camera": "pull_out",
+      "transition": "fade"
+    },
+    {
+      "capitulo": "Chapter 6 · Stranger in Time",
+      "text": "Year seven hundred fifty. You finally step outside, and nobody understands a single word you say.",
+      "scene": "escena",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "shocked",
+        "objeto": "none",
+        "label": "Nobody understands"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "A thousand years ago, English sounded like Beowulf, an epic poem that today looks like a foreign language.",
+      "scene": "document",
+      "params": {
+        "title": "Beowulf",
+        "lines": [
+          "Hwaet! We Gardena",
+          "in geardagum",
+          "Old English, about 1,000 yrs"
+        ],
+        "highlight": 0,
+        "stamp": "UNREADABLE"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Languages drift. Every generation shifts a few sounds, until two people can't understand each other at all.",
+      "scene": "phone",
+      "params": {
+        "screen": "chat",
+        "chat": {
+          "contact": "Group chat",
+          "status": "online",
+          "typing": false,
+          "messages": [
+            {
+              "from": "them",
+              "text": "no cap, that's lit"
+            },
+            {
+              "from": "me",
+              "text": "Pray tell, what is lit?"
+            }
+          ]
+        }
+      },
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "text": "So you speak a dead dialect. You tell your best joke, and the whole room just stares at you.",
+      "scene": "group",
+      "params": {
+        "count": 3,
+        "lugar": "oficina",
+        "hora": "dia",
+        "mood": "worried",
+        "label": "The joke dies"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Nobody gets your sayings. Nobody knows your references. You're the loneliest foreigner on Earth, and you never left home.",
+      "scene": "accion",
+      "params": {
+        "tipo": "llorar",
+        "lugar": "salon",
+        "hora": "noche",
+        "label": "Loneliest foreigner"
+      },
+      "camera": "static",
+      "transition": "fade"
+    },
+    {
+      "text": "But the world isn't done with you yet. One last milestone is coming, and it's a big one.",
+      "scene": "calendar",
+      "params": {
+        "style": "taco",
+        "day": "4",
+        "month": "July",
+        "label": "2776"
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "July Fourth, twenty-seven seventy-six. The United States turns one thousand years old, and fireworks fill the sky above the city.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "ciudad",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "happy",
+        "piezas": [
+          {
+            "pieza": "estrella",
+            "pos": "arriba",
+            "tamano": "gigante",
+            "anim": "crecer"
+          },
+          {
+            "pieza": "edificio",
+            "pos": "izquierda",
+            "tamano": "grande",
+            "anim": "flotar"
+          }
+        ],
+        "label": "July 4, 2776"
+      },
+      "camera": "tilt_up",
+      "transition": "flash"
+    },
+    {
+      "text": "That's twice as old as the Mona Lisa. You're standing inside the history that everyone else only reads about.",
+      "scene": "big_text",
+      "params": {
+        "text": "1,000 vs 500",
+        "label": "USA vs Mona Lisa",
+        "color": "#1e88e5",
+        "lugar": "ciudad"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Still, you're not the oldest thing around. In California's mountains, the oldest bristlecone pines are about forty-eight hundred years old.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "montana",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "arbol",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "crecer"
+          }
+        ],
+        "label": "About 4,800 years old"
+      },
+      "camera": "tilt_up",
+      "transition": "fade"
+    },
+    {
+      "text": "They sprouted around the time the first great pyramids rose in Egypt, and they're still standing.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "desierto",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "piramide",
+            "pos": "fondo",
+            "tamano": "mediano",
+            "anim": "flotar"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "crecer"
+          }
+        ],
+        "label": "Sprouted near the first pyramids"
+      },
+      "camera": "pan_right",
+      "transition": "fade"
+    },
+    {
+      "text": "You rest a hand on the rough bark. For once in your life, you're the young one.",
+      "scene": "escena",
+      "params": {
+        "lugar": "montana",
+        "hora": "atardecer",
+        "plano": "medio",
+        "mood": "happy",
+        "objeto": "none",
+        "label": "The young one"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Your thousandth birthday arrives with a cake. One thousand candles, and the smoke alarm screams before you even blow.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "salon",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "tarta_cumpleanos",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ],
+        "label": "1,000 candles"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Later that night, you're cleaning out a closet. At the bottom sits a dusty box older than most countries.",
+      "scene": "escena",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "noche",
+        "plano": "medio",
+        "mood": "worried",
+        "objeto": "linterna",
+        "label": "A dusty box"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Inside is a leather diary in handwriting you don't recognize. Every page is full of names and dates.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "dormitorio",
+        "hora": "noche",
+        "persona": "medio",
+        "mood": "shocked",
+        "objeto": "libro",
+        "piezas": [
+          {
+            "pieza": "carta",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "label": "Handwriting you don't know"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "Whole decades you can't remember. People you loved, and people you hated, and you've never heard of any of them.",
+      "scene": "accion",
+      "params": {
+        "tipo": "marearse",
+        "lugar": "dormitorio",
+        "hora": "noche",
+        "label": "Who are these people?"
+      },
+      "camera": "shake",
+      "transition": "fade"
+    },
+    {
+      "text": "You open the first page. In faded ink, the first line says: Today is my hundredth birthday.",
+      "scene": "document",
+      "params": {
+        "title": "Diary",
+        "lines": [
+          "Page 1",
+          "Today is my 100th birthday."
+        ],
+        "highlight": 1
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Your hands start to shake. You hold it up to the light, and slowly you realize whose handwriting this is.",
+      "scene": "character",
+      "params": {
+        "bg": "night",
+        "mood": "shocked"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "It's yours. You wrote it, and then you forgot it, just like you forgot everything else.",
+      "scene": "quote",
+      "params": {
+        "author": "You, page one",
+        "text": "Today is my 100th birthday."
+      },
+      "camera": "slam",
+      "transition": "red"
+    },
+    {
+      "text": "So tell me in the comments: if you lived to a thousand, what would break first, your body, your money, or your mind?",
+      "scene": "escena",
+      "params": {
+        "lugar": "salon",
+        "hora": "dia",
+        "plano": "medio",
+        "mood": "happy",
+        "objeto": "movil",
+        "label": "Body, money, or mind?"
+      },
+      "camera": "push_in",
+      "transition": "fade"
+    },
+    {
+      "text": "If you liked this, watch our next video, where we ask what happens if you never slept again. See you there.",
+      "scene": "accion",
+      "params": {
+        "tipo": "dormir",
+        "lugar": "dormitorio",
+        "hora": "noche",
+        "label": "Next: never sleeping again"
+      },
+      "camera": "pull_out",
+      "transition": "black"
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "media",
+      "pelo": "corto",
+      "color_pelo": "castaño_oscuro",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "azul"
+    }
+  },
+  "cover_text": "900 YEARS LEFT",
+  "comment_q": "What would break first for you: body, money, or mind?",
+  "lista": "What If...?",
+  "formato": "horizontal",
+  "question": "What would break first if you stopped aging at thirty and lived to a thousand?",
+  "piezas_pendientes": [
+    "diario_antiguo",
+    "oido",
+    "cristalino_ojo",
+    "testamento_franklin",
+    "lapida",
+    "fuegos_artificiales_4_julio",
+    "pino_bristlecone",
+    "tarta_1000_velas"
+  ],
+  "id": "largo-31-01",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Te despiertas el día de tu 100º cumpleaños con un cuerpo que dejó de envejecer a los 30, y te quedan 900 años por delante. El vídeo avanza por décadas y luego por siglos, y cada bloque responde a una pregunta nueva sobre qué se rompe primero. Bloques: (1) 100-200 años, CUERPO: tu cuerpo no envejece, pero el daño se acumula. El esmalte de los dientes no se regenera, las células ciliadas del oído que mata el ruido no vuelven y el cristalino del ojo sigue creciendo toda la vida. Cierre seco: \"Your body isn't old. It's just worn out.\" (2) 200-300, DINERO: Ben Franklin dejó 1.000 libras a Boston y otras tantas a Filadelfia en 1790 para que crecieran 200 años, y el fondo de Boston llegó a unos 5 millones de dólares. Tú tienes 1.000 años de interés compuesto. El mito dice que eres el ser humano más rico de la Tierra. La realidad: el dólar existe desde 1792 y la libra esterlina, la moneda más antigua que sigue en uso, tiene unos 1.200 años. Cierre: \"You'll outlive the money before the money outlives you.\" (3) 300-400, AMIGOS: sabes mantener unas 150 relaciones (número de Dunbar), pero los entierros se acumulan. Tu grupo de amigos se renueva entero cada 60 años y dejas de aprender nombres. (4) 400-500, FAMILIA: con 4 hijos por generación, en 10 generaciones podrías tener más de un millón de descendientes. Eres el antepasado de un pueblo que no conoces. (5) 500-600, MENTE: la mayoría de las neuronas de tu corteza tienen tu misma edad y no se reemplazan, así que tu cerebro tiene 500 años y no le queda sitio. Empiezas a olvidar tu primer siglo. (6) 600-750, RIESGO: si nunca envejeces, lo que te mata son los accidentes. Te vuelves tan prudente que no sales de casa durante 80 años. (7) 750-900, SOCIEDAD: el inglés de hace 1.000 años (Beowulf) hoy es ilegible, y tú hablas un dialecto muerto. Nadie entiende tus chistes. (8) 900-1.000, PLANETA: asistes al 1.000º cumpleaños de Estados Unidos en 2776, el doble de años que la Mona Lisa. Los grandes pinos bristlecone de California, de unos 4.800 años, siguen siendo más viejos que tú.",
+    "gancho": "Today is your 100th birthday. Your knees feel 30. Your bank account just doubled. And every single person at your high school graduation is dead. You've got 900 more years. So what gives out first: your body, your money, or your mind?",
+    "giro_final": "Year 1,000. You're cleaning out a box older than most countries and find a diary in a stranger's handwriting. You don't remember writing it. You don't recognize the person. The first line says: \"Today is my 100th birthday.\" It's yours.",
+    "estilo_visual": "Las escenas que mandan son 'year_jump' (100 → 200 → 500 → 1000) para abrir cada bloque como un capítulo, y 'person' con zonas en rojo para el cuerpo: dientes, oídos y ojos se marcan por turnos. 'accion' remata los momentos físicos: 'vista_nublada' para el cristalino, 'latido' cuando el riesgo de accidente asusta, 'dudar' y 'marearse' cuando la memoria falla. 'money' muestra la cifra de Franklin subiendo y se congela cuando la moneda desaparece. Apoyos: 'document' con el testamento de Franklin, 'group' que pierde una persona en cada década hasta quedar solo el protagonista, 'big_text' solo para cifras clave (150, 1,000,000, 4,800) y 'map_pin' (globo) para el millón de descendientes repartidos. 'composicion' con una tarta de 1.000 velas y fuegos artificiales del 4 de julio de 2776. 'escena' de día, luminosa, en casa, de la que el protagonista no sale durante 80 años. El cierre usa 'document' con la página del diario en primer plano y la línea resaltada \"Today is my 100th birthday\", que enlaza con la primera escena.",
+    "por_que_funcionara": "Es una sola premisa en segunda persona y gira sobre todo en torno al cuerpo, el único ángulo que convierte en el canal. El gancho no repite el título: plantea un dilema concreto con 3 datos chocantes. Cada bloque abre un mito nuevo y cierra con una frase seca, así hay una escalada cada 2-3 minutos sin muletillas como 'here's the truth'. Los datos son reales y buscables (Franklin, Dunbar, la libra esterlina, Beowulf, los bristlecone, el 250 aniversario de EE. UU.) y el referente del 4 de julio de 2776 engancha al público americano. El final evita el cierre reflexivo que rompe el bucle: es un giro que devuelve la primera frase del vídeo.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "diente",
+      "oido",
+      "cristalino_ojo",
+      "tarta_1000_velas",
+      "diario_antiguo",
+      "testamento_franklin",
+      "pino_bristlecone",
+      "fuegos_artificiales_4_julio",
+      "lapida"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "Today is your hundredth birthday. Your knees feel thirty, your bank account just doubled, and everyone from your graduation is dead.",
+      "tipo": "c",
+      "puntuacion": 9,
+      "motivo": "Three concrete facts that clash, in second person, and the theme (living very long) is clear without a title."
+    },
+    {
+      "texto": "You've got nine hundred years left. What gives out first: your body, your money, or your mind?",
+      "tipo": "b",
+      "puntuacion": 8,
+      "motivo": "Names the theme and poses a dilemma without repeating the title."
+    },
+    {
+      "texto": "What if you stopped aging at thirty and lived to a thousand?",
+      "tipo": "a",
+      "puntuacion": 6,
+      "motivo": "Clear, but it is an abstract opening question, which the channel data says performs worse."
+    },
+    {
+      "texto": "You will wake up at a thousand years old with a diary you don't remember writing.",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Strong open loop, but it gives less context about the premise."
+    },
+    {
+      "texto": "Everyone thinks living forever would make you rich and happy. It would do the opposite.",
+      "tipo": "e",
+      "puntuacion": 7,
+      "motivo": "Myth versus reality that sets up the structure, but it is less concrete."
+    }
+  ],
+  "medida_estado": "esperando",
+  "tanda": "largo-31"
+}
