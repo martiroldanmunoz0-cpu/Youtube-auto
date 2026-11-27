@@ -548,5 +548,29 @@
     "issue": 130,
     "estado": "pendiente",
     "publish_at": "2026-11-28T00:00:00Z"
+  },
+  {
+    "id": "pedido-35-01",
+    "title": "What If You Held a Spoonful of a Neutron Star? #shorts",
+    "description": "Would you try to lift it? 👇\n\nWhat happens if you hold a teaspoon of neutron star? It weighs about a billion tons, more than every human on Earth combined.\nThe star it comes from is only about twelve miles wide, yet it outweighs our Sun.\n#neutronstar #space #whatif #science #shorts",
+    "tags": [
+      "neutron star",
+      "teaspoon of neutron star",
+      "what if",
+      "neutron star weight",
+      "space facts",
+      "how heavy is a neutron star",
+      "astronomy",
+      "science facts",
+      "densest object in the universe",
+      "weird science"
+    ],
+    "video": "pedido-35-01.mp4",
+    "portada": "pedido-35-01_portada.jpg",
+    "lista": "What If...?",
+    "tag": "pedido-35",
+    "issue": 131,
+    "estado": "pendiente",
+    "publish_at": "2026-11-28T15:30:00Z"
   }
 ]
