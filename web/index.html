@@ -149,8 +149,8 @@ nav .n.bad{background:var(--bad);color:#fff}
     <button class="iconbtn" id="settings" title="Ajustes">⚙︎</button>
   </div>
   <nav id="tabs">
-    <button data-t="revisar" class="on">Revisar<span class="n" id="n-revisar" hidden></span></button>
-    <button data-t="calendario">Calendario</button>
+    <button data-t="revisar" hidden>Revisar<span class="n" id="n-revisar" hidden></span></button>
+    <button data-t="calendario" class="on">Calendario</button>
     <button data-t="programados">Programados</button>
     <button data-t="marcha">En marcha<span class="n" id="n-marcha" hidden></span></button>
     <button data-t="crear">Crear Shorts</button>
@@ -164,13 +164,13 @@ nav .n.bad{background:var(--bad);color:#fff}
   <div class="banner" id="tokwarn" hidden></div>
   <div class="banner" id="notoken" hidden>Para aprobar vídeos o lanzar pedidos desde aquí, conecta tu cuenta una vez: <button id="notoken-btn">configurar</button>.</div>
 
-  <section id="revisar" class="on">
+  <section id="revisar" hidden>
     <h2>Vídeos para revisar</h2>
     <p class="hint">Mira cada vídeo y decide. Los que publiques se programan solos (1 al día, máx. 3) detrás de los que ya hay.</p>
     <div id="revisar-list"><p class="loading">Cargando…</p></div>
   </section>
 
-  <section id="calendario">
+  <section id="calendario" class="on">
     <div class="cal-head"><button class="iconbtn" id="cal-prev">‹</button><h3 id="cal-title"></h3><button class="iconbtn" id="cal-next">›</button><button class="iconbtn" id="cal-today">Hoy</button></div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><div class="seg"><button data-v="semana">Semana</button><button data-v="mes">Mes</button></div>
     <button class="iconbtn" id="cal-sync" style="margin-bottom:10px">↻ Comprobar YouTube</button></div>
@@ -187,7 +187,7 @@ nav .n.bad{background:var(--bad);color:#fff}
 
   <section id="marcha">
     <h2>Generándose ahora</h2>
-    <p class="hint">Las tandas van en cola, una detrás de otra. Cada vídeo aparece en "Revisar" en cuanto está listo.</p>
+    <p class="hint">Las tandas van en cola, una detrás de otra. Cada vídeo se programa solo en YouTube en cuanto está listo (si tiene un aviso grave, va a Problemas).</p>
     <div class="countdown"><span>Próxima tanda semanal automática</span><b class="cd-left">—</b><small class="cd-when"></small></div>
     <div id="plan-box"></div>
     <div id="marcha-list"><p class="loading">Cargando…</p></div>
@@ -583,7 +583,7 @@ nav .n.bad{background:var(--bad);color:#fff}
   function renderProgramados() {
     const el = $("#prog-list");
     const items = queue.filter(q => q.publish_at || q.estado).map(q => ({...q, t: q.publish_at ? new Date(q.publish_at) : null}));
-    if (!items.length) { el.innerHTML = `<div class="empty">Todavía no hay vídeos programados. Aprueba alguno en “Revisar”.</div>`; return; }
+    if (!items.length) { el.innerHTML = `<div class="empty">Todavía no hay vídeos programados. Se añaden solos en cuanto terminan.</div>`; return; }
     const now = new Date();
     const future = items.filter(q => !q.t || q.t > now).sort((a, b) => (a.t || 0) - (b.t || 0));
     const past = items.filter(q => q.t && q.t <= now).sort((a, b) => b.t - a.t);
@@ -602,7 +602,7 @@ nav .n.bad{background:var(--bad);color:#fff}
         if (k !== day) { day = k; html += `<h3>${q.t ? esc(fmtDay(q.t)) : "Sin fecha"}</h3>`; }
         html += row(q);
       }
-    } else html += `<div class="empty">No hay nada pendiente de publicar. Aprueba vídeos en “Revisar”.</div>`;
+    } else html += `<div class="empty">No hay nada pendiente de publicar. Los vídeos nuevos se programan solos.</div>`;
     if (past.length) html += `<h3>Ya publicados</h3><div class="list">${past.slice(0, 30).map(row).join("")}</div>`;
     el.innerHTML = html;
   }
@@ -1064,8 +1064,8 @@ nav .n.bad{background:var(--bad);color:#fff}
   }
   $("#refresh").onclick = refreshAll;
   updateBanner();
-  const saved = new URLSearchParams(location.search).get("v") ? "revisar" : store.get("tab");
-  if (saved && document.getElementById(saved)) show(saved);
+  const saved = new URLSearchParams(location.search).get("v") ? "problemas" : store.get("tab");
+  if (saved && saved !== "revisar" && document.getElementById(saved)) show(saved);
   refreshAll();
   setInterval(() => { if (!document.hidden) loadRunning(); }, 60000);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshAll(); });
