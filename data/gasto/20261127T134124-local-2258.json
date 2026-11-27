@@ -1,0 +1,16 @@
+{
+ "fecha": "2026-11-27T13:41:59.456670+00:00",
+ "tanda": "local",
+ "total_usd": {
+  "anthropic": 0.129116,
+  "openai": 0
+ },
+ "llamadas": [
+  {
+   "servicio": "anthropic",
+   "modelo": "claude-opus-5-5",
+   "usd": 0.129116,
+   "que": "comparación con otros canales"
+  }
+ ]
+}

@@ -17,7 +17,7 @@
 **Fuentes de tráfico:** feed Shorts 3.793, búsqueda 107, sugeridos 42, otras páginas YT 16, página del canal 11, directo/otros 2, externo 1
 
 ## Resumen
-No hay datos del periodo anterior (canal_anterior vacío), así que no se puede comparar semana contra semana. Esta semana es la línea base. El canal sumó 3.938 vistas, 2.148 minutos vistos y 6 suscriptores netos (1,52 por cada 1.000 vistas), con una interacción del 2,16%. Todo procede de 4 Shorts, porque los largos no aportan nada. El 96% de las vistas llega del feed Shorts (3.793). Los dos Shorts con más vistas (Yamaguchi, 1.239, y Grand Canyon, 1.158) superan el 100% de visualización pero no ganan ningún suscriptor. El de sueño, con menos vistas (764), aporta 4 de los 6 suscriptores. Se confirman las conclusiones de la revisión anterior, con la cautela de que solo hay 4 vídeos y las cifras de suscriptores son mínimas (de 0 a 4 por vídeo).
+No hay periodo anterior con el que comparar porque canal_anterior viene vacío. Esta es la primera semana medible y además coincide con la revisión 2026-S47, en la que se basaron las conclusiones previas. Los 4 Shorts sumaron 3.938 vistas, 2.148 minutos vistos y 6 suscriptores netos (1,52 por cada 1.000 vistas), con un 2,16% de interacción pero solo 1 comentario y 1 compartido. El alcance y la conversión fueron por caminos distintos. Los dos Shorts con más vistas y más de un 100% visto (Yamaguchi, 1.239 vistas y 105%; Grand Canyon, 1.158 vistas y 112%) no ganaron ningún suscriptor. Los dos con menos vistas (sueño, 764; excavar, 777) aportaron los 6. Con 4 vídeos todo esto son pistas, no conclusiones: se confirman las conclusiones previas con algunos matices.
 
 ## Vídeos (nota 0-100 frente a los de su tipo)
 | | Vídeo | Tipo | Vistas | % visto | Media | Subs/1000 | Interacción | Fuente principal |
@@ -28,41 +28,40 @@ No hay datos del periodo anterior (canal_anterior vacío), así que no se puede 
 | 🔴 44 | The Man Who Survived Two Atomic Bombs: Tsutomu Yamaguchi #sh | short | 1.239 | 105% | 72s | 0.0 | 1.69% | feed Shorts |
 
 ## Patrones de éxito
-- Bucle o rewatch: Grand Canyon (112% visto, 52 s) y Yamaguchi (105%, 69 s) son los que más vistas tienen (1,20x y 1,28x la mediana). Los dos terminan con un dato contundente que invita a volver a verlo.
-- Tema de cuerpo humano en segunda persona: el Short de sueño es el único que convierte de verdad (5,24 suscriptores por cada 1.000 vistas, 4,08x la mediana) y el que tiene más interacción (2,88%). Además, es el único con 1 comentario y 1 compartido.
-- Entidad buscable en el título: Yamaguchi (43 vistas desde búsqueda) y Grand Canyon (38) son los que más búsqueda captan. En cambio, el título genérico de 'dug straight down' solo consigue 12.
-- Frases secas con remate ('Second bomb. Same distance. Same man.' o 'Too dangerous.') retienen casi al 100%. Las mayores fugas están en los primeros 10 segundos.
-- Duración: los cuatro Shorts duran entre 52 y 69 s. El de 69 s (Yamaguchi) mantiene un 105%, así que alargar hasta unos 70 s no castiga la retención. Aún es pronto para fijar una duración óptima.
+- Los dos Shorts con más vistas (Yamaguchi y Grand Canyon) usan una entidad buscable y reconocible en el título y superan el 100% visto. Eso indica bucle y revisionado: el Grand Canyon retiene el 133% en el segundo 13. También son los que más vistas sacan de búsqueda (43 y 38, frente a 14 y 12).
+- La conversión llega con temas del cuerpo humano o el espectador en segunda persona. 'What Happens If You Stop Sleeping?' logra 5,24 suscriptores por cada 1.000 vistas, 4,08 veces la mediana, y un 2,88% de interacción, la mejor del periodo. Es una curiosidad útil y personal, no un espectáculo ajeno.
+- Las frases secas con un remate corto retienen casi el 100%. En cambio, en los cuatro vídeos la mayor fuga está en los segundos 0 a 3: una pregunta genérica en el arranque o la premisa repetida en forma de pregunta hacen perder entre el 17% y el 32%.
+- Todos duran entre 52 y 69 s. Con 4 vídeos no hay datos suficientes para saber si la duración influye; las diferencias se explican mejor por el gancho y el tema.
 
 ## Vídeos flojos: qué falla (no se rehacen)
 **The Man Who Survived Two Atomic Bombs: Tsutomu Yamaguchi #shorts**
-- Qué falla: El gancho es el más débil del canal: en el segundo 17 solo queda el 57,4% de la audiencia y la retención es 0,47 respecto a vídeos parecidos. Las causas son la pregunta que repite la premisa en el segundo 2,5 (-32,4%) y la ficha 'Twenty-nine-year-old engineer' en el 9,6 (-15,9%). Consigue el mayor número de vistas (1.239) y un 105% visto, pero 0 suscriptores y la interacción más baja (1,69%). El cierre con 'likely' pierde un 4,5%.
-- Para los próximos: En las próximas historias reales, pasar de la frase de 0 s directamente a la acción en segunda persona, con el nombre integrado ('You're Tsutomu Yamaguchi, walking to work in Hiroshima…'). Cerrar con un dato oficial y único ('Japan officially recognized only one.') y añadir un remate que conecte con la serie para invitar a suscribirse.
-
-**What If You Dug Straight Down? Where You'd Really Come Out #shorts**
-- Qué falla: Tiene el porcentaje visto más bajo (71,9%, 0,78x la mediana), 0,8x de vistas y 0,529 de retención respecto a parecidos. Pierde un 16,5% en el segundo 0 con un 'What if' en forma de pregunta y un 9,5% con un cierre moralizante ('So the next time you pick up a shovel…') que rompe el bucle. Solo consigue 12 vistas desde búsqueda porque el título no tiene una entidad concreta. Aun así, convierte 2,57 por cada 1.000 vistas, que es aceptable.
-- Para los próximos: En los próximos 'What if' geográficos, abrir con la consecuencia física ('Dig straight down from Kansas. At 2.5 miles, the rock hits 130°F.'). Terminar en el último dato y cortar. Poner en el título un lugar buscable y mantenerlo en 40-55 caracteres.
+- Qué falla: Tiene la peor retención frente a vídeos parecidos (0,47) y el peor gancho: solo queda el 57,4% en el segundo 17. La pregunta del segundo 2,5 ('How did one man survive both atomic bombs...?') pierde el 32,4% justo después de haberlo afirmado. La ficha de datos 'Tsutomu Yamaguchi. Twenty-nine-year-old engineer...' pierde otro 15,9%. Quien supera ese arranque se queda y repite (105% visto), pero hay 0 suscriptores en 1.239 vistas y un 1,69% de interacción. Es una historia ajena sin continuidad hacia el canal.
+- Para los próximos: En las próximas historias reales, pasar del dato inicial directamente a la acción en segunda persona, con el nombre integrado ('August 6th, 1945. Tsutomu Yamaguchi is walking to work...'), sin preguntas ni fichas. Cerrar con el dato oficial y exclusivo ('Japan officially recognized only one') en lugar de 'likely 160'. Agruparlas en una serie reconocible con su lista para que el alcance se convierta en suscriptores.
 
 **What If You Fell Into the Grand Canyon? Movies vs Reality #shorts**
-- Qué falla: No es flojo en alcance (1.158 vistas, 112% visto), pero tiene 0 suscriptores con ese volumen. En el segundo 0 pierde un 24,1% con la pregunta 'What if', y luego otros dos 9-10% con 'Forget the movies. Here's the truth.' y con el mito del helicóptero, que aparece solo en su plano.
-- Para los próximos: Mantener Movies vs Reality, pero abrir con el giro ('You fall into the Grand Canyon. You'd probably survive.'). Poner mito y refutación en el mismo plano. Probar a convertirlo en una serie fija con el mismo título y un solo elemento que cambie, para que el espectador tenga un motivo para suscribirse.
+- Qué falla: Engancha mucho (112% visto, 1.158 vistas, 38 desde búsqueda), pero consigue 0 suscriptores. El arranque 'What if you fell into the Grand Canyon?' pierde el 24,1%. 'Forget the movies. Here's the truth.' pierde el 9,1% y la frase de película suelta en el segundo 23,3 pierde el 10%.
+- Para los próximos: Mantener Movies vs Reality como serie fija, con el mito y su refutación en el mismo plano. Abrir con la consecuencia ('You fall into the Grand Canyon. You'd probably survive.') y quitar las transiciones vacías. Para convertir, dejar claro que es una serie con varios episodios (rótulo de serie y lista) y cerrar con una elección binaria.
+
+**What If You Dug Straight Down? Where You'd Really Come Out #shorts**
+- Qué falla: Es el porcentaje visto más bajo del periodo (71,9%, 0,78 veces la mediana) y su retención frente a parecidos es de 0,529. Pierde el 16,5% en el segundo 0 con 'What if you dug straight down from Kansas?' y el 9,5% con el cierre moralizante 'So the next time you pick up a shovel...', que rompe el bucle. Aun así convierte bien: 2 suscriptores, 2,57 por cada 1.000 vistas.
+- Para los próximos: En los 'What if' geológicos, abrir con la consecuencia física ('Dig straight down from Kansas and you won't hit China — you'll drown.'). Escalar con cifras de calor y profundidad en frases secas y terminar con el último dato, sin moraleja.
 
 ## Tráfico
-La dependencia del feed Shorts es casi total (3.793 de 3.938 vistas, un 96%). Sugeridos aporta 42, búsqueda 107 y externo 1. La búsqueda es la segunda fuente y se concentra en títulos con una entidad concreta: Yamaguchi (43) y Grand Canyon (38), frente a 12-14 en sueño y excavación. Qué hacer: poner en cada título un nombre, lugar o récord buscable, y agrupar los Shorts en listas o series (Human Body, What If..., Incredible True Stories) para ganar sugeridos y visitas a la página del canal, que hoy es de solo 11. Con 1 vista externa y 1 compartido, no hay difusión fuera de YouTube.
+El feed de Shorts aporta 3.793 de las 3.938 vistas (96%), así que el resultado depende de la retención en los primeros 3 segundos. La búsqueda aporta 107 (2,7%) y se concentra en los títulos con una entidad buscable: Yamaguchi 43 y Grand Canyon 38, frente a 14 y 12 en los otros dos. Los sugeridos (42) y la página del canal (11) son casi nada, lo que indica que todavía no hay sesiones entre vídeos. Qué hacer: 1) atacar la fuga de los segundos 0 a 3 para que el feed reparta más; 2) poner siempre en el título una entidad concreta y buscable (lugar, persona, récord); 3) ordenar los vídeos en listas o series y fijar un comentario que enlace al siguiente episodio, para generar sugeridos y visitas a la página del canal.
 
 ## Suscriptores
-Hubo 6 suscriptores netos y ninguna baja. El Short de sueño (cuerpo humano, segunda persona, la amenaza le ocurre al espectador) aporta 4, con 5,24 por cada 1.000 vistas. El de excavación aporta 2 (2,57 por cada 1.000). Los dos con más vistas y más rewatch (Grand Canyon y Yamaguchi) aportan 0. La interpretación es que se suscribe quien siente que el tema le afecta a él y espera más del mismo tipo, mientras que las historias o escenarios ajenos se consumen sin crear vínculo. Con cifras tan bajas es solo una señal: hay que confirmarla con 4-6 Shorts más de cuerpo humano.
+Los 6 suscriptores netos llegan de dos vídeos en segunda persona sobre el cuerpo del espectador o su entorno: sueño (4, 5,24 por cada 1.000 vistas) y excavar (2, 2,57 por cada 1.000). Los dos de más alcance y más visionado (Yamaguchi y Grand Canyon, 2.397 vistas entre ambos) dan 0. Hipótesis, con solo 6 suscriptores en total: se suscribe quien siente que el canal le explica cosas sobre sí mismo y espera más del mismo tipo, mientras que el espectáculo puntual se consume y no fideliza. Hacen falta más vídeos para confirmarlo.
 
 ## Acciones para el próximo periodo
-1. Publicar 3 Shorts de cuerpo humano en segunda persona (hambre, frío, deshidratación) bajo una misma serie, con el objetivo de superar 3 suscriptores por cada 1.000 vistas.
-2. Quitar en todos los guiones la pregunta de los segundos 0-5 y la ficha del protagonista. Son las mayores fugas (-32%, -24%, -23%, -20%, -16%). El objetivo es que quede más del 85% en el segundo 15.
-3. Hacer otro Movies vs Reality con un lugar o situación reconocible y el mito y la refutación en el mismo plano. Debe repetir más del 100% visto y además conseguir al menos 1 suscriptor.
-4. Escribir títulos de 40-55 caracteres con una entidad buscable para subir la búsqueda por encima de las 40 vistas por Short.
-5. Mantener los largos en pausa (no hay datos) y publicar de 6 a 7 Shorts por semana de forma constante. Probar uno de 70-90 s con escalada y compararlo con los de 50-60 s.
+1. Reescribir el arranque de todos los próximos Shorts: en el segundo 0, la consecuencia o el giro como afirmación y, en el segundo 2, un dato nuevo. Nunca repetir la premisa como pregunta. Es la mayor fuga medida (17-32%). El título sí puede ser una pregunta, que es lo habitual en el nicho (77%).
+2. Producir una serie fija de cuerpo humano en segunda persona ('What Happens If You Stop [X]?': comer, beber, pasar frío, parpadear), con lista propia. Es el único ángulo con buena conversión (5,24 por cada 1.000 vistas).
+3. Convertir Movies vs Reality en una serie con plantilla de título fija y una entidad buscable ('[Lugar o situación]: Movies vs Reality'), con el mito y su refutación en el mismo plano, para aprovechar el 112% visto y la búsqueda.
+4. Cerrar cada Short con el último dato oficial o exclusivo y una elección binaria, y fijar un comentario con esa pregunta y un enlace al siguiente episodio. Ahora mismo hay 1 comentario en 3.938 vistas y apenas sugeridos.
+5. Mantener 6-8 Shorts por semana y, dentro de ellos, probar 2 escaladas de 75-90 s frente a 2 Shorts de 50-60 s del mismo tema. Comparar el porcentaje visto y los suscriptores por cada 1.000 vistas antes de cambiar la duración por defecto.
 
 ## Temas
-- Más: Cuerpo humano en segunda persona (sueño, hambre, frío, deshidratación): es el único que convierte (5,24 suscriptores por cada 1.000 vistas, 2,88% de interacción)., Movies vs Reality sobre lugares o situaciones extremas reconocibles (112% visto, 38 vistas desde búsqueda), convertido en serie fija., Historias reales con una rareza única y un nombre buscable (1.239 vistas, 105% visto, 43 desde búsqueda), contadas en acción y en segunda persona.
-- Menos / enfocar distinto: 'What if' geológicos o abstractos que abren con una pregunta (71,9% visto, -16,5% en el segundo 0)., Biografías que empiezan con una pregunta y una ficha de datos (-32% y -16%; solo queda el 57% en el segundo 17)., Cierres reflexivos del tipo 'the next time you...' (-9,5%, rompen el bucle)., Temas con mucho alcance pero sin vínculo con el espectador: 0 suscriptores con más de 1.100 vistas si no hay una serie reconocible detrás.
+- Más: Cuerpo humano en segunda persona (sueño, hambre, frío, deshidratación) como serie fija: 5,24 suscriptores por cada 1.000 vistas y 2,88% de interacción, el único ángulo que convierte con claridad., Movies vs Reality sobre lugares o situaciones extremas reconocibles: 112% visto y 38 vistas desde búsqueda. Falta encontrar cómo convertirlo en suscriptores., Historias reales con una rareza única y un nombre buscable (1.239 vistas, 105% visto, 43 desde búsqueda), contadas en acción y agrupadas en una serie.
+- Menos / enfocar distinto: Abrir con 'What if...?' o con cualquier pregunta hablada en el segundo 0: pierde el 16,5% en el vídeo de excavar y el 24,1% en el del Grand Canyon., Biografías con pregunta y ficha de datos al inicio: -32,4% y -15,9%, y solo queda el 57% en el segundo 17., Cierres reflexivos del tipo 'the next time you...': -9,5% y rompen el bucle., Temas de mucho alcance pero sueltos, sin serie ni conexión con el espectador: 0 suscriptores en 2.397 vistas.
 
 ## Comparación con otros canales (2026-11-27)
 
@@ -71,51 +70,48 @@ Hubo 6 suscriptores netos y ninguna baja. El Short de sueño (cuerpo humano, seg
 | The Curio Lab | **nosotros** | 8 | 11.0 | 82% | 1.205 | 0 | 110.0 | 1.66% |
 | OutwardAnimates | parecido | 73.800 | 21.0 | 97% | 22.354 | 2.840 | 0.29 | 2.38% |
 | House In Crisis | parecido | 15.200 | 6.3 | 100% | 120.869 | 0 | 7.95 | 1.9% |
-| ConChaser | parecido | 35.400 | 7.5 | 0% | 0 | 88.865 | 2.51 | 0.5% |
-| Silenthys | parecido | 33.500 | 15.0 | 100% | 57.097 | 0 | 1.7 | 2.65% |
-| Mo and Coocoo | parecido | 175.000 | 1.9 | 100% | 275.485 | 0 | 1.57 | 2.25% |
-| Unexplained Mysteries | referente | 2.010.000 | 5.4 | 0% | 0 | 23.794 | 0.01 | 1.84% |
-| Beyond the Observable Universe | referente | 2.100.000 | 2.9 | 100% | 745.670 | 0 | 0.36 | 0.61% |
-| Uncharted Mysteries | referente | 311.000 | 1.6 | 0% | 0 | 164.924 | 0.53 | 0.87% |
+| ConChaser | parecido | 35.400 | 7.5 | 0% | 0 | 88.876 | 2.51 | 0.5% |
+| Silenthys | parecido | 33.500 | 15.0 | 100% | 57.095 | 0 | 1.7 | 2.65% |
+| Mo and Coocoo | parecido | 175.000 | 1.9 | 100% | 275.491 | 0 | 1.57 | 2.25% |
+| Unexplained Mysteries | referente | 2.010.000 | 5.4 | 0% | 0 | 23.792 | 0.01 | 1.84% |
+| Beyond the Observable Universe | referente | 2.100.000 | 2.9 | 100% | 745.808 | 0 | 0.36 | 0.61% |
+| Uncharted Mysteries | referente | 311.000 | 1.6 | 0% | 0 | 164.943 | 0.53 | 0.87% |
 
 ## Posición
-```json
-{
-  "posicion": "Corrijo las cifras del análisis anterior. The Curio Lab tiene 8 suscriptores y una mediana de 880 vistas por vídeo (no 1.048). Los parecidos tienen una mediana de 88.865 (rango 21.224–275.485), unas 100 veces más (no 85). Los Shorts sostienen el canal con una mediana de 1.205 vistas, mientras que los largos están en 0,5 de mediana (0 y 1 vistas). Hay una señal positiva: los dos Shorts más recientes ('What Actually Happens If You Step in Quicksand?', 3,0x, y 'The Bloop', 2,7x) van por encima del ritmo normal del canal en solo 1,6 días. Las 110 vistas por suscriptor (no 131) solo reflejan que hay 8 suscriptores. Los datos son poco consistentes (9 vídeos totales frente a 11 analizados, 11 subidas por semana), así que todo es orientativo.",
-  "diferencias": [
-    {"metrica": "Vistas medianas por vídeo", "nosotros": "880 (Shorts 1.205; largos 0,5)", "ellos": "88.865 (rango 21.224–275.485)", "que_hacer": "Centrarse en Shorts, que es donde ya hay tracción. Pausar los largos hasta que algún Short pase de 10.000 vistas."},
-    {"metrica": "% de Shorts", "nosotros": "82%", "ellos": "100% (4 de 5 parecidos están entre el 97 y el 100%; ConChaser tiene 0%)", "que_hacer": "Llegar al 100% de Shorts durante 4–6 semanas. Los largos, más adelante y como serie aparte."},
-    {"metrica": "Subidas por semana", "nosotros": "11,0 (dato inflado por el lanzamiento: el canal solo tiene 9–11 vídeos)", "ellos": "7,5 (rango 1,9–21)", "que_hacer": "Mantener 6–7 Shorts por semana de forma sostenida, sin ráfagas seguidas de silencio."},
-    {"metrica": "Duración mediana de los Shorts", "nosotros": "53 s", "ellos": "71,5 s (los que se salen duran entre 17 y 116 s)", "que_hacer": "La duración por sí sola no decide el resultado. Probar 70–90 s con una escalada progresiva, que es la franja de OutwardAnimates, House In Crisis y Mo and Coocoo, y compararla con los 50 s actuales."},
-    {"metrica": "Duración de los largos", "nosotros": "517 s", "ellos": "702 s (los largos que se salen en ConChaser duran 831–1.106 s)", "que_hacer": "Al retomar los largos, apuntar a 12–15 min con una sola premisa desarrollada, no listas."},
-    {"metrica": "% de títulos 'What if'", "nosotros": "27%", "ellos": "38% (93–100% en ConChaser y OutwardAnimates)", "que_hacer": "Elegir una plantilla de serie fija con un solo elemento variable y repetirla."},
-    {"metrica": "% de títulos en forma de pregunta", "nosotros": "55%", "ellos": "77%", "que_hacer": "Subir a más del 75%. Tus dos Shorts en auge son una pregunta y un misterio no resuelto, así que el formato ya funciona contigo."},
-    {"metrica": "Longitud media del título", "nosotros": "57 caracteres", "ellos": "53 caracteres", "que_hacer": "Recortar a 40–55 caracteres con un único gancho. 'Last Person on Earth: 5 Movie Myths That Would Get You Killed' mezcla dos ideas y tuvo 0 vistas."},
-    {"metrica": "Vistas por suscriptor", "nosotros": "110", "ellos": "1,7", "que_hacer": "No es una fortaleza: hoy las vistas llegan del feed, no de suscriptores. Priorizar series reconocibles que conviertan espectadores en suscriptores."},
-    {"metrica": "% de likes", "nosotros": "1,66%", "ellos": "2,25%", "que_hacer": "Cerrar cada Short con un remate visual o un giro, en lugar de cortar justo después del dato."},
-    {"metrica": "% de comentarios", "nosotros": "0,013%", "ellos": "0,033%", "que_hacer": "Terminar con una elección binaria para el espectador y fijar un comentario con esa misma pregunta."}
-  ],
-  "patrones_virales": [
-    "Plantilla de serie con una sola variable. Los vídeos que se salen comparten exactamente la misma estructura de título y solo cambia un elemento: House In Crisis 23–43x, ConChaser 10–36x, OutwardAnimates 4–14x.",
-    "Escala exagerada aplicada a algo reconocible: un objeto o ser cotidiano llevado a un tamaño, velocidad o cantidad absurda (OutwardAnimates hasta 13,8x).",
-    "Segunda persona ('you'): la premisa le pasa al espectador. Lo usan los tres largos que se salen de ConChaser (10–36x) y los de House In Crisis.",
-    "Intuición rota o explicación de un mecanismo: 'menos de lo que crees', 'por qué es imposible', 'por qué ocurre X'. Aparece en Beyond the Observable Universe (16,7x), Silenthys (10–13x) y Mo and Coocoo (3–3,5x).",
-    "Un solo gancho por título. Emojis, '!?' y hashtags se añaden detrás del gancho y no lo sustituyen.",
-    "La duración no es decisiva: los Shorts que se salen van de 17 s (un único dato) a 116 s (escalada). Lo que separa éxitos de flojos dentro de un mismo canal es el ángulo: las variantes demasiado técnicas o de nicho fallan (OutwardAnimates, 'cluster bombs', 5.877 vistas)."
-  ],
-  "pruebas": [
-    "Serie fija de 6 Shorts en segunda persona con la plantilla 'What if your [objeto] could [capacidad]?' (ejemplos propios: 'What if your shadow could walk away?', 'What if your fridge could talk back?'). Medir las vistas medianas frente a 1.205 y los suscriptores ganados por Short. Funciona si la mediana supera 3.000.",
-    "Shorts explicativos 'What actually happens…' / 'Why…', siguiendo el formato del Short de arenas movedizas que va a 3,0x (ejemplos: 'What Actually Happens If You Swall
+Confirmo el diagnóstico con varias correcciones de cifras. The Curio Lab tiene 8 suscriptores y una mediana de 880 vistas por vídeo. Los Shorts sostienen el canal (1.205 de mediana) y los largos están en 0,5. La mediana de los parecidos es 88.877 vistas (rango 21.224–275.491, no 88.865 ni 275.485), unas 100 veces más. La única señal positiva son los dos Shorts más recientes, 'Quicksand' a 2,9x y 'The Bloop' a 2,6x de su ritmo normal (no 3,0x y 2,7x). Los dos llevan solo 1,6 días publicados y el canal tiene muy poco historial, así que es una pista, no una tendencia. Los datos son incoherentes (9 vídeos totales frente a 11 analizados). Los dos vídeos con 0 vistas pueden estar recién subidos o no ser públicos, así que hay que revisarlos antes de darlos por fallidos.
 
 ## Diferencias
 | Métrica | Nosotros | Ellos | Qué hacer |
 |---|---|---|---|
+| Vistas medianas por vídeo | 880 (Shorts 1.205; largos 0,5) | 88.877 (rango 21.224–275.491) | Concentrar toda la producción en Shorts, donde ya hay tracción. Pausar los largos hasta que la mediana de los Shorts pase de 5.000 vistas. |
+| % de Shorts | 82% | 100% (4 de 5 parecidos entre el 97 y el 100%; solo ConChaser está en 0%) | Publicar solo Shorts durante 4–6 semanas. |
+| Subidas por semana | 11,0 (cifra inflada por la ráfaga de lanzamiento) | 7,5 (rango 1,9–21) | Mantener 6–8 Shorts por semana de forma estable. La constancia importa más que el volumen. |
+| Duración mediana de los Shorts | 53 s | 71,5 s (los que se salen van de 17 a 116 s) | Probar dos versiones: Shorts de escalada de 70–90 s frente a Shorts de dato único de 20–30 s. Evitar la franja intermedia de 50 s, que no aprovecha ninguno de los dos formatos. |
+| Duración de los largos | 517 s | 702 s (los largos de ConChaser que se salen duran 831–1.106 s) | Cuando se retomen los largos, hacerlos de 12–15 min con una sola premisa desarrollada en lugar de listas. |
+| % de títulos 'What if' | 27% | 38% (93–100% en ConChaser y OutwardAnimates) | Crear una serie con una plantilla fija de título y un único elemento variable. |
+| % de títulos en forma de pregunta | 55% | 77% | Subir a más del 75%. El Short en auge de arenas movedizas ya es una pregunta. |
+| Longitud media del título | 57 caracteres | 53 caracteres | Usar 40–55 caracteres con un solo gancho. 'Last Person on Earth: 5 Movie Myths…' mezcla dos ideas en un mismo título. |
+| Vistas por suscriptor | 110 | 1,7 | No es una fortaleza: solo refleja que hay 8 suscriptores. Medir los suscriptores ganados por cada 1.000 vistas. |
+| % de likes | 1,66% | 2,25% | Cerrar cada Short con un remate visual o un giro final, en lugar de cortar justo después del dato. |
+| % de comentarios | 0,013% | 0,033% | Terminar con una elección binaria para el espectador y fijar un comentario con esa misma pregunta. |
 
 ## Qué tienen los vídeos que se salen de la media
+- Serie con una plantilla fija y una sola variable que cambia. Lo muestran House In Crisis (23–43x), ConChaser (10–36x) y OutwardAnimates (4–14x).
+- Escala absurda aplicada a algo reconocible: tamaño, velocidad o multiplicación llevados al extremo (OutwardAnimates, hasta 13,8x y 19,6x de ritmo).
+- Premisa en segunda persona, donde la situación le ocurre al espectador ('What If You…'). Aparece en los tres largos de ConChaser que se salen y en los Shorts de House In Crisis.
+- Intuición rota o explicación de un mecanismo ('menos de lo que crees', 'por qué es imposible', 'por qué ocurre'). Lo usan Beyond the Observable Universe (16,7–19,3x), Silenthys (10–13x) y Mo and Coocoo (3–3,5x).
+- Un único gancho por título. Emojis, '!?' y hashtags van detrás del gancho y nunca lo sustituyen.
+- La duración no decide el resultado (17–116 s). Lo que separa a los vídeos que se salen de los flojos dentro de un mismo canal es el ángulo: las variantes demasiado técnicas o de nicho fallan.
 
 ## Formatos nuevos que están empezando a funcionar
-- Ninguno claro esta semana.
+- ✅ se aplica — **Escalada progresiva: una premisa 'What if' que se agrava paso a paso (más grande, más rápido, multiplicado) a lo largo de 70–115 s.** (OutwardAnimates tiene 4 Shorts en auge (4,8–19,6x) y House In Crisis 4 Shorts de construcción de criaturas (15–51x).). Cómo: El muñeco sufre una premisa que crece en cada plano. Ejemplo propio: 'What if your hiccups got 10x louder every hour?', mostrando cristales que se rompen y vecinos que huyen.
+- ✅ se aplica — **Explicación de un mecanismo con 'Why/How': una pregunta concreta respondida en menos de 60–90 s con un giro inesperado.** (Silenthys (3,3–7,7x), Mo and Coocoo (2,8x) y nuestro propio Short de arenas movedizas (2,9x).). Cómo: El muñeco hace de narrador y experimenta la causa en sí mismo. Ejemplo: 'Why do your fingers wrinkle in the bath?'
+- 👀 en observación — **Recopilaciones de 1 a 4 horas.** (Solo aparecen en referentes (Unexplained Mysteries a 3,8–4,2x y Uncharted Mysteries a 6,1–10,7x), que tienen miles de vídeos de archivo.). Cómo: No aplicable con 9–11 vídeos. Reconsiderarlo cuando haya más de 100 Shorts para montar un recopilatorio.
 
 ## Pruebas para las próximas semanas
+1. Serie de 6 Shorts en segunda persona con la plantilla 'What if your [objeto cotidiano] could [capacidad]?' (por ejemplo, 'What if your shadow could walk away?'). Medir la mediana frente a 1.205 vistas y los suscriptores por cada 1.000 vistas. Funciona si la mediana supera 3.000.
+2. Serie de 6 Shorts del tipo 'What actually happens if you…' o 'Why…', con el mismo formato del Short de arenas movedizas (por ejemplo, 'What Actually Happens If You Sneeze in Space?'). Funciona si 3 de los 6 superan 2x el ritmo normal del canal en 48 h.
+3. Prueba de duración: 4 Shorts de escalada de 75–90 s frente a 4 Shorts de dato único de 20–25 s. Comparar el porcentaje de visualización y las vistas a 7 días.
+4. Cierre con una elección binaria y comentario fijado en todos los Shorts durante 2 semanas. Funciona si los comentarios superan el 0,03% y los likes el 2%.
 
 _Solo se toman patrones de formato y estilo; nunca temas, títulos ni contenido de otros canales._
