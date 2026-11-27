@@ -1,0 +1,37 @@
+{
+  "fecha": "2026-11-27",
+  "canales": [
+    {
+      "id": "UCfM0RwKxj7egEj3_vV1e7ng",
+      "tipo": "parecido"
+    },
+    {
+      "id": "UC6JSF1Axa6yHBGz9bQl0R7g",
+      "tipo": "parecido"
+    },
+    {
+      "id": "UCt-GhchW5nGSjr-ETeGab_g",
+      "tipo": "parecido"
+    },
+    {
+      "id": "UCDMS2bBFWTK1JKWlEoTGegw",
+      "tipo": "parecido"
+    },
+    {
+      "id": "UCoNfmfko1d-usTg7UEe0DvQ",
+      "tipo": "parecido"
+    },
+    {
+      "id": "UCIczOFxwgv27AlTkZZMj8yw",
+      "tipo": "referente"
+    },
+    {
+      "id": "UCqHnD8wfGVayL3xwxeY9cpg",
+      "tipo": "referente"
+    },
+    {
+      "id": "UCtrFDttZdb4QxBpQc3fi1Cg",
+      "tipo": "referente"
+    }
+  ]
+}

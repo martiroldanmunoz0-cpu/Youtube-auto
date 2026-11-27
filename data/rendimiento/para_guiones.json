@@ -1,18 +1,18 @@
 {
   "actualizado": "2026-11-27",
   "revision": "semanal 2026-S47",
-  "largos": "Todavía no hay datos de vídeos largos. Como hipótesis, trasladar lo aprendido en los Shorts: abrir con un giro concreto y sin pregunta que repita la título, presentar a los personajes en acción y no con ficha, evitar las frases de 'here's the truth' y cerrar los bloques con frases cortas y rematadas. Hay que validarlo con los primeros datos.",
-  "shorts": "0 s: consecuencia o giro, no 'What if...?' ni pregunta genérica.\n2-10 s: primer dato nuevo; nada de repetir la premisa ni de fichas tipo 'Nombre, edad, profesión'.\nNada de transiciones vacías ('Here's the truth', 'almost nobody knows'): di el dato directamente.\nUsa el ritmo de afirmación seca más remate corto ('Too dangerous.').\nEn Movies vs Reality, el mito y su refutación van en el mismo plano.\nCierra con un dato oficial o exclusivo y corta, sin moraleja ni cifras con 'likely'.",
+  "largos": "Sin datos propios: los 2 largos tienen 0 y 1 vistas. En pausa hasta que algún Short supere las 10.000 vistas.\nAl retomarlos: una sola premisa en segunda persona, preferiblemente de cuerpo humano, de 12-15 min.\nGancho de 15 s con un giro concreto, sin pregunta que repita el título.\nPersonajes en acción, nunca presentados con ficha. Sin transiciones del tipo 'here's the truth'.\nUna escalada nueva cada 2-3 min, y cada bloque cerrado con una frase seca y un remate corto.\nTodo esto es una hipótesis trasladada desde los Shorts, pendiente de validar.",
+  "shorts": "0 s: la consecuencia o el giro ('You stop sleeping. By day 3, you hallucinate.'), sin 'What if...?' ni pregunta.\n2-5 s: el primer dato nuevo. Nada de repetir la premisa ni de fichas tipo 'nombre, edad, profesión'.\nDe 3 a 5 escaladas en segunda persona, con afirmaciones secas y remate corto ('Too dangerous.').\nEn Movies vs Reality, el mito y su refutación van en el mismo plano.\nCierre con un dato oficial o exclusivo y corte, para que funcione el bucle. Sin moraleja ni 'likely'.\nDuración de 50-60 s. Título de 40-55 caracteres con una entidad buscable.",
   "temas": {
     "mas": [
-      "Cuerpo humano en segunda persona (sueño, hambre, frío extremo...): el que más convierte",
-      "Movies vs Reality sobre situaciones extremas (mayor visualización: 112%)",
-      "Historias reales con récord o rareza única, contadas en segunda persona (más vistas y búsqueda)"
+      "Cuerpo humano en segunda persona (sueño, hambre, frío, deshidratación): es el único que convierte (5,24 suscriptores por cada 1.000 vistas)",
+      "Movies vs Reality sobre lugares o situaciones extremas reconocibles (112% visto, 38 vistas desde búsqueda)",
+      "Historias reales con una rareza única y nombre buscable, contadas en acción y en segunda persona (1.239 vistas, 43 desde búsqueda)"
     ],
     "menos": [
-      "'What if' geológicos o abstractos con apertura en forma de pregunta (71,9% de visualización)",
-      "Biografías presentadas con ficha de datos",
-      "Cierres reflexivos del tipo 'the next time you...'"
+      "'What if' abstractos o geológicos con apertura en forma de pregunta (71,9% visto, gancho con -16,5%)",
+      "Biografías que empiezan con una pregunta y una ficha de datos (-32% y -16%; solo queda el 57% en el segundo 17)",
+      "Cierres reflexivos del tipo 'the next time you...' (-9,5%, rompen el bucle)"
     ]
   }
 }
