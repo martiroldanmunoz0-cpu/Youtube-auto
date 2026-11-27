@@ -1,0 +1,202 @@
+[
+  {
+    "id": "pedido-16-01",
+    "titulo": "Por qué no puedes hacerte cosquillas a ti mismo",
+    "fecha": "2026-11-21"
+  },
+  {
+    "id": "pedido-18-01",
+    "titulo": "Se abre la escotilla y no llevas traje: tienes 15 segundos",
+    "fecha": "2026-11-21"
+  },
+  {
+    "id": "pedido-19-01",
+    "titulo": "¿Qué te pasa si te cae un rayo? Milésima a milésima",
+    "fecha": "2026-11-21"
+  },
+  {
+    "id": "pedido-20-01",
+    "titulo": "¿Y si caes en arenas movedizas? La verdad del cine",
+    "fecha": "2026-11-22"
+  },
+  {
+    "id": "pedido-22-01",
+    "titulo": "Violet Jessop: la mujer que sobrevivió al Titanic y más",
+    "fecha": "2026-11-22"
+  },
+  {
+    "id": "pedido-17-01-r1",
+    "titulo": "El pescador que sobrevivió 438 días en el mar",
+    "fecha": "2026-11-22"
+  },
+  {
+    "id": "pedido-21-01",
+    "titulo": "El pozo de Kola: el agujero más profundo del mundo",
+    "fecha": "2026-11-22"
+  },
+  {
+    "id": "largo-1-01",
+    "titulo": "7 lugares donde está prohibido entrar (y el peligro eres tú)",
+    "fecha": "2026-11-22"
+  },
+  {
+    "id": "pedido-23-01",
+    "titulo": "What If You Fell Into the Grand Canyon? Movies vs Reality",
+    "fecha": "2026-11-22"
+  },
+  {
+    "id": "pedido-25-01",
+    "titulo": "What Happens If You Stop Sleeping? The 11-Day Record",
+    "fecha": "2026-11-22"
+  },
+  {
+    "id": "pedido-26-01",
+    "titulo": "What If You Dug Straight Down? Where You'd Really Come Out",
+    "fecha": "2026-11-22"
+  },
+  {
+    "id": "pedido-24-01",
+    "titulo": "The Man Who Survived Two Atomic Bombs: Tsutomu Yamaguchi",
+    "fecha": "2026-11-22"
+  },
+  {
+    "id": "largo-7-01",
+    "titulo": "What If You Were the Last Person on Earth? (1,000 Years)",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "largo-12-01",
+    "titulo": "The Girl Who Survived a 2-Mile Fall: Juliane Koepcke's True Story",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "largo-11-01",
+    "titulo": "What If You Landed on Every Planet Without a Spacesuit?",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "pedido-24-01-r1",
+    "titulo": "The Man Who Survived Two Atomic Bombs: Tsutomu Yamaguchi",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "pedido-26-01-r1",
+    "titulo": "What If You Dug Straight Down? Where You'd Really Come Out",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "pedido-23-01-r1",
+    "titulo": "What If You Fell Into the Grand Canyon? Movies vs Reality",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "pedido-25-01-r1",
+    "titulo": "What Happens If You Stop Sleeping? The 11-Day Record",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "largo-11-01-r1",
+    "titulo": "What If You Landed on Every Planet Without a Spacesuit?",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "largo-12-01-r1",
+    "titulo": "The Girl Who Survived a 2-Mile Fall: Juliane Koepcke's True Story",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "largo-7-01-r1",
+    "titulo": "What If You Were the Last Person on Earth? (1,000 Years)",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "largo-18-01",
+    "titulo": "What If You Could See Who Has a Crush on You?",
+    "fecha": "2026-11-23"
+  },
+  {
+    "id": "largo-19-01",
+    "titulo": "What If Every Human Disappeared? The Last Thing Left of Us",
+    "fecha": "2026-11-24"
+  },
+  {
+    "id": "largo-20-01",
+    "titulo": "What If the Moon Disappeared? 5 Myths vs Reality",
+    "fecha": "2026-11-24"
+  },
+  {
+    "id": "largo-18-01-r1",
+    "titulo": "What If You Could See Who Has a Crush on You?",
+    "fecha": "2026-11-24"
+  },
+  {
+    "id": "largo-19-01-r1",
+    "titulo": "What If Every Human Disappeared? The Last Thing Left of Us",
+    "fecha": "2026-11-24"
+  },
+  {
+    "id": "largo-20-01-r1",
+    "titulo": "What If the Moon Disappeared? 5 Myths vs Reality",
+    "fecha": "2026-11-24"
+  },
+  {
+    "id": "largo-27-01",
+    "titulo": "What If You Had to Spend $1 Billion in 30 Days?",
+    "fecha": "2026-11-25"
+  },
+  {
+    "id": "largo-29-01",
+    "titulo": "Last Person on Earth: 5 Movie Myths That Would Get You Killed",
+    "fecha": "2026-11-25"
+  },
+  {
+    "id": "corto-29-01-c1",
+    "titulo": "The Last Person on Earth Might Not Be Alone",
+    "fecha": "2026-11-25"
+  },
+  {
+    "id": "pedido-27-01",
+    "titulo": "What Actually Happens If You Step in Quicksand?",
+    "fecha": "2026-11-25"
+  },
+  {
+    "id": "pedido-28-01",
+    "titulo": "The Bloop: The Ocean Sound Nobody Could Explain",
+    "fecha": "2026-11-25"
+  },
+  {
+    "id": "pedido-29-01",
+    "titulo": "The Tunguska Explosion: What Blew Up Over Siberia?",
+    "fecha": "2026-11-25"
+  },
+  {
+    "id": "largo-32-01",
+    "titulo": "What If the 1859 Solar Storm Hit Today? (Carrington Event)",
+    "fecha": "2026-11-27"
+  },
+  {
+    "id": "largo-31-01",
+    "titulo": "What If You Lived to 1,000? Decade by Decade",
+    "fecha": "2026-11-27"
+  },
+  {
+    "id": "pedido-36-01",
+    "titulo": "Roy Sullivan: Struck by Lightning 7 Times",
+    "fecha": "2026-11-27"
+  },
+  {
+    "id": "pedido-35-01",
+    "titulo": "What If You Held a Spoonful of a Neutron Star?",
+    "fecha": "2026-11-27"
+  },
+  {
+    "id": "pedido-30-01",
+    "titulo": "What Happens If You Stop Drinking Water",
+    "fecha": "2026-11-27"
+  },
+  {
+    "id": "pedido-34-01",
+    "titulo": "What Happens If You Stop Eating? The 382-Day Fast",
+    "fecha": "2026-11-27"
+  }
+]
