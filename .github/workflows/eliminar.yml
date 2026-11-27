@@ -18,6 +18,11 @@ on:
 permissions:
   contents: write
 
+# Varios borrados a la vez chocaban al guardar la cola: van de uno en uno.
+concurrency:
+  group: eliminar
+  cancel-in-progress: false
+
 jobs:
   eliminar:
     runs-on: ubuntu-latest
@@ -43,4 +48,5 @@ jobs:
           git config merge.cola.driver "python3 pipeline/fusionar_cola.py %O %A %B"
           git add data/queue.json data/eliminados.json
           git commit -m "Vídeo eliminado: ${{ inputs.id }}" || echo "sin cambios"
-          for i in 1 2 3 4 5; do git pull --rebase && git push && break; git rebase --abort 2>/dev/null || true; echo "reintento $i"; sleep $((i * 7)); done
+          ok=0; for i in 1 2 3 4 5; do if git pull --rebase && git push; then ok=1; break; fi; git rebase --abort 2>/dev/null || true; echo "reintento $i"; sleep $((i * 7)); done
+          [ "$ok" = 1 ] || { echo "::error::No se pudo guardar la cola"; exit 1; }
