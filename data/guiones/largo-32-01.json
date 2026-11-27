@@ -19,25 +19,33 @@
     {
       "capitulo": "Chapter 1 · The Night the Sky Burned",
       "text": "A telegraph operator unplugs his batteries... and his messages keep going through. The power is coming straight from the sky.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "telefono_antiguo",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "rayo",
-            "pos": "arriba",
-            "tamano": "mediano",
-            "anim": "caer"
+        "archivo": "largo-32-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "oficina",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "telefono_antiguo",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "rayo",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "caer"
+              }
+            ],
+            "persona": "no",
+            "label": "BOSTON, 1859"
           }
-        ],
-        "persona": "no",
+        },
         "label": "BOSTON, 1859"
       },
       "camera": "slam",
@@ -45,38 +53,54 @@
     },
     {
       "text": "What would that same storm do to your phone, your lights, your money? Stay for the ending, because it really happened.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "izquierda",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-32-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "izquierda",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "no"
           }
-        ],
-        "persona": "no"
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "It starts on a quiet morning, September first, 1859. An English astronomer named Richard Carrington is sketching sunspots through his telescope.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "dia",
-        "plano": "medio",
-        "who": "carrington",
-        "objeto": "libro",
-        "mood": "neutral",
+        "archivo": "largo-32-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "salon",
+            "hora": "dia",
+            "plano": "medio",
+            "who": "carrington",
+            "objeto": "libro",
+            "mood": "neutral",
+            "label": "SEPT 1, 1859"
+          }
+        },
         "label": "SEPT 1, 1859"
       },
       "camera": "static",
@@ -84,68 +108,92 @@
     },
     {
       "text": "Suddenly two blinding white patches flare up on the Sun. They burn for about five minutes, then fade away.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "telescopio",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "sol",
-            "pos": "arriba_derecha",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-32-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "telescopio",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "sol",
+                "pos": "arriba_derecha",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ],
+            "persona": "no",
+            "efecto": "brillo"
           }
-        ],
-        "persona": "no",
-        "efecto": "brillo"
+        },
+        "label": ""
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "Carrington runs to find a witness. By the time he returns, it's gone. He has no idea what he just saw.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "correr",
-        "lugar": "salon",
-        "hora": "dia",
-        "who": "carrington"
+        "archivo": "largo-32-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "correr",
+            "lugar": "salon",
+            "hora": "dia",
+            "who": "carrington"
+          }
+        },
+        "label": ""
       },
       "camera": "pan_right",
       "transition": "whip"
     },
     {
       "text": "He just watched a solar flare. And roughly seventeen and a half hours later, the storm hits Earth.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "reloj_arena",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "girar"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "acercarse"
+        "archivo": "largo-32-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "reloj_arena",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "girar"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "acercarse"
+              }
+            ],
+            "persona": "no",
+            "label": "17.5 HOURS"
           }
-        ],
-        "persona": "no",
+        },
         "label": "17.5 HOURS"
       },
       "camera": "push_in",
@@ -153,40 +201,56 @@
     },
     {
       "text": "Telegraph lines across the world start sparking. Paper catches fire. Some operators get real electric shocks right at their desks.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "rayo",
-        "lugar": "oficina",
-        "hora": "noche",
-        "who": "operador"
+        "archivo": "largo-32-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "rayo",
+            "lugar": "oficina",
+            "hora": "noche",
+            "who": "operador"
+          }
+        },
+        "label": ""
       },
       "camera": "shake",
       "transition": "red"
     },
     {
       "text": "Then it gets stranger. Between Boston and Portland, operators unplug their batteries and keep sending messages for about two hours.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "oficina",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "telefono_antiguo",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "carta",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "entrar_izq"
+        "archivo": "largo-32-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "oficina",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "telefono_antiguo",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "carta",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "entrar_izq"
+              }
+            ],
+            "persona": "medio",
+            "who": "operador",
+            "objeto": "papel",
+            "mood": "shocked",
+            "label": "NO BATTERIES"
           }
-        ],
-        "persona": "medio",
-        "who": "operador",
-        "objeto": "papel",
-        "mood": "shocked",
+        },
         "label": "NO BATTERIES"
       },
       "camera": "push_in",
@@ -194,24 +258,32 @@
     },
     {
       "text": "The only power on those wires is current from the sky. Picture a phone working with no battery at all.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "telefono_antiguo",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "estrella",
-            "pos": "arriba",
-            "tamano": "gigante",
-            "anim": "flotar"
+        "archivo": "largo-32-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "telefono_antiguo",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "arriba",
+                "tamano": "gigante",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "no",
+            "label": "CURRENT FROM THE SKY"
           }
-        ],
-        "persona": "no",
+        },
         "label": "CURRENT FROM THE SKY"
       },
       "camera": "tilt_up",
@@ -219,28 +291,36 @@
     },
     {
       "text": "In the Rocky Mountains, gold miners wake up around one in the morning. The sky is so bright they start cooking breakfast.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "montana",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "estrella",
-            "pos": "arriba",
-            "tamano": "gigante",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "fuego",
-            "pos": "centro",
-            "tamano": "pequeno",
-            "anim": "latir"
+        "archivo": "largo-32-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "montana",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "estrella",
+                "pos": "arriba",
+                "tamano": "gigante",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "fuego",
+                "pos": "centro",
+                "tamano": "pequeno",
+                "anim": "latir"
+              }
+            ],
+            "persona": "medio",
+            "who": "minero",
+            "objeto": "taza",
+            "mood": "happy",
+            "label": "1 A.M."
           }
-        ],
-        "persona": "medio",
-        "who": "minero",
-        "objeto": "taza",
-        "mood": "happy",
+        },
         "label": "1 A.M."
       },
       "camera": "pull_out",
@@ -248,49 +328,73 @@
     },
     {
       "text": "Red and green auroras are reported as far south as Cuba and the Caribbean, places that never see northern lights.",
-      "scene": "map_pin",
+      "scene": "medida",
       "params": {
-        "place": "Cuba",
-        "detail": "Auroras seen here",
-        "style": "globo"
+        "archivo": "largo-32-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Cuba",
+            "detail": "Auroras seen here",
+            "style": "globo"
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "whip"
     },
     {
       "text": "Newspapers called it a wonder. Nobody called it a warning, because in 1859 the world barely depended on wires.",
-      "scene": "newspaper",
+      "scene": "medida",
       "params": {
-        "style": "papel",
-        "headline": "TELEGRAPHS WORK WITHOUT BATTERIES",
-        "kicker": "The Daily Courier",
-        "date": "Sept 1859"
+        "archivo": "largo-32-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "newspaper",
+          "params": {
+            "style": "papel",
+            "headline": "TELEGRAPHS WORK WITHOUT BATTERIES",
+            "kicker": "The Daily Courier",
+            "date": "Sept 1859"
+          }
+        },
+        "label": ""
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "In 1859, the world had wires. Today, the world IS wires. And here is how your day would go.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "rayo",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "edificio",
-            "pos": "fondo",
-            "tamano": "grande",
-            "anim": "crecer"
+        "archivo": "largo-32-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "rayo",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "edificio",
+                "pos": "fondo",
+                "tamano": "grande",
+                "anim": "crecer"
+              }
+            ],
+            "persona": "medio",
+            "mood": "worried"
           }
-        ],
-        "persona": "medio",
-        "mood": "worried"
+        },
+        "label": ""
       },
       "camera": "slam",
       "transition": "flash"
@@ -298,13 +402,21 @@
     {
       "capitulo": "Chapter 2 · Hour Zero",
       "text": "Hour zero. You're at a Target checkout in Ohio, bags in hand, a normal afternoon, about to pay.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "plano": "medio",
-        "objeto": "dinero",
-        "mood": "happy",
+        "archivo": "largo-32-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "plano": "medio",
+            "objeto": "dinero",
+            "mood": "happy",
+            "label": "TARGET CHECKOUT, OHIO"
+          }
+        },
         "label": "TARGET CHECKOUT, OHIO"
       },
       "camera": "static",
@@ -312,24 +424,32 @@
     },
     {
       "text": "Out in space, a satellite a million miles away sees the storm coming. That gives scientists maybe fifteen to sixty minutes of warning.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "telescopio",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "abajo",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-32-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "telescopio",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "abajo",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "no",
+            "label": "1 MILLION MILES"
           }
-        ],
-        "persona": "no",
+        },
         "label": "1 MILLION MILES"
       },
       "camera": "pull_out",
@@ -337,71 +457,111 @@
     },
     {
       "text": "That's barely enough time to make a few phone calls. And not everyone gets the call.",
-      "scene": "clock",
+      "scene": "medida",
       "params": {
-        "time": "14:15"
+        "archivo": "largo-32-01",
+        "plano": 15,
+        "respaldo": {
+          "scene": "clock",
+          "params": {
+            "time": "14:15"
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Your phone buzzes in your pocket. You pull it out. Nothing. No message, no alert, just a normal screen.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "notification",
-        "notification": {
-          "time": "14:20",
-          "date": "Tuesday",
-          "notifications": []
-        }
+        "archivo": "largo-32-01",
+        "plano": 16,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "notification",
+            "notification": {
+              "time": "14:20",
+              "date": "Tuesday",
+              "notifications": []
+            }
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Charged particles slam into Earth's magnetic field. Far above the parking lot, the sky starts to glow. You never look up.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "estrella",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "flotar"
+        "archivo": "largo-32-01",
+        "plano": 17,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "no",
+            "efecto": "brillo"
           }
-        ],
-        "persona": "no",
-        "efecto": "brillo"
+        },
+        "label": ""
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "Radio blackouts begin first. Pilots lose contact with controllers. Shortwave goes quiet across the sunlit side of Earth.",
-      "scene": "tv",
+      "scene": "medida",
       "params": {
-        "static": true,
-        "hora": "dia"
+        "archivo": "largo-32-01",
+        "plano": 18,
+        "respaldo": {
+          "scene": "tv",
+          "params": {
+            "static": true,
+            "hora": "dia"
+          }
+        },
+        "label": ""
       },
       "camera": "shake",
       "transition": "cut"
     },
     {
       "text": "Your cashier scans the last item. Everything still works. For now. Nobody texts you. Nobody can.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "dia",
-        "plano": "entero",
-        "objeto": "movil",
-        "mood": "neutral",
+        "archivo": "largo-32-01",
+        "plano": 19,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "plano": "entero",
+            "objeto": "movil",
+            "mood": "neutral",
+            "label": "PARKING LOT"
+          }
+        },
         "label": "PARKING LOT"
       },
       "camera": "static",
@@ -410,24 +570,32 @@
     {
       "capitulo": "Chapter 3 · The Blue Dot Lies",
       "text": "Hour one. Satellites start getting hit. Their signals bend and scatter as they cross the charged layer of air above you.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "telescopio",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "estrella",
-            "pos": "arriba_derecha",
-            "tamano": "mediano",
-            "anim": "girar"
+        "archivo": "largo-32-01",
+        "plano": 20,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "telescopio",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "girar"
+              }
+            ],
+            "persona": "no",
+            "label": "HOUR 1"
           }
-        ],
-        "persona": "no",
+        },
         "label": "HOUR 1"
       },
       "camera": "push_in",
@@ -435,34 +603,50 @@
     },
     {
       "text": "Your GPS error begins to grow. First by a few feet, then by dozens, then by whole city blocks.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "map",
-        "map": {
-          "title": "GPS",
-          "subtitle": "Accuracy: 300 ft",
-          "status": "alert",
-          "route": false
-        }
+        "archivo": "largo-32-01",
+        "plano": 21,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "map",
+            "map": {
+              "title": "GPS",
+              "subtitle": "Accuracy: 300 ft",
+              "status": "alert",
+              "route": false
+            }
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Pilots switch to backup navigation and controllers reroute planes. Flights get slower, and some are grounded.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "avion",
-            "pos": "arriba",
-            "tamano": "grande",
-            "anim": "entrar_izq"
+        "archivo": "largo-32-01",
+        "plano": 22,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "avion",
+                "pos": "arriba",
+                "tamano": "grande",
+                "anim": "entrar_izq"
+              }
+            ],
+            "persona": "no",
+            "label": "ROUTES CHANGE"
           }
-        ],
-        "persona": "no",
+        },
         "label": "ROUTES CHANGE"
       },
       "camera": "pan_right",
@@ -470,63 +654,95 @@
     },
     {
       "text": "You order an Uber to get home. The app spins and spins, trying to find where you are.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "profile",
-        "profile": {
-          "name": "Uber",
-          "label": "Finding your location...",
-          "detail": "Searching"
-        }
+        "archivo": "largo-32-01",
+        "plano": 23,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "profile",
+            "profile": {
+              "name": "Uber",
+              "label": "Finding your location...",
+              "detail": "Searching"
+            }
+          }
+        },
+        "label": ""
       },
       "camera": "static",
       "transition": "cut"
     },
     {
       "text": "The driver finally accepts, but your pin is miles off. He's circling a street that's nowhere near the Target.",
-      "scene": "map_pin",
+      "scene": "medida",
       "params": {
-        "place": "Your pin",
-        "detail": "Driver is 3 miles away",
-        "style": "calles"
+        "archivo": "largo-32-01",
+        "plano": 24,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Your pin",
+            "detail": "Driver is 3 miles away",
+            "style": "calles"
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "You call him. The call drops. You try again and get a busy tone, as everyone else floods the network.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "call",
-        "call": {
-          "caller": "Driver",
-          "label": "Call failed"
-        }
+        "archivo": "largo-32-01",
+        "plano": 25,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "call",
+            "call": {
+              "caller": "Driver",
+              "label": "Call failed"
+            }
+          }
+        },
+        "label": ""
       },
       "camera": "shake",
       "transition": "cut"
     },
     {
       "text": "Delivery vans circle the wrong blocks. Even the GPS timing that keeps cell towers in sync starts to drift.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "coche_rojo",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "entrar_der"
-          },
-          {
-            "pieza": "semaforo",
-            "pos": "fondo",
-            "tamano": "mediano",
-            "anim": "temblar"
+        "archivo": "largo-32-01",
+        "plano": 26,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "coche_rojo",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "entrar_der"
+              },
+              {
+                "pieza": "semaforo",
+                "pos": "fondo",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "no",
+            "label": "WRONG TURN"
           }
-        ],
-        "persona": "no",
+        },
         "label": "WRONG TURN"
       },
       "camera": "pan_left",
@@ -534,19 +750,27 @@
     },
     {
       "text": "That's the quiet danger. You can't see it, hear it, or smell it. You just feel like things are slightly off.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "reloj_digital",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "largo-32-01",
+        "plano": 27,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "reloj_digital",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "no",
+            "label": "TIMING DRIFTS"
           }
-        ],
-        "persona": "no",
+        },
         "label": "TIMING DRIFTS"
       },
       "camera": "push_in",
@@ -554,11 +778,19 @@
     },
     {
       "text": "You stare at a map saying you're in a field across town. Your blue dot is lying to you.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "dudar",
-        "lugar": "calle",
-        "hora": "atardecer",
+        "archivo": "largo-32-01",
+        "plano": 28,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dudar",
+            "lugar": "calle",
+            "hora": "atardecer",
+            "label": "BLUE DOT LYING"
+          }
+        },
         "label": "BLUE DOT LYING"
       },
       "camera": "static",
@@ -566,11 +798,19 @@
     },
     {
       "text": "But the dot is not the problem. What's coming next travels through the wires under your feet.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "atardecer",
-        "plano": "sin_persona",
+        "archivo": "largo-32-01",
+        "plano": 29,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "plano": "sin_persona",
+            "label": "WHAT'S COMING NEXT"
+          }
+        },
         "label": "WHAT'S COMING NEXT"
       },
       "camera": "tilt_down",
@@ -579,34 +819,50 @@
     {
       "capitulo": "Chapter 4 · The Lights Just Stop",
       "text": "Hour four. The storm doesn't just hit the wires. It makes the ground itself push current into them.",
-      "scene": "clock",
+      "scene": "medida",
       "params": {
-        "time": "18:00"
+        "archivo": "largo-32-01",
+        "plano": 30,
+        "respaldo": {
+          "scene": "clock",
+          "params": {
+            "time": "18:00"
+          }
+        },
+        "label": ""
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "Electric currents surge through the Earth and flow into long power lines, where they were never supposed to be.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "atardecer",
-        "piezas": [
-          {
-            "pieza": "rayo",
-            "pos": "izquierda",
-            "tamano": "gigante",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "rayo",
-            "pos": "arriba",
-            "tamano": "mediano",
-            "anim": "caer"
+        "archivo": "largo-32-01",
+        "plano": 31,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "atardecer",
+            "piezas": [
+              {
+                "pieza": "rayo",
+                "pos": "izquierda",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "rayo",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "caer"
+              }
+            ],
+            "persona": "no",
+            "label": "CURRENT IN THE WIRES"
           }
-        ],
-        "persona": "no",
+        },
         "label": "CURRENT IN THE WIRES"
       },
       "camera": "pan_right",
@@ -614,25 +870,33 @@
     },
     {
       "text": "Those currents flood into giant transformers. These are machines the size of a truck that hold the whole grid together.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "atardecer",
-        "piezas": [
-          {
-            "pieza": "bombilla",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "coche_rojo",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-32-01",
+        "plano": 32,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "piezas": [
+              {
+                "pieza": "bombilla",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "coche_rojo",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "no",
+            "label": "SIZE OF A TRUCK"
           }
-        ],
-        "persona": "no",
+        },
         "label": "SIZE OF A TRUCK"
       },
       "camera": "push_in",
@@ -640,26 +904,34 @@
     },
     {
       "text": "The transformers overheat. Oil boils inside. Protective relays trip, and whole sections of the grid shut down to save themselves.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "campo",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "bombilla",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "fuego",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "latir"
+        "archivo": "largo-32-01",
+        "plano": 33,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "campo",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "bombilla",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "fuego",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "latir"
+              }
+            ],
+            "persona": "no",
+            "efecto": "humo",
+            "label": "OVERHEATING"
           }
-        ],
-        "persona": "no",
-        "efecto": "humo",
+        },
         "label": "OVERHEATING"
       },
       "camera": "shake",
@@ -667,47 +939,71 @@
     },
     {
       "text": "This has happened before. In March of 1989, the Canadian province of Quebec went dark. The grid collapsed in about ninety seconds.",
-      "scene": "map_pin",
+      "scene": "medida",
       "params": {
-        "place": "Quebec",
-        "detail": "Grid down in 90 seconds",
-        "style": "relieve"
+        "archivo": "largo-32-01",
+        "plano": 34,
+        "respaldo": {
+          "scene": "map_pin",
+          "params": {
+            "place": "Quebec",
+            "detail": "Grid down in 90 seconds",
+            "style": "relieve"
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "whip"
     },
     {
       "text": "Six million people lost power for nine hours. And that was a storm much weaker than Carrington's.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "6 MILLION",
-        "label": "lost power for 9 hours",
-        "lugar": "ciudad",
-        "color": "#ffd400"
+        "archivo": "largo-32-01",
+        "plano": 35,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "6 MILLION",
+            "label": "lost power for 9 hours",
+            "lugar": "ciudad",
+            "color": "#ffd400"
+          }
+        },
+        "label": "lost power for 9 hours"
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "Now picture that, coast to coast, with some transformers burned out for good. Not hours, but weeks or longer.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "rayo",
-            "pos": "derecha",
-            "tamano": "pequeno",
-            "anim": "temblar"
+        "archivo": "largo-32-01",
+        "plano": 36,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "rayo",
+                "pos": "derecha",
+                "tamano": "pequeno",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "no",
+            "label": "COAST TO COAST"
           }
-        ],
-        "persona": "no",
+        },
         "label": "COAST TO COAST"
       },
       "camera": "pull_out",
@@ -715,24 +1011,32 @@
     },
     {
       "text": "A big transformer isn't something you order online. Many are custom built, and replacing one can take a year or more.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "fondo",
-        "piezas": [
-          {
-            "pieza": "bombilla",
-            "pos": "centro",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "reloj_arena",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "girar"
+        "archivo": "largo-32-01",
+        "plano": 37,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "fondo",
+            "piezas": [
+              {
+                "pieza": "bombilla",
+                "pos": "centro",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "reloj_arena",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "girar"
+              }
+            ],
+            "persona": "no",
+            "label": "A YEAR OR MORE"
           }
-        ],
-        "persona": "no",
+        },
         "label": "A YEAR OR MORE"
       },
       "camera": "push_in",
@@ -740,24 +1044,40 @@
     },
     {
       "text": "Night falls over Ohio. The streetlights are out. Windows are black. Stars you've never seen pop out above the city.",
-      "scene": "city_street",
+      "scene": "medida",
       "params": {
-        "figure": true,
-        "fog": false,
-        "rain": false
+        "archivo": "largo-32-01",
+        "plano": 38,
+        "respaldo": {
+          "scene": "city_street",
+          "params": {
+            "figure": true,
+            "fog": false,
+            "rain": false
+          }
+        },
+        "label": ""
       },
       "camera": "tilt_up",
       "transition": "black"
     },
     {
       "text": "The lights don't flicker. They just stop. Then you walk into the kitchen, turn on the faucet, and nothing comes out.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "salon",
-        "hora": "noche",
-        "plano": "medio",
-        "objeto": "linterna",
-        "mood": "worried"
+        "archivo": "largo-32-01",
+        "plano": 39,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "salon",
+            "hora": "noche",
+            "plano": "medio",
+            "objeto": "linterna",
+            "mood": "worried"
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "fade"
@@ -765,27 +1085,35 @@
     {
       "capitulo": "Chapter 5 · Days One to Three",
       "text": "Day one. You wake up at home and turn on the kitchen tap. A cough, a drip, then nothing.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "cocina",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "gota",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "gota",
-            "pos": "centro",
-            "tamano": "pequeno",
-            "anim": "caer"
+        "archivo": "largo-32-01",
+        "plano": 40,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "cocina",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "gota",
+                "pos": "centro",
+                "tamano": "pequeno",
+                "anim": "caer"
+              }
+            ],
+            "persona": "medio",
+            "mood": "shocked",
+            "objeto": "taza",
+            "label": "DAY 1"
           }
-        ],
-        "persona": "medio",
-        "mood": "shocked",
-        "objeto": "taza",
+        },
         "label": "DAY 1"
       },
       "camera": "push_in",
@@ -793,25 +1121,33 @@
     },
     {
       "text": "Most water systems use electric pumps to push water uphill into towers. Without power, pressure drops block by block.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "edificio",
-            "pos": "fondo",
-            "tamano": "gigante",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "gota",
-            "pos": "arriba",
-            "tamano": "mediano",
-            "anim": "caer"
+        "archivo": "largo-32-01",
+        "plano": 41,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "edificio",
+                "pos": "fondo",
+                "tamano": "gigante",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "gota",
+                "pos": "arriba",
+                "tamano": "mediano",
+                "anim": "caer"
+              }
+            ],
+            "persona": "no",
+            "label": "PRESSURE DROPS"
           }
-        ],
-        "persona": "no",
+        },
         "label": "PRESSURE DROPS"
       },
       "camera": "tilt_down",
@@ -819,13 +1155,21 @@
     },
     {
       "text": "In apartment buildings it's worse. Pumps lift water to upper floors, so the tenth floor goes dry first.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "cocina",
-        "hora": "dia",
-        "plano": "medio",
-        "objeto": "taza",
-        "mood": "sad",
+        "archivo": "largo-32-01",
+        "plano": 42,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "cocina",
+            "hora": "dia",
+            "plano": "medio",
+            "objeto": "taza",
+            "mood": "sad",
+            "label": "10TH FLOOR"
+          }
+        },
         "label": "10TH FLOOR"
       },
       "camera": "static",
@@ -833,25 +1177,33 @@
     },
     {
       "text": "You drive to a gas station. The pumps are dead. A line of cars stretches around the corner anyway.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "coche_rojo",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "coche_rojo",
-            "pos": "derecha",
-            "tamano": "grande",
-            "anim": "entrar_der"
+        "archivo": "largo-32-01",
+        "plano": 43,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "coche_rojo",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "coche_rojo",
+                "pos": "derecha",
+                "tamano": "grande",
+                "anim": "entrar_der"
+              }
+            ],
+            "persona": "no",
+            "label": "OUT OF ORDER"
           }
-        ],
-        "persona": "no",
+        },
         "label": "OUT OF ORDER"
       },
       "camera": "pan_right",
@@ -859,32 +1211,48 @@
     },
     {
       "text": "The pump needs electricity to move fuel from underground tanks. No power means no gas, even though the tanks are full.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "atardecer",
-        "piezas": [
-          {
-            "pieza": "coche_rojo",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "acercarse"
+        "archivo": "largo-32-01",
+        "plano": 44,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "atardecer",
+            "piezas": [
+              {
+                "pieza": "coche_rojo",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "acercarse"
+              }
+            ],
+            "persona": "medio",
+            "objeto": "llaves",
+            "mood": "angry"
           }
-        ],
-        "persona": "medio",
-        "objeto": "llaves",
-        "mood": "angry"
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "So you walk to the store instead. The doors are propped open, and the registers are dark.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "atardecer",
-        "plano": "sin_persona",
+        "archivo": "largo-32-01",
+        "plano": 45,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "atardecer",
+            "plano": "sin_persona",
+            "label": "DOORS PROPPED OPEN"
+          }
+        },
         "label": "DOORS PROPPED OPEN"
       },
       "camera": "pan_left",
@@ -892,40 +1260,56 @@
     },
     {
       "text": "Your card gets declined. You try another. Declined. The payment network can't connect, and the store can't verify anything.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "bank",
-        "bank": {
-          "balance": "$212",
-          "label": "CARD DECLINED",
-          "status": "alert",
-          "transactions": [
-            {
-              "text": "Grocery store",
-              "amount": "DECLINED"
+        "archivo": "largo-32-01",
+        "plano": 46,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "bank",
+            "bank": {
+              "balance": "$212",
+              "label": "CARD DECLINED",
+              "status": "alert",
+              "transactions": [
+                {
+                  "text": "Grocery store",
+                  "amount": "DECLINED"
+                }
+              ]
             }
-          ]
-        }
+          }
+        },
+        "label": ""
       },
       "camera": "slam",
       "transition": "red"
     },
     {
       "text": "The ATM next door is dark too. A line of people stares at a black screen. Cash is now king.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "atardecer",
-        "piezas": [
-          {
-            "pieza": "dinero_billete",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
+        "archivo": "largo-32-01",
+        "plano": 47,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "calle",
+            "hora": "atardecer",
+            "piezas": [
+              {
+                "pieza": "dinero_billete",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "medio",
+            "mood": "sad",
+            "label": "NO SERVICE"
           }
-        ],
-        "persona": "medio",
-        "mood": "sad",
+        },
         "label": "NO SERVICE"
       },
       "camera": "push_in",
@@ -933,24 +1317,40 @@
     },
     {
       "text": "You check your pockets for cash. Everyone around you is doing the same, and cash is vanishing fast.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "atardecer",
-        "plano": "medio",
-        "objeto": "dinero",
-        "mood": "worried"
+        "archivo": "largo-32-01",
+        "plano": 48,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "calle",
+            "hora": "atardecer",
+            "plano": "medio",
+            "objeto": "dinero",
+            "mood": "worried"
+          }
+        },
+        "label": ""
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "Grocery trucks need fuel, and warehouses need power to scan and ship. Shelves that restock every day stop restocking.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "dia",
-        "plano": "sin_persona",
+        "archivo": "largo-32-01",
+        "plano": 49,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "calle",
+            "hora": "dia",
+            "plano": "sin_persona",
+            "label": "NO DELIVERIES"
+          }
+        },
         "label": "NO DELIVERIES"
       },
       "camera": "pan_left",
@@ -958,47 +1358,63 @@
     },
     {
       "text": "Phones die one by one. Without power to recharge, every screen on your street goes black by the end of day two.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "notification",
-        "notification": {
-          "time": "09:41",
-          "date": "Day 2",
-          "notifications": [
-            {
-              "app": "Phone",
-              "title": "Battery 1%",
-              "text": "Charge soon",
-              "alert": true
+        "archivo": "largo-32-01",
+        "plano": 50,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "notification",
+            "notification": {
+              "time": "09:41",
+              "date": "Day 2",
+              "notifications": [
+                {
+                  "app": "Phone",
+                  "title": "Battery 1%",
+                  "text": "Charge soon",
+                  "alert": true
+                }
+              ]
             }
-          ]
-        }
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "Most stores only hold a few days of food. By day three, the milk, bread and meat are gone.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "manzana",
-            "pos": "izquierda",
-            "tamano": "pequeno",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "vaso_agua",
-            "pos": "centro",
-            "tamano": "pequeno",
-            "anim": "flotar"
+        "archivo": "largo-32-01",
+        "plano": 51,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "manzana",
+                "pos": "izquierda",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "vaso_agua",
+                "pos": "centro",
+                "tamano": "pequeno",
+                "anim": "flotar"
+              }
+            ],
+            "persona": "medio",
+            "mood": "sad",
+            "label": "SHELVES EMPTY"
           }
-        ],
-        "persona": "medio",
-        "mood": "sad",
+        },
         "label": "SHELVES EMPTY"
       },
       "camera": "push_in",
@@ -1006,25 +1422,33 @@
     },
     {
       "text": "Refrigerators warm up. Frozen food drips on the kitchen floor. You start planning meals around what will spoil first.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "cocina",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "hielo",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "gota",
-            "pos": "centro",
-            "tamano": "pequeno",
-            "anim": "caer"
+        "archivo": "largo-32-01",
+        "plano": 52,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "cocina",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "hielo",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "gota",
+                "pos": "centro",
+                "tamano": "pequeno",
+                "anim": "caer"
+              }
+            ],
+            "persona": "no",
+            "label": "FREEZER THAWING"
           }
-        ],
-        "persona": "no",
+        },
         "label": "FREEZER THAWING"
       },
       "camera": "tilt_down",
@@ -1032,12 +1456,20 @@
     },
     {
       "text": "Neighbors who never spoke before start trading what's left in their pantries. Everyone is polite. Everyone is counting.",
-      "scene": "group",
+      "scene": "medida",
       "params": {
-        "count": 3,
-        "lugar": "calle",
-        "hora": "atardecer",
-        "mood": "worried",
+        "archivo": "largo-32-01",
+        "plano": 53,
+        "respaldo": {
+          "scene": "group",
+          "params": {
+            "count": 3,
+            "lugar": "calle",
+            "hora": "atardecer",
+            "mood": "worried",
+            "label": "TRADING FOOD"
+          }
+        },
         "label": "TRADING FOOD"
       },
       "camera": "static",
@@ -1045,12 +1477,20 @@
     },
     {
       "text": "You have forty dollars in your wallet. So does everyone else. And the hardest part hasn't even started.",
-      "scene": "money",
+      "scene": "medida",
       "params": {
-        "amount": "$40",
-        "label": "all you have",
-        "rain": false,
-        "stack": false
+        "archivo": "largo-32-01",
+        "plano": 54,
+        "respaldo": {
+          "scene": "money",
+          "params": {
+            "amount": "$40",
+            "label": "all you have",
+            "rain": false,
+            "stack": false
+          }
+        },
+        "label": "all you have"
       },
       "camera": "slam",
       "transition": "red"
@@ -1058,12 +1498,20 @@
     {
       "capitulo": "Chapter 6 · Week One and Beyond",
       "text": "Week one. Hospitals are running on diesel generators. They were built to last a few days, not weeks.",
-      "scene": "hospital",
+      "scene": "medida",
       "params": {
-        "state": "awake",
-        "monitor": "alarm",
-        "mood": "worried",
-        "hora": "noche",
+        "archivo": "largo-32-01",
+        "plano": 55,
+        "respaldo": {
+          "scene": "hospital",
+          "params": {
+            "state": "awake",
+            "monitor": "alarm",
+            "mood": "worried",
+            "hora": "noche",
+            "label": "WEEK ONE"
+          }
+        },
         "label": "WEEK ONE"
       },
       "camera": "push_in",
@@ -1071,25 +1519,33 @@
     },
     {
       "text": "Those generators need fuel. Fuel trucks need pumps, and pumps need power. It's a circle with no way in.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "hospital",
-        "hora": "noche",
-        "piezas": [
-          {
-            "pieza": "bomba",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "coche_rojo",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "temblar"
+        "archivo": "largo-32-01",
+        "plano": 56,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "hospital",
+            "hora": "noche",
+            "piezas": [
+              {
+                "pieza": "bomba",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "coche_rojo",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "no",
+            "label": "NEEDS FUEL"
           }
-        ],
-        "persona": "no",
+        },
         "label": "NEEDS FUEL"
       },
       "camera": "pan_right",
@@ -1097,31 +1553,39 @@
     },
     {
       "text": "Ventilators, dialysis machines, refrigerated medicine. Every one of them depends on a plug that no longer has power.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "hospital",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "jeringa",
-            "pos": "izquierda",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "pastilla",
-            "pos": "centro",
-            "tamano": "mediano",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "corazon",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "latir"
+        "archivo": "largo-32-01",
+        "plano": 57,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "hospital",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "jeringa",
+                "pos": "izquierda",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "pastilla",
+                "pos": "centro",
+                "tamano": "mediano",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "corazon",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "latir"
+              }
+            ],
+            "persona": "no",
+            "label": "NO POWER, NO MEDICINE"
           }
-        ],
-        "persona": "no",
+        },
         "label": "NO POWER, NO MEDICINE"
       },
       "camera": "push_in",
@@ -1129,12 +1593,20 @@
     },
     {
       "text": "Doctors count minutes of battery. Nurses ration supplies. The monitor beside a patient flickers, then goes out.",
-      "scene": "doctor",
+      "scene": "medida",
       "params": {
-        "who": "medico",
-        "mood": "worried",
-        "hora": "noche",
-        "say": "We have two hours of battery.",
+        "archivo": "largo-32-01",
+        "plano": 58,
+        "respaldo": {
+          "scene": "doctor",
+          "params": {
+            "who": "medico",
+            "mood": "worried",
+            "hora": "noche",
+            "say": "We have two hours of battery.",
+            "label": "HOSPITAL"
+          }
+        },
         "label": "HOSPITAL"
       },
       "camera": "static",
@@ -1142,25 +1614,33 @@
     },
     {
       "text": "Water treatment plants stop too. Without clean water, sickness spreads fast in cities that can't even send a warning.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "gota",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "caer"
-          },
-          {
-            "pieza": "bacteria",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "girar"
+        "archivo": "largo-32-01",
+        "plano": 59,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "gota",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "caer"
+              },
+              {
+                "pieza": "bacteria",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "girar"
+              }
+            ],
+            "persona": "no",
+            "label": "NO CLEAN WATER"
           }
-        ],
-        "persona": "no",
+        },
         "label": "NO CLEAN WATER"
       },
       "camera": "push_in",
@@ -1168,38 +1648,62 @@
     },
     {
       "text": "Lloyd's of London studied this in 2013. They said a storm like Carrington's could cost the U.S. up to 2.6 trillion dollars.",
-      "scene": "document",
+      "scene": "medida",
       "params": {
-        "title": "LLOYD'S OF LONDON, 2013",
-        "lines": [
-          "Storm like Carrington's",
-          "US economic cost",
-          "Up to $2.6 trillion"
-        ],
-        "highlight": 2,
-        "stamp": "ESTIMATE"
+        "archivo": "largo-32-01",
+        "plano": 60,
+        "respaldo": {
+          "scene": "document",
+          "params": {
+            "title": "LLOYD'S OF LONDON, 2013",
+            "lines": [
+              "Storm like Carrington's",
+              "US economic cost",
+              "Up to $2.6 trillion"
+            ],
+            "highlight": 2,
+            "stamp": "ESTIMATE"
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "That's far beyond the cost of the worst hurricane America has ever seen. And the money isn't even the hard part.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "$2.6 TRILLION",
-        "label": "at most, for the U.S.",
-        "lugar": "ciudad",
-        "color": "#ff4040"
+        "archivo": "largo-32-01",
+        "plano": 61,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "$2.6 TRILLION",
+            "label": "at most, for the U.S.",
+            "lugar": "ciudad",
+            "color": "#ff4040"
+          }
+        },
+        "label": "at most, for the U.S."
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "The fix is slow. Rebuilding the grid means giant parts that factories can only build a few at a time.",
-      "scene": "calendar",
+      "scene": "medida",
       "params": {
-        "style": "marcas",
-        "day": "21",
+        "archivo": "largo-32-01",
+        "plano": 62,
+        "respaldo": {
+          "scene": "calendar",
+          "params": {
+            "style": "marcas",
+            "day": "21",
+            "label": "Still no power"
+          }
+        },
         "label": "Still no power"
       },
       "camera": "pull_out",
@@ -1207,10 +1711,18 @@
     },
     {
       "text": "Experts warn that recovery could take months in some places, and years in the hardest-hit regions.",
-      "scene": "year_jump",
+      "scene": "medida",
       "params": {
-        "from": "2026",
-        "to": "2028",
+        "archivo": "largo-32-01",
+        "plano": 63,
+        "respaldo": {
+          "scene": "year_jump",
+          "params": {
+            "from": "2026",
+            "to": "2028",
+            "label": "Recovery could take years"
+          }
+        },
         "label": "Recovery could take years"
       },
       "camera": "push_in",
@@ -1218,10 +1730,18 @@
     },
     {
       "text": "The Sun did this in one night. And you're thinking, that was 1859. But it almost already happened.",
-      "scene": "space",
+      "scene": "medida",
       "params": {
-        "object": "sun",
-        "color": "#ff9a1f"
+        "archivo": "largo-32-01",
+        "plano": 64,
+        "respaldo": {
+          "scene": "space",
+          "params": {
+            "object": "sun",
+            "color": "#ff9a1f"
+          }
+        },
+        "label": ""
       },
       "camera": "slam",
       "transition": "flash"
@@ -1229,11 +1749,19 @@
     {
       "capitulo": "Chapter 7 · Nine Days",
       "text": "July twenty-third, 2012. A huge eruption blasts out of the Sun. NASA later says it was as strong as Carrington's.",
-      "scene": "calendar",
+      "scene": "medida",
       "params": {
-        "style": "taco",
-        "day": "23",
-        "month": "July 2012",
+        "archivo": "largo-32-01",
+        "plano": 65,
+        "respaldo": {
+          "scene": "calendar",
+          "params": {
+            "style": "taco",
+            "day": "23",
+            "month": "July 2012",
+            "label": "JULY 23, 2012"
+          }
+        },
         "label": "JULY 23, 2012"
       },
       "camera": "slam",
@@ -1241,19 +1769,27 @@
     },
     {
       "text": "A giant wave of charged plasma races outward, among the fastest ever recorded. It's heading across the solar system.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "izquierda",
-            "tamano": "gigante",
-            "anim": "acercarse"
+        "archivo": "largo-32-01",
+        "plano": 66,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "izquierda",
+                "tamano": "gigante",
+                "anim": "acercarse"
+              }
+            ],
+            "persona": "no",
+            "efecto": "velocidad",
+            "label": "AMONG THE FASTEST EVER"
           }
-        ],
-        "persona": "no",
-        "efecto": "velocidad",
+        },
         "label": "AMONG THE FASTEST EVER"
       },
       "camera": "push_in",
@@ -1261,24 +1797,32 @@
     },
     {
       "text": "A NASA spacecraft sits right in its path and records everything. Scientists watch the data come in, stunned.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "telescopio",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "temblar"
-          },
-          {
-            "pieza": "sol",
-            "pos": "arriba_izquierda",
-            "tamano": "mediano",
-            "anim": "crecer"
+        "archivo": "largo-32-01",
+        "plano": 67,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "telescopio",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "temblar"
+              },
+              {
+                "pieza": "sol",
+                "pos": "arriba_izquierda",
+                "tamano": "mediano",
+                "anim": "crecer"
+              }
+            ],
+            "persona": "no",
+            "label": "SPACECRAFT RECORDS IT"
           }
-        ],
-        "persona": "no",
+        },
         "label": "SPACECRAFT RECORDS IT"
       },
       "camera": "shake",
@@ -1286,24 +1830,32 @@
     },
     {
       "text": "The blast crosses Earth's orbit, right through the spot we'd been in. But Earth isn't there. It has already moved on.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "tierra",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "entrar_der"
-          },
-          {
-            "pieza": "estrella",
-            "pos": "izquierda",
-            "tamano": "pequeno",
-            "anim": "girar"
+        "archivo": "largo-32-01",
+        "plano": 68,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "tierra",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "entrar_der"
+              },
+              {
+                "pieza": "estrella",
+                "pos": "izquierda",
+                "tamano": "pequeno",
+                "anim": "girar"
+              }
+            ],
+            "persona": "no",
+            "label": "EARTH MOVES ON"
           }
-        ],
-        "persona": "no",
+        },
         "label": "EARTH MOVES ON"
       },
       "camera": "pan_right",
@@ -1311,103 +1863,151 @@
     },
     {
       "text": "Earth had passed that exact spot about nine days earlier. Not a shield, not a plan. Just timing.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "9 DAYS",
-        "label": "the gap that saved us",
-        "lugar": "espacio",
-        "color": "#ffd400"
+        "archivo": "largo-32-01",
+        "plano": 69,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "9 DAYS",
+            "label": "the gap that saved us",
+            "lugar": "espacio",
+            "color": "#ffd400"
+          }
+        },
+        "label": "the gap that saved us"
       },
       "camera": "slam",
       "transition": "flash"
     },
     {
       "text": "If that eruption had come nine days sooner, it would have hit us head-on, with a world far more wired than 1859's.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "sol",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "acercarse"
-          },
-          {
-            "pieza": "tierra",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "temblar"
+        "archivo": "largo-32-01",
+        "plano": 70,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "sol",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "acercarse"
+              },
+              {
+                "pieza": "tierra",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "temblar"
+              }
+            ],
+            "persona": "no",
+            "efecto": "impacto"
           }
-        ],
-        "persona": "no",
-        "efecto": "impacto"
+        },
+        "label": ""
       },
       "camera": "slam",
       "transition": "red"
     },
     {
       "text": "One physicist who studied it said it plainly: if it had hit, we'd still be picking up the pieces.",
-      "scene": "quote",
+      "scene": "medida",
       "params": {
-        "author": "Daniel Baker, physicist",
-        "text": "If it had hit, we would still be picking up the pieces."
+        "archivo": "largo-32-01",
+        "plano": 71,
+        "respaldo": {
+          "scene": "quote",
+          "params": {
+            "author": "Daniel Baker, physicist",
+            "text": "If it had hit, we would still be picking up the pieces."
+          }
+        },
+        "label": ""
       },
       "camera": "static",
       "transition": "fade"
     },
     {
       "text": "And almost nobody noticed. No headlines, no alerts, no panic. The world just kept scrolling.",
-      "scene": "phone",
+      "scene": "medida",
       "params": {
-        "screen": "search",
-        "search": {
-          "query": "funny cat videos",
-          "results": [
-            "Top 10 cats",
-            "New phone leak",
-            "Weekend plans"
-          ]
-        }
+        "archivo": "largo-32-01",
+        "plano": 72,
+        "respaldo": {
+          "scene": "phone",
+          "params": {
+            "screen": "search",
+            "search": {
+              "query": "funny cat videos",
+              "results": [
+                "Top 10 cats",
+                "New phone leak",
+                "Weekend plans"
+              ]
+            }
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "cut"
     },
     {
       "text": "One well-known study puts the odds of another storm like it at about twelve percent every ten years.",
-      "scene": "big_text",
+      "scene": "medida",
       "params": {
-        "text": "12%",
-        "label": "chance per decade",
-        "lugar": "ciudad",
-        "color": "#ff4040"
+        "archivo": "largo-32-01",
+        "plano": 73,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "12%",
+            "label": "chance per decade",
+            "lugar": "ciudad",
+            "color": "#ff4040"
+          }
+        },
+        "label": "chance per decade"
       },
       "camera": "slam",
       "transition": "cut"
     },
     {
       "text": "The good news is we're not helpless. Utilities can add protection, shut down parts of the grid safely, and prepare ahead.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "piezas": [
-          {
-            "pieza": "rayo",
-            "pos": "izquierda",
-            "tamano": "grande",
-            "anim": "crecer"
-          },
-          {
-            "pieza": "bombilla",
-            "pos": "derecha",
-            "tamano": "mediano",
-            "anim": "crecer"
+        "archivo": "largo-32-01",
+        "plano": 74,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "piezas": [
+              {
+                "pieza": "rayo",
+                "pos": "izquierda",
+                "tamano": "grande",
+                "anim": "crecer"
+              },
+              {
+                "pieza": "bombilla",
+                "pos": "derecha",
+                "tamano": "mediano",
+                "anim": "crecer"
+              }
+            ],
+            "persona": "medio",
+            "mood": "happy",
+            "objeto": "papel",
+            "label": "PROTECTION"
           }
-        ],
-        "persona": "medio",
-        "mood": "happy",
-        "objeto": "papel",
+        },
         "label": "PROTECTION"
       },
       "camera": "pull_out",
@@ -1415,24 +2015,32 @@
     },
     {
       "text": "Satellites a million miles out watch the Sun every minute. Warning time is short, but it's real.",
-      "scene": "composicion",
+      "scene": "medida",
       "params": {
-        "lugar": "espacio",
-        "piezas": [
-          {
-            "pieza": "telescopio",
-            "pos": "centro",
-            "tamano": "grande",
-            "anim": "flotar"
-          },
-          {
-            "pieza": "sol",
-            "pos": "arriba_derecha",
-            "tamano": "mediano",
-            "anim": "latir"
+        "archivo": "largo-32-01",
+        "plano": 75,
+        "respaldo": {
+          "scene": "composicion",
+          "params": {
+            "lugar": "espacio",
+            "piezas": [
+              {
+                "pieza": "telescopio",
+                "pos": "centro",
+                "tamano": "grande",
+                "anim": "flotar"
+              },
+              {
+                "pieza": "sol",
+                "pos": "arriba_derecha",
+                "tamano": "mediano",
+                "anim": "latir"
+              }
+            ],
+            "persona": "no",
+            "label": "WATCHING THE SUN"
           }
-        ],
-        "persona": "no",
+        },
         "label": "WATCHING THE SUN"
       },
       "camera": "pull_out",
@@ -1440,13 +2048,21 @@
     },
     {
       "text": "Nine days. That's how close you came to that Target checkout.",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "ciudad",
-        "hora": "dia",
-        "plano": "medio",
-        "objeto": "movil",
-        "mood": "shocked",
+        "archivo": "largo-32-01",
+        "plano": 76,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "ciudad",
+            "hora": "dia",
+            "plano": "medio",
+            "objeto": "movil",
+            "mood": "shocked",
+            "label": "TARGET, OHIO"
+          }
+        },
         "label": "TARGET, OHIO"
       },
       "camera": "slam",
@@ -1454,23 +2070,39 @@
     },
     {
       "text": "So tell me in the comments: with forty dollars and no power, what's the first thing you'd buy?",
-      "scene": "escena",
+      "scene": "medida",
       "params": {
-        "lugar": "calle",
-        "hora": "atardecer",
-        "plano": "entero",
-        "mood": "worried"
+        "archivo": "largo-32-01",
+        "plano": 77,
+        "respaldo": {
+          "scene": "escena",
+          "params": {
+            "lugar": "calle",
+            "hora": "atardecer",
+            "plano": "entero",
+            "mood": "worried"
+          }
+        },
+        "label": ""
       },
       "camera": "push_in",
       "transition": "fade"
     },
     {
       "text": "If this one rattled you, the next video shows what happens inside your body when you stop sleeping. Watch it next.",
-      "scene": "accion",
+      "scene": "medida",
       "params": {
-        "tipo": "dormir",
-        "lugar": "dormitorio",
-        "hora": "noche"
+        "archivo": "largo-32-01",
+        "plano": 78,
+        "respaldo": {
+          "scene": "accion",
+          "params": {
+            "tipo": "dormir",
+            "lugar": "dormitorio",
+            "hora": "noche"
+          }
+        },
+        "label": ""
       },
       "camera": "pull_out",
       "transition": "fade"
@@ -1599,6 +2231,6 @@
       "motivo": "Myth against reality, but less visual than the telegraph."
     }
   ],
-  "medida_estado": "esperando",
+  "medida_estado": "lista",
   "tanda": "largo-32"
 }
