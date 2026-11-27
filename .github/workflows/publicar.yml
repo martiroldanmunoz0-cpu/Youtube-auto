@@ -42,6 +42,8 @@ jobs:
           done
 
       - uses: actions/checkout@v4
+        with:
+          ref: main   # la cola MÁS RECIENTE (no la del momento en que se lanzó): si no, dos subidas seguidas suben el vídeo dos veces
 
       - uses: actions/setup-python@v5
         with:
@@ -63,6 +65,14 @@ jobs:
           else
             python pipeline/publish.py
           fi
+
+      - name: Borrar vídeos duplicados del canal (deja uno de cada)
+        continue-on-error: true
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: cd pipeline && python duplicados.py
 
       - name: Guardar cola
         run: |
