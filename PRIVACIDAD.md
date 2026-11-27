@@ -1,8 +1,8 @@
-# Política de privacidad – Historias Nocturnas
+# Política de privacidad – Curio Lab Publisher
 
-Última actualización: 19 de noviembre de 2026
+Última actualización: 27 de noviembre de 2026
 
-**Historias Nocturnas** es una herramienta privada que utiliza únicamente el propietario del canal de YouTube **Curiosidario** ([@curiosdiario](https://www.youtube.com/@curiosdiario)) para gestionar su propio canal. No tiene otros usuarios.
+**Curio Lab Publisher** es una herramienta privada que utiliza únicamente el propietario del canal de YouTube **The Curio Lab** ([@curiosdiario](https://www.youtube.com/@curiosdiario)) para gestionar su propio canal. No tiene otros usuarios.
 
 ## Servicios de API de YouTube
 Esta herramienta utiliza los **Servicios de API de YouTube**. Al usarla, el usuario acepta quedar vinculado por los **[Términos de servicio de YouTube](https://www.youtube.com/t/terms)**.
@@ -10,7 +10,7 @@ El tratamiento de datos por parte de Google se rige por la **[Política de priva
 
 ## Qué datos se usan
 - **Datos públicos de YouTube**: títulos y estadísticas públicas (visualizaciones, "me gusta", duración) de vídeos populares, obtenidos con la API de YouTube para analizar tendencias.
-- **Acceso al canal del propietario** mediante OAuth 2.0, únicamente para subir y programar los vídeos que él mismo aprueba.
+- **Acceso al canal del propietario** mediante OAuth 2.0, únicamente para subir y programar los vídeos aprobados, ponerles miniatura, añadirlos a listas del propio canal y retirar versiones antiguas que el propietario sustituye.
 
 ## Cómo se usan y comparten
 - Los datos solo se usan para decidir qué vídeos producir y para publicar los vídeos aprobados en el canal del propietario.

@@ -1,6 +1,6 @@
-# Historias Nocturnas (Shorts Factory)
+# Curio Lab Publisher (Shorts Factory)
 
-> 🔒 [**Política de privacidad**](PRIVACIDAD.md) · 📄 [**Términos del servicio**](TERMINOS.md) · ▶️ Usa los **Servicios de API de YouTube** · Canal: [Curiosidario (@curiosdiario)](https://www.youtube.com/@curiosdiario)
+> 🔒 [**Política de privacidad**](PRIVACIDAD.md) · 📄 [**Términos del servicio**](TERMINOS.md) · ▶️ Usa los **Servicios de API de YouTube** · Canal: [The Curio Lab (@curiosdiario)](https://www.youtube.com/@curiosdiario)
 >
 > Al usar esta herramienta aceptas los [Términos de servicio de YouTube](https://www.youtube.com/t/terms) y la [Política de privacidad de Google](https://policies.google.com/privacy).
 

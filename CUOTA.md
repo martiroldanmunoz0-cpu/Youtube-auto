@@ -38,7 +38,7 @@ https://github.com/martiroldanmunoz0-cpu/Youtube-auto/blob/main/PRIVACIDAD.md
 
 ### Describe your API client
 ```
-A private, single-user tool that I use only to manage my own YouTube channel (The Curio Lab, original animated educational videos in English). It is not offered to other users.
+"Curio Lab Publisher" is a private, single-user tool that I use only to manage my own YouTube channel (The Curio Lab, original animated educational videos in English). It is not offered to other users.
 
 It produces original animated videos for my channel (Shorts and long videos). Each video goes through a review step before it is uploaded. Approved videos are uploaded with videos.insert as private with a scheduled publishAt date, added to a playlist of my own channel (playlistItems.insert) and given a custom thumbnail (thumbnails.set). When I fix a mistake in a video, the corrected version is uploaded and the old one is removed from my own channel (videos.delete). Once a week it reads public statistics (videos.list, search.list) to see which topics perform well.
 
