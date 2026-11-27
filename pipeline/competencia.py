@@ -149,7 +149,7 @@ def analizar(propio: dict, otros: list[dict], cfg: dict) -> dict:
         ' "para_guiones": {"largos": "máx. 4 líneas (incluye los formatos_emergentes con aplicar=true)", "shorts": "máx. 4 líneas (ídem)"}}'
     )
     model = (cfg.get("generacion") or {}).get("modelo_analisis", "claude-opus-5-5")
-    r = anthropic.Anthropic().messages.create(model=model, max_tokens=4000, messages=[{"role": "user", "content": prompt}],
+    r = anthropic.Anthropic().messages.create(model=model, max_tokens=12000, messages=[{"role": "user", "content": prompt}],
                                               output_config={"effort": "low"})
     gasto.anthropic(r.model, r.usage, que="comparación con otros canales")
     texto = "".join(b.text for b in r.content if b.type == "text").strip()
