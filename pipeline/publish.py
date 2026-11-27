@@ -346,7 +346,8 @@ def process_queue(cfg: dict) -> list[str]:
             print(report[-1])
         except HttpError as e:
             if "quotaExceeded" in str(e) or "uploadLimitExceeded" in str(e):
-                report.append(f"⏳ Cuota de YouTube agotada hoy: `{q['id']}` y siguientes se subirán mañana automáticamente.")
+                motivo = "límite de subidas del canal (uploadLimitExceeded)" if "uploadLimitExceeded" in str(e) else "cuota de la API agotada (quotaExceeded)"
+                report.append(f"⏳ YouTube no deja subir más hoy: {motivo}. `{q['id']}` y siguientes se subirán mañana automáticamente.")
                 print(report[-1])
                 break
             q.update(estado="error", error=str(e)[:300])
