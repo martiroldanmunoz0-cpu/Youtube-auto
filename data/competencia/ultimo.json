@@ -5,25 +5,43 @@
     "id": "UCDIX2KBfZfAIgWpnq1yDhJQ",
     "suscriptores": 8,
     "videos_totales": 9,
-    "analizados": 9,
-    "subidas_por_semana": 9.0,
-    "pct_shorts": 78,
-    "vistas_mediana": 1048,
-    "vistas_mediana_shorts": 1132,
+    "analizados": 11,
+    "subidas_por_semana": 11.0,
+    "pct_shorts": 82,
+    "vistas_mediana": 880,
+    "vistas_mediana_shorts": 1205,
     "vistas_mediana_largos": 0.5,
-    "vistas_por_sub": 131.0,
+    "vistas_por_sub": 110.0,
     "likes_pct": 1.66,
-    "coment_pct": 0.014,
+    "coment_pct": 0.013,
     "duracion_mediana_largos_s": 517.0,
     "duracion_mediana_shorts_s": 53,
     "titulos": {
-      "largo_medio": 59,
-      "pct_pregunta": 67,
-      "pct_numero": 33,
+      "largo_medio": 57,
+      "pct_pregunta": 55,
+      "pct_numero": 45,
       "pct_mayusculas": 0,
-      "pct_what_if": 33
+      "pct_what_if": 27
     },
     "se_salen": [],
+    "en_auge": [
+      {
+        "titulo": "What Actually Happens If You Step in Quicksand? #shorts",
+        "vistas": 1287,
+        "dias": 1.6,
+        "dur_s": 52,
+        "x_ritmo_normal": 3.0,
+        "tipo": "short"
+      },
+      {
+        "titulo": "The Bloop: The Ocean Sound Nobody Could Explain #shorts",
+        "vistas": 1205,
+        "dias": 1.6,
+        "dur_s": 53,
+        "x_ritmo_normal": 2.7,
+        "tipo": "short"
+      }
+    ],
     "flojos": [
       {
         "titulo": "Last Person on Earth: 5 Movie Myths That Would Get You Killed",
@@ -31,9 +49,9 @@
         "tipo": "largo"
       },
       {
-        "titulo": "What If You Had to Spend $1 Billion in 30 Days?",
-        "vistas": 1,
-        "tipo": "largo"
+        "titulo": "Roy Sullivan: Struck by Lightning 7 Times #shorts",
+        "vistas": 0,
+        "tipo": "short"
       }
     ]
   },
@@ -41,15 +59,15 @@
     {
       "canal": "OutwardAnimates",
       "id": "UCfM0RwKxj7egEj3_vV1e7ng",
-      "suscriptores": 73500,
+      "suscriptores": 73800,
       "videos_totales": 70,
       "analizados": 30,
       "subidas_por_semana": 21.0,
       "pct_shorts": 97,
-      "vistas_mediana": 19363.5,
-      "vistas_mediana_shorts": 19372,
-      "vistas_mediana_largos": 2751,
-      "vistas_por_sub": 0.26,
+      "vistas_mediana": 21223.5,
+      "vistas_mediana_shorts": 22354,
+      "vistas_mediana_largos": 2840,
+      "vistas_por_sub": 0.29,
       "likes_pct": 2.38,
       "coment_pct": 0.14,
       "duracion_mediana_largos_s": 481,
@@ -64,35 +82,69 @@
       "se_salen": [
         {
           "titulo": "What if a saw blade 500 metres wide broke loose?",
-          "vistas": 270654,
-          "x_mediana": 14.0,
+          "vistas": 292677,
+          "x_mediana": 13.8,
           "dur_s": 116,
           "tipo": "short"
         },
         {
           "titulo": "What if a rifle bullet was as big as a bus?",
-          "vistas": 95062,
-          "x_mediana": 4.9,
+          "vistas": 99950,
+          "x_mediana": 4.7,
           "dur_s": 113,
           "tipo": "short"
         },
         {
           "titulo": "What if a fighter jet flew through a mountain tunnel at twice the speed of sound?",
-          "vistas": 89390,
-          "x_mediana": 4.6,
+          "vistas": 90667,
+          "x_mediana": 4.3,
           "dur_s": 112,
+          "tipo": "short"
+        }
+      ],
+      "en_auge": [
+        {
+          "titulo": "What if a saw blade 500 metres wide broke loose?",
+          "vistas": 292677,
+          "dias": 2.5,
+          "dur_s": 116,
+          "x_ritmo_normal": 19.5,
+          "tipo": "short"
+        },
+        {
+          "titulo": "What if the biggest bunker buster got 10x bigger every drop?",
+          "vistas": 50961,
+          "dias": 0.8,
+          "dur_s": 113,
+          "x_ritmo_normal": 10.3,
+          "tipo": "short"
+        },
+        {
+          "titulo": "What if a rifle bullet was as big as a bus?",
+          "vistas": 99950,
+          "dias": 3.0,
+          "dur_s": 113,
+          "x_ritmo_normal": 5.6,
+          "tipo": "short"
+        },
+        {
+          "titulo": "What if Project Pluto had flown?",
+          "vistas": 67593,
+          "dias": 2.3,
+          "dur_s": 115,
+          "x_ritmo_normal": 4.8,
           "tipo": "short"
         }
       ],
       "flojos": [
         {
-          "titulo": "What if the A-10's gun got 10x bigger every test?",
-          "vistas": 449,
-          "tipo": "short"
+          "titulo": "What if Earth had two moons?",
+          "vistas": 2840,
+          "tipo": "largo"
         },
         {
           "titulo": "What if a cluster bomb's bomblets were all cluster bombs too?",
-          "vistas": 2354,
+          "vistas": 5877,
           "tipo": "short"
         }
       ],
@@ -101,15 +153,15 @@
     {
       "canal": "House In Crisis",
       "id": "UC6JSF1Axa6yHBGz9bQl0R7g",
-      "suscriptores": 15100,
+      "suscriptores": 15200,
       "videos_totales": 29,
       "analizados": 29,
       "subidas_por_semana": 6.3,
       "pct_shorts": 100,
-      "vistas_mediana": 120713,
-      "vistas_mediana_shorts": 120713,
+      "vistas_mediana": 120869,
+      "vistas_mediana_shorts": 120869,
       "vistas_mediana_largos": 0.0,
-      "vistas_por_sub": 7.99,
+      "vistas_por_sub": 7.95,
       "likes_pct": 1.9,
       "coment_pct": 0.009,
       "duracion_mediana_largos_s": 0.0,
@@ -124,35 +176,69 @@
       "se_salen": [
         {
           "titulo": "What If You Built A Horse With A Human Body!? 😳🐎 #shorts",
-          "vistas": 5145226,
-          "x_mediana": 42.6,
+          "vistas": 5173863,
+          "x_mediana": 42.8,
           "dur_s": 77,
           "tipo": "short"
         },
         {
           "titulo": "What If You Built A Bull That Walks On Two Legs!? 😳🐂 #shorts",
-          "vistas": 3091766,
+          "vistas": 3096889,
           "x_mediana": 25.6,
           "dur_s": 74,
           "tipo": "short"
         },
         {
           "titulo": "What If You Built A Gorilla That Lives In The Snow!? 😳🦍 #shorts",
-          "vistas": 2807066,
-          "x_mediana": 23.3,
+          "vistas": 2845251,
+          "x_mediana": 23.5,
           "dur_s": 77,
+          "tipo": "short"
+        }
+      ],
+      "en_auge": [
+        {
+          "titulo": "What If You Built A Bull That Walks On Two Legs!? 😳🐂 #shorts",
+          "vistas": 3096889,
+          "dias": 7.3,
+          "dur_s": 74,
+          "x_ritmo_normal": 51.2,
+          "tipo": "short"
+        },
+        {
+          "titulo": "What If You Built A Horse With A Human Body!? 😳🐎 #shorts",
+          "vistas": 5173863,
+          "dias": 13.4,
+          "dur_s": 77,
+          "x_ritmo_normal": 47.1,
+          "tipo": "short"
+        },
+        {
+          "titulo": "What If You Built A Gorilla That Lives In The Snow!? 😳🦍 #shorts",
+          "vistas": 2845251,
+          "dias": 10.8,
+          "dur_s": 77,
+          "x_ritmo_normal": 32.1,
+          "tipo": "short"
+        },
+        {
+          "titulo": "What If You Built A Wolf That Walks On Two Legs!? 😳🐺 #shorts",
+          "vistas": 1544048,
+          "dias": 12.3,
+          "dur_s": 75,
+          "x_ritmo_normal": 15.3,
           "tipo": "short"
         }
       ],
       "flojos": [
         {
           "titulo": "Why People Used to Put Pennies in Their Fuse Box",
-          "vistas": 10773,
+          "vistas": 10798,
           "tipo": "short"
         },
         {
           "titulo": "How a Frozen River Becomes a Hotel 😳",
-          "vistas": 15347,
+          "vistas": 15410,
           "tipo": "short"
         }
       ],
@@ -161,15 +247,15 @@
     {
       "canal": "ConChaser",
       "id": "UCt-GhchW5nGSjr-ETeGab_g",
-      "suscriptores": 35200,
+      "suscriptores": 35400,
       "videos_totales": 35,
       "analizados": 30,
       "subidas_por_semana": 7.5,
       "pct_shorts": 0,
-      "vistas_mediana": 88581.5,
+      "vistas_mediana": 88865.0,
       "vistas_mediana_shorts": 0.0,
-      "vistas_mediana_largos": 88581.5,
-      "vistas_por_sub": 2.52,
+      "vistas_mediana_largos": 88865.0,
+      "vistas_por_sub": 2.51,
       "likes_pct": 0.5,
       "coment_pct": 0.028,
       "duracion_mediana_largos_s": 923.5,
@@ -184,35 +270,53 @@
       "se_salen": [
         {
           "titulo": "What If You Could See Everyone's IQ?",
-          "vistas": 3190081,
-          "x_mediana": 36.0,
+          "vistas": 3210223,
+          "x_mediana": 36.1,
           "dur_s": 831,
           "tipo": "largo"
         },
         {
           "titulo": "What If You Could See Everyone's Future Height?",
-          "vistas": 1685068,
+          "vistas": 1691078,
           "x_mediana": 19.0,
           "dur_s": 1106,
           "tipo": "largo"
         },
         {
           "titulo": "What If You Could See Who Finds You Attractive?",
-          "vistas": 920767,
+          "vistas": 921798,
           "x_mediana": 10.4,
           "dur_s": 962,
+          "tipo": "largo"
+        }
+      ],
+      "en_auge": [
+        {
+          "titulo": "What If You Could See Everyone's Dating Standards?",
+          "vistas": 658809,
+          "dias": 8.8,
+          "dur_s": 846,
+          "x_ritmo_normal": 10.0,
+          "tipo": "largo"
+        },
+        {
+          "titulo": "What If You Had Infinite Luck in Prison?",
+          "vistas": 34330,
+          "dias": 0.7,
+          "dur_s": 1207,
+          "x_ritmo_normal": 6.5,
           "tipo": "largo"
         }
       ],
       "flojos": [
         {
           "titulo": "What If You Were Born as Trevor Philips? | GTA V",
-          "vistas": 9274,
+          "vistas": 9496,
           "tipo": "largo"
         },
         {
           "titulo": "What If You Could See How Long Until Someone Crashes Out?",
-          "vistas": 11154,
+          "vistas": 16447,
           "tipo": "largo"
         }
       ],
@@ -221,16 +325,16 @@
     {
       "canal": "Silenthys",
       "id": "UCDMS2bBFWTK1JKWlEoTGegw",
-      "suscriptores": 33400,
+      "suscriptores": 33500,
       "videos_totales": 56,
       "analizados": 30,
       "subidas_por_semana": 15.0,
       "pct_shorts": 100,
-      "vistas_mediana": 56934.5,
-      "vistas_mediana_shorts": 56934.5,
+      "vistas_mediana": 57097.0,
+      "vistas_mediana_shorts": 57097.0,
       "vistas_mediana_largos": 0.0,
       "vistas_por_sub": 1.7,
-      "likes_pct": 2.64,
+      "likes_pct": 2.65,
       "coment_pct": 0.033,
       "duracion_mediana_largos_s": 0.0,
       "duracion_mediana_shorts_s": 52.0,
@@ -244,35 +348,69 @@
       "se_salen": [
         {
           "titulo": "Why Senku’s count is basically impossible Dr. Stone #anime #animeexplained #drstone",
-          "vistas": 714412,
-          "x_mediana": 12.5,
+          "vistas": 725434,
+          "x_mediana": 12.7,
           "dur_s": 43,
           "tipo": "short"
         },
         {
           "titulo": "Why you can’t punch Mahito only Yuji can #anime #animeexplained #jujutsukaisen",
-          "vistas": 593056,
+          "vistas": 594299,
           "x_mediana": 10.4,
           "dur_s": 49,
           "tipo": "short"
         },
         {
           "titulo": "How strong do you need to be to carry your girlfriend #anime #animeexplained #baki",
-          "vistas": 435652,
-          "x_mediana": 7.7,
+          "vistas": 449530,
+          "x_mediana": 7.9,
           "dur_s": 42,
+          "tipo": "short"
+        }
+      ],
+      "en_auge": [
+        {
+          "titulo": "Why Senku’s count is basically impossible Dr. Stone #anime #animeexplained #drstone",
+          "vistas": 725434,
+          "dias": 7.6,
+          "dur_s": 43,
+          "x_ritmo_normal": 7.7,
+          "tipo": "short"
+        },
+        {
+          "titulo": "The physics of Yuki’s Star Rage #anime #animeexplained #jujutsukaisen",
+          "vistas": 435837,
+          "dias": 8.6,
+          "dur_s": 58,
+          "x_ritmo_normal": 4.1,
+          "tipo": "short"
+        },
+        {
+          "titulo": "Why Gojo never runs out of cursed energy #anime #animeexplained #jujutsukaisen",
+          "vistas": 105668,
+          "dias": 2.6,
+          "dur_s": 54,
+          "x_ritmo_normal": 3.3,
+          "tipo": "short"
+        },
+        {
+          "titulo": "Why you can’t punch Mahito only Yuji can #anime #animeexplained #jujutsukaisen",
+          "vistas": 594299,
+          "dias": 14.6,
+          "dur_s": 49,
+          "x_ritmo_normal": 3.3,
           "tipo": "short"
         }
       ],
       "flojos": [
         {
           "titulo": "How Ayanokoji turned betrayal into a trap #anime #animeexplained #classroomoftheelite",
-          "vistas": 4859,
+          "vistas": 11818,
           "tipo": "short"
         },
         {
-          "titulo": "Why Jinshi gave Maomao a hairpin #anime #animeexplained #apothecarydiaries",
-          "vistas": 9764,
+          "titulo": "Love is War is a real game theory problem #anime #animeexplained #loveiswar #kaguyasama",
+          "vistas": 17633,
           "tipo": "short"
         }
       ],
@@ -282,12 +420,12 @@
       "canal": "Mo and Coocoo",
       "id": "UCoNfmfko1d-usTg7UEe0DvQ",
       "suscriptores": 175000,
-      "videos_totales": 232,
+      "videos_totales": 233,
       "analizados": 30,
-      "subidas_por_semana": 1.8,
+      "subidas_por_semana": 1.9,
       "pct_shorts": 100,
-      "vistas_mediana": 275157.0,
-      "vistas_mediana_shorts": 275157.0,
+      "vistas_mediana": 275485.0,
+      "vistas_mediana_shorts": 275485.0,
       "vistas_mediana_largos": 0.0,
       "vistas_por_sub": 1.57,
       "likes_pct": 2.25,
@@ -296,7 +434,7 @@
       "duracion_mediana_shorts_s": 72.0,
       "titulos": {
         "largo_medio": 96,
-        "pct_pregunta": 73,
+        "pct_pregunta": 77,
         "pct_numero": 3,
         "pct_mayusculas": 0,
         "pct_what_if": 0
@@ -304,28 +442,46 @@
       "se_salen": [
         {
           "titulo": "🍚A rice cooker does more than rice!! #animation #knowledge #facts  #science #sciencefacts #cartoon",
-          "vistas": 960809,
+          "vistas": 961173,
           "x_mediana": 3.5,
           "dur_s": 62,
           "tipo": "short"
         },
         {
           "titulo": "🍕These foods that look spoiled are actually safe to eat! #cartoon #food #foodlover #foodknowledge",
-          "vistas": 826755,
+          "vistas": 826926,
           "x_mediana": 3.0,
           "dur_s": 66,
           "tipo": "short"
         }
       ],
-      "flojos": [
+      "en_auge": [
         {
-          "titulo": "🦀If you’ve ever had a shot, you probably owe it your life.#knowledge #knowledgeispower #facts #funny",
-          "vistas": 69353,
+          "titulo": "😯Why do fish suddenly appear in puddles?#facts #knowledge #factshorts #factsdaily #knowledgeispower",
+          "vistas": 147567,
+          "dias": 7.2,
+          "dur_s": 76,
+          "x_ritmo_normal": 2.8,
           "tipo": "short"
         },
         {
-          "titulo": "🤓The sea anemone: the ocean's biggest fool! #marinelife #knowledge #knowledgeispower #facts #funny",
-          "vistas": 99717,
+          "titulo": "🐚How hard do scallops work to avoid being eaten? #marinelife #knowledge #knowledgeispower #facts",
+          "vistas": 367465,
+          "dias": 18.2,
+          "dur_s": 90,
+          "x_ritmo_normal": 2.8,
+          "tipo": "short"
+        }
+      ],
+      "flojos": [
+        {
+          "titulo": "🦘Can you believe it? Australia eats its own national treasure! #knowledge #knowledgeispower #facts",
+          "vistas": 8403,
+          "tipo": "short"
+        },
+        {
+          "titulo": "🦀If you’ve ever had a shot, you probably owe it your life.#knowledge #knowledgeispower #facts #funny",
+          "vistas": 71492,
           "tipo": "short"
         }
       ],
@@ -339,9 +495,9 @@
       "analizados": 30,
       "subidas_por_semana": 5.4,
       "pct_shorts": 0,
-      "vistas_mediana": 23778.5,
+      "vistas_mediana": 23794.0,
       "vistas_mediana_shorts": 0.0,
-      "vistas_mediana_largos": 23778.5,
+      "vistas_mediana_largos": 23794.0,
       "vistas_por_sub": 0.01,
       "likes_pct": 1.84,
       "coment_pct": 0.173,
@@ -357,21 +513,47 @@
       "se_salen": [
         {
           "titulo": "Anonymous \"This Declassified Document Will Change Your Life  \"",
-          "vistas": 88370,
+          "vistas": 88468,
           "x_mediana": 3.7,
           "dur_s": 628,
+          "tipo": "largo"
+        }
+      ],
+      "en_auge": [
+        {
+          "titulo": "Why Did Miami Police Really Shut Down Bayside Mall?",
+          "vistas": 6217,
+          "dias": 0.8,
+          "dur_s": 708,
+          "x_ritmo_normal": 7.5,
+          "tipo": "largo"
+        },
+        {
+          "titulo": "100 Unsolved Mysteries That Will Make You Question Reality",
+          "vistas": 19192,
+          "dias": 4.4,
+          "dur_s": 13592,
+          "x_ritmo_normal": 4.2,
+          "tipo": "largo"
+        },
+        {
+          "titulo": "4+ HOURS of Unsolved Mysteries NO ONE Can Explain",
+          "vistas": 25153,
+          "dias": 6.4,
+          "dur_s": 14537,
+          "x_ritmo_normal": 3.8,
           "tipo": "largo"
         }
       ],
       "flojos": [
         {
           "titulo": "Why Did Miami Police Really Shut Down Bayside Mall?",
-          "vistas": 4874,
+          "vistas": 6217,
           "tipo": "largo"
         },
         {
           "titulo": "Unknown Non Human Objects Filmed That Should Not Exist",
-          "vistas": 8203,
+          "vistas": 8204,
           "tipo": "largo"
         }
       ],
@@ -381,57 +563,75 @@
       "canal": "Beyond the Observable Universe",
       "id": "UCqHnD8wfGVayL3xwxeY9cpg",
       "suscriptores": 2100000,
-      "videos_totales": 814,
+      "videos_totales": 815,
       "analizados": 30,
       "subidas_por_semana": 2.9,
       "pct_shorts": 100,
-      "vistas_mediana": 739011.5,
-      "vistas_mediana_shorts": 739011.5,
+      "vistas_mediana": 745670.0,
+      "vistas_mediana_shorts": 745670.0,
       "vistas_mediana_largos": 0.0,
-      "vistas_por_sub": 0.35,
-      "likes_pct": 0.62,
-      "coment_pct": 0.005,
+      "vistas_por_sub": 0.36,
+      "likes_pct": 0.61,
+      "coment_pct": 0.004,
       "duracion_mediana_largos_s": 0.0,
-      "duracion_mediana_shorts_s": 19.0,
+      "duracion_mediana_shorts_s": 19.5,
       "titulos": {
         "largo_medio": 74,
         "pct_pregunta": 57,
-        "pct_numero": 3,
+        "pct_numero": 0,
         "pct_mayusculas": 7,
         "pct_what_if": 3
       },
       "se_salen": [
         {
           "titulo": "How Fast Is Light Compared to the Universe? #light #earth #jupiter #blackhole",
-          "vistas": 14400598,
-          "x_mediana": 19.5,
+          "vistas": 14401824,
+          "x_mediana": 19.3,
           "dur_s": 18,
           "tipo": "short"
         },
         {
           "titulo": "Earth Has Less Water Than You Think #earth #solarsystem #water #animation",
-          "vistas": 12359940,
+          "vistas": 12419094,
           "x_mediana": 16.7,
           "dur_s": 18,
           "tipo": "short"
         },
         {
           "titulo": "Who Can Save Earth? #earth #magneticfield #sun'sshield #jupiter #moon #animation",
-          "vistas": 4057318,
+          "vistas": 4070610,
           "x_mediana": 5.5,
           "dur_s": 17,
           "tipo": "short"
         }
       ],
-      "flojos": [
+      "en_auge": [
         {
-          "titulo": "What Could Actually Destroy Earth? #sun #solarstorm #earth #blackhole",
-          "vistas": 63967,
+          "titulo": "The Strangest Rain in the Universe! #rain #universe #solarsystem #animation",
+          "vistas": 1863996,
+          "dias": 17.0,
+          "dur_s": 22,
+          "x_ritmo_normal": 5.6,
           "tipo": "short"
         },
         {
-          "titulo": "Day vs Night Temperature on Every Planet! #earth #jupiter #mercury  #space #animation",
-          "vistas": 73259,
+          "titulo": "These Planets Have INSANE Amounts of Water! #earth #waterworld #solarsystem #exoplanets #animation",
+          "vistas": 1189016,
+          "dias": 13.1,
+          "dur_s": 22,
+          "x_ritmo_normal": 4.6,
+          "tipo": "short"
+        }
+      ],
+      "flojos": [
+        {
+          "titulo": "The Weirdest Things in the Universe! #magnetar #supersaturn #blackhole #animation",
+          "vistas": 10951,
+          "tipo": "short"
+        },
+        {
+          "titulo": "What Could Actually Destroy Earth? #sun #solarstorm #earth #blackhole",
+          "vistas": 66412,
           "tipo": "short"
         }
       ],
@@ -441,50 +641,84 @@
       "canal": "Uncharted Mysteries",
       "id": "UCtrFDttZdb4QxBpQc3fi1Cg",
       "suscriptores": 311000,
-      "videos_totales": 113,
+      "videos_totales": 114,
       "analizados": 30,
-      "subidas_por_semana": 1.5,
+      "subidas_por_semana": 1.6,
       "pct_shorts": 0,
-      "vistas_mediana": 164295.5,
+      "vistas_mediana": 164923.5,
       "vistas_mediana_shorts": 0.0,
-      "vistas_mediana_largos": 164295.5,
+      "vistas_mediana_largos": 164923.5,
       "vistas_por_sub": 0.53,
-      "likes_pct": 0.89,
-      "coment_pct": 0.074,
-      "duracion_mediana_largos_s": 3536.5,
+      "likes_pct": 0.87,
+      "coment_pct": 0.072,
+      "duracion_mediana_largos_s": 4203.5,
       "duracion_mediana_shorts_s": 0.0,
       "titulos": {
-        "largo_medio": 53,
+        "largo_medio": 54,
         "pct_pregunta": 3,
-        "pct_numero": 67,
+        "pct_numero": 70,
         "pct_mayusculas": 57,
         "pct_what_if": 0
       },
       "se_salen": [
         {
           "titulo": "The GREATEST Archaeological Discoveries of 2026 (So Far)",
-          "vistas": 1322752,
-          "x_mediana": 8.1,
+          "vistas": 1323758,
+          "x_mediana": 8.0,
           "dur_s": 5753,
           "tipo": "largo"
         },
         {
           "titulo": "The 12,000 Year Old Megaliths Nobody Can Explain",
-          "vistas": 509338,
+          "vistas": 511926,
           "x_mediana": 3.1,
           "dur_s": 9443,
           "tipo": "largo"
         }
       ],
-      "flojos": [
+      "en_auge": [
         {
-          "titulo": "The 1,000 Ton Stone No Machine On Earth Can Lift",
-          "vistas": 20549,
+          "titulo": "The GREATEST Archaeological Discoveries of 2026",
+          "vistas": 134743,
+          "dias": 2.5,
+          "dur_s": 7898,
+          "x_ritmo_normal": 17.6,
           "tipo": "largo"
         },
         {
-          "titulo": "2+ HOURS of Ancient Artifacts Nobody Can Explain",
-          "vistas": 46784,
+          "titulo": "The 12,000 Year Old Megaliths Nobody Can Explain",
+          "vistas": 511926,
+          "dias": 16.0,
+          "dur_s": 9443,
+          "x_ritmo_normal": 10.7,
+          "tipo": "largo"
+        },
+        {
+          "titulo": "The Mysterious 240,000 Years Recorded Before the Great Flood",
+          "vistas": 233728,
+          "dias": 8.0,
+          "dur_s": 5153,
+          "x_ritmo_normal": 9.8,
+          "tipo": "largo"
+        },
+        {
+          "titulo": "The MASSIVE Underground Cities Built by Ancient Civilizations",
+          "vistas": 193770,
+          "dias": 10.6,
+          "dur_s": 10451,
+          "x_ritmo_normal": 6.1,
+          "tipo": "largo"
+        }
+      ],
+      "flojos": [
+        {
+          "titulo": "2+ HOURS of Ancient Mysteries That Still Have No Answer",
+          "vistas": 430,
+          "tipo": "largo"
+        },
+        {
+          "titulo": "The 1,000 Ton Stone No Machine On Earth Can Lift",
+          "vistas": 20561,
           "tipo": "largo"
         }
       ],
@@ -492,86 +726,6 @@
     }
   ],
   "analisis": {
-    "posicion": "The Curio Lab está en fase de arranque: 8 suscriptores, 9 vídeos y una mediana de 1.048 vistas, frente a 88.582 de mediana en los canales parecidos (unas 85 veces menos). Los Shorts ya captan algo de tráfico (mediana 1.132 vistas), pero los 2 vídeos largos están prácticamente a cero (0 y 1 vistas), así que hoy el canal vive solo del feed de Shorts. Las 131 vistas por suscriptor no indican que el canal sea fuerte: salen de tener solo 8 suscriptores. Con solo 9 vídeos la muestra es muy pequeña y las conclusiones son orientativas.",
-    "diferencias": [
-      {
-        "metrica": "Vistas medianas por vídeo",
-        "nosotros": "1.048 (Shorts 1.132; largos 0,5)",
-        "ellos": "88.582 (rango 19.364–275.157)",
-        "que_hacer": "Centrar el esfuerzo en Shorts, que es donde ya hay tracción, y dejar los largos en pausa hasta que algún Short supere las 10.000 vistas y tengas un público al que redirigir."
-      },
-      {
-        "metrica": "% de Shorts",
-        "nosotros": "78%",
-        "ellos": "100% (4 de 5 parecidos son 97–100% Shorts; solo ConChaser hace 0%)",
-        "que_hacer": "Subir los Shorts a cerca del 100% durante 4–6 semanas. Si vuelves a los largos, que sea como formato aparte y serializado, no mezclado al azar con los Shorts."
-      },
-      {
-        "metrica": "Subidas por semana",
-        "nosotros": "9,0 (probablemente concentradas en el lanzamiento)",
-        "ellos": "7,5 (rango 1,8–21)",
-        "que_hacer": "Mantener un ritmo sostenible de 5–7 Shorts por semana, con calidad constante, en vez de picos de publicación seguidos de silencio."
-      },
-      {
-        "metrica": "Duración mediana de los Shorts",
-        "nosotros": "53 s",
-        "ellos": "71,5 s (los Shorts que se salen duran entre 17 y 116 s)",
-        "que_hacer": "La duración no es el problema. Prueba 2 franjas: muy cortos (20–30 s, un solo dato visual) y medios (60–75 s, una premisa con escalada)."
-      },
-      {
-        "metrica": "Duración de los largos",
-        "nosotros": "517 s (8,6 min)",
-        "ellos": "~702 s entre los parecidos que hacen largos; los largos que se salen en ConChaser duran 831–1.106 s",
-        "que_hacer": "Si retomas los largos, apunta a 12–15 min con una sola premisa desarrollada en profundidad, no listas de 5 puntos."
-      },
-      {
-        "metrica": "% de títulos 'What if'",
-        "nosotros": "33%",
-        "ellos": "38% (en los dos canales más parecidos al tuyo es del 93–100%)",
-        "que_hacer": "Convertir la hipótesis en una plantilla fija de serie con un elemento variable, en lugar de alternar formatos de título."
-      },
-      {
-        "metrica": "% de títulos en forma de pregunta",
-        "nosotros": "67%",
-        "ellos": "73%",
-        "que_hacer": "Estás en línea con ellos. Mantén las preguntas, pero que sean visuales y concretas (un objeto o una escala), no abstractas."
-      },
-      {
-        "metrica": "Longitud media del título",
-        "nosotros": "59 caracteres",
-        "ellos": "53 caracteres",
-        "que_hacer": "Recortar a 40–55 caracteres. Por ejemplo, 'Last Person on Earth: 5 Movie Myths That Would Get You Killed' mezcla dos ganchos en uno solo."
-      },
-      {
-        "metrica": "% de likes",
-        "nosotros": "1,66%",
-        "ellos": "2,25%",
-        "que_hacer": "Cerrar cada Short con un giro o un remate visual que provoque reacción, en vez de terminar con el dato y cortar."
-      },
-      {
-        "metrica": "% de comentarios",
-        "nosotros": "0,014%",
-        "ellos": "0,033%",
-        "que_hacer": "Terminar con una elección binaria para el espectador (por ejemplo, '¿tú elegirías A o B?') y fijar un comentario con esa misma pregunta."
-      }
-    ],
-    "patrones_virales": [
-      "Premisa hipotética con escala exagerada y un objeto cotidiano reconocible: se toma algo que todo el mundo visualiza y se lleva a un tamaño, velocidad o cantidad absurda. Es lo que impulsa a OutwardAnimates (hasta 14x su mediana).",
-      "Plantilla de serie repetida con una sola variable: varios de los vídeos que se salen comparten exactamente la misma estructura de título y solo cambia un elemento (House In Crisis 23–43x, ConChaser 10–36x). El público reconoce el formato y el algoritmo lo agrupa.",
-      "Ángulo de relevancia personal ('you'): la hipótesis afecta directamente al espectador y a su vida social, no a algo lejano. Los 3 largos de ConChaser que se salen siguen este ángulo.",
-      "Contradicción o intuición rota: 'es menos de lo que crees', 'parece X pero en realidad es Y', 'por qué esto es imposible'. Aparece en Beyond the Observable Universe (16–19x), Silenthys y Mo and Coocoo.",
-      "Títulos cortos y visuales: 40–60 caracteres, un solo gancho, sin dos ideas mezcladas. Cuando se añaden hashtags o emojis, van después del gancho y no sustituyen la claridad.",
-      "Los Shorts que más destacan duran 17–20 s (con un único dato impactante) o 70–116 s (con una premisa que va escalando). Los vídeos flojos suelen ser variaciones demasiado técnicas o de nicho de la misma idea."
-    ],
-    "pruebas": [
-      "Serie fija de hipótesis a escala: 6 Shorts con la misma plantilla de título y una variable (ejemplos propios: 'What if a raindrop were the size of a car?', 'What if a snail moved at highway speed?'). Medir las vistas medianas frente a 1.132 y el % de vistas desde el feed. Funciona si la mediana de la serie supera 3.000.",
-      "Corto contra medio: 4 Shorts de 20–30 s con un solo dato contraintuitivo frente a 4 de 60–75 s con escalada. Medir el % de 'viewed vs swiped away' y la retención media en Studio. Gana el formato que supere el 70% de 'viewed' y tenga más vistas medianas.",
-      "Títulos de menos de 50 caracteres con un único gancho frente a títulos dobles como los actuales. Medir vistas a las 48 h y el porcentaje de 'viewed'. Funciona si los títulos cortos sacan al menos 1,5x de vistas.",
-      "Cierre con elección binaria y comentario fijado en todos los Shorts durante 2 semanas. Medir el % de comentarios (objetivo ≥0,03%) y el % de likes (objetivo ≥2,2%)."
-    ],
-    "para_guiones": {
-      "largos": "Pausar los largos hasta tener algún Short por encima de 10.000 vistas. Al retomarlos: una sola premisa 'what if' en segunda persona, desarrollada durante 12–15 min. Estructura: gancho de 15 s → consecuencias inmediatas → efectos sociales → giro final. Cada 2–3 min, una nueva escalada que reabra la curiosidad. Nada de listas de '5 mitos'.",
-      "shorts": "El primer fotograma debe mostrar el objeto ya exagerado, sin introducción. En los primeros 2 s, la pregunta en pantalla en 6–8 palabras. Después, de 3 a 5 escaladas de consecuencias, cada una más extrema que la anterior. Remate visual sorprendente y cierre con una elección binaria para el espectador. Usar la misma plantilla en toda la serie."
-    }
+    "posicion": "```json\n{\n  \"posicion\": \"Corrijo las cifras del análisis anterior. The Curio Lab tiene 8 suscriptores y una mediana de 880 vistas por vídeo (no 1.048). Los parecidos tienen una mediana de 88.865 (rango 21.224–275.485), unas 100 veces más (no 85). Los Shorts sostienen el canal con una mediana de 1.205 vistas, mientras que los largos están en 0,5 de mediana (0 y 1 vistas). Hay una señal positiva: los dos Shorts más recientes ('What Actually Happens If You Step in Quicksand?', 3,0x, y 'The Bloop', 2,7x) van por encima del ritmo normal del canal en solo 1,6 días. Las 110 vistas por suscriptor (no 131) solo reflejan que hay 8 suscriptores. Los datos son poco consistentes (9 vídeos totales frente a 11 analizados, 11 subidas por semana), así que todo es orientativo.\",\n  \"diferencias\": [\n    {\"metrica\": \"Vistas medianas por vídeo\", \"nosotros\": \"880 (Shorts 1.205; largos 0,5)\", \"ellos\": \"88.865 (rango 21.224–275.485)\", \"que_hacer\": \"Centrarse en Shorts, que es donde ya hay tracción. Pausar los largos hasta que algún Short pase de 10.000 vistas.\"},\n    {\"metrica\": \"% de Shorts\", \"nosotros\": \"82%\", \"ellos\": \"100% (4 de 5 parecidos están entre el 97 y el 100%; ConChaser tiene 0%)\", \"que_hacer\": \"Llegar al 100% de Shorts durante 4–6 semanas. Los largos, más adelante y como serie aparte.\"},\n    {\"metrica\": \"Subidas por semana\", \"nosotros\": \"11,0 (dato inflado por el lanzamiento: el canal solo tiene 9–11 vídeos)\", \"ellos\": \"7,5 (rango 1,9–21)\", \"que_hacer\": \"Mantener 6–7 Shorts por semana de forma sostenida, sin ráfagas seguidas de silencio.\"},\n    {\"metrica\": \"Duración mediana de los Shorts\", \"nosotros\": \"53 s\", \"ellos\": \"71,5 s (los que se salen duran entre 17 y 116 s)\", \"que_hacer\": \"La duración por sí sola no decide el resultado. Probar 70–90 s con una escalada progresiva, que es la franja de OutwardAnimates, House In Crisis y Mo and Coocoo, y compararla con los 50 s actuales.\"},\n    {\"metrica\": \"Duración de los largos\", \"nosotros\": \"517 s\", \"ellos\": \"702 s (los largos que se salen en ConChaser duran 831–1.106 s)\", \"que_hacer\": \"Al retomar los largos, apuntar a 12–15 min con una sola premisa desarrollada, no listas.\"},\n    {\"metrica\": \"% de títulos 'What if'\", \"nosotros\": \"27%\", \"ellos\": \"38% (93–100% en ConChaser y OutwardAnimates)\", \"que_hacer\": \"Elegir una plantilla de serie fija con un solo elemento variable y repetirla.\"},\n    {\"metrica\": \"% de títulos en forma de pregunta\", \"nosotros\": \"55%\", \"ellos\": \"77%\", \"que_hacer\": \"Subir a más del 75%. Tus dos Shorts en auge son una pregunta y un misterio no resuelto, así que el formato ya funciona contigo.\"},\n    {\"metrica\": \"Longitud media del título\", \"nosotros\": \"57 caracteres\", \"ellos\": \"53 caracteres\", \"que_hacer\": \"Recortar a 40–55 caracteres con un único gancho. 'Last Person on Earth: 5 Movie Myths That Would Get You Killed' mezcla dos ideas y tuvo 0 vistas.\"},\n    {\"metrica\": \"Vistas por suscriptor\", \"nosotros\": \"110\", \"ellos\": \"1,7\", \"que_hacer\": \"No es una fortaleza: hoy las vistas llegan del feed, no de suscriptores. Priorizar series reconocibles que conviertan espectadores en suscriptores.\"},\n    {\"metrica\": \"% de likes\", \"nosotros\": \"1,66%\", \"ellos\": \"2,25%\", \"que_hacer\": \"Cerrar cada Short con un remate visual o un giro, en lugar de cortar justo después del dato.\"},\n    {\"metrica\": \"% de comentarios\", \"nosotros\": \"0,013%\", \"ellos\": \"0,033%\", \"que_hacer\": \"Terminar con una elección binaria para el espectador y fijar un comentario con esa misma pregunta.\"}\n  ],\n  \"patrones_virales\": [\n    \"Plantilla de serie con una sola variable. Los vídeos que se salen comparten exactamente la misma estructura de título y solo cambia un elemento: House In Crisis 23–43x, ConChaser 10–36x, OutwardAnimates 4–14x.\",\n    \"Escala exagerada aplicada a algo reconocible: un objeto o ser cotidiano llevado a un tamaño, velocidad o cantidad absurda (OutwardAnimates hasta 13,8x).\",\n    \"Segunda persona ('you'): la premisa le pasa al espectador. Lo usan los tres largos que se salen de ConChaser (10–36x) y los de House In Crisis.\",\n    \"Intuición rota o explicación de un mecanismo: 'menos de lo que crees', 'por qué es imposible', 'por qué ocurre X'. Aparece en Beyond the Observable Universe (16,7x), Silenthys (10–13x) y Mo and Coocoo (3–3,5x).\",\n    \"Un solo gancho por título. Emojis, '!?' y hashtags se añaden detrás del gancho y no lo sustituyen.\",\n    \"La duración no es decisiva: los Shorts que se salen van de 17 s (un único dato) a 116 s (escalada). Lo que separa éxitos de flojos dentro de un mismo canal es el ángulo: las variantes demasiado técnicas o de nicho fallan (OutwardAnimates, 'cluster bombs', 5.877 vistas).\"\n  ],\n  \"pruebas\": [\n    \"Serie fija de 6 Shorts en segunda persona con la plantilla 'What if your [objeto] could [capacidad]?' (ejemplos propios: 'What if your shadow could walk away?', 'What if your fridge could talk back?'). Medir las vistas medianas frente a 1.205 y los suscriptores ganados por Short. Funciona si la mediana supera 3.000.\",\n    \"Shorts explicativos 'What actually happens…' / 'Why…', siguiendo el formato del Short de arenas movedizas que va a 3,0x (ejemplos: 'What Actually Happens If You Swall"
   }
 }
