@@ -82,7 +82,7 @@ jobs:
           git config merge.cola.driver "python3 pipeline/fusionar_cola.py %O %A %B"
           git add data/gasto 2>/dev/null || exit 0
           git commit -m "Gasto de API: $RUN_ID" || exit 0
-          for i in 1 2 3 4 5; do git pull --rebase && git push && break; git rebase --abort 2>/dev/null; sleep $((i * 7)); done
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; git rebase --abort 2>/dev/null || true; sleep $((i * 7)); done
       - name: Escenas a medida — guardar el guion y esperar a Claude
         if: env.A_MEDIDA == 'true' && env.REHACER_ID == ''
         env:
@@ -94,7 +94,7 @@ jobs:
           python pipeline/medida.py guardar
           git add data/guiones
           git commit -m "Guion largo a la espera de escenas a medida: $RUN_ID" || echo "sin cambios"
-          for i in 1 2 3 4 5; do git pull --rebase && git push && break; git rebase --abort 2>/dev/null; sleep $((i * 7)); done
+          for i in 1 2 3 4 5; do git pull --rebase && git push && break; git rebase --abort 2>/dev/null || true; sleep $((i * 7)); done
       - id: m
         run: |
           if [ "$A_MEDIDA" = "true" ] && [ -z "$REHACER_ID" ]; then echo "montar=no" >> "$GITHUB_OUTPUT"; else echo "montar=si" >> "$GITHUB_OUTPUT"; fi
