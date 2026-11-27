@@ -115,6 +115,8 @@ def analizar_claude(inf: dict, cfg: dict) -> dict:
         f"{json.dumps({k: inf[k] for k in ('canal', 'canal_anterior', 'fuentes_canal', 'videos')}, ensure_ascii=False)}\n\n"
         + (f"Mejoras de retención que ya se aplican a los guiones:\n{json.dumps({k: lec.get(k) for k in ('largos', 'shorts')}, ensure_ascii=False)}\n\n" if lec else "")
         + (f"Lo que se concluyó en la revisión anterior (confírmalo o corrígelo con los datos nuevos):\n{json.dumps(prev, ensure_ascii=False)}\n\n" if prev else "")
+        + (f"Comparación reciente con canales del mismo nicho (úsala para dar contexto a las cifras propias):\n"
+           f"{json.dumps(inf['competencia'], ensure_ascii=False)}\n\n" if inf.get("competencia") else "")
         + "REGLA: NO se rehace ni se vuelve a publicar ningún vídeo flojo. Solo se apunta qué falló y cómo hacerlo mejor en los "
         "PRÓXIMOS. Sé concreto, en español, y basado en las cifras (cítalas). Si hay pocos datos para concluir algo, dilo. "
         "No inventes impresiones ni CTR: no están en los datos. Responde SOLO un JSON con estas claves:\n"
@@ -236,10 +238,15 @@ def main() -> None:
     inf = {"tipo": tipo, "periodo": etiqueta, "desde": ini.isoformat(), "hasta": fin.isoformat(), "canal": total(vids),
            "canal_anterior": total(antes) if antes else {}, "fuentes_canal": f_canal, "ingresos": ingresos(yta, ini, fin),
            "videos": sorted(videos, key=lambda x: -x.get("nota", 0))}
+    comp = read_json(DATA / "competencia" / "ultimo.json") or {}
+    if comp.get("fecha") and (dt.date.today() - dt.date.fromisoformat(comp["fecha"])).days <= 10:
+        inf["competencia"] = comp.get("analisis")
     an = analizar_claude(inf, cfg)
     inf["analisis"] = an
     write_json(OUT / f"{tipo}-{etiqueta}.json", inf)
     md = informe_md(inf, an)
+    if inf.get("competencia") and (DATA / "competencia" / "ultimo.md").exists():
+        md += "\n" + (DATA / "competencia" / "ultimo.md").read_text(encoding="utf-8").replace("# Comparación", "## Comparación", 1)
     (OUT / f"{tipo}-{etiqueta}.md").write_text(md, encoding="utf-8")
     (OUT / "ultimo.md").write_text(md, encoding="utf-8")
     if an.get("para_guiones") or an.get("temas"):

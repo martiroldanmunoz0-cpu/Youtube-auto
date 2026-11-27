@@ -30,6 +30,13 @@ analisis:
     - "true story"
   top_videos: 60                             # cuántos vídeos se pasan a la IA
 
+competencia:
+  # Canales del mismo nicho con los que compararse cada semana (pipeline/competencia.py). Solo se miran cifras públicas
+  # y patrones de formato; nunca se copian temas ni títulos. canales = @handles fijos (opcional); el resto se descubre solo.
+  canales: []
+  n_canales: 8
+  busquedas: ["what if animated", "animated science explained", "weird facts animated", "history mysteries explained", "space facts animated"]
+
 generacion:
   largos_por_semana: 2           # la tanda de los lunes son VÍDEOS LARGOS (cada plano con su escena a medida). Los Shorts, solo por pedido
   videos_por_semana: 8           # (antiguo: Shorts por semana; ya no se usa en la tanda semanal)
