@@ -1,0 +1,276 @@
+{
+  "title": "What If You Held a Spoonful of a Neutron Star? #shorts",
+  "description": "Would you try to lift it? 👇\n\nWhat happens if you hold a teaspoon of neutron star? It weighs about a billion tons, more than every human on Earth combined.\nThe star it comes from is only about twelve miles wide, yet it outweighs our Sun.\n#neutronstar #space #whatif #science #shorts",
+  "tags": [
+    "neutron star",
+    "teaspoon of neutron star",
+    "what if",
+    "neutron star weight",
+    "space facts",
+    "how heavy is a neutron star",
+    "astronomy",
+    "science facts",
+    "densest object in the universe",
+    "weird science"
+  ],
+  "beats": [
+    {
+      "text": "This spoon outweighs every human. Combined.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "lupa",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ],
+        "efecto": "brillo"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "One teaspoon of neutron star. About a billion tons.",
+      "scene": "big_text",
+      "params": {
+        "text": "1 BILLION TONS",
+        "label": "One teaspoon",
+        "lugar": "cocina",
+        "color": "#4db8ff"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "You grip the handle. The table groans.",
+      "scene": "accion",
+      "params": {
+        "tipo": "sorpresa",
+        "lugar": "cocina",
+        "hora": "dia"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Your arm doesn't move. Not an inch.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "worried",
+        "piezas": [
+          {
+            "pieza": "lupa",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "mano",
+            "pos": "centro",
+            "tamano": "mediano",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "whip"
+    },
+    {
+      "text": "No crane on Earth could lift it.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "campo",
+        "hora": "dia",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "robot",
+            "pos": "izquierda",
+            "tamano": "gigante",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "lupa",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "flotar"
+          }
+        ],
+        "efecto": "crac"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "You let go. It doesn't hit the floor.",
+      "scene": "accion",
+      "params": {
+        "tipo": "caer_romper",
+        "objeto": "cuchara",
+        "lugar": "cocina",
+        "hora": "dia"
+      },
+      "camera": "tilt_down",
+      "transition": "cut"
+    },
+    {
+      "text": "It goes through it.",
+      "scene": "escena",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "plano": "sin_persona",
+        "label": "A clean round hole"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Through the tiles. Through the bedrock.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "fondo",
+        "persona": "no",
+        "piezas": [
+          {
+            "pieza": "montana_pieza",
+            "pos": "centro",
+            "tamano": "gigante",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "lupa",
+            "pos": "arriba",
+            "tamano": "pequeno",
+            "anim": "caer"
+          }
+        ],
+        "efecto": "velocidad"
+      },
+      "camera": "tilt_down",
+      "transition": "fade"
+    },
+    {
+      "text": "Down, toward the center of the Earth.",
+      "scene": "escena",
+      "params": {
+        "lugar": "fondo",
+        "plano": "sin_persona",
+        "label": "Toward the core"
+      },
+      "camera": "tilt_down",
+      "transition": "fade"
+    },
+    {
+      "text": "The star it came from? Twelve miles wide.",
+      "scene": "space",
+      "params": {
+        "object": "sun",
+        "color": "#ffcc33"
+      },
+      "camera": "pull_out",
+      "transition": "black"
+    },
+    {
+      "text": "Smaller than a city. Heavier than our Sun.",
+      "scene": "big_text",
+      "params": {
+        "text": "12 MILES WIDE",
+        "label": "Heavier than the Sun",
+        "lugar": "espacio",
+        "color": "#ffffff"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "And that's exactly why…",
+      "scene": "composicion",
+      "params": {
+        "lugar": "cocina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "piezas": [
+          {
+            "pieza": "lupa",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "temblar"
+          }
+        ],
+        "efecto": "brillo"
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {},
+  "cover_text": "SPOONFUL OF A STAR",
+  "comment_q": "Would you try to lift it?",
+  "lista": "What If...?",
+  "question": "What would happen if you held a teaspoon of neutron star?",
+  "piezas_pendientes": [
+    "cuchara",
+    "grua",
+    "capas_tierra"
+  ],
+  "id": "pedido-35-01",
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "You're handed one teaspoon of neutron star. It goes from small to enormous in three beats. (1) The weight: NASA puts a sugar-cube-sized piece at about a billion tons, more than all 8 billion humans combined. (2) Your body: you try to lift it and can't, because nothing on Earth could. (3) The planet: you let go, it punches through the floor and bedrock and keeps sinking toward Earth's core. Hard cut on the source star. Draft narration (~65 words, 25 s): 'This spoon weighs more than every human on Earth. Combined. / One teaspoon of neutron star. About a billion tons. / You grip the handle. Your arm doesn't move. No crane on Earth could. / You let go. It doesn't hit the floor. It goes through it. / Through the bedrock. Down toward Earth's core. / The star it came from? Twelve miles wide. It outweighs our Sun.'",
+    "gancho": "This spoon weighs more than every human on Earth. Combined. (Opening on a regular-looking teaspoon glowing faintly blue on a kitchen table, with the topic clear from the next line: 'One teaspoon of neutron star.')",
+    "giro_final": "Hard cut on the source star: 'Twelve miles wide. It outweighs our Sun.' The star is smaller than a US city but heavier than the Sun, and the video ends on that line with no wrap-up or moral, so it loops back to the spoon.",
+    "estilo_visual": "0-3 s: 'composicion' in a bright kitchen (daytime), with a teaspoon glowing blue on the table and the person in the background. 'big_text' '1,000,000,000 TONS' over the same kitchen, the person reacting below. 3-12 s: 'accion' tipo 'sorpresa' as you try to lift it and the table buckles, then 'composicion' with the person pulling the spoon with both hands, veins popping, and a crane piece snapping. 12-20 s: 'accion' tipo 'caer_romper' as the spoon drops and the floor cracks into a clean hole, then 'composicion' as a cutaway of Earth's layers with the glowing dot sinking toward the core. 20-25 s: 'space' with a tiny bright neutron star next to the Sun for scale, and 'big_text' '12 MILES WIDE' on the last line, then cut. Mostly bright, cartoon-style scenes; the only dark one is space at the end, saved for the reveal.",
+    "por_que_funcionara": "It follows the retention rules. The 0 s hook is already a physical impossibility, and the next line is a new fact instead of repeating the premise as a question. It uses dry statement + short punchline ('Combined.', 'It goes through it.'). The viewer lives it in second person. It ends on an exact figure with no 'likely', then cuts so the loop works. One honest flag for the owner: common estimates put Mount Everest at roughly 160 billion tons, while NASA's figure for a sugar cube of neutron star is about 1 billion tons. So 'more than Everest' doesn't hold for a teaspoon, and the opener uses 'every human on Earth, combined' (about 0.5 billion tons), which the data does support. Title suggestion (48 chars): 'What If You Held a Spoonful of a Neutron Star?'",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "cuchara (teaspoon glowing blue)",
+      "grua (crane snapping)",
+      "capas_tierra (Earth cutaway with layers and core)",
+      "estrella_neutrones (tiny bright neutron star next to the Sun)"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "This spoon outweighs every human. Combined.",
+      "tipo": "c",
+      "puntuacion": 9,
+      "motivo": "Dry statement plus a one-word punchline, with a physical impossibility at 0 s. The topic comes clear in the next line."
+    },
+    {
+      "texto": "One teaspoon of neutron star weighs a billion tons.",
+      "tipo": "c",
+      "puntuacion": 8,
+      "motivo": "The topic and the shocking figure arrive together, but it has no punchline."
+    },
+    {
+      "texto": "You're holding a spoon. It weighs a billion tons.",
+      "tipo": "d",
+      "puntuacion": 7,
+      "motivo": "Second person with a physical consequence, but the topic stays vague."
+    },
+    {
+      "texto": "What if you held a spoonful of a star?",
+      "tipo": "a",
+      "puntuacion": 4,
+      "motivo": "It is a generic 'What if' question, which the retention data says loses viewers at the start."
+    },
+    {
+      "texto": "Nothing on Earth can lift this spoon.",
+      "tipo": "e",
+      "puntuacion": 6,
+      "motivo": "It sparks curiosity but doesn't say what the spoon is."
+    }
+  ]
+}
