@@ -1,0 +1,310 @@
+{
+  "title": "Roy Sullivan: Struck by Lightning 7 Times #shorts",
+  "description": "Would you ever go outside in a storm again? 👇\n\nRoy Sullivan, the park ranger struck by lightning 7 times and still alive: the true story behind the Guinness World Record.\nHe survived seven strikes between 1942 and 1977 in Shenandoah National Park, and even fought off a bear.\n#shorts #lightning #truestory #guinnessworldrecords #royssullivan",
+  "tags": [
+    "Roy Sullivan",
+    "struck by lightning 7 times",
+    "human lightning rod",
+    "lightning strike survivor",
+    "Guinness World Record",
+    "Shenandoah National Park",
+    "park ranger",
+    "true stories",
+    "incredible true stories",
+    "lightning facts"
+  ],
+  "beats": [
+    {
+      "text": "Strike number one: you're up a fire tower.",
+      "scene": "accion",
+      "params": {
+        "tipo": "rayo",
+        "lugar": "montana",
+        "hora": "dia",
+        "label": "STRIKE 1/7"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "The bolt blows off your big toenail.",
+      "scene": "person",
+      "params": {
+        "highlight": "legs",
+        "lugar": "montana",
+        "hora": "dia",
+        "mood": "shocked",
+        "label": "STRIKE 1/7"
+      },
+      "camera": "shake",
+      "transition": "flash"
+    },
+    {
+      "text": "Strike two, mountain road. Your eyebrows? Gone.",
+      "scene": "accion",
+      "params": {
+        "tipo": "rayo",
+        "lugar": "coche",
+        "hora": "dia",
+        "label": "STRIKE 2/7"
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Strike three: your front yard. Shoulder seared.",
+      "scene": "accion",
+      "params": {
+        "tipo": "quemarse",
+        "lugar": "calle",
+        "hora": "atardecer",
+        "label": "STRIKE 3/7"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Strike four: inside the ranger station. Your hair catches fire.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "oficina",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "shocked",
+        "label": "STRIKE 4/7",
+        "piezas": [
+          {
+            "pieza": "fuego",
+            "pos": "arriba",
+            "tamano": "mediano",
+            "anim": "latir"
+          },
+          {
+            "pieza": "corona",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "temblar"
+          }
+        ]
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Coworkers keep away. They call you the Human Lightning Rod.",
+      "scene": "group",
+      "params": {
+        "count": 3,
+        "lugar": "campo",
+        "hora": "dia",
+        "mood": "worried",
+        "label": "Human Lightning Rod"
+      },
+      "camera": "pull_out",
+      "transition": "whip"
+    },
+    {
+      "text": "Strike five: a storm cloud follows your truck. Hair on fire. Again.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "montana",
+        "hora": "atardecer",
+        "persona": "no",
+        "label": "STRIKE 5/7",
+        "piezas": [
+          {
+            "pieza": "nube",
+            "pos": "arriba",
+            "tamano": "grande",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "coche_rojo",
+            "pos": "centro",
+            "tamano": "grande",
+            "anim": "entrar_izq"
+          },
+          {
+            "pieza": "rayo",
+            "pos": "derecha",
+            "tamano": "mediano",
+            "anim": "caer"
+          }
+        ]
+      },
+      "camera": "shake",
+      "transition": "cut"
+    },
+    {
+      "text": "Strike six: you run. The cloud wins.",
+      "scene": "accion",
+      "params": {
+        "tipo": "correr",
+        "lugar": "montana",
+        "hora": "dia",
+        "label": "STRIKE 6/7"
+      },
+      "camera": "shake",
+      "transition": "red"
+    },
+    {
+      "text": "Strike seven: you're fishing. Chest and stomach burned.",
+      "scene": "accion",
+      "params": {
+        "tipo": "quemarse",
+        "lugar": "campo",
+        "hora": "dia",
+        "who": "protagonista"
+      },
+      "camera": "slam",
+      "transition": "flash"
+    },
+    {
+      "text": "Then a bear tries to steal your trout. You whack it with a branch.",
+      "scene": "composicion",
+      "params": {
+        "lugar": "selva",
+        "hora": "dia",
+        "persona": "medio",
+        "mood": "angry",
+        "piezas": [
+          {
+            "pieza": "oso",
+            "pos": "derecha",
+            "tamano": "grande",
+            "anim": "acercarse"
+          },
+          {
+            "pieza": "pez",
+            "pos": "centro",
+            "tamano": "mediano",
+            "anim": "temblar"
+          },
+          {
+            "pieza": "arbol",
+            "pos": "izquierda",
+            "tamano": "mediano",
+            "anim": "girar"
+          }
+        ]
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "Seven strikes. One man.",
+      "scene": "big_text",
+      "params": {
+        "text": "7",
+        "label": "lightning strikes",
+        "color": "#ffd400",
+        "lugar": "montana"
+      },
+      "camera": "slam",
+      "transition": "cut"
+    },
+    {
+      "text": "Guinness World Records. Most lightning strikes survived. Official holder: Roy Sullivan.",
+      "scene": "document",
+      "params": {
+        "title": "Guinness World Records",
+        "lines": [
+          "Most lightning strikes",
+          "survived: 7",
+          "Roy Sullivan"
+        ],
+        "highlight": 2,
+        "stamp": "OFFICIAL"
+      },
+      "camera": "push_in",
+      "transition": "cut"
+    },
+    {
+      "text": "And it all started with…",
+      "scene": "accion",
+      "params": {
+        "tipo": "rayo",
+        "lugar": "montana",
+        "hora": "dia",
+        "label": "STRIKE 1/7"
+      },
+      "camera": "static",
+      "transition": "cut",
+      "bucle": true
+    }
+  ],
+  "looks": {
+    "protagonista": {
+      "genero": "hombre",
+      "edad": "adulto",
+      "piel": "clara",
+      "pelo": "corto",
+      "color_pelo": "castaño",
+      "barba": "no",
+      "gafas": false,
+      "ropa": "verde"
+    }
+  },
+  "cover_text": "7 LIGHTNING STRIKES",
+  "comment_q": "Would you ever go outside in a storm again?",
+  "lista": "Incredible True Stories",
+  "question": "How did one man survive being struck by lightning seven times?",
+  "piezas_pendientes": [
+    "sombrero_ranger",
+    "nube_tormenta",
+    "camioneta_ranger",
+    "trucha",
+    "rama"
+  ],
+  "id": "pedido-36-01",
+  "idea": {
+    "tipo": "caso_real",
+    "premisa": "Título: 'Roy Sullivan: Struck by Lightning 7 Times' (41 car.). Cuenta por golpes en segunda persona, unas 150 palabras, 52-58 s. Guion: 'Strike number one: you're up a fire tower. The bolt rips through your leg and blows off your big toenail. [1942] Twenty-seven years pass. You're driving a mountain road. Strike two. Your eyebrows? Gone. You black out at the wheel. [1969] Next summer, your own front yard. Strike three. Your left shoulder is seared. [1970] Strike four: inside the ranger station. Your hair catches fire. [1972] At Shenandoah National Park, coworkers start keeping their distance in storms. They call you the Human Lightning Rod. Your name is Roy Sullivan. Strike five: you see a storm cloud and drive away. It follows you. You step out of the truck. Bam. Hair on fire. Again. [1973] Strike six: on patrol. A cloud tracks you. You run. It wins. [1976] Strike seven: you're fishing. Burns on your chest and stomach. [1977] Then a bear walks up and tries to steal your trout. You hit it with a tree branch. Seven strikes. One man. Guinness World Records: the most lightning strikes ever survived. Official holder: Roy Sullivan.' Corte seco.",
+    "gancho": "Strike number one: you're up a fire tower. The bolt rips through your leg and blows off your big toenail.",
+    "giro_final": "Tras el séptimo rayo, un oso intenta robarle las truchas y él lo ahuyenta con una rama; cierre inmediato con el récord: 'Seven strikes. One man. Guinness World Records: the most lightning strikes ever survived. Official holder: Roy Sullivan.' y corte, que enlaza en bucle con 'Strike number one'.",
+    "estilo_visual": "Domina 'accion' tipo rayo como golpe recurrente al inicio de cada strike (7 veces, cada una más rápida y con flash más intenso), seguida de su consecuencia en 'person' con la zona resaltada en rojo (pie, cejas, hombro, cabeza, tobillo, pecho). 'escena' luminosa para cada lugar: torre de vigilancia en el bosque de día (forest kind 'jungle'), carretera de montaña con camión, jardín de una casa, interior de la estación de rangers, río con caña de pescar. 'composicion' para los momentos únicos: nube_tormenta persiguiendo la camioneta, el oso junto a las truchas con la persona blandiendo una rama, y el sombrero_ranger chamuscado humeando. 'accion' quemarse cuando arde el pelo y 'accion' correr en el strike seis. 'group' con compañeros apartándose en el momento del apodo. Un 'big_text' con '7' al llegar al cierre y 'document' final estilo certificado Guinness con la línea resaltada 'Most lightning strikes survived: 7 — Roy Sullivan' y sello. En pantalla, contador fijo 'STRIKE 1/7 … 7/7' en cada rayo.",
+    "por_que_funcionara": "Aplica todo lo que retiene en el canal: consecuencia física en el segundo 0 sin 'What if' ni pregunta, primer dato nuevo inmediato, cero ficha biográfica (el nombre llega a los ~25 s como apodo de sus compañeros), escalada en segunda persona con frases secas y remates cortos ('It wins.', 'Again.'), y un contador 1/7 que crea un compromiso claro de ver hasta el final. El oso es la rareza que nadie conoce y el cierre con 'Official holder: Roy Sullivan' replica el patrón de 0% de pérdida de 'Japan officially recognized only one: Yamaguchi'. Entidad buscable en el título para tráfico desde búsqueda, igual que la historia de Yamaguchi aprobada.",
+    "inspirado_en": [],
+    "piezas_nuevas": [
+      "torre_vigilancia",
+      "nube_tormenta",
+      "sombrero_ranger",
+      "trucha",
+      "oso",
+      "camioneta_ranger",
+      "rama"
+    ]
+  },
+  "ganchos": [
+    {
+      "texto": "Strike number one: you're up a fire tower.",
+      "tipo": "d",
+      "puntuacion": 9,
+      "motivo": "Acción en el segundo 0, el contador anuncia que vienen más golpes y deja claro el tema (rayos). No es pregunta ni ficha biográfica."
+    },
+    {
+      "texto": "Lightning hits you seven times. You survive.",
+      "tipo": "c",
+      "puntuacion": 8,
+      "motivo": "Dato que choca y deja el tema claro, pero destripa que sobrevive."
+    },
+    {
+      "texto": "The bolt blows off your big toenail.",
+      "tipo": "c",
+      "puntuacion": 6,
+      "motivo": "Consecuencia física inmediata, pero sin contexto del tema en la primera frase."
+    },
+    {
+      "texto": "Everyone thinks lightning never strikes twice. Wrong.",
+      "tipo": "e",
+      "puntuacion": 7,
+      "motivo": "Contradicción conocida y tema claro, pero es un mito muy gastado."
+    },
+    {
+      "texto": "Can one man survive seven lightning strikes?",
+      "tipo": "a",
+      "puntuacion": 4,
+      "motivo": "Es una pregunta genérica y el canal pierde audiencia con aperturas así."
+    }
+  ]
+}
