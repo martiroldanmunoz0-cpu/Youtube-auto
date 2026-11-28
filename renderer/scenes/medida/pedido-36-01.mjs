@@ -1,6 +1,6 @@
 // pedido-36-01 — guardabosques alcanzado por 7 rayos — estilo PAPEL (un plano por frase)
 import { W, H, lerp, ease, ph, clamp, REPARTO, personaje, capa, SUELO, rotulo, texto, exterior, nube, rayo, fogonazo,
-  torre, caseta, casa, camioneta, oso, pez, cana, rama, signo, impacto, rr, volumen, hash } from '../../lib/papel.mjs';
+  torre, caseta, casa, camioneta, oso, pez, cana, rama, signo, impacto, rr, volumen, hash, paso, vaso, salpica, silla } from '../../lib/papel.mjs';
 const { RANGER } = REPARTO;
 const COLE1 = { ...RANGER, skin: '#c99068', hairCol: '#2a1c14', placa: false };
 const COLE2 = { ...RANGER, skin: '#f0c8a8', hair: 'punta', hairCol: '#b0682e', sombrero: undefined, placa: false };
@@ -13,11 +13,15 @@ function contador(ctx, t, n) { for (let i = 0; i < 7; i++) { const on = i < n; c
 function nubeMala(ctx, t, x, y, s = 1) { nube(ctx, t, x, y, s, { col: '#4a5064', cara: true, lluvia: true }); }
 function zap(ctx, t, x, y, tx, ty, seed, t0 = T0) { const g = golpe(t, t0); rayo(ctx, t, x, y, tx, ty, g, seed); }
 
+const prismaticos = (c) => { for (const k of [-1, 1]) { rr(c, k * 24 - 18, -40, 36, 60, 10); c.fillStyle = '#2f3a2e'; c.fill(); c.strokeStyle = '#231a24'; c.lineWidth = 4; c.stroke(); } };
+const regadera = (rot) => (c) => { c.rotate(rot); rr(c, -50, -10, 100, 80, 14); c.fillStyle = '#4f9a6b'; c.fill(); c.strokeStyle = '#231a24'; c.lineWidth = 4; c.stroke(); c.beginPath(); c.moveTo(50, 10); c.lineTo(130, -30); c.lineWidth = 12; c.strokeStyle = '#3f7a56'; c.stroke(); };
+const taza = (rot) => (c) => vaso(c, 0, 20, 0.7, 0.6, '#6b4428', rot);
+
 export default {
   // 0 — Rayo 1: en la torre de vigilancia contra incendios
   0: (ctx, a) => { const t = a.t; const g = golpe(t); const cam = { z: 1.04, fx: 540, fy: 1200, t, temblor: g * 10 };
     exterior(ctx, t, cam, { cielo: 'tormenta', medio: () => torre(ctx, 760, SUELO - 10, 1.1) });
-    capa(ctx, cam, 1, () => { const p = personaje(ctx, t, RANGER, 400, SUELO + 40, 1.05, { mood: tras(t) ? 'sorpresa' : 'neutral', mira: [0.3, -1], hollin: tras(t), humo: tras(t) ? 1 : 0, salto: g * 60, manoI: tras(t) ? [-160, -380] : [-110, -110], manoD: tras(t) ? [160, -380] : [120, -110] });
+    capa(ctx, cam, 1, () => { const w = paso(t, 0, 0.5, 250, 400); const mirap = t > 0.45 && !tras(t); const p = personaje(ctx, t, RANGER, w.x, SUELO + 40, 1.05, { anda: w.anda, lado: 1, mood: tras(t) ? 'sorpresa' : 'neutral', mira: [0.3, -1], cabeza: mirap ? -0.1 : 0, hollin: tras(t), humo: tras(t) ? 1 : 0, salto: g * 60, manoI: tras(t) ? [-160, -380] : mirap ? [-30, -360] : [-110, -110], manoD: tras(t) ? [160, -380] : mirap ? [30, -360] : [120, -150], sostieneD: tras(t) ? null : (c) => { if (mirap) c.translate(-30, 0); prismaticos(c); } });
       nubeMala(ctx, t, 420, 640, 1.1); zap(ctx, t, 420, 720, p.cabeza[0], p.cabeza[1] - 60, 3); });
     fogonazo(ctx, g); strike(ctx, t, 1); rotulo(ctx, 1.1, t, 'FIRE TOWER', 540, 440, 120, '#ff9a5a'); contador(ctx, t, tras(t) ? 1 : 0); },
 
@@ -33,14 +37,16 @@ export default {
   // 2 — Rayo 2: carretera de montaña, se queda sin cejas
   2: (ctx, a) => { const t = a.t; const g = golpe(t); const z = lerp(1.04, 1.7, ease(ph(t, 1.2, 2))); const cam = { z, fx: 360, fy: 900, t, temblor: g * 10 };
     exterior(ctx, t, cam, { cielo: 'tormenta', suelo: 'cemento' });
-    capa(ctx, cam, 1, () => { camioneta(ctx, t, 760, SUELO + 30, 0.9, 0); const p = personaje(ctx, t, RANGER, 360, SUELO + 40, 1.05, { mood: tras(t) ? 'sorpresa' : 'neutral', sinCejas: tras(t), hollin: tras(t), humo: tras(t) ? 0.6 : 0, mira: [0, -0.5], manoI: [-110, -110], manoD: tras(t) ? [80, -430] : [120, -110] });
+    capa(ctx, cam, 1, () => { camioneta(ctx, t, 760, SUELO + 30, 0.9, 0); const w = paso(t, 0, T0, 200, 360); const p = personaje(ctx, t, RANGER, w.x, SUELO + 40, 1.05, { anda: w.anda, lado: 1, mood: tras(t) ? 'sorpresa' : 'neutral', sinCejas: tras(t), hollin: tras(t), humo: tras(t) ? 0.6 : 0, mira: [0, -0.5], manoI: [-110, -110], manoD: tras(t) ? [80, -430] : [120, -110] });
       nubeMala(ctx, t, 380, 640, 1); zap(ctx, t, 380, 720, p.cabeza[0], p.cabeza[1] - 40, 7); });
     fogonazo(ctx, g); strike(ctx, t, 2); rotulo(ctx, 1.4, t, 'EYEBROWS: GONE', 540, 440, 110, '#ff9a5a'); contador(ctx, t, tras(t) ? 2 : 1); },
 
   // 3 — Rayo 3: en su propio jardín, hombro quemado
   3: (ctx, a) => { const t = a.t; const g = golpe(t); const cam = { z: 1.06, fx: 540, fy: 1200, t, temblor: g * 10 };
     exterior(ctx, t, cam, { cielo: 'tormenta', medio: () => casa(ctx, 700, SUELO - 20, 0.9) });
-    capa(ctx, cam, 1, () => { const p = personaje(ctx, t, RANGER, 400, SUELO + 40, 1.05, { mood: tras(t) ? 'esfuerzo' : 'feliz', mira: [0.4, -0.4], hollin: tras(t), incl: tras(t) ? 0.1 : 0, manoI: tras(t) ? [80, -260] : [-110, -110], manoD: [120, -110] });
+    capa(ctx, cam, 1, () => { const p = personaje(ctx, t, RANGER, 400, SUELO + 40, 1.05, { mood: tras(t) ? 'esfuerzo' : 'feliz', mira: [0.4, -0.4], hollin: tras(t), incl: tras(t) ? 0.1 : 0, manoI: tras(t) ? [80, -260] : [-110, -110], manoD: [170, -200], sostieneD: regadera(tras(t) ? 0.6 : 0.3 + Math.sin(t * 3) * 0.08) });
+      if (!tras(t)) for (let i = 0; i < 6; i++) { const k = (t * 2 + i / 6) % 1; ctx.fillStyle = '#7fc8ff'; ctx.beginPath(); ctx.arc(640 + i * 6, 1120 + k * 300, 7, 0, 7); ctx.fill(); }
+      for (let i = 0; i < 4; i++) { ctx.fillStyle = ['#e45a5a', '#ffd93d', '#c06ad8', '#ff9a5a'][i]; ctx.beginPath(); ctx.arc(600 + i * 40, SUELO + 10 - (i % 2) * 20, 16, 0, 7); ctx.fill(); ctx.strokeStyle = '#3f7a56'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(600 + i * 40, SUELO + 26 - (i % 2) * 20); ctx.lineTo(600 + i * 40, SUELO + 50); ctx.stroke(); }
       if (tras(t)) for (let i = 0; i < 3; i++) { const k = (t * 0.8 + i / 3) % 1; ctx.globalAlpha = 1 - k; ctx.beginPath(); ctx.arc(320 + i * 10, 1050 - k * 200, 26 + k * 30, 0, 7); ctx.fillStyle = '#bbb'; ctx.fill(); ctx.globalAlpha = 1; }
       nubeMala(ctx, t, 330, 640, 1); zap(ctx, t, 330, 720, 320, 1110, 11); });
     fogonazo(ctx, g); strike(ctx, t, 3); rotulo(ctx, 1.2, t, 'FRONT YARD', 540, 440, 120, '#8fe3ff'); contador(ctx, t, tras(t) ? 3 : 2); },
@@ -48,15 +54,16 @@ export default {
   // 4 — Rayo 4: en la caseta, el pelo en llamas
   4: (ctx, a) => { const t = a.t; const g = golpe(t, 0.5); const corre = ease(ph(t, 0.9, a.d)); const cam = { z: 1.05, fx: 540, fy: 1200, t, temblor: g * 10 };
     exterior(ctx, t, cam, { cielo: 'tormenta', medio: () => caseta(ctx, 560, SUELO - 20, 0.95) });
-    capa(ctx, cam, 1, () => { const x = lerp(420, 820, corre); const p = personaje(ctx, t, RANGER, x, SUELO + 40, 1.05, { mood: t > 0.6 ? 'miedo' : 'neutral', fuego: t > 0.6 ? 1 : 0, sombrero: t > 0.6 ? null : undefined, mira: [1, -0.3], salto: t > 0.9 ? Math.abs(Math.sin(t * 14)) * 30 : 0, incl: t > 0.9 ? 0.15 : 0, manoI: t > 0.6 ? [-60, -420] : [-110, -110], manoD: t > 0.6 ? [60, -420] : [120, -110] });
+    capa(ctx, cam, 1, () => { const x = lerp(420, 820, corre); const bebe = t < 0.5 ? Math.sin(Math.PI * ph(t, 0, 0.5)) : 0; const p = personaje(ctx, t, RANGER, x, SUELO + 40, 1.05, { anda: t > 0.9 ? t * 16 : null, lado: 1, mood: t > 0.6 ? 'miedo' : 'feliz', cierra: bebe > 0.5, fuego: t > 0.6 ? 1 : 0, sombrero: t > 0.6 ? null : undefined, mira: [1, -0.3], incl: t > 0.9 ? 0.15 : 0, manoI: t > 0.6 ? [-60, -420] : [-110, -110], manoD: t > 0.6 ? [60, -420] : [lerp(130, 50, bebe), lerp(-200, -320, bebe)], sostieneD: t > 0.6 ? null : taza(-bebe * 1.1) });
+      if (t > 0.6) { const vy = Math.min(SUELO + 30, 1100 + (t - 0.6) * (t - 0.6) * 4000); vaso(ctx, 470, vy, 0.7, vy < SUELO + 30 ? 0.6 : 0, '#6b4428', vy < SUELO + 30 ? 0.5 : 1.5); salpica(ctx, 480, SUELO + 30, ph(t, 0.95, 1.5), '#6b4428'); }
       nubeMala(ctx, t, 430, 640, 1); zap(ctx, t, 430, 720, 420, 900, 5, 0.5); });
     fogonazo(ctx, g); strike(ctx, t, 4); rotulo(ctx, 0.9, t, 'HAIR ON FIRE', 540, 440, 130, '#ff6b3d'); contador(ctx, t, t > 0.6 ? 4 : 3); },
 
   // 5 — Los compañeros se apartan: "el pararrayos humano"
   5: (ctx, a) => { const t = a.t; const k = ease(ph(t, 0.2, 1.6)); const cam = { z: 1.04, fx: 540, fy: 1200, t };
     exterior(ctx, t, cam, { cielo: 'dia', medio: () => caseta(ctx, 540, SUELO - 20, 0.95) });
-    capa(ctx, cam, 1, () => { personaje(ctx, t, COLE1, lerp(300, 80, k), SUELO + 50, 0.9, { mood: 'miedo', mira: [1, 0], manoI: [-110, -110], manoD: [150, -200] });
-      personaje(ctx, t, COLE2, lerp(780, 1000, k), SUELO + 50, 0.9, { mood: 'miedo', mira: [-1, 0], manoI: [-150, -200], manoD: [110, -110] });
+    capa(ctx, cam, 1, () => { personaje(ctx, t, COLE1, lerp(300, 80, k), SUELO + 50, 0.9, { anda: k > 0 && k < 1 ? t * 9 : null, lado: -1, mood: 'miedo', mira: [1, 0], manoI: [-110, -110], manoD: [150, -200] });
+      personaje(ctx, t, COLE2, lerp(780, 1000, k), SUELO + 50, 0.9, { anda: k > 0 && k < 1 ? t * 9 : null, lado: 1, mood: 'miedo', mira: [-1, 0], manoI: [-150, -200], manoD: [110, -110] });
       personaje(ctx, t, RANGER, 540, SUELO + 40, 1.05, { mood: 'triste', hollin: true, sinCejas: true, mira: [Math.sin(t * 2), 0], manoI: [-110, -110], manoD: [120, -110] });
       signo(ctx, t, 0.9, 540, 700, '!', '#ffd93d'); });
     rotulo(ctx, 0.3, t, 'HUMAN', 540, 270, 160); rotulo(ctx, 0.7, t, 'LIGHTNING ROD', 540, 440, 130, '#ffd93d'); contador(ctx, t, 4); },
@@ -70,14 +77,14 @@ export default {
   // 7 — Rayo 6: corre, la nube gana
   7: (ctx, a) => { const t = a.t; const t0 = a.d * 0.6; const g = golpe(t, t0); const cam = { z: 1.04, fx: 540, fy: 1200, t, temblor: g * 10 };
     exterior(ctx, t, cam, { cielo: 'tormenta' });
-    capa(ctx, cam, 1, () => { const x = lerp(220, 700, ease(U(a))); const hit = t > t0; const p = personaje(ctx, t, RANGER, x, SUELO + 40, 1.05, { mood: hit ? 'sorpresa' : 'miedo', hollin: true, sinCejas: true, humo: hit ? 1 : 0, mira: [-0.6, -0.8], salto: hit ? 0 : Math.abs(Math.sin(t * 14)) * 34, incl: hit ? 0 : 0.18, manoI: [-170, -200 + Math.sin(t * 14) * 60], manoD: [170, -200 - Math.sin(t * 14) * 60] });
+    capa(ctx, cam, 1, () => { const x = lerp(220, 700, ease(U(a))); const hit = t > t0; const p = personaje(ctx, t, RANGER, x, SUELO + 40, 1.05, { mood: hit ? 'sorpresa' : 'miedo', hollin: true, sinCejas: true, humo: hit ? 1 : 0, mira: [-0.6, -0.8], anda: hit ? null : t * 16, lado: 1, salto: hit ? 0 : Math.abs(Math.sin(t * 16)) * 14, incl: hit ? 0 : 0.18, manoI: [-170, -200 + Math.sin(t * 14) * 60], manoD: [170, -200 - Math.sin(t * 14) * 60] });
       nubeMala(ctx, t, x - 60 + Math.min(60, t * 30), 640, 1); zap(ctx, t, x - 40, 720, p.cabeza[0], p.cabeza[1] - 60, 9, t0); });
     fogonazo(ctx, g); strike(ctx, t, 6); rotulo(ctx, 0.4, t, 'HE RAN...', 540, 440, 120); rotulo(ctx, t0 + 0.2, t, 'CLOUD WINS', 540, 600, 130, '#ff6b3d'); contador(ctx, t, t > t0 ? 6 : 5); },
 
   // 8 — Rayo 7: pescando
   8: (ctx, a) => { const t = a.t; const t0 = a.d * 0.55; const g = golpe(t, t0); const cam = { z: 1.05, fx: 540, fy: 1200, t, temblor: g * 10 };
     exterior(ctx, t, cam, { cielo: 'tormenta', rio: true });
-    capa(ctx, cam, 1, () => { const hit = t > t0; const p = personaje(ctx, t, RANGER, 330, SUELO + 40, 1.05, { mood: hit ? 'sorpresa' : 'feliz', hollin: true, sinCejas: true, humo: hit ? 1 : 0, mira: [1, -0.2], manoI: [-110, -110], manoD: [170, -260] }); cana(ctx, t, p.manoD[0], p.manoD[1], 420, -0.9);
+    capa(ctx, cam, 1, () => { const hit = t > t0; const p = personaje(ctx, t, RANGER, 330, SUELO + 40, 1.05, { mood: hit ? 'sorpresa' : 'feliz', hollin: true, sinCejas: true, humo: hit ? 1 : 0, mira: [1, -0.2], manoI: hit ? [-160, -380] : [60 + Math.cos(t * 10) * 30, -220 + Math.sin(t * 10) * 30], manoD: [170, -260] }); cana(ctx, t, p.manoD[0], p.manoD[1], 420, -0.9 + (hit ? 0 : Math.sin(t * 4) * 0.08));
       nubeMala(ctx, t, 380, 640, 1); zap(ctx, t, 380, 720, p.cabeza[0], p.cabeza[1] - 60, 13, t0); });
     fogonazo(ctx, g); strike(ctx, t, 7); rotulo(ctx, 0.5, t, 'GONE FISHING', 540, 440, 120, '#8fe3ff'); contador(ctx, t, t > t0 ? 7 : 6); },
 
@@ -93,7 +100,7 @@ export default {
   // 10 — Siete rayos, un hombre
   10: (ctx, a) => { const t = a.t; const cam = { z: lerp(1.04, 1.12, U(a)), fx: 540, fy: 1150, t };
     exterior(ctx, t, cam, { cielo: 'atardecer' });
-    capa(ctx, cam, 1, () => { personaje(ctx, t, RANGER, 540, SUELO + 40, 1.1, { mood: 'feliz', hollin: true, sinCejas: true, mira: [0, -0.2], manoI: [-180, -400], manoD: [180, -400] }); });
+    capa(ctx, cam, 1, () => { personaje(ctx, t, RANGER, 540, SUELO + 40, 1.1, { mood: 'feliz', hollin: true, sinCejas: true, mira: [0, -0.2], salto: Math.abs(Math.sin(t * 6)) * 50, manoI: [-180, -400 + Math.sin(t * 6) * 40], manoD: [180, -400 - Math.sin(t * 6) * 40] }); });
     rotulo(ctx, 0.05, t, '7 STRIKES', 540, 290, 170, '#ffd93d'); rotulo(ctx, 0.6, t, '1 MAN', 540, 470, 160); contador(ctx, t, 7); },
 
   // 11 — Récord mundial
@@ -107,6 +114,6 @@ export default {
   // 12 — Y todo empezó con… (bucle a la torre)
   12: (ctx, a) => { const t = a.t; const cam = { z: lerp(1, 1.1, U(a)), fx: 540, fy: 1200, t };
     exterior(ctx, t, cam, { cielo: 'tormenta', medio: () => torre(ctx, 760, SUELO - 10, 1.1) });
-    capa(ctx, cam, 1, () => { personaje(ctx, t, RANGER, 400, SUELO + 40, 1.05, { mood: 'neutral', mira: [0.3, -1], manoI: [-110, -110], manoD: [120, -110] }); nubeMala(ctx, t, lerp(900, 430, ease(U(a))), 640, 1.1); signo(ctx, t, 0.6, 400, 720, '?', '#ffd93d'); });
+    capa(ctx, cam, 1, () => { const w = paso(t, 0, a.d * 0.6, 150, 400); personaje(ctx, t, RANGER, w.x, SUELO + 40, 1.05, { anda: w.anda, lado: 1, mood: 'neutral', mira: [0.3, -1], manoI: [-110, -110], manoD: [120, -150], sostieneD: prismaticos }); nubeMala(ctx, t, lerp(900, 430, ease(U(a))), 640, 1.1); signo(ctx, t, 0.6, 400, 720, '?', '#ffd93d'); });
     rotulo(ctx, 0.1, t, 'AND IT ALL', 540, 270, 140); rotulo(ctx, 0.5, t, 'STARTED WITH...', 540, 430, 120, '#ffd93d'); contador(ctx, t, 0); },
 };

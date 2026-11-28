@@ -90,15 +90,30 @@ export function personaje(ctx, t, sp, x, y, s, pose = {}) {
   ctx.save(); ctx.translate(x, y);
   // sombra en el suelo
   ctx.fillStyle = 'rgba(30,20,40,0.22)'; ctx.beginPath(); ctx.ellipse(0, 4, 120 * s, 22 * s, 0, 0, Math.PI * 2); ctx.fill();
-  ctx.translate(0, -(pose.salto || 0)); ctx.scale(s * (1 + aplasta * 0.08), s * (1 + resp - aplasta * 0.08)); ctx.rotate(pose.incl || 0);
+  // andar: pose.anda = fase del paso (p. ej. t*9); pose.lado = hacia dónde va (-1/1)
+  const fa = pose.anda, andando = fa !== undefined && fa !== null && fa !== false;
+  const lado = pose.lado || 1;
+  const bote = andando ? Math.abs(Math.sin(fa)) * 12 : 0;
+  ctx.translate(0, -(pose.salto || 0) - bote); ctx.scale(s * (1 + aplasta * 0.08), s * (1 + resp - aplasta * 0.08)); ctx.rotate((pose.incl || 0) + (andando ? lado * 0.04 : 0));
   const an = pose.ancho || sp.ancho || 1;
+  const sent = pose.sentado || 0; // 0..1: se sienta (baja la cadera y dobla las rodillas)
   // piernas y zapatos
-  for (const k of [-1, 1]) { const lx = k * 46 * (0.6 + 0.4 * an); rr(ctx, lx - 22 * an, -78, 44 * an, 70, 16); volumen(ctx, sp.pants, lx - 22, -78, 44, 70); elipse(ctx, lx + k * 8, -6, 38, 18, sp.shoes, 4); }
+  for (const k of [-1, 1]) { const lx = k * 46 * (0.6 + 0.4 * an);
+    if (sent > 0) { const dy = 40 * sent; ctx.save(); ctx.translate(0, dy); rr(ctx, lx - 26 * an, -98, 52 * an, 46 + 20 * (1 - sent), 20); volumen(ctx, sp.pants, lx - 26, -98, 52, 50); ctx.restore();
+      rr(ctx, lx - 20 * an, -56 + dy * 0.6, 40 * an, 56 - dy * 0.6, 14); volumen(ctx, tono(sp.pants, -0.08), lx - 20, -56, 40, 56); elipse(ctx, lx + k * 8, -6, 38, 18, sp.shoes, 4); continue; }
+    const fk = fa + (k > 0 ? Math.PI : 0);
+    const dx = andando ? Math.sin(fk) * 34 * lado : 0, lev = andando ? Math.max(0, Math.cos(fk)) * 22 : 0;
+    const p0 = pose.piernas ? pose.piernas[k > 0 ? 1 : 0] : 0;
+    const fx = lx + dx + p0 * 60, fy = -6 - lev;
+    ctx.beginPath(); ctx.moveTo(lx - 22 * an, -78); ctx.lineTo(lx + 22 * an, -78); ctx.lineTo(fx + 20, fy - 4); ctx.lineTo(fx - 20, fy - 4); ctx.closePath(); volumen(ctx, sp.pants, lx - 22, -78, 44, 70);
+    elipse(ctx, fx + k * 8 + (andando ? lado * 8 : 0), fy, 38, 18, sp.shoes, 4, andando ? -Math.sin(fk) * 0.25 * lado : 0); }
+  if (sent > 0) ctx.translate(0, 40 * sent);
   // cuerpo (trapecio redondeado)
   const body = () => { ctx.save(); ctx.scale(an, 1); ctx.beginPath(); ctx.moveTo(-80, -262); ctx.quadraticCurveTo(0, -282, 80, -262); ctx.quadraticCurveTo(112, -160, 104, -78); ctx.quadraticCurveTo(0, -56, -104, -78); ctx.quadraticCurveTo(-112, -160, -80, -262); ctx.closePath(); ctx.restore(); };
   const sx = 84 * an, sy = -240;
-  const manoI = pose.manoI || [-120 + Math.sin(t * 2.2) * 4, -120];
-  const manoD = pose.manoD || [120 - Math.sin(t * 2.2 + 1) * 4, -120];
+  const bal = andando ? Math.sin(fa) * 46 : 0; // los brazos se balancean al andar (al revés que las piernas)
+  const manoI = pose.manoI || [-120 + Math.sin(t * 2.2) * 4 + bal, -120 - Math.abs(bal) * 0.3];
+  const manoD = pose.manoD || [120 - Math.sin(t * 2.2 + 1) * 4 + bal, -120 - Math.abs(bal) * 0.3];
   body(); volumen(ctx, sp.bata ? '#f4f1ea' : sp.ropa, -112 * an, -282, 224 * an, 226, 5);
   if (an > 1.15) { ctx.save(); ctx.beginPath(); ctx.ellipse(0, -120, 70 * an, 70, 0, 0, 7); ctx.strokeStyle = 'rgba(60,30,30,0.18)'; ctx.lineWidth = 5; ctx.stroke(); ctx.restore(); }
   if (pose.delantal || sp.delantal) { ctx.beginPath(); ctx.moveTo(-60 * an, -230); ctx.lineTo(60 * an, -230); ctx.lineTo(80 * an, -70); ctx.lineTo(-80 * an, -70); ctx.closePath(); volumen(ctx, '#f3efe6', -80 * an, -230, 160 * an, 160, 3); }
@@ -118,6 +133,8 @@ export function personaje(ctx, t, sp, x, y, s, pose = {}) {
   const manga = sp.bata ? '#f4f1ea' : sp.ropa;
   const pI = brazo(ctx, sp, -sx + 10, sy, manoI[0], manoI[1], false, manga);
   const pD = brazo(ctx, sp, sx - 10, sy, manoD[0], manoD[1], true, manga);
+  // objetos en la mano: pose.sostieneI / sostieneD = (ctx) => dibuja centrado en la mano (escala del personaje)
+  for (const [f, pm] of [[pose.sostieneI, pI], [pose.sostieneD, pD]]) if (f) { ctx.save(); ctx.translate(pm[0], pm[1]); f(ctx); ctx.restore(); }
   // cabeza
   ctx.save(); ctx.translate(0, -262); ctx.rotate((pose.cabeza || 0) + Math.sin(t * 1.7) * 0.02);
   const hy = -118;
@@ -183,8 +200,9 @@ export function personaje(ctx, t, sp, x, y, s, pose = {}) {
   ctx.restore();
   ctx.restore();
   // devuelve la posición de las manos en coordenadas de pantalla (aprox.)
-  const m = (p) => [x + p[0] * s, y - (pose.salto || 0) + p[1] * s];
-  return { manoI: m(pI), manoD: m(pD), cabeza: [x, y - (262 + 118) * s] };
+  const dyS = 40 * (pose.sentado || 0);
+  const m = (p) => [x + p[0] * s, y - (pose.salto || 0) - bote + (p[1] + dyS) * s];
+  return { manoI: m(pI), manoD: m(pD), cabeza: [x, y - (262 + 118 - dyS) * s] };
 }
 
 // ---------------- ESCENARIO: laboratorio con capas ----------------
@@ -515,3 +533,24 @@ export function grua(ctx, t, x, y, s = 1, dobla = 0, cableY = 300) { ctx.save();
 export function signo(ctx, t, t0, x, y, txt = '!', col = '#ffd93d') { const k = ph(t, t0, t0 + 0.25); if (k <= 0) return; ctx.save(); ctx.translate(x, y - 20 * back(k)); ctx.scale(back(k), back(k)); texto(ctx, txt, 0, 0, 110, col); ctx.restore(); }
 // Líneas de movimiento/impacto alrededor de un punto
 export function impacto(ctx, t, x, y, k, r = 120, col = '#ffffff') { if (k <= 0 || k >= 1) return; ctx.save(); ctx.globalAlpha = 1 - k; ctx.strokeStyle = col; ctx.lineWidth = 10; ctx.lineCap = 'round'; for (let i = 0; i < 10; i++) { const a = i / 10 * 6.283; ctx.beginPath(); ctx.moveTo(x + Math.cos(a) * r * (0.5 + k), y + Math.sin(a) * r * (0.5 + k)); ctx.lineTo(x + Math.cos(a) * r * (0.9 + k * 1.3), y + Math.sin(a) * r * (0.9 + k * 1.3)); ctx.stroke(); } ctx.restore(); }
+
+// ---------------- ACCIÓN: andar, puertas, vasos, objetos que caen ----------------
+// paso(t, t0, t1, x0, x1): posición y fase de andar entre dos instantes (fase null = parado)
+export function paso(t, t0, t1, x0, x1, vel = 9) { const k = ph(t, t0, t1); const mueve = k > 0 && k < 1; return { x: lerp(x0, x1, ease(k) * 0.15 + k * 0.85), anda: mueve ? t * vel : null, lado: x1 >= x0 ? 1 : -1, k }; }
+// alcance(t, t0, dur, desde, hasta): mano que va a coger algo y vuelve (0→1→0 si vuelve)
+export function alcance(t, t0, t1, a, b) { const k = ease(ph(t, t0, t1)); return [lerp(a[0], b[0], k), lerp(a[1], b[1], k)]; }
+// puerta con marco que se abre (abre 0..1), bisagra a la izquierda
+export function puerta(ctx, x, y, w, h, abre = 0, col = '#8a5a36', cartel) { rr(ctx, x - 14, y - h - 14, w + 28, h + 14, 6); volumen(ctx, '#e9e4da', x - 14, y - h - 14, w + 28, h + 14, 4); ctx.fillStyle = '#2a2030'; ctx.fillRect(x, y - h, w, h);
+  const ww = w * Math.cos(abre * 1.35); ctx.save(); ctx.beginPath(); ctx.moveTo(x, y - h); ctx.lineTo(x + ww, y - h - 18 * abre); ctx.lineTo(x + ww, y + 18 * abre); ctx.lineTo(x, y); ctx.closePath(); volumen(ctx, abre > 0.5 ? tono(col, -0.2) : col, x, y - h, Math.max(4, ww), h, 4);
+  if (ww > 30) { ctx.beginPath(); ctx.arc(x + ww - 26, y - h / 2, 10, 0, 7); ctx.fillStyle = '#e8c04a'; ctx.fill(); ctx.strokeStyle = LINEA; ctx.lineWidth = 3; ctx.stroke(); if (cartel && abre < 0.4) texto(ctx, cartel, x + ww / 2, y - h * 0.72, 60, '#fff'); }
+  ctx.restore(); }
+// vaso con líquido (nivel 0..1), centrado en la base
+export function vaso(ctx, x, y, s = 1, nivel = 0.8, col = '#7fc8ff', rot = 0) { ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(s, s); ctx.beginPath(); ctx.moveTo(-34, -100); ctx.lineTo(-26, 0); ctx.lineTo(26, 0); ctx.lineTo(34, -100); ctx.closePath(); ctx.fillStyle = 'rgba(230,245,255,0.55)'; ctx.fill();
+  if (nivel > 0) { ctx.save(); ctx.clip(); ctx.rotate(-rot); ctx.fillStyle = col; ctx.fillRect(-80, -100 * nivel, 160, 200); ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillRect(-80, -100 * nivel, 160, 6); ctx.restore(); }
+  ctx.beginPath(); ctx.moveTo(-34, -100); ctx.lineTo(-26, 0); ctx.lineTo(26, 0); ctx.lineTo(34, -100); ctx.strokeStyle = LINEA; ctx.lineWidth = 4; ctx.stroke(); ctx.restore(); }
+// silla vista de frente; el personaje se sienta encima con pose.sentado
+export function silla(ctx, x, y, s = 1, col = '#b0473a') { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); rr(ctx, -120, -300, 240, 240, 20); volumen(ctx, col, -120, -300, 240, 240, 4); rr(ctx, -140, -80, 280, 40, 10); volumen(ctx, tono(col, 0.1), -140, -80, 280, 40, 4); for (const k of [-1, 1]) { rr(ctx, k * 110 - 10, -42, 20, 42, 6); ctx.fillStyle = '#4a3528'; ctx.fill(); } ctx.restore(); }
+// salpicón (k 0..1) para líquidos o caídas
+export function salpica(ctx, x, y, k, col = '#7fc8ff', n = 9, r = 160) { if (k <= 0 || k >= 1) return; ctx.save(); ctx.globalAlpha = 1 - k; for (let i = 0; i < n; i++) { const a = -Math.PI * (0.1 + 0.8 * i / (n - 1)), d = r * k; ctx.beginPath(); ctx.arc(x + Math.cos(a) * d, y + Math.sin(a) * d + k * k * 120, 14 * (1 - k * 0.5), 0, 7); ctx.fillStyle = col; ctx.fill(); ctx.strokeStyle = LINEA; ctx.lineWidth = 2; ctx.stroke(); } ctx.restore(); }
+// caída con rebote: devuelve y para un objeto soltado en t0 desde y0 hasta el suelo yS
+export function cae(t, t0, y0, yS, dur = 0.5) { const k = ph(t, t0, t0 + dur); if (k < 1) return lerp(y0, yS, k * k); const r = ph(t, t0 + dur, t0 + dur + 0.3); return yS - Math.sin(r * Math.PI) * (yS - y0) * 0.12; }
