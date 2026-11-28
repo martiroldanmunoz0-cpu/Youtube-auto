@@ -592,8 +592,10 @@ nav .n.bad{background:var(--bad);color:#fff}
     const items = queue.filter(q => q.publish_at || q.estado).map(q => ({...q, t: q.publish_at ? new Date(q.publish_at) : null}));
     if (!items.length) { el.innerHTML = `<div class="empty">Todavía no hay vídeos programados. Se añaden solos en cuanto terminan.</div>`; return; }
     const now = new Date();
-    const future = items.filter(q => !q.t || q.t > now).sort((a, b) => (a.t || 0) - (b.t || 0));
-    const past = items.filter(q => q.t && q.t <= now).sort((a, b) => b.t - a.t);
+    // Sin subir todavía (sin youtube_id) va siempre arriba, aunque su hora ya haya pasado: el bot le busca otro hueco.
+    const done = q => q.youtube_id && q.t && q.t <= now;
+    const future = items.filter(q => !done(q)).sort((a, b) => (a.t || 0) - (b.t || 0));
+    const past = items.filter(done).sort((a, b) => b.t - a.t);
     const row = q => {
       const yt = q.youtube_id;
       const links = yt ? `<a href="https://studio.youtube.com/video/${esc(yt)}/edit" target="_blank" rel="noopener">Studio</a><a href="https://youtube.com/shorts/${esc(yt)}" target="_blank" rel="noopener">YouTube</a>` : "";
