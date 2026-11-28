@@ -158,7 +158,7 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
         make_soundtrack(total, cuts, [], music, seed=seed, volume=m.get("volumen_ambiente", 0.1), sfx=False, style=story.get("music", "bright"), loop=not con_tarjeta)
         capas.append(music)
 
-    # 4) Mezcla final: los efectos bajan un poco cuando habla la voz y el ambiente baja más.
+    # 4) Mezcla final: los efectos y el ambiente bajan un poco cuando habla la voz; la música baja más.
     # En dos pasos: normalizar la voz y luego mezclar con duración fija (en un solo paso ffmpeg recortaba el final).
     voice_norm = work / "voice_norm.wav"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(voice), "-af", "loudnorm=I=-15:TP=-1.5:LRA=7", "-ar", "44100", str(voice_norm)], check=True)
@@ -167,7 +167,8 @@ def build_story(story: dict, out_dir: Path, cfg: dict, reuse_voice: bool = True)
     fc = f"[0:a]asplit={len(capas) + 1}[vo]" + "".join(f"[sc{k}]" for k in range(len(capas))) + ";"
     fc += "[1:a][sc0]sidechaincompress=threshold=0.06:ratio=2.5:attack=5:release=250[c0];"
     for k in range(1, len(capas)):
-        fc += f"[{k + 1}:a]highpass=f=90[h{k}];[h{k}][sc{k}]sidechaincompress=threshold=0.03:ratio=6:attack=20:release=400[c{k}];"
+        duck = "threshold=0.05:ratio=3" if k == 1 else "threshold=0.03:ratio=6"  # el ambiente (bed) se sigue oyendo bajo la voz
+        fc += f"[{k + 1}:a]highpass=f=90[h{k}];[h{k}][sc{k}]sidechaincompress={duck}:attack=20:release=400[c{k}];"
     fc += "[vo]" + "".join(f"[c{k}]" for k in range(len(capas))) + f"amix=inputs={len(capas) + 1}:duration=longest:normalize=0,alimiter=limit=0.95,apad[out]"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *ins, "-filter_complex", fc,
                     "-map", "[out]", "-t", f"{total:.3f}", "-c:a", "aac", "-b:a", "192k", str(audio)], check=True)

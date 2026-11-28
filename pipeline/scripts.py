@@ -121,8 +121,9 @@ STORY_SCHEMA = {
                     "params_json": {"type": "string"},
                     "camara": {"type": "string"},
                     "transicion": {"type": "string"},
+                    "ambiente": {"type": "string"},
                 },
-                "required": ["texto", "escena", "params_json", "camara", "transicion"],
+                "required": ["texto", "escena", "params_json", "camara", "transicion", "ambiente"],
                 "additionalProperties": False,
             },
         },
@@ -334,6 +335,11 @@ máximo 4). Si necesitas repetir una idea (lugar, paso del tiempo, noticia), cam
 catálogo: hay muchas escenas distintas.
 - El plano del giro usa cámara "slam" o transición "red"/"flash".
 - "camara" y "transicion" deben ser claves exactas del catálogo.
+- "ambiente": el SONIDO DE FONDO real de lo que pasa en ese plano, para que se sienta el lugar (en un hospital se oye
+  el pitido del monitor; en el bosque, los pájaros; en el mar, las olas). Claves: playa, mar, bosque, pajaros, noche,
+  viento, nieve, desierto, rio, lluvia, tormenta, hoguera, hospital, avion, espacio, bajo_el_agua, ciudad, interior,
+  reloj, ninguno. Varias a la vez con "+" ("mar+viento", "hospital+lluvia"). Cambia cuando cambia el lugar o lo que
+  pasa; "ninguno" solo si el plano es abstracto (texto, gráfico).
 
 TÍTULO, PORTADA Y DESCRIPCIÓN
 - texto_portada: 2-6 palabras en MAYÚSCULAS. Sale ENORME en pantalla los 2 primeros segundos y en la miniatura: \
@@ -973,6 +979,7 @@ def validate_story(story: dict) -> dict:
             "params": params,
             "camera": p["camara"] if p["camara"] in cams else "push_in",
             "transition": p["transicion"] if p["transicion"] in trans else "fade",
+            **({"ambiente": p["ambiente"].strip()} if (p.get("ambiente") or "").strip() else {}),
         })
     from collections import Counter  # noqa: PLC0415
 
@@ -1087,8 +1094,9 @@ COMEDY_SCHEMA = {
                     "params_json": {"type": "string"},
                     "camara": {"type": "string"},
                     "transicion": {"type": "string"},
+                    "ambiente": {"type": "string"},
                 },
-                "required": ["habla", "texto", "escena", "params_json", "camara", "transicion"],
+                "required": ["habla", "texto", "escena", "params_json", "camara", "transicion", "ambiente"],
                 "additionalProperties": False,
             },
         },
@@ -1141,6 +1149,11 @@ coherente (chico_* / chica_*). Colores en #hex. "gorra" es un #hex o "" si no ll
 
 VISUAL
 - "escena" debe ser una clave EXACTA del catálogo y "params_json" un objeto JSON en texto.
+- "ambiente": el SONIDO DE FONDO real de lo que pasa en ese plano, para que se sienta el lugar (en un hospital se oye
+  el pitido del monitor; en el bosque, los pájaros; en el mar, las olas). Claves: playa, mar, bosque, pajaros, noche,
+  viento, nieve, desierto, rio, lluvia, tormenta, hoguera, hospital, avion, espacio, bajo_el_agua, ciudad, interior,
+  reloj, ninguno. Varias a la vez con "+" ("mar+viento", "hospital+lluvia"). Cambia cuando cambia el lugar o lo que
+  pasa; "ninguno" solo si el plano es abstracto (texto, gráfico).
 - En "duo" pon "left"/"right" con ids del reparto y sus moods; en "closeup" pon "who"; el que habla mueve la boca solo.
 - Cambia de plano a menudo. El remate usa cámara "slam" o transición "flash".
 
@@ -1242,6 +1255,7 @@ def validate_comedy(raw: dict) -> dict:
             "text": text, "speaker": sp, "scene": scene, "params": params,
             "camera": p["camara"] if p["camara"] in cams else "static",
             "transition": p["transicion"] if p["transicion"] in trans else "cut",
+            **({"ambiente": p["ambiente"].strip()} if (p.get("ambiente") or "").strip() else {}),
         })
     title = raw["titulo"].strip()
     if "#shorts" not in title.lower():

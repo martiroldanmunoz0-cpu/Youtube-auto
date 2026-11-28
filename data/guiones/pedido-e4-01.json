@@ -1,350 +1,365 @@
 {
- "title": "133 Days Alone on a Raft #shorts",
- "description": "How many days would you last? 👇\n\nIn 1942 a German submarine sank the British ship SS Ben Lomond. Steward Poon Lim survived 133 days alone on a wooden raft in the Atlantic, catching rainwater, fish, seabirds and even a shark, until Brazilian fishermen found him.\nHe said: \"I hope no one will ever have to break that record.\"\n#truestory #survival #poonlim #ocean #shorts",
- "tags": [
-  "poon lim",
-  "133 days at sea",
-  "lost at sea",
-  "survival story",
-  "true story",
-  "raft survival",
-  "ww2 history",
-  "incredible true stories",
-  "ocean survival",
-  "the curio lab"
- ],
- "beats": [
-  {
-   "text": "This man survived one hundred thirty-three days alone on a raft.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "A torpedo hits his ship. He jumps into the Atlantic.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 1,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Out of fifty-five men, only steward Poon Lim makes it to a tiny wooden raft.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 2,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "What did he drink?",
-   "speaker": "kid",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 3,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "YOU",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Rainwater. He caught it with the canvas of his life jacket.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 4,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "And food?",
-   "speaker": "kid",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 5,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "YOU",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "He pulled a nail from the raft and bent it into a fishhook.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 6,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Then he used the fish as bait… to catch seabirds.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 7,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Okay, that's genius.",
-   "speaker": "kid",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 8,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "YOU",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "When a shark attacked, he fought it off with a water jug… then ate it.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 9,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Ships sailed right past him. A plane spotted him… then a storm hit, and they lost him.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 10,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Hey! There's a man on that raft!",
-   "speaker": "fisher",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 11,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "FISHERMAN",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Day one hundred thirty-three. Brazilian fishermen pulled him aboard. He walked off the boat on his own.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 12,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "What did he say after?",
-   "speaker": "kid",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 13,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "YOU",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "\"I hope no one will ever have to break that record.\"",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e4-01",
-    "plano": 14,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "133 DAYS ON A RAFT",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  }
- ],
- "looks": {},
- "cover_text": "133 DAYS ON A RAFT",
- "comment_q": "How many days would you last?",
- "lista": "Incredible True Stories",
- "question": "How did one man survive 133 days on a raft?",
- "id": "pedido-e4-01",
- "cast": {
-  "kid": {
-   "name": "YOU",
-   "voice": "en_eric",
-   "look": {
-    "outfit": "#ffb36a"
-   }
-  },
-  "fisher": {
-   "name": "FISHERMAN",
-   "voice": "en_chris",
-   "look": {
-    "outfit": "#9fd08a"
-   }
-  }
- },
- "subtitle_style": "word",
- "gap": 0.04,
- "idea": {
-  "tipo": "pedido",
-  "premisa": "Gancho elegido analizando vídeos parecidos (ver analisis_gancho); imagen ya en pantalla en el segundo 0; diálogo corto."
- },
- "ganchos": [
-  {
-   "texto": "This man survived one hundred thirty-three days alone on a raft.",
-   "tipo": "analizado",
-   "puntuacion": 9,
-   "motivo": "\"This man survived one hundred thirty-three days alone on a raft.\" con la balsa sola en el océano y el contador DAY 133 en pantalla."
-  }
- ],
- "analisis_gancho": {
-  "parecidos": [
-   "Nuestro: This teenager stayed awake for 11 days (85% visto, el que más subs dio)",
-   "Nuestro: This man survived two atomic bombs (la ficha con año perdió un 16%)",
-   "Nuestro: 1997. You're a NOAA analyst... (abrir con año perdió un 26%)"
+  "title": "133 Days Alone on a Raft #shorts",
+  "description": "How many days would you last? 👇\n\nIn 1942 a German submarine sank the British ship SS Ben Lomond. Steward Poon Lim survived 133 days alone on a wooden raft in the Atlantic, catching rainwater, fish, seabirds and even a shark, until Brazilian fishermen found him.\nHe said: \"I hope no one will ever have to break that record.\"\n#truestory #survival #poonlim #ocean #shorts",
+  "tags": [
+    "poon lim",
+    "133 days at sea",
+    "lost at sea",
+    "survival story",
+    "true story",
+    "raft survival",
+    "ww2 history",
+    "incredible true stories",
+    "ocean survival",
+    "the curio lab"
   ],
-  "que_gancho_usan": "\"This [persona] survived/did [cifra]\" es nuestro gancho con mejor retención; abrir con año o con \"No way...?\" que repite la premisa es lo que más pierde.",
-  "funcionaria_aqui": "Sí: misma estructura que el de 11 días, con una cifra todavía más bestia. Se quita \"No way. In the middle of the ocean?\" y el \"1942\" y se entra por la acción sensorial (el torpedo, el salto al mar).",
-  "decision": "\"This man survived one hundred thirty-three days alone on a raft.\" con la balsa sola en el océano y el contador DAY 133 en pantalla."
- },
- "medida_estado": "lista"
+  "beats": [
+    {
+      "text": "This man survived one hundred thirty-three days alone on a raft.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut",
+      "ambiente": "mar"
+    },
+    {
+      "text": "A torpedo hits his ship. He jumps into the Atlantic.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut",
+      "ambiente": "mar"
+    },
+    {
+      "text": "Out of fifty-five men, only steward Poon Lim makes it to a tiny wooden raft.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "tormenta+mar"
+    },
+    {
+      "text": "What did he drink?",
+      "speaker": "kid",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "YOU",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "hoguera+mar"
+    },
+    {
+      "text": "Rainwater. He caught it with the canvas of his life jacket.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "lluvia+mar"
+    },
+    {
+      "text": "And food?",
+      "speaker": "kid",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "YOU",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "hoguera+mar"
+    },
+    {
+      "text": "He pulled a nail from the raft and bent it into a fishhook.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "mar"
+    },
+    {
+      "text": "Then he used the fish as bait… to catch seabirds.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "mar+pajaros"
+    },
+    {
+      "text": "Okay, that's genius.",
+      "speaker": "kid",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "YOU",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "hoguera+mar"
+    },
+    {
+      "text": "When a shark attacked, he fought it off with a water jug… then ate it.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut",
+      "ambiente": "mar"
+    },
+    {
+      "text": "Ships sailed right past him. A plane spotted him… then a storm hit, and they lost him.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "mar"
+    },
+    {
+      "text": "Hey! There's a man on that raft!",
+      "speaker": "fisher",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "FISHERMAN",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut",
+      "ambiente": "mar"
+    },
+    {
+      "text": "Day one hundred thirty-three. Brazilian fishermen pulled him aboard. He walked off the boat on his own.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "playa+pajaros"
+    },
+    {
+      "text": "What did he say after?",
+      "speaker": "kid",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "YOU",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "hoguera+mar"
+    },
+    {
+      "text": "\"I hope no one will ever have to break that record.\"",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e4-01",
+        "plano": 14,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "133 DAYS ON A RAFT",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut",
+      "ambiente": "mar"
+    }
+  ],
+  "looks": {},
+  "cover_text": "133 DAYS ON A RAFT",
+  "comment_q": "How many days would you last?",
+  "lista": "Incredible True Stories",
+  "question": "How did one man survive 133 days on a raft?",
+  "id": "pedido-e4-01",
+  "cast": {
+    "kid": {
+      "name": "YOU",
+      "voice": "en_eric",
+      "look": {
+        "outfit": "#ffb36a"
+      }
+    },
+    "fisher": {
+      "name": "FISHERMAN",
+      "voice": "en_chris",
+      "look": {
+        "outfit": "#9fd08a"
+      }
+    }
+  },
+  "subtitle_style": "word",
+  "gap": 0.04,
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Gancho elegido analizando vídeos parecidos (ver analisis_gancho); imagen ya en pantalla en el segundo 0; diálogo corto."
+  },
+  "ganchos": [
+    {
+      "texto": "This man survived one hundred thirty-three days alone on a raft.",
+      "tipo": "analizado",
+      "puntuacion": 9,
+      "motivo": "\"This man survived one hundred thirty-three days alone on a raft.\" con la balsa sola en el océano y el contador DAY 133 en pantalla."
+    }
+  ],
+  "analisis_gancho": {
+    "parecidos": [
+      "Nuestro: This teenager stayed awake for 11 days (85% visto, el que más subs dio)",
+      "Nuestro: This man survived two atomic bombs (la ficha con año perdió un 16%)",
+      "Nuestro: 1997. You're a NOAA analyst... (abrir con año perdió un 26%)"
+    ],
+    "que_gancho_usan": "\"This [persona] survived/did [cifra]\" es nuestro gancho con mejor retención; abrir con año o con \"No way...?\" que repite la premisa es lo que más pierde.",
+    "funcionaria_aqui": "Sí: misma estructura que el de 11 días, con una cifra todavía más bestia. Se quita \"No way. In the middle of the ocean?\" y el \"1942\" y se entra por la acción sensorial (el torpedo, el salto al mar).",
+    "decision": "\"This man survived one hundred thirty-three days alone on a raft.\" con la balsa sola en el océano y el contador DAY 133 en pantalla."
+  },
+  "medida_estado": "lista"
 }

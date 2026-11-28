@@ -110,13 +110,68 @@ CUES: dict[str, tuple[list[str], float]] = {
 }
 
 # Ambientes de fondo (en bucle, muy bajos, cambian con el lugar)
-BEDS = {"wave": -24, "birds": -25, "crickets": -26, "wind_1": -26, "stream": -25, "rain": -24, "fire_crackle": -25}
+BEDS = {"wave": -19, "birds": -20, "crickets": -21, "wind_1": -21, "stream": -20, "rain": -19, "fire_crackle": -20,
+        "amb_hospital": -20, "amb_cabina": -22, "amb_espacio": -21, "amb_bajo_agua": -20, "amb_ciudad": -22, "amb_sala": -27, "amb_reloj": -23}
 LUGAR_BED = {
-    "playa": "wave", "bajo_el_mar": "wave", "mar": "wave", "barco": "wave", "isla": "wave", "puerto": "wave", "oceano": "wave",
+    "playa": "wave", "bajo_el_mar": "amb_bajo_agua", "mar": "wave", "barco": "wave", "isla": "wave", "puerto": "wave", "oceano": "wave",
     "bosque": "birds", "campo": "birds", "selva": "birds", "jardin": "birds", "parque": "birds", "granja": "birds", "jungla": "birds",
-    "montana": "wind_1", "desierto": "wind_1", "nieve": "wind_1", "polo": "wind_1", "espacio": None, "ciudad": None,
-    "rio": "stream", "lago": "stream", "cueva": "stream", "tormenta": "rain",
+    "montana": "wind_1", "desierto": "wind_1", "nieve": "wind_1", "polo": "wind_1", "espacio": "amb_espacio", "ciudad": "amb_ciudad", "calle": "amb_ciudad",
+    "rio": "stream", "lago": "stream", "cueva": "stream", "tormenta": "rain", "hospital": "amb_hospital", "avion": "amb_cabina",
 }
+# Campo "ambiente" de cada plano (lo elige el guionista según lo que pasa). Varios a la vez con "+": "playa+viento".
+AMBIENTE = {
+    "playa": "wave", "mar": "wave", "olas": "wave", "oceano": "wave", "balsa": "wave", "barco": "wave",
+    "bosque": "birds", "pajaros": "birds", "campo": "birds", "parque": "birds", "jardin": "birds", "selva": "birds",
+    "noche": "crickets", "grillos": "crickets", "viento": "wind_1", "montana": "wind_1", "nieve": "wind_1", "desierto": "wind_1", "frio": "wind_1",
+    "rio": "stream", "agua_corriendo": "stream", "lluvia": "rain", "tormenta": "rain", "fuego": "fire_crackle", "hoguera": "fire_crackle",
+    "hospital": "amb_hospital", "monitor": "amb_hospital", "avion": "amb_cabina", "cabina": "amb_cabina", "espacio": "amb_espacio",
+    "bajo_el_agua": "amb_bajo_agua", "bajo_el_mar": "amb_bajo_agua", "submarino": "amb_bajo_agua", "ciudad": "amb_ciudad", "calle": "amb_ciudad",
+    "trafico": "amb_ciudad", "interior": "amb_sala", "casa": "amb_sala", "oficina": "amb_sala", "sala": "amb_sala", "clase": "amb_sala",
+    "laboratorio": "amb_sala", "reloj": "amb_reloj", "cuenta_atras": "amb_reloj",
+}
+# Sin "ambiente": se adivina por lo que dice el plano (inglés o español). La primera que encaja gana.
+AMB_TEXTO: list[tuple[str, str]] = [
+    (r"hospital|surgery|surgeon|nurse|patient|\bicu\b|heart monitor|coma\b|quirofano|enfermer|paciente", "amb_hospital"),
+    (r"underwater|deep sea|seabed|ocean floor|submarine|bajo el agua|fondo del mar|submarino", "amb_bajo_agua"),
+    (r"\bspace\b|orbit|astronaut|the sun\b|planet|galaxy|espacio|orbita|astronaut|planeta", "amb_espacio"),
+    (r"storm|rain|lluvia|llueve|tormenta", "rain"),
+    (r"campfire|bonfire|fire\b|flames|hoguera|fuego|llamas", "fire_crackle"),
+    (r"\braft\b|ocean|\bsea\b|beach|waves|shipwreck|balsa|oceano|\bmar\b|playa|olas", "wave"),
+    (r"airplane|\bplane\b|flight|cabin|pilot|avion|vuelo|cabina|piloto", "amb_cabina"),
+    (r"forest|jungle|birds?\b|park\b|garden|meadow|bosque|selva|pajaro|parque|jardin", "birds"),
+    (r"snow|blizzard|mountain|desert|freez|nieve|montana|desierto|congel", "wind_1"),
+    (r"river|stream|waterfall|\brio\b|cascada", "stream"),
+    (r"\bcity\b|street|traffic|downtown|ciudad|calle|trafico", "amb_ciudad"),
+    (r"\bnight\b|midnight|\bnoche\b|medianoche", "crickets"),
+]
+
+
+def _ambientes(b: dict, p: dict, sc: str) -> list[str]:
+    """Qué suena de fondo en este plano: el "ambiente" que eligió el guion, o el que se deduce del lugar o del texto."""
+    raw = b.get("ambiente")
+    if raw is None:
+        raw = (b.get("params") or {}).get("ambiente")
+    if raw is not None:
+        if isinstance(raw, list):
+            raw = "+".join(map(str, raw))
+        keys = [_norm(k).strip().replace(" ", "_") for k in str(raw).split("+")]
+        if any(k in ("ninguno", "none", "silencio", "") for k in keys):
+            return []
+        return list(dict.fromkeys(AMBIENTE.get(k, k if k in BEDS else "") for k in keys if AMBIENTE.get(k, k if k in BEDS else "")))
+    lugar = _norm(str(p.get("lugar") or ""))
+    hora = str(p.get("hora") or "")
+    txt = _norm(b.get("text", ""))
+    name = LUGAR_BED.get(lugar)
+    if sc in ("ocean",) or (sc == "accion" and str(p.get("tipo")) in ("tormenta_mar", "hundirse")):
+        name = "wave"
+    if re.search(r"lluvia|llueve|tormenta|\brain|storm", txt):
+        name = "rain"
+    if not name:
+        name = next((n for pat, n in AMB_TEXTO if re.search(pat, txt)), None)
+    if name == "birds" and hora == "noche":
+        name = "crickets"
+    return [name] if name else []
+
 
 # Palabras del guion -> sonido (raíces sin tildes; la primera que encaja gana)
 KEYWORDS: list[tuple[str, str]] = [
@@ -469,26 +524,19 @@ def _fill(cues, words, rng, total):
 
 def _bed(beats: list[dict], words: list[dict], n: int, rng) -> np.ndarray:
     bed = np.zeros(n)
-    fade = int(1.2 * SR)
+    fade = int(0.7 * SR)
     tramos: list[list] = []  # [nombre, inicio, fin]
+    abiertos: dict[str, list] = {}
     for i, b in enumerate(beats):
         sc, p = _params(b)
-        lugar = _norm(str(p.get("lugar") or ""))
-        hora = str(p.get("hora") or "")
-        txt = _norm(b.get("text", ""))
-        name = LUGAR_BED.get(lugar)
-        if sc in ("ocean",) or (sc == "accion" and str(p.get("tipo")) in ("tormenta_mar", "hundirse")):
-            name = "wave"
-        if re.search(r"lluvia|llueve|tormenta", txt):
-            name = "rain"
-        if name == "birds" and hora == "noche":
-            name = "crickets"
-        if not name:
-            continue
-        if tramos and tramos[-1][0] == name and float(b["start"]) - tramos[-1][2] < 0.3:
-            tramos[-1][2] = float(b["end"])
-        else:
-            tramos.append([name, float(b["start"]), float(b["end"])])
+        for name in _ambientes(b, p, sc):
+            tr = abiertos.get(name)
+            if tr and float(b["start"]) - tr[2] < 0.3:
+                tr[2] = float(b["end"])
+            else:
+                tr = [name, float(b["start"]), float(b["end"])]
+                tramos.append(tr)
+                abiertos[name] = tr
     for name, ts, te in tramos:
         x = _load(name)
         if x is None or len(x) < SR:
@@ -513,7 +561,7 @@ def _bed(beats: list[dict], words: list[dict], n: int, rng) -> np.ndarray:
         f = min(fade, L // 2)
         seg[:f] *= np.linspace(0, 1, f)
         seg[L - f:] *= np.linspace(1, 0, f)
-        bed[i0:i1] += seg * 10 ** (BEDS.get(name, -31) / 20)
+        bed[i0:i1] += seg * 10 ** (BEDS.get(name, -24) / 20)
     return bed
 
 

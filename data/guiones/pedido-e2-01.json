@@ -1,331 +1,345 @@
 {
- "title": "What If the Sun Disappeared Right Now? #shorts",
- "description": "What would you do in those 8 minutes? 👇\n\nIf the Sun vanished, you wouldn't know for about 8 minutes and 20 seconds. Then the sky goes black, the Moon goes dark, Earth flies off in a straight line and the temperature crashes.\nLife around deep-sea volcanic vents could keep going long after the rest of us.\n#whatif #sun #space #science #shorts",
- "tags": [
-  "what if the sun disappeared",
-  "what if",
-  "sun",
-  "space facts",
-  "8 minutes",
-  "astronomy",
-  "science shorts",
-  "hypothetical",
-  "earth without sun",
-  "the curio lab"
- ],
- "beats": [
-  {
-   "text": "The Sun just disappeared. And you have no idea.",
-   "speaker": "girl",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "ASTRONOMER",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Pretty sure I'd notice.",
-   "speaker": "guy",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 1,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "YOU",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Not for eight minutes.",
-   "speaker": "girl",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 2,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "ASTRONOMER",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Sunlight takes eight minutes and twenty seconds to reach us. So for eight minutes, everything looks normal.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 3,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Then… the lights go out.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 4,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Okay. I'll use the Moon.",
-   "speaker": "guy",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 5,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "YOU",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "The Moon's dark too. It only reflects the Sun.",
-   "speaker": "girl",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 6,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "ASTRONOMER",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "With nothing to hold it, Earth stops orbiting… and flies off in a straight line.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 7,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Fine. I'll grab a jacket.",
-   "speaker": "guy",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 8,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "YOU",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "In a week, it's below zero Fahrenheit. In a year, minus one hundred.",
-   "speaker": "girl",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 9,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "ASTRONOMER",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Plants stop making food. One by one, food chains collapse.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 10,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "But deep in the ocean, life around hot volcanic vents could keep going for millions of years.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 11,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "So the winners are… worms?",
-   "speaker": "guy",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 12,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "YOU",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Giant tube worms. Yep.",
-   "speaker": "girl",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e2-01",
-    "plano": 13,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "THE SUN IS GONE",
-      "label": "ASTRONOMER",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  }
- ],
- "looks": {},
- "cover_text": "THE SUN IS GONE",
- "comment_q": "What would you do in those 8 minutes?",
- "lista": "What If...?",
- "question": "What would happen if the Sun disappeared?",
- "id": "pedido-e2-01",
- "cast": {
-  "girl": {
-   "name": "ASTRONOMER",
-   "voice": "en_aria",
-   "look": {
-    "outfit": "#c9a0e8"
-   }
-  },
-  "guy": {
-   "name": "YOU",
-   "voice": "en_eric",
-   "look": {
-    "outfit": "#ffb36a"
-   }
-  }
- },
- "subtitle_style": "word",
- "gap": 0.04,
- "idea": {
-  "tipo": "pedido",
-  "premisa": "Gancho elegido analizando vídeos parecidos (ver analisis_gancho); imagen ya en pantalla en el segundo 0; diálogo corto."
- },
- "ganchos": [
-  {
-   "texto": "The Sun just disappeared. And you have no idea.",
-   "tipo": "analizado",
-   "puntuacion": 9,
-   "motivo": "\"The Sun just disappeared. And you have no idea.\" con la cuenta atrás visible desde el segundo 0."
-  }
- ],
- "analisis_gancho": {
-  "parecidos": [
-   "Beyond the Observable Universe: Who Can Save Earth? (4M, 5.5x)",
-   "Beyond the Observable Universe: What Could Actually Destroy Earth? (flojo, 0.1x: genérico)",
-   "Nuestro: What if you dug straight down from Kansas? (72% visto)"
+  "title": "What If the Sun Disappeared Right Now? #shorts",
+  "description": "What would you do in those 8 minutes? 👇\n\nIf the Sun vanished, you wouldn't know for about 8 minutes and 20 seconds. Then the sky goes black, the Moon goes dark, Earth flies off in a straight line and the temperature crashes.\nLife around deep-sea volcanic vents could keep going long after the rest of us.\n#whatif #sun #space #science #shorts",
+  "tags": [
+    "what if the sun disappeared",
+    "what if",
+    "sun",
+    "space facts",
+    "8 minutes",
+    "astronomy",
+    "science shorts",
+    "hypothetical",
+    "earth without sun",
+    "the curio lab"
   ],
-  "que_gancho_usan": "Funcionan las afirmaciones concretas que contradicen lo que crees; las amenazas genéricas (\"destroy Earth\") se quedan flojas.",
-  "funcionaria_aqui": "Sí: el dato de los 8 minutos contradice la intuición (\"lo notaría\") y el chico lo verbaliza, así que no es repetir la premisa sino abrir un bucle. Se refuerza con una cuenta atrás 8:20 en pantalla.",
-  "decision": "\"The Sun just disappeared. And you have no idea.\" con la cuenta atrás visible desde el segundo 0."
- },
- "medida_estado": "lista"
+  "beats": [
+    {
+      "text": "The Sun just disappeared. And you have no idea.",
+      "speaker": "girl",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "ASTRONOMER",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut",
+      "ambiente": "pajaros+reloj"
+    },
+    {
+      "text": "Pretty sure I'd notice.",
+      "speaker": "guy",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "YOU",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "pajaros+reloj"
+    },
+    {
+      "text": "Not for eight minutes.",
+      "speaker": "girl",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "ASTRONOMER",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut",
+      "ambiente": "pajaros+reloj"
+    },
+    {
+      "text": "Sunlight takes eight minutes and twenty seconds to reach us. So for eight minutes, everything looks normal.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "espacio"
+    },
+    {
+      "text": "Then… the lights go out.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut",
+      "ambiente": "noche"
+    },
+    {
+      "text": "Okay. I'll use the Moon.",
+      "speaker": "guy",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "YOU",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "noche"
+    },
+    {
+      "text": "The Moon's dark too. It only reflects the Sun.",
+      "speaker": "girl",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "ASTRONOMER",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "noche"
+    },
+    {
+      "text": "With nothing to hold it, Earth stops orbiting… and flies off in a straight line.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "espacio"
+    },
+    {
+      "text": "Fine. I'll grab a jacket.",
+      "speaker": "guy",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "YOU",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "viento"
+    },
+    {
+      "text": "In a week, it's below zero Fahrenheit. In a year, minus one hundred.",
+      "speaker": "girl",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "ASTRONOMER",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut",
+      "ambiente": "viento"
+    },
+    {
+      "text": "Plants stop making food. One by one, food chains collapse.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "viento"
+    },
+    {
+      "text": "But deep in the ocean, life around hot volcanic vents could keep going for millions of years.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "bajo_el_agua"
+    },
+    {
+      "text": "So the winners are… worms?",
+      "speaker": "guy",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 12,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "YOU",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "viento"
+    },
+    {
+      "text": "Giant tube worms. Yep.",
+      "speaker": "girl",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e2-01",
+        "plano": 13,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "THE SUN IS GONE",
+            "label": "ASTRONOMER",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut",
+      "ambiente": "bajo_el_agua"
+    }
+  ],
+  "looks": {},
+  "cover_text": "THE SUN IS GONE",
+  "comment_q": "What would you do in those 8 minutes?",
+  "lista": "What If...?",
+  "question": "What would happen if the Sun disappeared?",
+  "id": "pedido-e2-01",
+  "cast": {
+    "girl": {
+      "name": "ASTRONOMER",
+      "voice": "en_aria",
+      "look": {
+        "outfit": "#c9a0e8"
+      }
+    },
+    "guy": {
+      "name": "YOU",
+      "voice": "en_eric",
+      "look": {
+        "outfit": "#ffb36a"
+      }
+    }
+  },
+  "subtitle_style": "word",
+  "gap": 0.04,
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Gancho elegido analizando vídeos parecidos (ver analisis_gancho); imagen ya en pantalla en el segundo 0; diálogo corto."
+  },
+  "ganchos": [
+    {
+      "texto": "The Sun just disappeared. And you have no idea.",
+      "tipo": "analizado",
+      "puntuacion": 9,
+      "motivo": "\"The Sun just disappeared. And you have no idea.\" con la cuenta atrás visible desde el segundo 0."
+    }
+  ],
+  "analisis_gancho": {
+    "parecidos": [
+      "Beyond the Observable Universe: Who Can Save Earth? (4M, 5.5x)",
+      "Beyond the Observable Universe: What Could Actually Destroy Earth? (flojo, 0.1x: genérico)",
+      "Nuestro: What if you dug straight down from Kansas? (72% visto)"
+    ],
+    "que_gancho_usan": "Funcionan las afirmaciones concretas que contradicen lo que crees; las amenazas genéricas (\"destroy Earth\") se quedan flojas.",
+    "funcionaria_aqui": "Sí: el dato de los 8 minutos contradice la intuición (\"lo notaría\") y el chico lo verbaliza, así que no es repetir la premisa sino abrir un bucle. Se refuerza con una cuenta atrás 8:20 en pantalla.",
+    "decision": "\"The Sun just disappeared. And you have no idea.\" con la cuenta atrás visible desde el segundo 0."
+  },
+  "medida_estado": "lista"
 }

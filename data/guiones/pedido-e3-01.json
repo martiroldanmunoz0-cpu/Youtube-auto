@@ -1,293 +1,305 @@
 {
- "title": "She Fell 33,000 Feet Without a Parachute #shorts",
- "description": "Would you ever fly again? 👇\n\nIn January 1972, flight attendant Vesna Vulović survived a fall of about 33,000 feet (10,160 m) when her plane broke apart over Czechoslovakia. She was the only survivor of 28 people, and it is still the world record for the highest fall survived without a parachute.\n#truestory #survival #planecrash #worldrecord #shorts",
- "tags": [
-  "vesna vulovic",
-  "highest fall without parachute",
-  "plane crash survivor",
-  "33000 feet",
-  "true story",
-  "survival story",
-  "world record",
-  "incredible true stories",
-  "aviation history",
-  "the curio lab"
- ],
- "beats": [
-  {
-   "text": "She fell thirty-three thousand feet. No parachute.",
-   "speaker": "medic",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 0,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "MEDIC",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "…And she's still breathing!",
-   "speaker": "medic",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 1,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "MEDIC",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "Six miles up, a bomb tears the plane apart. That's the official story.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 2,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "slam",
-   "transition": "cut"
-  },
-  {
-   "text": "Flight attendant Vesna Vulović is trapped in a falling piece of the plane, pinned by a food cart.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 3,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "It crashes into a snowy, wooded mountainside.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 4,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Fractured skull. Both legs broken. Three vertebrae crushed.",
-   "speaker": "medic",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 5,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "MEDIC",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  },
-  {
-   "text": "She woke up in a hospital with no memory of the fall.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 6,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Was she even supposed to be on that flight?",
-   "speaker": "rep",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 7,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "REPORTER",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "No. The airline mixed her up with another flight attendant… also named Vesna.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 8,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Twenty-eight people on board. One survivor. It's still the world record for the highest fall without a parachute.",
-   "speaker": "narrador",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 9,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "And she never flew again, right?",
-   "speaker": "rep",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 10,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "REPORTER",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "static",
-   "transition": "cut"
-  },
-  {
-   "text": "Wrong. She asked for her job back.",
-   "speaker": "medic",
-   "scene": "medida",
-   "params": {
-    "archivo": "pedido-e3-01",
-    "plano": 11,
-    "respaldo": {
-     "scene": "big_text",
-     "params": {
-      "text": "33,000 FT. NO PARACHUTE.",
-      "label": "MEDIC",
-      "color": "#ffd93d"
-     }
-    }
-   },
-   "camera": "push_in",
-   "transition": "cut"
-  }
- ],
- "looks": {},
- "cover_text": "33,000 FT. NO PARACHUTE.",
- "comment_q": "Would you ever fly again?",
- "lista": "Incredible True Stories",
- "question": "How did she survive a 33,000-foot fall?",
- "id": "pedido-e3-01",
- "cast": {
-  "medic": {
-   "name": "MEDIC",
-   "voice": "en_chris",
-   "look": {
-    "outfit": "#9fd08a"
-   }
-  },
-  "rep": {
-   "name": "REPORTER",
-   "voice": "en_ryan",
-   "look": {
-    "outfit": "#d8a0e8"
-   }
-  }
- },
- "subtitle_style": "word",
- "gap": 0.04,
- "idea": {
-  "tipo": "pedido",
-  "premisa": "Gancho elegido analizando vídeos parecidos (ver analisis_gancho); imagen ya en pantalla en el segundo 0; diálogo corto."
- },
- "ganchos": [
-  {
-   "texto": "She fell thirty-three thousand feet. No parachute.",
-   "tipo": "analizado",
-   "puntuacion": 9,
-   "motivo": "\"She fell thirty-three thousand feet. No parachute.\" + \"…And she's still breathing!\" con el trozo de avión cayendo desde el fotograma 0."
-  }
- ],
- "analisis_gancho": {
-  "parecidos": [
-   "Nuestro: This man survived two atomic bombs (54% visto; la ficha nombre/edad/profesión en el seg 5-10 perdió un 16%)",
-   "Nuestro: This teenager stayed awake for 11 days (85% visto)",
-   "Prensa sobre Vesna: 'wasn't supposed to be on the plane' es el ángulo que más se repite"
+  "title": "She Fell 33,000 Feet Without a Parachute #shorts",
+  "description": "Would you ever fly again? 👇\n\nIn January 1972, flight attendant Vesna Vulović survived a fall of about 33,000 feet (10,160 m) when her plane broke apart over Czechoslovakia. She was the only survivor of 28 people, and it is still the world record for the highest fall survived without a parachute.\n#truestory #survival #planecrash #worldrecord #shorts",
+  "tags": [
+    "vesna vulovic",
+    "highest fall without parachute",
+    "plane crash survivor",
+    "33000 feet",
+    "true story",
+    "survival story",
+    "world record",
+    "incredible true stories",
+    "aviation history",
+    "the curio lab"
   ],
-  "que_gancho_usan": "La cifra brutal del clímax en la primera frase funciona; lo que nos hunde es la ficha de presentación y la pregunta de premisa (\"How does anyone survive that?\").",
-  "funcionaria_aqui": "Sí, la cifra (33.000 pies sin paracaídas) pasa la prueba del desconocido. Se quita la ficha de 1972 y la pregunta de premisa: se pasa directo a la acción (la bomba, el trozo cayendo) y se guarda el error de la aerolínea como segundo bucle.",
-  "decision": "\"She fell thirty-three thousand feet. No parachute.\" + \"…And she's still breathing!\" con el trozo de avión cayendo desde el fotograma 0."
- },
- "medida_estado": "lista"
+  "beats": [
+    {
+      "text": "She fell thirty-three thousand feet. No parachute.",
+      "speaker": "medic",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 0,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "MEDIC",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut",
+      "ambiente": "viento"
+    },
+    {
+      "text": "…And she's still breathing!",
+      "speaker": "medic",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 1,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "MEDIC",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut",
+      "ambiente": "hospital"
+    },
+    {
+      "text": "Six miles up, a bomb tears the plane apart. That's the official story.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 2,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "slam",
+      "transition": "cut",
+      "ambiente": "avion"
+    },
+    {
+      "text": "Flight attendant Vesna Vulović is trapped in a falling piece of the plane, pinned by a food cart.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 3,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "avion+viento"
+    },
+    {
+      "text": "It crashes into a snowy, wooded mountainside.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 4,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "nieve"
+    },
+    {
+      "text": "Fractured skull. Both legs broken. Three vertebrae crushed.",
+      "speaker": "medic",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 5,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "MEDIC",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut",
+      "ambiente": "hospital"
+    },
+    {
+      "text": "She woke up in a hospital with no memory of the fall.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 6,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "hospital"
+    },
+    {
+      "text": "Was she even supposed to be on that flight?",
+      "speaker": "rep",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 7,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "REPORTER",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "hospital"
+    },
+    {
+      "text": "No. The airline mixed her up with another flight attendant… also named Vesna.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 8,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "interior"
+    },
+    {
+      "text": "Twenty-eight people on board. One survivor. It's still the world record for the highest fall without a parachute.",
+      "speaker": "narrador",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 9,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "ninguno"
+    },
+    {
+      "text": "And she never flew again, right?",
+      "speaker": "rep",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 10,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "REPORTER",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "static",
+      "transition": "cut",
+      "ambiente": "hospital"
+    },
+    {
+      "text": "Wrong. She asked for her job back.",
+      "speaker": "medic",
+      "scene": "medida",
+      "params": {
+        "archivo": "pedido-e3-01",
+        "plano": 11,
+        "respaldo": {
+          "scene": "big_text",
+          "params": {
+            "text": "33,000 FT. NO PARACHUTE.",
+            "label": "MEDIC",
+            "color": "#ffd93d"
+          }
+        }
+      },
+      "camera": "push_in",
+      "transition": "cut",
+      "ambiente": "avion"
+    }
+  ],
+  "looks": {},
+  "cover_text": "33,000 FT. NO PARACHUTE.",
+  "comment_q": "Would you ever fly again?",
+  "lista": "Incredible True Stories",
+  "question": "How did she survive a 33,000-foot fall?",
+  "id": "pedido-e3-01",
+  "cast": {
+    "medic": {
+      "name": "MEDIC",
+      "voice": "en_chris",
+      "look": {
+        "outfit": "#9fd08a"
+      }
+    },
+    "rep": {
+      "name": "REPORTER",
+      "voice": "en_ryan",
+      "look": {
+        "outfit": "#d8a0e8"
+      }
+    }
+  },
+  "subtitle_style": "word",
+  "gap": 0.04,
+  "idea": {
+    "tipo": "pedido",
+    "premisa": "Gancho elegido analizando vídeos parecidos (ver analisis_gancho); imagen ya en pantalla en el segundo 0; diálogo corto."
+  },
+  "ganchos": [
+    {
+      "texto": "She fell thirty-three thousand feet. No parachute.",
+      "tipo": "analizado",
+      "puntuacion": 9,
+      "motivo": "\"She fell thirty-three thousand feet. No parachute.\" + \"…And she's still breathing!\" con el trozo de avión cayendo desde el fotograma 0."
+    }
+  ],
+  "analisis_gancho": {
+    "parecidos": [
+      "Nuestro: This man survived two atomic bombs (54% visto; la ficha nombre/edad/profesión en el seg 5-10 perdió un 16%)",
+      "Nuestro: This teenager stayed awake for 11 days (85% visto)",
+      "Prensa sobre Vesna: 'wasn't supposed to be on the plane' es el ángulo que más se repite"
+    ],
+    "que_gancho_usan": "La cifra brutal del clímax en la primera frase funciona; lo que nos hunde es la ficha de presentación y la pregunta de premisa (\"How does anyone survive that?\").",
+    "funcionaria_aqui": "Sí, la cifra (33.000 pies sin paracaídas) pasa la prueba del desconocido. Se quita la ficha de 1972 y la pregunta de premisa: se pasa directo a la acción (la bomba, el trozo cayendo) y se guarda el error de la aerolínea como segundo bucle.",
+    "decision": "\"She fell thirty-three thousand feet. No parachute.\" + \"…And she's still breathing!\" con el trozo de avión cayendo desde el fotograma 0."
+  },
+  "medida_estado": "lista"
 }
