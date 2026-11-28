@@ -1,0 +1,283 @@
+{
+ "title": "Doctors Once Prescribed Ketchup #shorts",
+ "description": "Would you have taken the pills? 👇\n\nIn 1834 an American doctor claimed tomatoes could treat indigestion, diarrhea and more. Tomato pills sold across the country until copycats, some with no tomato at all, killed the craze by the 1850s.\n#ketchup #history #medicine #weirdhistory #shorts",
+ "tags": [
+  "ketchup medicine",
+  "tomato pills",
+  "ketchup history",
+  "weird history",
+  "medical history",
+  "1834",
+  "history facts",
+  "funny history",
+  "food history",
+  "strange but true"
+ ],
+ "beats": [
+  {
+   "text": "Your prescription: ketchup. Twice a day.",
+   "speaker": "doc",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "DOCTOR",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "cut"
+  },
+  {
+   "text": "…Ketchup?",
+   "speaker": "pat",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 1,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "PATIENT",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "Tomato pills. For indigestion, diarrhea… and pretty much everything else.",
+   "speaker": "doc",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 2,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "DOCTOR",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "1834. An American doctor claimed tomatoes could treat almost anything.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 3,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Soon, tomato pills were sold all over the country.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 4,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Do they work?",
+   "speaker": "pat",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 5,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "PATIENT",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Of course! Sign here.",
+   "speaker": "doc",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 6,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "DOCTOR",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Then copycats showed up. Some pills had no tomato at all. Just laxatives.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 7,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Doc… why am I running to the bathroom?",
+   "speaker": "pat",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 8,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "PATIENT",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "cut"
+  },
+  {
+   "text": "By the 1850s, the craze was dead. But ketchup stayed.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 9,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "So is it medicine or not?",
+   "speaker": "pat",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 10,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "PATIENT",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Just put it on your fries.",
+   "speaker": "doc",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d2-01",
+    "plano": 11,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "KETCHUP = MEDICINE?",
+      "label": "DOCTOR",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  }
+ ],
+ "looks": {},
+ "cover_text": "KETCHUP = MEDICINE?",
+ "comment_q": "Would you have taken the pills?",
+ "lista": "Weird History",
+ "question": "Was ketchup really sold as medicine?",
+ "id": "pedido-d2-01",
+ "cast": {
+  "doc": {
+   "name": "DOCTOR",
+   "voice": "en_chris",
+   "look": {
+    "outfit": "#e8c46a"
+   }
+  },
+  "pat": {
+   "name": "PATIENT",
+   "voice": "en_eric",
+   "look": {
+    "outfit": "#8fd0e8"
+   }
+  }
+ },
+ "subtitle_style": "word",
+ "gap": 0.04,
+ "idea": {
+  "tipo": "pedido",
+  "premisa": "Diálogo entre personajes (gancho hablado por un personaje); el narrador solo da los datos."
+ },
+ "ganchos": [
+  {
+   "texto": "Your prescription: ketchup. Twice a day.",
+   "tipo": "dialogo",
+   "puntuacion": 9,
+   "motivo": "Un personaje suelta una frase imposible en el segundo 0."
+  }
+ ],
+ "medida_estado": "lista"
+}

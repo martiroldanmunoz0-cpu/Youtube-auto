@@ -1,0 +1,283 @@
+{
+ "title": "The Army Lost a War… to Birds #shorts",
+ "description": "Who would you bet on? 👇\n\nIn 1932, Australia sent soldiers with machine guns to stop about 20,000 emus eating the wheat farms. The emus split into small groups, ran at around 30 mph, and the army gave up within weeks.\n#emuwar #history #australia #funnyhistory #shorts",
+ "tags": [
+  "emu war",
+  "great emu war",
+  "australia 1932",
+  "history facts",
+  "funny history",
+  "weird history",
+  "emus",
+  "history shorts",
+  "army vs emus",
+  "strange but true"
+ ],
+ "beats": [
+  {
+   "text": "Sir… we lost the war.",
+   "speaker": "soldier",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "SOLDIER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "cut"
+  },
+  {
+   "text": "Lost? To who?",
+   "speaker": "major",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 1,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "MAJOR",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "Emus, sir. Twenty thousand of them.",
+   "speaker": "soldier",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 2,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "SOLDIER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Australia, 1932. Emus were eating the wheat farms bare. So the army sent machine guns.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 3,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Fire!",
+   "speaker": "major",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 4,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "MAJOR",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "cut"
+  },
+  {
+   "text": "The emus split into tiny groups and ran. Thirty miles an hour.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 5,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Sir, they're dodging bullets!",
+   "speaker": "soldier",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 6,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "SOLDIER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Then mount the gun on the truck!",
+   "speaker": "major",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 7,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "MAJOR",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "The truck couldn't keep up on the rough ground. The gunner couldn't even aim.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 8,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "They take bullets like tanks.",
+   "speaker": "major",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 9,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "MAJOR",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "Within weeks, the army pulled out. The emus kept the farms.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 10,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "We will never speak of this.",
+   "speaker": "major",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d1-01",
+    "plano": 11,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ARMY VS EMUS",
+      "label": "MAJOR",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  }
+ ],
+ "looks": {},
+ "cover_text": "ARMY VS EMUS",
+ "comment_q": "Who would you bet on?",
+ "lista": "Weird History",
+ "question": "Did Australia really lose a war to emus?",
+ "id": "pedido-d1-01",
+ "cast": {
+  "major": {
+   "name": "MAJOR",
+   "voice": "en_major",
+   "look": {
+    "outfit": "#c9b46a"
+   }
+  },
+  "soldier": {
+   "name": "SOLDIER",
+   "voice": "en_guy",
+   "look": {
+    "outfit": "#9fd08a"
+   }
+  }
+ },
+ "subtitle_style": "word",
+ "gap": 0.04,
+ "idea": {
+  "tipo": "pedido",
+  "premisa": "Diálogo entre personajes (gancho hablado por un personaje); el narrador solo da los datos."
+ },
+ "ganchos": [
+  {
+   "texto": "Sir… we lost the war.",
+   "tipo": "dialogo",
+   "puntuacion": 9,
+   "motivo": "Un personaje suelta una frase imposible en el segundo 0."
+  }
+ ],
+ "medida_estado": "lista"
+}

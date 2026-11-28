@@ -1224,8 +1224,12 @@ def main():
         params = real_story_ideas(read_json(wd / "trends.json"), n + EXTRA_IDEAS, history, cfg, request)
     elif fmt == "largo":
         n = 1
-        request = request or ("Elige TÚ el tema con más potencial para un vídeo LARGO de 8-10 minutos de curiosidades "
-                              "(qué pasaría si, misterios reales, ciencia sorprendente), que no se haya hecho antes en el canal.")
+        request = request or ("Elige TÚ el tema con más potencial para un vídeo LARGO de 8-10 minutos que no se haya hecho antes "
+                              "en el canal. PRIORIDAD (el dueño lo pide, es lo que mejor funciona en largos): HISTORIA contada como "
+                              "viaje o experiencia, p. ej. «¿Qué pasaría si viajaras 20.000 años atrás?», «Sobrevivir un día en la "
+                              "prehistoria», «La historia completa de…» (una civilización, un imperio, una época, un invento), "
+                              "«Qué pasaría si despertaras en la Edad Media / en Roma / en el Egipto de las pirámides». "
+                              "Datos históricos reales y comprobables. Solo si ya se hizo todo eso: qué pasaría si, misterios reales.")
         params = ideas_for_request(request, n, history, cfg)
     elif request:
         n = int(os.environ.get("PEDIDO_N") or 2)

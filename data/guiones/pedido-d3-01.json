@@ -1,0 +1,264 @@
+{
+ "title": "He Sold the Eiffel Tower. Twice. #shorts",
+ "description": "Would you have fallen for it? 👇\n\nIn 1925 con man Victor Lustig posed as a French official and sold the Eiffel Tower for scrap. The buyer was too embarrassed to call the police, so Lustig came back and tried again.\n#eiffeltower #conman #history #paris #shorts",
+ "tags": [
+  "victor lustig",
+  "eiffel tower",
+  "con man",
+  "sold the eiffel tower",
+  "history facts",
+  "greatest scams",
+  "paris 1925",
+  "weird history",
+  "crime history",
+  "strange but true"
+ ],
+ "beats": [
+  {
+   "text": "I'm selling the Eiffel Tower. Interested?",
+   "speaker": "con",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "CON MAN",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "cut"
+  },
+  {
+   "text": "That's not yours to sell.",
+   "speaker": "buyer",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 1,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "BUYER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "The city can't afford to fix it. It's going for scrap. Seven thousand tons of iron.",
+   "speaker": "con",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 2,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "CON MAN",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Paris, 1925. A con man named Victor Lustig was posing as a government official.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 3,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "This is top secret. Not a word to anyone.",
+   "speaker": "con",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 4,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "CON MAN",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "One scrap dealer believed him. He paid for the tower… plus a bribe on top.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 5,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "So when do I get my tower?",
+   "speaker": "buyer",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 6,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "BUYER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Never. Lustig grabbed the cash and fled to Austria.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 7,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "And the dealer was too embarrassed to go to the police.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 8,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "So Lustig came back… and tried to sell it again. This time the buyer called the cops. He still got away.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 9,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "The tower's still for sale. Any offers?",
+   "speaker": "con",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d3-01",
+    "plano": 10,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "EIFFEL TOWER FOR SALE",
+      "label": "CON MAN",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  }
+ ],
+ "looks": {},
+ "cover_text": "EIFFEL TOWER FOR SALE",
+ "comment_q": "Would you have fallen for it?",
+ "lista": "Weird History",
+ "question": "Did someone really sell the Eiffel Tower?",
+ "id": "pedido-d3-01",
+ "cast": {
+  "con": {
+   "name": "CON MAN",
+   "voice": "en_ryan",
+   "look": {
+    "outfit": "#d8a0e8"
+   }
+  },
+  "buyer": {
+   "name": "BUYER",
+   "voice": "en_eric",
+   "look": {
+    "outfit": "#9fd08a"
+   }
+  }
+ },
+ "subtitle_style": "word",
+ "gap": 0.04,
+ "idea": {
+  "tipo": "pedido",
+  "premisa": "Diálogo entre personajes (gancho hablado por un personaje); el narrador solo da los datos."
+ },
+ "ganchos": [
+  {
+   "texto": "I'm selling the Eiffel Tower. Interested?",
+   "tipo": "dialogo",
+   "puntuacion": 9,
+   "motivo": "Un personaje suelta una frase imposible en el segundo 0."
+  }
+ ],
+ "medida_estado": "lista"
+}

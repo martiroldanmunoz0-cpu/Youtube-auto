@@ -121,6 +121,12 @@ comedia:
     chica_1:      { clon: "chica",          voz: "es-ES-ElviraNeural",  velocidad: "+10%", tono: "+0Hz" }
     chica_2:      { voz: "es-ES-ElviraNeural",  velocidad: "+14%", tono: "+12Hz" }
     chica_latina: { voz: "es-MX-DaliaNeural",   velocidad: "+10%", tono: "+0Hz" }
+    en_major:     { voz: "en-AU-WilliamNeural",     velocidad: "+6%",  tono: "-6Hz" }
+    en_guy:       { voz: "en-US-GuyNeural",         velocidad: "+10%", tono: "+0Hz" }
+    en_chris:     { voz: "en-US-ChristopherNeural", velocidad: "+4%",  tono: "-4Hz" }
+    en_eric:      { voz: "en-US-EricNeural",        velocidad: "+10%", tono: "+2Hz" }
+    en_jenny:     { voz: "en-US-JennyNeural",       velocidad: "+8%",  tono: "+0Hz" }
+    en_ryan:      { voz: "en-GB-RyanNeural",        velocidad: "+6%",  tono: "+0Hz" }
 
 # Miniaturas con IA para los vídeos largos. Claves en los secretos de GitHub: OPENAI_API_KEY (o GEMINI_API_KEY).
 miniaturas_ia:

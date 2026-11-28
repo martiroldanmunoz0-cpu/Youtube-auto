@@ -1,0 +1,283 @@
+{
+ "title": "Don't Tap This Glass #shorts",
+ "description": "Would you keep one at home? 👇\n\nThe mantis shrimp punches at about 50 mph underwater. The strike is so fast it makes a bubble that collapses with a flash of light and heat. Some have cracked aquarium glass.\n#mantisshrimp #animals #ocean #science #shorts",
+ "tags": [
+  "mantis shrimp",
+  "mantis shrimp punch",
+  "cavitation",
+  "animal facts",
+  "ocean facts",
+  "fastest punch",
+  "aquarium",
+  "science facts",
+  "weird animals",
+  "strange but true"
+ ],
+ "beats": [
+  {
+   "text": "Don't tap the glass. He taps back.",
+   "speaker": "keeper",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "KEEPER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "cut"
+  },
+  {
+   "text": "It's a shrimp.",
+   "speaker": "intern",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 1,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "INTERN",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "That's a mantis shrimp.",
+   "speaker": "keeper",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 2,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "KEEPER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "Its club punch is one of the fastest strikes in nature. About fifty miles an hour. Underwater.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 3,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Okay, but it's tiny.",
+   "speaker": "intern",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 4,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "INTERN",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "It hits twice.",
+   "speaker": "keeper",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 5,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "KEEPER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "The punch is so fast the water rips open. A bubble forms… and collapses with a flash of light and heat.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 6,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Even if it misses, the bubble hits you.",
+   "speaker": "keeper",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 7,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "KEEPER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Why would a shrimp need that?",
+   "speaker": "intern",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 8,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "INTERN",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "To smash crab shells.",
+   "speaker": "keeper",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 9,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "KEEPER",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Some have cracked aquarium glass. So keepers use thick acrylic tanks.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 10,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "…It tapped back.",
+   "speaker": "intern",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-d4-01",
+    "plano": 11,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "DON'T TAP THE GLASS",
+      "label": "INTERN",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  }
+ ],
+ "looks": {},
+ "cover_text": "DON'T TAP THE GLASS",
+ "comment_q": "Would you keep one at home?",
+ "lista": "Weird Animals",
+ "question": "Can a shrimp really break aquarium glass?",
+ "id": "pedido-d4-01",
+ "cast": {
+  "keeper": {
+   "name": "KEEPER",
+   "voice": "en_jenny",
+   "look": {
+    "outfit": "#8fd0e8"
+   }
+  },
+  "intern": {
+   "name": "INTERN",
+   "voice": "en_guy",
+   "look": {
+    "outfit": "#ffb36a"
+   }
+  }
+ },
+ "subtitle_style": "word",
+ "gap": 0.04,
+ "idea": {
+  "tipo": "pedido",
+  "premisa": "Diálogo entre personajes (gancho hablado por un personaje); el narrador solo da los datos."
+ },
+ "ganchos": [
+  {
+   "texto": "Don't tap the glass. He taps back.",
+   "tipo": "dialogo",
+   "puntuacion": 9,
+   "motivo": "Un personaje suelta una frase imposible en el segundo 0."
+  }
+ ],
+ "medida_estado": "lista"
+}
