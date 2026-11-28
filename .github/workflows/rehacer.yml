@@ -184,6 +184,14 @@ jobs:
           git config merge.cola.driver "python3 pipeline/fusionar_cola.py %O %A %B"
           if [ "${{ inputs.prueba }}" = "true" ]; then python pipeline/build.py --parte ${{ matrix.parte }} --partes 1; else python pipeline/build.py --parte ${{ matrix.parte }} --partes 1 --revisar; fi
 
+      - name: (Prueba) Subir el vídeo a la rama pruebas-video
+        if: inputs.prueba
+        run: |
+          mkdir -p /tmp/pv && find out -name '*.mp4' -exec cp {} /tmp/pv/ \;
+          cd /tmp/pv && git init -q -b pruebas-video && git config user.name shorts-bot && git config user.email shorts-bot@users.noreply.github.com
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          for i in 1 2 3 4 5; do git fetch -q origin pruebas-video && git reset -q --soft FETCH_HEAD; git add -A && git commit -qm "prueba $RUN_ID" || true; git push -q origin HEAD:pruebas-video && break; sleep $((i * 5)); done
+
       - name: (Prueba) Dejar el vídeo para descargar
         if: inputs.prueba
         uses: actions/upload-artifact@v4
