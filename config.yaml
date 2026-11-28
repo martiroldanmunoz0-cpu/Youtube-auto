@@ -127,6 +127,7 @@ comedia:
     en_eric:      { voz: "en-US-EricNeural",        velocidad: "+10%", tono: "+2Hz" }
     en_jenny:     { voz: "en-US-JennyNeural",       velocidad: "+8%",  tono: "+0Hz" }
     en_ryan:      { voz: "en-GB-RyanNeural",        velocidad: "+6%",  tono: "+0Hz" }
+    en_aria:      { voz: "en-US-AriaNeural",        velocidad: "+8%",  tono: "+0Hz" }
 
 # Miniaturas con IA para los vídeos largos. Claves en los secretos de GitHub: OPENAI_API_KEY (o GEMINI_API_KEY).
 miniaturas_ia:

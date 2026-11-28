@@ -1,0 +1,294 @@
+{
+ "title": "What If All the Water on Earth Vanished? #shorts",
+ "description": "How long do you think you'd last? 👇\n\nWhat if every drop of water on Earth vanished, except the water inside you? The oceans empty, the rain stops and the plants dry out, and you would have about three days.\nThe deepest point of the ocean is about 11 km down, so Mount Everest (8.8 km) would fit inside it.\n#whatif #water #earth #science #shorts",
+ "tags": [
+  "what if",
+  "what if water disappeared",
+  "no water on earth",
+  "what if scenarios",
+  "earth science",
+  "survival",
+  "oceans",
+  "science shorts",
+  "hypothetical",
+  "the curio lab"
+ ],
+ "beats": [
+  {
+   "text": "Every drop of water on Earth just vanished.",
+   "speaker": "sci",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 0,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "SCIENTIST",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "slam",
+   "transition": "cut"
+  },
+  {
+   "text": "Except the water inside you.",
+   "speaker": "sci",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 1,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "SCIENTIST",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  },
+  {
+   "text": "In one second, the oceans are gone. Every ship drops onto the seafloor.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 2,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "The deepest spot is now a hole eleven kilometers deep. Mount Everest would fit inside.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 3,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Fine. I'll just buy a bottle.",
+   "speaker": "guy",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 4,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "YOU",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Empty. So is every pipe, every lake, every cloud.",
+   "speaker": "sci",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 5,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "SCIENTIST",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "No clouds means no rain. Ever again.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 6,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Then I'll eat a salad.",
+   "speaker": "guy",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 7,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "YOU",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Plants lost their water too. Only yours survived.",
+   "speaker": "sci",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 8,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "SCIENTIST",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "And you lose water with every breath. Most people last about three days without a drink.",
+   "speaker": "narrador",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 9,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "So how long do I have?",
+   "speaker": "guy",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 10,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "YOU",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "static",
+   "transition": "cut"
+  },
+  {
+   "text": "Three days. Starting… now.",
+   "speaker": "sci",
+   "scene": "medida",
+   "params": {
+    "archivo": "pedido-e1-01",
+    "plano": 11,
+    "respaldo": {
+     "scene": "big_text",
+     "params": {
+      "text": "ALL WATER: GONE",
+      "label": "SCIENTIST",
+      "color": "#ffd93d"
+     }
+    }
+   },
+   "camera": "push_in",
+   "transition": "cut"
+  }
+ ],
+ "looks": {},
+ "cover_text": "ALL WATER: GONE",
+ "comment_q": "How long do you think you'd last?",
+ "lista": "What If...?",
+ "question": "What would happen if all the water on Earth vanished?",
+ "id": "pedido-e1-01",
+ "cast": {
+  "sci": {
+   "name": "SCIENTIST",
+   "voice": "en_jenny",
+   "look": {
+    "outfit": "#8fd0e8"
+   }
+  },
+  "guy": {
+   "name": "YOU",
+   "voice": "en_guy",
+   "look": {
+    "outfit": "#ffb36a"
+   }
+  }
+ },
+ "subtitle_style": "word",
+ "gap": 0.04,
+ "idea": {
+  "tipo": "pedido",
+  "premisa": "Gancho elegido analizando vídeos parecidos (ver analisis_gancho); imagen ya en pantalla en el segundo 0; diálogo corto."
+ },
+ "ganchos": [
+  {
+   "texto": "Every drop of water on Earth just vanished.",
+   "tipo": "analizado",
+   "puntuacion": 9,
+   "motivo": "Afirmación de choque + imagen ya en pantalla: \"Every drop of water on Earth just vanished.\" + \"Except the water inside you.\" (amenaza directa al espectador)."
+  }
+ ],
+ "analisis_gancho": {
+  "parecidos": [
+   "Beyond the Observable Universe: Earth Has Less Water Than You Think (12,4M, 16.7x)",
+   "House In Crisis: What If You Built A Horse... (5,2M; imagen absurda en el segundo 0)",
+   "Nuestro: What if you fell into the Grand Canyon? (134% visto)",
+   "OutwardAnimates: What if Earth had two moons? (flojo: premisa genérica)"
+  ],
+  "que_gancho_usan": "Los que vuelan enseñan en el primer fotograma una imagen imposible y la dicen con una afirmación contraintuitiva sobre algo cotidiano (el agua). Los flojos son premisas abstractas sin imagen clara.",
+  "funcionaria_aqui": "Sí: el agua es cotidiana y la imagen (océano vacío, barco varado) se entiende sin sonido. Pero nuestra retención dice que repetir la premisa justo después (\"Every drop?\") es la mayor fuga, así que se quita y el giro personal entra en el segundo 2.",
+  "decision": "Afirmación de choque + imagen ya en pantalla: \"Every drop of water on Earth just vanished.\" + \"Except the water inside you.\" (amenaza directa al espectador)."
+ },
+ "medida_estado": "lista"
+}

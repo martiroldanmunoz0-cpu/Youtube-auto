@@ -56,6 +56,18 @@ STORY_SCHEMA = {
     "type": "object",
     "properties": {
         # Primero los ganchos candidatos: el modelo los escribe y puntúa ANTES de escribir el guion.
+        # Antes de nada: analizar vídeos PARECIDOS (competencia + nuestros), qué gancho usan y si funcionaría aquí.
+        "analisis_gancho": {
+            "type": "object",
+            "properties": {
+                "parecidos": {"type": "array", "items": {"type": "string"}},
+                "que_gancho_usan": {"type": "string"},
+                "funcionaria_aqui": {"type": "string"},
+                "decision": {"type": "string"},
+            },
+            "required": ["parecidos", "que_gancho_usan", "funcionaria_aqui", "decision"],
+            "additionalProperties": False,
+        },
         "ganchos_candidatos": {
             "type": "array",
             "items": {
@@ -115,7 +127,7 @@ STORY_SCHEMA = {
             },
         },
     },
-    "required": ["pregunta_central", "frase_bucle", "texto_portada", "personajes", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "pregunta_comentarios", "lista", "tags", "planos"],
+    "required": ["analisis_gancho", "pregunta_central", "frase_bucle", "texto_portada", "personajes", "ganchos_candidatos", "gancho_elegido", "titulo", "descripcion", "pregunta_comentarios", "lista", "tags", "planos"],
     "additionalProperties": False,
 }
 
@@ -578,6 +590,45 @@ def retention_block() -> str:
     return out
 
 
+_VACIAS = set("a an the of to in on if you your what why how is are was it and or for with by at from that this would happens".split())
+
+
+def _palabras(txt: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z0-9']+", (txt or "").lower()) if len(w) > 2 and w not in _VACIAS}
+
+
+def parecidos_block(idea: dict) -> str:
+    """Vídeos parecidos a esta idea (competencia y nuestros, con vistas/retención) para ANALIZAR qué gancho usan
+    y decidir si funcionaría aquí, en vez de aplicar un tipo de gancho fijo."""
+    clave = _palabras(" ".join(str(idea.get(k, "")) for k in ("titulo", "premisa", "gancho", "pregunta_central")))
+    comp = read_json(DATA / "competencia" / "ultimo.json") or {}
+    vistos, filas = set(), []
+    for c in comp.get("otros") or []:
+        med = c.get("vistas_mediana_shorts") or c.get("vistas_mediana") or 1
+        for grupo in ("se_salen", "en_auge", "flojos"):
+            for v in c.get(grupo) or []:
+                t = v.get("titulo", "")
+                if t in vistos:
+                    continue
+                vistos.add(t)
+                filas.append((len(clave & _palabras(t)), v.get("vistas", 0), f'- [{c.get("canal")}] "{t}" · {v.get("vistas", 0):,} vistas '
+                              f'({round(v.get("vistas", 0) / med, 1)}x su mediana{", FLOJO" if grupo == "flojos" else ""})'))
+    filas.sort(key=lambda f: (-f[0], -f[1]))
+    comp_txt = "\n".join(f[2] for f in filas[:12])
+    propios = []
+    for f in sorted((DATA / "retencion").glob("*.json")):
+        r = read_json(f) or {}
+        if not r.get("id") or not r.get("vistas"):
+            continue
+        g = read_json(DATA / "guiones" / f"{r['id']}.json") or {}
+        primera = (g.get("beats") or [{}])[0].get("text", "")
+        propios.append(f'- "{r.get("titulo", "")}" · gancho: "{primera}" · {r.get("vistas")} vistas · {r.get("pct_visto")}% visto')
+    if not comp_txt and not propios:
+        return ""
+    return ("VÍDEOS PARECIDOS (para ANALIZAR el gancho; no copies títulos ni frases):\n" + comp_txt
+            + ("\nNuestros Shorts con su gancho real y su retención:\n" + "\n".join(propios) if propios else "") + "\n\n")
+
+
 def analyze(trends: dict, history: list[dict], cfg: dict, n_ideas: int) -> dict:
     catalog = catalog_for("historias")
     compact = [
@@ -689,6 +740,12 @@ def story_params(idea: dict, analysis: dict, cfg: dict) -> dict:
         + (f"Estilo que prefiere el dueño del canal:\n{style}\n\n" if style else "")
         + retention_block()
         + f"Idea a desarrollar:\n{json.dumps(idea, ensure_ascii=False)}\n\n"
+        + parecidos_block(idea)
+        + ("ANÁLISIS DEL GANCHO (rellena 'analisis_gancho' ANTES que los candidatos): en 'parecidos' apunta los vídeos de arriba "
+           "(y los que conozcas) más parecidos a ESTE tema; en 'que_gancho_usan', qué hace su primer segundo (imagen + frase) y "
+           "cuáles funcionaron mejor o peor; en 'funcionaria_aqui', si ese mismo mecanismo funcionaría con ESTE vídeo y por qué "
+           "(tema, personajes, lo que se ve en pantalla, nuestra retención real); en 'decision', el gancho que vas a usar y el motivo. "
+           "Los tipos de gancho de las reglas son solo ideas: manda el análisis.\n\n")
         + (f"Para este vídeo se han añadido a la biblioteca estas piezas (úsalas en 'composicion'): {', '.join(idea['piezas_nuevas'])}\n\n" if idea.get("piezas_nuevas") else "")
         + (LONG_RULES.format(lo_min=lo // 60, hi_min=hi // 60, lo_w=int(lo * 2.9), hi_w=int(hi * 2.9)) + "\n" if largo else "")
         + f"Duración objetivo: {lo}-{hi} segundos. LÍMITE DE PALABRAS (la voz lee unas {2.9 if largo else 2.8} palabras por segundo): "
@@ -1325,7 +1382,7 @@ def write_scripts(ideas, analysis, cfg, rid, wd, fmt, use_batch):
             print(f"  [{i + 1}/{n}] error escribiendo guion: {raw}", file=sys.stderr)
             continue
         st = validate_comedy(raw) if fmt == "comedia" else validate_story(raw)
-        st.update({"id": f"{rid}-{i + 1:02d}", "idea": idea, "ganchos": raw.get("ganchos_candidatos", [])})
+        st.update({"id": f"{rid}-{i + 1:02d}", "idea": idea, "ganchos": raw.get("ganchos_candidatos", []), "analisis_gancho": raw.get("analisis_gancho")})
         stories.append(st)
         print(f"  [{i + 1}/{n}] {st['title']} ({len(st['beats'])} planos) · gancho: {raw.get('gancho_elegido', '')}")
     if not stories:
