@@ -1,134 +1,123 @@
-// pedido-30-01 — "What Happens If You Stop Drinking Water" (Short vertical, estilo nuevo)
-import { W, H, INK, V, clamp, sm, lerp, fase, ph, hs, fondo, D, cielo, ln, circ, caja, titular, sello, temblor, tacha } from '../../lib/corto.mjs';
+// pedido-30-01 — "What Happens If You Stop Drinking Water" — estilo PAPEL (un plano por frase)
+import { W, H, lerp, ease, back, ph, clamp, REPARTO, personaje, capa, SUELO, salaLab, pantalla, rotulo, texto,
+  exterior, celda, barrotes, signo, impacto, rr, volumen, elipse, hash, tono } from '../../lib/papel.mjs';
+const { DRA, TOM, POLI, CHICO } = REPARTO;
+const U = (a) => clamp(a.t / a.d);
+const sedTOM = (t, extra = {}) => ({ mood: 'triste', mira: [0, 0.3], incl: 0.04, manoI: [-110, -100], manoD: [110, -100], ...extra });
+// Vaso sangre: glóbulos rojos que se amontonan (densidad 0..1)
+function sangre(ctx, t, x, y, w, h, dens) { ctx.fillStyle = '#5a1420'; ctx.fillRect(x, y + h * 0.25, w, h * 0.5); ctx.fillStyle = tono('#e05a5a', -dens * 0.3); ctx.fillRect(x, y + h * 0.3, w, h * 0.4);
+  const n = Math.round(lerp(10, 34, dens)), v = lerp(160, 25, dens); for (let i = 0; i < n; i++) { const cx = x + ((hash(i) * w + t * v) % w), cy = y + h * 0.33 + hash(i + 9) * h * 0.34; ctx.beginPath(); ctx.ellipse(cx, cy, 30, 20, hash(i) * 3, 0, 7); ctx.fillStyle = '#c0263a'; ctx.fill(); ctx.strokeStyle = '#6a0f1a'; ctx.lineWidth = 3; ctx.stroke(); ctx.beginPath(); ctx.ellipse(cx, cy, 13, 8, hash(i) * 3, 0, 7); ctx.fillStyle = '#9a1a2c'; ctx.fill(); } }
+function cerebro(ctx, x, y, s, col = '#f2a3b3') { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.beginPath(); ctx.ellipse(0, 0, 150, 110, 0, 0, 7); volumen(ctx, col, -150, -110, 300, 220, 5); ctx.strokeStyle = tono(col, -0.35); ctx.lineWidth = 6; ctx.lineCap = 'round'; for (let i = 0; i < 7; i++) { ctx.beginPath(); ctx.moveTo(-120 + i * 38, -70 + (i % 2) * 30); ctx.quadraticCurveTo(-100 + i * 38, 0, -120 + i * 40, 60 - (i % 2) * 20); ctx.stroke(); } ctx.beginPath(); ctx.moveTo(0, -105); ctx.lineTo(0, 100); ctx.stroke(); ctx.restore(); }
+function rinon(ctx, x, y, s, col) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.beginPath(); ctx.moveTo(0, -110); ctx.bezierCurveTo(110, -120, 120, 120, 0, 110); ctx.bezierCurveTo(-50, 100, -30, 30, -10, 0); ctx.bezierCurveTo(-30, -30, -50, -100, 0, -110); ctx.closePath(); volumen(ctx, col, -40, -120, 160, 240, 5); ctx.restore(); }
+function termometro(ctx, t, x, y, k) { rr(ctx, x - 30, y - 360, 60, 360, 30); volumen(ctx, '#f4f6f8', x - 30, y - 360, 60, 360, 4); elipse(ctx, x, y + 10, 52, 52, '#e23b3b', 4); rr(ctx, x - 14, y - 340 * k, 28, 340 * k, 14); ctx.fillStyle = '#e23b3b'; ctx.fill(); for (let i = 1; i < 8; i++) { ctx.fillStyle = '#555'; ctx.fillRect(x + 30, y - i * 42, 18, 4); } }
+function vineta(ctx, k) { if (k <= 0) return; ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); const g = ctx.createRadialGradient(W / 2, H * 0.6, lerp(900, 0, k), W / 2, H * 0.6, lerp(1400, 300, k)); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(5,3,10,1)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); ctx.fillStyle = `rgba(5,3,10,${clamp((k - 0.7) / 0.3)})`; ctx.fillRect(0, 0, W, H); ctx.restore(); }
+function gota(ctx, x, y, s, col = '#5fc4ff') { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.beginPath(); ctx.moveTo(0, -40); ctx.quadraticCurveTo(30, 0, 26, 16); ctx.arc(0, 16, 26, 0, Math.PI); ctx.quadraticCurveTo(-30, 0, 0, -40); ctx.closePath(); volumen(ctx, col, -26, -40, 52, 82, 3); ctx.restore(); }
+function calendario(ctx, t, x, y, n) { rr(ctx, x - 160, y - 200, 320, 380, 20); volumen(ctx, '#fbfaf6', x - 160, y - 200, 320, 380, 5); rr(ctx, x - 160, y - 200, 320, 100, 20); ctx.fillStyle = '#d64545'; ctx.fill(); ctx.fillStyle = '#fff'; ctx.font = '50px Anton'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('DAY', x, y - 150); ctx.fillStyle = '#231a24'; ctx.font = '200px Anton'; ctx.fillText(String(n), x, y + 50); for (const k of [-1, 1]) { rr(ctx, x + k * 90 - 10, y - 230, 20, 60, 8); ctx.fillStyle = '#555'; ctx.fill(); } }
+function salaPantalla(ctx, t, u, dib, opt = {}) { const cam = { z: lerp(1, 1.06, u), fx: 540, fy: 1200, t };
+  salaLab(ctx, t, cam, () => pantalla(ctx, t, 330, 330, 560, 400, dib));
+  capa(ctx, cam, 1, () => { if (opt.actores) opt.actores(); else {
+    personaje(ctx, t, TOM, 830, SUELO + 40, 0.95, opt.tom || sedTOM(t));
+    personaje(ctx, t, DRA, 270, SUELO + 60, 1.0, { habla: true, mira: [0.8, -0.6], manoI: [-110, -110], manoD: [150, -380] }); } }); }
 
-let CAST = null;
-function cast(K) {
-  if (CAST) return CAST;
-  const sin = { sombrero: null, corbata: null, barba: false, bigote: false };
-  const [YOU, TEEN, COP1, COP2] = K.reparto('pedido-30', 4, [
-    { ...sin, estilo: 'gordito', pelo: 'pinchos', peloCol: '#3a2614', ropa: '#4d96ff' },
-    { ...sin, estilo: 'limpio', pelo: 'mechon', peloCol: '#c99a3a', ropa: '#ff9f43' },
-    { ...sin, estilo: 'gordito', pelo: 'corto', peloCol: '#2a1a10', ropa: '#2b3a67', sombrero: 'gorra', bigote: true },
-    { ...sin, estilo: 'limpio', pelo: 'raya', peloCol: '#1a120c', ropa: '#2b3a67', sombrero: 'gorra' },
-  ]);
-  return (CAST = { YOU, TEEN, COP1, COP2 });
-}
-function desierto(ctx, a, { calor = 0.5 } = {}) {
-  cielo(ctx, '#ffd27a', '#ff9a4a', 0, 1200); const sx = 820, sy = 360; circ(ctx, sx, sy, 150 + Math.sin(a.t * 3) * 6, '#fff3b0', 0); circ(ctx, sx, sy, 110, '#ffffff', 0);
-  ctx.fillStyle = '#f0b96a'; ctx.beginPath(); ctx.moveTo(0, 1150); ctx.quadraticCurveTo(300, 1000, 620, 1120); ctx.quadraticCurveTo(880, 1200, W, 1080); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.fill();
-  ctx.fillStyle = '#e2a256'; ctx.beginPath(); ctx.moveTo(0, 1380); ctx.quadraticCurveTo(500, 1260, W, 1400); ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.fill(); ln(ctx, [[0, 1380], [540, 1290], [W, 1400]], INK, 6);
-  ctx.save(); ctx.globalAlpha = 0.25 * calor; for (let i = 0; i < 8; i++) { const y = 1000 + i * 60; ln(ctx, Array.from({ length: 12 }, (_, j) => [j * 100, y + Math.sin(a.t * 5 + j + i) * 10]), '#ffffff', 6); } ctx.restore();
-  return 1420;
-}
-// Depósito de agua del cuerpo (0..1)
-function tanque(ctx, a, x, y, nivel, { w = 200, h = 520, col = '#4dc3ff', txt = null } = {}) {
-  caja(ctx, x - w / 2, y - h, w, h, 40, '#ffffff', 9); ctx.save(); ctx.beginPath(); ctx.roundRect(x - w / 2, y - h, w, h, 40); ctx.clip();
-  const ly = y - h * nivel; ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(x - w, H); for (let i = 0; i <= 12; i++) ctx.lineTo(x - w / 2 + i * w / 12, ly + Math.sin(a.t * 4 + i) * 8); ctx.lineTo(x + w, H); ctx.fill(); ctx.restore(); caja(ctx, x - w / 2, y - h, w, h, 40, null, 9);
-  if (txt) { ctx.fillStyle = INK; ctx.font = '64px Anton'; ctx.textAlign = 'center'; ctx.fillText(txt, x, y + 80); }
-}
-function gota(ctx, x, y, s = 1, col = '#4dc3ff') { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.fillStyle = col; ctx.strokeStyle = INK; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(0, -60); ctx.bezierCurveTo(40, -10, 45, 40, 0, 45); ctx.bezierCurveTo(-45, 40, -40, -10, 0, -60); ctx.fill(); ctx.stroke(); ctx.restore(); }
-function cruz(ctx, x, y, r = 70, k = 1) { if (k <= 0) return; ln(ctx, [[x - r, y - r], [x - r + 2 * r * Math.min(1, k * 2), y - r + 2 * r * Math.min(1, k * 2)]], '#ff3b4e', 18); if (k > 0.5) ln(ctx, [[x + r, y - r], [x + r - 2 * r * (k - 0.5) * 2, y - r + 2 * r * (k - 0.5) * 2]], '#ff3b4e', 18); }
-function celda(ctx, a, gy) {
-  cielo(ctx, '#5c6170', '#3c404c'); for (let r = 0; r < 12; r++) for (let c = 0; c < 6; c++) caja(ctx, c * 200 - (r % 2) * 100, r * 110 + 100, 200, 110, 0, null, 3);
-  ctx.fillStyle = '#4a4e5a'; ctx.fillRect(0, gy, W, H - gy); ln(ctx, [[0, gy], [W, gy]], INK, 8);
-  caja(ctx, 640, 380, 220, 160, 8, '#22252e', 7); for (let i = 0; i < 4; i++) ln(ctx, [[670 + i * 55, 380], [670 + i * 55, 540]], '#9aa0ad', 9);
-}
-function barrotes(ctx, x0 = 0, x1 = W) { for (let x = x0 + 40; x < x1; x += 120) { ln(ctx, [[x, 0], [x, H]], '#2a2d36', 26); ln(ctx, [[x - 6, 0], [x - 6, H]], '#9aa0ad', 6); } ln(ctx, [[x0, 300], [x1, 300]], '#2a2d36', 30); }
+export default {
+  // 0 — Día tres sin agua: la sangre se espesa
+  0: (ctx, a) => { const t = a.t, u = U(a);
+    salaPantalla(ctx, t, u, (c, x, y, w, h) => { sangre(c, t, x, y, w, h, ease(ph(t, 0.2, 1.6))); texto(c, 'BLOOD', x + w / 2, y + 50, 50, '#ffd0d0'); }, { tom: sedTOM(t, { mood: 'esfuerzo', incl: 0.08 }) });
+    rotulo(ctx, 0.05, t, 'DAY 3', 540, 270, 160, '#ffd93d'); rotulo(ctx, 0.5, t, 'NO WATER', 540, 820, 120, '#8fe3ff'); },
 
-const PLANOS = {
-  // 0 — Día tres sin agua: tu sangre se espesa (vaso sanguíneo con glóbulos que se atascan)
-  0: (ctx, a, K) => { const k = sm(ph(a, 0.1, 0.9)); const lat = Math.pow(Math.max(0, Math.sin(a.t * 6)), 8);
-    K.camara(ctx, a, () => { cielo(ctx, '#3a0a14', '#7a1a28'); const y0 = 760, y1 = 1260; ctx.fillStyle = lerp(0, 1, k) > 0.5 ? '#9e1b2d' : '#c2263a'; ctx.fillRect(0, y0, W, y1 - y0); ln(ctx, [[0, y0], [W, y0]], INK, 12); ln(ctx, [[0, y1], [W, y1]], INK, 12);
-      for (let i = 0; i < 26; i++) { const vel = lerp(420, 40, k), x = ((hs(i) * 1400 + a.t * vel * (0.7 + hs(i + 9) * 0.6)) % 1400) - 160, y = y0 + 50 + hs(i + 3) * (y1 - y0 - 100), cx = lerp(x, W * 0.62 + (i % 6) * 40 - 120, k * 0.7);
-        ctx.save(); ctx.translate(cx, lerp(y, 1010 + ((i % 5) - 2) * 70, k * 0.6)); ctx.scale(1 + lat * 0.05, 1); K.prop(ctx, 'globulo_rojo', 0, 0, 0.32, a.t); ctx.restore(); } }, { ...V, de: 1, a: 1.15, foco: [W / 2, 1010] });
-    titular(ctx, a, 'DAY 3', W / 2, 300, { size: 190, col: '#ffd93d', p0: 0.02 }); titular(ctx, a, 'BLOOD THICKENS', W / 2, 520, { size: 100, p0: 0.35 }); },
-  // 1 — Rebobina. Hora uno: no notas nada (rebobinado + paseando con el móvil)
-  1: (ctx, a, K) => { const { YOU } = cast(K); const rw = 1 - ph(a, 0, 0.25);
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'calle', { hora: 'dia' }, { cx: 900 + a.t * 40 });
-      D(K, ctx, a, YOU, W / 2, gy, 1.7, { pose: 'sostiene', mood: 'feliz', mira: 1, objeto: (c, mx, my) => caja(c, mx - 30, my - 110, 70, 120, 14, '#2b2d42', 6) });
-      if (rw > 0) { ctx.save(); ctx.globalAlpha = rw * 0.6; ctx.fillStyle = '#ffffff'; for (let i = 0; i < 14; i++) ctx.fillRect(0, ((i * 160 + a.t * 2400) % H), W, 10); ctx.restore(); } }, { ...V, de: 1.1, a: 1, foco: [W / 2, 1200] });
-    if (rw > 0) titular(ctx, a, '◀◀ REWIND', W / 2, 900, { size: 130, col: '#ffffff' });
-    titular(ctx, a, 'HOUR 1', W / 2, 260, { size: 160, col: '#ffd93d', p0: 0.25 }); K.etiqueta(ctx, a, 'YOU FEEL NOTHING', W / 2, 430, { size: 50, p0: 0.4 }); },
-  // 2 — Solo respirar ya te vacía: cada aliento saca gotas y baja el depósito
-  2: (ctx, a, K) => { const { YOU } = cast(K); const k = fase(a);
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'calle', { hora: 'dia' }, { cx: 1100, blur: 3 });
-      const y = D(K, ctx, a, YOU, 360, gy, 1.8, { pose: 'quieto', mood: 'neutral', mira: 1, habla: true });
-      for (let i = 0; i < 7; i++) { const f = (a.t * 0.6 + i / 7) % 1; ctx.save(); ctx.globalAlpha = 1 - f; circ(ctx, y.cabeza[0] + y.hr + f * 380, y.cabeza[1] + 20 - f * 260 + Math.sin(f * 9) * 20, 30 + f * 40, 'rgba(255,255,255,0.85)', 4); gota(ctx, y.cabeza[0] + y.hr + f * 380, y.cabeza[1] + 20 - f * 260, 0.35); ctx.restore(); }
-      tanque(ctx, a, 860, gy - 100, lerp(1, 0.9, k), { txt: Math.round(lerp(100, 99.5, k) * 10) / 10 + '%' }); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1200] });
-    titular(ctx, a, 'BREATHING', W / 2, 260, { size: 150, p0: 0.02 }); titular(ctx, a, 'DRAINS YOU', W / 2, 420, { size: 120, col: '#4dc3ff', p0: 0.3 }); },
-  // 3 — Un uno por ciento menos y llega la sed (lengua fuera, depósito 99 %)
-  3: (ctx, a, K) => { const { YOU } = cast(K); const k = sm(ph(a, 0.05, 0.5));
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'oficina', { hora: 'dia' }, { cx: 800 });
-      const y = D(K, ctx, a, YOU, 400, gy, 1.8, { pose: k > 0.8 ? 'manos' : 'sentado', mood: k > 0.8 ? 'triste' : 'neutral', mira: 1 });
-      if (k > 0.8) { ctx.save(); ctx.translate(y.cabeza[0] + 10, y.cabeza[1] + y.hr * 0.55); ctx.fillStyle = '#ff7a8a'; ctx.strokeStyle = INK; ctx.lineWidth = 5; ctx.beginPath(); ctx.ellipse(0, 20 + Math.sin(a.t * 8) * 6, 22, 34, 0, 0, 7); ctx.fill(); ctx.stroke(); ctx.restore(); K.simbolo(ctx, a, y.cabeza, y.hr, '!', 0.55); }
-      tanque(ctx, a, 840, gy - 120, lerp(1, 0.99, k), { txt: '-' + Math.round(k * 100) / 100 * 1 + '%' }); }, { ...V, de: 1.05, a: 1.12, foco: [500, 1100] });
-    titular(ctx, a, '1% GONE', W / 2, 280, { size: 170, col: '#ffd93d' }); titular(ctx, a, 'THIRST!', W / 2, 460, { size: 120, col: '#ff6b3d', p0: 0.55, rot: -0.05 }); },
-  // 4 — Tu cerebro literalmente encoge (corte de la cabeza: el cerebro se separa del cráneo)
-  4: (ctx, a, K) => { const k = sm(ph(a, 0.15, 0.8));
-    K.camara(ctx, a, () => { cielo(ctx, '#2a2f5a', '#5a4f9a'); ctx.save(); ctx.translate(W / 2, 1050); circ(ctx, 0, 0, 380, '#f3c9a8', 12); circ(ctx, 0, -10, 330, '#ffe6d6', 6); ctx.restore();
-      ctx.save(); ctx.translate(W / 2, 1050 + k * 50); const s = lerp(1.5, 1.1, k); K.prop(ctx, 'cerebro', 0, 0, s, a.t); ctx.restore();
-      if (k > 0.2) { [[-1, 0], [1, 0], [0, -1]].forEach(([dx, dy]) => { const x = W / 2 + dx * 300, y = 1050 + dy * 280; ctx.save(); ctx.globalAlpha = k; const ex = dx * -60 * k, ey = dy * -60 * k; ln(ctx, [[x, y], [x + ex, y + ey]], '#ffd93d', 12); ctx.restore(); }); } }, { ...V, de: 1, a: 1.15, foco: [W / 2, 1050] });
-    titular(ctx, a, 'YOUR BRAIN', W / 2, 300, { size: 140, p0: 0.02 }); titular(ctx, a, 'SHRINKS', W / 2, 460, { size: 150, col: '#ff8cc6', p0: 0.3 }); },
-  // 5 — Los riñones se apagan; la orina se oscurece (tabla de colores que avanza)
-  5: (ctx, a, K) => { const k = sm(ph(a, 0.4, 0.9)); const off = ph(a, 0.05, 0.3);
-    K.camara(ctx, a, () => { cielo(ctx, '#fff4e0', '#ffe0c2');
-      [[-1, 360], [1, 720]].forEach(([s, x]) => { ctx.save(); ctx.translate(x, 760); ctx.scale(s, 1); const col = off > 0.5 ? '#8a3a3a' : '#d65a5a'; ctx.fillStyle = col; ctx.strokeStyle = INK; ctx.lineWidth = 9; ctx.beginPath(); ctx.ellipse(0, 0, 120, 190, 0, 0, 7); ctx.fill(); ctx.stroke(); ctx.fillStyle = '#fff4e0'; ctx.beginPath(); ctx.ellipse(110, 0, 50, 70, 0, 0, 7); ctx.fill(); ctx.stroke(); ctx.restore(); ln(ctx, [[x + (s < 0 ? 60 : -60), 760], [W / 2, 1000]], '#e0b0a0', 14); });
-      if (off > 0) { caja(ctx, W / 2 - 130, 700, 260, 110, 20, '#2b2d42', 7); ctx.fillStyle = off > 0.5 ? '#ff3b4e' : '#6bcb77'; ctx.font = '80px Anton'; ctx.textAlign = 'center'; ctx.fillText(off > 0.5 ? 'OFF' : 'ON', W / 2, 785); }
-      const cols = ['#fff6b0', '#ffe46a', '#f3c53a', '#d9962a', '#a8641c', '#6b3a12']; cols.forEach((c, i) => caja(ctx, 110 + i * 145, 1280, 130, 220, 18, c, 7));
-      const mx = 175 + k * 5 * 145; ctx.fillStyle = INK; ctx.beginPath(); ctx.moveTo(mx, 1530); ctx.lineTo(mx - 40, 1600); ctx.lineTo(mx + 40, 1600); ctx.fill(); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1000] });
-    titular(ctx, a, 'KIDNEYS: OFF', W / 2, 300, { size: 140, col: '#ff3b4e', p0: 0.05 }); K.etiqueta(ctx, a, 'PEE TURNS DARK', W / 2, 1720, { size: 50, p0: 0.4 }); },
-  // 6 — Sin saliva, sin sudor: el cuerpo no se enfría (termómetro que sube)
-  6: (ctx, a, K) => { const { YOU } = cast(K); const k = sm(ph(a, 0.1, 0.9));
-    K.camara(ctx, a, () => { const gy = desierto(ctx, a, { calor: 1 }); ctx.save(); ctx.globalAlpha = k * 0.35; ctx.fillStyle = '#ff2a2a'; ctx.fillRect(0, 0, W, H); ctx.restore();
-      const y = D(K, ctx, a, YOU, 420, gy, 1.8, { pose: 'encoge', mood: 'triste', mira: 1 });
-      gota(ctx, 820, 620, 0.9); cruz(ctx, 820, 620, 70, ph(a, 0.15, 0.4)); ctx.save(); ctx.translate(820, 880); circ(ctx, 0, 0, 60, '#ffffff', 6); ctx.fillStyle = INK; ctx.font = '60px Anton'; ctx.textAlign = 'center'; ctx.fillText('~', 0, 22); ctx.restore(); cruz(ctx, 820, 880, 70, ph(a, 0.3, 0.55));
-      caja(ctx, 780, 1000, 80, 380, 40, '#ffffff', 8); caja(ctx, 795, 1380 - 340 * lerp(0.4, 1, k), 50, 340 * lerp(0.4, 1, k), 25, '#ff3b4e', 0); circ(ctx, 820, 1400, 60, '#ff3b4e', 8);
-      if (k > 0.6) K.smoke(ctx, y.cabeza[0], y.cabeza[1] - y.hr, a.t, 4); }, { ...V, de: 1.08, a: 1, foco: [W / 2, 1100] });
-    titular(ctx, a, 'NO SALIVA', W / 2, 250, { size: 120, p0: 0.05 }); titular(ctx, a, 'NO SWEAT', W / 2, 390, { size: 120, col: '#ffd93d', p0: 0.25 }); },
-  // 7 — Te levantas y te desmayas (todo se cierra a negro)
-  7: (ctx, a, K) => { const { YOU } = cast(K); const up = sm(ph(a, 0, 0.3)), cae = sm(ph(a, 0.55, 0.8)), neg = ph(a, 0.35, 0.75);
-    K.camara(ctx, a, () => { const gy = desierto(ctx, a); ctx.save(); ctx.translate(W / 2, gy + 60); ctx.rotate(cae * 1.5); D(K, ctx, a, YOU, 0, 0, 1.9, { pose: up < 1 ? 'sentado' : 'quieto', mood: cae > 0 ? 'dormido' : neg > 0 ? 'duda' : 'neutral', mira: 0, sombra: false }); ctx.restore();
-      if (neg > 0 && cae < 1) K.mareo && K.mareo(ctx, a, [W / 2, gy - 420], 60); }, { ...V, de: 1, a: 1.1, foco: [W / 2, 1200], temblor: neg * 3 });
-    const r = lerp(1400, 0, neg); ctx.save(); ctx.fillStyle = '#000'; ctx.beginPath(); ctx.rect(0, 0, W, H); ctx.arc(W / 2, 1000, Math.max(1, r), 0, 7, true); ctx.fill('evenodd'); ctx.restore();
-    titular(ctx, a, 'STAND UP...', W / 2, 280, { size: 130, p0: 0.05 }); titular(ctx, a, 'BLACKOUT', W / 2, 1000, { size: 150, col: '#ff3b4e', p0: 0.8 }); },
-  // 8 — 10 %: confusión. 15 %: fallan los órganos (barra que avanza)
-  8: (ctx, a, K) => { const { YOU } = cast(K); const k = sm(ph(a, 0.05, 0.85)), p = k * 15;
-    K.camara(ctx, a, () => { cielo(ctx, '#2b2d42', '#5a2a3a'); const y = D(K, ctx, a, YOU, W / 2, 1380, 1.7, { pose: p > 10 ? 'llora' : 'piensa', mood: p > 12 ? 'miedo' : 'duda', mira: 0 });
-      if (p > 8) K.simbolo(ctx, a, y.cabeza, y.hr, '?', 0.4);
-      caja(ctx, 100, 1500, 880, 90, 45, '#ffffff', 8); caja(ctx, 108, 1508, Math.max(10, 864 * k), 74, 37, p > 12 ? '#ff3b4e' : p > 9 ? '#ff9f43' : '#ffd93d', 0); caja(ctx, 100, 1500, 880, 90, 45, null, 8);
-      [[10, 'CONFUSION'], [15, 'ORGANS FAIL']].forEach(([v, t]) => { const x = 100 + 880 * v / 15 - (v === 15 ? 40 : 0); ln(ctx, [[x, 1480], [x, 1610]], INK, 8); ctx.fillStyle = '#fff'; ctx.font = '44px Anton'; ctx.textAlign = 'center'; ctx.fillText(v + '%', x, 1670); });
-      if (p > 13) ['corazon', 'pulmones', 'estomago'].forEach((o, i) => { const x = 220 + i * 320; ctx.save(); ctx.globalAlpha = ph(a, 0.75, 0.9); K.prop(ctx, o, x, 620, 0.5, a.t); cruz(ctx, x, 620, 60, ph(a, 0.8, 0.95)); ctx.restore(); }); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1100] });
-    titular(ctx, a, '-' + Math.round(p) + '%', W / 2, 330, { size: 200, col: p > 12 ? '#ff3b4e' : '#ffd93d' }); },
-  // 9 — La mayoría aguanta unos tres días (calendario 1-2-3 tachado, el sol cae)
-  9: (ctx, a, K) => { const k = sm(ph(a, 0, 0.9));
-    K.camara(ctx, a, () => { cielo(ctx, lerp(0, 1, k) > 0.5 ? '#ff7a4a' : '#ffb070', '#5a3a6a'); circ(ctx, W / 2, lerp(500, 1200, k), 160, '#ffdf7a', 0); ctx.fillStyle = '#c7823e'; ctx.fillRect(0, 1250, W, H); ln(ctx, [[0, 1250], [W, 1250]], INK, 8);
-      [1, 2, 3].forEach((d, i) => { const x = 220 + i * 320; caja(ctx, x - 130, 1330, 260, 280, 22, '#ffffff', 8); caja(ctx, x - 130, 1330, 260, 70, [22, 22, 0, 0], '#e63946', 8); ctx.fillStyle = INK; ctx.font = '130px Anton'; ctx.textAlign = 'center'; ctx.fillText(String(d), x, 1560); cruz(ctx, x, 1470, 90, ph(a, 0.15 + i * 0.25, 0.35 + i * 0.25)); }); }, { ...V, de: 1.05, a: 1, foco: [W / 2, 1200] });
-    titular(ctx, a, 'MOST PEOPLE', W / 2, 260, { size: 120, p0: 0.02 }); titular(ctx, a, '~3 DAYS', W / 2, 430, { size: 170, col: '#ffd93d', p0: 0.25 }); },
-  // 10 — 1979: la policía austríaca olvida a un chaval en una celda (los agentes se van charlando)
-  10: (ctx, a, K) => { const { TEEN, COP1, COP2 } = cast(K); const k = sm(ph(a, 0.2, 1));
-    K.camara(ctx, a, () => { const gy = 1500; celda(ctx, a, gy); D(K, ctx, a, TEEN, 330, gy, 1.5, { pose: 'senala', mood: 'sorpresa', mira: 1, habla: true }); barrotes(ctx, 0, 620);
-      ln(ctx, [[620, 0], [620, H]], INK, 14);
-      const x1 = lerp(780, 1250, k); D(K, ctx, a, COP1, x1, gy + 20, 1.35, { pose: 'anda', mood: 'risa', mira: 1, habla: true }); D(K, ctx, a, COP2, x1 + 180, gy + 30, 1.3, { pose: 'anda', mood: 'feliz', mira: -1, habla: true });
-      K.globo(ctx, a, 'HELLO?!', 330, 820, { p0: 0.45, grito: true }); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1200] });
-    K.contador(ctx, a, '1979 · AUSTRIA', W / 2, 180, { size: 60 }); titular(ctx, a, 'FORGOTTEN', W / 2, 340, { size: 150, col: '#ffd93d', p0: 0.3 }); },
-  // 11 — Lame la condensación de las paredes
-  11: (ctx, a, K) => { const { TEEN } = cast(K);
-    K.camara(ctx, a, () => { const gy = 1550; celda(ctx, a, gy); ctx.save(); for (let i = 0; i < 40; i++) { const x = 560 + hs(i) * 480, y = 300 + ((hs(i + 5) * 1100 + a.t * (30 + hs(i) * 40)) % 1150); gota(ctx, x, y, 0.18 + hs(i + 2) * 0.12, 'rgba(160,220,255,0.9)'); } ctx.restore();
-      const y = D(K, ctx, a, TEEN, 470, gy, 1.9, { pose: 'manos', mood: 'triste', mira: 1 });
-      ctx.save(); ctx.translate(y.cabeza[0] + y.hr * 0.95, y.cabeza[1] + y.hr * 0.4); ctx.fillStyle = '#ff7a8a'; ctx.strokeStyle = INK; ctx.lineWidth = 5; ctx.beginPath(); ctx.ellipse(18 + Math.abs(Math.sin(a.t * 5)) * 22, 0, 30, 16, 0, 0, 7); ctx.fill(); ctx.stroke(); ctx.restore(); }, { ...V, de: 1.1, a: 1.2, foco: [620, 1100] });
-    titular(ctx, a, 'LICKING', W / 2, 260, { size: 140, p0: 0.02 }); titular(ctx, a, 'THE WALLS', W / 2, 420, { size: 140, col: '#4dc3ff', p0: 0.25 }); },
-  // 12 — Dieciocho días. Guinness aún lo tiene como récord
-  12: (ctx, a, K) => { const { TEEN } = cast(K); const n = Math.max(1, Math.round(sm(ph(a, 0.02, 0.6)) * 18));
-    K.camara(ctx, a, () => { cielo(ctx, '#1f2a5a', '#4d5fa8'); K.sparkles(ctx, W / 2, 1100, a.t, 14, 480);
-      caja(ctx, W / 2 - 260, 560, 520, 520, 34, '#ffffff', 10); caja(ctx, W / 2 - 260, 560, 520, 130, [34, 34, 0, 0], '#e63946', 10); ctx.fillStyle = '#fff'; ctx.font = '70px Anton'; ctx.textAlign = 'center'; ctx.fillText('DAY', W / 2, 650); ctx.fillStyle = INK; ctx.font = '300px Anton'; ctx.fillText(String(n), W / 2, 1010);
-      D(K, ctx, a, TEEN, W / 2, 1620, 1.4, { pose: n >= 18 ? 'vitorea' : 'quieto', mood: n >= 18 ? 'feliz' : 'triste', mira: 0 });
-      if (n >= 18) { ctx.save(); ctx.globalAlpha = ph(a, 0.62, 0.75); K.prop(ctx, 'trofeo', 860, 1350, 0.6, a.t); ctx.restore(); } }, { ...V, de: 1, a: 1.08, foco: [W / 2, 900] });
-    titular(ctx, a, '18 DAYS', W / 2, 300, { size: 170, col: '#ffd93d', p0: 0.55 }); sello(ctx, a, 'WORLD RECORD', W / 2, 1780 - 90, { p0: 0.7, size: 80 }); },
-  // 13 — Para casi todos los demás, se acaba en... (vuelve al desierto: bucle)
-  13: (ctx, a, K) => { const { YOU } = cast(K); const lat = Math.pow(Math.max(0, Math.sin(a.t * 5)), 8);
-    K.camara(ctx, a, () => { const gy = desierto(ctx, a, { calor: 1 }); D(K, ctx, a, YOU, W / 2, gy + 40, 1.9 + lat * 0.03, { pose: 'encoge', mood: 'triste', mira: 0 });
-      ctx.save(); ctx.translate(W / 2, 700); ctx.scale(1 + lat * 0.15, 1 + lat * 0.15); K.prop(ctx, 'corazon', 0, 0, 0.7, a.t); ctx.restore(); }, { ...V, de: 1, a: 1.15, foco: [W / 2, 1000] });
-    titular(ctx, a, 'FOR EVERYONE ELSE', W / 2, 260, { size: 100, p0: 0.05 }); titular(ctx, a, 'IT ENDS BY...', W / 2, 400, { size: 120, col: '#ff6b3d', p0: 0.4 }); },
+  // 1 — Rebobina. Hora uno: no notas nada
+  1: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: 1.04, fx: 540, fy: 1250, t };
+    exterior(ctx, t, cam, { cielo: 'dia' });
+    capa(ctx, cam, 1, () => { personaje(ctx, t, TOM, 560, SUELO + 40, 1.05, { mood: 'feliz', mira: [0.3, -0.2], manoI: [-140, -120], manoD: [150, -330] }); });
+    const rw = 1 - ph(t, 0, 0.7); if (rw > 0) { ctx.save(); ctx.globalAlpha = rw * 0.6; for (let i = 0; i < 14; i++) { ctx.fillStyle = i % 2 ? '#ffffff' : '#7fd0ff'; ctx.fillRect(0, ((i * 160 + t * 1800) % H), W, 10); } ctx.restore(); texto(ctx, '◀◀', 540, 700, 200, '#fff'); }
+    rotulo(ctx, 0.05, t, 'REWIND', 540, 270, 150); rotulo(ctx, 0.7, t, 'HOUR 1', 540, 440, 170, '#ffd93d'); rotulo(ctx, 1.1, t, 'FEEL NOTHING', 540, 600, 100, '#8fe3ff'); },
+
+  // 2 — Solo respirar ya te gasta agua
+  2: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: lerp(1.1, 1.2, u), fx: 560, fy: 1150, t };
+    exterior(ctx, t, cam, { cielo: 'dia' });
+    capa(ctx, cam, 1, () => { const p = personaje(ctx, t, TOM, 460, SUELO + 40, 1.05, { mood: 'neutral', boca: (t % 1.2) < 0.6 ? 'o' : 'cerrada', mira: [1, -0.1], manoI: [-120, -110], manoD: [120, -110] });
+      for (let i = 0; i < 5; i++) { const k = ((t * 0.7 + i * 0.2) % 1); ctx.globalAlpha = 1 - k; ctx.beginPath(); ctx.arc(p.cabeza[0] + 110 + k * 360, p.cabeza[1] + 80 - k * 160, 24 + k * 50, 0, 7); ctx.fillStyle = 'rgba(230,245,255,0.9)'; ctx.fill(); gota(ctx, p.cabeza[0] + 110 + k * 360, p.cabeza[1] + 80 - k * 160, 0.5 + k * 0.4); ctx.globalAlpha = 1; } });
+    rotulo(ctx, 0.05, t, 'EVERY BREATH', 540, 270, 130); rotulo(ctx, 0.5, t, '= WATER LOST', 540, 430, 120, '#8fe3ff'); },
+
+  // 3 — Pierdes un 1 % y llega la sed
+  3: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: 1.06, fx: 540, fy: 1250, t }; const k = ease(ph(t, 0.2, 1.2));
+    exterior(ctx, t, cam, { cielo: 'dia' });
+    capa(ctx, cam, 1, () => { // depósito de agua del cuerpo
+      rr(ctx, 680, 820, 200, 420, 30); volumen(ctx, 'rgba(255,255,255,0.7)', 680, 820, 200, 420, 5); const lv = lerp(400, 360, k); rr(ctx, 690, 1230 - lv, 180, lv, 22); ctx.fillStyle = '#4fb6f0'; ctx.fill(); texto(ctx, Math.round(lerp(100, 99, k)) + '%', 780, 1020, 70, '#fff');
+      personaje(ctx, t, TOM, 380, SUELO + 40, 1.05, { mood: t > 1.2 ? 'esfuerzo' : 'neutral', boca: t > 1.2 ? 'a' : undefined, mira: [1, 0], manoI: [-110, -110], manoD: t > 1.2 ? [60, -420] : [120, -110] });
+      signo(ctx, t, 1.2, 380, 740, '!', '#ff6b3d'); });
+    rotulo(ctx, 0.05, t, '-1%', 540, 290, 190, '#8fe3ff'); rotulo(ctx, 1.1, t, 'THIRST!', 540, 480, 150, '#ff6b3d'); },
+
+  // 4 — El cerebro literalmente encoge
+  4: (ctx, a) => { const t = a.t, u = U(a); const k = ease(ph(t, 0.3, 1.6));
+    salaPantalla(ctx, t, u, (c, x, y, w, h) => { c.beginPath(); c.ellipse(x + w / 2, y + h / 2 + 20, 200, 160, 0, 0, 7); c.strokeStyle = 'rgba(200,230,255,0.6)'; c.lineWidth = 8; c.setLineDash([16, 12]); c.stroke(); c.setLineDash([]); cerebro(c, x + w / 2, y + h / 2 + 20, lerp(1.1, 0.82, k)); for (const s of [-1, 1]) { c.strokeStyle = '#ffd93d'; c.lineWidth = 8; c.beginPath(); c.moveTo(x + w / 2 + s * 250, y + h / 2); c.lineTo(x + w / 2 + s * lerp(250, 190, k), y + h / 2); c.stroke(); } }, { tom: sedTOM(t, { mood: 'miedo', mira: [-0.5, -1], manoI: [-60, -420], manoD: [60, -420] }) });
+    rotulo(ctx, 0.05, t, 'YOUR BRAIN', 540, 270, 140); rotulo(ctx, 0.5, t, 'SHRINKS', 540, 830, 150, '#ff6b9a'); },
+
+  // 5 — Los riñones se apagan. La orina se oscurece
+  5: (ctx, a) => { const t = a.t, u = U(a); const k = ease(ph(t, 0.2, 1.4));
+    salaPantalla(ctx, t, u, (c, x, y, w, h) => { const col = k < 0.5 ? '#c05a5a' : '#7a3a3a'; rinon(c, x + 170, y + 190, 0.95, col); c.save(); c.translate(x + 390, y + 190); c.scale(-1, 1); rinon(c, 0, 0, 0.95, col); c.restore();
+      ['#fff7b0', '#ffe066', '#f2b632', '#c98a1a', '#8a5a12'].forEach((cc, i) => { rr(c, x + 40 + i * 100, y + 320, 80, 50, 10); c.fillStyle = cc; c.fill(); c.strokeStyle = i === Math.round(k * 4) ? '#fff' : 'rgba(0,0,0,0.4)'; c.lineWidth = i === Math.round(k * 4) ? 8 : 3; c.stroke(); });
+      if (k > 0.5 && (t * 3) % 1 < 0.6) texto(c, '⚠', x + w - 60, y + 60, 60, '#ffd93d'); }, { tom: sedTOM(t, { mood: 'triste' }) });
+    rotulo(ctx, 0.05, t, 'KIDNEYS', 540, 270, 150); rotulo(ctx, 0.4, t, 'SHUT DOWN', 540, 830, 140, '#ff6b3d'); },
+
+  // 6 — Sin saliva, sin sudor: el cuerpo deja de enfriarse
+  6: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: lerp(1.05, 1.15, u), fx: 540, fy: 1250, t }; const k = ease(ph(t, 0.2, 1.8));
+    exterior(ctx, t, cam, { cielo: 'atardecer', suelo: 'cemento' });
+    ctx.save(); ctx.globalAlpha = 0.25 * k; ctx.fillStyle = '#ff5a2a'; ctx.fillRect(0, 0, W, H); ctx.restore();
+    capa(ctx, cam, 1, () => { termometro(ctx, t, 790, 1300, lerp(0.4, 0.95, k));
+      personaje(ctx, t, TOM, 400, SUELO + 40, 1.05, { mood: 'esfuerzo', mira: [0, -0.4], incl: Math.sin(t * 3) * 0.04, manoI: [-120, -110], manoD: [110, -110] });
+      for (let i = 0; i < 6; i++) { const kk = (t * 0.8 + i / 6) % 1; ctx.globalAlpha = (1 - kk) * 0.6; ctx.strokeStyle = '#ffb37a'; ctx.lineWidth = 6; ctx.beginPath(); const xx = 250 + i * 60; ctx.moveTo(xx, 900 - kk * 200); ctx.quadraticCurveTo(xx + 20, 860 - kk * 200, xx, 820 - kk * 200); ctx.stroke(); ctx.globalAlpha = 1; } });
+    rotulo(ctx, 0.05, t, 'NO SWEAT', 540, 270, 150); rotulo(ctx, 0.5, t, 'OVERHEATING', 540, 440, 130, '#ff6b3d'); },
+
+  // 7 — Te levantas y te desmayas
+  7: (ctx, a) => { const t = a.t, u = U(a); const sube = ease(ph(t, 0.1, 0.6)); const cam = { z: 1.08, fx: 560, fy: 1250, t };
+    salaLab(ctx, t, cam);
+    capa(ctx, cam, 1, () => { rr(ctx, 360, 1240, 260, 30, 8); volumen(ctx, '#8b6446', 360, 1240, 260, 30, 4); for (const x of [380, 580]) { rr(ctx, x, 1270, 20, 150, 4); volumen(ctx, '#6b4a36', x, 1270, 20, 150, 3); }
+      const caida = ease(ph(t, 1.0, 1.6)); personaje(ctx, t, TOM, 490, SUELO + 40 - (1 - sube) * 0, lerp(0.85, 1.05, sube), { mood: t > 0.7 ? 'miedo' : 'neutral', cierra: t > 1.1, incl: caida * 0.5 + Math.sin(t * 6) * 0.05 * ph(t, 0.6, 1), mira: [Math.sin(t * 5), 0], manoI: [-120, -110], manoD: [120, -110] });
+      if (t > 0.6) for (let i = 0; i < 4; i++) { const an = t * 4 + i * 1.57; texto(ctx, '★', 490 + Math.cos(an) * 120, 760 + Math.sin(an) * 30, 50, '#ffd93d'); } });
+    vineta(ctx, ease(ph(t, 0.7, a.d * 0.95)));
+    rotulo(ctx, 0.05, t, 'STAND UP...', 540, 270, 140); rotulo(ctx, 0.8, t, 'BLACKOUT', 540, 440, 160, '#ff6b3d'); },
+
+  // 8 — 10 %: confusión. 15 %: fallan los órganos
+  8: (ctx, a) => { const t = a.t, u = U(a); const fase2 = u > 0.5;
+    salaPantalla(ctx, t, u, (c, x, y, w, h) => { const p = fase2 ? 15 : 10; rr(c, x + 40, y + 160, w - 80, 80, 20); c.fillStyle = '#233'; c.fill(); rr(c, x + 40, y + 160, (w - 80) * p / 20, 80, 20); c.fillStyle = fase2 ? '#ff4a3d' : '#ffb347'; c.fill(); texto(c, `-${p}% WATER`, x + w / 2, y + 80, 64, '#fff'); texto(c, fase2 ? 'ORGANS FAIL' : 'CONFUSION', x + w / 2, y + 320, 62, fase2 ? '#ff6b6b' : '#ffd93d'); },
+      { tom: sedTOM(t, { mood: fase2 ? 'miedo' : 'aburrido', mira: [Math.sin(t * 4), Math.cos(t * 3)], incl: Math.sin(t * 2) * 0.08 }) });
+    if (!fase2) for (let i = 0; i < 3; i++) { const an = t * 3 + i * 2.1; texto(ctx, '?', 830 + Math.cos(an) * 140, 1020 + Math.sin(an) * 40, 80, '#ffd93d'); }
+    rotulo(ctx, 0.05, t, fase2 ? '15%' : '10%', 540, 840, 170, fase2 ? '#ff4a3d' : '#ffb347'); },
+
+  // 9 — La mayoría aguanta unos tres días
+  9: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: 1.04, fx: 540, fy: 1250, t };
+    salaLab(ctx, t, cam);
+    const n = 1 + Math.min(2, Math.floor(ph(t, 0.1, a.d * 0.7) * 3)); const flip = ((ph(t, 0.1, a.d * 0.7) * 3) % 1);
+    capa(ctx, cam, 1, () => { calendario(ctx, t, 600, 1000, n); if (n < 3) { ctx.save(); ctx.globalAlpha = 1 - flip; ctx.translate(600, 800); ctx.rotate(-flip * 0.8); ctx.translate(-600, -800 - flip * 80); calendario(ctx, t, 600, 1000, n); ctx.restore(); }
+      personaje(ctx, t, TOM, 280, SUELO + 40, 0.95, sedTOM(t, { mood: 'esfuerzo', mira: [1, -0.2], incl: 0.08 })); });
+    rotulo(ctx, 0.05, t, 'MOST PEOPLE', 540, 270, 130); rotulo(ctx, 0.5, t, '~3 DAYS', 540, 440, 170, '#ffd93d'); },
+
+  // 10 — 1979: la policía austriaca olvida a un chico en una celda
+  10: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: 1.04, fx: 540, fy: 1250, t }; const va = ease(ph(t, 0.4, a.d));
+    celda(ctx, t, cam);
+    capa(ctx, cam, 1, () => { personaje(ctx, t, CHICO, 420, SUELO + 40, 1, { mood: t > 1.2 ? 'sorpresa' : 'neutral', mira: [1, 0], manoI: [-110, -110], manoD: [150, -300] }); });
+    barrotes(ctx, cam);
+    capa(ctx, cam, 1.3, () => { personaje(ctx, t, POLI, lerp(760, 1500, va), SUELO + 120, 1.05, { mood: 'feliz', mira: [1, 0], incl: Math.sin(t * 10) * 0.03, manoI: [-120, -120], manoD: [130, -130] }); });
+    rotulo(ctx, 0.05, t, '1979', 540, 270, 180, '#ffd93d'); rotulo(ctx, 0.6, t, 'FORGOTTEN', 540, 450, 140); },
+
+  // 11 — Lamía la condensación de las paredes
+  11: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: lerp(1.15, 1.3, u), fx: 300, fy: 1100, t };
+    celda(ctx, t, cam, { gotas: true });
+    capa(ctx, cam, 1, () => { personaje(ctx, t, CHICO, 330, SUELO + 40, 1, { mood: 'triste', boca: 'o', mira: [-1, -0.6], incl: -0.12, cabeza: -0.2, manoI: [-170, -380], manoD: [-60, -300] }); });
+    barrotes(ctx, cam);
+    rotulo(ctx, 0.05, t, 'LICKING', 540, 270, 150); rotulo(ctx, 0.5, t, 'THE WALLS', 540, 440, 150, '#8fe3ff'); },
+
+  // 12 — 18 días. Guinness sigue teniéndolo como récord
+  12: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: 1.06, fx: 540, fy: 1150, t }; const n = Math.round(ease(ph(t, 0.1, a.d * 0.6)) * 18);
+    celda(ctx, t, cam);
+    capa(ctx, cam, 0.55, () => { ctx.strokeStyle = '#2a2a2a'; ctx.lineWidth = 8; ctx.lineCap = 'round'; for (let i = 0; i < n; i++) { const g = Math.floor(i / 5), j = i % 5, x = 160 + g * 120 + j * 20, y = 640; if (j === 4) { ctx.beginPath(); ctx.moveTo(x - 90, y + 80); ctx.lineTo(x + 10, y - 10); ctx.stroke(); } else { ctx.beginPath(); ctx.moveTo(x, y - 10); ctx.lineTo(x, y + 80); ctx.stroke(); } } });
+    capa(ctx, cam, 1, () => { personaje(ctx, t, CHICO, 600, SUELO + 40, 1, { mood: n >= 18 ? 'feliz' : 'triste', mira: [-0.6, -0.6], manoI: [-120, -110], manoD: n >= 18 ? [140, -420] : [120, -110] }); });
+    rotulo(ctx, 0.05, t, `DAY ${Math.max(1, n)}`, 540, 290, 170, '#ffd93d'); rotulo(ctx, a.d * 0.6, t, 'WORLD RECORD', 540, 460, 120, '#8fe3ff'); },
+
+  // 13 — Para casi todos los demás, acaba por… (bucle)
+  13: (ctx, a) => { const t = a.t, u = U(a);
+    salaPantalla(ctx, t, u, (c, x, y, w, h) => { sangre(c, t, x, y, w, h, 1); texto(c, 'DAY 3', x + w / 2, y + 50, 56, '#ffd0d0'); }, { tom: sedTOM(t, { mood: 'miedo', mira: [-1, -0.5] }) });
+    signo(ctx, t, 0.3, 830, 760, '?', '#ffd93d');
+    rotulo(ctx, 0.05, t, 'FOR EVERYONE', 540, 270, 130); rotulo(ctx, 0.4, t, 'ELSE...', 540, 830, 150, '#ff6b3d'); },
 };
-const BASE = (fn) => (ctx, a, K) => { cielo(ctx, '#ffd27a', '#e2a256'); fn(ctx, a, K); };
-export default Object.fromEntries(Object.entries(PLANOS).map(([k, f]) => [k, BASE(f)]));

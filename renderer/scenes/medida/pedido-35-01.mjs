@@ -1,110 +1,132 @@
-// pedido-35-01 — "A Spoon of Neutron Star" (Short vertical, estilo nuevo)
-import { W, H, INK, V, sm, lerp, ph, hs, fondo, D, cielo, ln, circ, caja, titular, sello, estrellas } from '../../lib/corto.mjs';
-
-let CAST = null;
-function cast(K) {
-  if (CAST) return CAST;
-  const sin = { sombrero: null, corbata: null, barba: false, bigote: false };
-  const [YOU] = K.reparto('pedido-35', 1, [{ ...sin, estilo: 'limpio', pelo: 'rizos', peloCol: '#2a1a10', ropa: '#9b5de5' }]);
-  return (CAST = { YOU });
-}
-// Cuchara con una bolita azul brillante de materia de estrella
-function cuchara(ctx, a, x, y, s = 1, rot = 0) {
-  ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(s, s);
-  caja(ctx, -16, 0, 32, 300, 16, '#c9d1dc', 7);
-  ctx.fillStyle = '#c9d1dc'; ctx.strokeStyle = INK; ctx.lineWidth = 8; ctx.beginPath(); ctx.ellipse(0, -40, 80, 100, 0, 0, 7); ctx.fill(); ctx.stroke();
-  const g = ctx.createRadialGradient(0, -50, 4, 0, -50, 70); g.addColorStop(0, '#ffffff'); g.addColorStop(0.4, '#8fe3ff'); g.addColorStop(1, '#2a7bff');
-  ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(0, -50, 62, 60, 0, 0, 7); ctx.fill();
-  ctx.save(); ctx.globalAlpha = 0.35 + 0.2 * Math.sin(a.t * 6); circ(ctx, 0, -50, 100, '#8fe3ff', 0); ctx.restore();
+// pedido-35-01 — "A Spoonful of Neutron Star" — estilo PAPEL (un plano por frase)
+import { W, H, lerp, ease, back, ph, clamp, REPARTO, personaje, capa, SUELO, laboratorio, mesaLab, cuchara, rotulo,
+  exterior, grua, espacio, estrellaN, sol, ciudad, corteTierra, signo, impacto, rr, volumen, texto, hash } from '../../lib/papel.mjs';
+const { DRA, TOM } = REPARTO;
+const U = (a) => clamp(a.t / a.d);
+function hueco(ctx, t, x, k) { if (k <= 0) return; ctx.fillStyle = '#1b120d'; ctx.beginPath(); ctx.ellipse(x, SUELO + 40, 110 * k, 32 * k, 0, 0, 7); ctx.fill(); ctx.strokeStyle = 'rgba(40,30,28,0.85)'; ctx.lineWidth = 5; ctx.stroke(); ctx.fillStyle = '#9fe6ff'; ctx.globalAlpha = 0.35 + 0.2 * Math.sin(t * 9); ctx.beginPath(); ctx.ellipse(x, SUELO + 46, 70 * k, 16 * k, 0, 0, 7); ctx.fill(); ctx.globalAlpha = 1; }
+function balanza(ctx, t, x, y, ang, izq, der, sc = 1) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(sc, sc); rr(ctx, -20, 0, 40, 300, 8); volumen(ctx, '#8a6a4a', -20, 0, 40, 300, 4); rr(ctx, -120, 290, 240, 30, 8); volumen(ctx, '#6a4f36', -120, 290, 240, 30, 4);
+  ctx.rotate(ang); rr(ctx, -380, -14, 760, 28, 10); volumen(ctx, '#b08a52', -380, -14, 760, 28, 4);
+  for (const [k, fn] of [[-1, izq], [1, der]]) { ctx.save(); ctx.translate(k * 360, 0); ctx.rotate(-ang); ctx.strokeStyle = '#4a3a2a'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-90, 160); ctx.moveTo(0, 0); ctx.lineTo(90, 160); ctx.stroke(); ctx.beginPath(); ctx.ellipse(0, 165, 120, 24, 0, 0, 7); volumen(ctx, '#c9a066', -120, 141, 240, 48, 4); fn(ctx); ctx.restore(); }
   ctx.restore();
 }
-function cocina(ctx, a, gy) { return fondo(ctx, a, 'cocina', { hora: 'dia' }, { cx: 540 }); }
-function mesa(ctx, x, y, w, comba = 0) {
-  ctx.fillStyle = '#b5773f'; ctx.strokeStyle = INK; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(x - w / 2, y); ctx.quadraticCurveTo(x, y + comba, x + w / 2, y); ctx.lineTo(x + w / 2, y + 40); ctx.quadraticCurveTo(x, y + 40 + comba, x - w / 2, y + 40); ctx.closePath(); ctx.fill(); ctx.stroke();
-  ln(ctx, [[x - w / 2 + 40, y + 40], [x - w / 2 + 60 + comba * 0.3, y + 300]], INK, 22); ln(ctx, [[x + w / 2 - 40, y + 40], [x + w / 2 - 60 - comba * 0.3, y + 300]], INK, 22);
-}
-function grieta(ctx, x, y, k, seed = 1, r = 200) { if (k <= 0) return; for (let i = 0; i < 6; i++) { const an = i / 6 * 6.28 + hs(seed + i); let px = x, py = y; const pts = [[px, py]]; for (let j = 1; j <= 4; j++) { px = x + Math.cos(an + (hs(seed + i * 9 + j) - 0.5)) * r * k * j / 4; py = y + Math.sin(an + (hs(seed + i * 7 + j) - 0.5)) * r * k * j / 4 * 0.5; pts.push([px, py]); } ln(ctx, pts, INK, 6); } }
-// Corte transversal de la Tierra con la cuchara bajando (prof 0..1)
-function corteTierra(ctx, a, prof) {
-  cielo(ctx, '#0b0f2a', '#1b2150'); estrellas(ctx, a, 60);
-  const cx = W / 2, cy = 1150, R = 470;
-  [['#4caf50', 1], ['#8d5a3b', 0.96], ['#c0562a', 0.72], ['#ff8a3d', 0.5], ['#ffd23d', 0.25]].forEach(([c, f]) => circ(ctx, cx, cy, R * f, c, 8));
-  ctx.save(); ctx.fillStyle = '#ffffff'; ctx.globalAlpha = 0.5; ctx.font = '40px Anton'; ctx.textAlign = 'center'; ctx.fillText('CORE', cx, cy + 15); ctx.restore();
-  const y = lerp(cy - R - 30, cy - 20, prof); ln(ctx, [[cx, cy - R], [cx, y]], 'rgba(255,255,255,0.7)', 6);
-  cuchara(ctx, a, cx, y, 0.45, Math.PI);
-}
+function gente(ctx, t, n) { const cols = ['#e2683c', '#3f6fb5', '#4f9a6b', '#c94f4f', '#7a4fa0', '#e0a640']; for (let i = 0; i < n; i++) { const x = -90 + (i % 6) * 36, y = 150 - Math.floor(i / 6) * 40; ctx.beginPath(); ctx.arc(x, y - 34, 14, 0, 7); ctx.fillStyle = ['#f2c9a5', '#b9825a', '#8a5a3a'][i % 3]; ctx.fill(); rr(ctx, x - 14, y - 22, 28, 30, 8); ctx.fillStyle = cols[i % 6]; ctx.fill(); } }
 
-const PLANOS = {
-  // 0 — Esta cuchara pesa más que todos los humanos juntos (balanza)
-  0: (ctx, a, K) => { const k = sm(ph(a, 0.1, 0.6));
-    K.camara(ctx, a, () => { cielo(ctx, '#1b2150', '#4a3a8a'); const ang = lerp(0, 0.35, k);
-      ctx.save(); ctx.translate(W / 2, 1000); ctx.scale(1.15, 1.15); ctx.translate(-W / 2, -1000); ln(ctx, [[W / 2, 1600], [W / 2, 900]], INK, 26); circ(ctx, W / 2, 900, 30, '#ffd93d', 7);
-      ctx.save(); ctx.translate(W / 2, 900); ctx.rotate(-ang); ln(ctx, [[-420, 0], [420, 0]], INK, 22);
-      ctx.save(); ctx.translate(-420, 0); ctx.rotate(ang); ln(ctx, [[0, 0], [0, 160]], INK, 6); caja(ctx, -170, 160, 340, 30, 15, '#c9d1dc', 7); cuchara(ctx, a, 0, 120, 0.5, Math.PI / 2); ctx.restore();
-      ctx.save(); ctx.translate(420, 0); ctx.rotate(ang); ln(ctx, [[0, 0], [0, 160]], INK, 6); caja(ctx, -170, 160, 340, 30, 15, '#c9d1dc', 7); for (let r = 0; r < 5; r++) for (let c = 0; c < 9 - r; c++) { const hx = -150 + r * 17 + c * 37, hy = 130 - r * 34; circ(ctx, hx, hy, 17, ['#f3c9a8', '#c68a5a', '#8d5a3b', '#ffe0c2'][(r + c) % 4], 4); } ctx.restore();
-      ctx.restore(); ctx.restore(); }, { ...V, de: 1, a: 1.1, foco: [W / 2, 1000] });
-    titular(ctx, a, 'THIS SPOON', W / 2, 280, { size: 140, p0: 0.02 }); titular(ctx, a, '> ALL HUMANS', W / 2, 440, { size: 120, col: '#ffd93d', p0: 0.35 }); },
-  // 1 — Una cucharadita: mil millones de toneladas
-  1: (ctx, a, K) => { const n = Math.round(sm(ph(a, 0.05, 0.75)) * 1000);
-    K.camara(ctx, a, () => { cielo(ctx, '#0b0f2a', '#2a2f6a'); estrellas(ctx, a, 80); K.sparkles(ctx, W / 2, 1000, a.t, 12, 300); cuchara(ctx, a, W / 2, 1100, 1.6, 0); }, { ...V, de: 1, a: 1.15, foco: [W / 2, 1000] });
-    K.contador(ctx, a, n >= 1000 ? '1 BILLION' : n + ' MILLION', W / 2, 320, { size: 120 }); titular(ctx, a, 'TONS', W / 2, 500, { size: 150, col: '#8fe3ff', p0: 0.75 }); },
-  // 2 — Agarras el mango. La mesa cruje.
-  2: (ctx, a, K) => { const { YOU } = cast(K); const k = sm(ph(a, 0.2, 0.9));
-    K.camara(ctx, a, () => { const gy = cocina(ctx, a); mesa(ctx, 620, 1250, 640, k * 90); cuchara(ctx, a, 600, 1230 + k * 80, 0.6, Math.PI / 2 - 0.1);
-      D(K, ctx, a, YOU, 330, gy, 1.7, { pose: 'sostiene', mood: k > 0.4 ? 'sorpresa' : 'neutral', mira: 1 });
-      if (k > 0.3) K.globo(ctx, a, 'CREEEAK', 700, 950, { p0: 0.35, grito: true }); }, { ...V, de: 1, a: 1.1, foco: [560, 1200], temblor: k * 4 });
-    titular(ctx, a, 'GRAB IT...', W / 2, 280, { size: 150 }); },
-  // 3 — Tu brazo no se mueve ni un centímetro
-  3: (ctx, a, K) => { const { YOU } = cast(K); const tira = Math.sin(a.t * 18) * 4;
-    K.camara(ctx, a, () => { const gy = cocina(ctx, a); mesa(ctx, 700, 1250, 560, 90); cuchara(ctx, a, 660, 1310, 0.6, Math.PI / 2 - 0.1);
-      const y = D(K, ctx, a, YOU, 380 + tira, gy, 1.8, { pose: 'empuja', mood: 'enfado', mira: 1 }); K.smoke && ph(a, 0.4, 1) > 0 && K.sparkles(ctx, y.cabeza[0], y.cabeza[1] - y.hr, a.t, 4, 60); }, { ...V, de: 1.05, a: 1.15, foco: [560, 1200], temblor: 3 });
-    titular(ctx, a, 'NOT ONE', W / 2, 280, { size: 150, p0: 0.02 }); titular(ctx, a, 'INCH', W / 2, 450, { size: 170, col: '#ff6b3d', p0: 0.3 }); },
-  // 4 — Ninguna grúa de la Tierra podría levantarla (la grúa se dobla)
-  4: (ctx, a, K) => { const k = sm(ph(a, 0.15, 0.85));
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'bloques', { hora: 'dia' }, { cx: 540 }); const bx = 300, top = 500;
-      ln(ctx, [[bx, gy], [bx, top]], '#ffb703', 40); ln(ctx, [[bx, gy], [bx, top]], INK, 8);
-      const tipX = lerp(900, 780, k), tipY = lerp(top, top + 520, k); ctx.save(); ctx.strokeStyle = '#ffb703'; ctx.lineWidth = 34; ctx.beginPath(); ctx.moveTo(bx, top); ctx.quadraticCurveTo(lerp(600, 620, k), lerp(top, top + 80, k), tipX, tipY); ctx.stroke(); ctx.strokeStyle = INK; ctx.lineWidth = 6; ctx.stroke(); ctx.restore();
-      ln(ctx, [[tipX, tipY], [tipX, gy - 60]], INK, 5); cuchara(ctx, a, tipX, gy - 60, 0.6, Math.PI);
-      if (k > 0.7) K.globo(ctx, a, 'SNAP!', 700, 420, { p0: 0.75, grito: true }); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1100], temblor: k * 3 });
-    titular(ctx, a, 'NO CRANE', W / 2, 260, { size: 150 }); K.etiqueta(ctx, a, 'COULD LIFT IT', W / 2, 410, { size: 56, p0: 0.3 }); },
-  // 5 — La sueltas. No toca el suelo.
-  5: (ctx, a, K) => { const { YOU } = cast(K); const cae = sm(ph(a, 0.25, 0.75));
-    K.camara(ctx, a, () => { const gy = cocina(ctx, a); const y = D(K, ctx, a, YOU, 330, gy, 1.8, { pose: 'quieto', mood: cae > 0.5 ? 'sorpresa' : 'neutral', mira: 1 });
-      cuchara(ctx, a, 680, lerp(1050, gy + 40, cae), 0.55, Math.PI); if (cae > 0.5) K.simbolo(ctx, a, y.cabeza, y.hr, '?', 0.6); }, { ...V, de: 1, a: 1.1, foco: [520, 1200] });
-    titular(ctx, a, 'YOU LET GO', W / 2, 280, { size: 140 }); },
-  // 6 — Lo atraviesa
-  6: (ctx, a, K) => { const k = sm(ph(a, 0.05, 0.7));
-    K.camara(ctx, a, () => { cielo(ctx, '#e8d9c0', '#d2bc98'); const gy = 1000; ctx.fillStyle = '#8a6a4a'; ctx.fillRect(0, gy, W, H - gy); ln(ctx, [[0, gy], [W, gy]], INK, 10);
-      for (let i = 0; i < 6; i++) caja(ctx, i * 180, gy - 40, 180, 40, 0, i % 2 ? '#f3efe6' : '#d9d2c3', 5);
-      ctx.fillStyle = '#1a120c'; ctx.beginPath(); ctx.ellipse(W / 2, gy - 10, 90, 26, 0, 0, 7); ctx.fill(); grieta(ctx, W / 2, gy - 10, k, 3, 260);
-      ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, H); ctx.clip(); cuchara(ctx, a, W / 2, lerp(700, 1700, k), 0.5, Math.PI); ctx.restore();
-      for (let i = 0; i < 10; i++) { const f = ph(a, 0.05, 0.6); circ(ctx, W / 2 + (hs(i) - 0.5) * 400 * f, gy - 10 - Math.sin(f * 3) * 200 * hs(i + 4) + f * f * 200, 14, '#d9d2c3', 4); } }, { ...V, de: 1.05, a: 1.15, foco: [W / 2, 1000], temblor: (1 - k) * 4 });
-    titular(ctx, a, 'IT GOES', W / 2, 280, { size: 150 }); titular(ctx, a, 'THROUGH', W / 2, 450, { size: 170, col: '#ffd93d', p0: 0.25 }); },
-  // 7 — Por las baldosas, por la roca madre (capas que pasan)
-  7: (ctx, a, K) => { const off = a.t * 900;
-    K.camara(ctx, a, () => { const capas = ['#d9d2c3', '#8a6a4a', '#6b4e35', '#7a7a80', '#5a5a62', '#8a3a2a'];
-      for (let i = -1; i < 8; i++) { const y = ((i * 320 - off) % (320 * 6) + 320 * 6) % (320 * 6) - 320; caja(ctx, -10, y, W + 20, 320, 0, capas[((i % 6) + 6) % 6], 6); for (let j = 0; j < 5; j++) circ(ctx, hs(i * 7 + j) * W, y + 60 + hs(j + i) * 200, 20 + hs(j * 3 + i) * 30, 'rgba(0,0,0,0.15)', 0); }
-      K.speedLines(ctx, W / 2, 1000, a.t, 0.6); cuchara(ctx, a, W / 2, 1050, 0.6, Math.PI); }, { ...V, de: 1, a: 1.05, foco: [W / 2, 1000], temblor: 2 });
-    titular(ctx, a, 'TILES.', W / 2, 260, { size: 130 }); titular(ctx, a, 'BEDROCK.', W / 2, 420, { size: 150, col: '#ffd93d', p0: 0.4 }); },
-  // 8 — Hacia abajo, hacia el centro de la Tierra
-  8: (ctx, a, K) => { K.camara(ctx, a, () => corteTierra(ctx, a, sm(ph(a, 0.05, 0.95))), { ...V, de: 1, a: 1.08, foco: [W / 2, 1150] });
-    titular(ctx, a, 'TO THE CENTER', W / 2, 260, { size: 120 }); titular(ctx, a, 'OF THE EARTH', W / 2, 400, { size: 110, col: '#ff8a3d', p0: 0.3 }); },
-  // 9 — ¿La estrella de origen? Doce millas de ancho
-  9: (ctx, a, K) => { const k = sm(ph(a, 0.1, 0.7));
-    K.camara(ctx, a, () => { cielo(ctx, '#05071a', '#141a44'); estrellas(ctx, a, 120); const r = 260; const g = ctx.createRadialGradient(W / 2, 1050, 10, W / 2, 1050, r * 2); g.addColorStop(0, '#ffffff'); g.addColorStop(0.25, '#8fe3ff'); g.addColorStop(1, 'rgba(42,123,255,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); circ(ctx, W / 2, 1050, r, '#bdf0ff', 8);
-      ctx.save(); ctx.translate(W / 2, 1050); ctx.rotate(a.t * 2); ln(ctx, [[0, -700], [0, 700]], 'rgba(143,227,255,0.5)', 30); ctx.restore();
-      if (k > 0) { ln(ctx, [[W / 2 - r, 1400], [W / 2 - r + 2 * r * k, 1400]], '#ffd93d', 10); } }, { ...V, de: 1, a: 1.1, foco: [W / 2, 1050] });
-    titular(ctx, a, 'THE STAR?', W / 2, 280, { size: 150 }); K.etiqueta(ctx, a, '12 MILES WIDE', W / 2, 1500, { size: 64, p0: 0.5 }); },
+export default {
+  // 0 — Esta cuchara pesa más que todos los humanos juntos
+  0: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: lerp(1, 1.08, u), fx: 560, fy: 1300, t };
+    laboratorio(ctx, t, cam);
+    capa(ctx, cam, 1, () => {
+      mesaLab(ctx, 540, 1250, 520);
+      personaje(ctx, t, TOM, 830, SUELO + 40, 0.95, { mood: t > 1 ? 'sorpresa' : 'neutral', mira: [-0.8, -0.2], manoI: [-90, -150], manoD: [110, -110] });
+      const sub = ease(ph(t, 0.1, 0.8));
+      const p = personaje(ctx, t, DRA, 290, SUELO + 60, 1.05, { mood: 'feliz', habla: t > 0.3, mira: [0.6, -0.4], manoI: [-120, -110], manoD: [lerp(110, 150, sub), lerp(-120, -330, sub)] });
+      cuchara(ctx, t, p.manoD[0] + 10, p.manoD[1] - 40, 0.42, 0.25);
+    });
+    rotulo(ctx, 0.1, t, 'THIS SPOON', 540, 270, 150); rotulo(ctx, 0.7, t, 'OUTWEIGHS', 540, 430, 110, '#ffd93d'); rotulo(ctx, 1.1, t, 'EVERY HUMAN', 540, 560, 120, '#8fe3ff'); },
+
+  // 1 — Mil millones de toneladas (balanza: cuchara contra toda la humanidad)
+  1: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: 1.04, fx: 540, fy: 1200, t };
+    laboratorio(ctx, t, cam);
+    capa(ctx, cam, 1, () => { const ang = lerp(0, -0.26, back(ph(t, 0.3, 1.1)));
+      balanza(ctx, t, 560, 1060, ang, (c) => { cuchara(c, t, 0, 100, 0.32, 0); }, (c) => gente(c, t, 24), 0.62);
+      personaje(ctx, t, TOM, 870, SUELO + 40, 0.8, { mood: 'sorpresa', mira: [-1, -0.6], manoI: [-60, -330], manoD: [60, -330], salto: Math.abs(Math.sin(ph(t, 1, 1.5) * Math.PI)) * 30 });
+      personaje(ctx, t, DRA, 250, SUELO + 60, 0.85, { mood: 'feliz', habla: true, mira: [1, -0.5], manoI: [-110, -120], manoD: [160, -260] });
+    });
+    rotulo(ctx, 0.2, t, '1 BILLION', 540, 290, 170, '#8fe3ff'); rotulo(ctx, 0.6, t, 'TONS', 540, 470, 170, '#ffd93d'); },
+
+  // 2 — Agarras el mango y la mesa cruje
+  2: (ctx, a) => { const t = a.t, u = U(a); const dobla = ease(ph(t, 0.4, 1.2)) * 110;
+    const cam = { z: 1.12, fx: 600, fy: 1300, t, temblor: t > 0.4 && t < 1.4 ? 5 : 0 };
+    laboratorio(ctx, t, cam);
+    capa(ctx, cam, 1, () => { mesaLab(ctx, 600, 1250, 560, dobla);
+      const susto = t > 0.7;
+      personaje(ctx, t, TOM, 880, SUELO + 40, 0.95, { mood: susto ? 'miedo' : 'neutral', mira: [-1, 0.6], manoI: susto ? [-60, -380] : [-90, -150], manoD: susto ? [60, -380] : [110, -110] });
+      cuchara(ctx, t, 600, 1225 + dobla, 0.42, Math.PI / 2 - 0.15);
+      personaje(ctx, t, DRA, 330, SUELO + 60, 1.05, { mood: susto ? 'sorpresa' : 'neutral', mira: [1, 0.8], manoI: [-120, -110], manoD: [190, -170 + dobla * 0.6] });
+      if (t > 0.5) rotulo(ctx, 0.5, t, 'CREEEAK!', 720, 980, 96, '#ffb347');
+    });
+    rotulo(ctx, 0.1, t, 'THE TABLE', 540, 290, 140); rotulo(ctx, 0.5, t, 'GROANS', 540, 450, 150, '#ffb347'); },
+
+  // 3 — El brazo no se mueve
+  3: (ctx, a) => { const t = a.t, u = U(a); const tira = Math.sin(t * 22) * 5;
+    const cam = { z: lerp(1.18, 1.28, u), fx: 600, fy: 1300, t, temblor: 2 };
+    laboratorio(ctx, t, cam);
+    capa(ctx, cam, 1, () => { mesaLab(ctx, 640, 1250, 560, 110); cuchara(ctx, t, 640, 1335, 0.42, Math.PI / 2 - 0.15);
+      personaje(ctx, t, DRA, 330 + tira, SUELO + 60, 1.05, { mood: 'esfuerzo', mira: [1, 0.5], incl: -0.16, cabeza: -0.08, manoI: [170, -120], manoD: [200, -140] });
+      personaje(ctx, t, TOM, 870, SUELO + 40, 0.95, { mood: 'sorpresa', mira: [-1, 0.3], manoI: [-140, -260], manoD: [100, -110] });
+    });
+    rotulo(ctx, 0.1, t, 'NOT ONE', 540, 280, 150); rotulo(ctx, 0.45, t, 'INCH', 540, 450, 190, '#ff6b3d'); },
+
+  // 4 — Ninguna grúa podría levantarla
+  4: (ctx, a) => { const t = a.t, u = U(a); const dobla = ease(ph(t, 0.4, 1.6)); const cam = { z: 1.02, fx: 540, fy: 1250, t, temblor: dobla > 0 && dobla < 1 ? 3 : 0 };
+    exterior(ctx, t, cam, { cielo: 'dia', suelo: 'cemento' });
+    capa(ctx, cam, 1, () => { const [gx, gy] = grua(ctx, t, 220, SUELO + 20, 0.75, dobla, 380);
+      ctx.strokeStyle = '#333'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(gx, gy); ctx.lineTo(gx, SUELO - 10); ctx.stroke();
+      cuchara(ctx, t, gx, SUELO - 20, 0.42, Math.PI / 2);
+      personaje(ctx, t, TOM, 880, SUELO + 40, 0.8, { mood: dobla > 0.5 ? 'miedo' : 'sorpresa', mira: [-1, 0], manoI: [-60, -330], manoD: [80, -330] });
+      if (dobla > 0.3) impacto(ctx, t, 560, 760, (t * 1.5) % 1, 80, '#ff6b3d');
+    });
+    rotulo(ctx, 0.1, t, 'NO CRANE', 540, 290, 160); rotulo(ctx, 0.5, t, 'CAN LIFT IT', 540, 460, 120, '#ffd93d'); },
+
+  // 5 — La sueltas... y no llega a tocar el suelo
+  5: (ctx, a) => { const t = a.t, u = U(a); const cae = ease(ph(t, 0.3, 1.3)); const cam = { z: lerp(1.05, 1.15, u), fx: 600, fy: 1350, t };
+    laboratorio(ctx, t, cam);
+    capa(ctx, cam, 1, () => { hueco(ctx, t, 620, ease(ph(t, 1.1, 1.3)));
+      if (cae < 1) { ctx.save(); ctx.beginPath(); ctx.rect(-400, -400, W + 800, SUELO + 440); ctx.clip(); cuchara(ctx, t, 620, lerp(1000, SUELO + 240, cae), 0.42, Math.PI); ctx.restore(); }
+      const mira = t > 1.1;
+      personaje(ctx, t, DRA, 330, SUELO + 60, 1.05, { mood: mira ? 'sorpresa' : 'neutral', mira: [1, mira ? 1 : -0.2], manoI: [-120, -110], manoD: t < 0.3 ? [260, -440] : [200, -360] });
+      personaje(ctx, t, TOM, 880, SUELO + 40, 0.95, { mood: mira ? 'miedo' : 'neutral', mira: [-1, 1], manoI: [-120, -300], manoD: [110, -300] });
+    });
+    rotulo(ctx, 0.2, t, 'LET GO...', 540, 290, 150); rotulo(ctx, 0.9, t, 'NO THUD', 540, 460, 150, '#8fe3ff'); },
+
+  // 6 — Lo atraviesa (primer plano del agujero, se asoman)
+  6: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: lerp(1.3, 1.45, u), fx: 600, fy: 1420, t };
+    laboratorio(ctx, t, cam);
+    capa(ctx, cam, 1, () => { hueco(ctx, t, 600, 1.1);
+      for (let i = 0; i < 10; i++) { const k = ((t * 0.8 + hash(i)) % 1); ctx.globalAlpha = 1 - k; ctx.fillStyle = '#b9a58a'; ctx.fillRect(560 + hash(i + 3) * 80, SUELO + 40 + k * 60, 14, 10); } ctx.globalAlpha = 1;
+      personaje(ctx, t, DRA, 400, SUELO + 60, 1, { mood: 'sorpresa', mira: [1, 1], incl: 0.22, cabeza: 0.15, manoI: [-60, -200], manoD: [120, -150] });
+      personaje(ctx, t, TOM, 800, SUELO + 40, 0.95, { mood: 'miedo', mira: [-1, 1], incl: -0.22, cabeza: -0.15, manoI: [-100, -150], manoD: [60, -200] });
+    });
+    rotulo(ctx, 0.1, t, 'IT GOES', 540, 290, 150); rotulo(ctx, 0.4, t, 'THROUGH', 540, 460, 170, '#ff6b3d'); },
+
+  // 7 — Atraviesa las baldosas y la roca (corte del subsuelo bajando)
+  7: (ctx, a) => { const t = a.t, u = U(a); const off = u * 1400;
+    ctx.fillStyle = '#b9a58a'; ctx.fillRect(0, 0, W, H);
+    const capas = [['#b9a58a', 'TILES'], ['#6b4a34', 'DIRT'], ['#8a7a6a', 'CLAY'], ['#5a5a66', 'BEDROCK'], ['#4a4050', 'DEEPER'], ['#7a3a2a', 'MANTLE']];
+    capas.forEach(([c, n], i) => { const y = i * 520 - off + 200; ctx.fillStyle = c; ctx.fillRect(0, y, W, 520); for (let j = 0; j < 30; j++) { ctx.fillStyle = 'rgba(0,0,0,0.12)'; ctx.beginPath(); ctx.ellipse(hash(i * 40 + j) * W, y + hash(i * 40 + j + 7) * 520, 20 + hash(j) * 40, 10 + hash(j + 1) * 16, 0, 0, 7); ctx.fill(); } texto(ctx, n, 160, y + 80, 60, 'rgba(255,255,255,0.85)', 'left'); });
+    ctx.fillStyle = 'rgba(150,230,255,0.35)'; ctx.fillRect(520, 0, 40, 1100);
+    cuchara(ctx, t, 540, 1150 + Math.sin(t * 8) * 6, 0.62, Math.PI);
+    for (let i = 0; i < 12; i++) { const k = (t * 2 + hash(i)) % 1; ctx.fillStyle = '#d9c9b0'; ctx.fillRect(480 + hash(i + 2) * 120, 1250 - k * 500, 14, 10); }
+    rotulo(ctx, 0.1, t, 'THROUGH', 540, 280, 140); rotulo(ctx, 0.4, t, 'SOLID ROCK', 540, 440, 140, '#ffd93d'); },
+
+  // 8 — Hacia el centro de la Tierra
+  8: (ctx, a) => { const t = a.t, u = U(a); espacio(ctx, t, { z: 1, fx: 540, fy: 960, t });
+    corteTierra(ctx, t, 540, 1180, 440, ease(u), (x, y) => cuchara(ctx, t, x, y, 0.28, Math.PI));
+    texto(ctx, 'CORE', 540, 1270, 52, '#fff7c0');
+    rotulo(ctx, 0.1, t, "TO EARTH'S", 540, 290, 140); rotulo(ctx, 0.4, t, 'CORE', 540, 460, 190, '#ff6b3d'); },
+
+  // 9 — La estrella mide 20 km de ancho
+  9: (ctx, a) => { const t = a.t, u = U(a); espacio(ctx, t, { z: lerp(1, 1.06, u), fx: 540, fy: 1100, t });
+    const r = 230 * back(ph(t, 0, 0.6)); estrellaN(ctx, t, 540, 1150, r);
+    const k = ease(ph(t, 0.6, 1.2)); ctx.strokeStyle = '#ffd93d'; ctx.lineWidth = 8; ctx.beginPath(); ctx.moveTo(540 - 230 * k, 1450); ctx.lineTo(540 + 230 * k, 1450); ctx.moveTo(540 - 230 * k, 1420); ctx.lineTo(540 - 230 * k, 1480); ctx.moveTo(540 + 230 * k, 1420); ctx.lineTo(540 + 230 * k, 1480); ctx.stroke();
+    if (k > 0.5) texto(ctx, '12 MILES', 540, 1540, 80, '#ffd93d');
+    rotulo(ctx, 0.1, t, 'THE STAR IS', 540, 290, 130); rotulo(ctx, 0.5, t, 'TINY', 540, 460, 190, '#8fe3ff'); },
+
   // 10 — Más pequeña que una ciudad, más pesada que el Sol
-  10: (ctx, a, K) => { const k = sm(ph(a, 0.4, 0.8));
-    K.camara(ctx, a, () => { cielo(ctx, '#1b2150', '#3a4a8a'); for (let i = 0; i < 9; i++) caja(ctx, 80 + i * 105, 1500 - 120 - hs(i) * 280, 90, 120 + hs(i) * 280, 6, '#5a6a9a', 6);
-      circ(ctx, 300, 1150, 110, '#bdf0ff', 8); ctx.fillStyle = INK; ctx.font = '48px Anton'; ctx.textAlign = 'center'; ctx.fillText('STAR', 300, 1166);
-      ctx.save(); ctx.globalAlpha = k; circ(ctx, 760, 800, 260, '#ffd23d', 8); ctx.fillStyle = INK; ctx.font = '90px Anton'; ctx.fillText('SUN', 760, 830); ctx.font = '70px Anton'; ctx.fillText('< LIGHTER', 760, 1130); ctx.restore(); }, { ...V, de: 1, a: 1.05, foco: [W / 2, 1100] });
-    titular(ctx, a, '< A CITY', W / 2, 260, { size: 130 }); titular(ctx, a, '> OUR SUN', W / 2, 1780 - 60, { size: 140, col: '#ffd93d', p0: 0.45 }); },
-  // 11 — Y por eso exactamente... (bucle: la cuchara brilla de nuevo)
-  11: (ctx, a, K) => { const { YOU } = cast(K);
-    K.camara(ctx, a, () => { const gy = cocina(ctx, a); D(K, ctx, a, YOU, 330, gy, 1.8, { pose: 'senala', mood: 'sorpresa', mira: 1 }); cuchara(ctx, a, 720, 1100, 0.9, 0); K.sparkles(ctx, 720, 1060, a.t, 8, 160); }, { ...V, de: 1, a: 1.15, foco: [600, 1100] });
-    titular(ctx, a, "AND THAT'S WHY...", W / 2, 300, { size: 110, col: '#ffd93d' }); },
+  10: (ctx, a) => { const t = a.t, u = U(a); espacio(ctx, t, { z: 1, fx: 540, fy: 960, t });
+    if (u < 0.5) { ciudad(ctx, t, 540, 1500, 900, 1.1); estrellaN(ctx, t, 540, 1080, 150 * back(ph(t, 0.1, 0.5))); rotulo(ctx, 0.1, t, 'SMALLER THAN', 540, 290, 130); rotulo(ctx, 0.3, t, 'A CITY', 540, 460, 170, '#8fe3ff'); }
+    else { const t2 = t - a.d * 0.5; const ang = lerp(0, -0.25, back(ph(t2, 0.1, 0.8)));
+      balanza(ctx, t, 540, 1000, ang, (c) => estrellaN(c, t, 0, 110, 40), (c) => sol(c, t, 0, 30, 140));
+      rotulo(ctx, 0, t2, 'HEAVIER THAN', 540, 290, 130); rotulo(ctx, 0.2, t2, 'THE SUN', 540, 460, 170, '#ffc93d'); } },
+
+  // 11 — Y por eso mismo… (vuelve al laboratorio: bucle)
+  11: (ctx, a) => { const t = a.t, u = U(a); const cam = { z: lerp(1.1, 1.0, u), fx: 560, fy: 1300, t };
+    laboratorio(ctx, t, cam);
+    capa(ctx, cam, 1, () => { mesaLab(ctx, 540, 1250, 520); cuchara(ctx, t, 540, 1225, 0.42, Math.PI / 2 - 0.15);
+      personaje(ctx, t, DRA, 290, SUELO + 60, 1.05, { habla: true, mira: [0.8, 0.2], manoI: [-120, -110], manoD: [170, -280] });
+      personaje(ctx, t, TOM, 830, SUELO + 40, 0.95, { mood: 'sorpresa', mira: [-0.8, 0.4], manoI: [-150, -200], manoD: [110, -110] });
+      signo(ctx, t, 0.3, 830, 760, '?', '#ffd93d');
+    });
+    rotulo(ctx, 0.1, t, "AND THAT'S", 540, 290, 140); rotulo(ctx, 0.4, t, 'EXACTLY WHY...', 540, 450, 110, '#ffd93d'); },
 };
-const BASE = (fn) => (ctx, a, K) => { cielo(ctx, '#1b2150', '#4a3a8a'); fn(ctx, a, K); };
-export default Object.fromEntries(Object.entries(PLANOS).map(([k, f]) => [k, BASE(f)]));

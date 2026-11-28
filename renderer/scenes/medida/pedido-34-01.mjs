@@ -1,94 +1,117 @@
-// pedido-34-01 — "The 382-Day Fast" (Short vertical, estilo nuevo). Persona real → personaje genérico.
-import { W, H, INK, V, sm, lerp, ph, hs, fondo, D, cielo, ln, circ, caja, titular, sello } from '../../lib/corto.mjs';
+// pedido-34-01 — el ayuno de 382 días — estilo PAPEL (un plano por frase)
+import { W, H, lerp, ease, back, ph, clamp, REPARTO, personaje, capa, SUELO, rotulo, texto, exterior, consulta, bascula, tienda,
+  mostrador, pescado, pantalla, salaLab, signo, impacto, rr, volumen, elipse, hash, casa, pared, suelo, lamparas } from '../../lib/papel.mjs';
+const { GRANDE, MEDICO } = REPARTO;
+const U = (a) => clamp(a.t / a.d);
+const AN = 1.6; // anchura al principio
+function plato(ctx, x, y, cosas = 'comida', s = 1) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); elipse(ctx, 0, 0, 150, 38, '#fbfbf7', 4); elipse(ctx, 0, -4, 110, 26, '#eceae2', 2);
+  if (cosas === 'comida') { elipse(ctx, -40, -24, 60, 30, '#c9853a', 4); for (let i = 0; i < 6; i++) { rr(ctx, 10 + i * 14, -50, 12, 46, 4); ctx.fillStyle = '#f2c34a'; ctx.fill(); ctx.strokeStyle = '#2a2026'; ctx.lineWidth = 2; ctx.stroke(); } }
+  if (cosas === 'huevo') { ctx.beginPath(); ctx.ellipse(-50, -40, 34, 44, 0, 0, 7); volumen(ctx, '#fff8ec', -84, -84, 68, 88, 4); rr(ctx, 10, -60, 100, 60, 18); volumen(ctx, '#e8c088', 10, -60, 100, 60, 4); rr(ctx, 22, -48, 76, 40, 12); ctx.fillStyle = '#fbefd8'; ctx.fill(); }
+  ctx.restore(); }
+function mesa(ctx, x, y, w) { rr(ctx, x - w / 2, y, w, 30, 8); volumen(ctx, '#a7744c', x - w / 2, y, w, 30, 4); for (const k of [-1, 1]) { rr(ctx, x + k * (w / 2 - 40) - 10, y + 30, 20, SUELO - y - 30, 4); volumen(ctx, '#7f5638', x + k * (w / 2 - 40) - 10, y + 30, 20, SUELO - y, 3); } }
+function cocina(ctx, t, cam, deco) { pared(ctx, t, cam, '#f3e2c4', '#fbeedb', '#c9a27a', () => { rr(ctx, 640, 360, 260, 300, 10); volumen(ctx, '#bfe2f2', 640, 360, 260, 300, 5); ctx.strokeStyle = '#fff'; ctx.lineWidth = 12; ctx.beginPath(); ctx.moveTo(770, 360); ctx.lineTo(770, 660); ctx.moveTo(640, 510); ctx.lineTo(900, 510); ctx.stroke(); if (deco) deco(); }); lamparas(ctx, cam, [540], '#c0763a'); suelo(ctx, cam, 'madera'); }
+function calendario(ctx, x, y, n, s = 1) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); rr(ctx, -160, -200, 320, 380, 20); volumen(ctx, '#fbfaf6', -160, -200, 320, 380, 5); rr(ctx, -160, -200, 320, 100, 20); ctx.fillStyle = '#d64545'; ctx.fill(); texto(ctx, 'DAY', 0, -150, 50, '#fff'); texto(ctx, String(n), 0, 50, n > 99 ? 110 : n > 9 ? 150 : 200, '#231a24'); ctx.restore(); }
+function taza(ctx, x, y, col) { rr(ctx, x - 50, y - 90, 100, 90, 14); volumen(ctx, col, x - 50, y - 90, 100, 90, 4); ctx.beginPath(); ctx.arc(x + 54, y - 46, 26, -1.4, 1.4); ctx.strokeStyle = col; ctx.lineWidth = 12; ctx.stroke(); }
+function vaso(ctx, t, x, y) { rr(ctx, x - 44, y - 140, 88, 140, 8); volumen(ctx, 'rgba(200,235,255,0.8)', x - 44, y - 140, 88, 140, 4); for (let i = 0; i < 6; i++) { const k = (t * 1.2 + hash(i)) % 1; ctx.beginPath(); ctx.arc(x - 30 + hash(i + 3) * 60, y - 10 - k * 120, 6, 0, 7); ctx.strokeStyle = '#fff'; ctx.lineWidth = 3; ctx.stroke(); } }
+function pastilla(ctx, x, y, r = 0) { ctx.save(); ctx.translate(x, y); ctx.rotate(r); rr(ctx, -50, -22, 100, 44, 22); volumen(ctx, '#f2f2f2', -50, -22, 100, 44, 4); rr(ctx, 0, -22, 50, 44, 22); ctx.fillStyle = '#e85a5a'; ctx.fill(); ctx.restore(); }
+function certificado(ctx, x, y, k, l1, l2, l3) { ctx.save(); ctx.translate(x, lerp(y + 400, y, k)); ctx.rotate(0.05); rr(ctx, -210, -150, 420, 300, 12); volumen(ctx, '#fff6d8', -210, -150, 420, 300, 6); ctx.strokeStyle = '#c9a24a'; ctx.lineWidth = 10; ctx.strokeRect(-188, -128, 376, 256); texto(ctx, l1, 0, -70, 50, '#7a5a1a'); texto(ctx, l2, 0, 20, 96, '#c0392b'); texto(ctx, l3, 0, 100, 36, '#333'); ctx.restore(); }
+const PG = (t, extra = {}) => ({ ancho: AN, mood: 'neutral', mira: [0.5, -0.2], manoI: [-150, -110], manoD: [150, -110], ...extra });
 
-let CAST = null;
-function cast(K) {
-  if (CAST) return CAST;
-  const sin = { sombrero: null, corbata: null, barba: false, bigote: false };
-  const [MAN, DOC, DAD] = K.reparto('pedido-34', 3, [
-    { ...sin, estilo: 'gordito', pelo: 'raya', peloCol: '#6a3a1a', ropa: '#3aa7a3' },
-    { ...sin, estilo: 'limpio', pelo: 'corto', peloCol: '#d9d9d9', ropa: '#ffffff', bigote: true },
-    { ...sin, estilo: 'gordito', pelo: 'calvo', peloCol: '#7a7a7a', ropa: '#e63946', bigote: true },
-  ]);
-  return (CAST = { MAN, DOC, DAD });
-}
-// El protagonista adelgaza: escala horizontal según peso (456 → 180)
-function hombre(K, ctx, a, x, gy, s, peso, o = {}) { const f = lerp(0.72, 1.35, (peso - 180) / (456 - 180)); ctx.save(); ctx.translate(x, gy); ctx.scale(f, 1); D(K, ctx, a, cast(K).MAN, 0, 0, s, { sombra: true, ...o }); ctx.restore(); }
-function calendario(ctx, x, y, n, s = 1, txt = 'DAY') { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); caja(ctx, -150, -160, 300, 320, 24, '#ffffff', 9); caja(ctx, -150, -160, 300, 80, [24, 24, 0, 0], '#e63946', 9); ctx.fillStyle = '#fff'; ctx.font = '54px Anton'; ctx.textAlign = 'center'; ctx.fillText(txt, 0, -102); ctx.fillStyle = INK; ctx.font = (String(n).length > 2 ? 150 : 190) + 'px Anton'; ctx.fillText(String(n), 0, 120); ctx.restore(); }
-function bascula(ctx, x, y, v) { caja(ctx, x - 180, y - 60, 360, 70, 20, '#d9dde3', 8); caja(ctx, x - 110, y - 50, 220, 50, 10, '#2b2d42', 5); ctx.fillStyle = '#6bff8a'; ctx.font = '44px Anton'; ctx.textAlign = 'center'; ctx.fillText(v + ' LB', x, y - 10); }
-function plato(ctx, x, y, s = 1) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.fillStyle = '#ffffff'; ctx.strokeStyle = INK; ctx.lineWidth = 7; ctx.beginPath(); ctx.ellipse(0, 0, 160, 50, 0, 0, 7); ctx.fill(); ctx.stroke(); ctx.restore(); }
-function huevo(ctx, x, y, s = 1) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.fillStyle = '#fffaf0'; ctx.strokeStyle = INK; ctx.lineWidth = 6; ctx.beginPath(); ctx.ellipse(0, -30, 46, 60, 0, 0, 7); ctx.fill(); ctx.stroke(); ctx.restore(); }
-function tostada(ctx, x, y, s = 1) { ctx.save(); ctx.translate(x, y); ctx.scale(s, s); caja(ctx, -60, -110, 120, 110, 30, '#e7b46a', 6); caja(ctx, -44, -94, 88, 80, 20, '#ffe2a8', 0); ctx.restore(); }
-function hospital(ctx, a) { const gy = fondo(ctx, a, 'despacho', { hora: 'dia' }, { cx: 540 }); return gy; }
+export default {
+  // 0 — Deja de comer. 382 días
+  0: (ctx, a) => { const t = a.t; const k = ease(ph(t, 0.3, 1.1)); const cam = { z: lerp(1, 1.06, U(a)), fx: 540, fy: 1200, t };
+    cocina(ctx, t, cam);
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 330, SUELO + 40, 1.05, PG(t, { mood: 'esfuerzo', manoD: [lerp(170, 300, k), -330] })); mesa(ctx, 680, 1120, 520); plato(ctx, lerp(560, 780, k), 1110); });
+    rotulo(ctx, 0.05, t, 'STOP EATING', 540, 270, 140); rotulo(ctx, 0.6, t, '382 DAYS', 540, 440, 170, '#ffd93d'); },
 
-const PLANOS = {
-  // 0 — Dejas de comer. Un hombre lo hizo 382 días.
-  0: (ctx, a, K) => { const n = Math.max(1, Math.round(sm(ph(a, 0.15, 0.85)) * 382));
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'salon', { hora: 'dia' }, { cx: 540 }); plato(ctx, 300, gy - 260, 0.8); ln(ctx, [[180, gy - 380], [420, gy - 160]], '#ff3b4e', 16);
-      hombre(K, ctx, a, 700, gy, 1.6, 456, { pose: 'cruza', mood: 'decidido', mira: -1 }); calendario(ctx, 760, 820, n, 0.9); }, { ...V, de: 1, a: 1.1, foco: [W / 2, 1100] });
-    titular(ctx, a, 'STOP EATING', W / 2, 260, { size: 140 }); titular(ctx, a, '382 DAYS', W / 2, 430, { size: 160, col: '#ffd93d', p0: 0.35 }); },
-  // 1 — Los médicos le dejaron
-  1: (ctx, a, K) => { const { DOC } = cast(K);
-    K.camara(ctx, a, () => { const gy = hospital(ctx, a); hombre(K, ctx, a, 330, gy, 1.5, 456, { pose: 'quieto', mood: 'neutral', mira: 1 }); D(K, ctx, a, DOC, 780, gy, 1.55, { pose: 'senala', mood: 'feliz', mira: -1, habla: true }); K.globo(ctx, a, 'OK!', 780, 900, { p0: 0.35 }); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1200] });
-    titular(ctx, a, 'DOCTORS', W / 2, 260, { size: 150 }); titular(ctx, a, 'LET HIM', W / 2, 420, { size: 150, col: '#6bcb77', p0: 0.3 }); },
-  // 2 — Hora 24: el azúcar se acaba; quemas grasa (depósito de azúcar se vacía, llama sobre la grasa)
-  2: (ctx, a, K) => { const k = sm(ph(a, 0.05, 0.6));
-    K.camara(ctx, a, () => { cielo(ctx, '#2b2d42', '#4a4f7a'); caja(ctx, 160, 700, 300, 600, 40, '#ffffff', 9); caja(ctx, 172, 700 + 588 * k, 276, 588 * (1 - k) + 1, 30, '#ff8cc6', 0); caja(ctx, 160, 700, 300, 600, 40, null, 9);
-      ctx.fillStyle = '#fff'; ctx.font = '60px Anton'; ctx.textAlign = 'center'; ctx.fillText('SUGAR', 310, 1380);
-      caja(ctx, 600, 900, 340, 400, 120, '#ffe08a', 9); ctx.fillStyle = INK; ctx.fillText('FAT', 770, 1120); if (k > 0.7) K.prop(ctx, 'fuego', 770, 880, 0.7, a.t); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1000] });
-    titular(ctx, a, 'HOUR 24', W / 2, 260, { size: 160, col: '#ffd93d' }); K.etiqueta(ctx, a, 'NOW YOU BURN FAT', W / 2, 1550, { size: 56, p0: 0.6 }); },
+  // 1 — Y los médicos le dejaron
+  1: (ctx, a) => { const t = a.t; const cam = { z: 1.04, fx: 540, fy: 1200, t };
+    consulta(ctx, t, cam);
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 330, SUELO + 40, 1.05, PG(t, { mood: 'sorpresa', mira: [1, -0.2] })); personaje(ctx, t, MEDICO, 790, SUELO + 40, 1, { mood: 'feliz', habla: true, mira: [-1, -0.1], manoI: [-170, -330], manoD: [120, -110], incl: Math.sin(t * 4) * 0.03 });
+      signo(ctx, t, 0.6, 620, 760, 'OK', '#8fe39a'); });
+    rotulo(ctx, 0.05, t, 'DOCTORS', 540, 270, 150); rotulo(ctx, 0.5, t, 'SAID YES', 540, 440, 150, '#8fe39a'); },
+
+  // 2 — Hora 24: se acaba el azúcar, quema grasa
+  2: (ctx, a) => { const t = a.t; const k = ease(ph(t, 0.2, 1.5)); const cam = { z: 1.04, fx: 540, fy: 1200, t };
+    consulta(ctx, t, cam, () => pantalla(ctx, t, 520, 330, 460, 330, (c, x, y, w, h) => { texto(c, 'SUGAR', x + 110, y + 50, 46, '#fff'); rr(c, x + 60, y + 90, 100, 210, 14); c.fillStyle = '#233'; c.fill(); rr(c, x + 60, y + 90 + 210 * k, 100, 210 * (1 - k), 14); c.fillStyle = '#ffd93d'; c.fill();
+      texto(c, 'FAT', x + 330, y + 50, 46, '#fff'); for (let i = 0; i < 4; i++) { const fh = (40 + 30 * Math.sin(t * 12 + i)) * k; c.beginPath(); c.moveTo(x + 270 + i * 40, y + 290); c.quadraticCurveTo(x + 280 + i * 40, y + 290 - fh * 2, x + 290 + i * 40, y + 290); c.fillStyle = i % 2 ? '#ff7a2a' : '#ffc93d'; c.fill(); } }));
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 330, SUELO + 40, 1.05, PG(t, { mira: [1, -0.6] })); });
+    rotulo(ctx, 0.05, t, 'HOUR 24', 540, 800, 150, '#ffd93d'); rotulo(ctx, 1.1, t, 'BURNING FAT', 540, 940, 120, '#ff9a5a'); },
+
   // 3 — Día 3: aliento afrutado, el cerebro funciona con grasa
-  3: (ctx, a, K) => { K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'salon', { hora: 'dia' }, { cx: 600 }); const y = (() => { hombre(K, ctx, a, 330, gy, 1.7, 430, { pose: 'quieto', mood: 'feliz', mira: 1, habla: true }); return null; })();
-      for (let i = 0; i < 5; i++) { const f = (a.t * 0.5 + i / 5) % 1; ctx.save(); ctx.globalAlpha = 1 - f; circ(ctx, 520 + f * 300, 900 - f * 200, 26 + f * 20, i % 2 ? '#ffb3d1' : '#ffd166', 4); ctx.restore(); }
-      K.prop(ctx, 'cerebro', 820, 600, 0.6, a.t); ctx.fillStyle = INK; ctx.font = '50px Anton'; ctx.textAlign = 'center'; ctx.fillText('RUNS ON FAT', 820, 780); }, { ...V, de: 1, a: 1.1, foco: [W / 2, 1100] });
-    calendario(ctx, W / 2, 330, 3, 0.7); titular(ctx, a, 'FRUITY BREATH', W / 2, 600, { size: 90, col: '#ff8cc6', p0: 0.3 }); },
-  // 4 — El hambre se apaga
-  4: (ctx, a, K) => { const k = ph(a, 0.2, 0.7);
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'salon', { hora: 'tarde' }, { cx: 600 }); hombre(K, ctx, a, W / 2, gy, 1.8, 420, { pose: 'quieto', mood: k > 0.5 ? 'feliz' : 'triste', mira: 0 });
-      ctx.save(); ctx.globalAlpha = 1 - k; K.prop(ctx, 'estomago', W / 2, 700, 0.6, a.t); ctx.fillStyle = INK; ctx.font = '70px Anton'; ctx.textAlign = 'center'; ctx.fillText('GRRR', W / 2, 560); ctx.restore(); }, { ...V, de: 1, a: 1.12, foco: [W / 2, 1100] });
-    titular(ctx, a, 'HUNGER', W / 2, 260, { size: 160 }); titular(ctx, a, 'FADES', W / 2, 430, { size: 160, col: '#8fe3ff', p0: 0.4 }); },
-  // 5 — Dundee, Escocia, 1965, 456 libras (báscula)
-  5: (ctx, a, K) => { const v = Math.round(sm(ph(a, 0.1, 0.6)) * 456);
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'calle', { hora: 'nublado' }, { cx: 400 }); bascula(ctx, W / 2, gy + 10, v); hombre(K, ctx, a, W / 2, gy - 50, 1.7, 456, { pose: 'quieto', mood: 'duda', mira: 0 }); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1200] });
-    K.contador(ctx, a, 'DUNDEE · 1965', W / 2, 200, { size: 60 }); titular(ctx, a, '456 LB', W / 2, 380, { size: 180, col: '#ffd93d', p0: 0.5 }); },
-  // 6 — Los médicos esperan unos días. Sigues.
-  6: (ctx, a, K) => { const { DOC } = cast(K); const n = Math.round(lerp(3, 60, sm(ph(a, 0.2, 0.9))));
-    K.camara(ctx, a, () => { const gy = hospital(ctx, a); D(K, ctx, a, DOC, 260, gy, 1.5, { pose: 'sorpresa', mood: n > 20 ? 'sorpresa' : 'neutral', mira: 1 }); hombre(K, ctx, a, 720, gy, 1.5, lerp(450, 400, n / 60), { pose: 'anda', mood: 'decidido', mira: 1 }); calendario(ctx, 760, 760, n, 0.6); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1150] });
-    titular(ctx, a, 'A FEW DAYS?', W / 2, 260, { size: 130 }); titular(ctx, a, 'KEEP GOING', W / 2, 420, { size: 130, col: '#6bcb77', p0: 0.4 }); },
-  // 7 — Té, café, agua con gas, vitaminas (aparecen uno a uno)
-  7: (ctx, a, K) => { K.camara(ctx, a, () => { cielo(ctx, '#fff4e0', '#ffe0c2'); [['cafe', 'TEA', 0.05], ['cafe', 'COFFEE', 0.25], ['vaso_agua', 'SPARKLING', 0.45], ['pastilla', 'VITAMINS', 0.65]].forEach(([p, t, p0], i) => { const k = sm(ph(a, p0, p0 + 0.15)); if (k <= 0) return; const x = 290 + (i % 2) * 500, y = 760 + Math.floor(i / 2) * 520; ctx.save(); ctx.translate(x, y); ctx.scale(k, k); K.prop(ctx, p, 0, 0, 0.75, a.t); if (i === 2) K.sparkles(ctx, 0, -60, a.t, 5, 60); ctx.fillStyle = INK; ctx.font = '64px Anton'; ctx.textAlign = 'center'; ctx.fillText(t, 0, 200); ctx.restore(); }); }, { ...V, de: 1, a: 1.05, foco: [W / 2, 1000] });
-    titular(ctx, a, 'ONLY THIS', W / 2, 280, { size: 140 }); },
-  // 8 — Sigue friendo pescado con patatas en la tienda de papá
-  8: (ctx, a, K) => { const { DAD } = cast(K);
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'cafeteria', { hora: 'dia' }, { cx: 540 }); caja(ctx, 100, gy - 360, 880, 60, 10, '#c0c6d0', 8); K.smoke(ctx, 540, gy - 400, a.t, 5);
-      hombre(K, ctx, a, 430, gy, 1.5, 380, { pose: 'sostiene', mood: 'triste', mira: 1, objeto: (c, mx, my) => { caja(c, mx - 10, my - 20, 120, 20, 8, '#5a5a62', 5); } }); D(K, ctx, a, DAD, 820, gy, 1.45, { pose: 'quieto', mood: 'feliz', mira: -1 });
-      K.prop(ctx, 'pez', 600, gy - 420, 0.4, a.t); }, { ...V, de: 1, a: 1.1, foco: [W / 2, 1200] });
-    titular(ctx, a, 'FISH & CHIPS', W / 2, 260, { size: 130, col: '#ffd93d' }); K.etiqueta(ctx, a, 'AND HE DOESN\'T EAT ANY', W / 2, 410, { size: 50, p0: 0.3 }); },
-  // 9 — Al baño una vez cada cuarenta días
-  9: (ctx, a, K) => { const n = Math.round(sm(ph(a, 0.05, 0.75)) * 40);
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'bano', { hora: 'dia' }, { cx: 540 }); hombre(K, ctx, a, 330, gy, 1.6, 360, { pose: 'quieto', mood: n >= 40 ? 'sorpresa' : 'aburrido', mira: 1 }); calendario(ctx, 780, 900, n, 0.8); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1150] });
-    titular(ctx, a, 'BATHROOM:', W / 2, 260, { size: 130 }); titular(ctx, a, 'EVERY 40 DAYS', W / 2, 420, { size: 110, col: '#ffd93d', p0: 0.5 }); },
-  // 10 — Sin potasio el corazón podría pararse; lo vigilan
-  10: (ctx, a, K) => { const { DOC } = cast(K); const lat = Math.pow(Math.max(0, Math.sin(a.t * 5)), 8);
-    K.camara(ctx, a, () => { const gy = hospital(ctx, a); caja(ctx, 560, 560, 440, 280, 20, '#14213d', 9); ln(ctx, Array.from({ length: 40 }, (_, i) => { const x = 580 + i * 10, f = ((i / 40) + a.t * 0.8) % 1; return [x, 700 - (Math.abs(f - 0.5) < 0.03 ? 90 : 0)]; }), '#6bff8a', 6);
-      ctx.save(); ctx.translate(780, 950); ctx.scale(1 + lat * 0.12, 1 + lat * 0.12); K.prop(ctx, 'corazon', 0, 0, 0.5, a.t); ctx.restore();
-      D(K, ctx, a, DOC, 300, gy, 1.6, { pose: 'sostiene', mood: 'duda', mira: 1, objeto: (c, mx, my) => caja(c, mx - 50, my - 130, 100, 140, 10, '#f5f0e6', 6) }); }, { ...V, de: 1, a: 1.1, foco: [W / 2, 1100] });
-    titular(ctx, a, 'POTASSIUM', W / 2, 260, { size: 140, col: '#ff8cc6' }); K.etiqueta(ctx, a, 'OR THE HEART COULD STOP', W / 2, 410, { size: 50, p0: 0.3 }); },
-  // 11 — Mes a mes encoges: 456, 300, 180
-  11: (ctx, a, K) => { const k = sm(ph(a, 0.05, 0.9)); const peso = Math.round(lerp(456, 180, k));
-    K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'salon', { hora: 'dia' }, { cx: 540 }); bascula(ctx, W / 2, gy + 10, peso); hombre(K, ctx, a, W / 2, gy - 50, 1.7, peso, { pose: k > 0.9 ? 'vitorea' : 'quieto', mood: k > 0.6 ? 'feliz' : 'neutral', mira: 0 }); }, { ...V, de: 1, a: 1.08, foco: [W / 2, 1200] });
-    titular(ctx, a, peso + ' LB', W / 2, 330, { size: 200, col: peso < 200 ? '#6bcb77' : '#ffd93d' }); },
-  // 12 — Luego comes: un huevo cocido, una rebanada de pan
-  12: (ctx, a, K) => { K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'cocina', { hora: 'dia' }, { cx: 540 }); caja(ctx, 120, gy - 300, 840, 40, 10, '#b5773f', 8); plato(ctx, 700, gy - 320, 1); if (ph(a, 0.1, 0.2) > 0) huevo(ctx, 640, gy - 330, 1); if (ph(a, 0.35, 0.45) > 0) tostada(ctx, 790, gy - 320, 0.9);
-      hombre(K, ctx, a, 300, gy, 1.6, 180, { pose: 'vitorea', mood: 'feliz', mira: 1 }); K.sparkles(ctx, 700, gy - 400, a.t, 6, 120); }, { ...V, de: 1, a: 1.1, foco: [W / 2, 1200] });
-    titular(ctx, a, 'FIRST MEAL', W / 2, 260, { size: 150, col: '#ffd93d' }); K.etiqueta(ctx, a, '1 EGG · 1 SLICE OF BREAD', W / 2, 410, { size: 50, p0: 0.3 }); },
-  // 13 — 382 días, 276 libras menos: el ayuno más largo registrado
-  13: (ctx, a, K) => { K.camara(ctx, a, () => { cielo(ctx, '#1f2a5a', '#4d5fa8'); K.sparkles(ctx, W / 2, 1000, a.t, 14, 460); calendario(ctx, 300, 900, 382, 0.85, 'DAYS'); caja(ctx, 620, 740, 300, 320, 24, '#ffffff', 9); ctx.fillStyle = '#e63946'; ctx.font = '110px Anton'; ctx.textAlign = 'center'; ctx.fillText('-276', 770, 900); ctx.fillStyle = INK; ctx.font = '60px Anton'; ctx.fillText('LB', 770, 990);
-      hombre(K, ctx, a, W / 2, 1650, 1.25, 180, { pose: 'vitorea', mood: 'feliz', mira: 0 }); }, { ...V, de: 1, a: 1.05, foco: [W / 2, 1000] });
-    titular(ctx, a, 'LONGEST FAST', W / 2, 300, { size: 140, col: '#ffd93d' }); sello(ctx, a, 'ON RECORD', W / 2, 520, { p0: 0.4, size: 80 }); },
-  // 14 — Y ese es el récord para cualquiera que pueda... (bucle al plato vacío)
-  14: (ctx, a, K) => { K.camara(ctx, a, () => { const gy = fondo(ctx, a, 'salon', { hora: 'dia' }, { cx: 540 }); plato(ctx, W / 2, gy - 260, 1); hombre(K, ctx, a, W / 2, gy + 30, 1.7, 456, { pose: 'senala', mood: 'sorpresa', mira: 0 }); }, { ...V, de: 1, a: 1.12, foco: [W / 2, 1100] });
-    titular(ctx, a, "AND THAT'S THE RECORD", W / 2, 260, { size: 90, col: '#ffd93d' }); titular(ctx, a, 'FOR ANYONE WHO...', W / 2, 400, { size: 90, p0: 0.4 }); },
+  3: (ctx, a) => { const t = a.t; const cam = { z: lerp(1.08, 1.16, U(a)), fx: 480, fy: 1100, t };
+    cocina(ctx, t, cam);
+    capa(ctx, cam, 1, () => { const p = personaje(ctx, t, GRANDE, 360, SUELO + 40, 1.05, PG(t, { mood: 'sorpresa', boca: 'o', mira: [1, 0] }));
+      for (let i = 0; i < 6; i++) { const k = (t * 0.6 + i / 6) % 1; const x = p.cabeza[0] + 120 + k * 380, y = p.cabeza[1] + 70 - k * 120; ctx.globalAlpha = 1 - k; ctx.beginPath(); ctx.arc(x, y, 30 + k * 40, 0, 7); ctx.fillStyle = 'rgba(255,190,220,0.7)'; ctx.fill(); elipse(ctx, x, y, 14, 14, ['#ff6b6b', '#ffb347', '#9be36b'][i % 3], 2); ctx.globalAlpha = 1; } });
+    rotulo(ctx, 0.05, t, 'DAY 3', 540, 270, 160, '#ffd93d'); rotulo(ctx, 0.6, t, 'FRUITY BREATH', 540, 440, 120, '#ff9ad0'); },
+
+  // 4 — El hambre desaparece
+  4: (ctx, a) => { const t = a.t; const k = ease(ph(t, 0.4, 1.6)); const cam = { z: 1.06, fx: 540, fy: 1200, t };
+    cocina(ctx, t, cam);
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 450, SUELO + 40, 1.05, PG(t, { mood: k > 0.5 ? 'feliz' : 'triste', mira: [0, 0.4], manoI: [-60, -150], manoD: [60, -150] }));
+      ctx.globalAlpha = 1 - k; texto(ctx, 'GRRR', 620 + Math.sin(t * 30) * 6, 1100, 80, '#ff6b3d'); ctx.globalAlpha = 1; });
+    rotulo(ctx, 0.05, t, 'HUNGER', 540, 270, 160); rotulo(ctx, 0.8, t, 'FADES AWAY', 540, 440, 140, '#8fe3ff'); },
+
+  // 5 — Dundee, Escocia, 1965: 456 libras
+  5: (ctx, a) => { const t = a.t; const cam = { z: 1.04, fx: 540, fy: 1200, t };
+    exterior(ctx, t, cam, { cielo: 'dia', suelo: 'cemento', medio: () => casa(ctx, 760, SUELO - 20, 0.85) });
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 400, SUELO + 40, 1.1, PG(t, { mood: 'feliz', mira: [0.2, -0.2], manoI: [-170, -360], manoD: [170, -110] })); });
+    rotulo(ctx, 0.05, t, 'SCOTLAND, 1965', 540, 270, 120); rotulo(ctx, 0.6, t, '456 LB', 540, 440, 180, '#ffd93d'); },
+
+  // 6 — Los médicos esperaban días… y siguió
+  6: (ctx, a) => { const t = a.t; const n = Math.round(lerp(1, 120, ease(ph(t, 0.2, a.d * 0.9)))); const cam = { z: 1.04, fx: 540, fy: 1200, t };
+    consulta(ctx, t, cam);
+    capa(ctx, cam, 1, () => { calendario(ctx, 680, 880, n, 0.8); personaje(ctx, t, MEDICO, 300, SUELO + 40, 1, { mood: n > 30 ? 'sorpresa' : 'neutral', mira: [1, -0.4], manoI: [-110, -110], manoD: [150, -340] }); personaje(ctx, t, GRANDE, 760, SUELO + 40, 1.0, PG(t, { mood: 'feliz', mira: [-1, 0] })); });
+    rotulo(ctx, 0.05, t, 'DAYS...', 540, 270, 150); rotulo(ctx, 0.9, t, 'WEEKS... MONTHS', 540, 440, 110, '#ffd93d'); },
+
+  // 7 — Té, café, agua con gas y vitaminas
+  7: (ctx, a) => { const t = a.t; const cam = { z: 1.06, fx: 540, fy: 1200, t };
+    cocina(ctx, t, cam);
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 270, SUELO + 40, 1.0, PG(t, { mood: 'feliz', mira: [1, 0], manoD: [180, -300] })); mesa(ctx, 700, 1150, 520);
+      const it = [(x, y) => taza(ctx, x, y, '#e2775a'), (x, y) => taza(ctx, x, y, '#6b4a3a'), (x, y) => vaso(ctx, t, x, y), (x, y) => pastilla(ctx, x, y - 30, 0.3)];
+      it.forEach((f, i) => { const k = back(ph(t, 0.2 + i * 0.35, 0.5 + i * 0.35)); if (k > 0) { ctx.save(); ctx.translate(0, (1 - k) * -200); f(530 + i * 115, 1150); ctx.restore(); } }); });
+    rotulo(ctx, 0.05, t, 'TEA · COFFEE', 540, 270, 120); rotulo(ctx, 0.9, t, 'WATER · VITAMINS', 540, 420, 100, '#8fe3ff'); },
+
+  // 8 — Freía pescado en la tienda de su padre
+  8: (ctx, a) => { const t = a.t; const cam = { z: 1.04, fx: 540, fy: 1200, t };
+    tienda(ctx, t, cam);
+    capa(ctx, cam, 1, () => { mostrador(ctx, 760, 1150, 520); pescado(ctx, 700, 1130, 0.7); pescado(ctx, 850, 1132, 0.7); personaje(ctx, t, GRANDE, 330, SUELO + 40, 1.0, PG(t, { ancho: 1.45, delantal: true, mood: 'esfuerzo', mira: [1, 0.3], manoD: [190, -280] })); });
+    rotulo(ctx, 0.05, t, "DAD'S CHIP SHOP", 540, 820, 100); rotulo(ctx, 0.6, t, 'NO SNACKS', 540, 960, 120, '#ff6b3d'); },
+
+  // 9 — Iba al baño cada 40 días
+  9: (ctx, a) => { const t = a.t; const n = Math.round(lerp(1, 40, ease(ph(t, 0.1, a.d * 0.8)))); const cam = { z: 1.04, fx: 540, fy: 1200, t };
+    pared(ctx, t, cam, '#dbe8ef', '#eef4f7', '#9ab0bf', () => { rr(ctx, 560, 600, 300, 820, 10); volumen(ctx, '#8b6446', 560, 600, 300, 820, 5); rr(ctx, 640, 700, 140, 80, 10); ctx.fillStyle = '#fff'; ctx.fill(); texto(ctx, 'WC', 710, 740, 60, '#2a3a4a'); elipse(ctx, 600, 1050, 16, 16, '#d9b44a', 3); });
+    suelo(ctx, cam, 'baldosa');
+    capa(ctx, cam, 1, () => { calendario(ctx, 250, 700, n, 0.6); personaje(ctx, t, GRANDE, 330, SUELO + 40, 1.0, PG(t, { mood: n >= 40 ? 'sorpresa' : 'neutral', mira: [1, -0.2] })); });
+    rotulo(ctx, 0.05, t, 'BATHROOM', 540, 270, 150); rotulo(ctx, 0.6, t, 'EVERY 40 DAYS', 540, 440, 120, '#ffd93d'); },
+
+  // 10 — Potasio y controles del corazón
+  10: (ctx, a) => { const t = a.t; const cam = { z: 1.05, fx: 540, fy: 1200, t };
+    consulta(ctx, t, cam, () => pantalla(ctx, t, 520, 330, 460, 300, (c, x, y, w, h) => { c.strokeStyle = '#6bff8a'; c.lineWidth = 6; c.beginPath(); for (let i = 0; i <= 60; i++) { const xx = x + i * w / 60, ph2 = ((i / 60) * 3 - t * 1.2) % 1, f = ((ph2 % 1) + 1) % 1; const yy = y + h / 2 - (f > 0.45 && f < 0.5 ? 100 : f > 0.5 && f < 0.55 ? -50 : 0); i ? c.lineTo(xx, yy) : c.moveTo(xx, yy); } c.stroke(); texto(c, '♥ OK', x + w - 70, y + 40, 40, '#6bff8a'); }));
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 330, SUELO + 40, 1.0, PG(t, { ancho: 1.35, mira: [1, -0.4] })); personaje(ctx, t, MEDICO, 800, SUELO + 40, 1, { mood: 'neutral', mira: [-1, 0], manoI: [-200, -260], manoD: [120, -110] }); pastilla(ctx, 560, 1000 + Math.sin(t * 3) * 10, 0.2); });
+    rotulo(ctx, 0.05, t, 'POTASSIUM', 540, 800, 130, '#ffd93d'); rotulo(ctx, 0.5, t, 'HEART CHECKS', 540, 930, 110); },
+
+  // 11 — 456 → 300 → 180
+  11: (ctx, a) => { const t = a.t; const k = ease(ph(t, 0.2, a.d * 0.9)); const kg = Math.round(k < 0.5 ? lerp(456, 300, k * 2) : lerp(300, 180, (k - 0.5) * 2)); const cam = { z: 1.06, fx: 540, fy: 1200, t };
+    consulta(ctx, t, cam);
+    capa(ctx, cam, 1, () => { bascula(ctx, t, 540, SUELO + 40, kg + ' LB', '#6bff8a'); personaje(ctx, t, GRANDE, 540, SUELO + 10, 1.0, PG(t, { ancho: lerp(AN, 1.0, k), mood: k > 0.6 ? 'feliz' : 'neutral', mira: [0, 0.4] })); });
+    rotulo(ctx, 0.05, t, `${kg} LB`, 540, 290, 180, '#ffd93d'); },
+
+  // 12 — Un huevo cocido y una rebanada de pan
+  12: (ctx, a) => { const t = a.t; const cam = { z: lerp(1.08, 1.16, U(a)), fx: 600, fy: 1150, t };
+    cocina(ctx, t, cam);
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 330, SUELO + 40, 1.0, PG(t, { ancho: 1.0, mood: 'feliz', habla: true, mira: [1, 0.4] })); mesa(ctx, 700, 1150, 520); plato(ctx, 700, 1140, 'huevo', 1.1); });
+    rotulo(ctx, 0.05, t, 'FIRST MEAL', 540, 270, 150); rotulo(ctx, 0.6, t, '1 EGG + 1 BREAD', 540, 440, 110, '#ffd93d'); },
+
+  // 13 — 382 días, 276 libras menos, récord
+  13: (ctx, a) => { const t = a.t; const cam = { z: 1.04, fx: 540, fy: 1200, t };
+    exterior(ctx, t, cam, { cielo: 'dia', suelo: 'cemento', medio: () => casa(ctx, 820, SUELO - 20, 0.8) });
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 300, SUELO + 40, 1.05, PG(t, { ancho: 1.0, mood: 'feliz', mira: [1, -0.4], manoI: [-170, -400], manoD: [170, -400], salto: Math.abs(Math.sin(t * 5)) * 20 })); certificado(ctx, 720, 950, ease(ph(t, 0.3, 1)), 'WORLD RECORD', '382 DAYS', '-276 LB'); });
+    rotulo(ctx, 0.05, t, '-276 LB', 540, 290, 180, '#8fe39a'); rotulo(ctx, 0.6, t, 'WORLD RECORD', 540, 460, 120, '#ffd93d'); },
+
+  // 14 — Y ese es el récord para cualquiera que pueda… (bucle)
+  14: (ctx, a) => { const t = a.t; const cam = { z: lerp(1, 1.08, U(a)), fx: 540, fy: 1200, t };
+    cocina(ctx, t, cam);
+    capa(ctx, cam, 1, () => { personaje(ctx, t, GRANDE, 330, SUELO + 40, 1.05, PG(t, { mira: [1, 0.3] })); mesa(ctx, 680, 1120, 520); plato(ctx, 640, 1110); signo(ctx, t, 0.5, 330, 760, '?', '#ffd93d'); });
+    rotulo(ctx, 0.05, t, 'AND THE RECORD', 540, 270, 120); rotulo(ctx, 0.5, t, 'FOR ANYONE...', 540, 430, 120, '#ffd93d'); },
 };
-const BASE = (fn) => (ctx, a, K) => { cielo(ctx, '#fff4e0', '#ffe0c2'); fn(ctx, a, K); };
-export default Object.fromEntries(Object.entries(PLANOS).map(([k, f]) => [k, BASE(f)]));
