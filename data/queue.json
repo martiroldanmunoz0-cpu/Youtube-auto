@@ -546,7 +546,7 @@
     "lista": "Incredible True Stories",
     "tag": "pedido-36",
     "issue": 130,
-    "estado": "pendiente",
+    "estado": "en espera",
     "publish_at": "2026-11-29T22:00:00Z"
   },
   {
@@ -570,7 +570,7 @@
     "lista": "What If...?",
     "tag": "pedido-35",
     "issue": 131,
-    "estado": "pendiente",
+    "estado": "en espera",
     "publish_at": "2026-11-28T15:30:00Z"
   },
   {
@@ -594,7 +594,7 @@
     "lista": "Human Body",
     "tag": "pedido-30",
     "issue": 133,
-    "estado": "pendiente",
+    "estado": "en espera",
     "publish_at": "2026-11-28T22:00:00Z"
   },
   {
@@ -619,7 +619,7 @@
     "lista": "Human Body",
     "tag": "pedido-34",
     "issue": 134,
-    "estado": "pendiente",
+    "estado": "en espera",
     "publish_at": "2026-11-29T15:30:00Z"
   }
 ]
