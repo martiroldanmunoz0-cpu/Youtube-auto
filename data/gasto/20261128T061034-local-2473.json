@@ -1,0 +1,16 @@
+{
+ "fecha": "2026-11-28T06:10:51.358087+00:00",
+ "tanda": "local",
+ "total_usd": {
+  "anthropic": 0.055216,
+  "openai": 0
+ },
+ "llamadas": [
+  {
+   "servicio": "anthropic",
+   "modelo": "claude-opus-5-5",
+   "usd": 0.055216,
+   "que": "mejoras por retención"
+  }
+ ]
+}
